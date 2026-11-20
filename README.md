@@ -23,6 +23,8 @@ python -m vesuvius.ink_detection.inference.infer surface.zarr weights.pth region
 
 On the publicly annotated PHerc. 1447 W058 surface, the occupancy check requested 16,783,956 voxel bytes for one 128 × 128 region. The baseline requested 775,450,368. The two schedulers selected the same four 384 × 384 inference patches in the same order. Five fresh processes per version gave median planning times of 0.095 and 3.885 seconds respectively. A PyTorch replay produced identical probabilities on all 16,384 region pixels. These timing figures cover patch selection. [Public W058 dataset](https://huggingface.co/datasets/YoussefMoNader/ink-8um-pherc1447-surfaces)
 
+A second check used a 768 × 768 crop of the public PHerc. 841 w00 surface and a 128 × 128 region near its corner. Occupancy reads dropped from 16,515,072 to 8,255,772 logical bytes, with the same single inference tile. This example shows how the gain changes on an already small source canvas. [Public PHerc. 841 catalog](https://scrollprize.org/data_browser/PHerc0841)
+
 ## Measure your own surface
 
 `benchmark.py` uses Python 3.10+, NumPy and Zarr-Python. It compares the scheduling functions from the pinned Git commit with those in the patched working tree on your local input. Set the square patch size and stride to match your model. By default the script uses 384 pixels and half-patch overlap.
