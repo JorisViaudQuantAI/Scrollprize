@@ -1,0 +1,214 @@
+diff --git a/vesuvius/src/vesuvius/ink_detection/inference/infer.py b/vesuvius/src/vesuvius/ink_detection/inference/infer.py
+index 30d7b8f..565b451 100644
+--- a/vesuvius/src/vesuvius/ink_detection/inference/infer.py
++++ b/vesuvius/src/vesuvius/ink_detection/inference/infer.py
+@@ -308,11 +308,13 @@ def iter_blocks(
+     occupancy_scale: tuple[int, int] = (1, 1),
+     *,
+     roi_bounds: tuple[int, int, int, int] | None = None,
++    mask_origin: tuple[int, int] = (0, 0),
+ ) -> list[Block]:
+     """Schedule flat patches, including a final boundary-aligned position."""
+ 
+     height, width = (int(value) for value in image_shape)
+     scale_y, scale_x = (max(1, int(value)) for value in occupancy_scale)
++    mask_y, mask_x = mask_origin
+     if roi_bounds is not None:
+         roi_bounds = resolve_roi_bounds(roi_bounds, height=height, width=width)
+     blocks: list[Block] = []
+@@ -329,7 +331,11 @@ def iter_blocks(
+                 low_x0 = x0 // scale_x
+                 low_y1 = max(low_y0 + 1, math.ceil((y0 + valid_h) / scale_y))
+                 low_x1 = max(low_x0 + 1, math.ceil((x0 + valid_w) / scale_x))
+-                if not mask_lowres[low_y0:low_y1, low_x0:low_x1].any():
++                window = mask_lowres[
++                    low_y0 - mask_y : low_y1 - mask_y,
++                    low_x0 - mask_x : low_x1 - mask_x,
++                ]
++                if not window.any():
+                     continue
+             blocks.append(Block(y0, x0, valid_h, valid_w))
+     return blocks
+@@ -395,17 +401,40 @@ def choose_pyramid_array(
+     return selected, root[selected]
+ 
+ 
+-def compute_nonempty_mask_from_lowres_array(array: Any) -> np.ndarray:
+-    """Collapse a 2D/3D low-resolution array to a 2D occupancy mask."""
+-
++def _occupancy_layout(array: Any) -> tuple[int | None, tuple[int, int]]:
+     shape = tuple(int(value) for value in array.shape)
+-    values = np.asarray(array[:])
+     if len(shape) == 2:
+-        return values != 0
++        return None, shape
+     if len(shape) != 3:
+         raise ValueError(f"Occupancy array must be rank 2 or 3, got {shape!r}")
+-    depth_axis = 0 if int(np.argmin(shape)) == 0 else 2
+-    return np.any(values != 0, axis=depth_axis)
++    if int(np.argmin(shape)) == 0:
++        return 0, shape[1:]
++    return 2, shape[:2]
++
++
++def compute_nonempty_mask_from_lowres_array(
++    array: Any, *, rows: slice = slice(None), cols: slice = slice(None),
++) -> np.ndarray:
++    """Collapse the requested part of a 2D/3D array to a 2D occupancy mask."""
++
++    depth_axis, _ = _occupancy_layout(array)
++    if depth_axis is None:
++        return np.asarray(array[rows, cols]) != 0
++    index = (slice(None), rows, cols) if depth_axis == 0 else (rows, cols, slice(None))
++    return np.any(np.asarray(array[index]) != 0, axis=depth_axis)
++
++
++def _occupancy_context(
++    roi: tuple[int, int, int, int], patch_size: int, height: int, width: int,
++) -> tuple[int, int, int, int]:
++    # The scheduler checks whole parent-grid patches, including the last
++    # boundary-aligned one. A patch can reach patch_size - 1 beyond the ROI.
++    r0, r1, c0, c1 = roi
++    halo = patch_size - 1
++    return (
++        max(0, r0 - halo), min(height, r1 + halo),
++        max(0, c0 - halo), min(width, c1 + halo),
++    )
+ 
+ 
+ def build_lowres_block_mask(
+@@ -414,23 +443,36 @@ def build_lowres_block_mask(
+     height: int,
+     width: int,
+     user_mask: np.ndarray | None,
++    scan_bounds: tuple[int, int, int, int] | None = None,
+ ) -> tuple[np.ndarray | None, tuple[int, int], str | None]:
+-    """Combine group occupancy and user mask at occupancy resolution."""
++    """Combine volume occupancy and user mask over a parent-grid window."""
+ 
+-    if hasattr(root, "shape"):
+-        occupancy = None
+-        occupancy_level = None
+-        occupancy_h, occupancy_w = height, width
+-    else:
++    occupancy_array = None
++    occupancy_level = None
++    occupancy_h, occupancy_w = height, width
++    if not hasattr(root, "shape"):
+         occupancy_level, occupancy_array = choose_pyramid_array(
+             root,
+             preferred_key=DEFAULT_OCCUPANCY_SCAN_LEVEL,
+             purpose="occupancy scan",
+         )
+-        occupancy = compute_nonempty_mask_from_lowres_array(occupancy_array)
+-        occupancy_h, occupancy_w = occupancy.shape
++        _, (occupancy_h, occupancy_w) = _occupancy_layout(occupancy_array)
+     scale_y = max(1, int(round(height / max(1, occupancy_h))))
+     scale_x = max(1, int(round(width / max(1, occupancy_w))))
++    rows = cols = slice(None)
++    if scan_bounds is not None:
++        r0, r1, c0, c1 = scan_bounds
++        rows = slice(r0 // scale_y, math.ceil(r1 / scale_y))
++        cols = slice(c0 // scale_x, math.ceil(c1 / scale_x))
++        if user_mask is not None:
++            # Pool from the original parent-grid origin, including ragged cells.
++            user_mask = user_mask[
++                rows.start * scale_y : rows.stop * scale_y,
++                cols.start * scale_x : cols.stop * scale_x,
++            ]
++    occupancy = None
++    if occupancy_array is not None:
++        occupancy = compute_nonempty_mask_from_lowres_array(occupancy_array, rows=rows, cols=cols)
+     if user_mask is not None:
+         pooled = downsample_mask_any(user_mask, scale_y, scale_x)
+         occupancy = pooled if occupancy is None else np.logical_and(occupancy, pooled)
+@@ -1321,11 +1363,15 @@ def infer_single_zarr(
+             args.mask_path,
+             100.0 * float(mask.mean()),
+         )
++    scan_bounds = None
++    if roi_bounds is not None:
++        scan_bounds = _occupancy_context(roi_bounds, patch_size, height, width)
+     occupancy, occupancy_scale, occupancy_level = build_lowres_block_mask(
+         root,
+         height=height,
+         width=width,
+         user_mask=mask,
++        scan_bounds=scan_bounds,
+     )
+     if occupancy is None:
+         LOGGER.warning(
+@@ -1343,6 +1389,9 @@ def infer_single_zarr(
+             int(occupancy_scale[1]),
+             100.0 * float(occupancy.mean()),
+         )
++    mask_origin = (0, 0)
++    if scan_bounds is not None:
++        mask_origin = (scan_bounds[0] // occupancy_scale[0], scan_bounds[2] // occupancy_scale[1])
+     blocks = iter_blocks(
+         (height, width),
+         patch_size,
+@@ -1350,6 +1399,7 @@ def infer_single_zarr(
+         occupancy,
+         occupancy_scale,
+         roi_bounds=roi_bounds,
++        mask_origin=mask_origin,
+     )
+     LOGGER.info("Selected %d patches for inference", len(blocks))
+     output_blocks = blocks if roi_bounds is None else [clip_block_to_roi(block, roi_bounds) for block in blocks]
+diff --git a/vesuvius/tests/ink_detection/test_roi_inference.py b/vesuvius/tests/ink_detection/test_roi_inference.py
+index 3e2d190..c1d9031 100644
+--- a/vesuvius/tests/ink_detection/test_roi_inference.py
++++ b/vesuvius/tests/ink_detection/test_roi_inference.py
+@@ -67,3 +67,51 @@ def test_clipped_real_prediction_assembly_and_raw_zero_skip(tmp_path):
+ def test_roi_cli_does_not_rescale_coordinates():
+     args=infer.parse_args(['input.zarr','model.pth','out.tif','--resolution','2','--roi','3','83','5','85'])
+     assert args.roi==[3,83,5,85] and args.resolution=='2'
++
++
++@pytest.mark.parametrize('layout', ['yx', 'zyx', 'yxz', 'mask-only'])
++@pytest.mark.parametrize('roi', [(129, 130, 177, 179), (252, 263, 339, 353)])
++def test_roi_reads_occupancy_only_in_parent_patch_context(layout, roi):
++    # The only signal near the interior ROI is outside it. Its overlapping
++    # parent patch must still be scheduled. Include ragged edges at scale 4.
++    height, width = 263, 353
++    patch, stride = 32, 16
++    mask = np.zeros((height, width), dtype=bool)
++    mask[121, 171] = True
++    mask[-2, -2] = True
++    pooled = infer.downsample_mask_any(mask, 4, 4)
++    planes = np.stack([np.zeros_like(pooled), pooled])
++    data = {'yx': pooled, 'zyx': planes, 'yxz': np.moveaxis(planes, 0, -1)}
++
++    class RecordedArray:
++        def __init__(self, values):
++            self.values = values
++            self.shape = values.shape
++            self.selections = []
++
++        def __getitem__(self, select):
++            selected = self.values[select]
++            self.selections.append(selected.size)
++            return selected
++
++    class Group(dict):
++        def array_keys(self):
++            return self.keys()
++
++    source = RecordedArray(data.get(layout, pooled))
++    root = source if layout == 'mask-only' else Group({'3': source})
++    kwargs = dict(height=height, width=width, user_mask=mask)
++    full, scale, level = infer.build_lowres_block_mask(root, **kwargs)
++    expected = infer.iter_blocks((height, width), patch, stride, full, scale, roi_bounds=roi)
++    assert expected
++    source.selections.clear()
++    context = infer._occupancy_context(roi, patch, height, width)
++    local, actual_scale, actual_level = infer.build_lowres_block_mask(root, scan_bounds=context, **kwargs)
++    assert (actual_scale, actual_level) == (scale, level)
++    origin = (context[0] // scale[0], context[2] // scale[1])
++    actual = infer.iter_blocks((height, width), patch, stride, local, scale, roi_bounds=roi, mask_origin=origin)
++    assert actual == expected
++    assert local.size < full.size // 4
++    if layout != 'mask-only':
++        assert len(source.selections) == 1
++        assert source.selections[0] < source.values.size // 4
