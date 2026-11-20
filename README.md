@@ -25,6 +25,8 @@ On the publicly annotated PHerc. 1447 W058 surface, the occupancy check requeste
 
 A second check used a 768 × 768 crop of the public PHerc. 841 w00 surface and a 128 × 128 region near its corner. Occupancy reads dropped from 16,515,072 to 8,255,772 logical bytes, with the same single inference tile. This example shows how the gain changes on an already small source canvas. [Public PHerc. 841 catalog](https://scrollprize.org/data_browser/PHerc0841)
 
+The public replication package includes the exact source hashes, the individual timings and a one-command comparison for each papyrus. It also tests PHerc. 841 with its published coarse pyramid. In that configuration both runs read a single chunk and produced identical pixels. [Reproduce the two benchmarks](evidence/README.md)
+
 ## Measure your own surface
 
 `benchmark.py` uses Python 3.10+, NumPy and Zarr-Python. It compares the scheduling functions from the pinned Git commit with those in the patched working tree on your local input. Set the square patch size and stride to match your model. By default the script uses 384 pixels and half-patch overlap.

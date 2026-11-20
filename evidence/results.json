@@ -1,0 +1,259 @@
+{
+  "measured_utc": "2026-11-20",
+  "villa_commit": "c8f3ba45304f0a317a49a155929e30d294f201eb",
+  "patch_at_commit": "10dbe805d5d0a8152d237036b89c89facfa336cf",
+  "native_backend": "vc_reader.reader.zarr_reader.ZarrReader",
+  "setup": {
+    "cpu": "Intel Xeon Platinum 8573C",
+    "cpu_quota": 4,
+    "operating_system": "Linux x86_64 6.18.57",
+    "python": "3.12.14",
+    "pytorch": "2.9.1+cpu",
+    "numpy": "2.3.5",
+    "zarr_python": "3.4.2",
+    "numcodecs": "0.17.1",
+    "tifffile": "2026.11.16",
+    "imagecodecs": "2026.11.11",
+    "reader_build": "CPU, GCC 14.2, -O1 -DNDEBUG",
+    "storage": "local, warm filesystem cache, shared host",
+    "thread_environment": {
+      "OMP_NUM_THREADS": 1,
+      "MKL_NUM_THREADS": 1,
+      "OPENBLAS_NUM_THREADS": 1
+    }
+  },
+  "measurement": "Five fresh processes per version per data set, alternating baseline and patched. Timed region is occupancy construction plus parent-grid tile selection. Peak process RSS includes library initialization. End-to-end TIFF comparison was a separate pair of inference processes.",
+  "model": {
+    "name": "Domenico Russo, Reader v3",
+    "sha256": "ea405417450abd8ace1b8ff79ebce3adb646c5e48ab95da46844d77efe984d8a",
+    "patch": 384,
+    "stride": 192,
+    "level": "0",
+    "blend": "hann",
+    "device": "cpu"
+  },
+  "tests": {
+    "upstream_roi_and_flat_inference": 61,
+    "fixture_integrity_and_native_pyramid_crop": 2
+  },
+  "cases": {
+    "w058": {
+      "sample": "PHerc. 1447",
+      "surface": "W058",
+      "source_voxel_size_um": 8.64,
+      "fixture_level0_shape_zyx": [
+        21,
+        4512,
+        8184
+      ],
+      "source_level0_bounds_yx": [
+        0,
+        4512,
+        0,
+        8184
+      ],
+      "roi_in_fixture_yx": [
+        3072,
+        3200,
+        1920,
+        2048
+      ],
+      "direction": "reverse",
+      "occupancy_level": "0",
+      "tiles_each": 4,
+      "ordered_tiles_sha256": "e469efd60315bfd4d9f2b2c2be6ed57e7826ffa71a62e44b92bc8d0915bf7e1b",
+      "selection": {
+        "before": {
+          "logical_bytes": 775450368,
+          "chunk_positions": 2304
+        },
+        "after": {
+          "logical_bytes": 16783956,
+          "chunk_positions": 49
+        }
+      },
+      "native_timing": {
+        "before": {
+          "seconds": [
+            2.618589272,
+            1.675106099,
+            3.256338606,
+            3.461457703,
+            4.510202435
+          ],
+          "peak_process_rss_bytes": [
+            1966723072,
+            1968390144,
+            1966936064,
+            1967280128,
+            1966342144
+          ],
+          "median_seconds": 3.256338606,
+          "median_peak_process_rss_bytes": 1966936064
+        },
+        "after": {
+          "seconds": [
+            0.042623344,
+            0.052604556,
+            0.051838308,
+            0.076622771,
+            0.080745409
+          ],
+          "peak_process_rss_bytes": [
+            411795456,
+            413523968,
+            411766784,
+            411381760,
+            412233728
+          ],
+          "median_seconds": 0.052604556,
+          "median_peak_process_rss_bytes": 411795456
+        }
+      },
+      "end_to_end": {
+        "pixels": 16384,
+        "shape_yx": [
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "different_pixels": 0,
+        "geometry_matches": true,
+        "reference_pixel_stats_from_first_series": {
+          "shape": [
+            128,
+            128
+          ],
+          "dtype": "uint8",
+          "minimum": 58,
+          "maximum": 205,
+          "nonzero": 16384,
+          "distinct_gray_values": 148,
+          "pixel_sha256": "5cbbc7ab10aa110d8a30a8fd516fa70218b021fc51d6b3011ac2749b700b70fd"
+        }
+      },
+      "initial_native_series_on_same_fixture": {
+        "before": {
+          "seconds": [
+            2.336521929,
+            2.088739321,
+            2.539669293,
+            2.328240219,
+            2.005240913
+          ],
+          "peak_process_rss_bytes": [
+            1971396608,
+            1970741248,
+            1973993472,
+            1970671616,
+            1974419456
+          ],
+          "median_seconds": 2.328240219,
+          "median_peak_process_rss_bytes": 1971396608
+        },
+        "after": {
+          "seconds": [
+            0.03811883,
+            0.036466644,
+            0.03538612,
+            0.03322481,
+            0.027760557
+          ],
+          "peak_process_rss_bytes": [
+            419381248,
+            419340288,
+            415875072,
+            419573760,
+            416071680
+          ],
+          "median_seconds": 0.03538612,
+          "median_peak_process_rss_bytes": 419340288
+        }
+      }
+    },
+    "w00": {
+      "sample": "PHerc. 841",
+      "surface": "20260220213127-w00",
+      "source_voxel_size_um": 9.366,
+      "fixture_level0_shape_zyx": [
+        28,
+        768,
+        768
+      ],
+      "source_level0_bounds_yx": [
+        2688,
+        3456,
+        2688,
+        3456
+      ],
+      "roi_in_fixture_yx": [
+        32,
+        160,
+        32,
+        160
+      ],
+      "direction": "forward",
+      "occupancy_level": "3",
+      "tiles_each": 1,
+      "ordered_tiles_sha256": "52477db35f5f39cd0d1f933c2cdc8b7f4918f9e4475c99445003441e0ab40190",
+      "selection": {
+        "before": {
+          "logical_bytes": 258048,
+          "chunk_positions": 1
+        },
+        "after": {
+          "logical_bytes": 129472,
+          "chunk_positions": 1
+        }
+      },
+      "native_timing": {
+        "before": {
+          "seconds": [
+            0.001251606,
+            0.001263771,
+            0.000891726,
+            0.001093145,
+            0.001509245
+          ],
+          "peak_process_rss_bytes": [
+            371298304,
+            372408320,
+            369942528,
+            372011008,
+            371421184
+          ],
+          "median_seconds": 0.001251606,
+          "median_peak_process_rss_bytes": 371421184
+        },
+        "after": {
+          "seconds": [
+            0.001447222,
+            0.001091799,
+            0.001339486,
+            0.001112284,
+            0.000875271
+          ],
+          "peak_process_rss_bytes": [
+            370184192,
+            370696192,
+            371494912,
+            370221056,
+            372117504
+          ],
+          "median_seconds": 0.001112284,
+          "median_peak_process_rss_bytes": 370696192
+        }
+      },
+      "end_to_end": {
+        "pixels": 16384,
+        "shape_yx": [
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "different_pixels": 0,
+        "geometry_matches": true
+      }
+    }
+  }
+}
