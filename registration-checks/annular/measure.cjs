@@ -316,6 +316,4 @@ function scoreSite(st, jobs, cacheDir, suppliedShifts) {
   return res;
 }
 
-module.exports = {
-  scoreSite
-};
+module.exports = {scoreSite,fineAccessor,coarseVolume,trilinear};
