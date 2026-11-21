@@ -1,0 +1,267 @@
+name: Receive complete public TIFF planes
+on:
+  push:
+    branches: [codex/legacy-source-planes-full]
+    paths: [.github/workflows/legacy-source-planes-full.yml]
+permissions: {}
+jobs:
+  receive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install open image readers
+        run: python -m pip --quiet install numpy tifffile Pillow
+      - name: Read full public planes and encrypt each independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > recipient.pem <<'CERTIFICATE'
+          -----BEGIN CERTIFICATE-----
+          MIIEJzCCAo+gAwIBAgIUCsVaphADjEi53u2OA94UUitlaYswDQYJKoZIhvcNAQEL
+          BQAwIzEhMB8GA1UEAwwYcHVibGljLURMUy1kZXB0aC1maXh0dXJlMB4XDTI2MTEy
+          MTE1Mzk0OFoXDTI2MTEyNDE1Mzk0OFowIzEhMB8GA1UEAwwYcHVibGljLURMUy1k
+          ZXB0aC1maXh0dXJlMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAkQ6V
+          l7E0SUkCGwpcgWISGHM5Uk37akKyBhpskSYLONMvBEQ6I6GSFj1H0U13DZ0iQyX8
+          SxbZdjPC3lCD3YhMIc3lsYau6JzJ0LWzoR1XQmNd/7NHR24WU/Oi3INJJ9Atptuv
+          8vNfGHuoQe7irVGVrk9L1IojIQXNfJIrh3D1aJpxcbEgQeEQmu3lbRfTo5Y2ye1t
+          3zEwns0/zUvlyhqGQIjQz8BrWakUnl2Azl32IQpZKU75CsKo1MktgDoDkevn6nKH
+          5NWHUtbmCsPNk5ef0TEIiHz1izeAjiQ1lkCpo66Nlv/NrZ7C5ZKgHxuRx9nJOfl/
+          K9J77XDpmlUnEifqpyi5xVV4wiuW3f48IBTYpn6+qYZzsxJRU72nUMI3nTetcvUG
+          bDmtKY+jpFM+ERn3HQsCGkm/RYdJuIlWO9WTJ0lJ7wJo5nFUhtRxGdp8scb8K41J
+          KsIwJPdaulSCu0PO1AoYtN8dSBWvzR4BmXjalXjHNqYazrATLdpMsZLoG2dPAgMB
+          AAGjUzBRMB0GA1UdDgQWBBTycBzRVtIqOazvZEF5cNkkkpeBlDAfBgNVHSMEGDAW
+          gBTycBzRVtIqOazvZEF5cNkkkpeBlDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3
+          DQEBCwUAA4IBgQBNuFSq0au4XZrWih8tPZRZkjfrGNHBPb/4z51sEX3+qa//DVGx
+          qkjoa8kMCtgXu/FSOP858Xp7kIuPABsF+yoEU5lfEmvUjDiIhpTqpwl95RtydU/h
+          /fJ7pepR4xoQFaL38vdwH+vHo0ped5KdEO2d3GlkEy+pH5SuWu0ntDdQaMl5Jx4V
+          r0nT1ZgD4m+Ii5UI2XzRmbXZDrSGn3BGNT9bDbDGKdT5aQADPFHOGRUfhcp5YIK3
+          R2YJXzD+VEl/u6r4qFMGvzt5AAXWeTOGFLpqgY5RZsGvBeujXdR48/pr6nUGVYsf
+          N8MshTcNeAq0tmniNjj4n/aNSs9svFMTvkN42Yf8di2KGp9ulAP2wte6+b5Krhzs
+          CsNbLHcOxKDgo2ILTNr4LA8S7pT6YZT+D2MchYVbuVt1AU/8RP2ltQt65GCV5IzQ
+          I5hBZEwlDHt8c1SvccXJtXc943MRJtVj4y2Uu4UKMSEFRhHwT7gs7gdLvecoA5K2
+          UfUrIAjwPRWZf8s=
+          -----END CERTIFICATE-----
+          CERTIFICATE
+          cat > collect.py <<'PY'
+          """Transport complete public scalar TIFF planes in 8-bit form, encrypted for one recipient."""
+          from concurrent.futures import ThreadPoolExecutor
+          from hashlib import file_digest, sha256
+          from pathlib import Path
+          from urllib.request import urlopen
+          import json
+          import shutil
+          import subprocess
+          import time
+          
+          import numpy as np
+          from PIL import Image
+          import tifffile
+          
+          SEGMENT = '20230510153006'
+          BASE = f'https://dl.ash2txt.org/full-scrolls/Scroll1/PHercParis4.volpkg/paths/{SEGMENT}/layers/'
+          
+          def digest(p):
+              with p.open('rb') as f:
+                  return file_digest(f,'sha256').hexdigest()
+          
+          def transport(layer):
+              tag=f'{layer:02d}';source=BASE+tag+'.tif';original=Path(f'original-{tag}.tif')
+              for k in range(4):
+                  try:
+                      with urlopen(source,timeout=65) as reply, original.open('wb') as dst:
+                          shutil.copyfileobj(reply,dst,length=2**20)
+                          if original.stat().st_size!=65777885:
+                              raise OSError('Unexpected full public TIFF byte count')
+                      break
+                  except OSError:
+                      if k==3:raise
+                      time.sleep(2**k)
+              a=tifffile.memmap(original)
+              if a.shape!=(9533,3450) or a.dtype!=np.uint16:raise ValueError('Unexpected full plane shape or type')
+              pixels=np.empty(a.shape,dtype=np.uint8)
+              for y in range(0,a.shape[0],128):pixels[y:y+128]=((a[y:y+128].astype('u4')+128)//257).astype('u1')
+              out=Path('ready')/tag;out.mkdir(parents=True,exist_ok=True);image=Path('plane-'+tag+'.png');Image.fromarray(pixels).save(image,compress_level=4)
+              encrypted=out/'plane.cms'
+              subprocess.run(['openssl','cms','-encrypt','-binary','-outform','DER','-aes-256-gcm','-in',str(image),'-out',str(encrypted),'recipient.pem'],check=True)
+              receipt={'source':source,'original_sha256':digest(original),'original_bytes':original.stat().st_size,'shape_yx':list(a.shape),'raw_uint8_sha256':sha256(pixels).hexdigest(),'encoded_png_sha256':digest(image),'encrypted_sha256':digest(encrypted),'encrypted_bytes':encrypted.stat().st_size,'representation':'all native pixels, round(uint16/257), lossless PNG, no region or mask'}
+              (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print(tag,receipt['encrypted_bytes'],flush=True)
+              del a,pixels;original.unlink();image.unlink()
+          
+          if __name__=='__main__':
+              with ThreadPoolExecutor(max_workers=2) as pool:list(pool.map(transport,range(22,43)))
+          PY
+          python collect.py
+      - name: Store public source plane 22
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-22
+          path: ready/22/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 23
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-23
+          path: ready/23/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 24
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-24
+          path: ready/24/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 25
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-25
+          path: ready/25/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 26
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-26
+          path: ready/26/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 27
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-27
+          path: ready/27/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 28
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-28
+          path: ready/28/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 29
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-29
+          path: ready/29/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 30
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-30
+          path: ready/30/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 31
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-31
+          path: ready/31/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 32
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-32
+          path: ready/32/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 33
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-33
+          path: ready/33/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 34
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-34
+          path: ready/34/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 35
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-35
+          path: ready/35/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 36
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-36
+          path: ready/36/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 37
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-37
+          path: ready/37/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 38
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-38
+          path: ready/38/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 39
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-39
+          path: ready/39/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 40
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-40
+          path: ready/40/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 41
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-41
+          path: ready/41/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Store public source plane 42
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-surface-plane-42
+          path: ready/42/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
