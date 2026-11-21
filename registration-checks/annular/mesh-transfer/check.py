@@ -159,13 +159,17 @@ def main():
     frozen=json.loads((ROOT/'frozen-sites.json').read_text())['sites']
     levels={h:float(np.median([s['fixed'][2] for s in frozen if s['sample']==SAMPLE and s['id'][0]==h])) for h in 'ABC'}
     sampled,valid,eligible,sites=select(arrays,coarse[1]['shape'],fine[1]['shape'],levels)
-    full_n,full_valid,full_eligible,_=select(arrays,coarse[1]['shape'],fine[1]['shape'],levels,stride=1)
+    full_n,full_valid,full_eligible,full_sites=select(arrays,coarse[1]['shape'],fine[1]['shape'],levels,stride=1)
+    # Exhaustive geometry supplies points only for strata entirely missed by stride eight.
+    supplement=[s for s in full_sites if eligible[s[0]]==0]
+    sites+=supplement
+    print('SOURCE_SHA',json.dumps(hashes),flush=True)
     print('ALL_GEOMETRY',full_n,full_valid,full_eligible,flush=True)
     print('SELECTION',sampled,valid,eligible,'shape',arrays[0].shape,'metadata',meta,flush=True)
     results=[]
     for site in sites:
         r=measure(site,rows,coarse,fine);results.append(r);print('SITE',json.dumps(r,separators=(',',':')),flush=True)
-    output=dict(mesh_keys=keys,source_sha256=hashes,mesh_meta=meta,shape=list(arrays[0].shape),sampled=sampled,eligible_by_bounds=valid,qualified_by_height=eligible,all_interior_vertices=full_n,all_valid=full_valid,all_qualified_by_height=full_eligible,target_heights=levels,voxel_um=PITCH,results=results)
+    output=dict(mesh_keys=keys,source_sha256=hashes,mesh_meta=meta,shape=list(arrays[0].shape),sampled=sampled,eligible_by_bounds=valid,qualified_by_height=eligible,all_interior_vertices=full_n,all_valid=full_valid,all_qualified_by_height=full_eligible,target_heights=levels,full_grid_supplement=len(supplement),voxel_um=PITCH,results=results)
     Path('mesh-transfer-result.json').write_text(json.dumps(output,indent=2)+'\n')
     accepted=[p for r in results for p in r['planes'] if 'dog' in p and None not in p['dog']+p['raw']]
     print('SUMMARY',len(results),len(accepted),sum(p['pixels'] for p in accepted),'NORMAL_TANGENT_UM',
