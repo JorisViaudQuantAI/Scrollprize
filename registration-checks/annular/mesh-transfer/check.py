@@ -2,8 +2,7 @@
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
-import csv, hashlib, json, sys
-import xml.etree.ElementTree as ET
+import csv, hashlib, json
 import numpy as np
 import requests, tifffile
 from scipy.ndimage import binary_erosion, gaussian_filter, gaussian_filter1d, map_coordinates
@@ -32,30 +31,10 @@ def http(url, **kwargs):
             last=e
     raise last
 
-def inventory(prefix):
-    token=None
-    while True:
-        args={'list-type':2, 'prefix':prefix, 'max-keys':1000}
-        if token: args['continuation-token']=token
-        root=ET.fromstring(http(BASE+'/',params=args).content)
-        yield from (n.text for n in root.findall('{*}Contents/{*}Key'))
-        token=root.findtext('{*}NextContinuationToken')
-        if not token: break
-
 def meshfiles():
-    for root in [SAMPLE+'/segments/raw/',SAMPLE+'/representations/segments/',SAMPLE+'/segments/']:
-        keys=[k for k in inventory(root) if MESH in k]
-        d={}
-        for key in keys:
-            parent, name = key.rsplit('/',1)
-            if name in ['x.tif','y.tif','z.tif','meta.json']:
-                d.setdefault(parent,{})[name]=key
-        found=[(k,v) for k,v in d.items() if all(a+'.tif' in v for a in 'xyz')]
-        if len(found)>1: raise ValueError('Ambiguous official mesh: '+str([k for k,v in found]))
-        if found:
-            print('OFFICIAL_MESH',found[0][0],flush=True)
-            return found[0][1]
-    raise ValueError('No unambiguous XYZ source for '+MESH)
+    # Use the current official XYZ files at the root of the segment, excluding editing snapshots.
+    prefix=SAMPLE+'/segments/raw/'+MESH+'/'
+    return {name:prefix+name for name in ('x.tif','y.tif','z.tif','meta.json')}
 
 def get_mesh(keys):
     def get(axis):
