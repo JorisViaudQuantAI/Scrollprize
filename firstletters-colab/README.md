@@ -11,12 +11,12 @@ real data; anything else is labelled.
 |---|---|---|---|
 | 1 | Fine↔coarse registration of the 2.4 µm rescans of PHerc. 1203 and PHerc. 0846A to their First-Letters 9.36 µm volumes, in the bucket's `transforms/` format | `registration/` | measured, CPU only |
 | 2 | Headless First Letters window on a free Colab T4: VC3D AppImage GrowPatch + render + reader-v3/ink_9um ensemble, timings, pitfalls, and a Drive-fed job worker | `colab_pipeline/`, `ink/` | one window measured end to end; packaged scripts parametrised afterwards (see limits) |
-| 3 | Model comparison on a known-text control (PHerc. 0841): AUC by depth offset, combinations, reversed-layer control, and a text-likeness triage score with its calibration | `controls/` | measured |
-| 4 | Negative results with exact coordinates (12 regions, 4 scrolls + Scroll 1) and their meshes | `negative_results/` | measured / by eye, labelled per row |
-| 5 | `--precision fp16` for the official `hecate.py`: about 4× faster than its default on a T4 | `hecate_fp16/` | speed measured in our wrapper; patched official script checked on CPU only |
+| 3 | Model comparison on a known-text control (PHerc. 0841): agreement (AUC) with the organisers' 2.4 µm ink map by depth offset, combinations, reversed-layer control, and a text-likeness triage score with its calibration | `controls/` | measured on one region; combination and thresholds chosen on that same region |
+| 4 | Negative results with coordinates (12 searched regions on 4 scrolls + Scroll 1; 10 negatives, 2 unresolved or uninformative, one location withheld) and their meshes | `negative_results/` | measured / by eye, labelled per row |
+| 5 | `--precision fp16` for the official `hecate.py`: 3.0× faster than its fp32 default end to end on a T4 (patched official script, one small crop); 3.9× model throughput in our wrapper | `hecate_fp16/` | measured on a T4, both ways, one crop of one scroll |
 
-AI assistance: the code, the runs and the first draft of this text were produced with heavy help from an AI
-coding agent, directed and reviewed by JorisViaudQuantAI. See "How this was made" at the end.
+AI assistance: the code, the runs and this text were produced with AI coding agents, directed by the repository
+owner. See "How this was made" at the end.
 
 ---
 
@@ -55,7 +55,7 @@ cracks (`figures/p2_coarse9um_vs_fineL2_same_mesh.jpg`, r = 0.84 between the 9.3
 render pooled to 9.6 µm; `figures/raw031_coarse9um_vs_fineL2_same_mesh.jpg`, a public 9 µm mesh mapped to
 2.4 µm, r = 0.71).
 
-**Reproduce (CPU, a few minutes per landmark, reads ~MBs by HTTP range requests):**
+**Reproduce (CPU, a few minutes per landmark, reads ~MBs by HTTP range requests; run from `firstletters-colab/`):**
 
 ```bash
 pip install numpy opencv-python requests tifffile
@@ -68,7 +68,13 @@ python registration/fit_landmarks.py registration/landmarks.json --sample PHerc1
 # move a tifxyz mesh: fine level-2 mesh -> 9.36 um frame, or (--inverse) a 9.36 um mesh -> 2.4 um frame
 python registration/apply_transform_tifxyz.py <transform.json> <mesh_dir> <out_dir> --level 2
 python registration/apply_transform_tifxyz.py <transform.json> <mesh_dir> <out_dir> --inverse --zrange 8000 11765
+python registration/test_apply_transform_tifxyz.py   # self-test on a 4-vertex fixture (no download)
 ```
+
+`apply_transform_tifxyz.py` keeps a vertex only if x, y and z are all finite and non-negative, writes every
+other vertex as −1, computes the output `bbox` over valid vertices only, and sets `volume` / `volume_id` in
+`meta.json` to the destination volume (from `transform.json` or the pair's `provenance.json`, or
+`--dst-volume-id`); the source values are kept under `source_frame`.
 
 **Limits.**
 - Below the organisers' publishing bar. Their `volreg` records (villa `foundation/volume-registration/pipeline`)
@@ -115,15 +121,24 @@ turns a Colab tab into a job runner fed from a Google Drive folder.
 9. Free Colab sessions are reclaimed: the worker writes `DONE.txt` per job and skips finished jobs, so a restart
    resumes; jobs cache under `/content/cache` and must not share cache paths when two copies may run.
 
-**Reproduce.** On a Colab GPU runtime with this repository at `/content/repo`:
+**Reproduce.** On a Colab GPU runtime, in one `%%bash` cell or a terminal (each `!` line of a notebook is a
+separate shell, so exported variables would be lost):
 
 ```bash
-export INPUTS=/content/repo/colab_pipeline/inputs OUT=/content/out
-mkdir -p $INPUTS && cp /content/repo/colab_pipeline/fl_helpers.py $INPUTS/ && cp -r /content/repo/ink $INPUTS/ink
-# defaults reproduce the PHerc0175A window; override SCROLL UM SEED_X SEED_Y SEED_Z VOL_URL M7_URL NG_KEY for another
-bash /content/repo/colab_pipeline/jobs/01_grow.sh
-bash /content/repo/colab_pipeline/jobs/02_render_ink.sh
+# this package is on the branch claude/firstletters-colab (not on main); add `git -C /content/repo checkout <commit>` to pin
+git clone -b claude/firstletters-colab https://github.com/JorisViaudQuantAI/Scrollprize.git /content/repo
+P=/content/repo/firstletters-colab
+export INPUTS=/content/inputs OUT=/content/out/PHerc0175A_5423_5806_6960
+mkdir -p $INPUTS && cp $P/colab_pipeline/fl_helpers.py $INPUTS/ && cp -r $P/ink $INPUTS/ink
+# defaults reproduce the PHerc0175A window; export SCROLL UM SEED_X SEED_Y SEED_Z VOL_URL M7_URL NG_KEY for another,
+# and use one OUT per seed
+bash $P/colab_pipeline/jobs/01_grow.sh
+MESH=$(cat $OUT/mesh_path.txt) bash $P/colab_pipeline/jobs/02_render_ink.sh
 ```
+
+Pass the mesh explicitly as above. Without `MESH`, `02_render_ink.sh` falls back to a hand-off file under
+`/content/cache/grow/` named after scroll, seed and generations, so it only finds the grow made with the same
+`SCROLL`, `SEED_X/Y/Z` and `GENS`.
 
 The step-by-step notebook `colab_pipeline/first_letters_colab.ipynb` (parameters, seed snapping, a positive
 control on the PHerc. 343 winning mesh, Hecate and villa-CLI options, depth-shuffle control) documents the same
@@ -145,8 +160,8 @@ times; that is the new part, together with the pitfall list and the worker.
 
 **Limits.**
 - One window on one scroll was measured. The packaged `jobs/*.sh` are parametrised copies of the jobs that ran
-  (`rcp_012`, `rcp_025`): only variables and paths changed. They pass `bash -n`; **they were not re-run after
-  parametrisation.**
+  (`rcp_012`, `rcp_025`): only variables, paths and the mesh hand-off changed. They pass `bash -n`; **as of this
+  commit they have not been re-run as shipped** (a fresh-clone re-run is planned and will be reported in `collab/`).
 - The notebook was written before the runs; its helper and parameter cells were executed on CPU, its GPU cells
   were not executed as a notebook (the same steps ran as worker jobs). Cells are marked `UNTESTED` where so.
 - Colab compute-unit prices and free-tier limits change; the ≈ 1 h per window is for a T4.
@@ -156,6 +171,8 @@ times; that is the new part, together with the pitfall list and the worker.
 **What.** On a 65-layer render of PHerc. 0841 w00 (9.366 µm, known text) we scored four public 9 µm models
 against the organisers' 2.4 µm `new_canon_autoresearch_recipe` map resampled to the render grid ("ink" =
 key ≥ 128), inside a 2.6 cm² ROI, at depth shifts along the render normal and with the layer order reversed.
+The reference is itself a model output, so every AUC below measures **agreement with another model**, not
+accuracy against human-labelled ink.
 Raw numbers: `controls/evidence/controls_summary.json`; panel `controls/fl_002_controls_panel_0841.jpg`.
 
 | model | z −4 | −2 | **0** | +2 | +4 | reversed |
@@ -165,9 +182,15 @@ Raw numbers: `controls/evidence/controls_summary.json`; panel `controls/fl_002_c
 | ink_9um s42 75k | 0.716 | 0.747 | 0.733 | 0.745 | 0.719 | 0.539 |
 | ink_9um s43 75k | 0.709 | 0.735 | 0.722 | 0.715 | 0.710 | 0.555 |
 
-Combinations (300+ evaluated): best **reader-v3 + Hecate, mean, averaged over z −2/0/+2: AUC 0.891**;
-reader-v3 alone 0.863 (0.874 depth-averaged); **adding ink_9um lowers it** (reader-v3 + ink_9um 0.840); the
-four-model mean of z-scores used by the PHerc. 343 winner gives 0.875. Off-sheet (z ±20): 0.46. At z ±6
+Combinations: 305 were scored on this same ROI (model subset × rule mean / geometric mean / mean of z-scores
+× single depth or average of three neighbouring shifts × centre shift), and the best was picked afterwards:
+**reader-v3 + Hecate, mean, depth-averaged over −2/0/+2: AUC 0.891**. Because it was selected post hoc on the
+region it is scored on, 0.891 is an optimistic in-sample model-agreement figure, not an expected performance.
+This combination is frozen as stated (reader-v3 + Hecate, mean, depth-averaged over −2/0/+2) and is to be used
+unchanged on any other scroll or region; it has not yet been tested elsewhere. Same ROI, for reference:
+reader-v3 alone 0.863 (0.874 with the same depth averaging); adding ink_9um to reader-v3 lowers agreement
+(0.840 with the mean rule at z 0; 0.864 for the best rule with depth averaging, versus 0.874 for reader-v3
+alone); the four-model mean of z-scores used by the PHerc. 343 winner gives 0.875. Off-sheet (z ±20): 0.46. At z ±6
 reader-v3 draws letter-like strokes in *other places* — probably text of neighbouring wraps, a warning for deep
 depth sweeps.
 
@@ -186,17 +209,19 @@ off-sheet z ±20, a noise stack with the render's per-layer statistics):
 
 Every dense-text window scores ≥ 3.70 and every control window ≤ 3.07. Measured line pitch on real text:
 5.7 mm. Decision rule used for the scan in section 4: ≥ 3.1 plus gates (asymmetry ≥ +0.5, depth stability
-≥ 0.7, cross-model stability ≥ 0.3) = candidate; 2.0–3.1 = look by eye; below = nothing.
+≥ 0.7, cross-model stability ≥ 0.3) = candidate; 2.0–3.1 = look by eye; below = nothing. These thresholds
+were set on the same segment's windows (8 per text class) and have not been validated on another scroll.
 
 **Blind spot (stated plainly): sparse text scores 1.3–2.0, inside the control range. The score finds dense
 rows of text, not isolated letters.** A "nothing" from it does not exclude a few letters.
 
-**Reproduce:** `python controls/analyze_controls.py --render <render dir> --maps <model maps…> --canon <answer key>`
-(see `--help`); the maps come from `ink/infer_ink.py` with `--z-shifts` and `--direction both`.
+**Reproduce:** `python controls/analyze_controls.py --render <render dir> --maps <model maps…> --canon <answer key> --out <dir>`
+(see `--help` for `--offset`, `--textroi` and the window size); the maps come from `ink/infer_ink.py` with
+`--z-shifts` and `--direction both`.
 
 **Limits.** One region of one scroll. The answer key is itself a model output (2.4 µm). The render is ours,
 not the official surface volume (r ≈ 0.9 between them), and reader-v3's AUC here (0.863) is slightly below the
-0.865–0.882 we measured on the official surface volume. The calibration windows overlap and come from one
+0.865–0.882 we measured on the official surface volume (that run's numbers are not in `evidence/`). The calibration windows overlap and come from one
 segment, so the effective sample size is small. Off-sheet "controls" may contain real ink from other wraps
 (0841 is written throughout), so they are conservative negatives.
 
@@ -225,7 +250,8 @@ Controls used to read these: PHerc. 0841 known text processed the same way (sect
 the same code path reproduces the organisers' published 2.4 µm map of PHerc. 0841 (r = 0.929) and gives
 8.5× more ink pixels forward than reversed on text, versus 0.9–2.2× on the PHerc. 1203 blocks.
 
-**Limits.** Small areas (≈ 30 cm² of our own searching on eligible scrolls), mostly near scroll centres; a
+**Limits.** Small areas (≈ 28 cm² of our own searching on eligible scrolls, rows N1–N10, counting the N1/N2
+overlap and the unresolved N9/N10), mostly near scroll centres; a
 negative with these models says nothing about stronger future models; rows N2–N6 rely on the triage score,
 which cannot see isolated letters (section 3); N9 and N10 are not negatives. Public negatives by others, for
 context: PHerc. 0826 z 10000–11000 w010–w065 (spiral fit, ink_9um), PHerc. 0211 same window (later won
@@ -238,8 +264,11 @@ Hecate code) offers `fp32` (default) and `bf16`. GPUs before Ampere, including t
 fast bf16 path. `hecate_fp16/0001-hecate-add-fp16-precision.patch` adds an `fp16` choice (3 hunks; default
 unchanged).
 
-**Measured on a T4** (PHerc. 0841 w00 text tile, 0.92 cm², batch 32, same model weights and autocast call,
-run through our wrapper `ink/infer_ink.py --model hecate --hecate-amp …`):
+Two measurements, on a Colab T4, kept separate because they measure different things.
+
+**(a) Throughput in our wrapper** (earlier job; PHerc. 0841 w00 text tile, 0.92 cm², batch 32, same model
+weights and autocast call as `hecate.py`, run through `ink/infer_ink.py --model hecate --hecate-amp …`; cm²/h per
+pass as reported by the wrapper; `cudnn.benchmark` was on, which `hecate.py` does not set):
 
 | precision | cm²/h per pass | vs fp32 output (uint8) |
 |---|---|---|
@@ -247,24 +276,34 @@ run through our wrapper `ink/infer_ink.py --model hecate --hecate-amp …`):
 | fp32 (official default) | 17.9 | — |
 | **fp16 autocast** | **69.9** | **max diff 1, mean 0.024, r 0.999992** |
 
-So fp16 is ≈ 3.9× the official default and ≈ 5.7× bf16 on a T4, with outputs within 1/255 of fp32 on this
-tile. On the same known-text control, Hecate run in fp16 gave AUC 0.846 (section 3).
+**(b) The patched official script, end to end** (2026-11-21, `hecate_fp16/measure_t4.sh` as committed at
+`fca6b04`; Colab Tesla T4, 15 GB, torch 2.14.1+cu130; official `hecate.py` + the fp16 patch; one 27 × 999 × 999
+crop of the public PHerc. 841 w00 surface volume resampled to 9.6 µm by `prepare_crop.py`; batch size 32; wall
+seconds per fresh process, model load included):
 
-**Checked for the patched official script (CPU only):** default (`fp32`) output is byte-identical to the
-unpatched script on a real PHerc. 0841 crop; `--precision fp16` on CPU is refused with a clear message.
-**Not yet measured:** the patched official script itself on a GPU. `hecate_fp16/measure_t4.sh` does that in
-a few minutes (downloads the checkpoint and a 1024² crop of the PHerc. 0841 surface volume via
-`prepare_crop.py`, resampled to 9.6 µm, runs fp16/bf16/fp32, prints times and differences).
+| precision | seconds | vs fp32 output (uint8 levels) |
+|---|---|---|
+| **fp16** | **41.2** | **max 1, mean 0.047, r 0.99999** |
+| fp32 (script default) | 123.6 | — |
+| bf16 | 228.6 | max 11, mean 0.321, r 0.999893 |
 
-**Limits.** One tile on one scroll. fp16 has a smaller range than bf16; no overflow was seen here but it was
-not tested on other scrolls or at other batch sizes. On Ampere or newer GPUs bf16 remains the right choice.
+So fp16 is 3.0× the official default end to end in (b) and 3.9× in model throughput in (a); bf16 is slower than
+fp32 on a T4 in both. In (b) fp16 ran first, with a cold file cache, so its time is if anything pessimistic. On
+the same known-text control, Hecate run in fp16 gave AUC 0.846 (section 3). Also checked on CPU: the patched
+script's default (`fp32`) output is byte-identical to the unpatched script on a real PHerc. 0841 crop, and
+`--precision fp16` on CPU is refused with a clear message. `bash hecate_fp16/measure_t4.sh [WORKDIR]` repeats (b)
+in a few minutes (downloads the checkpoint and the crop, runs fp16 / bf16 / fp32, prints times and differences).
+
+**Limits.** One crop of one scroll, one batch size, one run per precision (no repeats, so no spread). fp16 has
+a smaller range than bf16; no overflow was seen here, but it was not tested on other scrolls or at other batch
+sizes. On Ampere or newer GPUs bf16 remains the right choice.
 
 ---
 
 ## Layout
 
 ```
-registration/      reg_point.py, fit_landmarks.py, apply_transform_tifxyz.py, landmarks.json, transforms/, figures/
+registration/      reg_point.py, fit_landmarks.py, apply_transform_tifxyz.py (+ test_), landmarks.json, transforms/, figures/
 colab_pipeline/    jobs/ (env.sh, 01_grow.sh, 02_render_ink.sh), first_letters_colab.ipynb, fl_helpers.py, gpu_worker/
 ink/               infer_ink.py (reader-v3 / ink_9um / Hecate, depth shifts, both faces), render_tifxyz.py, vendor/, third_party/
 controls/          score_text.py, calibration.json, analyze_controls.py, evidence/, panel figure
@@ -277,7 +316,5 @@ Python: numpy, scipy, opencv-python, scikit-image, tifffile, requests, torch (GP
 
 ## How this was made
 
-JorisViaudQuantAI ran this work with an AI coding agent, which wrote most of the code, submitted the GPU jobs and
-drafted this text. All numbers above come from runs on public scroll data; logs and raw outputs are kept and can
-be shared on request. `OWNER NOTE PENDING: this paragraph will be replaced by the owner's own words on why you did this and what you
-checked yourself.>`
+The code, the runs and this text were produced with AI coding agents, directed by the repository owner. All
+numbers above come from runs on public scroll data.

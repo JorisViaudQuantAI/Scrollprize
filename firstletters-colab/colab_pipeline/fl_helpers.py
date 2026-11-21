@@ -3,7 +3,7 @@
 Everything here is plain Python (numpy, zarr<3 or zarr>=3, fsspec, requests, tifffile, opencv, optional torch).
 It does NOT run any model or VC3D tool itself; the notebook calls those as shell commands.
 
-Conventions (checked against the winners' repos, see reports/07_winning_recipes.md):
+Conventions (checked against the winners' public repos):
   * coordinates are level-0 voxels, written x, y, z (VC3D order); zarr arrays are (z, y, x)
   * a render made with `vc_render_tifxyz --num-slices N --slice-step 1` has layer k at (k - (N-1)/2) voxels
     along the mesh normal, so with N odd the traced surface is layer (N-1)//2 and depth d = k - (N-1)//2
@@ -371,3 +371,7 @@ def depth_shuffle(stack, seed: int = 0):
     rng = np.random.default_rng(seed)
     idx = rng.permutation(stack.shape[0])
     return np.ascontiguousarray(np.asarray(stack)[idx])
+
+
+if __name__ == "__main__":
+    print(__doc__)

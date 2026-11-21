@@ -10,6 +10,10 @@ mkdir -p "$OUT"
 export C=${CACHE:-/content/cache}; mkdir -p $C
 export SCROLL=${SCROLL:-PHerc0175A} UM=${UM:-8.64}
 export SEED_X=${SEED_X:-5423} SEED_Y=${SEED_Y:-5806} SEED_Z=${SEED_Z:-6960}
+export GENS=${GENS:-80}
+# Hand-off from 01_grow.sh to 02_render_ink.sh. The default is specific to scroll + seed + generations, so two grows
+# on the same scroll never overwrite each other's hand-off; 02_render_ink.sh uses MESH=<tifxyz dir> instead when set.
+export MESH_FILE=${MESH_FILE:-$C/grow/last_mesh_${SCROLL}_${SEED_X}_${SEED_Y}_${SEED_Z}_g${GENS}.txt}
 export BUCKET=${BUCKET:-https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com}
 # volume, m7 surface prediction and its normal grids (defaults: PHerc0175A; see scrolls19.json in the notebook for the others)
 export VOL_URL=${VOL_URL:-$BUCKET/PHerc0175A/volumes/20250521115057-8.640um-1.2m-116keV-masked.zarr}

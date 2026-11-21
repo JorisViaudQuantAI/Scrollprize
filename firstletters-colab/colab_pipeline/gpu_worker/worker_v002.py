@@ -897,6 +897,11 @@ def main(root_id, jobs_id, results_id, inputs_id, store=None, work="/content/wor
 
 
 if __name__ == "__main__":  # local test: python worker_v002.py <root_dir>
+    if len(sys.argv) != 2 or sys.argv[1].startswith("-"):
+        print(__doc__)
+        print("local test: python worker_v002.py <root_dir>  (runs jobs from <root_dir>/jobs until idle; on Colab the "
+              "notebook written by make_notebook_v2.py starts it on Google Drive)")
+        sys.exit(0 if sys.argv[1:2] in (["-h"], ["--help"]) else 2)
     root = sys.argv[1]
     st = LocalStore()
     ids = [st.mkdir(n, root) for n in ("jobs", "results", "inputs")]

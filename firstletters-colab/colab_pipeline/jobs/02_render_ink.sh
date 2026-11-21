@@ -5,19 +5,26 @@
 # ink_9um x2 16 min, previews 1 min).
 # Hecate is not used here: inside infer_ink.py with bf16 autocast it ran at ~12 cm2/h on a T4; with
 # --hecate-amp fp16 it runs at ~70 cm2/h (see README), still ~10x slower than the two models below.
-# usage: INPUTS=... OUT=... [MESH=<tifxyz dir>, default: the mesh written by 01_grow.sh] bash 02_render_ink.sh
+# usage: INPUTS=... OUT=... MESH=<tifxyz dir> [SCROLL=... UM=... VOL_URL=...] bash 02_render_ink.sh
+# MESH is the explicit, recommended form (01_grow.sh writes it to $OUT/mesh_path.txt). Without MESH the script reads
+# $MESH_FILE, which is specific to SCROLL + SEED_X/Y/Z + GENS (see env.sh), so those must match the grow you mean.
+# SCROLL, UM and VOL_URL must describe the volume the mesh was grown in.
 source "$(dirname "$0")/env.sh"
 ensure_tools; ensure_models
 RV3=$C/models/domenicor046/reader-v3/reader-v3.pth
 I42=$C/models/scrollprize/ink_9um/hybrid_3d2d-seed42/step-075000.pth
 I43=$C/models/scrollprize/ink_9um/hybrid_3d2d-seed43/step-075000.pth
-M=${MESH:-$(cat $C/last_mesh_${SCROLL}.txt)}
+if [ -n "${MESH:-}" ]; then M=$MESH
+elif [ -s "$MESH_FILE" ]; then M=$(cat "$MESH_FILE")
+else echo "no MESH given and no hand-off file $MESH_FILE (run 01_grow.sh with the same SCROLL/SEED_*/GENS, or set MESH)"; exit 1; fi
 [ -f $M/x.tif ] || { echo "no mesh at $M"; exit 1; }
+echo "MESH $M"
 R=$C/render/$(basename $M)_L41.zarr
 if [ ! -f $R/0/.zarray ]; then
   vc vc_render_tifxyz --volume $VOL_URL --group-idx 0 --scale 1 --segmentation $M --num-slices 41 --slice-step 1 --cache-gb 6 --zarr-output $R 2>&1 | grep -v "^ tile" | tail -5
 fi
 I=$C/ink/$(basename $M); mkdir -p $I; gpumon
+trap 'kill $(cat $C/gpumon.pid) 2>/dev/null || true' EXIT
 SH="-3,-2,-1,0,1"
 for spec in "readerv3:$RV3" "ink9:$I42 $I43"; do
   tag=${spec%%:*}; cks=${spec#*:}; t=$(date +%s)
