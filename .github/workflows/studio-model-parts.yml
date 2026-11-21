@@ -1,0 +1,66 @@
+name: Retrieve released public Studio checkpoint
+on:
+  push:
+    branches: [codex/studio-public-checkpoint]
+    paths: [.github/workflows/studio-model-parts.yml]
+permissions:
+  contents: read
+jobs:
+  verified-parts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Fetch the author's published weights and check the release hash
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p "$RUNNER_TEMP/weights/parts" "$RUNNER_TEMP/studio-tools"
+          curl --fail --location --retry 3 --silent --show-error \
+            https://github.com/priyankaranke/vesuvius-studio-multiscroll-cpt/releases/download/studio-softloss-20261023/studio-softloss-20261023-ema.safetensors \
+            -o "$RUNNER_TEMP/weights/model.safetensors"
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "weights"
+          original = root / "model.safetensors"
+          sha = "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90"
+          with original.open("rb") as handle:
+              assert original.stat().st_size == 893443724
+              assert hashlib.file_digest(handle, "sha256").hexdigest() == sha
+          source = "https://github.com/priyankaranke/vesuvius-studio-multiscroll-cpt/releases/tag/studio-softloss-20261023"
+          attribution = ("Studio soft-loss weights, Priyank Aranke and contributors. CC BY-NC 4.0. "
+                         "Unmodified binary split for transport. Source: " + source + "\n"
+                         "License: https://creativecommons.org/licenses/by-nc/4.0/\n")
+          with original.open("rb") as handle:
+              n = 0
+              while chunk := handle.read(30 * 1024 * 1024):
+                  directory = root / "parts" / f"{n:02d}"
+                  directory.mkdir()
+                  (directory / "weights.part").write_bytes(chunk)
+                  record = dict(index=n, offset=handle.tell()-len(chunk), size=len(chunk),
+                                sha256=hashlib.sha256(chunk).hexdigest(), full_sha256=sha, source=source)
+                  (directory / "provenance.json").write_text(json.dumps(record) + "\n")
+                  (directory / "NOTICE.txt").write_text(attribution)
+                  n += 1
+          print(f"Verified {original.stat().st_size:,} bytes, {n} contiguous parts.")
+          PY
+          npm install --silent --ignore-scripts --no-audit --no-fund --prefix "$RUNNER_TEMP/studio-tools" @actions/artifact@2.3.2
+      - name: Publish verified public parts with one-day retention
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const scratch = process.env.RUNNER_TEMP;
+            const { DefaultArtifactClient } = require(path.join(scratch, 'studio-tools/node_modules/@actions/artifact'));
+            const client = new DefaultArtifactClient();
+            const root = path.join(scratch, 'weights/parts');
+            const parts = fs.readdirSync(root).sort();
+            for (const part of parts) {
+              const directory = path.join(root, part);
+              const paths = ['weights.part', 'provenance.json', 'NOTICE.txt'].map(f => path.join(directory, f));
+              await client.uploadArtifact('public-studio-' + part, paths, directory, { retentionDays: 1, compressionLevel: 0 });
+            }
