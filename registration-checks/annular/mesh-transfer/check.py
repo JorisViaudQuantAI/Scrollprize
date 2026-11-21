@@ -51,8 +51,8 @@ def get_mesh(keys):
 def to_moving(x):
     return (np.asarray(x)-AFFINE[:,3])@INVERSE.T/4.
 
-def select(arrays,shape0,shape1,levels):
-    ys,xs=np.mgrid[1:arrays[0].shape[0]-1:8,1:arrays[0].shape[1]-1:8]
+def select(arrays,shape0,shape1,levels,stride=8):
+    ys,xs=np.mgrid[1:arrays[0].shape[0]-1:stride,1:arrays[0].shape[1]-1:stride]
     ys,xs=ys.ravel(),xs.ravel()
     def take(dv,du):
         return np.stack([a[ys+dv,xs+du] for a in arrays],axis=1).astype(float)
@@ -139,20 +139,33 @@ def measure(site,rows,coarse,fine):
     near=peaks[np.abs(t[peaks])<=3];spacing=None
     if len(near)==1 and len(peaks)>=2:
         spacing=float(np.min(np.abs(t[peaks[peaks!=near[0]]]-t[near[0]])))
-    return dict(height=name,uv=uv,p=p.tolist(),n=n.tolist(),train=len(training),d=delta.tolist(),normal_vox=dn,tangent_vox=dt,planes=stats,nearest_distinct_peak_vox=spacing,
+    # A second 1D diagnostic uses equal normal coordinates in fixed space.
+    moving_profiles=[g(to_moving(profile)),g(to_moving(profile-shift))]
+    profile_corr=[float(np.corrcoef(f(profile),q)[0,1]) for q in moving_profiles]
+    peak_offsets=[]
+    if len(near)==1:
+        ref_t=t[near[0]]
+        for q in moving_profiles:
+            k=find_peaks(gaussian_filter1d(q,1.2),prominence=12,distance=8)[0]
+            within=k[np.abs(t[k]-ref_t)<=6]
+            peak_offsets.append(float(t[within[0]]-ref_t) if len(within)==1 else None)
+    return dict(profile_corr=profile_corr,isolated_moving_peak_offsets=peak_offsets,height=name,uv=uv,p=p.tolist(),n=n.tolist(),train=len(training),d=delta.tolist(),normal_vox=dn,tangent_vox=dt,planes=stats,nearest_distinct_peak_vox=spacing,
                 half_spacing_exceeded=None if spacing is None else bool(abs(dn)>=spacing/2))
 
 def main():
     keys=meshfiles();arrays,hashes,meta=get_mesh(keys)
     coarse,fine=zmeta('coarse',0),zmeta('fine',2)
     rows=[r for r in csv.DictReader(TRAIN.open(),delimiter='\t') if r['sample']==SAMPLE and r['status']=='measured']
-    levels={h:float(np.median([float(r['fixed_z']) for r in rows if r['site'][0]==h])) for h in 'ABC'}
+    frozen=json.loads((ROOT/'frozen-sites.json').read_text())['sites']
+    levels={h:float(np.median([s['fixed'][2] for s in frozen if s['sample']==SAMPLE and s['id'][0]==h])) for h in 'ABC'}
     sampled,valid,eligible,sites=select(arrays,coarse[1]['shape'],fine[1]['shape'],levels)
+    full_n,full_valid,full_eligible,_=select(arrays,coarse[1]['shape'],fine[1]['shape'],levels,stride=1)
+    print('ALL_GEOMETRY',full_n,full_valid,full_eligible,flush=True)
     print('SELECTION',sampled,valid,eligible,'shape',arrays[0].shape,'metadata',meta,flush=True)
     results=[]
     for site in sites:
         r=measure(site,rows,coarse,fine);results.append(r);print('SITE',json.dumps(r,separators=(',',':')),flush=True)
-    output=dict(mesh_keys=keys,source_sha256=hashes,mesh_meta=meta,shape=list(arrays[0].shape),sampled=sampled,eligible_by_bounds=valid,qualified_by_height=eligible,voxel_um=PITCH,results=results)
+    output=dict(mesh_keys=keys,source_sha256=hashes,mesh_meta=meta,shape=list(arrays[0].shape),sampled=sampled,eligible_by_bounds=valid,qualified_by_height=eligible,all_interior_vertices=full_n,all_valid=full_valid,all_qualified_by_height=full_eligible,target_heights=levels,voxel_um=PITCH,results=results)
     Path('mesh-transfer-result.json').write_text(json.dumps(output,indent=2)+'\n')
     accepted=[p for r in results for p in r['planes'] if 'dog' in p and None not in p['dog']+p['raw']]
     print('SUMMARY',len(results),len(accepted),sum(p['pixels'] for p in accepted),'NORMAL_TANGENT_UM',
