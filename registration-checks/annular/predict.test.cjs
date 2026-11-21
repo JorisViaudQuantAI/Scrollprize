@@ -45,6 +45,18 @@ test('six public mesh vertices reproduce the independent Python fits and frame s
   }
 });
 
+test('the two all-site fits agree with an independent Cholesky solve at A11', () => {
+  const checks = [
+    ['PHerc1203', [4177, 4089, 9089], [-0.22408378525222955, 0.41380573059314907, 0.08130501861894943]],
+    ['PHerc0846A', [4905, 4258, 3011], [-0.2553119587116753, 0.3493659694200419, -0.43843499370800537]],
+  ];
+  for (const [sample, point, independent] of checks) {
+    const report = predictAt(sample, point, rows);
+    assert.equal(report.calibration.nearest_site, 'A11');
+    independent.forEach((value, i) => assert.ok(Math.abs(report.correction_xyz_fixed_vox[i] - value) < 1e-12));
+  }
+});
+
 test('full fits report the nearest measured site and the 3D hull of each sample', () => {
   for (const sample of samples) {
     const sites = rows.filter(row => row.sample === sample);
