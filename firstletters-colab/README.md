@@ -221,6 +221,11 @@ Every dense-text window scores ≥ 3.70 and every control window ≤ 3.07. Measu
 ≥ 0.7, cross-model stability ≥ 0.3) = candidate; 2.0–3.1 = look by eye; below = nothing. These thresholds
 were set on the same segment's windows (8 per text class) and have not been validated on another scroll.
 
+The archived calibration used 14 mm windows and 1.5 mm steps. The standalone scorer defaults to 20 mm windows
+and 5 mm steps and reports the mismatch in stderr and JSON. Its combined score still orders windows. The
+historical cutoffs apply only to the original measurements. The corrected spectrum keeps tears on the physical
+row grid. The effect on the archived control distribution for windows with internal tears has not been measured.
+
 **Blind spot (stated plainly): sparse text scores 1.3–2.0, inside the control range. The score finds dense
 rows of text, not isolated letters.** A "nothing" from it does not exclude a few letters.
 

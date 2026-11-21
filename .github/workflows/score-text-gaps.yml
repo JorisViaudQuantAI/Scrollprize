@@ -1,0 +1,52 @@
+name: Physical row spacing regression
+on:
+  push:
+    branches: [codex/score-text-gaps]
+    paths:
+      - firstletters-colab/controls/score_text.py
+      - firstletters-colab/tests/test_score_text_gaps.py
+
+permissions:
+  contents: read
+
+jobs:
+  physical-pitch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Install CPU wheels
+        run: |
+          python3 -m venv "$RUNNER_TEMP/score-env"
+          "$RUNNER_TEMP/score-env/bin/pip" install --disable-pip-version-check --only-binary=:all: numpy==2.2.6 opencv-python-headless==4.12.0.88 scikit-image==0.25.2
+      - name: Run the scientific and CLI regressions
+        run: |
+          "$RUNNER_TEMP/score-env/bin/python" -m unittest discover -s firstletters-colab/tests -p 'test_score_text_gaps.py' -v
+      - name: Measure the same synthetic lines before and after the correction
+        run: |
+          git show 66ff71cf047b6c94f4a59990ed878a9d5329e1d7:firstletters-colab/controls/score_text.py > "$RUNNER_TEMP/score_before.py"
+          PYTHONPATH=firstletters-colab/tests "$RUNNER_TEMP/score-env/bin/python" - <<'PY'
+          import importlib.util
+          import os
+          from pathlib import Path
+          import numpy as np
+          from test_score_text_gaps import PX_MM, PITCH_MM, score_text, stripe_fixture
+
+          spec = importlib.util.spec_from_file_location("before", Path(os.environ["RUNNER_TEMP"]) / "score_before.py")
+          before = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(before)
+          image, torn = stripe_fixture()
+          full = np.ones_like(torn)
+          for label, mask in [("full", full), ("2.8 mm tear", torn)]:
+              old = before.row_periodicity(image, mask, PX_MM, 0)
+              new = score_text.row_periodicity(image, mask, PX_MM, 0)
+              print(f"{label} | true {PITCH_MM:.3f} mm | before {old[2]:.6f} mm | after {new[2]:.6f} mm")
+              if label == "full":
+                  np.testing.assert_array_equal(old, new)
+              else:
+                  assert abs(old[2] - PITCH_MM) > 0.5
+                  assert abs(new[2] - PITCH_MM) < 0.2
+          PY

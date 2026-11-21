@@ -237,7 +237,11 @@ def main():
     use = "best" if any(r["cfg"] == "best" for r in win_recs) else "rv3_z0"
     keys = ["period", "rowmod", "stroke", "orient", "cover"]
     ctrl = [r for r in win_recs if r["cfg"] == use and r["cls"] in ("reversed", "offsheet", "noise")]
-    cal = {"config": use, "controls": {}, "n_controls": len(ctrl), "note": "mean/sd of each component over control windows; period in log"}
+    cal = {
+        "config": use, "controls": {}, "n_controls": len(ctrl),
+        "window_mm": a.win_mm, "step_mm": a.step_mm, "row_sampling": "physical",
+        "note": "mean/sd of each component over control windows; period in log",
+    }
     for k in keys:
         v = np.array([math.log(max(r[k], 1e-6)) if k == "period" else r[k] for r in ctrl])
         cal["controls"][k] = [float(v.mean()), float(v.std() + 1e-6)]
