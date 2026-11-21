@@ -15,7 +15,7 @@ The `desc` order reverses the input depth axis. The `permutation` order applies 
 python public-controls/r50_stack.py predict stack.npy reordered.npz --cache ./r50-cache --order permutation --permutation-file order.json
 ```
 
-Each model window contains 256 × 256 observed pixels. The window at the far edge is anchored to the last valid starting pixel. The program averages overlapping probabilities after bilinear upsampling from 64 × 64. It writes the float32 probability image and JSON provenance together by atomic replacement. The manifest records the input file and array hashes, model revision, weight hash, depth indices, tile starts, coverage and probability-array hash. The terminal also prints the SHA-256 of the complete output file.
+Each model window contains 256 × 256 observed pixels. The window at the far edge is anchored to the last valid starting pixel. The default `--blend uniform` takes the same arithmetic mean of overlapping probabilities after bilinear upsampling from 64 × 64. With `--blend hann`, each tile receives a separable edge taper using `np.hanning(258)[1:-1]` along both axes. The program normalizes by the total weight at each pixel. The weights are positive at image boundaries, and tiles with no overlap produce the same probabilities in both modes. The manifest identifies the selected blend. It writes the float32 probability image and JSON provenance together by atomic replacement. The manifest records the input file and array hashes, model revision, weight hash, depth indices, tile starts, coverage and probability-array hash. The terminal also prints the SHA-256 of the complete output file.
 
 ```python
 import json
@@ -25,5 +25,13 @@ with np.load("scores.npz", allow_pickle=False) as result:
     probability = result["probability"]
     metadata = json.loads(result["manifest"].item())
 ```
+
+For an explicit Hann run:
+
+```sh
+python public-controls/r50_stack.py predict stack.npy scores-hann.npz --cache ./r50-cache --order asc --stride 128 --blend hann
+```
+
+The public PHerc. 841 evaluation compares both blends using identical tile outputs, two grid origins and a common physical field. [Frozen evaluation protocol](pherc0841-hann-protocol.md)
 
 The branch workflow compares a 256 × 256 public tile pixel-for-pixel with the frozen control at commit `8aad6c48becbc3760e96aacd793c8d9164ef7c84`. It checks every output pixel on a 272 × 278 field against four explicitly placed real tiles. The tests also cover all depth orders and interruption of a staged output write. [Public dataset](https://scrollprize.org/data_browser/PHerc0841)

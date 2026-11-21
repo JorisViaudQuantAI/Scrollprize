@@ -51,11 +51,11 @@ def tile_starts(length, stride):
     return starts
 
 
-def coverage_axis(length, starts):
-    counts = np.zeros(length, dtype=np.uint16)
+def coverage_axis(length, starts, weights=None):
+    coverage = np.zeros(length, dtype=np.uint16 if weights is None else np.float64)
     for start in starts:
-        counts[start:start+WIDTH] += 1
-    return counts
+        coverage[start:start+WIDTH] += 1 if weights is None else weights
+    return coverage
 
 
 def array_sha256(a):
@@ -67,12 +67,21 @@ def array_sha256(a):
     return digest.hexdigest()
 
 
-def mosaic(stack, order, stride, infer):
+def mosaic(stack, order, stride, infer, blend="uniform"):
     if stack.ndim != 3 or stack.shape[0] != DEPTH or stack.dtype != np.uint8:
         raise ValueError(f"Expected a uint8 array with shape ({DEPTH}, H, W)")
+    if blend not in ("uniform", "hann"):
+        raise ValueError(f"Unknown blend mode: {blend}")
     height, width = stack.shape[1:]
     ys, xs = tile_starts(height, stride), tile_starts(width, stride)
     cy, cx = coverage_axis(height, ys), coverage_axis(width, xs)
+    # Removing the two zero endpoints keeps boundary pixels defined at every stride.
+    weight = None
+    if blend == "hann":
+        window = np.hanning(WIDTH + 2)[1:-1]
+        weight = np.outer(window, window)
+        wy = coverage_axis(height, ys, window)
+        wx = coverage_axis(width, xs, window)
     sums = np.zeros((height, width), dtype=np.float64)
     identity = tuple(range(DEPTH))
     for y in ys:
@@ -80,16 +89,22 @@ def mosaic(stack, order, stride, infer):
             tile = stack[:, y:y+WIDTH, x:x+WIDTH]
             if order != identity:
                 tile = tile[list(order)]
-            sums[y:y+WIDTH, x:x+WIDTH] += infer(tile)
+            probability = infer(tile)
+            sums[y:y+WIDTH, x:x+WIDTH] += probability if weight is None else probability * weight
     # Divide in row bands to avoid another full-resolution coverage array.
     image = np.empty((height, width), dtype=np.float32)
     for first in range(0, height, 256):
         band = slice(first, min(height, first+256))
-        counts = cy[band, None].astype(np.uint32) * cx[None, :]
-        image[band] = sums[band] / counts
+        if weight is None:
+            denominator = cy[band, None].astype(np.uint32) * cx[None, :]
+        else:
+            denominator = wy[band, None] * wx[None, :]
+        image[band] = sums[band] / denominator
     geometry = {"stride": stride, "tile_size": WIDTH, "starts_y": ys, "starts_x": xs,
                 "tiles": len(ys)*len(xs), "coverage_min": int(cy.min())*int(cx.min()),
-                "coverage_max": int(cy.max())*int(cx.max()), "blend": "arithmetic_mean"}
+                "coverage_max": int(cy.max())*int(cx.max()), "blend": "arithmetic_mean" if weight is None else "hann"}
+    if weight is not None:
+        geometry["hann_window"] = "np.hanning(tile_size + 2)[1:-1], separable"
     return image, geometry
 
 
@@ -133,6 +148,8 @@ def main():
     predict.add_argument("--order", choices=("asc", "desc", "permutation"), default="asc")
     predict.add_argument("--permutation-file", type=Path, help="Optional local JSON list of 62 input layer indices")
     predict.add_argument("--stride", type=int, default=128)
+    predict.add_argument("--blend", choices=("uniform", "hann"), default="uniform",
+                         help="How to combine overlapping tile probabilities (default: uniform)")
     predict.add_argument("--threads", type=int, default=min(4, torch.get_num_threads()))
     args = parser.parse_args()
     if args.command == "weights":
@@ -155,7 +172,8 @@ def main():
     file_hash = file_sha256(args.input)
     raw_hash = array_sha256(stack)
     model = load_model(args.cache)
-    probability, geometry = mosaic(stack, order, args.stride, lambda tile: predict_tile(model, tile))
+    probability, geometry = mosaic(stack, order, args.stride, lambda tile: predict_tile(model, tile),
+                                  blend=args.blend)
     if file_identity(args.input) != identity:
         raise RuntimeError("The input file changed during inference")
     manifest = {"model": MODEL, "model_revision": REVISION, "weights_sha256": WEIGHT_SHA,
