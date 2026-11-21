@@ -20,6 +20,9 @@ jobs:
       OPENBLAS_NUM_THREADS: '1'
       BLOSC_NTHREADS: '1'
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Fetch public anatomical calibration code at this commit
         run: |
           set -euo pipefail
@@ -27,7 +30,7 @@ jobs:
           for file in atlas125.py stage125.py recipient.pem; do
             curl --silent --show-error --location --fail --retry 3 --max-time 45 "$base/$file" --output "$file"
           done
-          python3 -m venv .venv
+          python -m venv .venv
           .venv/bin/pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile 'zarr==2.18.7' 'numcodecs==0.15.1'
       - name: Read the published scanner on the two geometric depth profiles
         run: .venv/bin/python -u stage125.py "${{ matrix.mesh }}" recipient.pem
