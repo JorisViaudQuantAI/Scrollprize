@@ -1,0 +1,142 @@
+{
+  "upstream": "0fb38c45b488e192566ea83ae36369cb6db92652",
+  "scan": "20250821151737",
+  "pixel_um": 9.362,
+  "band": [
+    9200,
+    10700
+  ],
+  "all_in_band_by_family": {
+    "0": 828563,
+    "1": 1066908
+  },
+  "public_tracks": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0358/20250821151737/tracks/PHerc0358_20250821151737_surface_m7_L0_th0.2.dbm.vctracks",
+  "public_umbilicus": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/representations/umbilicus/20250821151737-umbilicus-20260922235631.json",
+  "public_normals": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/representations/predictions/lasagna/20250821151737-lasagna-20260419180421",
+  "index_sha256": {
+    "offsets.i64": "5e9d11b21b23ddf3a7cb12a74fbf4c2b9fd75eb70dcaa33958ff4129aadbf9b9",
+    "z_bounds.i32": "c28e53527752f6653e6f586ece4de8515918e677bc5f190eae27ee3980cd2d3e",
+    "family_codes.i8": "db7e5b41fb8ae0f26b6563005a5ed9d05ece6eaa3c49ce01be1a150c8afb25a9"
+  },
+  "planes": [
+    {
+      "z": 9252,
+      "first_track_row": 5089490,
+      "tracks": 4039,
+      "points": 284678,
+      "offset_range": [
+        40715920,
+        40748240
+      ],
+      "coordinate_range": [
+        2957004828,
+        2960420964
+      ],
+      "offsets_sha256": "175576fd8fa4c91287dad9f998d1ec20e0487b4ca9b34f050e8c2e3150f86b5e",
+      "coordinates_sha256": null
+    },
+    {
+      "z": 9548,
+      "first_track_row": 5230942,
+      "tracks": 3859,
+      "points": 283010,
+      "offset_range": [
+        41847536,
+        41878416
+      ],
+      "coordinate_range": [
+        3082278612,
+        3085674732
+      ],
+      "offsets_sha256": "21324a1f707921743d76dc215219be39d91e795c628898947271ef01a511e291",
+      "coordinates_sha256": null
+    },
+    {
+      "z": 9852,
+      "first_track_row": 5387562,
+      "tracks": 4731,
+      "points": 289637,
+      "offset_range": [
+        43100496,
+        43138352
+      ],
+      "coordinate_range": [
+        3212285124,
+        3215760768
+      ],
+      "offsets_sha256": "286b3dcb48a40a9217db5e5954fc07ca87622a7cc8d5f9d670d5c96e7a509dec",
+      "coordinates_sha256": null
+    },
+    {
+      "z": 10148,
+      "first_track_row": 76939,
+      "tracks": 4513,
+      "points": 318094,
+      "offset_range": [
+        615512,
+        651624
+      ],
+      "coordinate_range": [
+        66397896,
+        70215024
+      ],
+      "offsets_sha256": "e301e25b5788c166ff9b00ff7071fc298e93c61e34bf4aa2b2be6011897196d1",
+      "coordinates_sha256": "063823dd624198a6f5c1f56d96222666691df3ed26bfdd657dda7d8de80a294a"
+    },
+    {
+      "z": 10452,
+      "first_track_row": 256163,
+      "tracks": 5683,
+      "points": 280642,
+      "offset_range": [
+        2049304,
+        2094776
+      ],
+      "coordinate_range": [
+        199718784,
+        203086488
+      ],
+      "offsets_sha256": "22a2f4560d66b8c99ee4df7277e79da9b28f1fcc011a265d5444566789ef8427",
+      "coordinates_sha256": "7d0ade2154421ce207c4fdb61812b0a51dfaa4d60a0f975341975d3216b95fdf"
+    },
+    {
+      "z": 10652,
+      "first_track_row": 391086,
+      "tracks": 5325,
+      "points": 259518,
+      "offset_range": [
+        3128688,
+        3171296
+      ],
+      "coordinate_range": [
+        280859448,
+        283973664
+      ],
+      "offsets_sha256": "8aa1ea71e453f9fa499377a1c8f0434ed3a12fdb54ca26239c1630e6973e3ba8",
+      "coordinates_sha256": "521ca9d233f3a888b490303dc3d7fd4e0684f95aa5f9716514d6f69080eb14b9"
+    }
+  ],
+  "profiles": {
+    "replay": [
+      10148,
+      10452,
+      10652
+    ],
+    "six": [
+      9252,
+      9548,
+      9852,
+      10148,
+      10452,
+      10652
+    ]
+  },
+  "train_z": [
+    9252,
+    9852,
+    10452
+  ],
+  "units": "Native full resolution ZYX; byte ranges are half open; family 0 horizontal, family 1 vertical.",
+  "umbilicus_sha256": "35da77bc3ffd005588582862612aaa4721fea5226fbbbc4a6695a28cfc860d25",
+  "public_crossings": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0358/20250821151737/tracks/PHerc0358_20250821151737_surface_m7_L0_th0.2.dbm.crossings.npz"
+}
