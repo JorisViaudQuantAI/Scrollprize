@@ -1,0 +1,108 @@
+{
+  "mode": "micro",
+  "started_utc": "2026-11-21T20:56:30.100927+00:00",
+  "code_sha256": {
+    "run.py": "1fc3d58aa1f4022678ea8dcfb549c0851e3d463c25d66d34ab505d75d5c91dd8",
+    "common.py": "c6ebb8e35f1cbc936c58f88c9eabece364204d113ef287faded85f3187d843c3",
+    "protocol.json": "b329bc7bd44eed17946827a1aa7a2c365fa4f5433177eaa58c089ffaf57cf3d5"
+  },
+  "verified_input_sha256": {
+    "modeling.py": "0656550dc10556ad09f5b6c21b36c97aa97a5696f71ef4b384eada124095c109",
+    "config.json": "30f46a55d61dc3f4e9bf7e9ca261c1486575f1ce05a27f28d09f10ee57597018",
+    "seed0.safetensors": "9a2812843924c50cafaa2b598f62c92ceca9f0d1f5d05b7bbf25764814ec7009",
+    "smoke.npz": "4a81e193e253e8b6234eaa4c1b274e33c08b214183951ed8e573c9ae3f8f639d"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "torch": "2.13.0+cpu",
+    "safetensors": "0.8.0",
+    "huggingface_hub": "2.4.0",
+    "device": "cpu",
+    "device_name": "CPU",
+    "cpu_threads": 4,
+    "autocast": false,
+    "precision": "FP32",
+    "cuda_matmul_tf32": false,
+    "cudnn_tf32": false,
+    "deterministic_algorithms": true
+  },
+  "model_load_elapsed_seconds": 2.974309478999885,
+  "actual_forward_calls_planned": 2,
+  "native_crop_origin_yx": [
+    2110,
+    4495
+  ],
+  "tile_origins_in_crop_yx": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      10
+    ]
+  ],
+  "full_tile_positive_CT_pixels": [
+    4096,
+    4096
+  ],
+  "maximum_elapsed_inference_seconds": 180,
+  "status": "completed",
+  "actual_forward_calls": 2,
+  "inference_elapsed_seconds": 13.542412580000018,
+  "process_CPU_seconds": 50.292870225,
+  "forward_elapsed_seconds": [
+    7.52490955899998,
+    6.015335832999881
+  ],
+  "common_source_crop_box_yxyx": [
+    10,
+    10,
+    64,
+    64
+  ],
+  "common_shape_yx": [
+    54,
+    54
+  ],
+  "common_side_mm": 0.46656,
+  "output_orientation": "native render orientation",
+  "common_CT_fraction": 1.0,
+  "score_comparison": {
+    "valid_pixels": 2916,
+    "mean_absolute_difference": 0.018877987033177796,
+    "maximum_absolute_difference": 0.09573948383331299,
+    "absolute_difference_quantiles_0_25_50_75_95_99_100": [
+      5.263090133666992e-05,
+      0.008377213031053543,
+      0.016646884381771088,
+      0.02482859045267105,
+      0.04409196227788925,
+      0.07031941562891006,
+      0.09573948383331299
+    ],
+    "pearson_r": 0.261471712466756,
+    "binary_disagreement": {
+      "0.25": {
+        "pixels": 39,
+        "fraction": 0.013374485596707819
+      },
+      "0.5": {
+        "pixels": 0,
+        "fraction": 0.0
+      },
+      "0.75": {
+        "pixels": 0,
+        "fraction": 0.0
+      }
+    },
+    "interpretation": "Same-physical-pixel stability, not text accuracy or false-positive rate"
+  },
+  "interpretation": "Two actual input placements; a small tile-context sensitivity check, not line ranks, letter recovery, accuracy, or a false-positive estimate",
+  "output_sha256": {
+    "micro_phase0.npy": "4d39853fea6f9e60a081924f712069af310bfde7541e694ac0a9e9d850229002",
+    "micro_phase10.npy": "c8605788fbef2279707fef6a5675372d5e4704242aa8d7ece90f43778f93f0e6",
+    "common_valid.npy": "8c5e067c8969bd437ad5035ad100cea24b62565e77bf0f2d45805cfc4a66543b"
+  }
+}

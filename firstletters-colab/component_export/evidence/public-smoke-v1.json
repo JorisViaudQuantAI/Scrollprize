@@ -1,0 +1,2361 @@
+{
+  "actual_output_bytes": {
+    "legacy": 38007,
+    "new": 270459
+  },
+  "all_legacy_output_bytes_equal": true,
+  "component_count": 6,
+  "component_export_bytes": 232383,
+  "component_mean_reconstruction": {
+    "forward": {
+      "compared_prediction_supported_pixels": 5041,
+      "float16_aggregate_equal_on_supported_pixels": true,
+      "interpretation": "Arithmetic export invariant only; shared prediction support is not acquisition validity",
+      "output_pixels": 5041
+    },
+    "reverse": {
+      "compared_prediction_supported_pixels": 5041,
+      "float16_aggregate_equal_on_supported_pixels": true,
+      "interpretation": "Arithmetic export invariant only; shared prediction support is not acquisition validity",
+      "output_pixels": 5041
+    }
+  },
+  "components": [
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "fab9f4a7282e4d99dcdcae369e70a5562bd91e06f033569d3278dff99bbb08bd",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "forward",
+      "directory": "component-0000",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "d347ad86f61f4bb30b4182566dd58b3b38b15c4034d29c68d91ee5889f3eeaf8"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "increasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 2,
+              "weight": 0.9444444444444429
+            },
+            {
+              "source_layer": 3,
+              "weight": 0.055555555555557135
+            }
+          ],
+          [
+            {
+              "source_layer": 3,
+              "weight": 0.8333333333333321
+            },
+            {
+              "source_layer": 4,
+              "weight": 0.16666666666666785
+            }
+          ],
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          2.055555555555557,
+          3.166666666666668,
+          4.277777777777779,
+          5.38888888888889,
+          6.500000000000001,
+          7.611111111111112,
+          8.722222222222223,
+          9.833333333333334,
+          10.944444444444445,
+          12.055555555555555,
+          13.166666666666666,
+          14.277777777777777,
+          15.38888888888889,
+          16.5,
+          17.61111111111111,
+          18.72222222222222
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": -9.6,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": -1.0
+    },
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "327a39ac259e7e8792bc513626c79b1ca572f9d01f5337be3c32b691eb2cf5de",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "forward",
+      "directory": "component-0001",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "30acff751e837ac6f73589c62fa18f4ba3256c49952ab3e15bf3151fb0d0a5c6"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "increasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 3,
+              "weight": 0.8333333333333321
+            },
+            {
+              "source_layer": 4,
+              "weight": 0.16666666666666785
+            }
+          ],
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ],
+          [
+            {
+              "source_layer": 19,
+              "weight": 0.16666666666666785
+            },
+            {
+              "source_layer": 20,
+              "weight": 0.8333333333333321
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          3.166666666666668,
+          4.277777777777779,
+          5.38888888888889,
+          6.500000000000001,
+          7.611111111111112,
+          8.722222222222223,
+          9.833333333333334,
+          10.944444444444445,
+          12.055555555555555,
+          13.166666666666666,
+          14.277777777777777,
+          15.38888888888889,
+          16.5,
+          17.61111111111111,
+          18.72222222222222,
+          19.833333333333332
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": 0.0,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": 0.0
+    },
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "711cf364341d17f12ffb2251bc65087fd4820cf9d7e0dfff5f99d788a5337df7",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "forward",
+      "directory": "component-0002",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "c576228bb69e9738548643ef7755496e3193a4a5e89b61fba900756aedecbfa0"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "increasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ],
+          [
+            {
+              "source_layer": 19,
+              "weight": 0.16666666666666785
+            },
+            {
+              "source_layer": 20,
+              "weight": 0.8333333333333321
+            }
+          ],
+          [
+            {
+              "source_layer": 20,
+              "weight": 0.055555555555557135
+            },
+            {
+              "source_layer": 21,
+              "weight": 0.9444444444444429
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          4.277777777777779,
+          5.38888888888889,
+          6.500000000000001,
+          7.611111111111112,
+          8.722222222222223,
+          9.833333333333334,
+          10.944444444444445,
+          12.055555555555555,
+          13.166666666666666,
+          14.277777777777777,
+          15.38888888888889,
+          16.5,
+          17.61111111111111,
+          18.72222222222222,
+          19.833333333333332,
+          20.944444444444443
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": 9.6,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": 1.0
+    },
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "f8297bc552f50890df30112b451523366bcfe687f94af8f791e619c916392931",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "reverse",
+      "directory": "component-0003",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "28895f6ec4df2d1c9572eb4ea57c47fbdc33cf8bba7f30b1a1b0a5c93b6f27f3"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "decreasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ],
+          [
+            {
+              "source_layer": 3,
+              "weight": 0.8333333333333321
+            },
+            {
+              "source_layer": 4,
+              "weight": 0.16666666666666785
+            }
+          ],
+          [
+            {
+              "source_layer": 2,
+              "weight": 0.9444444444444429
+            },
+            {
+              "source_layer": 3,
+              "weight": 0.055555555555557135
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          18.72222222222222,
+          17.61111111111111,
+          16.5,
+          15.38888888888889,
+          14.277777777777777,
+          13.166666666666666,
+          12.055555555555555,
+          10.944444444444445,
+          9.833333333333334,
+          8.722222222222223,
+          7.611111111111112,
+          6.500000000000001,
+          5.38888888888889,
+          4.277777777777779,
+          3.166666666666668,
+          2.055555555555557
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": -9.6,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": -1.0
+    },
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "02a2923513ad09c96ed9a492874ce0beca9d2a67e6f785b9617349bead95ea48",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "reverse",
+      "directory": "component-0004",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "0f0b88a2805c7dceaed80bad01ae12a0ea4f14847f92b7b4a018c647fdee12b0"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "decreasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 19,
+              "weight": 0.16666666666666785
+            },
+            {
+              "source_layer": 20,
+              "weight": 0.8333333333333321
+            }
+          ],
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ],
+          [
+            {
+              "source_layer": 3,
+              "weight": 0.8333333333333321
+            },
+            {
+              "source_layer": 4,
+              "weight": 0.16666666666666785
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          19.833333333333332,
+          18.72222222222222,
+          17.61111111111111,
+          16.5,
+          15.38888888888889,
+          14.277777777777777,
+          13.166666666666666,
+          12.055555555555555,
+          10.944444444444445,
+          9.833333333333334,
+          8.722222222222223,
+          7.611111111111112,
+          6.500000000000001,
+          5.38888888888889,
+          4.277777777777779,
+          3.166666666666668
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": 0.0,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": 0.0
+    },
+    {
+      "acquisition_coverage_status": "unknown: no acquisition-validity input is supplied by infer_ink",
+      "complete_depth_support_pixels": 5041,
+      "component_json_sha256": "bc7ebffecb9243990b716bb8d0bb083ad9d565092c93ea65945527be45d89949",
+      "declared_geometry": {
+        "frame": null,
+        "mesh_sha256": null,
+        "normal_convention": null,
+        "normal_sha256": null,
+        "plane_order": "Ascending stored render planes 8 through 31; physical mesh/normal/frame remain unknown",
+        "source_content_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080"
+      },
+      "direction": "reverse",
+      "directory": "component-0005",
+      "files_sha256": {
+        "complete_depth_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "prediction_support.npy": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464",
+        "probability.npy": "b54fbf6c832780d104b8735533b1da9f146160dca5e85dcf69fcb37cd55bf904"
+      },
+      "full_depth_context": true,
+      "prediction_support_pixels": 5041,
+      "sampling": {
+        "blend": "hann",
+        "effective_depth_pitch_um": 9.6,
+        "inference_assumed_source_layer_pitch_um": 8.64,
+        "inference_assumed_xy_pitch_um": 8.64,
+        "inference_effective_depth_pitch_um": 9.6,
+        "input_resampling_border_mode": "cv2.BORDER_REPLICATE",
+        "model_grid_shape_yx": [
+          64,
+          64
+        ],
+        "model_patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "model_plane_order": "decreasing source layer index",
+        "model_plane_source_contributors": [
+          [
+            {
+              "source_layer": 20,
+              "weight": 0.055555555555557135
+            },
+            {
+              "source_layer": 21,
+              "weight": 0.9444444444444429
+            }
+          ],
+          [
+            {
+              "source_layer": 19,
+              "weight": 0.16666666666666785
+            },
+            {
+              "source_layer": 20,
+              "weight": 0.8333333333333321
+            }
+          ],
+          [
+            {
+              "source_layer": 18,
+              "weight": 0.27777777777777857
+            },
+            {
+              "source_layer": 19,
+              "weight": 0.7222222222222214
+            }
+          ],
+          [
+            {
+              "source_layer": 17,
+              "weight": 0.3888888888888893
+            },
+            {
+              "source_layer": 18,
+              "weight": 0.6111111111111107
+            }
+          ],
+          [
+            {
+              "source_layer": 16,
+              "weight": 0.5
+            },
+            {
+              "source_layer": 17,
+              "weight": 0.5
+            }
+          ],
+          [
+            {
+              "source_layer": 15,
+              "weight": 0.6111111111111107
+            },
+            {
+              "source_layer": 16,
+              "weight": 0.3888888888888893
+            }
+          ],
+          [
+            {
+              "source_layer": 14,
+              "weight": 0.7222222222222232
+            },
+            {
+              "source_layer": 15,
+              "weight": 0.2777777777777768
+            }
+          ],
+          [
+            {
+              "source_layer": 13,
+              "weight": 0.8333333333333339
+            },
+            {
+              "source_layer": 14,
+              "weight": 0.16666666666666607
+            }
+          ],
+          [
+            {
+              "source_layer": 12,
+              "weight": 0.9444444444444446
+            },
+            {
+              "source_layer": 13,
+              "weight": 0.05555555555555536
+            }
+          ],
+          [
+            {
+              "source_layer": 10,
+              "weight": 0.05555555555555536
+            },
+            {
+              "source_layer": 11,
+              "weight": 0.9444444444444446
+            }
+          ],
+          [
+            {
+              "source_layer": 9,
+              "weight": 0.16666666666666607
+            },
+            {
+              "source_layer": 10,
+              "weight": 0.8333333333333339
+            }
+          ],
+          [
+            {
+              "source_layer": 8,
+              "weight": 0.2777777777777768
+            },
+            {
+              "source_layer": 9,
+              "weight": 0.7222222222222232
+            }
+          ],
+          [
+            {
+              "source_layer": 7,
+              "weight": 0.3888888888888884
+            },
+            {
+              "source_layer": 8,
+              "weight": 0.6111111111111116
+            }
+          ],
+          [
+            {
+              "source_layer": 6,
+              "weight": 0.4999999999999991
+            },
+            {
+              "source_layer": 7,
+              "weight": 0.5000000000000009
+            }
+          ],
+          [
+            {
+              "source_layer": 5,
+              "weight": 0.6111111111111098
+            },
+            {
+              "source_layer": 6,
+              "weight": 0.38888888888889017
+            }
+          ],
+          [
+            {
+              "source_layer": 4,
+              "weight": 0.7222222222222214
+            },
+            {
+              "source_layer": 5,
+              "weight": 0.27777777777777857
+            }
+          ]
+        ],
+        "model_plane_source_positions": [
+          20.944444444444443,
+          19.833333333333332,
+          18.72222222222222,
+          17.61111111111111,
+          16.5,
+          15.38888888888889,
+          14.277777777777777,
+          13.166666666666666,
+          12.055555555555555,
+          10.944444444444445,
+          9.833333333333334,
+          8.722222222222223,
+          7.611111111111112,
+          6.500000000000001,
+          5.38888888888889,
+          4.277777777777779
+        ],
+        "model_plane_source_weight_masses": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "model_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+        "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions",
+        "output_shape_yx": [
+          71,
+          71
+        ],
+        "physical_pitch_known": true,
+        "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+        "resampled": true,
+        "shift_um": 9.6,
+        "source_layer_pitch_um": 8.64,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_roi_y0_x0_y1_x1": [
+          0,
+          0,
+          71,
+          71
+        ],
+        "source_shape_zyx": [
+          24,
+          71,
+          71
+        ],
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tta": false,
+        "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+        "xy_pitch_um": [
+          8.64,
+          8.64
+        ],
+        "xy_scale": 0.9000000000000001,
+        "xy_tile_padding_present": false,
+        "xy_tile_zero_padding_bottom_right": [
+          0,
+          0
+        ]
+      },
+      "score_dtype": "float32",
+      "shape_yx": [
+        71,
+        71
+      ],
+      "shift_model_planes": 1.0
+    }
+  ],
+  "consumer_blocker": "No verified mesh, normal, anatomical frame, or external acquisition/context-validity mask",
+  "consumer_run": false,
+  "disk_inventory": {
+    "legacy": {
+      "ink.json": {
+        "bytes": 2539,
+        "sha256": "c8ac8ca0717ad4d70093f927f143a4bf605a2c1ba1fb956a57803e98ef14bcaa"
+      },
+      "ink_forward.png": {
+        "bytes": 1281,
+        "sha256": "401b191c0a991b01a30b23f081e25054390535e50df1b1589fdc815874cb8bb7"
+      },
+      "ink_forward__input-hecate-9-6um_z+0.png": {
+        "bytes": 1285,
+        "sha256": "1deba1b7218a51b3c29e98a0899fecd7ba2e187e5a15a7b24321dbe19b5fca4f"
+      },
+      "ink_forward__input-hecate-9-6um_z+1.png": {
+        "bytes": 997,
+        "sha256": "5acccf61dd4b8a85e6fb156739503c95f701401669c906749edc8fde7ef1b02e"
+      },
+      "ink_forward__input-hecate-9-6um_z-1.png": {
+        "bytes": 1633,
+        "sha256": "a3cb4d1be3ca87bdaccd0403b80894851a674c64877553ac46edbfba6899201b"
+      },
+      "ink_forward_prob.npy": {
+        "bytes": 10210,
+        "sha256": "183b6e8a12e67c55fe018c501daf7e1ee9fd952ceed98db2e8aed94db3a35858"
+      },
+      "ink_reverse.png": {
+        "bytes": 2151,
+        "sha256": "cca4e1b2f46263b647ff8c58dacf6a500aa3beb191d270d11805ad3f1da159f8"
+      },
+      "ink_reverse__input-hecate-9-6um_z+0.png": {
+        "bytes": 2814,
+        "sha256": "220320b744a3118d7056aac0c515da5eb5308aba5e79324e93766416a0ca6faf"
+      },
+      "ink_reverse__input-hecate-9-6um_z+1.png": {
+        "bytes": 1903,
+        "sha256": "151d710798d6ce66db4d969a634fa690bdcf5108b6389b5f047762bcad3ffa17"
+      },
+      "ink_reverse__input-hecate-9-6um_z-1.png": {
+        "bytes": 2070,
+        "sha256": "3d81f659063fa0b58c50d5354baea3d7adcacfb8321ed06b37d97355fd84054e"
+      },
+      "ink_reverse_prob.npy": {
+        "bytes": 10210,
+        "sha256": "258ae1560f5cd37d42bbdbb520abaa0ce9632a503648b1db83b60dbf54944889"
+      },
+      "stderr.log": {
+        "bytes": 914,
+        "sha256": "e8db2300df6e79d5fcf12350d74f104a9ac2642842022df507c31385a6575cf9"
+      },
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "new": {
+      "components/component-0000/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0000/component.json": {
+        "bytes": 7386,
+        "sha256": "fab9f4a7282e4d99dcdcae369e70a5562bd91e06f033569d3278dff99bbb08bd"
+      },
+      "components/component-0000/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0000/probability.npy": {
+        "bytes": 20292,
+        "sha256": "d347ad86f61f4bb30b4182566dd58b3b38b15c4034d29c68d91ee5889f3eeaf8"
+      },
+      "components/component-0001/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0001/component.json": {
+        "bytes": 7386,
+        "sha256": "327a39ac259e7e8792bc513626c79b1ca572f9d01f5337be3c32b691eb2cf5de"
+      },
+      "components/component-0001/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0001/probability.npy": {
+        "bytes": 20292,
+        "sha256": "30acff751e837ac6f73589c62fa18f4ba3256c49952ab3e15bf3151fb0d0a5c6"
+      },
+      "components/component-0002/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0002/component.json": {
+        "bytes": 7390,
+        "sha256": "711cf364341d17f12ffb2251bc65087fd4820cf9d7e0dfff5f99d788a5337df7"
+      },
+      "components/component-0002/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0002/probability.npy": {
+        "bytes": 20292,
+        "sha256": "c576228bb69e9738548643ef7755496e3193a4a5e89b61fba900756aedecbfa0"
+      },
+      "components/component-0003/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0003/component.json": {
+        "bytes": 7386,
+        "sha256": "f8297bc552f50890df30112b451523366bcfe687f94af8f791e619c916392931"
+      },
+      "components/component-0003/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0003/probability.npy": {
+        "bytes": 20292,
+        "sha256": "28895f6ec4df2d1c9572eb4ea57c47fbdc33cf8bba7f30b1a1b0a5c93b6f27f3"
+      },
+      "components/component-0004/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0004/component.json": {
+        "bytes": 7386,
+        "sha256": "02a2923513ad09c96ed9a492874ce0beca9d2a67e6f785b9617349bead95ea48"
+      },
+      "components/component-0004/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0004/probability.npy": {
+        "bytes": 20292,
+        "sha256": "0f0b88a2805c7dceaed80bad01ae12a0ea4f14847f92b7b4a018c647fdee12b0"
+      },
+      "components/component-0005/complete_depth_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0005/component.json": {
+        "bytes": 7390,
+        "sha256": "bc7ebffecb9243990b716bb8d0bb083ad9d565092c93ea65945527be45d89949"
+      },
+      "components/component-0005/prediction_support.npy": {
+        "bytes": 5169,
+        "sha256": "c0b3ad8d6325d631ad51f120f47f2ad5fa79ebba39fc3940f1eb536285eea464"
+      },
+      "components/component-0005/probability.npy": {
+        "bytes": 20292,
+        "sha256": "b54fbf6c832780d104b8735533b1da9f146160dca5e85dcf69fcb37cd55bf904"
+      },
+      "components/receipt.json": {
+        "bytes": 4279,
+        "sha256": "f65d86d217d0b7b9c627351cd29204a6a83ce4ecd4ba5f808cc6a58430ce4337"
+      },
+      "ink.json": {
+        "bytes": 2510,
+        "sha256": "1686a9012fc5b2e785d53ee9271420b9b4e5b3b2f577b741bad51f9cccd65729"
+      },
+      "ink_forward.png": {
+        "bytes": 1281,
+        "sha256": "401b191c0a991b01a30b23f081e25054390535e50df1b1589fdc815874cb8bb7"
+      },
+      "ink_forward__input-hecate-9-6um_z+0.png": {
+        "bytes": 1285,
+        "sha256": "1deba1b7218a51b3c29e98a0899fecd7ba2e187e5a15a7b24321dbe19b5fca4f"
+      },
+      "ink_forward__input-hecate-9-6um_z+1.png": {
+        "bytes": 997,
+        "sha256": "5acccf61dd4b8a85e6fb156739503c95f701401669c906749edc8fde7ef1b02e"
+      },
+      "ink_forward__input-hecate-9-6um_z-1.png": {
+        "bytes": 1633,
+        "sha256": "a3cb4d1be3ca87bdaccd0403b80894851a674c64877553ac46edbfba6899201b"
+      },
+      "ink_forward_prob.npy": {
+        "bytes": 10210,
+        "sha256": "183b6e8a12e67c55fe018c501daf7e1ee9fd952ceed98db2e8aed94db3a35858"
+      },
+      "ink_reverse.png": {
+        "bytes": 2151,
+        "sha256": "cca4e1b2f46263b647ff8c58dacf6a500aa3beb191d270d11805ad3f1da159f8"
+      },
+      "ink_reverse__input-hecate-9-6um_z+0.png": {
+        "bytes": 2814,
+        "sha256": "220320b744a3118d7056aac0c515da5eb5308aba5e79324e93766416a0ca6faf"
+      },
+      "ink_reverse__input-hecate-9-6um_z+1.png": {
+        "bytes": 1903,
+        "sha256": "151d710798d6ce66db4d969a634fa690bdcf5108b6389b5f047762bcad3ffa17"
+      },
+      "ink_reverse__input-hecate-9-6um_z-1.png": {
+        "bytes": 2070,
+        "sha256": "3d81f659063fa0b58c50d5354baea3d7adcacfb8321ed06b37d97355fd84054e"
+      },
+      "ink_reverse_prob.npy": {
+        "bytes": 10210,
+        "sha256": "258ae1560f5cd37d42bbdbb520abaa0ce9632a503648b1db83b60dbf54944889"
+      },
+      "stderr.log": {
+        "bytes": 1012,
+        "sha256": "d5760ec558988e7ffceb7f275b9b015d5927702b858b8c7c67c1821f3f7261b7"
+      },
+      "stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "excluded_runtime_metadata_fields": [
+    "seconds_total_including_model_load",
+    "cm2_per_hour_this_configuration",
+    "seconds",
+    "seconds_forward",
+    "seconds_reading",
+    "cm2_per_hour_per_pass"
+  ],
+  "forward_count_basis": "Pinned producer reports six tiles, batch size one, TTA disabled; each tile invokes the real Hecate model once",
+  "legacy_output_comparisons": {
+    "ink_forward.png": {
+      "byte_equal": true,
+      "bytes": 1281,
+      "legacy_sha256": "401b191c0a991b01a30b23f081e25054390535e50df1b1589fdc815874cb8bb7",
+      "new_sha256": "401b191c0a991b01a30b23f081e25054390535e50df1b1589fdc815874cb8bb7"
+    },
+    "ink_forward__input-hecate-9-6um_z+0.png": {
+      "byte_equal": true,
+      "bytes": 1285,
+      "legacy_sha256": "1deba1b7218a51b3c29e98a0899fecd7ba2e187e5a15a7b24321dbe19b5fca4f",
+      "new_sha256": "1deba1b7218a51b3c29e98a0899fecd7ba2e187e5a15a7b24321dbe19b5fca4f"
+    },
+    "ink_forward__input-hecate-9-6um_z+1.png": {
+      "byte_equal": true,
+      "bytes": 997,
+      "legacy_sha256": "5acccf61dd4b8a85e6fb156739503c95f701401669c906749edc8fde7ef1b02e",
+      "new_sha256": "5acccf61dd4b8a85e6fb156739503c95f701401669c906749edc8fde7ef1b02e"
+    },
+    "ink_forward__input-hecate-9-6um_z-1.png": {
+      "byte_equal": true,
+      "bytes": 1633,
+      "legacy_sha256": "a3cb4d1be3ca87bdaccd0403b80894851a674c64877553ac46edbfba6899201b",
+      "new_sha256": "a3cb4d1be3ca87bdaccd0403b80894851a674c64877553ac46edbfba6899201b"
+    },
+    "ink_forward_prob.npy": {
+      "byte_equal": true,
+      "bytes": 10210,
+      "legacy_sha256": "183b6e8a12e67c55fe018c501daf7e1ee9fd952ceed98db2e8aed94db3a35858",
+      "new_sha256": "183b6e8a12e67c55fe018c501daf7e1ee9fd952ceed98db2e8aed94db3a35858"
+    },
+    "ink_reverse.png": {
+      "byte_equal": true,
+      "bytes": 2151,
+      "legacy_sha256": "cca4e1b2f46263b647ff8c58dacf6a500aa3beb191d270d11805ad3f1da159f8",
+      "new_sha256": "cca4e1b2f46263b647ff8c58dacf6a500aa3beb191d270d11805ad3f1da159f8"
+    },
+    "ink_reverse__input-hecate-9-6um_z+0.png": {
+      "byte_equal": true,
+      "bytes": 2814,
+      "legacy_sha256": "220320b744a3118d7056aac0c515da5eb5308aba5e79324e93766416a0ca6faf",
+      "new_sha256": "220320b744a3118d7056aac0c515da5eb5308aba5e79324e93766416a0ca6faf"
+    },
+    "ink_reverse__input-hecate-9-6um_z+1.png": {
+      "byte_equal": true,
+      "bytes": 1903,
+      "legacy_sha256": "151d710798d6ce66db4d969a634fa690bdcf5108b6389b5f047762bcad3ffa17",
+      "new_sha256": "151d710798d6ce66db4d969a634fa690bdcf5108b6389b5f047762bcad3ffa17"
+    },
+    "ink_reverse__input-hecate-9-6um_z-1.png": {
+      "byte_equal": true,
+      "bytes": 2070,
+      "legacy_sha256": "3d81f659063fa0b58c50d5354baea3d7adcacfb8321ed06b37d97355fd84054e",
+      "new_sha256": "3d81f659063fa0b58c50d5354baea3d7adcacfb8321ed06b37d97355fd84054e"
+    },
+    "ink_reverse_prob.npy": {
+      "byte_equal": true,
+      "bytes": 10210,
+      "legacy_sha256": "258ae1560f5cd37d42bbdbb520abaa0ce9632a503648b1db83b60dbf54944889",
+      "new_sha256": "258ae1560f5cd37d42bbdbb520abaa0ce9632a503648b1db83b60dbf54944889"
+    }
+  },
+  "nonruntime_legacy_metadata_equal": true,
+  "normalized_legacy_metadata": {
+    "area_with_data_cm2": 0.0038,
+    "batch_size": 1,
+    "combine": "mean of raw probabilities",
+    "directions": [
+      "forward",
+      "reverse"
+    ],
+    "display_rescale_lo_hi": [
+      0.0,
+      1.0
+    ],
+    "input": "{WORK}/input/published_smoke_71_zyx.npy",
+    "mask": null,
+    "models": [
+      {
+        "amp": "off",
+        "area_with_data_cm2": 0.0038,
+        "blend": "hann",
+        "checkpoint": "{WORK}/input/hecate_9.6um.pth",
+        "device": "cpu",
+        "model": "hecate",
+        "model_pixel_um": 9.6,
+        "normalization": "divide_255",
+        "passes": 6,
+        "patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "resampled": true,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_layers_used_by_shift": {
+          "+0": [
+            3,
+            20
+          ],
+          "+1": [
+            4,
+            21
+          ],
+          "-1": [
+            2,
+            19
+          ]
+        },
+        "spacing_um": 9.6,
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tiles_run": 6,
+        "tiles_skipped_empty": 0,
+        "tiles_skipped_mask": 0,
+        "xy_scale": 0.9000000000000001
+      }
+    ],
+    "output_value": "uint8 = floor(255 * p)",
+    "outputs": {
+      "forward": [
+        "{RUN}/ink_forward.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z-1.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z+0.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z+1.png",
+        "{RUN}/ink_forward_prob.npy"
+      ],
+      "reverse": [
+        "{RUN}/ink_reverse.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z-1.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z+0.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z+1.png",
+        "{RUN}/ink_reverse_prob.npy"
+      ]
+    },
+    "roi_y0_x0_y1_x1": [
+      0,
+      0,
+      71,
+      71
+    ],
+    "source": "npy {WORK}/input/published_smoke_71_zyx.npy",
+    "source_shape_zyx": [
+      24,
+      71,
+      71
+    ],
+    "threads": 4,
+    "tta": false,
+    "voxel_size_known": true,
+    "voxel_um_xy": 8.64,
+    "voxel_um_z": 8.64,
+    "z_shifts_model_planes": [
+      -1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "normalized_new_metadata": {
+    "area_with_data_cm2": 0.0038,
+    "batch_size": 1,
+    "combine": "mean of raw probabilities",
+    "directions": [
+      "forward",
+      "reverse"
+    ],
+    "display_rescale_lo_hi": [
+      0.0,
+      1.0
+    ],
+    "input": "{WORK}/input/published_smoke_71_zyx.npy",
+    "mask": null,
+    "models": [
+      {
+        "amp": "off",
+        "area_with_data_cm2": 0.0038,
+        "blend": "hann",
+        "checkpoint": "{WORK}/input/hecate_9.6um.pth",
+        "device": "cpu",
+        "model": "hecate",
+        "model_pixel_um": 9.6,
+        "normalization": "divide_255",
+        "passes": 6,
+        "patch_zyx": [
+          16,
+          64,
+          64
+        ],
+        "resampled": true,
+        "source_layers_per_model_plane": 1.111111111111111,
+        "source_layers_used_by_shift": {
+          "+0": [
+            3,
+            20
+          ],
+          "+1": [
+            4,
+            21
+          ],
+          "-1": [
+            2,
+            19
+          ]
+        },
+        "spacing_um": 9.6,
+        "stride": 32,
+        "surface_layer": 11.5,
+        "tiles_run": 6,
+        "tiles_skipped_empty": 0,
+        "tiles_skipped_mask": 0,
+        "xy_scale": 0.9000000000000001
+      }
+    ],
+    "output_value": "uint8 = floor(255 * p)",
+    "outputs": {
+      "forward": [
+        "{RUN}/ink_forward.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z-1.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z+0.png",
+        "{RUN}/ink_forward__input-hecate-9-6um_z+1.png",
+        "{RUN}/ink_forward_prob.npy"
+      ],
+      "reverse": [
+        "{RUN}/ink_reverse.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z-1.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z+0.png",
+        "{RUN}/ink_reverse__input-hecate-9-6um_z+1.png",
+        "{RUN}/ink_reverse_prob.npy"
+      ]
+    },
+    "roi_y0_x0_y1_x1": [
+      0,
+      0,
+      71,
+      71
+    ],
+    "source": "npy {WORK}/input/published_smoke_71_zyx.npy",
+    "source_shape_zyx": [
+      24,
+      71,
+      71
+    ],
+    "threads": 4,
+    "tta": false,
+    "voxel_size_known": true,
+    "voxel_um_xy": 8.64,
+    "voxel_um_z": 8.64,
+    "z_shifts_model_planes": [
+      -1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "preregistration": {
+    "commands": {
+      "legacy": [
+        "{PYTHON}",
+        "{WORK}/input/legacy_infer_ink.py",
+        "{WORK}/input/published_smoke_71_zyx.npy",
+        "-c",
+        "{WORK}/input/hecate_9.6um.pth",
+        "--hecate-py",
+        "{REPO}/firstletters-colab/ink/third_party/hecate/hecate.py",
+        "-o",
+        "{WORK}/legacy/ink.png",
+        "--model",
+        "hecate",
+        "--device",
+        "cpu",
+        "--no-amp",
+        "--batch-size",
+        "1",
+        "--threads",
+        "4",
+        "--input-um",
+        "8.64",
+        "--input-um-z",
+        "8.64",
+        "--resample",
+        "auto",
+        "--target-um",
+        "9.6",
+        "--surface-layer",
+        "11.5",
+        "--z-shifts=-1,0,1",
+        "--direction",
+        "both",
+        "--stride",
+        "32",
+        "--blend",
+        "hann",
+        "--combine",
+        "mean",
+        "--no-mask",
+        "--save-float",
+        "--save-each"
+      ],
+      "new": [
+        "{PYTHON}",
+        "{REPO}/firstletters-colab/ink/infer_ink.py",
+        "{WORK}/input/published_smoke_71_zyx.npy",
+        "-c",
+        "{WORK}/input/hecate_9.6um.pth",
+        "--hecate-py",
+        "{REPO}/firstletters-colab/ink/third_party/hecate/hecate.py",
+        "-o",
+        "{WORK}/new/ink.png",
+        "--model",
+        "hecate",
+        "--device",
+        "cpu",
+        "--no-amp",
+        "--batch-size",
+        "1",
+        "--threads",
+        "4",
+        "--input-um",
+        "8.64",
+        "--input-um-z",
+        "8.64",
+        "--resample",
+        "auto",
+        "--target-um",
+        "9.6",
+        "--surface-layer",
+        "11.5",
+        "--z-shifts=-1,0,1",
+        "--direction",
+        "both",
+        "--stride",
+        "32",
+        "--blend",
+        "hann",
+        "--combine",
+        "mean",
+        "--no-mask",
+        "--save-float",
+        "--save-each",
+        "--export-components",
+        "{WORK}/new/components",
+        "--component-provenance",
+        "{WORK}/input/provenance.json"
+      ]
+    },
+    "environment": {
+      "MKL_NUM_THREADS": "4",
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "numpy": "2.3.5",
+      "opencv": "4.12.0",
+      "python": "3.12.14",
+      "torch": "2.13.0+cpu"
+    },
+    "harness_sha256": "fa2cfaa0bfc24706bc903a488f864f7591343d07f7507cf675898cc28e07e7ce",
+    "inputs": {
+      "checkpoint_sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d",
+      "input_sha256": "641aa8c04fe1273f55c6280afda52b08f399a5b66ed76d225f172ed64ef79080",
+      "input_shape_zyx": [
+        24,
+        71,
+        71
+      ],
+      "legacy_source_sha256": "276ec73f0b34d339d604b21def745600b0556f3ba43a7d69b123dfca6c7da54e",
+      "provenance_sha256": "06b490e6f0fd54f11cbf92315fc4e67504fd023eb6fb218611d9418c5b7b9f89",
+      "source_preclipped_at_200": true
+    },
+    "protocol_sha256": "1a8dc4ab721a35d9dc1dfc5fd5c29dfa2f86b056e562c3da276956a646d0dfe5",
+    "source_sha256": {
+      "firstletters-colab/component_export/export.py": "bdd800bdfed8c266611b5d62d5b17bb72da8bd1e0852ff7eebe7a0a12633bb56",
+      "firstletters-colab/ink/infer_ink.py": "26452b5c082486db47662a3bb9e65ad76beb22e3a470082e0150d5f064b438a4",
+      "firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59"
+    },
+    "started_utc": "2026-11-21T21:06:08.068278+00:00"
+  },
+  "quality_evaluation": false,
+  "real_forward_calls_per_run": [
+    6,
+    6
+  ],
+  "runs": {
+    "legacy": {
+      "elapsed_subprocess_seconds": 13.882737091999843,
+      "returncode": 0,
+      "status": "completed"
+    },
+    "new": {
+      "elapsed_subprocess_seconds": 14.641670779999913,
+      "returncode": 0,
+      "status": "completed"
+    }
+  },
+  "source_preclipped_at_200": true,
+  "status": "completed"
+}

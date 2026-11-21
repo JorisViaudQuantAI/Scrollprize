@@ -1,0 +1,46 @@
+{
+  "_notice": "Schema example only. Repeated-digit hashes and sample settings are placeholders, not measurements. Replace every provenance and hash value with the actual run receipts.",
+  "reference_case": "pherc306b_context_raw",
+  "experiment_kind": "tile_grid_pair",
+  "field_box_yxyx": [1268, 3356, 2618, 4514],
+  "maps": [
+    {
+      "map": "phase0.npy",
+      "mask": "mask0.npy",
+      "map_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "mask_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "tile_origin_yx_px": [0, 0],
+      "run_signature": {
+        "model": {"checkpoint_sha256": "2222222222222222222222222222222222222222222222222222222222222222"},
+        "source_frame": {"kind": "published PHerc. 306B native raster; tile origin before reading-order flip"},
+        "depth_order": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+        "preprocess": {"kind": "replace with actual preprocessing"},
+        "fusion": {"kind": "replace with actual tile fusion"},
+        "precision": "fp32",
+        "tta": "replace with actual augmentation recipe",
+        "tile_shape_yx_px": [64, 64],
+        "stride_yx_px": [21, 21],
+        "coverage_policy": "replace with actual acquisition and prediction validity policy"
+      }
+    },
+    {
+      "map": "phase10.npy",
+      "mask": "mask10.npy",
+      "map_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "mask_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "tile_origin_yx_px": [10, 10],
+      "run_signature": {
+        "model": {"checkpoint_sha256": "2222222222222222222222222222222222222222222222222222222222222222"},
+        "source_frame": {"kind": "published PHerc. 306B native raster; tile origin before reading-order flip"},
+        "depth_order": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+        "preprocess": {"kind": "replace with actual preprocessing"},
+        "fusion": {"kind": "replace with actual tile fusion"},
+        "precision": "fp32",
+        "tta": "replace with actual augmentation recipe",
+        "tile_shape_yx_px": [64, 64],
+        "stride_yx_px": [21, 21],
+        "coverage_policy": "replace with actual acquisition and prediction validity policy"
+      }
+    }
+  ]
+}

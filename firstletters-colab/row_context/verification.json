@@ -1,0 +1,57 @@
+{
+  "schema": "public-306b-row-context-verification-v1",
+  "status": "reference replay and software geometry checks only",
+  "unit_tests_passed": 9,
+  "test_command": "python -m unittest discover -s firstletters-colab/row_context -p test_*.py -v",
+  "test_file_sha256": "8ac90d27f1ebba9cc81b806b2cfd272ff5631d5f41d082d27b6b181e18bdb50a",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "opencv": "4.12.0",
+    "matplotlib": "3.10.8"
+  },
+  "exact_prior_coverage_values_checked": 40,
+  "full_first10_proposals_match_prior": true,
+  "proposal_count": 88,
+  "prior_evaluation_sha256": "fccab36d0ac5f4300f2f4c2b22b220c54949a61328b8feddce253d1591a7ade7",
+  "report_sha256": "f1eea6aa6604da7a92062bfbb9b306ce7f2bf90f21ff77e635625b239a311e17",
+  "preview_sha256": "008be9abd644cd2350084314d576907bf119ce64c56b4836fbd5560c4164222f",
+  "feasibility_receipt_sha256": "3a58298bc29a94930c5057f3cdadf155dbb255243bd1216608fe957864f99b6e",
+  "source_hashes_and_current_code_match": true,
+  "reference_figure_same_physical_scale": true,
+  "pair_layout_software_fixture": {
+    "kind": "two zero arrays, no model inference, no scientific phase comparison",
+    "same_physical_scale": true,
+    "pixels_per_mm_xy": [
+      [
+        20.95268260886614,
+        20.9526826088661
+      ],
+      [
+        20.9526826088661,
+        20.9526826088661
+      ],
+      [
+        20.952682608866084,
+        20.9526826088661
+      ],
+      [
+        20.9526826088661,
+        20.9526826088661
+      ],
+      [
+        20.952682608866127,
+        20.9526826088661
+      ],
+      [
+        20.9526826088661,
+        20.9526826088661
+      ]
+    ]
+  },
+  "limitations": [
+    "No genuine two-placement field inference has been evaluated here",
+    "The source-defined full-row denominator and conditional available-field coverage are different quantities",
+    "Single-map row ranks are post-outcome descriptive results"
+  ]
+}

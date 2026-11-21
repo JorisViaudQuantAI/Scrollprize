@@ -1,0 +1,28 @@
+{
+  "schema": "public-306b-row-context-protocol-v1",
+  "design_timing": "Designed after the published single-map ranking failure was known, before seeing any new tile-placement output. The single-map rendering is descriptive, not a new blind validation.",
+  "source_case": "pherc306b_context_raw",
+  "source_inventory_sha256": "97f029c7317b36346ccb8c1b06bbf8fd0f834c9f24060a7e56223deb707ce15d",
+  "targets": "Both source-author row-centre annotations in the existing inventory; coarse boxes, never ink or letter truth",
+  "fixed_context_half_height_mm": 4.0,
+  "fixed_context_width": "Entire reference field; retain the same physical scale in full-field and row panels, without stretching a smaller crop",
+  "top_k": [1, 3, 5, 10],
+  "figure_top_k": 3,
+  "display": "Unchanged supplied [0,1] scale; preview reduction only; missing support is purple; row strips have no proposal overlays",
+  "ranking": "Unchanged line_review.Config defaults; source targets are not supplied to rank_map",
+  "comparison_mask": "Intersection of supplied validity masks, used identically for both rankings and all coverage calculations",
+  "coverage": "Union of original-grid band polygons at each K; supported target area and horizontal centreline coverage, plus fraction of the whole source target actually observed",
+  "row_rank_descriptions": [
+    "First proposal with any observed centreline overlap (one pixel is sufficient; not evidence of a line)",
+    "First individual proposal covering at least half the observed source centreline",
+    "Rank of the proposal with greatest observed centreline overlap, choosing the earlier rank in a tie",
+    "All individual proposal overlaps, without selecting one favourable summary"
+  ],
+  "pair_contract": "Same reference field, model, depth/order, preprocessing, fusion, tile shape and stride; different declared tile-origin residues. This checks declared metadata, not the physical authenticity of a rerun.",
+  "excluded_claims": [
+    "Glyph recognition or a count of legible letters",
+    "A false-positive rate or a new candidate gate",
+    "An image translation as a tile-placement experiment",
+    "An empirical tile-placement result without two actually computed model outputs"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-21",
+  "status": "metadata-only amendment before any full-field model inference",
+  "reason": "pair.json tile_origin_yx_px must hold the absolute native grid anchor, not only the phase offset",
+  "archived_micro_source": "run-at-microphase-v1.py.txt",
+  "old_run_sha256": "1fc3d58aa1f4022678ea8dcfb549c0851e3d463c25d66d34ab505d75d5c91dd8",
+  "new_run_sha256": "928c1abf9a7049ac3c88f14d6f3f94eaf12065b62a618ba8c59fcc260b21d210",
+  "unchanged_common_sha256": "c6ebb8e35f1cbc936c58f88c9eabece364204d113ef287faded85f3187d843c3",
+  "unchanged_protocol_sha256": "b329bc7bd44eed17946827a1aa7a2c365fa4f5433177eaa58c089ffaf57cf3d5",
+  "old_mislabelled_tile_origin_yx_px": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      10
+    ]
+  ],
+  "corrected_native_tile_origin_yx_px": [
+    [
+      115,
+      694
+    ],
+    [
+      125,
+      704
+    ]
+  ],
+  "separate_tile_phase_offset_yx_px": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      10
+    ]
+  ],
+  "unchanged": [
+    "tile extraction",
+    "model computation",
+    "stitching",
+    "field selection",
+    "all experiment endpoints",
+    "completed micro outputs and receipt"
+  ],
+  "additional_model_forwards": 0
+}

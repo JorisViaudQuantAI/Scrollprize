@@ -82,13 +82,25 @@ averages them before writing the single `--save-float` NPY output. Its
 `--save-each` images use the model's display rescaling and PNG quantization.
 They are not three original floating-point depth maps.
 
-For this helper, supply separately retained individual-depth float maps; with
-that CLI, one shift per `--save-float` run preserves the distinction. For another
-worker, inspect its actual output contract. Record the effective physical step
-after depth resampling and the applied normal convention. Do not automatically
-interpret a model-plane shift as one native CT voxel or one rendered-stack
-plane. The helper checks declared provenance but cannot detect an undocumented
-depth average or display transformation from the score array alone.
+For this helper, supply separately retained individual-depth float maps. The
+CLI now has an opt-in [`--export-components DIR`](../component_export/README.md)
+that saves float32 maps for every checkpoint, direction and depth before
+aggregation, without another model pass. Its `complete_depth_support.npy`
+means prediction support with complete source-depth interpolation; it does
+**not** establish acquisition validity, complete XY context or sheet identity.
+Wait for its final receipt, verify its hashes, require complete depth context,
+resolve any XY padding, and intersect with an external producer-supplied
+acquisition/context support mask on the exact output grid. Unknown mesh,
+normal, physical pitch or frame must keep this comparison blocked. See the
+exporter's handoff checklist for the full distinction.
+
+With an older CLI, one shift per `--save-float` run preserves the individual
+depth, in float16. For another worker, inspect its actual output contract.
+Record the effective physical step after depth resampling and the applied
+normal convention. Do not automatically interpret a model-plane shift as one
+native CT voxel or one rendered-stack plane. The helper checks declared
+provenance but cannot detect an undocumented depth average or display
+transformation from the score array alone.
 
 ## Outputs and missing coverage
 

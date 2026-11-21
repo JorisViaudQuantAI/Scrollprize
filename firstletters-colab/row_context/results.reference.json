@@ -1,0 +1,4757 @@
+{
+  "schema": "public-306b-row-context-result-v1",
+  "experiment_kind": "single_published_reference",
+  "protocol_sha256": "63a532ffab81f7d9087d8f320a8e909e0ab7d5a0b0c5741934f8a3d99fd82e99",
+  "script_sha256": "a85079021abce800ecb677f417d39f7028b012d729665086bee33b39dd89fe7f",
+  "ranker_sha256": "32063be42b8c92f6b2e7d709f7ded64c6b57ea6d62cb9696b595baa5fba6654d",
+  "source_inventory_sha256": "97f029c7317b36346ccb8c1b06bbf8fd0f834c9f24060a7e56223deb707ce15d",
+  "reference_case": "pherc306b_context_raw",
+  "reference_shape": [
+    4051,
+    6945
+  ],
+  "field_box_yxyx": [
+    0,
+    0,
+    4051,
+    6945
+  ],
+  "spacing_um_yx": [
+    8.64,
+    8.64
+  ],
+  "common_valid_pixels": 27425854,
+  "common_mask_sha256": "be5d11296c7a81708180558ade2a255e2db16811ab32b646292a7a3dda9c354f",
+  "own_valid_pixels": [
+    27425854
+  ],
+  "input_receipts": [
+    {
+      "map_sha256": "5132963de1584eb17ce77eda2912b496ab9d0cf3fc6c717dce0dcb89e382c40e",
+      "mask_sha256": "be5d11296c7a81708180558ade2a255e2db16811ab32b646292a7a3dda9c354f"
+    }
+  ],
+  "config": {
+    "thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "angles_deg": [
+      0.0,
+      5.0,
+      10.0,
+      15.0,
+      20.0,
+      25.0,
+      30.0,
+      35.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      65.0,
+      70.0,
+      75.0,
+      80.0,
+      85.0,
+      90.0,
+      95.0,
+      100.0,
+      105.0,
+      110.0,
+      115.0,
+      120.0,
+      125.0,
+      130.0,
+      135.0,
+      140.0,
+      145.0,
+      150.0,
+      155.0,
+      160.0,
+      165.0,
+      170.0,
+      175.0
+    ],
+    "work_um": 35.0,
+    "link_mm": 0.15,
+    "minimum_area_mm2": 0.06,
+    "minimum_extent_mm": 0.4,
+    "band_half_mm": 1.0,
+    "band_step_mm": 0.25,
+    "maximum_mark_height_mm": 4.0,
+    "maximum_mark_length_mm": 8.0,
+    "slot_gap_mm": 1.2,
+    "maximum_pitch_mm": 6.5,
+    "minimum_slots": 4,
+    "minimum_length_mm": 8.0,
+    "maximum_length_mm": 60.0,
+    "flank_inner_mm": 1.75,
+    "flank_outer_mm": 3.5,
+    "minimum_flank_coverage": 0.5,
+    "maximum_chains_per_threshold": 4000,
+    "maximum_work_pixels": 8000000,
+    "crop_count": 12
+  },
+  "contexts": [
+    {
+      "row": 1,
+      "local_slice_yxyx": [
+        1211,
+        0,
+        2137,
+        6945
+      ],
+      "native_arrays": [
+        "row-1-map-A.npy"
+      ]
+    },
+    {
+      "row": 2,
+      "local_slice_yxyx": [
+        1748,
+        0,
+        2674,
+        6945
+      ],
+      "native_arrays": [
+        "row-2-map-A.npy"
+      ]
+    }
+  ],
+  "figure": {
+    "pixels_per_mm_xy": [
+      [
+        20.88594966651398,
+        20.88594966651408
+      ],
+      [
+        20.885949666513966,
+        20.885949666513966
+      ],
+      [
+        20.88594966651398,
+        20.885949666513966
+      ]
+    ],
+    "all_panels_same_physical_scale": true,
+    "preview_only": true,
+    "supplied_score_limits": [
+      0,
+      1
+    ]
+  },
+  "maps": [
+    {
+      "label": "A",
+      "proposals": 88,
+      "seconds": 5.639440829000023,
+      "search_truncated": false,
+      "row_metrics": [
+        {
+          "id": "published_row_1",
+          "source_box_pixels": 2033248,
+          "source_centreline_pixels": 4382,
+          "source_box_support_fraction": 0.9999965572325659,
+          "source_centreline_support_fraction": 1.0,
+          "status": "observed",
+          "top_k": {
+            "1": {
+              "id": "published_row_1",
+              "supported_box_pixels": 2033241,
+              "box_support_fraction": 0.9999965572325659,
+              "box_coverage": 0.12341084996810511,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.15928799634869922,
+              "omitted_observed_centreline": false
+            },
+            "3": {
+              "id": "published_row_1",
+              "supported_box_pixels": 2033241,
+              "box_support_fraction": 0.9999965572325659,
+              "box_coverage": 0.501910988417015,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.8893199452304884,
+              "omitted_observed_centreline": false
+            },
+            "5": {
+              "id": "published_row_1",
+              "supported_box_pixels": 2033241,
+              "box_support_fraction": 0.9999965572325659,
+              "box_coverage": 0.5382652622094479,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.8900045641259698,
+              "omitted_observed_centreline": false
+            },
+            "10": {
+              "id": "published_row_1",
+              "supported_box_pixels": 2033241,
+              "box_support_fraction": 0.9999965572325659,
+              "box_coverage": 0.5849218071050112,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.8900045641259698,
+              "omitted_observed_centreline": false
+            }
+          },
+          "individual": [
+            {
+              "rank": 1,
+              "box_coverage": 0.12341084996810511,
+              "centerline_coverage": 0.15928799634869922
+            },
+            {
+              "rank": 2,
+              "box_coverage": 0.2635786903765958,
+              "centerline_coverage": 0.5271565495207667
+            },
+            {
+              "rank": 3,
+              "box_coverage": 0.2601314846592214,
+              "centerline_coverage": 0.5180282975810132
+            },
+            {
+              "rank": 4,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 5,
+              "box_coverage": 0.15023747799695167,
+              "centerline_coverage": 0.24258329529895026
+            },
+            {
+              "rank": 6,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 7,
+              "box_coverage": 0.14440491805939384,
+              "centerline_coverage": 0.15495207667731628
+            },
+            {
+              "rank": 8,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 9,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 10,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 11,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 12,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 13,
+              "box_coverage": 0.12281524915147786,
+              "centerline_coverage": 0.1912368781378366
+            },
+            {
+              "rank": 14,
+              "box_coverage": 0.16219179133216377,
+              "centerline_coverage": 0.2053856686444546
+            },
+            {
+              "rank": 15,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 16,
+              "box_coverage": 0.1050377205653437,
+              "centerline_coverage": 0.1360109539023277
+            },
+            {
+              "rank": 17,
+              "box_coverage": 0.0674519154394388,
+              "centerline_coverage": 0.07485166590597901
+            },
+            {
+              "rank": 18,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 19,
+              "box_coverage": 0.09219172739483415,
+              "centerline_coverage": 0.09219534459151073
+            },
+            {
+              "rank": 20,
+              "box_coverage": 0.06793882279572368,
+              "centerline_coverage": 0.07507987220447285
+            },
+            {
+              "rank": 21,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 22,
+              "box_coverage": 0.05463493998006139,
+              "centerline_coverage": 0.06937471474212688
+            },
+            {
+              "rank": 23,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 24,
+              "box_coverage": 0.15676744665290537,
+              "centerline_coverage": 0.2893655864901871
+            },
+            {
+              "rank": 25,
+              "box_coverage": 0.22394197244694555,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 26,
+              "box_coverage": 0.09240862248990651,
+              "centerline_coverage": 0.09242355089000456
+            },
+            {
+              "rank": 27,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 28,
+              "box_coverage": 0.07929360070940926,
+              "centerline_coverage": 0.10588772250114104
+            },
+            {
+              "rank": 29,
+              "box_coverage": 0.06358223152100513,
+              "centerline_coverage": 0.0885440438156093
+            },
+            {
+              "rank": 30,
+              "box_coverage": 0.015760551749645024,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 31,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 32,
+              "box_coverage": 8.361035410952267e-06,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 33,
+              "box_coverage": 0.04533500947502042,
+              "centerline_coverage": 0.06138749429484254
+            },
+            {
+              "rank": 34,
+              "box_coverage": 0.05643305441902854,
+              "centerline_coverage": 0.05659516202647193
+            },
+            {
+              "rank": 35,
+              "box_coverage": 0.06394028056683886,
+              "centerline_coverage": 0.07507987220447285
+            },
+            {
+              "rank": 36,
+              "box_coverage": 0.06665220699366184,
+              "centerline_coverage": 0.1134185303514377
+            },
+            {
+              "rank": 37,
+              "box_coverage": 0.04375083917745117,
+              "centerline_coverage": 0.054997717937015064
+            },
+            {
+              "rank": 38,
+              "box_coverage": 0.002159114438475321,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 39,
+              "box_coverage": 0.0504898337186787,
+              "centerline_coverage": 0.05864901871291647
+            },
+            {
+              "rank": 40,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 41,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 42,
+              "box_coverage": 0.047380020371416864,
+              "centerline_coverage": 0.0492925604746691
+            },
+            {
+              "rank": 43,
+              "box_coverage": 0.038557652536025,
+              "centerline_coverage": 0.05659516202647193
+            },
+            {
+              "rank": 44,
+              "box_coverage": 0.05335275060851124,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 45,
+              "box_coverage": 0.10315747124910427,
+              "centerline_coverage": 0.1063441350981287
+            },
+            {
+              "rank": 46,
+              "box_coverage": 0.06999170290191867,
+              "centerline_coverage": 0.08261068005476951
+            },
+            {
+              "rank": 47,
+              "box_coverage": 0.05317225060875715,
+              "centerline_coverage": 0.05317206754906435
+            },
+            {
+              "rank": 48,
+              "box_coverage": 0.06484671517050856,
+              "centerline_coverage": 0.06481058877225011
+            },
+            {
+              "rank": 49,
+              "box_coverage": 0.04742723563020813,
+              "centerline_coverage": 0.06914650844363304
+            },
+            {
+              "rank": 50,
+              "box_coverage": 0.03814353537037665,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 51,
+              "box_coverage": 0.026430708410857345,
+              "centerline_coverage": 0.022820629849383843
+            },
+            {
+              "rank": 52,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 53,
+              "box_coverage": 0.05851101763145638,
+              "centerline_coverage": 0.05842081241442264
+            },
+            {
+              "rank": 54,
+              "box_coverage": 0.00677096320603411,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 55,
+              "box_coverage": 0.07878800397985286,
+              "centerline_coverage": 0.1063441350981287
+            },
+            {
+              "rank": 56,
+              "box_coverage": 0.0538834304443005,
+              "centerline_coverage": 0.05408489274303971
+            },
+            {
+              "rank": 57,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 58,
+              "box_coverage": 0.05334438957310029,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 59,
+              "box_coverage": 0.007550506801702307,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 60,
+              "box_coverage": 0.052944043524599395,
+              "centerline_coverage": 0.05294386125057052
+            },
+            {
+              "rank": 61,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 62,
+              "box_coverage": 0.06518656666868315,
+              "centerline_coverage": 0.0926517571884984
+            },
+            {
+              "rank": 63,
+              "box_coverage": 0.03200604355312528,
+              "centerline_coverage": 0.054997717937015064
+            },
+            {
+              "rank": 64,
+              "box_coverage": 0.05485970428493228,
+              "centerline_coverage": 0.05476951163852122
+            },
+            {
+              "rank": 65,
+              "box_coverage": 0.010773440039818201,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 66,
+              "box_coverage": 0.03923981466043622,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 67,
+              "box_coverage": 0.03333544818346669,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 68,
+              "box_coverage": 0.0003585408714461296,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 69,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 70,
+              "box_coverage": 0.06466621517075448,
+              "centerline_coverage": 0.06458238247375628
+            },
+            {
+              "rank": 71,
+              "box_coverage": 0.05387556123450196,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 72,
+              "box_coverage": 0.04526467841244594,
+              "centerline_coverage": 0.05203103605659516
+            },
+            {
+              "rank": 73,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 74,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 75,
+              "box_coverage": 0.06107588820016909,
+              "centerline_coverage": 0.0611592879963487
+            },
+            {
+              "rank": 76,
+              "box_coverage": 0.04501876560624146,
+              "centerline_coverage": 0.05636695572797809
+            },
+            {
+              "rank": 77,
+              "box_coverage": 0.03680380240217466,
+              "centerline_coverage": 0.05408489274303971
+            },
+            {
+              "rank": 78,
+              "box_coverage": 0.01814738144666569,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 79,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 80,
+              "box_coverage": 0.08090875602056027,
+              "centerline_coverage": 0.0848927430397079
+            },
+            {
+              "rank": 81,
+              "box_coverage": 0.06932232824343007,
+              "centerline_coverage": 0.06937471474212688
+            },
+            {
+              "rank": 82,
+              "box_coverage": 0.04250947133173096,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 83,
+              "box_coverage": 0.01158495230029298,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 84,
+              "box_coverage": 0.06922347129533588,
+              "centerline_coverage": 0.06914650844363304
+            },
+            {
+              "rank": 85,
+              "box_coverage": 0.03957966615861081,
+              "centerline_coverage": 0.05796439981743496
+            },
+            {
+              "rank": 86,
+              "box_coverage": 0.053349307829224375,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 87,
+              "box_coverage": 0.030519746552425415,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 88,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            }
+          ],
+          "first_centreline_overlap_rank": 1,
+          "first_half_centreline_rank": 2,
+          "greatest_centreline_overlap_rank": 2,
+          "greatest_individual_centreline_coverage": 0.5271565495207667
+        },
+        {
+          "id": "published_row_2",
+          "source_box_pixels": 2033248,
+          "source_centreline_pixels": 4382,
+          "source_box_support_fraction": 0.9999945899368892,
+          "source_centreline_support_fraction": 1.0,
+          "status": "observed",
+          "top_k": {
+            "1": {
+              "id": "published_row_2",
+              "supported_box_pixels": 2033237,
+              "box_support_fraction": 0.9999945899368892,
+              "box_coverage": 0.0,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.0,
+              "omitted_observed_centreline": true
+            },
+            "3": {
+              "id": "published_row_2",
+              "supported_box_pixels": 2033237,
+              "box_support_fraction": 0.9999945899368892,
+              "box_coverage": 0.0,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.0,
+              "omitted_observed_centreline": true
+            },
+            "5": {
+              "id": "published_row_2",
+              "supported_box_pixels": 2033237,
+              "box_support_fraction": 0.9999945899368892,
+              "box_coverage": 0.0,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.0,
+              "omitted_observed_centreline": true
+            },
+            "10": {
+              "id": "published_row_2",
+              "supported_box_pixels": 2033237,
+              "box_support_fraction": 0.9999945899368892,
+              "box_coverage": 0.35899995917839383,
+              "centerline_support_pixels": 4382,
+              "centerline_coverage": 0.5577361935189411,
+              "omitted_observed_centreline": false
+            }
+          },
+          "individual": [
+            {
+              "rank": 1,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 2,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 3,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 4,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 5,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 6,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 7,
+              "box_coverage": 0.0014892508841812342,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 8,
+              "box_coverage": 0.2404692615764911,
+              "centerline_coverage": 0.42469192149703333
+            },
+            {
+              "rank": 9,
+              "box_coverage": 0.11704144671772154,
+              "centerline_coverage": 0.1330442720219078
+            },
+            {
+              "rank": 10,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 11,
+              "box_coverage": 0.4732758650368845,
+              "centerline_coverage": 0.9424920127795527
+            },
+            {
+              "rank": 12,
+              "box_coverage": 0.11208481844467713,
+              "centerline_coverage": 0.15495207667731628
+            },
+            {
+              "rank": 13,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 14,
+              "box_coverage": 0.00391739870954542,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 15,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 16,
+              "box_coverage": 0.12330338273403445,
+              "centerline_coverage": 0.15540848927430398
+            },
+            {
+              "rank": 17,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 18,
+              "box_coverage": 0.1066801361572704,
+              "centerline_coverage": 0.17252396166134185
+            },
+            {
+              "rank": 19,
+              "box_coverage": 0.09209747806084584,
+              "centerline_coverage": 0.09219534459151073
+            },
+            {
+              "rank": 20,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 21,
+              "box_coverage": 0.18145646572435972,
+              "centerline_coverage": 0.23710634413509812
+            },
+            {
+              "rank": 22,
+              "box_coverage": 0.06931016895718502,
+              "centerline_coverage": 0.06937471474212688
+            },
+            {
+              "rank": 23,
+              "box_coverage": 0.07138420164496317,
+              "centerline_coverage": 0.081926061159288
+            },
+            {
+              "rank": 24,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 25,
+              "box_coverage": 0.010245731314155704,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 26,
+              "box_coverage": 0.007438385195626482,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 27,
+              "box_coverage": 0.046172187501998044,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 28,
+              "box_coverage": 0.0727854155713279,
+              "centerline_coverage": 0.09812870835235052
+            },
+            {
+              "rank": 29,
+              "box_coverage": 0.09247864366033079,
+              "centerline_coverage": 0.09242355089000456
+            },
+            {
+              "rank": 30,
+              "box_coverage": 0.05491440496115308,
+              "centerline_coverage": 0.05476951163852122
+            },
+            {
+              "rank": 31,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 32,
+              "box_coverage": 0.06159980366282927,
+              "centerline_coverage": 0.06937471474212688
+            },
+            {
+              "rank": 33,
+              "box_coverage": 0.06129782214272119,
+              "centerline_coverage": 0.06138749429484254
+            },
+            {
+              "rank": 34,
+              "box_coverage": 0.056383982782135085,
+              "centerline_coverage": 0.05636695572797809
+            },
+            {
+              "rank": 35,
+              "box_coverage": 0.07492781215372335,
+              "centerline_coverage": 0.07485166590597901
+            },
+            {
+              "rank": 36,
+              "box_coverage": 0.0,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 37,
+              "box_coverage": 0.05501867219610896,
+              "centerline_coverage": 0.054997717937015064
+            },
+            {
+              "rank": 38,
+              "box_coverage": 0.06933476028618404,
+              "centerline_coverage": 0.09242355089000456
+            },
+            {
+              "rank": 39,
+              "box_coverage": 0.047332406404172266,
+              "centerline_coverage": 0.05864901871291647
+            },
+            {
+              "rank": 40,
+              "box_coverage": 0.057325830682797924,
+              "centerline_coverage": 0.0737106344135098
+            },
+            {
+              "rank": 41,
+              "box_coverage": 0.0014248216022037766,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 42,
+              "box_coverage": 0.09231683271551717,
+              "centerline_coverage": 0.09242355089000456
+            },
+            {
+              "rank": 43,
+              "box_coverage": 0.05619462954884256,
+              "centerline_coverage": 0.05659516202647193
+            },
+            {
+              "rank": 44,
+              "box_coverage": 0.05334744547733491,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 45,
+              "box_coverage": 0.005165162742956183,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 46,
+              "box_coverage": 0.032033156980715974,
+              "centerline_coverage": 0.016887266088544045
+            },
+            {
+              "rank": 47,
+              "box_coverage": 0.05317235521486182,
+              "centerline_coverage": 0.05317206754906435
+            },
+            {
+              "rank": 48,
+              "box_coverage": 0.04434603541053011,
+              "centerline_coverage": 0.06481058877225011
+            },
+            {
+              "rank": 49,
+              "box_coverage": 0.0691434397465716,
+              "centerline_coverage": 0.06914650844363304
+            },
+            {
+              "rank": 50,
+              "box_coverage": 0.05321907873995998,
+              "centerline_coverage": 0.05317206754906435
+            },
+            {
+              "rank": 51,
+              "box_coverage": 0.05323235805761945,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 52,
+              "box_coverage": 0.021606433485127412,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 53,
+              "box_coverage": 0.0584186693435148,
+              "centerline_coverage": 0.05842081241442264
+            },
+            {
+              "rank": 54,
+              "box_coverage": 0.06324447174628438,
+              "centerline_coverage": 0.06481058877225011
+            },
+            {
+              "rank": 55,
+              "box_coverage": 0.01213532903444114,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 56,
+              "box_coverage": 0.04899428841792668,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 57,
+              "box_coverage": 2.4099502419049033e-05,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 58,
+              "box_coverage": 0.00850712435392431,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 59,
+              "box_coverage": 0.05488784632583413,
+              "centerline_coverage": 0.054997717937015064
+            },
+            {
+              "rank": 60,
+              "box_coverage": 0.052944147681750826,
+              "centerline_coverage": 0.05294386125057052
+            },
+            {
+              "rank": 61,
+              "box_coverage": 0.061708005510425004,
+              "centerline_coverage": 0.06458238247375628
+            },
+            {
+              "rank": 62,
+              "box_coverage": 0.09243192013523263,
+              "centerline_coverage": 0.09242355089000456
+            },
+            {
+              "rank": 63,
+              "box_coverage": 0.05500834383792937,
+              "centerline_coverage": 0.054997717937015064
+            },
+            {
+              "rank": 64,
+              "box_coverage": 0.05494784916859176,
+              "centerline_coverage": 0.05476951163852122
+            },
+            {
+              "rank": 65,
+              "box_coverage": 0.06472437792544597,
+              "centerline_coverage": 0.06481058877225011
+            },
+            {
+              "rank": 66,
+              "box_coverage": 0.05387025713185428,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 67,
+              "box_coverage": 0.053343019038115086,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 68,
+              "box_coverage": 0.15702547219040378,
+              "centerline_coverage": 0.2042446371519854
+            },
+            {
+              "rank": 69,
+              "box_coverage": 0.0853928981225504,
+              "centerline_coverage": 0.04815152898219991
+            },
+            {
+              "rank": 70,
+              "box_coverage": 0.06463191452840962,
+              "centerline_coverage": 0.06458238247375628
+            },
+            {
+              "rank": 71,
+              "box_coverage": 0.05273512138525907,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 72,
+              "box_coverage": 0.07123517819122906,
+              "centerline_coverage": 0.08238247375627568
+            },
+            {
+              "rank": 73,
+              "box_coverage": 0.18933011744326902,
+              "centerline_coverage": 0.2393884071200365
+            },
+            {
+              "rank": 74,
+              "box_coverage": 0.0009797185473213402,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 75,
+              "box_coverage": 0.06093534595327549,
+              "centerline_coverage": 0.0611592879963487
+            },
+            {
+              "rank": 76,
+              "box_coverage": 0.05653939998140896,
+              "centerline_coverage": 0.05659516202647193
+            },
+            {
+              "rank": 77,
+              "box_coverage": 0.0538874710621536,
+              "centerline_coverage": 0.053856686444545866
+            },
+            {
+              "rank": 78,
+              "box_coverage": 0.09230404522443768,
+              "centerline_coverage": 0.09219534459151073
+            },
+            {
+              "rank": 79,
+              "box_coverage": 0.20986436898403876,
+              "centerline_coverage": 0.29301688726608854
+            },
+            {
+              "rank": 80,
+              "box_coverage": 0.03805508162599835,
+              "centerline_coverage": 0.0
+            },
+            {
+              "rank": 81,
+              "box_coverage": 0.06859062667067341,
+              "centerline_coverage": 0.06937471474212688
+            },
+            {
+              "rank": 82,
+              "box_coverage": 0.05321809508680001,
+              "centerline_coverage": 0.05317206754906435
+            },
+            {
+              "rank": 83,
+              "box_coverage": 0.2320196809324245,
+              "centerline_coverage": 0.20994979461433136
+            },
+            {
+              "rank": 84,
+              "box_coverage": 0.03537462676510412,
+              "centerline_coverage": 0.03537197626654496
+            },
+            {
+              "rank": 85,
+              "box_coverage": 0.0647720851037041,
+              "centerline_coverage": 0.06481058877225011
+            },
+            {
+              "rank": 86,
+              "box_coverage": 0.05335728200893452,
+              "centerline_coverage": 0.053400273847558195
+            },
+            {
+              "rank": 87,
+              "box_coverage": 0.1530283975749015,
+              "centerline_coverage": 0.20561387494294842
+            },
+            {
+              "rank": 88,
+              "box_coverage": 0.03413227282407314,
+              "centerline_coverage": 0.0
+            }
+          ],
+          "first_centreline_overlap_rank": 8,
+          "first_half_centreline_rank": 11,
+          "greatest_centreline_overlap_rank": 11,
+          "greatest_individual_centreline_coverage": 0.9424920127795527
+        }
+      ],
+      "full_proposals": [
+        {
+          "score": 4.418571081552413,
+          "angle_deg": 15.0,
+          "length_mm": 10.802408348810324,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.2813491369639435,
+          "band_coverage": 0.9987005018690135,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 0.9874303526912408,
+          "band_hot_fraction": 0.22738372423192685,
+          "flank_hot_fraction": 0.0029459975048138644,
+          "contrast": 18.336456819465447,
+          "crowd_per_slot": 0.2,
+          "bbox_yxyx": [
+            991,
+            4628,
+            2158,
+            6270
+          ],
+          "band_polygon_xy": [
+            [
+              4874.933859256285,
+              1300.6293862684167
+            ],
+            [
+              6082.610388218848,
+              1624.2253369219568
+            ],
+            [
+              6022.698572222894,
+              1847.8192781925743
+            ],
+            [
+              4815.022043260332,
+              1524.2233275390342
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 4.115120298194817,
+          "angle_deg": 0.0,
+          "length_mm": 19.954921820303387,
+          "slot_count": 6,
+          "mark_count": 11,
+          "residual_mm": 0.447394227011321,
+          "band_coverage": 0.9973954307368421,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 0.9998779322706768,
+          "band_hot_fraction": 0.12316074616757988,
+          "flank_hot_fraction": 0.00152637735551681,
+          "contrast": 11.552697092972222,
+          "crowd_per_slot": 0.0,
+          "bbox_yxyx": [
+            1295,
+            2058,
+            2106,
+            4600
+          ],
+          "band_polygon_xy": [
+            [
+              2173.8579346557763,
+              1584.9763288999732
+            ],
+            [
+              4483.455367561261,
+              1584.9763288999732
+            ],
+            [
+              4483.455367561261,
+              1816.4578103814547
+            ],
+            [
+              2173.8579346557763,
+              1816.4578103814547
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.5
+        },
+        {
+          "score": 4.057824656423542,
+          "angle_deg": 0.0,
+          "length_mm": 19.60483547257877,
+          "slot_count": 7,
+          "mark_count": 9,
+          "residual_mm": 0.3758332620645165,
+          "band_coverage": 0.9975182399999998,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 1.0,
+          "band_hot_fraction": 0.2819862155388471,
+          "flank_hot_fraction": 0.01644642857142857,
+          "contrast": 11.040667164196785,
+          "crowd_per_slot": 0.42857142857142855,
+          "bbox_yxyx": [
+            1256,
+            3670,
+            2067,
+            6172
+          ],
+          "band_polygon_xy": [
+            [
+              3786.5242123687285,
+              1546.1298464695835
+            ],
+            [
+              6055.602392065345,
+              1546.1298464695835
+            ],
+            [
+              6055.602392065345,
+              1777.611327951065
+            ],
+            [
+              3786.5242123687285,
+              1777.611327951065
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 4.00629762733547,
+          "angle_deg": 155.0,
+          "length_mm": 8.54870391309231,
+          "slot_count": 5,
+          "mark_count": 8,
+          "residual_mm": 0.6317659267488076,
+          "band_coverage": 0.9997584814329317,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 0.9978541795635357,
+          "band_hot_fraction": 0.13333333333333333,
+          "flank_hot_fraction": 0.0011491422473939095,
+          "contrast": 12.855996466170948,
+          "crowd_per_slot": 0.0,
+          "bbox_yxyx": [
+            19,
+            2274,
+            1271,
+            3724
+          ],
+          "band_polygon_xy": [
+            [
+              3496.4975264013046,
+              540.9073905197142
+            ],
+            [
+              2599.766400764008,
+              959.0599817103381
+            ],
+            [
+              2501.9380994351427,
+              749.2665124888914
+            ],
+            [
+              3398.669225072439,
+              331.11392129826766
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 3.4728753692984475,
+          "angle_deg": 10.0,
+          "length_mm": 11.6049335791995,
+          "slot_count": 5,
+          "mark_count": 8,
+          "residual_mm": 0.45249567571910376,
+          "band_coverage": 0.9869172597092137,
+          "upper_flank_coverage": 0.996736806639026,
+          "lower_flank_coverage": 0.9943837354853383,
+          "band_hot_fraction": 0.15154595057237616,
+          "flank_hot_fraction": 0.006969280643511576,
+          "contrast": 9.519905643975859,
+          "crowd_per_slot": 0.2,
+          "bbox_yxyx": [
+            1188,
+            1998,
+            2260,
+            3690
+          ],
+          "band_polygon_xy": [
+            [
+              2202.796289254089,
+              1493.0655156769394
+            ],
+            [
+              3525.5542246692944,
+              1726.3034286368652
+            ],
+            [
+              3485.357887246394,
+              1954.2681862785803
+            ],
+            [
+              2162.5999518311883,
+              1721.0302733186543
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.5
+        },
+        {
+          "score": 3.3076356335447477,
+          "angle_deg": 5.0,
+          "length_mm": 12.441500269460931,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.5511117812841713,
+          "band_coverage": 0.9999373567039563,
+          "upper_flank_coverage": 0.9994449222724071,
+          "lower_flank_coverage": 0.9999514262591435,
+          "band_hot_fraction": 0.12360878558061657,
+          "flank_hot_fraction": 0.0068673745629075095,
+          "contrast": 7.921137049652722,
+          "crowd_per_slot": 0.0,
+          "bbox_yxyx": [
+            2312,
+            5083,
+            3266,
+            6820
+          ],
+          "band_polygon_xy": [
+            [
+              5244.25225419044,
+              2611.1328278050755
+            ],
+            [
+              6678.761120480255,
+              2736.63609133286
+            ],
+            [
+              6658.586180029408,
+              2967.2367158911343
+            ],
+            [
+              5224.077313739593,
+              2841.73345236335
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 3.2725912599310965,
+          "angle_deg": 160.0,
+          "length_mm": 13.155250627964225,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.5613964933360517,
+          "band_coverage": 0.9899745066977963,
+          "upper_flank_coverage": 0.9866279978041277,
+          "lower_flank_coverage": 0.9972729565116222,
+          "band_hot_fraction": 0.26852330996848095,
+          "flank_hot_fraction": 0.028515275437133274,
+          "contrast": 7.231502483296578,
+          "crowd_per_slot": 0.3333333333333333,
+          "bbox_yxyx": [
+            972,
+            3286,
+            2334,
+            5213
+          ],
+          "band_polygon_xy": [
+            [
+              5004.49070726698,
+              1501.709220111886
+            ],
+            [
+              3573.7161772105947,
+              2022.4685609986243
+            ],
+            [
+              3494.54484773706,
+              1804.9471210018862
+            ],
+            [
+              4925.319377793447,
+              1284.1877801151477
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.7594142396047205,
+          "angle_deg": 175.0,
+          "length_mm": 18.239719016763534,
+          "slot_count": 9,
+          "mark_count": 11,
+          "residual_mm": 0.4692469552103872,
+          "band_coverage": 0.9813496616883762,
+          "upper_flank_coverage": 0.9979716458657768,
+          "lower_flank_coverage": 0.9911769779687795,
+          "band_hot_fraction": 0.09008762322015335,
+          "flank_hot_fraction": 0.019629530631357184,
+          "contrast": 3.377968570120708,
+          "crowd_per_slot": 0.3333333333333333,
+          "bbox_yxyx": [
+            1751,
+            3732,
+            2764,
+            6138
+          ],
+          "band_polygon_xy": [
+            [
+              5996.603671332349,
+              2280.7681363486154
+            ],
+            [
+              3893.558372815796,
+              2464.760758850307
+            ],
+            [
+              3873.383432364949,
+              2234.160134292032
+            ],
+            [
+              5976.428730881502,
+              2050.167511790341
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.7207483526021274,
+          "angle_deg": 15.0,
+          "length_mm": 16.988022895936332,
+          "slot_count": 8,
+          "mark_count": 10,
+          "residual_mm": 0.4796804561179213,
+          "band_coverage": 0.9921668312378661,
+          "upper_flank_coverage": 0.98799882069418,
+          "lower_flank_coverage": 0.9979319780838299,
+          "band_hot_fraction": 0.12231471047944459,
+          "flank_hot_fraction": 0.025250731818321444,
+          "contrast": 3.7535308816106476,
+          "crowd_per_slot": 0.375,
+          "bbox_yxyx": [
+            1756,
+            1653,
+            3108,
+            3987
+          ],
+          "band_polygon_xy": [
+            [
+              1900.2080780224626,
+              2065.602986605862
+            ],
+            [
+              3799.41757487141,
+              2574.494637544057
+            ],
+            [
+              3739.5057588754566,
+              2798.0885788146743
+            ],
+            [
+              1840.2962620265087,
+              2289.1969278764795
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.681116041307905,
+          "angle_deg": 140.0,
+          "length_mm": 8.542102938960573,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.6272843402197956,
+          "band_coverage": 0.9998855483952653,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 1.0,
+          "band_hot_fraction": 0.1250986299404634,
+          "flank_hot_fraction": 0.011064666830587657,
+          "contrast": 6.413518477505132,
+          "crowd_per_slot": 0.0,
+          "bbox_yxyx": [
+            2211,
+            4597,
+            3617,
+            6054
+          ],
+          "band_polygon_xy": [
+            [
+              5778.453972525092,
+              2684.704686921217
+            ],
+            [
+              5021.08933260136,
+              3320.2090769479337
+            ],
+            [
+              4872.295904433181,
+              3142.883974374096
+            ],
+            [
+              5629.6605443569115,
+              2507.3795843473795
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.3760358570336,
+          "angle_deg": 0.0,
+          "length_mm": 39.804817736289394,
+          "slot_count": 15,
+          "mark_count": 25,
+          "residual_mm": 0.5233312735687433,
+          "band_coverage": 0.9790482452770447,
+          "upper_flank_coverage": 0.9990684002713909,
+          "lower_flank_coverage": 0.9990332193290613,
+          "band_hot_fraction": 0.10478077001682153,
+          "flank_hot_fraction": 0.04863100520848241,
+          "contrast": 1.957680404909989,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1915,
+            1150,
+            2726,
+            5990
+          ],
+          "band_polygon_xy": [
+            [
+              1266.2266627771298,
+              2205.151109358489
+            ],
+            [
+              5873.265752625439,
+              2205.151109358489
+            ],
+            [
+              5873.265752625439,
+              2436.632590839971
+            ],
+            [
+              1266.2266627771298,
+              2436.632590839971
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.358934720446619,
+          "angle_deg": 20.0,
+          "length_mm": 10.0224096868007,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.5546908536525689,
+          "band_coverage": 0.9861980678076794,
+          "upper_flank_coverage": 0.9859622835869535,
+          "lower_flank_coverage": 0.9937169646241638,
+          "band_hot_fraction": 0.22333106055910246,
+          "flank_hot_fraction": 0.036181013592124056,
+          "contrast": 5.052532251022224,
+          "crowd_per_slot": 0.6,
+          "bbox_yxyx": [
+            1563,
+            1371,
+            2801,
+            2956
+          ],
+          "band_polygon_xy": [
+            [
+              1658.0073871513578,
+              1875.028272227264
+            ],
+            [
+              2748.0518808064303,
+              2271.7720219434846
+            ],
+            [
+              2668.8805513328957,
+              2489.2934619402226
+            ],
+            [
+              1578.8360576778234,
+              2092.5497122240017
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 2.337301628583735,
+          "angle_deg": 170.0,
+          "length_mm": 9.496213619890934,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.5002615116014459,
+          "band_coverage": 0.9878763985140517,
+          "upper_flank_coverage": 0.9990101002736894,
+          "lower_flank_coverage": 0.996429440925429,
+          "band_hot_fraction": 0.1400862068965517,
+          "flank_hot_fraction": 0.024637767775026864,
+          "contrast": 4.3330219161744274,
+          "crowd_per_slot": 0.2,
+          "bbox_yxyx": [
+            1225,
+            2274,
+            2255,
+            3726
+          ],
+          "band_polygon_xy": [
+            [
+              3561.22443935706,
+              1758.6864369489797
+            ],
+            [
+              2478.823421170866,
+              1949.5429404015192
+            ],
+            [
+              2438.6270837479656,
+              1721.5781827598043
+            ],
+            [
+              3521.0281019341596,
+              1530.7216793072646
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.5
+        },
+        {
+          "score": 2.291904188591776,
+          "angle_deg": 15.0,
+          "length_mm": 13.692744881887808,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.3809568091859686,
+          "band_coverage": 0.9905331884978178,
+          "upper_flank_coverage": 0.9999037707825629,
+          "lower_flank_coverage": 0.9895743976774142,
+          "band_hot_fraction": 0.1375011292799711,
+          "flank_hot_fraction": 0.022776867933334187,
+          "contrast": 4.500159367880356,
+          "crowd_per_slot": 0.4,
+          "bbox_yxyx": [
+            1097,
+            2429,
+            2351,
+            4394
+          ],
+          "band_polygon_xy": [
+            [
+              2675.8236139851792,
+              1407.2894669464438
+            ],
+            [
+              4206.631011462366,
+              1817.4680728680446
+            ],
+            [
+              4146.719195466411,
+              2041.0620141386623
+            ],
+            [
+              2615.9117979892253,
+              1630.8834082170615
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.5
+        },
+        {
+          "score": 2.0030905798874508,
+          "angle_deg": 0.0,
+          "length_mm": 22.78782054609102,
+          "slot_count": 7,
+          "mark_count": 12,
+          "residual_mm": 0.38956030341011816,
+          "band_coverage": 1.0,
+          "upper_flank_coverage": 0.9983897916092388,
+          "lower_flank_coverage": 0.9986048757363204,
+          "band_hot_fraction": 0.09194121704069182,
+          "flank_hot_fraction": 0.02306622822903868,
+          "contrast": 3.082940586225292,
+          "crowd_per_slot": 0.8571428571428571,
+          "bbox_yxyx": [
+            2272,
+            3176,
+            3084,
+            6046
+          ],
+          "band_polygon_xy": [
+            [
+              3292.189323220537,
+              2562.182298076718
+            ],
+            [
+              5929.668553092183,
+              2562.182298076718
+            ],
+            [
+              5929.668553092183,
+              2793.663779558199
+            ],
+            [
+              3292.189323220537,
+              2793.663779558199
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.968950564360986,
+          "angle_deg": 20.0,
+          "length_mm": 19.079823301995177,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.3262218695273931,
+          "band_coverage": 0.9873651926124531,
+          "upper_flank_coverage": 0.9927459918530066,
+          "lower_flank_coverage": 0.9915349679830099,
+          "band_hot_fraction": 0.19151842336336142,
+          "flank_hot_fraction": 0.03864141184605789,
+          "contrast": 4.142939436074229,
+          "crowd_per_slot": 1.3333333333333333,
+          "bbox_yxyx": [
+            1171,
+            3551,
+            2768,
+            6121
+          ],
+          "band_polygon_xy": [
+            [
+              3837.9852375487267,
+              1483.0525550572265
+            ],
+            [
+              5913.120557315381,
+              2238.3400435267663
+            ],
+            [
+              5833.949227841847,
+              2455.861483523505
+            ],
+            [
+              3758.813908075192,
+              1700.5739950539646
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.9442251274606428,
+          "angle_deg": 45.0,
+          "length_mm": 16.55908364102462,
+          "slot_count": 5,
+          "mark_count": 8,
+          "residual_mm": 0.19583755581997964,
+          "band_coverage": 0.9935594302081615,
+          "upper_flank_coverage": 0.997016153161678,
+          "lower_flank_coverage": 0.9871216801204195,
+          "band_hot_fraction": 0.20276308929768377,
+          "flank_hot_fraction": 0.0544812160695173,
+          "contrast": 3.29961347298884,
+          "crowd_per_slot": 0.2,
+          "bbox_yxyx": [
+            140,
+            2469,
+            2233,
+            4562
+          ],
+          "band_polygon_xy": [
+            [
+              2919.4751758209354,
+              427.2992705501273
+            ],
+            [
+              4274.688177302849,
+              1782.512272032041
+            ],
+            [
+              4111.006052028185,
+              1946.1943973067046
+            ],
+            [
+              2755.7930505462714,
+              590.981395824791
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.7920153297203247,
+          "angle_deg": 170.0,
+          "length_mm": 11.213176261475718,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.33723006427926466,
+          "band_coverage": 0.9856097126709512,
+          "upper_flank_coverage": 0.9967167792737147,
+          "lower_flank_coverage": 0.9942190552309288,
+          "band_hot_fraction": 0.20954598370197905,
+          "flank_hot_fraction": 0.0543689083769657,
+          "contrast": 3.4107457969652817,
+          "crowd_per_slot": 0.6,
+          "bbox_yxyx": [
+            1777,
+            1215,
+            2841,
+            2862
+          ],
+          "band_polygon_xy": [
+            [
+              2697.5927175837633,
+              2310.239461464874
+            ],
+            [
+              1419.4882131631925,
+              2535.603769759242
+            ],
+            [
+              1379.291875740292,
+              2307.6390121175273
+            ],
+            [
+              2657.396380160863,
+              2082.274703823159
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.7808903115770838,
+          "angle_deg": 35.0,
+          "length_mm": 19.521729128070643,
+          "slot_count": 7,
+          "mark_count": 11,
+          "residual_mm": 0.6620783974648173,
+          "band_coverage": 0.9938247418587984,
+          "upper_flank_coverage": 0.9917579070465472,
+          "lower_flank_coverage": 0.9917937740281046,
+          "band_hot_fraction": 0.1977768655066789,
+          "flank_hot_fraction": 0.08120683986438537,
+          "contrast": 2.2780842513085693,
+          "crowd_per_slot": 0.42857142857142855,
+          "bbox_yxyx": [
+            879,
+            2227,
+            2972,
+            4733
+          ],
+          "band_polygon_xy": [
+            [
+              2620.5843867073063,
+              1182.8392231725377
+            ],
+            [
+              4471.425164868767,
+              2478.8118880671177
+            ],
+            [
+              4338.6528416393585,
+              2668.4304168377175
+            ],
+            [
+              2487.8120634778975,
+              1372.4577519431377
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.7763271265333083,
+          "angle_deg": 45.0,
+          "length_mm": 11.531577746979139,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.6787927069765227,
+          "band_coverage": 0.9918671096247234,
+          "upper_flank_coverage": 0.9882012019401069,
+          "lower_flank_coverage": 0.9886262347151349,
+          "band_hot_fraction": 0.1292517006802721,
+          "flank_hot_fraction": 0.027277262442990675,
+          "contrast": 3.735566711564033,
+          "crowd_per_slot": 0.25,
+          "bbox_yxyx": [
+            554,
+            4324,
+            2236,
+            6006
+          ],
+          "band_polygon_xy": [
+            [
+              4775.092236170953,
+              841.1534966411843
+            ],
+            [
+              5718.848812868735,
+              1784.9100733389666
+            ],
+            [
+              5555.16668759407,
+              1948.5921986136304
+            ],
+            [
+              4611.410110896289,
+              1004.8356219158483
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.6989306809832978,
+          "angle_deg": 170.0,
+          "length_mm": 15.681463693166027,
+          "slot_count": 7,
+          "mark_count": 10,
+          "residual_mm": 0.6619708271845425,
+          "band_coverage": 0.9867318278753296,
+          "upper_flank_coverage": 0.9976265546051175,
+          "lower_flank_coverage": 0.9904378209842329,
+          "band_hot_fraction": 0.08310896420652518,
+          "flank_hot_fraction": 0.02377406292069037,
+          "contrast": 2.7568185807306462,
+          "crowd_per_slot": 1.1428571428571428,
+          "bbox_yxyx": [
+            1728,
+            3377,
+            2882,
+            5534
+          ],
+          "band_polygon_xy": [
+            [
+              5369.616157797393,
+              2261.5007902431435
+            ],
+            [
+              3582.2056226574214,
+              2576.6694931908764
+            ],
+            [
+              3542.009285234521,
+              2348.7047355491613
+            ],
+            [
+              5329.419820374493,
+              2033.5360326014286
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.5796072200870983,
+          "angle_deg": 130.0,
+          "length_mm": 12.129938060401882,
+          "slot_count": 4,
+          "mark_count": 7,
+          "residual_mm": 0.8236310801528803,
+          "band_coverage": 0.9923866908562321,
+          "upper_flank_coverage": 0.9925021383540049,
+          "lower_flank_coverage": 0.9899045696541138,
+          "band_hot_fraction": 0.11029112377850163,
+          "flank_hot_fraction": 0.0238428499668585,
+          "contrast": 3.554402891491109,
+          "crowd_per_slot": 0.5,
+          "bbox_yxyx": [
+            1190,
+            4364,
+            2964,
+            6036
+          ],
+          "band_polygon_xy": [
+            [
+              5739.944459302665,
+              1613.619922937997
+            ],
+            [
+              4837.516925565223,
+              2689.0911783255265
+            ],
+            [
+              4660.1918229913845,
+              2540.2977501573464
+            ],
+            [
+              5562.6193567288265,
+              1464.826494769817
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.5657646600110084,
+          "angle_deg": 155.0,
+          "length_mm": 11.202891059905273,
+          "slot_count": 6,
+          "mark_count": 9,
+          "residual_mm": 0.5641029299564448,
+          "band_coverage": 0.9909989915425231,
+          "upper_flank_coverage": 0.9965693422876712,
+          "lower_flank_coverage": 0.9887567886479122,
+          "band_hot_fraction": 0.06809778709784228,
+          "flank_hot_fraction": 0.027350982101479526,
+          "contrast": 2.090916562398736,
+          "crowd_per_slot": 0.16666666666666666,
+          "bbox_yxyx": [
+            1762,
+            3885,
+            3143,
+            5614
+          ],
+          "band_polygon_xy": [
+            [
+              5385.82944138748,
+              2283.548851622042
+            ],
+            [
+              4210.682751003751,
+              2831.5287528034764
+            ],
+            [
+              4112.854449674886,
+              2621.7352835820298
+            ],
+            [
+              5288.001140058615,
+              2073.755382400596
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.5504568372158554,
+          "angle_deg": 170.0,
+          "length_mm": 12.855208560837728,
+          "slot_count": 6,
+          "mark_count": 7,
+          "residual_mm": 0.5868362397690075,
+          "band_coverage": 0.9888700161194038,
+          "upper_flank_coverage": 0.9928801538850401,
+          "lower_flank_coverage": 0.9972375191991443,
+          "band_hot_fraction": 0.25678345944382863,
+          "flank_hot_fraction": 0.08660534283734159,
+          "contrast": 2.7615807946877533,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1152,
+            1450,
+            2250,
+            3285
+          ],
+          "band_polygon_xy": [
+            [
+              3120.3335619279246,
+              1685.9895824964603
+            ],
+            [
+              1655.0663099253895,
+              1944.3557329730568
+            ],
+            [
+              1614.869972502489,
+              1716.3909753313421
+            ],
+            [
+              3080.1372245050243,
+              1458.0248248547457
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.529832606827393,
+          "angle_deg": 0.0,
+          "length_mm": 26.503637040840154,
+          "slot_count": 11,
+          "mark_count": 14,
+          "residual_mm": 0.3907217005163713,
+          "band_coverage": 0.9786457447494251,
+          "upper_flank_coverage": 0.9986181068871685,
+          "lower_flank_coverage": 0.9785400708756803,
+          "band_hot_fraction": 0.24076436130007559,
+          "flank_hot_fraction": 0.14855927240106506,
+          "contrast": 1.581518113086341,
+          "crowd_per_slot": 1.1818181818181819,
+          "bbox_yxyx": [
+            1463,
+            1535,
+            2275,
+            4835
+          ],
+          "band_polygon_xy": [
+            [
+              1651.1595682613772,
+              1753.2993737508573
+            ],
+            [
+              4718.71015169195,
+              1753.2993737508573
+            ],
+            [
+              4718.71015169195,
+              1984.7808552323388
+            ],
+            [
+              1651.1595682613772,
+              1984.7808552323388
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.4601155997598871,
+          "angle_deg": 35.0,
+          "length_mm": 11.56683091132603,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.4246152601246296,
+          "band_coverage": 0.9946175378057582,
+          "upper_flank_coverage": 0.9995359179738407,
+          "lower_flank_coverage": 0.9912427723365818,
+          "band_hot_fraction": 0.1700926616253062,
+          "flank_hot_fraction": 0.0404744012219658,
+          "contrast": 3.5679999616703175,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            836,
+            4589,
+            2401,
+            6341
+          ],
+          "band_polygon_xy": [
+            [
+              4983.526016047526,
+              1139.9521685961963
+            ],
+            [
+              6080.168746019495,
+              1907.8296748454445
+            ],
+            [
+              5947.396422790088,
+              2097.4482036160443
+            ],
+            [
+              4850.753692818118,
+              1329.5706973667961
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.4219976886902632,
+          "angle_deg": 80.0,
+          "length_mm": 10.022918401549298,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.46209115179427224,
+          "band_coverage": 0.9964783307985928,
+          "upper_flank_coverage": 0.9964608661872255,
+          "lower_flank_coverage": 0.9962512908508147,
+          "band_hot_fraction": 0.13636363636363635,
+          "flank_hot_fraction": 0.03827966500104631,
+          "contrast": 3.0315793690876767,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1861,
+            4750,
+            3373,
+            5791
+          ],
+          "band_polygon_xy": [
+            [
+              5283.5040303864835,
+              2025.3970923534664
+            ],
+            [
+              5484.946335401921,
+              3167.833174489401
+            ],
+            [
+              5256.981577760207,
+              3208.029511912301
+            ],
+            [
+              5055.53927274477,
+              2065.593429776367
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.3806295252841092,
+          "angle_deg": 150.0,
+          "length_mm": 12.759010308158489,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.5003519977808988,
+          "band_coverage": 0.986722130514112,
+          "upper_flank_coverage": 0.9885125163936069,
+          "lower_flank_coverage": 0.9913112805270702,
+          "band_hot_fraction": 0.10092948561973819,
+          "flank_hot_fraction": 0.040720558415221916,
+          "contrast": 2.1870714575265158,
+          "crowd_per_slot": 0.6666666666666666,
+          "bbox_yxyx": [
+            1149,
+            1826,
+            2706,
+            3712
+          ],
+          "band_polygon_xy": [
+            [
+              3466.499471791776,
+              1658.2111661668227
+            ],
+            [
+              2187.6074516514095,
+              2396.5798182593276
+            ],
+            [
+              2071.8667109106686,
+              2196.1109747907076
+            ],
+            [
+              3350.7587310510353,
+              1457.7423226982025
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.5
+        },
+        {
+          "score": 1.354239903618081,
+          "angle_deg": 35.0,
+          "length_mm": 20.72455126074029,
+          "slot_count": 7,
+          "mark_count": 9,
+          "residual_mm": 0.6344139859532375,
+          "band_coverage": 0.9920466592163291,
+          "upper_flank_coverage": 0.9939639758590894,
+          "lower_flank_coverage": 0.9938288345979254,
+          "band_hot_fraction": 0.07348471303414983,
+          "flank_hot_fraction": 0.030407611242798165,
+          "contrast": 2.066064052450744,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1188,
+            4107,
+            3362,
+            6728
+          ],
+          "band_polygon_xy": [
+            [
+              4501.530031489237,
+              1492.194307268488
+            ],
+            [
+              6466.409491235466,
+              2868.0177166562194
+            ],
+            [
+              6333.637168006057,
+              3057.6362454268187
+            ],
+            [
+              4368.757708259829,
+              1681.8128360390879
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.3444048951273264,
+          "angle_deg": 75.0,
+          "length_mm": 8.4557253559162,
+          "slot_count": 4,
+          "mark_count": 7,
+          "residual_mm": 0.6721396900899229,
+          "band_coverage": 0.9914061836688546,
+          "upper_flank_coverage": 0.9914372359501108,
+          "lower_flank_coverage": 0.9950807036175127,
+          "band_hot_fraction": 0.16034495359204853,
+          "flank_hot_fraction": 0.05151688314045984,
+          "contrast": 2.769076469675886,
+          "crowd_per_slot": 0.25,
+          "bbox_yxyx": [
+            1555,
+            3133,
+            2935,
+            4230
+          ],
+          "band_polygon_xy": [
+            [
+              3666.9145113188843,
+              1742.5991733770027
+            ],
+            [
+              3920.213442136871,
+              2687.9236526926024
+            ],
+            [
+              3696.619500866253,
+              2747.835468688556
+            ],
+            [
+              3443.3205700482663,
+              1802.5109893729564
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.325633895907238,
+          "angle_deg": 40.0,
+          "length_mm": 12.573189164369378,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.36922644161761387,
+          "band_coverage": 0.9988686684635201,
+          "upper_flank_coverage": 0.9919841436915072,
+          "lower_flank_coverage": 0.999836260923894,
+          "band_hot_fraction": 0.04658763842138641,
+          "flank_hot_fraction": 0.01456801212597541,
+          "contrast": 2.3033055393829405,
+          "crowd_per_slot": 0.4,
+          "bbox_yxyx": [
+            1953,
+            929,
+            3658,
+            2743
+          ],
+          "band_polygon_xy": [
+            [
+              1352.9839203557567,
+              2249.1145866044344
+            ],
+            [
+              2467.754949481788,
+              3184.5185459912036
+            ],
+            [
+              2318.9615213136076,
+              3361.8436485650413
+            ],
+            [
+              1204.1904921875764,
+              2426.439689178272
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.205060380037557,
+          "angle_deg": 130.0,
+          "length_mm": 13.013000151667951,
+          "slot_count": 4,
+          "mark_count": 8,
+          "residual_mm": 0.5593428460337769,
+          "band_coverage": 0.9965119749050365,
+          "upper_flank_coverage": 0.9960680703252944,
+          "lower_flank_coverage": 0.9936467726176109,
+          "band_hot_fraction": 0.11816120192761977,
+          "flank_hot_fraction": 0.03286580681024186,
+          "contrast": 2.9898236255055957,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1627,
+            4785,
+            3480,
+            6523
+          ],
+          "band_polygon_xy": [
+            [
+              6226.750091411015,
+              2050.8522759501634
+            ],
+            [
+              5258.625639751153,
+              3204.6180692941043
+            ],
+            [
+              5081.300537177316,
+              3055.824641125924
+            ],
+            [
+              6049.424988837179,
+              1902.0588477819826
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.1369354862786574,
+          "angle_deg": 120.0,
+          "length_mm": 17.074493033194756,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.3288564243637821,
+          "band_coverage": 0.9952514838929561,
+          "upper_flank_coverage": 0.9953386252318908,
+          "lower_flank_coverage": 0.9947235098982354,
+          "band_hot_fraction": 0.12982658542740744,
+          "flank_hot_fraction": 0.06569827708637149,
+          "contrast": 1.8471567756801883,
+          "crowd_per_slot": 0.6666666666666666,
+          "bbox_yxyx": [
+            1259,
+            2693,
+            3577,
+            4500
+          ],
+          "band_polygon_xy": [
+            [
+              4190.9410130799715,
+              1620.4651384741396
+            ],
+            [
+              3202.8337773626827,
+              3331.917074062921
+            ],
+            [
+              3002.364933894063,
+              3216.17633332218
+            ],
+            [
+              3990.4721696113515,
+              1504.724397733399
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.0687370801949152,
+          "angle_deg": 110.0,
+          "length_mm": 22.822427238955882,
+          "slot_count": 9,
+          "mark_count": 10,
+          "residual_mm": 0.4123082131454187,
+          "band_coverage": 0.9922624256736831,
+          "upper_flank_coverage": 0.992273930565745,
+          "lower_flank_coverage": 0.9921818914292487,
+          "band_hot_fraction": 0.13705597489381274,
+          "flank_hot_fraction": 0.08561647340252558,
+          "contrast": 1.5379773972078798,
+          "crowd_per_slot": 1.4444444444444444,
+          "bbox_yxyx": [
+            263,
+            1578,
+            3241,
+            3323
+          ],
+          "band_polygon_xy": [
+            [
+              3010.5708829791724,
+              550.2773401169536
+            ],
+            [
+              2107.1299298186013,
+              3032.4609587361842
+            ],
+            [
+              1889.608489821863,
+              2953.28962926265
+            ],
+            [
+              2793.0494429824344,
+              471.1060106434192
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.0680554035413736,
+          "angle_deg": 45.0,
+          "length_mm": 17.227629588583845,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.6469355973706409,
+          "band_coverage": 0.9950464387165582,
+          "upper_flank_coverage": 0.9815732274662963,
+          "lower_flank_coverage": 0.9955544783564625,
+          "band_hot_fraction": 0.17080057183702646,
+          "flank_hot_fraction": 0.05191118301588067,
+          "contrast": 2.92032170974103,
+          "crowd_per_slot": 1.6,
+          "bbox_yxyx": [
+            1141,
+            3530,
+            3289,
+            5677
+          ],
+          "band_polygon_xy": [
+            [
+              3980.5591784453595,
+              1428.3916072955979
+            ],
+            [
+              5390.486690697402,
+              2838.3191195476397
+            ],
+            [
+              5226.804565422738,
+              3002.0012448223038
+            ],
+            [
+              3816.8770531706955,
+              1592.0737325702617
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.0593630983737903,
+          "angle_deg": 165.0,
+          "length_mm": 11.768410208456686,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.3295926387212946,
+          "band_coverage": 0.9949168344320268,
+          "upper_flank_coverage": 0.9716460571314609,
+          "lower_flank_coverage": 0.9999666451661541,
+          "band_hot_fraction": 0.1392915075087646,
+          "flank_hot_fraction": 0.036450595629038386,
+          "contrast": 3.2139847829084816,
+          "crowd_per_slot": 1.25,
+          "bbox_yxyx": [
+            1039,
+            5342,
+            2235,
+            6945
+          ],
+          "band_polygon_xy": [
+            [
+              6905.198993178112,
+              1572.3829210896415
+            ],
+            [
+              5589.5263826790115,
+              1924.9163345766228
+            ],
+            [
+              5529.614566683057,
+              1701.3223933060053
+            ],
+            [
+              6845.287177182157,
+              1348.788979819024
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.0387445603502723,
+          "angle_deg": 105.0,
+          "length_mm": 14.643751141988677,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.6526236252362775,
+          "band_coverage": 0.9949865267179837,
+          "upper_flank_coverage": 0.9951658315692011,
+          "lower_flank_coverage": 0.9950223876882273,
+          "band_hot_fraction": 0.14595071903120008,
+          "flank_hot_fraction": 0.06599491598754734,
+          "contrast": 2.0521204215391786,
+          "crowd_per_slot": 1.1666666666666667,
+          "bbox_yxyx": [
+            1320,
+            4731,
+            3391,
+            6014
+          ],
+          "band_polygon_xy": [
+            [
+              5703.681966949666,
+              1566.7061502591848
+            ],
+            [
+              5265.0151049949845,
+              3203.833166670863
+            ],
+            [
+              5041.421163724367,
+              3143.921350674909
+            ],
+            [
+              5480.08802567905,
+              1506.7943342632311
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 1.017365064577065,
+          "angle_deg": 145.0,
+          "length_mm": 14.597682480684323,
+          "slot_count": 7,
+          "mark_count": 8,
+          "residual_mm": 0.47773705600690913,
+          "band_coverage": 0.967908312943726,
+          "upper_flank_coverage": 0.8473109926360455,
+          "lower_flank_coverage": 0.9956683603248816,
+          "band_hot_fraction": 0.07510189922816755,
+          "flank_hot_fraction": 0.053418135920615464,
+          "contrast": 1.3419173867660672,
+          "crowd_per_slot": 0.42857142857142855,
+          "bbox_yxyx": [
+            989,
+            5244,
+            2756,
+            6945
+          ],
+          "band_polygon_xy": [
+            [
+              7022.264181638126,
+              1482.821006143149
+            ],
+            [
+              5638.2686439142635,
+              2451.905114505997
+            ],
+            [
+              5505.496320684854,
+              2262.2865857353972
+            ],
+            [
+              6889.491858408716,
+              1293.202477372549
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.9913726452347669,
+          "angle_deg": 65.0,
+          "length_mm": 8.077032852638403,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.4134924109446418,
+          "band_coverage": 0.9904806141895041,
+          "upper_flank_coverage": 0.9929295630419518,
+          "lower_flank_coverage": 0.9904155978482887,
+          "band_hot_fraction": 0.20041353959258693,
+          "flank_hot_fraction": 0.0716120958001925,
+          "contrast": 2.5782151227648127,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1229,
+            5069,
+            2630,
+            6298
+          ],
+          "band_polygon_xy": [
+            [
+              5590.834986677348,
+              1456.8694450158432
+            ],
+            [
+              5985.9161885528765,
+              2304.1238166011476
+            ],
+            [
+              5776.122719331429,
+              2401.9521179300127
+            ],
+            [
+              5381.041517455901,
+              1554.6977463447085
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.9541876175900804,
+          "angle_deg": 145.0,
+          "length_mm": 14.870813801964204,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.5809809727779205,
+          "band_coverage": 0.9962324554917246,
+          "upper_flank_coverage": 0.9982865187584371,
+          "lower_flank_coverage": 0.9956968687946736,
+          "band_hot_fraction": 0.06786319837889251,
+          "flank_hot_fraction": 0.02314249202447717,
+          "contrast": 2.349346522325091,
+          "crowd_per_slot": 1.2,
+          "bbox_yxyx": [
+            1756,
+            2618,
+            3540,
+            4683
+          ],
+          "band_polygon_xy": [
+            [
+              4421.664992766449,
+              2249.1872764250147
+            ],
+            [
+              3011.774075391457,
+              3236.403524824387
+            ],
+            [
+              2879.001752162048,
+              3046.7849960537874
+            ],
+            [
+              4288.89266953704,
+              2059.568747654415
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.9510315524274,
+          "angle_deg": 15.0,
+          "length_mm": 9.194137628938854,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.27499648163893803,
+          "band_coverage": 0.999942682405438,
+          "upper_flank_coverage": 0.9925365457466593,
+          "lower_flank_coverage": 1.0,
+          "band_hot_fraction": 0.11535385845661736,
+          "flank_hot_fraction": 0.032044087855054505,
+          "contrast": 2.981485979402629,
+          "crowd_per_slot": 1.25,
+          "bbox_yxyx": [
+            2095,
+            4560,
+            3214,
+            6022
+          ],
+          "band_polygon_xy": [
+            [
+              4806.721792184214,
+              2405.3098958836144
+            ],
+            [
+              5834.598526703679,
+              2680.7286368168448
+            ],
+            [
+              5774.686710707726,
+              2904.3225780874627
+            ],
+            [
+              4746.80997618826,
+              2628.903837154232
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.9089058338471244,
+          "angle_deg": 145.0,
+          "length_mm": 15.720628207319876,
+          "slot_count": 6,
+          "mark_count": 11,
+          "residual_mm": 0.46536736740646123,
+          "band_coverage": 0.9895348036090582,
+          "upper_flank_coverage": 0.9934041537641093,
+          "lower_flank_coverage": 0.9892620005046013,
+          "band_hot_fraction": 0.2396124611082667,
+          "flank_hot_fraction": 0.11562120019731198,
+          "contrast": 1.9870249664563215,
+          "crowd_per_slot": 1.3333333333333333,
+          "bbox_yxyx": [
+            1269,
+            1308,
+            3110,
+            3454
+          ],
+          "band_polygon_xy": [
+            [
+              3192.7467502909676,
+              1762.2232315825015
+            ],
+            [
+              1702.2855542801726,
+              2805.8553964383195
+            ],
+            [
+              1569.5132310507636,
+              2616.2368676677193
+            ],
+            [
+              3059.9744270615583,
+              1572.6047028119012
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.9041932459898869,
+          "angle_deg": 70.0,
+          "length_mm": 8.009157370377977,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.5008377237633155,
+          "band_coverage": 0.977226525172914,
+          "upper_flank_coverage": 0.9911158728217234,
+          "lower_flank_coverage": 0.9904164878889745,
+          "band_hot_fraction": 0.31201565557729943,
+          "flank_hot_fraction": 0.13468722879916267,
+          "contrast": 2.2255983354569784,
+          "crowd_per_slot": 0.5,
+          "bbox_yxyx": [
+            1342,
+            1845,
+            2708,
+            3004
+          ],
+          "band_polygon_xy": [
+            [
+              2374.919051226658,
+              1549.7321015915118
+            ],
+            [
+              2691.9668697144493,
+              2420.8138237740645
+            ],
+            [
+              2474.4454297177112,
+              2499.985153247599
+            ],
+            [
+              2157.39761122992,
+              1628.903431065046
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.8770537960294347,
+          "angle_deg": 95.0,
+          "length_mm": 14.719276908544666,
+          "slot_count": 6,
+          "mark_count": 7,
+          "residual_mm": 0.7440234709172449,
+          "band_coverage": 0.9951673096060287,
+          "upper_flank_coverage": 0.995292178982783,
+          "lower_flank_coverage": 0.981830070936512,
+          "band_hot_fraction": 0.05240704337278849,
+          "flank_hot_fraction": 0.028183541062522716,
+          "contrast": 1.6343964345947273,
+          "crowd_per_slot": 0.8333333333333334,
+          "bbox_yxyx": [
+            761,
+            4261,
+            2761,
+            5238
+          ],
+          "band_polygon_xy": [
+            [
+              4939.03885942535,
+              922.6115885453875
+            ],
+            [
+              4790.558591870644,
+              2619.748812623681
+            ],
+            [
+              4559.957967312369,
+              2599.573872172834
+            ],
+            [
+              4708.438234867076,
+              902.4366480945406
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.8119836496691851,
+          "angle_deg": 150.0,
+          "length_mm": 16.293523969854252,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.38431959848756275,
+          "band_coverage": 0.9929450304265719,
+          "upper_flank_coverage": 0.990576130630424,
+          "lower_flank_coverage": 0.9973229291428086,
+          "band_hot_fraction": 0.14356041958571591,
+          "flank_hot_fraction": 0.07286017960175263,
+          "contrast": 1.8532474865944881,
+          "crowd_per_slot": 0.8,
+          "bbox_yxyx": [
+            636,
+            1381,
+            2398,
+            3620
+          ],
+          "band_polygon_xy": [
+            [
+              3375.085925395822,
+              1145.6643314438447
+            ],
+            [
+              1741.9139722633613,
+              2088.5765982178177
+            ],
+            [
+              1626.1732315226204,
+              1888.107754749198
+            ],
+            [
+              3259.345184655081,
+              945.195487975225
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.7724014487984874,
+          "angle_deg": 140.0,
+          "length_mm": 8.681379472197062,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.5491064110709004,
+          "band_coverage": 0.9929480386537127,
+          "upper_flank_coverage": 0.9871208078044706,
+          "lower_flank_coverage": 0.9937344123669323,
+          "band_hot_fraction": 0.28173418621179813,
+          "flank_hot_fraction": 0.12169978645225034,
+          "contrast": 2.215145476470234,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1127,
+            3155,
+            2543,
+            4624
+          ],
+          "band_polygon_xy": [
+            [
+              4348.610338048178,
+              1600.7370745207652
+            ],
+            [
+              3578.897085353303,
+              2246.6031809693
+            ],
+            [
+              3430.1036571851223,
+              2069.278078395462
+            ],
+            [
+              4199.816909879998,
+              1423.4119719469277
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.7689506657371536,
+          "angle_deg": 90.0,
+          "length_mm": 15.050275199999998,
+          "slot_count": 7,
+          "mark_count": 8,
+          "residual_mm": 0.3284006022233134,
+          "band_coverage": 0.9770258641556541,
+          "upper_flank_coverage": 0.9978275064448731,
+          "lower_flank_coverage": 0.9952687357970518,
+          "band_hot_fraction": 0.17740927461355777,
+          "flank_hot_fraction": 0.1260933532605814,
+          "contrast": 1.377064126377432,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            611,
+            2128,
+            2585,
+            2939
+          ],
+          "band_polygon_xy": [
+            [
+              2648.887844723299,
+              727.1545
+            ],
+            [
+              2648.887844723299,
+              2469.0845
+            ],
+            [
+              2417.406363241818,
+              2469.0845
+            ],
+            [
+              2417.406363241818,
+              727.1545000000001
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.7686088443226682,
+          "angle_deg": 125.0,
+          "length_mm": 10.425203555092372,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.4613142627829659,
+          "band_coverage": 0.9854708585384203,
+          "upper_flank_coverage": 0.9870911602490421,
+          "lower_flank_coverage": 0.9903149729789836,
+          "band_hot_fraction": 0.09708390482437831,
+          "flank_hot_fraction": 0.058399652637395424,
+          "contrast": 1.5655621146507614,
+          "crowd_per_slot": 0.4,
+          "bbox_yxyx": [
+            980,
+            3839,
+            2623,
+            5329
+          ],
+          "band_polygon_xy": [
+            [
+              5024.679568357733,
+              1373.719196648333
+            ],
+            [
+              4332.59032028318,
+              2362.1250767736547
+            ],
+            [
+              4142.971791512579,
+              2229.352753544246
+            ],
+            [
+              4835.061039587133,
+              1240.9468734189245
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.6911076633627147,
+          "angle_deg": 50.0,
+          "length_mm": 14.34913389433861,
+          "slot_count": 6,
+          "mark_count": 7,
+          "residual_mm": 0.4383474175531344,
+          "band_coverage": 0.989455984324778,
+          "upper_flank_coverage": 0.9920787886575874,
+          "lower_flank_coverage": 0.9904197124284614,
+          "band_hot_fraction": 0.168507810477259,
+          "flank_hot_fraction": 0.10727065407167485,
+          "contrast": 1.522186534136294,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1238,
+            1821,
+            3209,
+            3659
+          ],
+          "band_polygon_xy": [
+            [
+              2294.9671670385096,
+              1513.2533450405297
+            ],
+            [
+              3362.495578729947,
+              2785.4841648701904
+            ],
+            [
+              3185.170476156109,
+              2934.277593038371
+            ],
+            [
+              2117.642064464672,
+              1662.0467732087102
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.6742517665010195,
+          "angle_deg": 85.0,
+          "length_mm": 9.370156175546388,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.6005066257324562,
+          "band_coverage": 0.9926010168147235,
+          "upper_flank_coverage": 0.9887620167685109,
+          "lower_flank_coverage": 0.9925729949165759,
+          "band_hot_fraction": 0.21118503392398394,
+          "flank_hot_fraction": 0.08801007775027876,
+          "contrast": 2.256758070201152,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1423,
+            3630,
+            2806,
+            4553
+          ],
+          "band_polygon_xy": [
+            [
+              4159.75538962223,
+              1563.9804043064014
+            ],
+            [
+              4254.27656105062,
+              2644.362337451186
+            ],
+            [
+              4023.6759364923464,
+              2664.537277902032
+            ],
+            [
+              3929.154765063955,
+              1584.1553447572483
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.6686184991217696,
+          "angle_deg": 85.0,
+          "length_mm": 9.44390805487328,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.4967508232020682,
+          "band_coverage": 0.9924395688227365,
+          "upper_flank_coverage": 0.9918649722063066,
+          "lower_flank_coverage": 0.9926805286941426,
+          "band_hot_fraction": 0.13152046019087463,
+          "flank_hot_fraction": 0.05865287987013614,
+          "contrast": 2.061391458866327,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1525,
+            5346,
+            2916,
+            6269
+          ],
+          "band_polygon_xy": [
+            [
+              5875.081425171846,
+              1665.7508013774282
+            ],
+            [
+              5970.346566487016,
+              2754.636349239777
+            ],
+            [
+              5739.7459419287425,
+              2774.811289690623
+            ],
+            [
+              5644.480800613572,
+              1685.925741828275
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.6621607312846802,
+          "angle_deg": 15.0,
+          "length_mm": 15.141946487170557,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.510466913732609,
+          "band_coverage": 0.9976129528491217,
+          "upper_flank_coverage": 0.9887345952451987,
+          "lower_flank_coverage": 0.9975204699574142,
+          "band_hot_fraction": 0.06464957819597664,
+          "flank_hot_fraction": 0.040034939300839005,
+          "contrast": 1.4919490108130276,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1985,
+            3466,
+            3282,
+            5593
+          ],
+          "band_polygon_xy": [
+            [
+              3713.0305419225324,
+              2294.8992658164902
+            ],
+            [
+              5405.854288710158,
+              2748.4900216964616
+            ],
+            [
+              5345.942472714204,
+              2972.0839629670795
+            ],
+            [
+              3653.1187259265785,
+              2518.493207087108
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.650368312188937,
+          "angle_deg": 65.0,
+          "length_mm": 12.724432778780177,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.2666609174651072,
+          "band_coverage": 0.9931590440614573,
+          "upper_flank_coverage": 0.9874568863657398,
+          "lower_flank_coverage": 0.994060108787801,
+          "band_hot_fraction": 0.18815145198041403,
+          "flank_hot_fraction": 0.05883600264886628,
+          "contrast": 2.878601957629473,
+          "crowd_per_slot": 1.75,
+          "bbox_yxyx": [
+            994,
+            3403,
+            2882,
+            4858
+          ],
+          "band_polygon_xy": [
+            [
+              3923.9639555366302,
+              1221.295035476484
+            ],
+            [
+              4546.36877759733,
+              2556.0464837441773
+            ],
+            [
+              4336.575308375885,
+              2653.874785073043
+            ],
+            [
+              3714.1704863151836,
+              1319.1233368053497
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.5747221872999553,
+          "angle_deg": 55.0,
+          "length_mm": 8.52228074675854,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.6385968195971243,
+          "band_coverage": 0.9925780179298974,
+          "upper_flank_coverage": 0.9826264602378978,
+          "lower_flank_coverage": 0.9950325300954163,
+          "band_hot_fraction": 0.14999637864851162,
+          "flank_hot_fraction": 0.07283526902351686,
+          "contrast": 1.931500682433817,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1514,
+            1323,
+            2977,
+            2687
+          ],
+          "band_polygon_xy": [
+            [
+              1817.0012489553353,
+              1774.8817163747758
+            ],
+            [
+              2382.7627559355315,
+              2582.872884859958
+            ],
+            [
+              2193.1442271649316,
+              2715.6452080893664
+            ],
+            [
+              1627.3827201847353,
+              1907.6540396041844
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.5703461812602943,
+          "angle_deg": 150.0,
+          "length_mm": 12.906722575857025,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.5526207411383103,
+          "band_coverage": 0.9862048327426216,
+          "upper_flank_coverage": 0.9884833190716381,
+          "lower_flank_coverage": 0.9942880342431801,
+          "band_hot_fraction": 0.16572006160954947,
+          "flank_hot_fraction": 0.07367872235332858,
+          "contrast": 2.0999371963111684,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1151,
+            930,
+            2717,
+            2830
+          ],
+          "band_polygon_xy": [
+            [
+              2584.695634347602,
+              1660.6569259929063
+            ],
+            [
+              1290.997760471409,
+              2407.5737417253727
+            ],
+            [
+              1175.2570197306682,
+              2207.104898256753
+            ],
+            [
+              2468.9548936068613,
+              1460.1880825242865
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.5695242100846789,
+          "angle_deg": 100.0,
+          "length_mm": 17.715111356412276,
+          "slot_count": 5,
+          "mark_count": 9,
+          "residual_mm": 0.43302607885995187,
+          "band_coverage": 0.9959893306683119,
+          "upper_flank_coverage": 0.9955100929711953,
+          "lower_flank_coverage": 0.9960239148320212,
+          "band_hot_fraction": 0.15406784957811034,
+          "flank_hot_fraction": 0.08771801370195384,
+          "contrast": 1.678992883323721,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            196,
+            2644,
+            2584,
+            3839
+          ],
+          "band_polygon_xy": [
+            [
+              3533.2724604048085,
+              400.50135560003963
+            ],
+            [
+              3177.2311636215063,
+              2419.7118890802967
+            ],
+            [
+              2949.266405979791,
+              2379.5155516573964
+            ],
+            [
+              3305.3077027630934,
+              360.3050181771392
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.5547961096813051,
+          "angle_deg": 20.0,
+          "length_mm": 8.505717624967101,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.6444703437495691,
+          "band_coverage": 1.0,
+          "upper_flank_coverage": 0.9880796553969242,
+          "lower_flank_coverage": 1.0,
+          "band_hot_fraction": 0.06078939786804955,
+          "flank_hot_fraction": 0.02715965723748516,
+          "contrast": 1.9050067500794938,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1962,
+            1009,
+            3140,
+            2429
+          ],
+          "band_polygon_xy": [
+            [
+              1296.0649786879833,
+              2274.161292532289
+            ],
+            [
+              2221.152951682223,
+              2610.8657787798484
+            ],
+            [
+              2141.9816222086883,
+              2828.387218776586
+            ],
+            [
+              1216.893649214449,
+              2491.682732529027
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.5519112997246811,
+          "angle_deg": 85.0,
+          "length_mm": 11.57070057859752,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.5824191506837354,
+          "band_coverage": 0.9969853234688253,
+          "upper_flank_coverage": 0.9970836581744473,
+          "lower_flank_coverage": 0.9766905530700721,
+          "band_hot_fraction": 0.15991290031334643,
+          "flank_hot_fraction": 0.09244234518937028,
+          "contrast": 1.658619782661683,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            567,
+            2231,
+            2203,
+            3176
+          ],
+          "band_polygon_xy": [
+            [
+              2760.8535577890157,
+              707.5691061675255
+            ],
+            [
+              2877.5726553629074,
+              2041.674496168213
+            ],
+            [
+              2646.972030804633,
+              2061.84943661906
+            ],
+            [
+              2530.2529332307413,
+              727.7440466183723
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.4109096382688946,
+          "angle_deg": 75.0,
+          "length_mm": 8.222585062955048,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.4809759157252566,
+          "band_coverage": 0.9942573800262318,
+          "upper_flank_coverage": 0.9877856807386339,
+          "lower_flank_coverage": 0.9956198430341473,
+          "band_hot_fraction": 0.13032074340527577,
+          "flank_hot_fraction": 0.07138408814751024,
+          "contrast": 1.7241790944556843,
+          "crowd_per_slot": 0.75,
+          "bbox_yxyx": [
+            1620,
+            1403,
+            2974,
+            2493
+          ],
+          "band_polygon_xy": [
+            [
+              1936.8455685627107,
+              1807.5822498428352
+            ],
+            [
+              2183.1605702141314,
+              2726.8423506723498
+            ],
+            [
+              1959.5666289435135,
+              2786.7541666683032
+            ],
+            [
+              1713.2516272920927,
+              1867.4940658387886
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.37525045277259333,
+          "angle_deg": 90.0,
+          "length_mm": 19.84536288,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.6291879810738197,
+          "band_coverage": 0.9959863977329557,
+          "upper_flank_coverage": 0.9984826042435647,
+          "lower_flank_coverage": 0.9784071059462295,
+          "band_hot_fraction": 0.025819849978302646,
+          "flank_hot_fraction": 0.022878352516662797,
+          "contrast": 1.0894660844137216,
+          "crowd_per_slot": 0.6666666666666666,
+          "bbox_yxyx": [
+            789,
+            4451,
+            3319,
+            5262
+          ],
+          "band_polygon_xy": [
+            [
+              4972.180495308762,
+              905.3985
+            ],
+            [
+              4972.180495308762,
+              3202.3154999999997
+            ],
+            [
+              4740.69901382728,
+              3202.3154999999997
+            ],
+            [
+              4740.69901382728,
+              905.3985
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.2395407118358135,
+          "angle_deg": 55.0,
+          "length_mm": 8.177270169790177,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.6178869545910958,
+          "band_coverage": 0.9939980843235885,
+          "upper_flank_coverage": 0.9901770319153198,
+          "lower_flank_coverage": 0.994972078074716,
+          "band_hot_fraction": 0.11208261098967362,
+          "flank_hot_fraction": 0.06956716523652548,
+          "contrast": 1.5343340513233634,
+          "crowd_per_slot": 1.4,
+          "bbox_yxyx": [
+            1660,
+            4903,
+            3090,
+            6243
+          ],
+          "band_polygon_xy": [
+            [
+              5396.123827170704,
+              1920.7977374445047
+            ],
+            [
+              5938.981406229495,
+              2696.078706922168
+            ],
+            [
+              5749.362877458895,
+              2828.8510301515767
+            ],
+            [
+              5206.505298400104,
+              2053.5700606739138
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.2000668956545466,
+          "angle_deg": 35.0,
+          "length_mm": 16.608353453846515,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.2963271858521387,
+          "band_coverage": 0.9898373035167662,
+          "upper_flank_coverage": 0.9899268906145287,
+          "lower_flank_coverage": 0.9918240291553766,
+          "band_hot_fraction": 0.22263630604106882,
+          "flank_hot_fraction": 0.09125613842600508,
+          "contrast": 2.2975032393820984,
+          "crowd_per_slot": 2.5,
+          "bbox_yxyx": [
+            1180,
+            2844,
+            3080,
+            5074
+          ],
+          "band_polygon_xy": [
+            [
+              3238.1244296048294,
+              1484.123303438408
+            ],
+            [
+              4812.750203215073,
+              2586.688139979597
+            ],
+            [
+              4679.977879985665,
+              2776.306668750197
+            ],
+            [
+              3105.3521063754206,
+              1673.7418322090077
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.18444935435568255,
+          "angle_deg": 105.0,
+          "length_mm": 10.131270363435597,
+          "slot_count": 4,
+          "mark_count": 7,
+          "residual_mm": 0.49542307364484267,
+          "band_coverage": 0.9927755161488858,
+          "upper_flank_coverage": 0.9920239305111327,
+          "lower_flank_coverage": 0.992853266387274,
+          "band_hot_fraction": 0.15325577145641714,
+          "flank_hot_fraction": 0.09158480641567139,
+          "contrast": 1.6070884733332704,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1419,
+            5229,
+            2986,
+            6376
+          ],
+          "band_polygon_xy": [
+            [
+              6066.078239948092,
+              1666.0060573225353
+            ],
+            [
+              5762.586837038385,
+              2798.6513926419193
+            ],
+            [
+              5538.992895767767,
+              2738.7395766459654
+            ],
+            [
+              5842.484298677475,
+              1606.0942413265814
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.18376370346097282,
+          "angle_deg": 75.0,
+          "length_mm": 23.29278443814203,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.2406450773502724,
+          "band_coverage": 0.9910318204230493,
+          "upper_flank_coverage": 0.9619861629652295,
+          "lower_flank_coverage": 0.9967056810648743,
+          "band_hot_fraction": 0.10494187589574819,
+          "flank_hot_fraction": 0.07040943123716045,
+          "contrast": 1.4294576410662247,
+          "crowd_per_slot": 1.8333333333333333,
+          "bbox_yxyx": [
+            0,
+            2479,
+            2829,
+            4020
+          ],
+          "band_polygon_xy": [
+            [
+              3012.110786829223,
+              -22.04333310939026
+            ],
+            [
+              3709.8672944749146,
+              2582.019404736153
+            ],
+            [
+              3486.2733532042967,
+              2641.9312207321063
+            ],
+            [
+              2788.516845558605,
+              37.86848288656361
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.16730220588141265,
+          "angle_deg": 55.0,
+          "length_mm": 8.60719275565646,
+          "slot_count": 4,
+          "mark_count": 6,
+          "residual_mm": 0.230248172366636,
+          "band_coverage": 0.9918970737692712,
+          "upper_flank_coverage": 0.9896904853740901,
+          "lower_flank_coverage": 0.9943273715870051,
+          "band_hot_fraction": 0.1639038392536778,
+          "flank_hot_fraction": 0.09041588966419412,
+          "contrast": 1.7318358661685764,
+          "crowd_per_slot": 1.25,
+          "bbox_yxyx": [
+            1501,
+            3189,
+            2972,
+            4558
+          ],
+          "band_polygon_xy": [
+            [
+              3682.420120124009,
+              1762.169698692712
+            ],
+            [
+              4253.8186094499315,
+              2578.2113122789838
+            ],
+            [
+              4064.2000806793317,
+              2710.983635508393
+            ],
+            [
+              3492.801591353409,
+              1894.9420219221208
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.14470912157148896,
+          "angle_deg": 80.0,
+          "length_mm": 14.428114188748673,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.7732092220279535,
+          "band_coverage": 0.9923199501356593,
+          "upper_flank_coverage": 0.9949951248054589,
+          "lower_flank_coverage": 0.98388192753772,
+          "band_hot_fraction": 0.041679147588685864,
+          "flank_hot_fraction": 0.031318882824592935,
+          "contrast": 1.2507392275845008,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1383,
+            4172,
+            3397,
+            5301
+          ],
+          "band_polygon_xy": [
+            [
+              4705.590462698484,
+              1547.6269433820223
+            ],
+            [
+              4995.569135852024,
+              3192.1777205145613
+            ],
+            [
+              4767.604378210309,
+              3232.374057937462
+            ],
+            [
+              4477.625705056768,
+              1587.8232808049231
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.13865815334306586,
+          "angle_deg": 85.0,
+          "length_mm": 14.804042720596325,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.35745901857155427,
+          "band_coverage": 0.9851651062691483,
+          "upper_flank_coverage": 0.9952216120798353,
+          "lower_flank_coverage": 0.9951743151683213,
+          "band_hot_fraction": 0.14887628649443393,
+          "flank_hot_fraction": 0.11149313712202763,
+          "contrast": 1.3076976219229461,
+          "crowd_per_slot": 1.6666666666666667,
+          "bbox_yxyx": [
+            1465,
+            1825,
+            3474,
+            2803
+          ],
+          "band_polygon_xy": [
+            [
+              2354.6089984018327,
+              1605.9677864590658
+            ],
+            [
+              2503.944338561744,
+              3312.87853513751
+            ],
+            [
+              2273.3437140034694,
+              3333.053475588357
+            ],
+            [
+              2124.0083738435583,
+              1626.1427269099127
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.11118050793502282,
+          "angle_deg": 165.0,
+          "length_mm": 12.813671580374816,
+          "slot_count": 6,
+          "mark_count": 8,
+          "residual_mm": 0.27751648866162854,
+          "band_coverage": 0.9894458266802695,
+          "upper_flank_coverage": 0.9982297898242507,
+          "lower_flank_coverage": 0.9895414530286488,
+          "band_hot_fraction": 0.06571953223156471,
+          "flank_hot_fraction": 0.06877734661125559,
+          "contrast": 0.961184090208314,
+          "crowd_per_slot": 0.8333333333333334,
+          "bbox_yxyx": [
+            1577,
+            4481,
+            2804,
+            6348
+          ],
+          "band_polygon_xy": [
+            [
+              6160.711119517693,
+              2110.436112514686
+            ],
+            [
+              4728.181454116038,
+              2494.2812794926854
+            ],
+            [
+              4668.269638120085,
+              2270.687338222068
+            ],
+            [
+              6100.79930352174,
+              1886.842171244068
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.018668458556869272,
+          "angle_deg": 10.0,
+          "length_mm": 12.273335885131708,
+          "slot_count": 6,
+          "mark_count": 7,
+          "residual_mm": 0.6142343433292492,
+          "band_coverage": 0.9881798418647901,
+          "upper_flank_coverage": 0.9935139535303132,
+          "lower_flank_coverage": 0.9967657649199904,
+          "band_hot_fraction": 0.09052333804809053,
+          "flank_hot_fraction": 0.08934306703202052,
+          "contrast": 1.011880758781985,
+          "crowd_per_slot": 1.1666666666666667,
+          "bbox_yxyx": [
+            1793,
+            1108,
+            2878,
+            2876
+          ],
+          "band_polygon_xy": [
+            [
+              1312.4647631524783,
+              2098.126361967626
+            ],
+            [
+              2711.408783407184,
+              2344.7979372392997
+            ],
+            [
+              2671.2124459842835,
+              2572.7626948810143
+            ],
+            [
+              1272.2684257295778,
+              2326.0911196093407
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": 0.014179450949117989,
+          "angle_deg": 55.0,
+          "length_mm": 14.63705081630114,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.5479747145303325,
+          "band_coverage": 0.9942281448975784,
+          "upper_flank_coverage": 0.9936122497689964,
+          "lower_flank_coverage": 0.9901680207004214,
+          "band_hot_fraction": 0.17122047741337937,
+          "flank_hot_fraction": 0.13258896823460245,
+          "contrast": 1.2709291585251972,
+          "crowd_per_slot": 1.8333333333333333,
+          "bbox_yxyx": [
+            1002,
+            2087,
+            3045,
+            3856
+          ],
+          "band_polygon_xy": [
+            [
+              2580.6355549583004,
+              1263.5184868599895
+            ],
+            [
+              3552.333176011909,
+              2651.246507523755
+            ],
+            [
+              3362.7146472413096,
+              2784.0188307531644
+            ],
+            [
+              2391.0170261877006,
+              1396.2908100893985
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.031430156678804,
+          "angle_deg": 80.0,
+          "length_mm": 9.958669079804514,
+          "slot_count": 6,
+          "mark_count": 6,
+          "residual_mm": 0.40222390690941556,
+          "band_coverage": 0.9858660288443055,
+          "upper_flank_coverage": 0.9930463501776308,
+          "lower_flank_coverage": 0.9888278015362645,
+          "band_hot_fraction": 0.23051482059282372,
+          "flank_hot_fraction": 0.20924112661816402,
+          "contrast": 1.0970333180768155,
+          "crowd_per_slot": 1.5,
+          "bbox_yxyx": [
+            1114,
+            2036,
+            2619,
+            3075
+          ],
+          "band_polygon_xy": [
+            [
+              2569.3611175431365,
+              1278.800879263426
+            ],
+            [
+              2769.512128850551,
+              2413.9136708692636
+            ],
+            [
+              2541.547371208836,
+              2454.110008292164
+            ],
+            [
+              2341.396359901422,
+              1318.9972166863267
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.08510396999244518,
+          "angle_deg": 140.0,
+          "length_mm": 9.820434609940456,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.36220559509730366,
+          "band_coverage": 0.9891375821118106,
+          "upper_flank_coverage": 0.9939769902037754,
+          "lower_flank_coverage": 0.9943334843541963,
+          "band_hot_fraction": 0.12021444339325134,
+          "flank_hot_fraction": 0.08767040954065572,
+          "contrast": 1.3332025943747992,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1266,
+            4805,
+            2767,
+            6374
+          ],
+          "band_polygon_xy": [
+            [
+              6099.303941520074,
+              1739.768220670368
+            ],
+            [
+              5228.599154256396,
+              2470.376286527612
+            ],
+            [
+              5079.805726088216,
+              2293.0511839537744
+            ],
+            [
+              5950.510513351893,
+              1562.4431180965303
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.10908391711484655,
+          "angle_deg": 170.0,
+          "length_mm": 17.25286396294095,
+          "slot_count": 6,
+          "mark_count": 9,
+          "residual_mm": 0.6224789232031761,
+          "band_coverage": 0.989791413125496,
+          "upper_flank_coverage": 1.0,
+          "lower_flank_coverage": 0.9891877302057122,
+          "band_hot_fraction": 0.0823736232196032,
+          "flank_hot_fraction": 0.08414344900055194,
+          "contrast": 0.9812007548083524,
+          "crowd_per_slot": 1.3333333333333333,
+          "bbox_yxyx": [
+            1727,
+            2258,
+            2913,
+            4594
+          ],
+          "band_polygon_xy": [
+            [
+              4429.078898788065,
+              2260.29948951515
+            ],
+            [
+              2462.5564228194103,
+              2607.050460198038
+            ],
+            [
+              2422.3600853965095,
+              2379.085702556323
+            ],
+            [
+              4388.882561365164,
+              2032.3347318734354
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.14132614888929418,
+          "angle_deg": 170.0,
+          "length_mm": 13.126058514459661,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.20151742991446653,
+          "band_coverage": 0.9974038219733771,
+          "upper_flank_coverage": 0.9971971172109296,
+          "lower_flank_coverage": 0.9900491331675861,
+          "band_hot_fraction": 0.03692264495296926,
+          "flank_hot_fraction": 0.03902571196548404,
+          "contrast": 0.9571027746828966,
+          "crowd_per_slot": 0.8,
+          "bbox_yxyx": [
+            2111,
+            3112,
+            3214,
+            4978
+          ],
+          "band_polygon_xy": [
+            [
+              4813.275090752445,
+              2644.5105777487815
+            ],
+            [
+              3317.1357167325637,
+              2908.32031628876
+            ],
+            [
+              3276.939379309663,
+              2680.3555586470447
+            ],
+            [
+              4773.078753329545,
+              2416.5458201070664
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.15900506802224668,
+          "angle_deg": 120.0,
+          "length_mm": 14.500192087192609,
+          "slot_count": 6,
+          "mark_count": 11,
+          "residual_mm": 0.6553463105030432,
+          "band_coverage": 0.9933870885238348,
+          "upper_flank_coverage": 0.9944433888604048,
+          "lower_flank_coverage": 0.9897111633525715,
+          "band_hot_fraction": 0.18076644974692696,
+          "flank_hot_fraction": 0.1799704513649527,
+          "contrast": 1.0041901168116143,
+          "crowd_per_slot": 1.5,
+          "bbox_yxyx": [
+            725,
+            2069,
+            2785,
+            3726
+          ],
+          "band_polygon_xy": [
+            [
+              3417.220070723161,
+              1086.4849378619995
+            ],
+            [
+              2578.088584195811,
+              2539.9033067581686
+            ],
+            [
+              2377.619740727191,
+              2424.1625660174277
+            ],
+            [
+              3216.7512272545405,
+              970.7441971212587
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.17580677983648912,
+          "angle_deg": 110.0,
+          "length_mm": 10.587155987889643,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.7598505441068338,
+          "band_coverage": 0.9830692355860797,
+          "upper_flank_coverage": 0.9875333731892323,
+          "lower_flank_coverage": 0.9927580675692181,
+          "band_hot_fraction": 0.08311749470214269,
+          "flank_hot_fraction": 0.06437712710116698,
+          "contrast": 1.2519641229955718,
+          "crowd_per_slot": 1.0,
+          "bbox_yxyx": [
+            1288,
+            3806,
+            2936,
+            5067
+          ],
+          "band_polygon_xy": [
+            [
+              4754.931172238904,
+              1575.8731785208709
+            ],
+            [
+              4335.8315647864465,
+              2727.339886498792
+            ],
+            [
+              4118.310124789709,
+              2648.1685570252575
+            ],
+            [
+              4537.409732242165,
+              1496.7018490473363
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.19203118727714463,
+          "angle_deg": 80.0,
+          "length_mm": 11.155201919840763,
+          "slot_count": 4,
+          "mark_count": 7,
+          "residual_mm": 0.4737538555531848,
+          "band_coverage": 0.9936977633990897,
+          "upper_flank_coverage": 0.9937369931629053,
+          "lower_flank_coverage": 0.9936114579186958,
+          "band_hot_fraction": 0.11993588680705246,
+          "flank_hot_fraction": 0.07825996797708855,
+          "contrast": 1.4721950368346224,
+          "crowd_per_slot": 1.5,
+          "bbox_yxyx": [
+            1404,
+            4735,
+            3045,
+            5799
+          ],
+          "band_polygon_xy": [
+            [
+              5268.923109395565,
+              1568.8119073070875
+            ],
+            [
+              5493.122239590819,
+              2840.3083583575335
+            ],
+            [
+              5265.157481949104,
+              2880.504695780434
+            ],
+            [
+              5040.958351753851,
+              1609.0082447299878
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.23688289843685095,
+          "angle_deg": 145.0,
+          "length_mm": 15.2063671876994,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.5774886926355736,
+          "band_coverage": 0.9912512737851474,
+          "upper_flank_coverage": 0.9933866360381496,
+          "lower_flank_coverage": 0.9893346278815094,
+          "band_hot_fraction": 0.06795919196845913,
+          "flank_hot_fraction": 0.05595719888608976,
+          "contrast": 1.1819663855509877,
+          "crowd_per_slot": 1.6,
+          "bbox_yxyx": [
+            1416,
+            2997,
+            3223,
+            5094
+          ],
+          "band_polygon_xy": [
+            [
+              4833.075373630167,
+              1909.264772822178
+            ],
+            [
+              3391.370886591624,
+              2918.7571225173283
+            ],
+            [
+              3258.5985633622154,
+              2729.1385937467285
+            ],
+            [
+              4700.3030504007575,
+              1719.6462440515784
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.3211698251407663,
+          "angle_deg": 170.0,
+          "length_mm": 17.918977662602313,
+          "slot_count": 7,
+          "mark_count": 12,
+          "residual_mm": 0.6997923766460248,
+          "band_coverage": 0.9865041410420322,
+          "upper_flank_coverage": 0.9980557117802294,
+          "lower_flank_coverage": 0.9890684432143593,
+          "band_hot_fraction": 0.0968356843309188,
+          "flank_hot_fraction": 0.11894675737223072,
+          "contrast": 0.8285255597588711,
+          "crowd_per_slot": 1.7142857142857142,
+          "bbox_yxyx": [
+            1686,
+            1650,
+            2885,
+            4063
+          ],
+          "band_polygon_xy": [
+            [
+              3897.8403274282855,
+              2219.5927489910914
+            ],
+            [
+              1855.3926274070664,
+              2579.7313851907816
+            ],
+            [
+              1815.1962899841656,
+              2351.7666275490665
+            ],
+            [
+              3857.643990005385,
+              1991.627991349376
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.47611650401183636,
+          "angle_deg": 160.0,
+          "length_mm": 10.815434193669077,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.3795423439652617,
+          "band_coverage": 0.990643399777473,
+          "upper_flank_coverage": 0.9904491813616231,
+          "lower_flank_coverage": 0.9964699522529644,
+          "band_hot_fraction": 0.13820905763952424,
+          "flank_hot_fraction": 0.09307897690512568,
+          "contrast": 1.4378204177941782,
+          "crowd_per_slot": 2.5,
+          "bbox_yxyx": [
+            1243,
+            4618,
+            2513,
+            6290
+          ],
+          "band_polygon_xy": [
+            [
+              6082.03931736234,
+              1772.801336872521
+            ],
+            [
+              4905.744907363911,
+              2200.937488845673
+            ],
+            [
+              4826.573577890377,
+              1983.4160488489351
+            ],
+            [
+              6002.867987888805,
+              1555.279896875783
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.5247622190637538,
+          "angle_deg": 130.0,
+          "length_mm": 13.031449576471871,
+          "slot_count": 5,
+          "mark_count": 7,
+          "residual_mm": 0.37568163048196823,
+          "band_coverage": 0.9929385014558333,
+          "upper_flank_coverage": 0.9924011970719285,
+          "lower_flank_coverage": 0.9922937361951477,
+          "band_hot_fraction": 0.19384469696969697,
+          "flank_hot_fraction": 0.18644980550797474,
+          "contrast": 1.0376426509692933,
+          "crowd_per_slot": 1.8,
+          "bbox_yxyx": [
+            977,
+            2312,
+            2831,
+            4052
+          ],
+          "band_polygon_xy": [
+            [
+              3755.668813744202,
+              1400.7345693564132
+            ],
+            [
+              2786.1717855021857,
+              2556.136135773246
+            ],
+            [
+              2608.846682928348,
+              2407.3427076050657
+            ],
+            [
+              3578.3437111703643,
+              1251.9411411882327
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.5785622802314496,
+          "angle_deg": 85.0,
+          "length_mm": 10.536409732310418,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.4213140878687374,
+          "band_coverage": 0.993386095629096,
+          "upper_flank_coverage": 0.9930870530876819,
+          "lower_flank_coverage": 0.9934193225781419,
+          "band_hot_fraction": 0.16055958791852026,
+          "flank_hot_fraction": 0.1173534583966643,
+          "contrast": 1.339261532947798,
+          "crowd_per_slot": 2.25,
+          "bbox_yxyx": [
+            1385,
+            5110,
+            2902,
+            6045
+          ],
+          "band_polygon_xy": [
+            [
+              5639.8563731139775,
+              1526.145035340242
+            ],
+            [
+              5746.142092571519,
+              2740.996367776574
+            ],
+            [
+              5515.541468013245,
+              2761.1713082274205
+            ],
+            [
+              5409.255748555703,
+              1546.3199757910888
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.6362950758133255,
+          "angle_deg": 175.0,
+          "length_mm": 23.920732757296143,
+          "slot_count": 8,
+          "mark_count": 11,
+          "residual_mm": 0.60906898547554,
+          "band_coverage": 0.9921137253853768,
+          "upper_flank_coverage": 0.9928162311211781,
+          "lower_flank_coverage": 0.9840641804959869,
+          "band_hot_fraction": 0.1354295745559686,
+          "flank_hot_fraction": 0.21604590171166416,
+          "contrast": 0.643363022531031,
+          "crowd_per_slot": 2.375,
+          "bbox_yxyx": [
+            1543,
+            1317,
+            2613,
+            4378
+          ],
+          "band_polygon_xy": [
+            [
+              4236.67406690296,
+              2072.867676877007
+            ],
+            [
+              1478.6061100409272,
+              2314.1673563365425
+            ],
+            [
+              1458.4311695900803,
+              2083.566731778268
+            ],
+            [
+              4216.499126452113,
+              1842.267052318733
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.6365524363033043,
+          "angle_deg": 130.0,
+          "length_mm": 14.123106253027352,
+          "slot_count": 5,
+          "mark_count": 5,
+          "residual_mm": 0.6732648231817204,
+          "band_coverage": 0.9893708284178253,
+          "upper_flank_coverage": 0.9896620950648799,
+          "lower_flank_coverage": 0.9934795472901077,
+          "band_hot_fraction": 0.10834392949533038,
+          "flank_hot_fraction": 0.12208496307663437,
+          "contrast": 0.8959682218078708,
+          "crowd_per_slot": 1.6,
+          "bbox_yxyx": [
+            910,
+            1110,
+            2861,
+            2931
+          ],
+          "band_polygon_xy": [
+            [
+              2634.2818036094714,
+              1333.774053212464
+            ],
+            [
+              1583.5691057237686,
+              2585.9646857021044
+            ],
+            [
+              1406.2440031499314,
+              2437.171257533924
+            ],
+            [
+              2456.9567010356336,
+              1184.9806250442834
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.6927173248689538,
+          "angle_deg": 55.0,
+          "length_mm": 11.35689539044192,
+          "slot_count": 5,
+          "mark_count": 6,
+          "residual_mm": 0.28644379085701965,
+          "band_coverage": 0.9930971538108877,
+          "upper_flank_coverage": 0.9925499843524663,
+          "lower_flank_coverage": 0.9932281662164255,
+          "band_hot_fraction": 0.15926992232060405,
+          "flank_hot_fraction": 0.17327005286077313,
+          "contrast": 0.9236092841048902,
+          "crowd_per_slot": 1.8,
+          "bbox_yxyx": [
+            1294,
+            2647,
+            3026,
+            4199
+          ],
+          "band_polygon_xy": [
+            [
+              3140.878381739432,
+              1555.5272195672615
+            ],
+            [
+              3894.819074570601,
+              2632.2661172358644
+            ],
+            [
+              3705.2005458000003,
+              2765.038440465273
+            ],
+            [
+              2951.2598529688316,
+              1688.2995427966703
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -0.7909330451792792,
+          "angle_deg": 95.0,
+          "length_mm": 10.976184196566235,
+          "slot_count": 4,
+          "mark_count": 5,
+          "residual_mm": 0.09992321440670653,
+          "band_coverage": 0.9936059388041877,
+          "upper_flank_coverage": 0.9936139127216951,
+          "lower_flank_coverage": 0.9931673733412987,
+          "band_hot_fraction": 0.1483062749283748,
+          "flank_hot_fraction": 0.15286216513904682,
+          "contrast": 0.9720260982237199,
+          "crowd_per_slot": 1.5,
+          "bbox_yxyx": [
+            1190,
+            3177,
+            2758,
+            4116
+          ],
+          "band_polygon_xy": [
+            [
+              3816.744904591143,
+              1350.9645520519014
+            ],
+            [
+              3706.0229733195183,
+              2616.522017549319
+            ],
+            [
+              3475.422348761244,
+              2596.3470770984727
+            ],
+            [
+              3586.144280032869,
+              1330.7896116010547
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -1.3348070981434668,
+          "angle_deg": 15.0,
+          "length_mm": 16.104096637096898,
+          "slot_count": 6,
+          "mark_count": 9,
+          "residual_mm": 0.4999831277374188,
+          "band_coverage": 0.9861734433738831,
+          "upper_flank_coverage": 0.9893147808493321,
+          "lower_flank_coverage": 0.9897060893237825,
+          "band_hot_fraction": 0.12140266954710285,
+          "flank_hot_fraction": 0.2385892972976726,
+          "contrast": 0.5285934309141036,
+          "crowd_per_slot": 2.6666666666666665,
+          "bbox_yxyx": [
+            1420,
+            2042,
+            2746,
+            4277
+          ],
+          "band_polygon_xy": [
+            [
+              2289.537762879577,
+              1729.987309310474
+            ],
+            [
+              4089.926981725275,
+              2212.4001465618785
+            ],
+            [
+              4030.0151657293204,
+              2435.9940878324965
+            ],
+            [
+              2229.625946883623,
+              1953.5812505810918
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        },
+        {
+          "score": -1.5320756857191937,
+          "angle_deg": 170.0,
+          "length_mm": 12.882108768260826,
+          "slot_count": 4,
+          "mark_count": 4,
+          "residual_mm": 0.7015566331024452,
+          "band_coverage": 0.9975058857189739,
+          "upper_flank_coverage": 0.9971661774115052,
+          "lower_flank_coverage": 0.9818385385785146,
+          "band_hot_fraction": 0.06841804138457137,
+          "flank_hot_fraction": 0.10339312711265984,
+          "contrast": 0.6915590334382474,
+          "crowd_per_slot": 2.25,
+          "bbox_yxyx": [
+            1984,
+            1457,
+            3082,
+            3295
+          ],
+          "band_polygon_xy": [
+            [
+              3130.022697725619,
+              2517.359908210711
+            ],
+            [
+              1661.6892960902244,
+              2776.26670359447
+            ],
+            [
+              1621.492958667324,
+              2548.3019459527554
+            ],
+            [
+              3089.8263603027185,
+              2289.3951505689965
+            ]
+          ],
+          "warnings": [],
+          "threshold": 0.25
+        }
+      ]
+    }
+  ],
+  "comparison_status": "Single published map only; no tile-placement experiment",
+  "limitations": [
+    "Rows are published coarse annotations, not ink or glyph truth",
+    "All maps require full inspection irrespective of rank",
+    "No false-positive rate or candidate verdict",
+    "Score maps keep their supplied scale; no new contrast stretch"
+  ]
+}

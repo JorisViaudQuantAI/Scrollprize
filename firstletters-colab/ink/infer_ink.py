@@ -475,10 +475,11 @@ def z_weights(depth_in: int, depth_out: int, center: float, ratio: float, shift:
 # --------------------------------------------------------------------------
 # Inference
 # --------------------------------------------------------------------------
-def sweep(source: Source, model, args, roi, mask, voxel) -> tuple[dict, dict]:
+def sweep(source: Source, model, args, roi, mask, voxel, component_sink=None) -> tuple[dict, dict]:
     """Run one model over the ROI.
 
     Returns ({(direction, shift): probability on the *input* ROI grid}, info).
+    An optional sink retains individual components; it must not mutate inputs.
     """
     import cv2
 
@@ -683,6 +684,50 @@ def sweep(source: Source, model, args, roi, mask, voxel) -> tuple[dict, dict]:
         if resample:
             prob = cv2.resize(prob, (x1 - x0, y1 - y0), interpolation=cv2.INTER_LINEAR)
         probs[key] = prob
+        if component_sink is not None:
+            direction, shift = key
+            ordered_weights = zmats[shift][::-1] if direction == "reverse" else zmats[shift]
+            positions = center + (np.arange(DZ) - (DZ - 1) / 2.0 + shift) * z_ratio
+            if direction == "reverse":
+                positions = positions[::-1]
+            sampling = {
+                "source_shape_zyx": [D, H, W],
+                "source_roi_y0_x0_y1_x1": [y0, x0, y1, x1],
+                "output_shape_yx": [y1 - y0, x1 - x0],
+                "output_grid": "Input ROI grid after any --xy-bin; no transpose, flip, or coordinate relabeling",
+                "xy_pitch_um": [um_xy, um_xy] if voxel_known else None,
+                "source_layer_pitch_um": um_z if voxel_known else None,
+                "effective_depth_pitch_um": z_ratio * um_z if voxel_known else None,
+                "shift_um": shift * z_ratio * um_z if voxel_known else None,
+                "inference_assumed_xy_pitch_um": um_xy,
+                "inference_assumed_source_layer_pitch_um": um_z,
+                "inference_effective_depth_pitch_um": z_ratio * um_z,
+                "physical_pitch_known": bool(voxel_known),
+                "source_layers_per_model_plane": z_ratio,
+                "surface_layer": center,
+                "model_plane_source_positions": positions.tolist(),
+                "model_plane_source_weight_masses": ordered_weights.sum(1).tolist(),
+                "model_plane_source_contributors": [
+                    [{"source_layer": int(i), "weight": float(row[i])} for i in np.flatnonzero(row)]
+                    for row in ordered_weights
+                ],
+                "model_plane_order": "decreasing source layer index" if direction == "reverse" else "increasing source layer index",
+                "positive_shift_convention": "Increasing source layer index before direction reversal; physical normal is not inferred",
+                "resampled": bool(resample),
+                "xy_scale": s_xy,
+                "model_grid_shape_yx": [Hm, Wm],
+                "model_roi_y0_x0_y1_x1": [my0, mx0, my1, mx1],
+                "model_patch_zyx": [DZ, P, P],
+                "output_interpolation": "cv2.INTER_LINEAR from model ROI to exact source ROI dimensions" if resample else "none",
+                "input_resampling_border_mode": "cv2.BORDER_REPLICATE" if resample else "none",
+                "xy_tile_zero_padding_bottom_right": [max(0, P - Hm), max(0, P - Wm)],
+                "xy_tile_padding_present": Hm < P or Wm < P,
+                "xy_context_status": "No acquisition-validity or receptive-field coverage is certified",
+                "stride": stride,
+                "blend": blend,
+                "tta": bool(args.tta),
+            }
+            component_sink(direction, shift, prob, wsum, sampling)
     px_um = target_um if resample else um_xy
     area_cm2 = float(data_seen.sum()) * (px_um * 1e-4) ** 2
     passes = len(keys)
@@ -742,6 +787,8 @@ def run(args) -> dict:
         source.um_z = float(args.input_um_z or args.input_um)
     elif args.input_um_z:
         source.um_z = float(args.input_um_z)
+    original_shape_zyx = [source.depth, source.height, source.width]
+    original_pitch_um = {"xy": source.um_xy, "z": source.um_z}
     if args.xy_bin > 1:
         source = BinnedSource(source, args.xy_bin)  # --roi, --mask and the output then live on the binned grid
     log(f"input: {source.description}")
@@ -771,10 +818,46 @@ def run(args) -> dict:
     else:
         mask_path = None
 
+    component_writer = None
+    if getattr(args, "component_provenance", None) and not getattr(args, "export_components", None):
+        raise ValueError("--component-provenance requires --export-components")
+    if getattr(args, "export_components", None):
+        if str(HERE.parent) not in sys.path:
+            sys.path.insert(0, str(HERE.parent))
+        from component_export.export import ComponentWriter, outside_git, sha256_file
+
+        outside_git(args.output)
+        export_shifts = [float(v) for v in str(args.z_shifts).split(",")]
+        if not export_shifts or not all(math.isfinite(sh) for sh in export_shifts) or len(set(export_shifts)) != len(export_shifts):
+            raise ValueError("Component export requires distinct finite --z-shifts")
+        export_directions = ["forward", "reverse"] if args.direction == "both" else [args.direction]
+        component_writer = ComponentWriter(
+            args.export_components,
+            expected_components=len(args.checkpoint) * len(export_shifts) * len(export_directions),
+            provenance_path=getattr(args, "component_provenance", None),
+            run_metadata={
+                "input": args.input, "source_description": source.description,
+                "original_source_shape_zyx": original_shape_zyx,
+                "original_pitch_um": original_pitch_um,
+                "source_shape_zyx": [D, H, W], "xy_bin": args.xy_bin,
+                "source_grid": "Input after --xy-bin; ROI, input mask, and output arrays use this grid",
+                "roi_y0_x0_y1_x1": [y0, x0, y1, x1],
+                "output_shape_yx": [y1 - y0, x1 - x0],
+                "source_layer_order": "Array Z index; numbered layer files are sorted by their integer stem",
+                "inference_mask_path": mask_path,
+                "inference_mask_sha256": sha256_file(mask_path) if mask_path else None,
+                "inference_mask_role": "Tile selection and probability blending, not acquisition validity",
+                "acquisition_coverage_status": "unknown; no acquisition-validity input is available",
+                "script_sha256": sha256_file(__file__),
+                "options": vars(args),
+            },
+        )
+
     t_all = time.time()
     per_model, infos = [], []
-    for ckpt in args.checkpoint:
+    for model_index, ckpt in enumerate(args.checkpoint):
         t0 = time.time()
+        checkpoint_record = component_writer.checkpoint_before_load(ckpt) if component_writer is not None else None
         model = load_model(ckpt, args)
         log(f"loaded {Path(ckpt).name} ({model.name}) in {time.time() - t0:.1f}s")
         if um_xy is None:
@@ -783,7 +866,8 @@ def run(args) -> dict:
             voxel = (model.nominal_um, model.nominal_um, False)
         else:
             voxel = (um_xy, um_z, True)
-        probs, info = sweep(source, model, args, (y0, x0, y1, x1), mask, voxel)
+        component_sink = component_writer.model_sink(checkpoint_record, model_index, model.info) if component_writer is not None else None
+        probs, info = sweep(source, model, args, (y0, x0, y1, x1), mask, voxel, component_sink=component_sink)
         per_model.append((model, probs))
         infos.append(info)
         del model
@@ -863,6 +947,9 @@ def run(args) -> dict:
     }
     meta_path = out_path.with_suffix(".json")
     meta_path.write_text(json.dumps(meta, indent=1))
+    if component_writer is not None:
+        component_writer.finish()
+        log(f"completed private per-pass export: {component_writer.root / 'receipt.json'}")
     log(f"done in {elapsed:.1f}s; {area:.2f} cm2 -> {meta['cm2_per_hour_this_configuration']} cm2/h for this configuration; metadata {meta_path}")
     return meta
 
@@ -918,6 +1005,11 @@ def parse_args(argv=None):
     p.add_argument("--threads", type=int, default=2)
     p.add_argument("--band-rows", type=int, default=1536, help="rows of the model grid held in memory at once")
     p.add_argument("--save-float", action="store_true", help="also save the float16 probability as .npy")
+    p.add_argument("--export-components", metavar="DIR",
+                   help="opt-in float32 map and prediction/depth-support masks for every checkpoint, direction and shift; "
+                        "DIR must be new and outside all Git worktrees; see ../component_export/README.md")
+    p.add_argument("--component-provenance", metavar="JSON",
+                   help="optional declared mesh/normal/frame provenance for --export-components; missing values remain unknown")
     p.add_argument("--no-display", action="store_true", help="do not write the contrast-rescaled *_display.png")
     p.add_argument("--allow-unsafe-pickle", action="store_true", help="allow torch.load(weights_only=False) for trusted checkpoints only")
     return p.parse_args(argv)

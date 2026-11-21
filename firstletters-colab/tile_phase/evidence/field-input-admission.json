@@ -1,0 +1,34 @@
+{
+  "schema": "public-306b-field-input-admission-v1",
+  "status": "pre-inference planning only",
+  "field_input_sha256": "a567fbc7d4977cfcb89962d5a91bf610fd5c65ddcd44326dc75a981273b70d78",
+  "protocol_sha256": "b329bc7bd44eed17946827a1aa7a2c365fa4f5433177eaa58c089ffaf57cf3d5",
+  "common_code_sha256": "c6ebb8e35f1cbc936c58f88c9eabece364204d113ef287faded85f3187d843c3",
+  "phases": [
+    {
+      "phase_offset_yx": [
+        0,
+        0
+      ],
+      "tiles_before_CT_admission": 3886,
+      "admitted_input_tiles": 3886,
+      "geometry_contributors_min": 9,
+      "geometry_contributors_max": 16
+    },
+    {
+      "phase_offset_yx": [
+        10,
+        10
+      ],
+      "tiles_before_CT_admission": 3944,
+      "admitted_input_tiles": 3944,
+      "geometry_contributors_min": 9,
+      "geometry_contributors_max": 16
+    }
+  ],
+  "field_pixels": 1563300,
+  "central_render_plane_positive_pixels": 1563295,
+  "planned_common_scored_pixels_if_all_model_calls_succeed": 1563295,
+  "actual_model_forwards": 0,
+  "interpretation": "Actual published input pixels and geometrical tile admission only; no prediction validity, original CT acquisition completeness, text accuracy or candidate claim"
+}

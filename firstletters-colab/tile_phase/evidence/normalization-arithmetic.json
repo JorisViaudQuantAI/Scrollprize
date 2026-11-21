@@ -1,0 +1,16 @@
+{
+  "input_domain": "uint8 intensities 0 through 200 inclusive",
+  "values_compared": 201,
+  "upstream_expression": "float().mul_(1 / 255.)",
+  "runner_expression": "float().mul_(1 / 255.)",
+  "upstream_runner_bitwise_equal": true,
+  "division_not_used_by_runner": true,
+  "multiplication_vs_division_differing_values": 72,
+  "multiplication_vs_division_max_abs_difference": 5.960464477539063e-08,
+  "torch": "2.13.0+cpu",
+  "operation": "scalar preprocessing arithmetic only; no model inference",
+  "source": "https://github.com/SirProdigle/pherc0306b-first-letters/blob/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/ink_v8.py",
+  "source_sha256": "708083e926db66a86722fd4eb70557a55062f63a600b0478f450288fb454e816",
+  "runner_sha256": "1fc3d58aa1f4022678ea8dcfb549c0851e3d463c25d66d34ab505d75d5c91dd8",
+  "reproduction": "v=torch.arange(201,dtype=torch.float32); source=v.clone().mul_(1/255.); runner=v.clone().float().mul_(1/255.); division=v/255.; d=(source-division).abs()"
+}

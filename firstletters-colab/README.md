@@ -18,6 +18,25 @@ real data; anything else is labelled.
 AI assistance: the code, the runs and this text were produced with AI coding agents, directed by the repository
 owner. See "How this was made" at the end.
 
+### Follow-on collaboration tools
+
+These additions support the same inference and review workflow. Their linked
+receipts distinguish measured public-control results from software checks and
+experiments that have not run.
+Derived public-control images and data retain their source licences, as stated
+in the linked control documentation.
+
+| Tool | Use and current evidence |
+| --- | --- |
+| [Individual inference components](component_export/README.md) | Opt-in `--export-components` retains every checkpoint/direction/depth map before aggregation, with prediction and depth-context masks. No extra model passes; geometry and acquisition validity remain separate requirements. |
+| [Public line controls](line_controls/README.md) and [fixed row contexts](row_context/README.md) | Reproducible published controls and a physical-scale view that keeps both published 306B rows visible. The lower row's strongest individual overlap is rank 11; ranking is not letter recognition. |
+| [Actual tile-placement control](tile_phase/README.md) | Two genuine CPU forwards measured sensitivity on the same tiny physical patch. The larger, bounded CUDA comparison is prepared separately; full-field line-rank stability remains unmeasured. |
+| [Three-depth comparison](depth_screening/README.md) | Combines retained maps on common support and keeps winning-depth attribution. Software-checked; no demonstrated detector gain. |
+| [Geometry review](geometry_review/README.md) | Keeps geometry changes separate from depth shifts and records held-out CT checks. Its declared-metadata checks do not certify anatomical correctness. |
+
+The [collaboration notes](../collab/) record ownership and the next producer-to-
+consumer handoffs. Generated unread-scroll outputs stay outside Git.
+
 ---
 
 ## 1. Registration of the 2.4 µm rescans (PHerc. 1203, PHerc. 0846A)

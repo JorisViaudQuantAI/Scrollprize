@@ -1,0 +1,11 @@
+{
+  "measurement": "Filesystem stat after the two completed bounded real Hecate runs; logical bytes and allocated blocks are distinct",
+  "source_result_sha256": "07ecad1dd71df8f27994cf1adce697ff40d55300fcba806162a71e02ad4a1692",
+  "input": {"file_count": 4, "logical_file_bytes": 522741910, "allocated_bytes_from_stat_blocks": 522752000},
+  "legacy": {"file_count": 13, "logical_file_bytes": 38007, "allocated_bytes_from_stat_blocks": 65536},
+  "new": {"file_count": 38, "logical_file_bytes": 270459, "allocated_bytes_from_stat_blocks": 344064},
+  "scope": "The input, legacy and new directories only; the work directory's preregistration/result JSON files are excluded",
+  "output_scope": "Output directory totals include logs, metadata, PNG/NPY files, and, for the new run, the component packet",
+  "component_export_logical_bytes": 232383,
+  "allocation_method": "Sum stat.st_blocks * 512 over regular files; filesystem-specific allocation, not a portable storage guarantee"
+}
