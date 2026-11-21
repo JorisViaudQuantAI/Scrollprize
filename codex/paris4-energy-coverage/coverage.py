@@ -98,16 +98,17 @@ def coarse_support(key, xyz):
         raise ValueError("unexpected pyramid scales")
     p = (xyz[:,::-1]*s0 + translation(native)-translation(low))/sl
     iy = np.floor(p+.5).astype(int)
-    if np.any(iy < 0) or np.any(iy >= np.asarray(coarse["shape"])):
-        raise ValueError("native bounds do not map to coarse voxel centres")
+    # A crop can be shorter than the rounded-up native boundary at this level.
+    # -1 is unresolved and remains distinct from a verified Zarr fill value.
+    usable = np.flatnonzero(((iy >= 0) & (iy < np.asarray(coarse["shape"]))).all(axis=1))
     chunks = np.asarray(coarse["chunks"])
-    unique, ids = np.unique(iy//chunks, axis=0, return_inverse=True)
-    out = np.zeros(len(iy),bool)
+    unique, ids = np.unique(iy[usable]//chunks, axis=0, return_inverse=True)
+    out = np.full(len(iy),-1,dtype=np.int8)
     separator = coarse.get("dimension_separator", ".")
     dtype = np.dtype(coarse["dtype"])
     def one(group):
         ix, point = group
-        members = np.flatnonzero(ids == ix)
+        members = usable[np.flatnonzero(ids == ix)]
         name = separator.join(str(v) for v in point)
         try:
             data = read_bytes(base+f"{level}/"+name)
@@ -163,21 +164,84 @@ def run():
     else:
         check["pointwise_check"] = "different official UV raster dimensions"
     result["independent_official_mesh_78"] = check
-    selected = np.zeros_like(valid)
-    selected[::SUPPORT_STRIDE,::SUPPORT_STRIDE] = True
-    selected &= overlap
-    support = {"uv_stride":SUPPORT_STRIDE, "level":4,"joint_bounds_nodes_sampled":int(selected.sum())}
-    if selected.any():
-        try:
-            a, n137 = coarse_support("137",coords["137"][selected])
-            b, n78 = coarse_support("78",coords["78"][selected])
-            support.update(nonfill_137=int(a.sum()),nonfill_78=int(b.sum()),both_nonfill=int((a&b).sum()),chunks_read_or_implicit_fill=[n137,n78])
-        except Exception as error:
-            support["unverified_reason"] = f"{type(error).__name__}: {error}"
-    else:
-        support["both_nonfill"] = 0
-    result["nonfill_support_on_joint_grid"] = support
-    print("COVERAGE_JSON "+json.dumps(result, separators=(",",":"),sort_keys=True))
+    # Both UV rasters cover the entire official surface, at different resolutions.
+    fixed_selected = np.zeros_like(valid)
+    fixed_selected[::SUPPORT_STRIDE,::SUPPORT_STRIDE] = True
+    fixed_selected &= overlap
+    public78 = direct[::SUPPORT_STRIDE,::SUPPORT_STRIDE].astype(float)
+    valid78 = direct_valid[::SUPPORT_STRIDE,::SUPPORT_STRIDE]
+    t78 = read_json(f"transforms/{SCANS['78']}-to-{DLS}-r1/fit/transform.json")
+    a78 = np.asarray(t78["transformation_matrix"],float)
+    dls78 = public78 @ a78[:,:3].T + a78[:,3]
+    as137, _ = fixed_to_moving(SCANS["137"],dls78)
+    inside78 = valid78 & inside(public78,result["scans"]["78"]["shape_zyx"])
+    inside137 = valid78 & inside(as137,result["scans"]["137"]["shape_zyx"])
+    both = inside78 & inside137
+    nfixed = int(fixed_selected.sum())
+    ndirect = int(both.sum())
+    percent = lambda n, d: round(100*n/d,6) if d else None
+    direct_info = {
+        "stride_vu":[SUPPORT_STRIDE,SUPPORT_STRIDE],"sampling_origin_vu":[0,0],
+        "full_shape_vu":list(direct_valid.shape),"sampled_shape_vu":list(valid78.shape),
+        "valid":int(valid78.sum()),"inside_137":int(inside137.sum()),
+        "inside_78":int(inside78.sum()),"joint":ndirect,
+        "joint_percent_all_valid":percent(ndirect,int(valid78.sum())),
+        "joint_uv_sectors":counts_grid(both),"valid_uv_sectors":counts_grid(valid78),
+    }
+    energies = {
+        "137":np.concatenate((coords["137"][fixed_selected],as137[both])),
+        "78":np.concatenate((coords["78"][fixed_selected],public78[both])),
+    }
+    identified = {}
+    failures = {}
+    source_chunks = {}
+    for key, nodes in energies.items():
+        identified[key] = np.full(len(nodes),-1,dtype=np.int8)
+        if len(nodes):
+            try:
+                identified[key], source_chunks[key] = coarse_support(key,nodes)
+            except Exception as error:
+                failures[key] = f"{type(error).__name__}: {error}"
+    def summary(a,b):
+        known = (a >= 0) & (b >= 0)
+        return {"joint_bounds_nodes_sampled":len(a),"both_evaluable":int(known.sum()),
+                "unknown_137":int((a<0).sum()),"unknown_78":int((b<0).sum()),
+                "nonfill_137":int((a==1).sum()),"nonfill_78":int((b==1).sum()),
+                "both_nonfill":int(((a==1)&(b==1)).sum()),
+                "both_nonfill_percent_among_evaluable":percent(int(((a==1)&(b==1)).sum()),int(known.sum()))}
+    a,b = identified["137"],identified["78"]
+    result["coarse_joint_verification"] = {
+        "level":4,"uv_stride":SUPPORT_STRIDE,"unique_chunks_by_energy":source_chunks,
+        "unresolved_access":failures,"DLS_grid":summary(a[:nfixed],b[:nfixed]),
+        "direct_78_grid":summary(a[nfixed:],b[nfixed:]),
+    }
+    av,bv = a[nfixed:],b[nfixed:]
+    categories = np.full(valid78.shape,"N")
+    categories[valid78] = "O"
+    state = np.full(ndirect,"G")
+    state[(av==0)|(bv==0)] = "F"
+    state[(av==1)&(bv==1)] = "B"
+    categories[both] = state
+    direct_info["categories"] = {key:int((categories==key).sum()) for key in "NOGFB"}
+    rows = ["v_mesh,category_count_runs_at_u_stride4"]
+    for v, row in enumerate(categories):
+        cuts = np.r_[0,np.flatnonzero(row[1:] != row[:-1])+1,len(row)]
+        runs = "|".join(f"{row[i]}:{j-i}" for i,j in zip(cuts,cuts[1:]))
+        rows.append(f"{SUPPORT_STRIDE*v},{runs}")
+    csv = "\n".join(rows)+"\n"
+    direct_info["rle_schema"] = {
+        "v_mesh":"original 78-keV TIFXYZ vertex row, sampled at 0,4,8,...",
+        "runs":"row starts at original U=0; each unit advances 4 stored mesh columns",
+        "N":"no valid public mesh vertex","O":"outside at least one scanner bounding box",
+        "G":"inside both boxes; common non-fill not verified",
+        "F":"inside both boxes; fill verified for at least one scanner at level 4",
+        "B":"inside both boxes and non-fill verified in both at level 4",
+    }
+    direct_info["rle_csv_sha256"] = hashlib.sha256(csv.encode("ascii")).hexdigest()
+    result["native_78_mesh_full_grid"] = direct_info
+    print("COVERAGE_JSON "+json.dumps(result,separators=(",",":"),sort_keys=True))
+    for row in rows:
+        print("COVERAGE_ROW "+row)
 
 
 if __name__ == "__main__":
