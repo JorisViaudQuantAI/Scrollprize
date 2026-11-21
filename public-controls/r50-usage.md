@@ -26,12 +26,12 @@ with np.load("scores.npz", allow_pickle=False) as result:
     metadata = json.loads(result["manifest"].item())
 ```
 
-For an explicit Hann run:
+Run the optional Hann blend with the same stride.
 
 ```sh
 python public-controls/r50_stack.py predict stack.npy scores-hann.npz --cache ./r50-cache --order asc --stride 128 --blend hann
 ```
 
-The public PHerc. 841 evaluation compares both blends using identical tile outputs, two grid origins and a common physical field. [Frozen evaluation protocol](pherc0841-hann-protocol.md)
+The public PHerc. 841 evaluation compares both blends using identical tile outputs, two grid origins and a common physical field. [Public control results](pherc0841-hann-report.md) · [Frozen evaluation protocol](pherc0841-hann-protocol.md)
 
 The branch workflow compares a 256 × 256 public tile pixel-for-pixel with the frozen control at commit `8aad6c48becbc3760e96aacd793c8d9164ef7c84`. It checks every output pixel on a 272 × 278 field against four explicitly placed real tiles. The tests also cover all depth orders and interruption of a staged output write. [Public dataset](https://scrollprize.org/data_browser/PHerc0841)
