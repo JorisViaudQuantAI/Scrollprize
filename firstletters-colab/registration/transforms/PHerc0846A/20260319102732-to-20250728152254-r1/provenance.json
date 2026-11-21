@@ -1,0 +1,196 @@
+{
+ "source": "community registration (not reviewed by the organisers)",
+ "moving_volume": "20260319102732-2.403um-0.2m-77keV-masked.zarr",
+ "fixed_volume": "20250728152254-9.362um-1.2m-113keV-masked.zarr",
+ "method": "per-point NCC of band-passed CT z-slices (reg_point.py), then a similarity least-squares fit (fit_landmarks.py)",
+ "fit": {
+  "model": "similarity",
+  "landmark_pairs": 7,
+  "in_sample_rms_fixed_voxels": 0.717,
+  "leave_one_out_rms_fixed_voxels": 1.135,
+  "leave_one_out_max_fixed_voxels": 1.89,
+  "leave_one_out_rms_moving_voxels": 4.42,
+  "per_point_leave_one_out_xyz_fixed_voxels": [
+   [
+    -1.12,
+    1.42,
+    0.54
+   ],
+   [
+    0.31,
+    0.14,
+    -0.13
+   ],
+   [
+    0.31,
+    -0.54,
+    -0.14
+   ],
+   [
+    0.18,
+    -0.75,
+    -0.03
+   ],
+   [
+    0.59,
+    -1.13,
+    0.43
+   ],
+   [
+    0.4,
+    0.45,
+    -0.26
+   ],
+   [
+    -1.14,
+    0.77,
+    -0.45
+   ]
+  ]
+ },
+ "geometry": {
+  "scale": 0.256627,
+  "anisotropy": 1.0,
+  "rotation_deg": 0.308,
+  "reflected": false
+ },
+ "all_models": {
+  "scale": {
+   "model": "scale",
+   "landmark_pairs": 7,
+   "in_sample_rms_fixed_voxels": 6.695,
+   "leave_one_out_rms_fixed_voxels": 7.813,
+   "leave_one_out_max_fixed_voxels": 10.498,
+   "leave_one_out_rms_moving_voxels": 30.44,
+   "per_point_leave_one_out_xyz_fixed_voxels": [
+    [
+     2.66,
+     9.99,
+     0.51
+    ],
+    [
+     3.65,
+     8.82,
+     -1.94
+    ],
+    [
+     0.32,
+     -0.51,
+     -0.14
+    ],
+    [
+     0.32,
+     -0.73,
+     -4.81
+    ],
+    [
+     0.6,
+     -0.51,
+     2.19
+    ],
+    [
+     -3.18,
+     -8.68,
+     -0.23
+    ],
+    [
+     -4.34,
+     -8.44,
+     4.48
+    ]
+   ]
+  },
+  "similarity": {
+   "model": "similarity",
+   "landmark_pairs": 7,
+   "in_sample_rms_fixed_voxels": 0.717,
+   "leave_one_out_rms_fixed_voxels": 1.135,
+   "leave_one_out_max_fixed_voxels": 1.89,
+   "leave_one_out_rms_moving_voxels": 4.42,
+   "per_point_leave_one_out_xyz_fixed_voxels": [
+    [
+     -1.12,
+     1.42,
+     0.54
+    ],
+    [
+     0.31,
+     0.14,
+     -0.13
+    ],
+    [
+     0.31,
+     -0.54,
+     -0.14
+    ],
+    [
+     0.18,
+     -0.75,
+     -0.03
+    ],
+    [
+     0.59,
+     -1.13,
+     0.43
+    ],
+    [
+     0.4,
+     0.45,
+     -0.26
+    ],
+    [
+     -1.14,
+     0.77,
+     -0.45
+    ]
+   ]
+  },
+  "affine": {
+   "model": "affine",
+   "landmark_pairs": 7,
+   "in_sample_rms_fixed_voxels": 0.548,
+   "leave_one_out_rms_fixed_voxels": 1.412,
+   "leave_one_out_max_fixed_voxels": 1.898,
+   "leave_one_out_rms_moving_voxels": 5.5,
+   "per_point_leave_one_out_xyz_fixed_voxels": [
+    [
+     -1.06,
+     1.44,
+     0.18
+    ],
+    [
+     1.39,
+     -1.28,
+     -0.06
+    ],
+    [
+     0.31,
+     -0.54,
+     -0.14
+    ],
+    [
+     -1.1,
+     -0.01,
+     -0.07
+    ],
+    [
+     1.4,
+     -1.28,
+     -0.06
+    ],
+    [
+     0.24,
+     0.78,
+     0.18
+    ],
+    [
+     -1.1,
+     -0.01,
+     -0.07
+    ]
+   ]
+  }
+ },
+ "created": "2026-11-21T10:24:59+00:00",
+ "caveat": "Landmarks are 2-D slice matches with coarse-z step 2; no hold-out patch review and no deformable part, unlike the organisers' volreg records. See README."
+}
