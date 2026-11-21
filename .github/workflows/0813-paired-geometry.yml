@@ -1,0 +1,51 @@
+name: Measure physical correspondence at 24 public PHerc0813 sites
+on:
+  push:
+    branches: [codex/0813-m7-geometry]
+    paths:
+      - '.github/workflows/0813-paired-geometry.yml'
+      - 'registration-checks/atlas-0813/paired/measure.py'
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: >-
+          python -m pip install --only-binary=:all: numpy==2.1.3 scipy==1.15.3 requests==2.32.5 tifffile==2025.5.10 zarr==2.18.7 numcodecs==0.15.1
+      - name: Replay the pinned public scan and original 24-point selection
+        run: python -u registration-checks/atlas-0813/check.py
+      - name: Measure relative XYZ correspondence and peak ambiguities
+        run: python -u registration-checks/atlas-0813/paired/measure.py
+      - name: Emit inspectable paired geometry results
+        working-directory: registration-checks/atlas-0813/paired
+        run: |
+          python - <<'PY'
+          import base64,hashlib,json,pathlib,zlib
+          names=['geometry.json','sites.csv','summary.json']
+          obj={name:pathlib.Path(name).read_text() for name in names}
+          data=zlib.compress(json.dumps(obj,ensure_ascii=True).encode(),9)
+          payload=base64.b64encode(data).decode('ascii')
+          print('GEOM24_SHA256',hashlib.sha256(data).hexdigest())
+          for i in range(0,len(payload),2500):
+              print('GEOM24_PART',i//2500,payload[i:i+2500])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PHerc0813-public-paired-geometry
+          path: |
+            registration-checks/atlas-0813/paired/geometry.json
+            registration-checks/atlas-0813/paired/sites.csv
+            registration-checks/atlas-0813/paired/summary.json
+          retention-days: 14
