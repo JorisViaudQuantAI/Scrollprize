@@ -1,0 +1,41 @@
+name: Public PHerc0125 anatomical CT calibration
+on:
+  push:
+    branches:
+      - codex/pherc0125-atlas-centres
+    paths:
+      - .github/workflows/pherc0125-atlas-centres.yml
+permissions: {}
+jobs:
+  centres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    strategy:
+      fail-fast: false
+      matrix:
+        mesh: [z14144_w045, z11136_w035]
+    env:
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      BLOSC_NTHREADS: '1'
+    steps:
+      - name: Fetch public anatomical calibration code at this commit
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc0125-atlas-centres"
+          for file in atlas125.py stage125.py recipient.pem; do
+            curl --silent --show-error --location --fail --retry 3 --max-time 45 "$base/$file" --output "$file"
+          done
+          python3 -m venv .venv
+          .venv/bin/pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile 'zarr==2.18.7' 'numcodecs==0.15.1'
+      - name: Read the published scanner on the two geometric depth profiles
+        run: .venv/bin/python -u stage125.py "${{ matrix.mesh }}" recipient.pem
+      - name: Return the encrypted native scanner calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-${{ matrix.mesh }}
+          path: delivery/${{ matrix.mesh }}/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
