@@ -1,0 +1,181 @@
+{
+  "protocol_sha256": "a7915f589b598b45c36bd36a5fb5542b43fe873c7393dcf7e44d927cdb33f3cc",
+  "checkpoint_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "numpy_version": "2.4.6",
+  "torch_version": "2.13.0+cpu",
+  "python_version": "3.12.14",
+  "load_seconds": 1.1615539580000132,
+  "inference_seconds": 26.517574944000103,
+  "process_peak_rss_kib": 1987952,
+  "results": [
+    {
+      "category": "mixed",
+      "order": "stored",
+      "seconds": 3.774587935999989,
+      "central96": {
+        "ink_pixels": 1670,
+        "background_pixels": 4305,
+        "unknown_pixels": 3241,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": 0.0,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": 0.6065122871308126,
+        "auc": 0.8232404876657835
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 1015,
+        "unknown_pixels": 9,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "b010aae94f6039bf2d36393bbf8ffe360129f392b3a572ab3df91bbe75f7d43a"
+    },
+    {
+      "category": "mixed",
+      "order": "same-band-reversed",
+      "seconds": 3.865539891000026,
+      "central96": {
+        "ink_pixels": 1670,
+        "background_pixels": 4305,
+        "unknown_pixels": 3241,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 183,
+        "recall_at_0_5": 0.0,
+        "false_positive_rate_at_0_5": 0.04250871080139373,
+        "ap": 0.3211428868005106,
+        "auc": 0.6466145757265955
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 1015,
+        "unknown_pixels": 9,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "ab18eeeae506cd4d749bd8da9386aad7910536994b31fe405b51aecccc0cf5c2"
+    },
+    {
+      "category": "sparse",
+      "order": "stored",
+      "seconds": 4.345684123999945,
+      "central96": {
+        "ink_pixels": 22,
+        "background_pixels": 668,
+        "unknown_pixels": 8526,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": 0.0,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": 0.6584634457905556,
+        "auc": 0.9833287969515515
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 0,
+        "unknown_pixels": 1024,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": null,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "8b012fd24128e91fec506dce695604682dbc3d5a7ab65f8428ab315fbe823ef9"
+    },
+    {
+      "category": "sparse",
+      "order": "same-band-reversed",
+      "seconds": 5.206343648000029,
+      "central96": {
+        "ink_pixels": 22,
+        "background_pixels": 668,
+        "unknown_pixels": 8526,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": 0.0,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": 0.01683849691784934,
+        "auc": 0.0
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 0,
+        "unknown_pixels": 1024,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": null,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "ac36751120af34cf8e47c1c22f865929fbea1b14e137abd9f30273177f4afc34"
+    },
+    {
+      "category": "background",
+      "order": "stored",
+      "seconds": 4.834562619000053,
+      "central96": {
+        "ink_pixels": 0,
+        "background_pixels": 2560,
+        "unknown_pixels": 6656,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 41,
+        "unknown_pixels": 983,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "7fd4787c40f5f67d2f50e6d8b838bcbc33760960d6c481d9a1e890ad521f88b5"
+    },
+    {
+      "category": "background",
+      "order": "same-band-reversed",
+      "seconds": 4.490856726000061,
+      "central96": {
+        "ink_pixels": 0,
+        "background_pixels": 2560,
+        "unknown_pixels": 6656,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "central32": {
+        "ink_pixels": 0,
+        "background_pixels": 41,
+        "unknown_pixels": 983,
+        "true_positive_at_0_5": 0,
+        "false_positive_at_0_5": 0,
+        "recall_at_0_5": null,
+        "false_positive_rate_at_0_5": 0.0,
+        "ap": null,
+        "auc": null
+      },
+      "output_sha256": "484ecbce7dca61157ac977943588c92adc99a558873389b54c782253c862422f"
+    }
+  ],
+  "scope": "Three neighboring, label-selected public donor-holdout cells; correlated pixels; no T4 measurement"
+}

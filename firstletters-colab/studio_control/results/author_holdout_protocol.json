@@ -1,0 +1,399 @@
+{
+  "purpose": "Reproduce released soft-loss checkpoint on every labeled central32 pixel of the author's fixed holdout",
+  "source_commit": "bf66f753176792a966bca17822629fb8821f20c8",
+  "data_revision": "ad919d288ede1c4daf92725288bb6fe29c558591",
+  "dataset": "paranke/vesuvius-814-841-9b-studio-training-data",
+  "public_control": "841-expanded-layer-03-approved-r000001",
+  "checkpoint_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "script_sha256": "32a3ad1f1758062cf376bf26d1eeadfc861c85ba29503874cbd647cd5763df49",
+  "shared_helper_sha256": "ccf05aa940a6cd0469247699df2bedfd75151ca42bafaa7890bb8cbf9a401536",
+  "original_patch_count": 1334,
+  "selected_patch_count": 53,
+  "known_ink": 15791,
+  "known_background": 29558,
+  "controls": [
+    {
+      "index": 249,
+      "y": 576,
+      "x": 1472,
+      "ink": 0,
+      "background": 41
+    },
+    {
+      "index": 250,
+      "y": 576,
+      "x": 1536,
+      "ink": 0,
+      "background": 932
+    },
+    {
+      "index": 251,
+      "y": 576,
+      "x": 1600,
+      "ink": 0,
+      "background": 1015
+    },
+    {
+      "index": 252,
+      "y": 576,
+      "x": 1664,
+      "ink": 0,
+      "background": 162
+    },
+    {
+      "index": 284,
+      "y": 640,
+      "x": 1408,
+      "ink": 0,
+      "background": 14
+    },
+    {
+      "index": 285,
+      "y": 640,
+      "x": 1472,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 286,
+      "y": 640,
+      "x": 1536,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 287,
+      "y": 640,
+      "x": 1600,
+      "ink": 991,
+      "background": 33
+    },
+    {
+      "index": 288,
+      "y": 640,
+      "x": 1664,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 289,
+      "y": 640,
+      "x": 1728,
+      "ink": 76,
+      "background": 773
+    },
+    {
+      "index": 320,
+      "y": 704,
+      "x": 1408,
+      "ink": 0,
+      "background": 892
+    },
+    {
+      "index": 321,
+      "y": 704,
+      "x": 1472,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 322,
+      "y": 704,
+      "x": 1536,
+      "ink": 40,
+      "background": 984
+    },
+    {
+      "index": 323,
+      "y": 704,
+      "x": 1600,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 324,
+      "y": 704,
+      "x": 1664,
+      "ink": 53,
+      "background": 971
+    },
+    {
+      "index": 325,
+      "y": 704,
+      "x": 1728,
+      "ink": 64,
+      "background": 960
+    },
+    {
+      "index": 326,
+      "y": 704,
+      "x": 1792,
+      "ink": 566,
+      "background": 438
+    },
+    {
+      "index": 327,
+      "y": 704,
+      "x": 1856,
+      "ink": 0,
+      "background": 4
+    },
+    {
+      "index": 356,
+      "y": 768,
+      "x": 1408,
+      "ink": 0,
+      "background": 1023
+    },
+    {
+      "index": 357,
+      "y": 768,
+      "x": 1472,
+      "ink": 565,
+      "background": 459
+    },
+    {
+      "index": 358,
+      "y": 768,
+      "x": 1536,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 359,
+      "y": 768,
+      "x": 1600,
+      "ink": 829,
+      "background": 195
+    },
+    {
+      "index": 360,
+      "y": 768,
+      "x": 1664,
+      "ink": 117,
+      "background": 907
+    },
+    {
+      "index": 361,
+      "y": 768,
+      "x": 1728,
+      "ink": 509,
+      "background": 515
+    },
+    {
+      "index": 362,
+      "y": 768,
+      "x": 1792,
+      "ink": 540,
+      "background": 484
+    },
+    {
+      "index": 363,
+      "y": 768,
+      "x": 1856,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 364,
+      "y": 768,
+      "x": 1920,
+      "ink": 0,
+      "background": 30
+    },
+    {
+      "index": 392,
+      "y": 832,
+      "x": 1408,
+      "ink": 0,
+      "background": 124
+    },
+    {
+      "index": 393,
+      "y": 832,
+      "x": 1472,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 394,
+      "y": 832,
+      "x": 1536,
+      "ink": 91,
+      "background": 933
+    },
+    {
+      "index": 395,
+      "y": 832,
+      "x": 1600,
+      "ink": 224,
+      "background": 800
+    },
+    {
+      "index": 396,
+      "y": 832,
+      "x": 1664,
+      "ink": 1,
+      "background": 1023
+    },
+    {
+      "index": 397,
+      "y": 832,
+      "x": 1728,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 398,
+      "y": 832,
+      "x": 1792,
+      "ink": 83,
+      "background": 941
+    },
+    {
+      "index": 399,
+      "y": 832,
+      "x": 1856,
+      "ink": 533,
+      "background": 491
+    },
+    {
+      "index": 400,
+      "y": 832,
+      "x": 1920,
+      "ink": 873,
+      "background": 0
+    },
+    {
+      "index": 430,
+      "y": 896,
+      "x": 1536,
+      "ink": 0,
+      "background": 784
+    },
+    {
+      "index": 431,
+      "y": 896,
+      "x": 1600,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 432,
+      "y": 896,
+      "x": 1664,
+      "ink": 352,
+      "background": 672
+    },
+    {
+      "index": 433,
+      "y": 896,
+      "x": 1728,
+      "ink": 970,
+      "background": 54
+    },
+    {
+      "index": 434,
+      "y": 896,
+      "x": 1792,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 435,
+      "y": 896,
+      "x": 1856,
+      "ink": 1009,
+      "background": 15
+    },
+    {
+      "index": 436,
+      "y": 896,
+      "x": 1920,
+      "ink": 6,
+      "background": 726
+    },
+    {
+      "index": 468,
+      "y": 960,
+      "x": 1600,
+      "ink": 0,
+      "background": 455
+    },
+    {
+      "index": 469,
+      "y": 960,
+      "x": 1664,
+      "ink": 718,
+      "background": 306
+    },
+    {
+      "index": 470,
+      "y": 960,
+      "x": 1728,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 471,
+      "y": 960,
+      "x": 1792,
+      "ink": 391,
+      "background": 633
+    },
+    {
+      "index": 472,
+      "y": 960,
+      "x": 1856,
+      "ink": 1024,
+      "background": 0
+    },
+    {
+      "index": 473,
+      "y": 960,
+      "x": 1920,
+      "ink": 46,
+      "background": 534
+    },
+    {
+      "index": 506,
+      "y": 1024,
+      "x": 1664,
+      "ink": 0,
+      "background": 35
+    },
+    {
+      "index": 507,
+      "y": 1024,
+      "x": 1728,
+      "ink": 0,
+      "background": 984
+    },
+    {
+      "index": 508,
+      "y": 1024,
+      "x": 1792,
+      "ink": 0,
+      "background": 1024
+    },
+    {
+      "index": 509,
+      "y": 1024,
+      "x": 1856,
+      "ink": 0,
+      "background": 1024
+    }
+  ],
+  "selection": "All published patches with any known central32 label; other patches cannot affect AP/AUC",
+  "sampling": "Native prepared16, stored order unchanged, no resampling or padding",
+  "inference": "Released model; uint8 to FP32 clip[0,200]/255; central32 of one128 forward; batch1; CPU",
+  "metrics": "Pooled AP/AUC over all known pixels; unknown excluded; diagnostic threshold0.5",
+  "comparison": {
+    "published_softloss_ap": 0.7536,
+    "prospective_absolute_ap_tolerance": 0.02,
+    "interpretation": "Engineering reproduction tolerance, not an ink-accuracy or prize gate"
+  },
+  "sequence": "Chosen after inspecting three-cell diagnostic; no threshold, model or data changes; not an untouched research test",
+  "differences_from_author": "CPU FP32 eager batch1 rather than CUDA BF16 batches; skip zero-known-label central32 cores; no loss computation",
+  "threads": 4
+}

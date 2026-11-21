@@ -1,0 +1,89 @@
+{
+  "experiment": "public0841_native_plane_offset_recovery_v1",
+  "protocol_sha256": "78b2e9ed8ec1971f8816c60cda5f453b86c78ca1fef4d7bfe58f9461ebb6ba5d",
+  "source_array_bytes_sha256": "fb536e0be0f5e0d382d05584bd070b560031b1c880a46412439cb2e953026b0d",
+  "source_objects_verified": 37,
+  "source_object_bytes": 16515276,
+  "anatomical_eligibility_counts": {
+    "calibration": {
+      "selected": 12,
+      "eligible": 12
+    },
+    "validation": {
+      "selected": 12,
+      "eligible": 12
+    }
+  },
+  "calibration_peak_bias_planes": 1.0,
+  "passed_continuation_gate": false,
+  "runtime_cpu_seconds": 0.4738769319999999,
+  "runtime_wall_seconds": 0.47428663400000914,
+  "limitation": "Twelve adjacent held-out cells on one released surface are spatially correlated. Nine offsets per cell are repeated transforms, not independent observations. Stored band center is not a verified physical recto. No ink result was evaluated.",
+  "validation": {
+    "naive_peak": {
+      "cases": 108,
+      "accepted": 108,
+      "coverage": 1.0,
+      "within_one_plane": 9,
+      "within_one_plane_given_accepted": 0.08333333333333333,
+      "unsafe_accepted_error_gt_one_plane": 99,
+      "failure_to_abstain_given_accepted": 0.9166666666666666,
+      "unsafe_fraction_all_cases": 0.9166666666666666,
+      "mean_absolute_error_planes_given_accepted": 4.5,
+      "maximum_error_planes_given_accepted": 14.5,
+      "abstention_reason_counts_nonexclusive": {}
+    },
+    "bounded_template": {
+      "cases": 108,
+      "accepted": 34,
+      "coverage": 0.3148148148148148,
+      "within_one_plane": 25,
+      "within_one_plane_given_accepted": 0.7352941176470589,
+      "unsafe_accepted_error_gt_one_plane": 9,
+      "failure_to_abstain_given_accepted": 0.2647058823529412,
+      "unsafe_fraction_all_cases": 0.08333333333333333,
+      "mean_absolute_error_planes_given_accepted": 1.4411764705882353,
+      "maximum_error_planes_given_accepted": 7.0,
+      "abstention_reason_counts_nonexclusive": {
+        "competing_depth_alignments": 4,
+        "low_profile_contrast": 5,
+        "low_template_correlation": 54,
+        "possible_neighboring_sheet_peaks": 13,
+        "search_boundary": 39
+      }
+    }
+  },
+  "zero_offset_validation": {
+    "naive_peak": {
+      "cases": 12,
+      "accepted": 12,
+      "coverage": 1.0,
+      "within_one_plane": 1,
+      "within_one_plane_given_accepted": 0.08333333333333333,
+      "unsafe_accepted_error_gt_one_plane": 11,
+      "failure_to_abstain_given_accepted": 0.9166666666666666,
+      "unsafe_fraction_all_cases": 0.9166666666666666,
+      "mean_absolute_error_planes_given_accepted": 4.5,
+      "maximum_error_planes_given_accepted": 10.5,
+      "abstention_reason_counts_nonexclusive": {}
+    },
+    "bounded_template": {
+      "cases": 12,
+      "accepted": 4,
+      "coverage": 0.3333333333333333,
+      "within_one_plane": 3,
+      "within_one_plane_given_accepted": 0.75,
+      "unsafe_accepted_error_gt_one_plane": 1,
+      "failure_to_abstain_given_accepted": 0.25,
+      "unsafe_fraction_all_cases": 0.08333333333333333,
+      "mean_absolute_error_planes_given_accepted": 1.0,
+      "maximum_error_planes_given_accepted": 2.0,
+      "abstention_reason_counts_nonexclusive": {
+        "low_profile_contrast": 1,
+        "low_template_correlation": 7,
+        "possible_neighboring_sheet_peaks": 2,
+        "search_boundary": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "kind": "public author-holdout integration check; not independent generalization",
+  "source_commit": "bf66f753176792a966bca17822629fb8821f20c8",
+  "dataset": "paranke/vesuvius-814-841-9b-studio-training-data",
+  "data_revision": "ad919d288ede1c4daf92725288bb6fe29c558591",
+  "public_control": "841-expanded-layer-03-approved-r000001",
+  "files": {
+    "ct-tiles.npy": {
+      "sha256": "0c2950497da0dc362ba572c2fb1c08f88e3accb51c1e741d0a85633fb46dde33",
+      "bytes": 117440640
+    },
+    "labels.npy": {
+      "sha256": "ff445929d549e081133a27141e96e30ff22136c441c882055215bace58bcf548",
+      "bytes": 7234885
+    },
+    "coordinates.npy": {
+      "sha256": "4a93ec41845b451ce0652f64a9e89b50521f1484b5b5440cf7d27dda471ab1dd",
+      "bytes": 10800
+    },
+    "tiles.npy": {
+      "sha256": "fb8d65ff2a4c41e063a26c5cbc2312c34bd906f3927c5721653211286dfb16be",
+      "bytes": 352
+    }
+  },
+  "checkpoint_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "script_sha256": "ccf05aa940a6cd0469247699df2bedfd75151ca42bafaa7890bb8cbf9a401536",
+  "selection": "Lexicographically first distinct 128x128 cells from published coordinates satisfying label-only strata; no prediction used",
+  "definitions": {
+    "mixed": "central96 ink>=256, background>=256, 0.2<=ink/(ink+background)<=0.8",
+    "sparse": "central96 16<=ink<=128, background>=512",
+    "background": "central96 ink=0, background>=2048"
+  },
+  "controls": [
+    {
+      "category": "mixed",
+      "y": 576,
+      "x": 1600,
+      "ink": 1670,
+      "background": 4305,
+      "eligible_count": 30,
+      "input_sha256": "dd477ce87576c7ee8f8522890c4317dbd2adf430823ab1b9f12873132c795bee"
+    },
+    {
+      "category": "sparse",
+      "y": 576,
+      "x": 1728,
+      "ink": 22,
+      "background": 668,
+      "eligible_count": 1,
+      "input_sha256": "d319d7145b9f547de5ee4e29872723ce41d049f28c8db03dfdfd773ba6707f23"
+    },
+    {
+      "category": "background",
+      "y": 576,
+      "x": 1472,
+      "ink": 0,
+      "background": 2560,
+      "eligible_count": 11,
+      "input_sha256": "c18d3a1463f475859cb8605958caba3da646fbf40dca6bcc721e1a178494f421"
+    }
+  ],
+  "order_trials": [
+    "stored",
+    "same-band-reversed"
+  ],
+  "physical_sampling": "Unchanged author's native prepared16; no mesh-centre claim; XY9.36um, depth9.366um per source recipe",
+  "acquisition_coverage": "Author-prepared fixture verified by published content hashes; source chunk coverage not independently re-audited",
+  "input": "raw uint8 [16,128,128]; float32 clip[0,200]/255 exactly once",
+  "inference": "Unchanged released network; one direct128 forward per trial; no tiled canvas, TTA or calibration",
+  "metrics": "Known labels only (1 background, 2 ink); central96 and central32; fixed threshold0.5; tie-grouped AP and ROC AUC",
+  "runtime": {
+    "device": "cpu",
+    "precision": "fp32",
+    "batch_size": 1,
+    "threads": 4
+  },
+  "interpretation": "Check execution, input provenance and direction sensitivity. No accuracy gate for atlas and no reversal-based candidate veto."
+}

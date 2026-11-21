@@ -1,0 +1,61 @@
+{
+  "protocol_version": "1.0",
+  "status": "frozen before source pixels were downloaded or inspected",
+  "purpose": "Recover artificial integer offsets relative to a public surface-band convention; not establish recto, sheet identity, mesh accuracy, or ink improvement.",
+  "source_case": "w00 in evidence/sources.json",
+  "source_shape_zyx": [28, 768, 768],
+  "source_plane_spacing_um": 9.366,
+  "source_reference_depth_index": 13.5,
+  "reference_depth_is_physical_truth": false,
+  "reference_band_half_open": [4, 24],
+  "injected_offsets_planes": [-4, -3, -2, -1, 0, 1, 2, 3, 4],
+  "injection": "For offset d, use original planes [4+d,24+d); correct displacement in the observed band is -d. No interpolation, padding, wraparound, or rescaling.",
+  "cell_size_yx": [128, 128],
+  "calibration_grid_rows": [0, 1],
+  "validation_grid_rows": [4, 5],
+  "grid_columns": [0, 1, 2, 3, 4, 5],
+  "unused_grid_rows": [2, 3],
+  "anatomical_eligibility": {
+    "minimum_nonzero_fraction": 0.95,
+    "minimum_intensity_sd": 5.0,
+    "evaluation_band": [4, 24],
+    "exclusions_counted_and_reported": true
+  },
+  "profile": "Per-plane 10%-trimmed spatial mean over the 128x128 cell, computed on the original uint8 scale.",
+  "calibration": "Only the twelve upper cells: median peak offset supplies one bias for the naive peak method; pointwise median of z-standardized 20-plane profiles supplies the conservative template. No thresholds are fit to the outcomes.",
+  "naive_method": "Always return argmax(observed_profile)-9.5-calibration_peak_bias; ties choose the first maximum.",
+  "conservative_method": {
+    "candidate_corrections_planes": [-4, -3, -2, -1, 0, 1, 2, 3, 4],
+    "matching_reference_indices": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "similarity": "Pearson correlation of template[j] and observed_profile[j+correction] on the common twelve reference indices.",
+    "minimum_observed_profile_range_uint8": 8.0,
+    "minimum_best_correlation": 0.8,
+    "minimum_margin_over_rivals_at_least_two_planes_away": 0.1,
+    "reject_boundary_optimum": true,
+    "peak_guard": "After [0.25,0.5,0.25] smoothing with edge replication, reject two local maxima separated by at least four planes if both have prominence at least 25% of the smoothed range. Peak prominence uses the higher of the two minima extending to a higher peak or band edge. This flags a possible second sheet; it does not identify a sheet.",
+    "reject_anatomically_ineligible_cells": true
+  },
+  "primary_metrics": [
+    "coverage on all 108 preselected validation cases",
+    "conditional fraction within one plane among accepted estimates",
+    "failure-to-abstain fraction among accepted estimates with error greater than one plane",
+    "unsafe accepted fraction among all 108 validation cases",
+    "zero-offset displacement and abstention",
+    "per-offset and per-cell results, with cells as the clustering unit"
+  ],
+  "minimum_go_criterion_for_further_public_controls": {
+    "validation_coverage_at_least": 0.5,
+    "accepted_errors_greater_than_one_plane": 0,
+    "zero_offset_accepted_errors_greater_than_one_plane": 0,
+    "meaning": "A diagnostic continuation gate only, never a deployment, ink-gain, or prize-validity claim. Additional independent surfaces and physical sheet checks remain necessary."
+  },
+  "forbidden_inference": [
+    "An original mesh plane is the ink-bearing surface.",
+    "A peak is the same anatomical sheet as the mesh.",
+    "Within-surface displacement recovery generalizes across scrolls.",
+    "Profile correlation or high CT intensity detects ink.",
+    "Repeated offsets of one patch are independent validation subjects."
+  ],
+  "resource_limit": "Each CPU hypothesis must finish within roughly two CPU minutes; no model or GPU dependency.",
+  "publication": "Only released PHerc0841 control coordinates and data. No unread-scroll candidate pixels or locations."
+}
