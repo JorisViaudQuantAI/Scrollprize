@@ -1,0 +1,111 @@
+{
+  "n_sites": 24,
+  "minimum_site_separation_vox": 245.42560844049189,
+  "reserved_ids": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24
+  ],
+  "native_ct": {
+    "ranges": 51,
+    "bytes": 12500992,
+    "sampled_trilinear_points": 46560
+  },
+  "nearest_crest_switches_fixed_ray": 9,
+  "raw_ties": 1,
+  "snap_ties_fixed_ray": 0,
+  "all_three_coordinate_tiff_hashes_match": true,
+  "legacy_endpoints_match": true,
+  "summaries": {
+    "same_uv_shift_um": {
+      "n": 24,
+      "median": 45.19190461223051,
+      "max": 117.24790191053332
+    },
+    "normal_change_deg": {
+      "n": 24,
+      "median": 4.582793395906607,
+      "max": 19.72306477180638
+    },
+    "normal_only_at_12_um": {
+      "n": 24,
+      "median": 8.983412035584319,
+      "max": 38.481790788809064
+    },
+    "raw_project_distance_um": {
+      "n": 24,
+      "median": 45.07800116465046,
+      "max": 115.60007529880316
+    },
+    "anchor_miss_from_snap_ray_um": {
+      "n": 23,
+      "median": 2.973499196863138,
+      "max": 43.13049185314235
+    },
+    "anchor_to_nearest_new_crest_3d_um": {
+      "n": 23,
+      "median": 3.2877971300019806,
+      "max": 55.03097171086537
+    },
+    "anchor_miss_from_projected_ray_um": {
+      "n": 23,
+      "median": 4.6876256082494585,
+      "max": 48.78609438615329
+    }
+  },
+  "frames": {
+    "raw": {
+      "material_and_peak": 24,
+      "multi_peak_profiles": 20,
+      "nearest_exact_ties": 1,
+      "nearest_within_half_voxel_of_runner_up": 3,
+      "distance_to_nearest_vox": {
+        "n": 24,
+        "median": 4.0,
+        "max": 15.5
+      }
+    },
+    "same_xyz_new_frame": {
+      "material_and_peak": 24,
+      "multi_peak_profiles": 19,
+      "nearest_exact_ties": 2,
+      "nearest_within_half_voxel_of_runner_up": 2,
+      "distance_to_nearest_vox": {
+        "n": 24,
+        "median": 4.0,
+        "max": 18.5
+      }
+    },
+    "snapped_uv": {
+      "material_and_peak": 24,
+      "multi_peak_profiles": 20,
+      "nearest_exact_ties": 1,
+      "nearest_within_half_voxel_of_runner_up": 1,
+      "distance_to_nearest_vox": {
+        "n": 24,
+        "median": 2.5,
+        "max": 16.5
+      }
+    },
+    "projected_raw": {
+      "material_and_peak": 24,
+      "multi_peak_profiles": 20,
+      "nearest_exact_ties": 0,
+      "nearest_within_half_voxel_of_runner_up": 1,
+      "distance_to_nearest_vox": {
+        "n": 24,
+        "median": 2.0,
+        "max": 17.0
+      }
+    }
+  }
+}

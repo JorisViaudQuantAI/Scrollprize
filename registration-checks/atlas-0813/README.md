@@ -27,3 +27,7 @@ python registration-checks/atlas-0813/check.py
 ```
 
 The script reads only the m7 chunks intersecting the winding's normal rays and the native CT byte ranges containing the 24 evaluation neighborhoods. It places the full reconstructed mesh in `registration-checks/atlas-0813/snapped/z11296_w020/` and writes aggregate metrics to `result.json` in the same study directory. Source receipts and per-site diagnostics are available in that local workspace.
+
+## Physically paired profiles
+
+The per-site table links the original and snapped surfaces at fixed XYZ, equal UV and the closest projected point. It quantifies the change in normals and CT peak ambiguity at all 24 public sites. [Measurements, reproducer and visualization contract](paired/README.md)

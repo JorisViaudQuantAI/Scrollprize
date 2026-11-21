@@ -1,0 +1,6068 @@
+{
+  "source_protocol_sha256": "0504c3e44cce218249e096735b3691ce60cbdccf2b1c3fc41abcef4d50463300",
+  "extension_protocol_sha256": "b700e452eb753125a5da38ee10960c9d7c893d63228b99fc9a8e9e0aa0a25518",
+  "input_winding": "z11296_w020",
+  "pitch_um": 9.362,
+  "coordinates": "relative XYZ in native voxels, raw UV indexes public upstream TIFFs",
+  "frame_order": [
+    "raw",
+    "same_xyz_new_frame",
+    "snapped_uv",
+    "projected_raw"
+  ],
+  "records": [
+    {
+      "id": 1,
+      "reserved": false,
+      "public_uv_yx": [
+        28,
+        57
+      ],
+      "same_uv_delta_xyz_vox": [
+        11.68798828125,
+        2.418701171875,
+        -3.79296875
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 12.523809219240901,
+      "along_raw_normal_vox": -12.523809217700201,
+      "across_raw_normal_vox": 0.00019644562015365077,
+      "normal_angle_deg": 4.420554021441005,
+      "ray_tip_separation_vox": {
+        "6": 0.46280452721284315,
+        "12": 0.9256090544256863,
+        "24": 1.8512181088513726
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            28,
+            56
+          ],
+          [
+            28,
+            57
+          ],
+          [
+            29,
+            57
+          ]
+        ],
+        "barycentric": [
+          0.06749415959757826,
+          0.8660820424137876,
+          0.06642379798863413
+        ],
+        "projected_uv_yx": [
+          28.066423797988634,
+          56.93250584040242
+        ],
+        "distance_vox": 12.347796977013797,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -10.0,
+      "legacy_raw_nearest": {
+        "minimum": 10.0,
+        "indices": [
+          1
+        ],
+        "margin": 5.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 2.523809217700201,
+        "indices": [
+          1
+        ],
+        "margin": 4.952381564599598
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 2.523809217700201,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9332572276762708,
+            -0.19312535340174275,
+            0.30287546097934903
+          ],
+          "peak_offsets_vox": [
+            -20.0,
+            -10.0,
+            15.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 10.0,
+            "indices": [
+              1
+            ],
+            "margin": 5.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.999999999999913,
+            "ray_miss_vox": 1.4906057914973703e-13,
+            "center_distance_vox": 9.999999999999915,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 10.000000000000002
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9179847204058665,
+            -0.2679990221367211,
+            0.29237061623070854
+          ],
+          "peak_offsets_vox": [
+            -20.5,
+            -10.0,
+            15.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 10.0,
+            "indices": [
+              1
+            ],
+            "margin": 5.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.97025166244314,
+            "ray_miss_vox": 0.7707670124934451,
+            "center_distance_vox": 9.999999999999915,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.7713408786881133,
+              "indices": [
+                1
+              ],
+              "margin": 9.786579458188173
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            11.68798828125,
+            2.418701171875,
+            -3.79296875
+          ],
+          "normal_xyz": [
+            -0.9179847204058665,
+            -0.2679990221367211,
+            0.29237061623070854
+          ],
+          "peak_offsets_vox": [
+            -7.5,
+            2.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              1
+            ],
+            "margin": 5.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.516305151711947,
+            "ray_miss_vox": 0.19447722079392235,
+            "center_distance_vox": 2.523809225345651,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.19515954340011998,
+              "indices": [
+                1
+              ],
+              "margin": 9.823033421481982
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            11.320924354939507,
+            4.144946990705648,
+            -2.669115280299593
+          ],
+          "normal_xyz": [
+            -0.9166435692690998,
+            -0.2810725256409394,
+            0.28418796992031264
+          ],
+          "peak_offsets_vox": [
+            -9.0,
+            1.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 7.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.3426133858175158,
+            "ray_miss_vox": 1.8696218010288432,
+            "center_distance_vox": 2.997219236941759,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 2.0507274311426116,
+              "indices": [
+                1
+              ],
+              "margin": 9.444939756933028
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            28,
+            56
+          ],
+          [
+            28,
+            57
+          ],
+          [
+            29,
+            57
+          ]
+        ],
+        "barycentric": [
+          0.013602864650256338,
+          0.9730184866644743,
+          0.013378648685269338
+        ],
+        "projected_uv_yx": [
+          28.01337864868527,
+          56.98639713534975
+        ],
+        "distance_vox": 2.488355350118167,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          11.613989985471108,
+          2.766552416844661,
+          -3.566640622997511
+        ],
+        "normal_xyz": [
+          -0.9177322160789272,
+          -0.27063454323523783,
+          0.29073101585265315
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "reserved": true,
+      "public_uv_yx": [
+        54,
+        20
+      ],
+      "same_uv_delta_xyz_vox": [
+        -0.834228515625,
+        -1.6484375,
+        0.0927734375
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.8498352138484409,
+      "along_raw_normal_vox": -1.849835166144718,
+      "across_raw_normal_vox": 0.00042010480969313017,
+      "normal_angle_deg": 19.72306477180638,
+      "ray_tip_separation_vox": {
+        "6": 2.055212069472819,
+        "12": 4.110424138945638,
+        "24": 8.220848277891276
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            53,
+            19
+          ],
+          [
+            53,
+            20
+          ],
+          [
+            54,
+            20
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.029058761850868753,
+          0.9709412381491312
+        ],
+        "projected_uv_yx": [
+          53.97094123814913,
+          20.0
+        ],
+        "distance_vox": 1.7421331628842076,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -15.5,
+      "legacy_raw_nearest": {
+        "minimum": 15.5,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_snap_nearest": {
+        "minimum": 13.650164833855282,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 13.650164833855282,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.45097983109907586,
+            0.8911111995620429,
+            -0.050378784790286506
+          ],
+          "peak_offsets_vox": [
+            -15.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 15.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -15.49999999999993,
+            "ray_miss_vox": 7.380841575285509e-13,
+            "center_distance_vox": 15.49999999999993,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.4087570357207233,
+            0.8658099871302809,
+            0.288601372024234
+          ],
+          "peak_offsets_vox": [
+            -18.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 18.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -14.590688915515603,
+            "ray_miss_vox": 5.230850501653431,
+            "center_distance_vox": 15.49999999999993,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 6.530276420330219,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -0.834228515625,
+            -1.6484375,
+            0.0927734375
+          ],
+          "normal_xyz": [
+            0.4087570357207233,
+            0.8658099871302809,
+            0.288601372024234
+          ],
+          "peak_offsets_vox": [
+            -16.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 16.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -12.849233031044863,
+            "ray_miss_vox": 4.606974135135906,
+            "center_distance_vox": 13.650164840319897,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 5.878121310709824,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -0.7316289516879806,
+            -1.499163718724958,
+            -0.5022501157109218
+          ],
+          "normal_xyz": [
+            0.4089092044756784,
+            0.8661748156008082,
+            0.2872880981070634
+          ],
+          "peak_offsets_vox": [
+            -17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 17.0,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -12.855819043022443,
+            "ray_miss_vox": 5.211076093372494,
+            "center_distance_vox": 13.871820259715623,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 6.658043996181691,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            54,
+            20
+          ],
+          [
+            55,
+            21
+          ],
+          [
+            55,
+            20
+          ]
+        ],
+        "barycentric": [
+          0.7748424289663496,
+          0.15242097908556615,
+          0.07273659194808418
+        ],
+        "projected_uv_yx": [
+          54.22515757103365,
+          20.152420979085566
+        ],
+        "distance_vox": 12.56427740759606,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -3.6560310070990454,
+          -2.3071491382092972,
+          4.572668868157052
+        ],
+        "normal_xyz": [
+          0.36354197006296535,
+          0.879906393034596,
+          0.30594439935972895
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "reserved": false,
+      "public_uv_yx": [
+        17,
+        91
+      ],
+      "same_uv_delta_xyz_vox": [
+        -0.96630859375,
+        0.883056640625,
+        -0.072265625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.311016265903537,
+      "along_raw_normal_vox": -1.3110162467989925,
+      "across_raw_normal_vox": 0.00022381406724784745,
+      "normal_angle_deg": 8.304914292409459,
+      "ray_tip_separation_vox": {
+        "6": 0.8689274527907365,
+        "12": 1.737854905581473,
+        "24": 3.475709811162946
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            16,
+            90
+          ],
+          [
+            16,
+            91
+          ],
+          [
+            17,
+            91
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "projected_uv_yx": [
+          17.0,
+          91.0
+        ],
+        "distance_vox": 1.311016265903537,
+        "tied_triangles": 6,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -7.5,
+      "legacy_raw_nearest": {
+        "minimum": 7.5,
+        "indices": [
+          0
+        ],
+        "margin": 4.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 6.188983753201008,
+        "indices": [
+          0
+        ],
+        "margin": 6.622032493597985
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 6.188983753201008,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.7370680350193114,
+            -0.6735807455817454,
+            0.0549517145711686
+          ],
+          "peak_offsets_vox": [
+            -7.5,
+            11.5,
+            21.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.5,
+            "indices": [
+              0
+            ],
+            "margin": 4.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -7.499999999999896,
+            "ray_miss_vox": 7.319513060397944e-13,
+            "center_distance_vox": 7.499999999999895,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": 18.999999999999996
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.6895977386445346,
+            -0.7204436793290908,
+            -0.07359255241603366
+          ],
+          "peak_offsets_vox": [
+            -7.5,
+            11.5,
+            21.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.5,
+            "indices": [
+              0
+            ],
+            "margin": 4.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -7.421350529352569,
+            "ray_miss_vox": 1.0833080450531032,
+            "center_distance_vox": 7.499999999999895,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 1.0861593159893788,
+              "indices": [
+                0
+              ],
+              "margin": 17.86617727280889
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -0.96630859375,
+            0.883056640625,
+            -0.072265625
+          ],
+          "normal_xyz": [
+            0.6895977386445346,
+            -0.7204436793290908,
+            -0.07359255241603366
+          ],
+          "peak_offsets_vox": [
+            -20.5,
+            -6.0,
+            12.5,
+            22.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 6.0,
+            "indices": [
+              1
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -6.124111944837617,
+            "ray_miss_vox": 0.8937409213942761,
+            "center_distance_vox": 6.18898375724783,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.9023173551611635,
+              "indices": [
+                1
+              ],
+              "margin": 13.501325594076782
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -0.96630859375,
+            0.883056640625,
+            -0.072265625
+          ],
+          "normal_xyz": [
+            0.6895977386445346,
+            -0.7204436793290908,
+            -0.07359255241603366
+          ],
+          "peak_offsets_vox": [
+            -20.5,
+            -6.0,
+            12.5,
+            22.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 6.0,
+            "indices": [
+              1
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -6.124111944837617,
+            "ray_miss_vox": 0.8937409213942761,
+            "center_distance_vox": 6.18898375724783,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.9023173551611635,
+              "indices": [
+                1
+              ],
+              "margin": 13.501325594076782
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            16,
+            90
+          ],
+          [
+            17,
+            91
+          ],
+          [
+            17,
+            90
+          ]
+        ],
+        "barycentric": [
+          0.11543871343247153,
+          0.7267349122860509,
+          0.15782637428147755
+        ],
+        "projected_uv_yx": [
+          16.88456128656753,
+          90.72673491228605
+        ],
+        "distance_vox": 3.5261350460687053,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -5.11455414553393,
+          2.341008298613815,
+          -2.6288898424845684
+        ],
+        "normal_xyz": [
+          0.46896809605096795,
+          -0.8474472939779563,
+          -0.24880114311588172
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "reserved": true,
+      "public_uv_yx": [
+        7,
+        17
+      ],
+      "same_uv_delta_xyz_vox": [
+        1.619873046875,
+        1.339599609375,
+        0.9765625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 2.3177985498821934,
+      "along_raw_normal_vox": 2.317798541039604,
+      "across_raw_normal_vox": 0.00020246155477242065,
+      "normal_angle_deg": 10.332329188547236,
+      "ray_tip_separation_vox": {
+        "6": 1.0805334674271456,
+        "12": 2.1610669348542912,
+        "24": 4.3221338697085825
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            7,
+            17
+          ],
+          [
+            8,
+            18
+          ],
+          [
+            8,
+            17
+          ]
+        ],
+        "barycentric": [
+          0.9534256273942482,
+          0.04566244781366536,
+          0.000911924792086458
+        ],
+        "projected_uv_yx": [
+          7.046574372605752,
+          17.045662447813665
+        ],
+        "distance_vox": 1.8459206809730437,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 7.0,
+      "legacy_raw_nearest": {
+        "minimum": 7.0,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_snap_nearest": {
+        "minimum": 4.682201458960396,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 4.682201458960396,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.698915649379244,
+            0.5779818205448722,
+            0.4212528102843053
+          ],
+          "peak_offsets_vox": [
+            7.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.0,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 6.9999999999997105,
+            "ray_miss_vox": 2.437981004125798e-13,
+            "center_distance_vox": 6.99999999999971,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.5682761716858443,
+            0.6240164093897352,
+            0.5363447711187489
+          ],
+          "peak_offsets_vox": [
+            12.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 12.0,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 6.886487944171755,
+            "ray_miss_vox": 1.255501411696944,
+            "center_distance_vox": 6.99999999999971,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 5.2653859630496305,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            1.619873046875,
+            1.339599609375,
+            0.9765625
+          ],
+          "normal_xyz": [
+            0.5682761716858443,
+            0.6240164093897352,
+            0.5363447711187489
+          ],
+          "peak_offsets_vox": [
+            9.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 9.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 4.606246361668813,
+            "ray_miss_vox": 0.8399434498176945,
+            "center_distance_vox": 4.682201463337393,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 4.965312645903684,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            0.2296405477686676,
+            1.505953912921541,
+            1.042492777634834
+          ],
+          "normal_xyz": [
+            0.548863972719249,
+            0.6371677896145478,
+            0.5410781342177441
+          ],
+          "peak_offsets_vox": [
+            11.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 11.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 5.209025128631911,
+            "ray_miss_vox": 2.166229720597753,
+            "center_distance_vox": 5.641497495622923,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 6.653489012134264,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            6,
+            16
+          ],
+          [
+            6,
+            17
+          ],
+          [
+            7,
+            17
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "projected_uv_yx": [
+          7.0,
+          17.0
+        ],
+        "distance_vox": 4.682201463337393,
+        "tied_triangles": 6,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          1.619873046875,
+          1.339599609375,
+          0.9765625
+        ],
+        "normal_xyz": [
+          0.5682761716858443,
+          0.6240164093897352,
+          0.5363447711187489
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "reserved": false,
+      "public_uv_yx": [
+        49,
+        103
+      ],
+      "same_uv_delta_xyz_vox": [
+        1.242431640625,
+        0.053955078125,
+        -0.2890625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.2767555212286548,
+      "along_raw_normal_vox": 1.2767555126120904,
+      "across_raw_normal_vox": 0.00014833237143803649,
+      "normal_angle_deg": 1.1561662553049619,
+      "ray_tip_separation_vox": {
+        "6": 0.12107139298972482,
+        "12": 0.24214278597944963,
+        "24": 0.48428557195889926
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            48,
+            103
+          ],
+          [
+            49,
+            104
+          ],
+          [
+            49,
+            103
+          ]
+        ],
+        "barycentric": [
+          0.010091250742241376,
+          0.010745275154943137,
+          0.9791634741028155
+        ],
+        "projected_uv_yx": [
+          48.98990874925776,
+          103.01074527515493
+        ],
+        "distance_vox": 1.2405769471452635,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 8.5,
+      "legacy_raw_nearest": {
+        "minimum": 8.5,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_snap_nearest": {
+        "minimum": 7.22324448738791,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 7.22324448738791,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9731415644981056,
+            0.042277791191670674,
+            -0.2262920321578578
+          ],
+          "peak_offsets_vox": [
+            8.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 8.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 8.500000000000153,
+            "ray_miss_vox": 3.417429680946982e-13,
+            "center_distance_vox": 8.500000000000153,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9692613974507446,
+            0.033036097529658116,
+            -0.24380516744285938
+          ],
+          "peak_offsets_vox": [
+            8.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 8.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 8.498269508351479,
+            "ray_miss_vox": 0.17150907680384445,
+            "center_distance_vox": 8.500000000000153,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.1715178067358074,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            1.242431640625,
+            0.053955078125,
+            -0.2890625
+          ],
+          "normal_xyz": [
+            0.9692613974507446,
+            0.033036097529658116,
+            -0.24380516744285938
+          ],
+          "peak_offsets_vox": [
+            7.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.0,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.22177108368516,
+            "ray_miss_vox": 0.14588818126695902,
+            "center_distance_vox": 7.223244488911096,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.26545390370534283,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            1.1105587352226394,
+            0.20901211656291707,
+            -0.5118636464321753
+          ],
+          "normal_xyz": [
+            0.96786487668502,
+            0.035025250849190594,
+            -0.24901970259889586
+          ],
+          "peak_offsets_vox": [
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.287807165301217,
+            "ray_miss_vox": 0.43026756328727617,
+            "center_distance_vox": 7.300497479941549,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.4797457400692635,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            49,
+            103
+          ],
+          [
+            49,
+            104
+          ],
+          [
+            50,
+            104
+          ]
+        ],
+        "barycentric": [
+          0.9986452780203237,
+          0.0,
+          0.0013547219796763432
+        ],
+        "projected_uv_yx": [
+          49.00135472197967,
+          103.00135472197968
+        ],
+        "distance_vox": 7.223146593589204,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          1.2455439291575203,
+          0.08649122688166244,
+          -0.27046285516371427
+        ],
+        "normal_xyz": [
+          0.9692125859156795,
+          0.03295485448296124,
+          -0.244010124520784
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "reserved": true,
+      "public_uv_yx": [
+        53,
+        46
+      ],
+      "same_uv_delta_xyz_vox": [
+        5.009765625,
+        -2.87890625,
+        -2.4580078125
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 6.279144465612472,
+      "along_raw_normal_vox": -6.279144459930454,
+      "across_raw_normal_vox": 0.00026712621931697643,
+      "normal_angle_deg": 6.339828497613853,
+      "ray_tip_separation_vox": {
+        "6": 0.6635666478346129,
+        "12": 1.3271332956692259,
+        "24": 2.6542665913384518
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            53,
+            46
+          ],
+          [
+            54,
+            47
+          ],
+          [
+            54,
+            46
+          ]
+        ],
+        "barycentric": [
+          0.972064253800222,
+          0.0253661683568245,
+          0.0025695778429535767
+        ],
+        "projected_uv_yx": [
+          53.02793574619978,
+          46.025366168356825
+        ],
+        "distance_vox": 6.2328572387605865,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -1.0,
+      "legacy_raw_nearest": {
+        "minimum": 1.0,
+        "indices": [
+          2
+        ],
+        "margin": 4.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 0.7208555400695458,
+        "indices": [
+          1
+        ],
+        "margin": 4.5582889198609085
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 5.279144459930454,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.7978248187669575,
+            0.45848394517889496,
+            0.3914946111668299
+          ],
+          "peak_offsets_vox": [
+            -22.0,
+            -7.0,
+            -1.0,
+            5.5,
+            10.5,
+            18.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              2
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -1.0000000000001954,
+            "ray_miss_vox": 3.8021622184320894e-13,
+            "center_distance_vox": 1.0000000000001954,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 6.000000000000198
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.8424729303806037,
+            0.45375476337681125,
+            0.29042378740174235
+          ],
+          "peak_offsets_vox": [
+            -7.5,
+            -1.0,
+            5.5,
+            11.0,
+            19.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -0.9938844347762856,
+            "ray_miss_vox": 0.11042522497062782,
+            "center_distance_vox": 1.0000000000001954,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.11059444130695176,
+              "indices": [
+                1
+              ],
+              "margin": 6.384228788199656
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            5.009765625,
+            -2.87890625,
+            -2.4580078125
+          ],
+          "normal_xyz": [
+            -0.8424729303806037,
+            0.45375476337681125,
+            0.29042378740174235
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            -1.0,
+            5.5,
+            12.0,
+            17.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 5.246888854459575,
+            "ray_miss_vox": 0.5826865788025722,
+            "center_distance_vox": 5.2791444666885905,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.6352864716910741,
+              "indices": [
+                2
+              ],
+              "margin": 5.6387189482208
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            4.875695299203926,
+            -3.383651330716475,
+            -1.9044706299209793
+          ],
+          "normal_xyz": [
+            -0.8412687138889934,
+            0.456849102610592,
+            0.2890602851923036
+          ],
+          "peak_offsets_vox": [
+            -17.0,
+            -1.0,
+            5.0,
+            12.0,
+            17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 4.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 5.2042862290217515,
+            "ray_miss_vox": 0.6246064107659184,
+            "center_distance_vox": 5.24163412705955,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.6571651479937561,
+              "indices": [
+                2
+              ],
+              "margin": 5.578482435056563
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            53,
+            46
+          ],
+          [
+            54,
+            47
+          ],
+          [
+            54,
+            46
+          ]
+        ],
+        "barycentric": [
+          0.9765153251473089,
+          0.021326741300765444,
+          0.0021579335519256956
+        ],
+        "projected_uv_yx": [
+          53.023484674852696,
+          46.02132674130077
+        ],
+        "distance_vox": 5.240232142209838,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          4.897032332076378,
+          -3.303265685243332,
+          -1.9926652824178746
+        ],
+        "normal_xyz": [
+          -0.841461378334869,
+          0.4563564182490154,
+          0.2892776664274523
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "reserved": false,
+      "public_uv_yx": [
+        30,
+        29
+      ],
+      "same_uv_delta_xyz_vox": [
+        -1.02490234375,
+        0.967041015625,
+        -0.478515625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.4881432536870955,
+      "along_raw_normal_vox": 1.4881431837791883,
+      "across_raw_normal_vox": 0.00045614247337039305,
+      "normal_angle_deg": 11.94948514285241,
+      "ray_tip_separation_vox": {
+        "6": 1.249080512680366,
+        "12": 2.498161025360732,
+        "24": 4.996322050721464
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            30,
+            29
+          ],
+          [
+            31,
+            30
+          ],
+          [
+            31,
+            29
+          ]
+        ],
+        "barycentric": [
+          0.9843664708682964,
+          0.0029204180851039627,
+          0.012713111046599593
+        ],
+        "projected_uv_yx": [
+          30.015633529131705,
+          29.002920418085104
+        ],
+        "distance_vox": 1.4514396516150727,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 2.5,
+      "legacy_raw_nearest": {
+        "minimum": 2.5,
+        "indices": [
+          0
+        ],
+        "margin": 10.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.0118568162208117,
+        "indices": [
+          0
+        ],
+        "margin": 10.5
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 1.0118568162208117,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.6888073087179827,
+            0.6498723626553079,
+            -0.32126376034887255
+          ],
+          "peak_offsets_vox": [
+            2.5,
+            13.0,
+            17.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              0
+            ],
+            "margin": 10.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.500000000000008,
+            "ray_miss_vox": 5.560328656362499e-13,
+            "center_distance_vox": 2.5000000000000075,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": 10.499999999999801
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.7916490260564728,
+            0.5923687088645567,
+            -0.14963666763857125
+          ],
+          "peak_offsets_vox": [
+            2.5,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              0
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.4458263150293544,
+            "ray_miss_vox": 0.5176230643141476,
+            "center_distance_vox": 2.5000000000000075,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.5204502136160356,
+              "indices": [
+                0
+              ],
+              "margin": 11.0453123284381
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -1.02490234375,
+            0.967041015625,
+            -0.478515625
+          ],
+          "normal_xyz": [
+            -0.7916490260564728,
+            0.5923687088645567,
+            -0.14963666763857125
+          ],
+          "peak_offsets_vox": [
+            1.0,
+            12.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              0
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.9900150514138317,
+            "ray_miss_vox": 0.20910433417927493,
+            "center_distance_vox": 1.0118569190347464,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.20934259425858381,
+              "indices": [
+                0
+              ],
+              "margin": 11.302541618990482
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -1.0892353395588543,
+            0.9463466403653911,
+            -0.15707155568634334
+          ],
+          "normal_xyz": [
+            -0.791260485013866,
+            0.5929862468281152,
+            -0.14924528779270466
+          ],
+          "peak_offsets_vox": [
+            1.0,
+            12.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              0
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.999364586915934,
+            "ray_miss_vox": 0.5284425628620099,
+            "center_distance_vox": 1.130478270390822,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.5284429448811989,
+              "indices": [
+                0
+              ],
+              "margin": 10.984326767352757
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            29,
+            28
+          ],
+          [
+            30,
+            29
+          ],
+          [
+            30,
+            28
+          ]
+        ],
+        "barycentric": [
+          0.004611811026259363,
+          0.9933317546969509,
+          0.0020564342767897393
+        ],
+        "projected_uv_yx": [
+          29.99538818897374,
+          28.99333175469695
+        ],
+        "distance_vox": 0.9982826972059343,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -0.9303933882615638,
+          1.0601182335472004,
+          -0.5769573331017455
+        ],
+        "normal_xyz": [
+          -0.7915372073363305,
+          0.5923898040709068,
+          -0.15014382916069488
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "reserved": true,
+      "public_uv_yx": [
+        49,
+        72
+      ],
+      "same_uv_delta_xyz_vox": [
+        -1.862060546875,
+        -2.722412109375,
+        -3.58984375
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 4.875015417710402,
+      "along_raw_normal_vox": 4.875015403451954,
+      "across_raw_normal_vox": 0.000372854262871905,
+      "normal_angle_deg": 1.9431429374546565,
+      "ray_tip_separation_vox": {
+        "6": 0.20347570087764344,
+        "12": 0.4069514017552869,
+        "24": 0.8139028035105738
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            48,
+            72
+          ],
+          [
+            49,
+            73
+          ],
+          [
+            49,
+            72
+          ]
+        ],
+        "barycentric": [
+          0.023297666697467023,
+          0.004730685606282692,
+          0.9719716476962503
+        ],
+        "projected_uv_yx": [
+          48.97670233330253,
+          72.00473068560629
+        ],
+        "distance_vox": 4.850682273600159,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -4.5,
+      "legacy_raw_nearest": {
+        "minimum": 4.5,
+        "indices": [
+          1
+        ],
+        "margin": 2.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.624984596548046,
+        "indices": [
+          2
+        ],
+        "margin": 6.0
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 9.375015403451954,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.3820050333208902,
+            -0.5584773979961263,
+            -0.7363254378635725
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            -4.5,
+            6.5,
+            12.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.5,
+            "indices": [
+              1
+            ],
+            "margin": 2.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -4.499999999999712,
+            "ray_miss_vox": 1.4883880258737222e-13,
+            "center_distance_vox": 4.499999999999712,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 10.99999999999942
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.3836784009114704,
+            -0.5307167095448044,
+            -0.7557318697024444
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            -4.5,
+            6.5,
+            12.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.5,
+            "indices": [
+              1
+            ],
+            "margin": 2.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -4.497412352446736,
+            "ray_miss_vox": 0.15258483560602681,
+            "center_distance_vox": 4.499999999999712,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.15260677565791145,
+              "indices": [
+                1
+              ],
+              "margin": 10.845864053589686
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -1.862060546875,
+            -2.722412109375,
+            -3.58984375
+          ],
+          "normal_xyz": [
+            -0.3836784009114704,
+            -0.5307167095448044,
+            -0.7557318697024444
+          ],
+          "peak_offsets_vox": [
+            -21.5,
+            -9.5,
+            1.5,
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              2
+            ],
+            "margin": 6.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.36963369131164,
+            "ray_miss_vox": 0.31761367195718204,
+            "center_distance_vox": 9.375015410866071,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.34332756815496235,
+              "indices": [
+                1
+              ],
+              "margin": 10.530945512281818
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -1.4420268488042893,
+            -2.6254778348134096,
+            -3.8153038182626915
+          ],
+          "normal_xyz": [
+            -0.383445764035213,
+            -0.530220841122588,
+            -0.7561978614639868
+          ],
+          "peak_offsets_vox": [
+            -21.0,
+            -9.5,
+            1.5,
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              2
+            ],
+            "margin": 6.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.327457041582916,
+            "ray_miss_vox": 0.46432191948494766,
+            "center_distance_vox": 9.33900689085777,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.4953442413244901,
+              "indices": [
+                1
+              ],
+              "margin": 10.34206415885264
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            48,
+            72
+          ],
+          [
+            49,
+            73
+          ],
+          [
+            49,
+            72
+          ]
+        ],
+        "barycentric": [
+          0.04481954316961556,
+          0.009093535889319649,
+          0.9460869209410648
+        ],
+        "projected_uv_yx": [
+          48.955180456830384,
+          72.00909353588932
+        ],
+        "distance_vox": 9.328189636274896,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -1.0540923774933617,
+          -2.5358229150392617,
+          -4.023622464881555
+        ],
+        "normal_xyz": [
+          -0.3832306930175,
+          -0.5297621651009238,
+          -0.7566282339147201
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "reserved": false,
+      "public_uv_yx": [
+        6,
+        70
+      ],
+      "same_uv_delta_xyz_vox": [
+        -1.339599609375,
+        -2.114501953125,
+        -2.994140625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 3.9026303572696306,
+      "along_raw_normal_vox": 3.902630353427958,
+      "across_raw_normal_vox": 0.00017316251361637941,
+      "normal_angle_deg": 5.21475003386298,
+      "ray_tip_separation_vox": {
+        "6": 0.5458988828929479,
+        "12": 1.0917977657858957,
+        "24": 2.1835955315717914
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            5,
+            70
+          ],
+          [
+            6,
+            71
+          ],
+          [
+            6,
+            70
+          ]
+        ],
+        "barycentric": [
+          0.011474078684047817,
+          0.011173927024898056,
+          0.9773519942910541
+        ],
+        "projected_uv_yx": [
+          5.9885259213159525,
+          70.0111739270249
+        ],
+        "distance_vox": 3.8906497927866996,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 1.0,
+      "legacy_raw_nearest": {
+        "minimum": 1.0,
+        "indices": [
+          1
+        ],
+        "margin": 9.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 2.902630353427958,
+        "indices": [
+          1
+        ],
+        "margin": 11.5
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 2.902630353427958,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.34323183085512626,
+            -0.5417897761790526,
+            -0.7672390427472329
+          ],
+          "peak_offsets_vox": [
+            -10.5,
+            1.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 9.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.9999999999997539,
+            "ray_miss_vox": 1.4847261399415896e-13,
+            "center_distance_vox": 0.9999999999997538,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 11.500000000000364
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.2671217692506598,
+            -0.5193369528822585,
+            -0.8117481689313306
+          ],
+          "peak_offsets_vox": [
+            -10.5,
+            1.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 9.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.9958610334671933,
+            "ray_miss_vox": 0.09088895434078471,
+            "center_distance_vox": 0.9999999999997538,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.09098314714907542,
+              "indices": [
+                1
+              ],
+              "margin": 11.405237175322853
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -1.339599609375,
+            -2.114501953125,
+            -2.994140625
+          ],
+          "normal_xyz": [
+            -0.2671217692506598,
+            -0.5193369528822585,
+            -0.8117481689313306
+          ],
+          "peak_offsets_vox": [
+            -14.5,
+            -3.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              1
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -2.8906023553427307,
+            "ray_miss_vox": 0.26397163089061815,
+            "center_distance_vox": 2.902630358593391,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.285742657949043,
+              "indices": [
+                1
+              ],
+              "margin": 11.326655659956804
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -1.0490476529125772,
+            -2.2013521247849894,
+            -3.0316173331630125
+          ],
+          "normal_xyz": [
+            -0.26675170014568433,
+            -0.5201175308074845,
+            -0.81137000475499
+          ],
+          "peak_offsets_vox": [
+            -14.5,
+            -3.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              1
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -2.8886936657635403,
+            "ray_miss_vox": 0.1875662844500696,
+            "center_distance_vox": 2.894776710850908,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.21810596301666527,
+              "indices": [
+                1
+              ],
+              "margin": 11.394715223006743
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            5,
+            70
+          ],
+          [
+            6,
+            71
+          ],
+          [
+            6,
+            70
+          ]
+        ],
+        "barycentric": [
+          0.008536084072258032,
+          0.008309959507497858,
+          0.9831539564202441
+        ],
+        "projected_uv_yx": [
+          5.991463915927742,
+          70.00830995950749
+        ],
+        "distance_vox": 2.893718172417945,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -1.1234738003568054,
+          -2.179072231976079,
+          -3.0220413601018663
+        ],
+        "normal_xyz": [
+          -0.2668465798535164,
+          -0.5199176467975835,
+          -0.8114669083634551
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "reserved": true,
+      "public_uv_yx": [
+        5,
+        106
+      ],
+      "same_uv_delta_xyz_vox": [
+        0.0009765625,
+        0.0,
+        0.0
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 0.0009765625,
+      "along_raw_normal_vox": 0.0009307617124777005,
+      "across_raw_normal_vox": 0.00029556209329314944,
+      "normal_angle_deg": 0.4698021406267301,
+      "ray_tip_separation_vox": {
+        "6": 0.04919742729963873,
+        "12": 0.09839485459927746,
+        "24": 0.19678970919855493
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            4,
+            105
+          ],
+          [
+            4,
+            106
+          ],
+          [
+            5,
+            106
+          ]
+        ],
+        "barycentric": [
+          1.0449617511065767e-05,
+          2.6323053385348046e-06,
+          0.9999869180771503
+        ],
+        "projected_uv_yx": [
+          4.99998691807715,
+          105.99998955038248
+        ],
+        "distance_vox": 0.0009192069024677188,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 4.0,
+      "legacy_raw_nearest": {
+        "minimum": 4.0,
+        "indices": [
+          1
+        ],
+        "margin": 12.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 3.999069238287522,
+        "indices": [
+          1
+        ],
+        "margin": 12.501861523424957
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 3.999069238287522,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9530999935771653,
+            -0.07378518049442837,
+            -0.29352367772057514
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            4.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              1
+            ],
+            "margin": 12.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 4.000000000000326,
+            "ray_miss_vox": 5.182728974030924e-13,
+            "center_distance_vox": 4.000000000000325,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 20.5000000000004
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9555109049299713,
+            -0.07050874014901487,
+            -0.2864043088406772
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            4.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              1
+            ],
+            "margin": 12.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.9998655340640497,
+            "ray_miss_vox": 0.03279800922486829,
+            "center_distance_vox": 4.000000000000325,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0327982848667503,
+              "indices": [
+                1
+              ],
+              "margin": 20.46709348616765
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            0.0009765625,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9555109049299713,
+            -0.07050874014901487,
+            -0.2864043088406772
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            4.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              1
+            ],
+            "margin": 12.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.998932417945954,
+            "ray_miss_vox": 0.033081364512670866,
+            "center_distance_vox": 3.999069249210008,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.03309858621542906,
+              "indices": [
+                1
+              ],
+              "margin": 20.46586052521755
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0008652199217067391,
+            -0.00017329553065792425,
+            -0.00025749655469553545
+          ],
+          "normal_xyz": [
+            0.9555103091166564,
+            -0.07051011167025095,
+            -0.28640595895344195
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            4.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              1
+            ],
+            "margin": 12.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.998952910576083,
+            "ray_miss_vox": 0.03274738619322816,
+            "center_distance_vox": 3.999086992340554,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.03276412212740041,
+              "indices": [
+                1
+              ],
+              "margin": 20.46621494565371
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            4,
+            105
+          ],
+          [
+            4,
+            106
+          ],
+          [
+            5,
+            106
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.004625976293980427,
+          0.9953740237060196
+        ],
+        "projected_uv_yx": [
+          4.995374023706019,
+          106.0
+        ],
+        "distance_vox": 3.9980131471671716,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -0.02311555817959743,
+          0.010555267198014917,
+          -0.08805618156475248
+        ],
+        "normal_xyz": [
+          0.9553674620331182,
+          -0.0707277397388903,
+          -0.28682851901410783
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "reserved": false,
+      "public_uv_yx": [
+        36,
+        88
+      ],
+      "same_uv_delta_xyz_vox": [
+        -0.90771484375,
+        6.40966796875,
+        -3.5419921875
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 7.379261369777796,
+      "along_raw_normal_vox": -7.379261358461405,
+      "across_raw_normal_vox": 0.0004086724924675778,
+      "normal_angle_deg": 6.496962117238373,
+      "ray_tip_separation_vox": {
+        "6": 0.6799958358345789,
+        "12": 1.3599916716691578,
+        "24": 2.7199833433383156
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            36,
+            87
+          ],
+          [
+            36,
+            88
+          ],
+          [
+            37,
+            88
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.982485886115329,
+          0.017514113884670952
+        ],
+        "projected_uv_yx": [
+          36.017514113884666,
+          88.0
+        ],
+        "distance_vox": 7.371396373412694,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 2.0,
+      "legacy_raw_nearest": {
+        "minimum": 2.0,
+        "indices": [
+          0
+        ],
+        "margin": 12.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 9.379261358461406,
+        "indices": [
+          0
+        ],
+        "margin": 12.0
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 9.379261358461406,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.12300744028233272,
+            -0.8686325635202464,
+            0.4799444126432074
+          ],
+          "peak_offsets_vox": [
+            2.0,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.0,
+            "indices": [
+              0
+            ],
+            "margin": 12.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 1.9999999999999183,
+            "ray_miss_vox": 6.614705059707576e-13,
+            "center_distance_vox": 1.999999999999918,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": 11.999999999999902
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.031127285477196228,
+            -0.9049362021215849,
+            0.4244073069453249
+          ],
+          "peak_offsets_vox": [
+            2.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.0,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 1.9871557128679298,
+            "ray_miss_vox": 0.22630106675847178,
+            "center_distance_vox": 1.999999999999918,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.22666527861187513,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -0.90771484375,
+            6.40966796875,
+            -3.5419921875
+          ],
+          "normal_xyz": [
+            0.031127285477196228,
+            -0.9049362021215849,
+            0.4244073069453249
+          ],
+          "peak_offsets_vox": [
+            5.0,
+            9.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.0,
+            "indices": [
+              0
+            ],
+            "margin": 4.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 9.318998365960478,
+            "ray_miss_vox": 1.0615146030860318,
+            "center_distance_vox": 9.379261367364647,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 1.1084102174058001,
+              "indices": [
+                1
+              ],
+              "margin": 3.339123946345234
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -1.025764076202904,
+            6.536820606589117,
+            -3.24888733433545
+          ],
+          "normal_xyz": [
+            0.03261558960618703,
+            -0.9036122691793101,
+            0.42710782046604917
+          ],
+          "peak_offsets_vox": [
+            5.0,
+            9.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.0,
+            "indices": [
+              0
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 9.315646418038426,
+            "ray_miss_vox": 1.0052089425676565,
+            "center_distance_vox": 9.369723219184767,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 1.0219741980107955,
+              "indices": [
+                1
+              ],
+              "margin": 3.409193709409042
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            36,
+            87
+          ],
+          [
+            36,
+            88
+          ],
+          [
+            37,
+            88
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9777443010931642,
+          0.022255698906835777
+        ],
+        "projected_uv_yx": [
+          36.02225569890684,
+          88.0
+        ],
+        "distance_vox": 9.369269450608353,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -1.057723470561541,
+          6.57124456015481,
+          -3.169535242024722
+        ],
+        "normal_xyz": [
+          0.03301861647237224,
+          -0.9032519460380443,
+          0.42783839582807015
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "reserved": true,
+      "public_uv_yx": [
+        37,
+        6
+      ],
+      "same_uv_delta_xyz_vox": [
+        -4.796142578125,
+        0.15771484375,
+        1.400390625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 4.99889502832681,
+      "along_raw_normal_vox": -4.998895028050084,
+      "across_raw_normal_vox": 5.259891420833423e-05,
+      "normal_angle_deg": 2.112060155660047,
+      "ray_tip_separation_vox": {
+        "6": 0.22116190001367603,
+        "12": 0.44232380002735205,
+        "24": 0.8846476000547041
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            37,
+            5
+          ],
+          [
+            37,
+            6
+          ],
+          [
+            38,
+            6
+          ]
+        ],
+        "barycentric": [
+          0.003909824760541858,
+          0.966597474291307,
+          0.029492700948151096
+        ],
+        "projected_uv_yx": [
+          37.02949270094815,
+          5.996090175239458
+        ],
+        "distance_vox": 4.960048049157993,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 5.0,
+      "legacy_raw_nearest": {
+        "minimum": 5.0,
+        "indices": [
+          2
+        ],
+        "margin": 3.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 3.501104971949916,
+        "indices": [
+          1
+        ],
+        "margin": 6.497790056100168
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 9.998895028050084,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9594434526533343,
+            -0.03155092903841666,
+            -0.2801299699022969
+          ],
+          "peak_offsets_vox": [
+            -19.5,
+            -8.5,
+            5.0,
+            20.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.0,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 4.9999999999998845,
+            "ray_miss_vox": 5.302423720006654e-13,
+            "center_distance_vox": 4.9999999999998845,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 13.499999999999554
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.9501776698727782,
+            -0.014336717320263403,
+            -0.31137895595498544
+          ],
+          "peak_offsets_vox": [
+            -19.5,
+            -8.5,
+            5.0,
+            20.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.0,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 4.996603292637529,
+            "ray_miss_vox": 0.18427027975953222,
+            "center_distance_vox": 4.9999999999998845,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.18430158334497787,
+              "indices": [
+                2
+              ],
+              "margin": 13.313559579625762
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -4.796142578125,
+            0.15771484375,
+            1.400390625
+          ],
+          "normal_xyz": [
+            0.9501776698727782,
+            -0.014336717320263403,
+            -0.31137895595498544
+          ],
+          "peak_offsets_vox": [
+            -14.5,
+            -3.5,
+            10.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              1
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 9.992104155771663,
+            "ray_miss_vox": 0.3684512517819842,
+            "center_distance_vox": 9.998895028188317,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.3685358453333382,
+              "indices": [
+                2
+              ],
+              "margin": 13.128598327339493
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -4.548037216508874,
+            0.24534773218783812,
+            1.9639853913704428
+          ],
+          "normal_xyz": [
+            0.9487269915467945,
+            -0.01445248134513699,
+            -0.31576608635750764
+          ],
+          "peak_offsets_vox": [
+            -14.5,
+            -3.5,
+            10.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              1
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 9.93435869945962,
+            "ray_miss_vox": 0.35434496337169047,
+            "center_distance_vox": 9.940676190410587,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.36037360253423917,
+              "indices": [
+                2
+              ],
+              "margin": 13.07865739001949
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            37,
+            5
+          ],
+          [
+            37,
+            6
+          ],
+          [
+            38,
+            6
+          ]
+        ],
+        "barycentric": [
+          0.007821451450007177,
+          0.9331842852729885,
+          0.058994263277004355
+        ],
+        "projected_uv_yx": [
+          37.058994263277,
+          5.992178548549993
+        ],
+        "distance_vox": 9.921186125329516,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -4.299856652694871,
+          0.33299473713987027,
+          2.5277525413730473
+        ],
+        "normal_xyz": [
+          0.9472546057876262,
+          -0.014568032411858441,
+          -0.3201507211389287
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "reserved": false,
+      "public_uv_yx": [
+        14,
+        42
+      ],
+      "same_uv_delta_xyz_vox": [
+        4.480224609375,
+        0.086669921875,
+        3.41015625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 5.631082478105009,
+      "along_raw_normal_vox": -5.631082462888269,
+      "across_raw_normal_vox": 0.0004139727506682713,
+      "normal_angle_deg": 2.6981684245823123,
+      "ray_tip_separation_vox": {
+        "6": 0.2825254290764726,
+        "12": 0.5650508581529452,
+        "24": 1.1301017163058904
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            14,
+            41
+          ],
+          [
+            14,
+            42
+          ],
+          [
+            15,
+            42
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9893997206018137,
+          0.010600279398186335
+        ],
+        "projected_uv_yx": [
+          14.010600279398187,
+          42.0
+        ],
+        "distance_vox": 5.627235708958334,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 0.5,
+      "legacy_raw_nearest": {
+        "minimum": 0.5,
+        "indices": [
+          2
+        ],
+        "margin": 5.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 0.1310824628882692,
+        "indices": [
+          1
+        ],
+        "margin": 6.0
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 6.131082462888269,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.7956663420713508,
+            -0.01541291652732182,
+            -0.6055390277256438
+          ],
+          "peak_offsets_vox": [
+            -18.5,
+            -5.5,
+            0.5,
+            11.0,
+            17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.5,
+            "indices": [
+              2
+            ],
+            "margin": 5.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.49999999999969746,
+            "ray_miss_vox": 1.425111258197383e-13,
+            "center_distance_vox": 0.4999999999996974,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 5.999999999999258
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.777469990543899,
+            0.021416196541928643,
+            -0.6285552961588561
+          ],
+          "peak_offsets_vox": [
+            -6.0,
+            0.5,
+            11.0,
+            17.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.5,
+            "indices": [
+              1
+            ],
+            "margin": 5.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.4994456901519492,
+            "ray_miss_vox": 0.023537259575842108,
+            "center_distance_vox": 0.4999999999996974,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.023543785756892758,
+              "indices": [
+                1
+              ],
+              "margin": 6.475944523474069
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            4.480224609375,
+            0.086669921875,
+            3.41015625
+          ],
+          "normal_xyz": [
+            -0.777469990543899,
+            0.021416196541928643,
+            -0.6285552961588561
+          ],
+          "peak_offsets_vox": [
+            0.0,
+            6.5,
+            17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              0
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 6.124301506422849,
+            "ray_miss_vox": 0.28827659726837734,
+            "center_distance_vox": 6.131082476863756,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.4735533281569455,
+              "indices": [
+                1
+              ],
+              "margin": 5.657529148706811
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            4.352733993166112,
+            0.1463327249134636,
+            3.5634358760235045
+          ],
+          "normal_xyz": [
+            -0.7778711786509989,
+            0.020814612896569745,
+            -0.6280789610503379
+          ],
+          "peak_offsets_vox": [
+            0.0,
+            6.5,
+            17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              0
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 6.120405277796353,
+            "ray_miss_vox": 0.282488590656322,
+            "center_distance_vox": 6.12692096964931,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.4731722276042855,
+              "indices": [
+                1
+              ],
+              "margin": 5.653748742045025
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            14,
+            41
+          ],
+          [
+            14,
+            42
+          ],
+          [
+            15,
+            42
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9884569360570141,
+          0.011543063942985888
+        ],
+        "projected_uv_yx": [
+          14.011543063942986,
+          42.0
+        ],
+        "distance_vox": 6.126893012772499,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          4.341395029535306,
+          0.15163911038644073,
+          3.5770685037132353
+        ],
+        "normal_xyz": [
+          -0.7779068332757927,
+          0.020761105495671405,
+          -0.6280365715795744
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "reserved": true,
+      "public_uv_yx": [
+        25,
+        105
+      ],
+      "same_uv_delta_xyz_vox": [
+        1.3525390625,
+        0.343505859375,
+        0.9931640625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.71281436415475,
+      "along_raw_normal_vox": 1.7128143241291327,
+      "across_raw_normal_vox": 0.0003702875945667841,
+      "normal_angle_deg": 1.6050260392864084,
+      "ray_tip_separation_vox": {
+        "6": 0.16807243820760873,
+        "12": 0.33614487641521745,
+        "24": 0.6722897528304349
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            24,
+            104
+          ],
+          [
+            25,
+            105
+          ],
+          [
+            25,
+            104
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9983564961122768,
+          0.0016435038877232178
+        ],
+        "projected_uv_yx": [
+          25.0,
+          104.99835649611228
+        ],
+        "distance_vox": 1.7124677653048996,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 3.0,
+      "legacy_raw_nearest": {
+        "minimum": 3.0,
+        "indices": [
+          2
+        ],
+        "margin": 6.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.2871856758708673,
+        "indices": [
+          2
+        ],
+        "margin": 9.0
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 1.2871856758708673,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.7895313473425433,
+            0.20054790306665624,
+            0.5800179222567483
+          ],
+          "peak_offsets_vox": [
+            -13.5,
+            -9.5,
+            3.0,
+            12.0,
+            17.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              2
+            ],
+            "margin": 6.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.0000000000004547,
+            "ray_miss_vox": 4.747566017211485e-13,
+            "center_distance_vox": 3.0000000000004547,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 9.00000000000004
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.8063045164681732,
+            0.19623217036792379,
+            0.5580017580937532
+          ],
+          "peak_offsets_vox": [
+            -13.5,
+            3.0,
+            12.0,
+            16.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.9988229856469,
+            "ray_miss_vox": 0.08402797604690491,
+            "center_distance_vox": 3.0000000000004547,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.08403621910447737,
+              "indices": [
+                1
+              ],
+              "margin": 8.917532996563994
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            1.3525390625,
+            0.343505859375,
+            0.9931640625
+          ],
+          "normal_xyz": [
+            0.8063045164681732,
+            0.19623217036792379,
+            0.5580017580937532
+          ],
+          "peak_offsets_vox": [
+            -15.0,
+            1.5,
+            10.5,
+            15.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 1.286670437583732,
+            "ray_miss_vox": 0.03641821425197067,
+            "center_distance_vox": 1.287185729132053,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.21641577698982375,
+              "indices": [
+                1
+              ],
+              "margin": 8.99698576164013
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            1.3569989125271604,
+            0.3096306602246841,
+            0.9976114739001787
+          ],
+          "normal_xyz": [
+            0.806282415093084,
+            0.19629657694218525,
+            0.5580110402065936
+          ],
+          "peak_offsets_vox": [
+            -15.0,
+            1.5,
+            10.5,
+            15.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 1.2872435221845766,
+            "ray_miss_vox": 0.053113083492439185,
+            "center_distance_vox": 1.2883388083280847,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.2192859286193448,
+              "indices": [
+                1
+              ],
+              "margin": 8.993623650832772
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            25,
+            105
+          ],
+          [
+            26,
+            106
+          ],
+          [
+            26,
+            105
+          ]
+        ],
+        "barycentric": [
+          0.9969125405250273,
+          0.001170398495234122,
+          0.0019170609797385097
+        ],
+        "projected_uv_yx": [
+          25.00308745947497,
+          105.00117039849523
+        ],
+        "distance_vox": 1.2855180373823791,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          1.3156424698086084,
+          0.37171499155920174,
+          1.0393524068458646
+        ],
+        "normal_xyz": [
+          0.8064496297970741,
+          0.19622339023770316,
+          0.5577951019180647
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "reserved": false,
+      "public_uv_yx": [
+        37,
+        43
+      ],
+      "same_uv_delta_xyz_vox": [
+        -4.7373046875,
+        3.801513671875,
+        -1.3818359375
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 6.229208012085366,
+      "along_raw_normal_vox": 6.229208009141642,
+      "across_raw_normal_vox": 0.000191504949221033,
+      "normal_angle_deg": 3.390068611257672,
+      "ray_tip_separation_vox": {
+        "6": 0.3549553728395758,
+        "12": 0.7099107456791516,
+        "24": 1.4198214913583032
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            36,
+            43
+          ],
+          [
+            37,
+            44
+          ],
+          [
+            37,
+            43
+          ]
+        ],
+        "barycentric": [
+          0.04414848412840944,
+          0.006728969942113694,
+          0.9491225459294769
+        ],
+        "projected_uv_yx": [
+          36.95585151587159,
+          43.00672896994212
+        ],
+        "distance_vox": 6.16168490324171,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": null,
+      "legacy_raw_nearest": {
+        "minimum": 7.0,
+        "indices": [
+          0,
+          1
+        ],
+        "margin": 0.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 0.770791990858358,
+        "indices": [
+          1
+        ],
+        "margin": 12.458416018283284
+      },
+      "legacy_nearest_peak_changed": null,
+      "legacy_same_peak_after_vox": null,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.760493055619023,
+            0.610288692065802,
+            -0.22180627739505973
+          ],
+          "peak_offsets_vox": [
+            -7.0,
+            7.0,
+            22.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.0,
+            "indices": [
+              0,
+              1
+            ],
+            "margin": 0.0
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.7456716151743797,
+            0.605158913101074,
+            -0.2788485829577743
+          ],
+          "peak_offsets_vox": [
+            -7.0,
+            7.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.0,
+            "indices": [
+              0,
+              1
+            ],
+            "margin": 0.0
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -4.7373046875,
+            3.801513671875,
+            -1.3818359375
+          ],
+          "normal_xyz": [
+            -0.7456716151743797,
+            0.605158913101074,
+            -0.2788485829577743
+          ],
+          "peak_offsets_vox": [
+            -13.5,
+            0.5,
+            19.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.5,
+            "indices": [
+              1
+            ],
+            "margin": 13.0
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -4.5655796380942775,
+            3.489210351855945,
+            -2.2242424633022893
+          ],
+          "normal_xyz": [
+            -0.7451361965439353,
+            0.6042094132450786,
+            -0.2823172569044903
+          ],
+          "peak_offsets_vox": [
+            -13.0,
+            -4.0,
+            1.0,
+            19.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              2
+            ],
+            "margin": 3.0
+          }
+        }
+      }
+    },
+    {
+      "id": 16,
+      "reserved": true,
+      "public_uv_yx": [
+        21,
+        8
+      ],
+      "same_uv_delta_xyz_vox": [
+        1.729248046875,
+        0.46826171875,
+        3.033203125
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 3.5227672421517537,
+      "along_raw_normal_vox": 3.5227672408358557,
+      "across_raw_normal_vox": 9.628708613546037e-05,
+      "normal_angle_deg": 2.5577280998233594,
+      "ray_tip_separation_vox": {
+        "6": 0.26782242080697716,
+        "12": 0.5356448416139543,
+        "24": 1.0712896832279086
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            20,
+            8
+          ],
+          [
+            21,
+            9
+          ],
+          [
+            21,
+            8
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.005017007841028431,
+          0.9949829921589716
+        ],
+        "projected_uv_yx": [
+          21.0,
+          8.005017007841028
+        ],
+        "distance_vox": 3.5213142708462133,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 3.5,
+      "legacy_raw_nearest": {
+        "minimum": 3.5,
+        "indices": [
+          2
+        ],
+        "margin": 4.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 0.022767240835855684,
+        "indices": [
+          2
+        ],
+        "margin": 11.5
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 0.022767240835855684,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.4908593339645445,
+            0.13290885206285308,
+            0.8610414341384613
+          ],
+          "peak_offsets_vox": [
+            -21.0,
+            -8.0,
+            3.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              2
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.499999999999587,
+            "ray_miss_vox": 3.411938439705541e-13,
+            "center_distance_vox": 3.499999999999587,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 11.500000000000027
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.48341941489793794,
+            0.1767669456550314,
+            0.8573558865625912
+          ],
+          "peak_offsets_vox": [
+            -21.0,
+            -7.5,
+            3.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              2
+            ],
+            "margin": 4.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.4965131809467476,
+            "ray_miss_vox": 0.15619083027748562,
+            "center_distance_vox": 3.499999999999587,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.1562297454707814,
+              "indices": [
+                2
+              ],
+              "margin": 10.841392620941367
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            1.729248046875,
+            0.46826171875,
+            3.033203125
+          ],
+          "normal_xyz": [
+            0.48341941489793794,
+            0.1767669456550314,
+            0.8573558865625912
+          ],
+          "peak_offsets_vox": [
+            -11.0,
+            0.0,
+            22.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              1
+            ],
+            "margin": 11.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -0.02274664623637692,
+            "ray_miss_vox": 0.0009729396161592416,
+            "center_distance_vox": 0.02276744444375724,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.02276744444375724,
+              "indices": [
+                1
+              ],
+              "margin": 10.954485952437208
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            1.7282559139766818,
+            0.5677787727213399,
+            3.015031169841677
+          ],
+          "normal_xyz": [
+            0.48329518299097085,
+            0.17689329739073248,
+            0.8573998643783178
+          ],
+          "peak_offsets_vox": [
+            -11.0,
+            0.0,
+            22.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              1
+            ],
+            "margin": 11.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -0.024290274086674113,
+            "ray_miss_vox": 0.10021595252771237,
+            "center_distance_vox": 0.10311767334575801,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.10311767334575801,
+              "indices": [
+                1
+              ],
+              "margin": 10.873049564111632
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            20,
+            8
+          ],
+          [
+            21,
+            9
+          ],
+          [
+            21,
+            8
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          2.9399141723840394e-05,
+          0.9999706008582762
+        ],
+        "projected_uv_yx": [
+          21.0,
+          8.000029399141724
+        ],
+        "distance_vox": 0.022759724919717155,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 2,
+        "projected_minus_raw_xyz_vox": [
+          1.7292422330797308,
+          0.4688448782881096,
+          3.0330966392411938
+        ],
+        "normal_xyz": [
+          0.48341868696127177,
+          0.1767676860777288,
+          0.8573561443503893
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "reserved": false,
+      "public_uv_yx": [
+        33,
+        73
+      ],
+      "same_uv_delta_xyz_vox": [
+        10.483154296875,
+        3.627685546875,
+        0.6044921875
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 11.10954712145563,
+      "along_raw_normal_vox": -11.109547116245952,
+      "across_raw_normal_vox": 0.0003402268455250596,
+      "normal_angle_deg": 3.0682718004670155,
+      "ray_tip_separation_vox": {
+        "6": 0.3212702798248469,
+        "12": 0.6425405596496938,
+        "24": 1.2850811192993876
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            32,
+            72
+          ],
+          [
+            32,
+            73
+          ],
+          [
+            33,
+            73
+          ]
+        ],
+        "barycentric": [
+          0.051842712104192064,
+          0.0,
+          0.9481572878958079
+        ],
+        "projected_uv_yx": [
+          32.9481572878958,
+          72.94815728789581
+        ],
+        "distance_vox": 11.00929931976626,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -3.5,
+      "legacy_raw_nearest": {
+        "minimum": 3.5,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_snap_nearest": {
+        "minimum": 7.6095471162459525,
+        "indices": [
+          0
+        ],
+        "margin": null
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 7.6095471162459525,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9436186361333476,
+            -0.32653718526820297,
+            -0.05438139552236623
+          ],
+          "peak_offsets_vox": [
+            -3.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -3.49999999999982,
+            "ray_miss_vox": 3.439526219255593e-13,
+            "center_distance_vox": 3.499999999999821,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9314504642180687,
+            -0.36344485617929506,
+            -0.017546202573664845
+          ],
+          "peak_offsets_vox": [
+            -3.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -3.49498262396586,
+            "ray_miss_vox": 0.187340487283072,
+            "center_distance_vox": 3.499999999999821,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.18740766323099042,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            10.483154296875,
+            3.627685546875,
+            0.6044921875
+          ],
+          "normal_xyz": [
+            -0.9314504642180687,
+            -0.36344485617929506,
+            -0.017546202573664845
+          ],
+          "peak_offsets_vox": [
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.598626506551764,
+            "ray_miss_vox": 0.40753238405441317,
+            "center_distance_vox": 7.609547123851993,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.41929683023805575,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            10.10543406803572,
+            4.318575752665765,
+            -0.6593764306344383
+          ],
+          "normal_xyz": [
+            -0.9294541896192344,
+            -0.36871669131470264,
+            -0.01276365720279789
+          ],
+          "peak_offsets_vox": [
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 7.5,
+            "indices": [
+              0
+            ],
+            "margin": null
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.482948552675392,
+            "ray_miss_vox": 1.0441248772633438,
+            "center_distance_vox": 7.55544279319928,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 1.0442641003006232,
+              "indices": [
+                0
+              ],
+              "margin": null
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            32,
+            72
+          ],
+          [
+            32,
+            73
+          ],
+          [
+            33,
+            73
+          ]
+        ],
+        "barycentric": [
+          0.035513032943679454,
+          0.0,
+          0.9644869670563205
+        ],
+        "projected_uv_yx": [
+          32.96448696705632,
+          72.96448696705632
+        ],
+        "distance_vox": 7.540869881727583,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          10.224410292446919,
+          4.100955668032839,
+          -0.2612767132868612
+        ],
+        "normal_xyz": [
+          -0.9300886872977729,
+          -0.36705773547779796,
+          -0.014270689773677967
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "reserved": true,
+      "public_uv_yx": [
+        45,
+        31
+      ],
+      "same_uv_delta_xyz_vox": [
+        3.372314453125,
+        -6.093017578125,
+        0.900390625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 7.021970610568226,
+      "along_raw_normal_vox": -7.021970609922272,
+      "across_raw_normal_vox": 9.524558954365927e-05,
+      "normal_angle_deg": 6.849767249202656,
+      "ray_tip_separation_vox": {
+        "6": 0.7168788564424541,
+        "12": 1.4337577128849082,
+        "24": 2.8675154257698163
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            45,
+            30
+          ],
+          [
+            45,
+            31
+          ],
+          [
+            46,
+            31
+          ]
+        ],
+        "barycentric": [
+          0.005817534459267193,
+          0.9189163632856503,
+          0.07526610225508251
+        ],
+        "projected_uv_yx": [
+          45.075266102255085,
+          30.99418246554073
+        ],
+        "distance_vox": 6.843732712393821,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 8.0,
+      "legacy_raw_nearest": {
+        "minimum": 8.0,
+        "indices": [
+          1
+        ],
+        "margin": 0.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.4780293900777277,
+        "indices": [
+          0
+        ],
+        "margin": 13.543941219844545
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 15.021970609922272,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.4802522695244375,
+            0.8677094047636876,
+            -0.12821133530727288
+          ],
+          "peak_offsets_vox": [
+            -8.5,
+            8.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 8.0,
+            "indices": [
+              1
+            ],
+            "margin": 0.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.999999999999884,
+            "ray_miss_vox": 2.5159486078211285e-13,
+            "center_distance_vox": 7.999999999999883,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 16.500000000000128
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.4875979336910988,
+            0.8383398503162516,
+            -0.2437920229045564
+          ],
+          "peak_offsets_vox": [
+            -8.0,
+            8.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 8.0,
+            "indices": [
+              0,
+              1
+            ],
+            "margin": 0.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 7.942898300576054,
+            "ray_miss_vox": 0.9541313257115968,
+            "center_distance_vox": 7.999999999999883,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.9558384752562128,
+              "indices": [
+                1
+              ],
+              "margin": 15.015585156005002
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            3.372314453125,
+            -6.093017578125,
+            0.900390625
+          ],
+          "normal_xyz": [
+            -0.4875979336910988,
+            0.8383398503162516,
+            -0.2437920229045564
+          ],
+          "peak_offsets_vox": [
+            -19.5,
+            -1.5,
+            7.5,
+            15.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 6.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 14.914759355969082,
+            "ray_miss_vox": 1.7915229186280326,
+            "center_distance_vox": 15.021970610224106,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 1.793549646751267,
+              "indices": [
+                3
+              ],
+              "margin": 5.83457008716071
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            3.2744814877123645,
+            -5.525398240180039,
+            2.3631383185784216
+          ],
+          "normal_xyz": [
+            -0.4880361068181423,
+            0.8332597832597116,
+            -0.25980548886382177
+          ],
+          "peak_offsets_vox": [
+            -20.0,
+            -1.0,
+            14.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 13.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 14.741856100077996,
+            "ray_miss_vox": 0.48407542559710276,
+            "center_distance_vox": 14.74980170351703,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.5411315836391286,
+              "indices": [
+                2
+              ],
+              "margin": 15.208165622688083
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            45,
+            30
+          ],
+          [
+            45,
+            31
+          ],
+          [
+            46,
+            31
+          ]
+        ],
+        "barycentric": [
+          0.012445246069327093,
+          0.8265342879112365,
+          0.1610204660194364
+        ],
+        "projected_uv_yx": [
+          45.16102046601944,
+          30.987554753930674
+        ],
+        "distance_vox": 14.640645401657567,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          3.163007368701983,
+          -4.8786865055508315,
+          4.029718640398642
+        ],
+        "normal_xyz": [
+          -0.48836815580302395,
+          0.8271645138717842,
+          -0.27802052332302435
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "reserved": false,
+      "public_uv_yx": [
+        43,
+        59
+      ],
+      "same_uv_delta_xyz_vox": [
+        -6.094970703125,
+        -4.279541015625,
+        -1.634765625
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 7.624670342057442,
+      "along_raw_normal_vox": 7.624670335821498,
+      "across_raw_normal_vox": 0.0003083732183424191,
+      "normal_angle_deg": 8.642783360234434,
+      "ray_tip_separation_vox": {
+        "6": 0.9042123107673742,
+        "12": 1.8084246215347484,
+        "24": 3.6168492430694967
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            42,
+            59
+          ],
+          [
+            43,
+            60
+          ],
+          [
+            43,
+            59
+          ]
+        ],
+        "barycentric": [
+          0.055168665152117824,
+          0.0516189563065722,
+          0.89321237854131
+        ],
+        "projected_uv_yx": [
+          42.94483133484788,
+          59.05161895630657
+        ],
+        "distance_vox": 7.468839488799185,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -6.0,
+      "legacy_raw_nearest": {
+        "minimum": 6.0,
+        "indices": [
+          1
+        ],
+        "margin": 0.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.1246703358214978,
+        "indices": [
+          2
+        ],
+        "margin": 4.250659328357004
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 13.624670335821499,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.799380564321544,
+            -0.5612826512171412,
+            -0.21436533961353657
+          ],
+          "peak_offsets_vox": [
+            -18.0,
+            -6.0,
+            6.5,
+            13.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 6.0,
+            "indices": [
+              1
+            ],
+            "margin": 0.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -6.0,
+            "ray_miss_vox": 5.543068167326471e-13,
+            "center_distance_vox": 6.0,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 11.999999999999867
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.7001814335482984,
+            -0.6701759185438556,
+            -0.24619138554821368
+          ],
+          "peak_offsets_vox": [
+            -6.0,
+            7.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 6.0,
+            "indices": [
+              0
+            ],
+            "margin": 1.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -5.931866674754738,
+            "ray_miss_vox": 0.901641698755202,
+            "center_distance_vox": 6.0,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.9042123107672886,
+              "indices": [
+                0
+              ],
+              "margin": 12.059048600229069
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -6.094970703125,
+            -4.279541015625,
+            -1.634765625
+          ],
+          "normal_xyz": [
+            -0.7001814335482984,
+            -0.6701759185438556,
+            -0.24619138554821368
+          ],
+          "peak_offsets_vox": [
+            -14.0,
+            -1.0,
+            5.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 4.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -13.469962544461612,
+            "ray_miss_vox": 2.0473765910817674,
+            "center_distance_vox": 13.62467033931127,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 2.114873662889512,
+              "indices": [
+                0
+              ],
+              "margin": 10.522045137434839
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -4.96960242564046,
+            -5.076186597493688,
+            -2.306283735350007
+          ],
+          "normal_xyz": [
+            -0.6939359374026585,
+            -0.672798992487961,
+            -0.2565042504292634
+          ],
+          "peak_offsets_vox": [
+            -13.5,
+            0.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              1
+            ],
+            "margin": 13.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -13.379420072479467,
+            "ray_miss_vox": 0.7541075144688342,
+            "center_distance_vox": 13.400655193655453,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.7636868876046884,
+              "indices": [
+                0
+              ],
+              "margin": 12.636968306050765
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            42,
+            59
+          ],
+          [
+            43,
+            60
+          ],
+          [
+            43,
+            59
+          ]
+        ],
+        "barycentric": [
+          0.09859268080441053,
+          0.09223423401453978,
+          0.8091730851810497
+        ],
+        "projected_uv_yx": [
+          42.90140731919559,
+          59.09223423401454
+        ],
+        "distance_vox": 13.346191414855566,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -4.0839804526222,
+          -5.7030249308240855,
+          -2.8349440819401934
+        ],
+        "normal_xyz": [
+          -0.6889392859831914,
+          -0.6747944090747554,
+          -0.2646037900530187
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "reserved": true,
+      "public_uv_yx": [
+        50,
+        4
+      ],
+      "same_uv_delta_xyz_vox": [
+        4.551513671875,
+        -0.39404296875,
+        -2.3310546875
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 5.12887536625741,
+      "along_raw_normal_vox": 5.128875362358802,
+      "across_raw_normal_vox": 0.00019997736597461205,
+      "normal_angle_deg": 2.0142372454631094,
+      "ray_tip_separation_vox": {
+        "6": 0.2109195694111498,
+        "12": 0.4218391388222996,
+        "24": 0.8436782776445992
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            49,
+            3
+          ],
+          [
+            49,
+            4
+          ],
+          [
+            50,
+            4
+          ]
+        ],
+        "barycentric": [
+          0.01584684315054738,
+          0.0,
+          0.9841531568494526
+        ],
+        "projected_uv_yx": [
+          49.98415315684945,
+          3.9841531568494526
+        ],
+        "distance_vox": 5.109175504956592,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -4.0,
+      "legacy_raw_nearest": {
+        "minimum": 4.0,
+        "indices": [
+          2
+        ],
+        "margin": 1.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 0.12887536235880237,
+        "indices": [
+          3
+        ],
+        "margin": 8.742249275282397
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 9.128875362358801,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.8874456215008889,
+            -0.0768075281160615,
+            -0.4544676803729848
+          ],
+          "peak_offsets_vox": [
+            -13.0,
+            -9.0,
+            -4.0,
+            5.0,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              2
+            ],
+            "margin": 1.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -4.000000000000033,
+            "ray_miss_vox": 1.317317865415886e-13,
+            "center_distance_vox": 4.000000000000032,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 4.999999999999707
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.8912256847028865,
+            -0.10876774654788715,
+            -0.4403252845758071
+          ],
+          "peak_offsets_vox": [
+            -13.0,
+            -4.0,
+            5.0,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 4.0,
+            "indices": [
+              1
+            ],
+            "margin": 1.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -3.997528496402225,
+            "ray_miss_vox": 0.14059132424308518,
+            "center_distance_vox": 4.000000000000032,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.14061304627378673,
+              "indices": [
+                1
+              ],
+              "margin": 8.858013791417802
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            4.551513671875,
+            -0.39404296875,
+            -2.3310546875
+          ],
+          "normal_xyz": [
+            0.8912256847028865,
+            -0.10876774654788715,
+            -0.4403252845758071
+          ],
+          "peak_offsets_vox": [
+            -18.0,
+            -9.0,
+            0.0,
+            9.0,
+            21.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              2
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.123235869442755,
+            "ray_miss_vox": 0.3208312515734463,
+            "center_distance_vox": 9.12887536454919,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.3436855706942593,
+              "indices": [
+                1
+              ],
+              "margin": 8.538874540080874
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            4.386379197706447,
+            -0.7748198607714585,
+            -2.5025998596920545
+          ],
+          "normal_xyz": [
+            0.8919368400760739,
+            -0.10848123900916627,
+            -0.43895386329105746
+          ],
+          "peak_offsets_vox": [
+            -18.0,
+            -9.0,
+            0.0,
+            9.0,
+            21.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 0.0,
+            "indices": [
+              2
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -9.092424349113667,
+            "ray_miss_vox": 0.3844215304690008,
+            "center_distance_vox": 9.100547261425723,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.3953759899094575,
+              "indices": [
+                1
+              ],
+              "margin": 8.520490983601508
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            49,
+            3
+          ],
+          [
+            49,
+            4
+          ],
+          [
+            50,
+            4
+          ]
+        ],
+        "barycentric": [
+          0.028210650057622452,
+          0.0,
+          0.9717893499423775
+        ],
+        "projected_uv_yx": [
+          49.97178934994238,
+          3.9717893499423775
+        ],
+        "distance_vox": 9.093799450670051,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          4.257540240134404,
+          -1.0719043919239084,
+          -2.6364404842661315
+        ],
+        "normal_xyz": [
+          0.8924902335259006,
+          -0.10825748781152522,
+          -0.43788297454185293
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "reserved": false,
+      "public_uv_yx": [
+        13,
+        56
+      ],
+      "same_uv_delta_xyz_vox": [
+        -4.4501953125,
+        0.85009765625,
+        -1.521484375
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 4.779311566316624,
+      "along_raw_normal_vox": 4.779311540845504,
+      "across_raw_normal_vox": 0.0004934256040681418,
+      "normal_angle_deg": 0.3318599456382254,
+      "ray_tip_separation_vox": {
+        "6": 0.03475224366348651,
+        "12": 0.06950448732697302,
+        "24": 0.13900897465394604
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            12,
+            55
+          ],
+          [
+            12,
+            56
+          ],
+          [
+            13,
+            56
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "projected_uv_yx": [
+          13.0,
+          56.0
+        ],
+        "distance_vox": 4.779311566316624,
+        "tied_triangles": 6,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": -1.5,
+      "legacy_raw_nearest": {
+        "minimum": 1.5,
+        "indices": [
+          1
+        ],
+        "margin": 6.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 2.7206884591544958,
+        "indices": [
+          2
+        ],
+        "margin": 3.5586230816910085
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 6.279311540845504,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9311042647253737,
+            0.1778682512202373,
+            -0.3184458092330242
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            -1.5,
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 6.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -1.4999999999998843,
+            "ray_miss_vox": 3.9410346967704045e-13,
+            "center_distance_vox": 1.4999999999998843,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 9.000000000000147
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.9316292508852356,
+            0.1820806583172676,
+            -0.3145052825657546
+          ],
+          "peak_offsets_vox": [
+            -16.5,
+            -1.5,
+            7.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 6.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -1.4999748391990608,
+            "ray_miss_vox": 0.008688024482309303,
+            "center_distance_vox": 1.4999999999998843,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.008688060914952347,
+              "indices": [
+                1
+              ],
+              "margin": 8.991290971726535
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -4.4501953125,
+            0.85009765625,
+            -1.521484375
+          ],
+          "normal_xyz": [
+            -0.9316292508852356,
+            0.1820806583172676,
+            -0.3145052825657546
+          ],
+          "peak_offsets_vox": [
+            -21.0,
+            -6.0,
+            2.5,
+            22.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -6.279208178639145,
+            "ray_miss_vox": 0.03603220468130233,
+            "center_distance_vox": 6.2793115602319745,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.281523581238157,
+              "indices": [
+                1
+              ],
+              "margin": 8.497758539964309
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -4.4501953125,
+            0.85009765625,
+            -1.521484375
+          ],
+          "normal_xyz": [
+            -0.9316292508852356,
+            0.1820806583172676,
+            -0.3145052825657546
+          ],
+          "peak_offsets_vox": [
+            -21.0,
+            -6.0,
+            2.5,
+            22.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -6.279208178639145,
+            "ray_miss_vox": 0.03603220468130233,
+            "center_distance_vox": 6.2793115602319745,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.281523581238157,
+              "indices": [
+                1
+              ],
+              "margin": 8.497758539964309
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            12,
+            55
+          ],
+          [
+            12,
+            56
+          ],
+          [
+            13,
+            56
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "projected_uv_yx": [
+          13.0,
+          56.0
+        ],
+        "distance_vox": 6.2793115602319745,
+        "tied_triangles": 6,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -4.4501953125,
+          0.85009765625,
+          -1.521484375
+        ],
+        "normal_xyz": [
+          -0.9316292508852356,
+          0.1820806583172676,
+          -0.3145052825657546
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "reserved": true,
+      "public_uv_yx": [
+        17,
+        26
+      ],
+      "same_uv_delta_xyz_vox": [
+        -0.524658203125,
+        -1.228515625,
+        1.1689453125
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 1.7750915510449643,
+      "along_raw_normal_vox": -1.7750915328929873,
+      "across_raw_normal_vox": 0.0002538559476089791,
+      "normal_angle_deg": 4.745032770372209,
+      "ray_tip_separation_vox": {
+        "6": 0.49675668145884233,
+        "12": 0.9935133629176847,
+        "24": 1.9870267258353693
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            17,
+            25
+          ],
+          [
+            17,
+            26
+          ],
+          [
+            18,
+            26
+          ]
+        ],
+        "barycentric": [
+          0.005796401690892218,
+          0.9587057352941919,
+          0.035497863014915886
+        ],
+        "projected_uv_yx": [
+          17.035497863014914,
+          25.994203598309106
+        ],
+        "distance_vox": 1.591130409107797,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 1.0,
+      "legacy_raw_nearest": {
+        "minimum": 1.0,
+        "indices": [
+          2
+        ],
+        "margin": 3.5
+      },
+      "legacy_snap_nearest": {
+        "minimum": 2.7249084671070127,
+        "indices": [
+          1
+        ],
+        "margin": 0.050183065785974534
+      },
+      "legacy_nearest_peak_changed": true,
+      "legacy_same_peak_after_vox": 2.7750915328929873,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.29554602978025507,
+            0.6919930092272586,
+            -0.6586336003133546
+          ],
+          "peak_offsets_vox": [
+            -17.5,
+            -4.5,
+            1.0,
+            12.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.9999999999996714,
+            "ray_miss_vox": 3.342578654097755e-13,
+            "center_distance_vox": 0.9999999999996714,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 5.4999999999996385
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            0.25939279383671615,
+            0.6464133756253163,
+            -0.7175410276202099
+          ],
+          "peak_offsets_vox": [
+            -18.5,
+            -4.5,
+            1.0,
+            12.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 0.9965726777694506,
+            "ray_miss_vox": 0.08272181044180396,
+            "center_distance_vox": 0.9999999999996714,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.08279278024286184,
+              "indices": [
+                2
+              ],
+              "margin": 5.414402331804949
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -0.524658203125,
+            -1.228515625,
+            1.1689453125
+          ],
+          "normal_xyz": [
+            0.25939279383671615,
+            0.6464133756253163,
+            -0.7175410276202099
+          ],
+          "peak_offsets_vox": [
+            -17.0,
+            -2.5,
+            2.5,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              1,
+              2
+            ],
+            "margin": 0.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.765560387815168,
+            "ray_miss_vox": 0.22980170087052276,
+            "center_distance_vox": 2.7750915445035984,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.35118533753492637,
+              "indices": [
+                2
+              ],
+              "margin": 4.919387213853199
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -0.41515506468749663,
+            -0.502299482280705,
+            1.4515638054017472
+          ],
+          "normal_xyz": [
+            0.25714841828350365,
+            0.6376046481397041,
+            -0.7261783552578088
+          ],
+          "peak_offsets_vox": [
+            -18.0,
+            -3.0,
+            2.5,
+            14.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 2.5,
+            "indices": [
+              2
+            ],
+            "margin": 0.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.476621787489692,
+            "ray_miss_vox": 0.5007077129085087,
+            "center_distance_vox": 2.52672984152139,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.5012531841152206,
+              "indices": [
+                2
+              ],
+              "margin": 4.998209918495522
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            17,
+            25
+          ],
+          [
+            17,
+            26
+          ],
+          [
+            18,
+            26
+          ]
+        ],
+        "barycentric": [
+          0.009059819113131529,
+          0.9354500299257776,
+          0.055490150961090834
+        ],
+        "projected_uv_yx": [
+          17.05549015096109,
+          25.990940180886867
+        ],
+        "distance_vox": 2.487558413033857,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -0.3535035188715483,
+          -0.09329730755462151,
+          1.610727688688712
+        ],
+        "normal_xyz": [
+          0.2558625817351361,
+          0.6325839983324866,
+          -0.7310074037391932
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "reserved": false,
+      "public_uv_yx": [
+        6,
+        83
+      ],
+      "same_uv_delta_xyz_vox": [
+        0.093994140625,
+        0.8701171875,
+        -0.2568359375
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 0.9120874504378658,
+      "along_raw_normal_vox": -0.9120874016700153,
+      "across_raw_normal_vox": 0.0002982634511829844,
+      "normal_angle_deg": 11.741133075846324,
+      "ray_tip_separation_vox": {
+        "6": 1.2273784037158466,
+        "12": 2.454756807431693,
+        "24": 4.909513614863386
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            6,
+            82
+          ],
+          [
+            6,
+            83
+          ],
+          [
+            7,
+            83
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9934996542108081,
+          0.006500345789191857
+        ],
+        "projected_uv_yx": [
+          6.006500345789192,
+          83.0
+        ],
+        "distance_vox": 0.9003034201975483,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 3.0,
+      "legacy_raw_nearest": {
+        "minimum": 3.0,
+        "indices": [
+          1
+        ],
+        "margin": 8.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 3.912087401670015,
+        "indices": [
+          1
+        ],
+        "margin": 8.0
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 3.912087401670015,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.10312836587184782,
+            -0.9540670486309879,
+            0.28128385461870814
+          ],
+          "peak_offsets_vox": [
+            -13.5,
+            3.0,
+            11.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              1
+            ],
+            "margin": 8.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.999999999999721,
+            "ray_miss_vox": 6.558736555021513e-13,
+            "center_distance_vox": 2.999999999999721,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                1
+              ],
+              "margin": 8.000000000000052
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.007255257426885539,
+            -0.994430521968152,
+            0.10514417824025372
+          ],
+          "peak_offsets_vox": [
+            -13.0,
+            3.0,
+            12.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.0,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 2.9372309272536623,
+            "ray_miss_vox": 0.6104707036237803,
+            "center_distance_vox": 2.999999999999721,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.6136892018576833,
+              "indices": [
+                1
+              ],
+              "margin": 8.4696173406911
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            0.093994140625,
+            0.8701171875,
+            -0.2568359375
+          ],
+          "normal_xyz": [
+            -0.007255257426885539,
+            -0.994430521968152,
+            0.10514417824025372
+          ],
+          "peak_offsets_vox": [
+            -12.5,
+            3.5,
+            13.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.830188771470604,
+            "ray_miss_vox": 0.7962925983359749,
+            "center_distance_vox": 3.9120874130397643,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.8620362677813433,
+              "indices": [
+                1
+              ],
+              "margin": 8.34228444963338
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            0.08449912869718901,
+            0.8892706721994728,
+            -0.11226672363045509
+          ],
+          "normal_xyz": [
+            -0.008223013713337382,
+            -0.9943408248425655,
+            0.10591839357201813
+          ],
+          "peak_offsets_vox": [
+            -12.5,
+            3.5,
+            13.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 3.5,
+            "indices": [
+              1
+            ],
+            "margin": 9.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 3.834751010445348,
+            "ray_miss_vox": 0.6614623596489962,
+            "center_distance_vox": 3.8913812156282033,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.7413438421043242,
+              "indices": [
+                1
+              ],
+              "margin": 8.447743244966034
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            6,
+            82
+          ],
+          [
+            6,
+            83
+          ],
+          [
+            7,
+            83
+          ]
+        ],
+        "barycentric": [
+          0.0,
+          0.9721603785743822,
+          0.02783962142561778
+        ],
+        "projected_uv_yx": [
+          6.027839621425618,
+          83.0
+        ],
+        "distance_vox": 3.861694776985176,
+        "tied_triangles": 2,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          0.0533289904810772,
+          0.9521475563929016,
+          0.36232376791667775
+        ],
+        "normal_xyz": [
+          -0.011401452213812096,
+          -0.9940354187893741,
+          0.1084600990210223
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "reserved": true,
+      "public_uv_yx": [
+        21,
+        68
+      ],
+      "same_uv_delta_xyz_vox": [
+        -4.400634765625,
+        -4.700439453125,
+        -2.248046875
+      ],
+      "pitch_um": 9.362,
+      "same_uv_displacement_vox": 6.820075670043457,
+      "along_raw_normal_vox": 6.820075658675725,
+      "across_raw_normal_vox": 0.00039377353324378706,
+      "normal_angle_deg": 5.307817558548572,
+      "ray_tip_separation_vox": {
+        "6": 0.5556346203519972,
+        "12": 1.1112692407039944,
+        "24": 2.2225384814079887
+      },
+      "projection_of_raw_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            20,
+            68
+          ],
+          [
+            21,
+            69
+          ],
+          [
+            21,
+            68
+          ]
+        ],
+        "barycentric": [
+          0.03750972011582665,
+          0.01780303927451443,
+          0.9446872406096589
+        ],
+        "projected_uv_yx": [
+          20.96249027988417,
+          68.01780303927453
+        ],
+        "distance_vox": 6.764285201518671,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1
+      },
+      "fixed_landmark_raw_offset_vox": 5.5,
+      "legacy_raw_nearest": {
+        "minimum": 5.5,
+        "indices": [
+          2
+        ],
+        "margin": 3.0
+      },
+      "legacy_snap_nearest": {
+        "minimum": 1.3200756586757247,
+        "indices": [
+          2
+        ],
+        "margin": 12.35984868264855
+      },
+      "legacy_nearest_peak_changed": false,
+      "legacy_same_peak_after_vox": 1.3200756586757247,
+      "rays": {
+        "raw": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.6452674181507707,
+            -0.6892130876781715,
+            -0.32956832197005737
+          ],
+          "peak_offsets_vox": [
+            -20.0,
+            -8.5,
+            5.5,
+            20.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.5,
+            "indices": [
+              2
+            ],
+            "margin": 3.0
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 5.499999999999886,
+            "ray_miss_vox": 2.2397158420779974e-13,
+            "center_distance_vox": 5.499999999999886,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.0,
+              "indices": [
+                2
+              ],
+              "margin": 13.999999999999757
+            }
+          }
+        },
+        "same_xyz_new_frame": {
+          "center_minus_raw_xyz_vox": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal_xyz": [
+            -0.5767489692745077,
+            -0.721731963406111,
+            -0.38270563026790316
+          ],
+          "peak_offsets_vox": [
+            -20.5,
+            -9.0,
+            5.5,
+            19.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 5.5,
+            "indices": [
+              2
+            ],
+            "margin": 3.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": 5.476416471217471,
+            "ray_miss_vox": 0.5087854496511579,
+            "center_distance_vox": 5.499999999999886,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.5093317353223455,
+              "indices": [
+                2
+              ],
+              "margin": 13.523478304812585
+            }
+          }
+        },
+        "snapped_uv": {
+          "center_minus_raw_xyz_vox": [
+            -4.400634765625,
+            -4.700439453125,
+            -2.248046875
+          ],
+          "normal_xyz": [
+            -0.5767489692745077,
+            -0.721731963406111,
+            -0.38270563026790316
+          ],
+          "peak_offsets_vox": [
+            -16.0,
+            -1.5,
+            13.0,
+            19.5
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.5,
+            "indices": [
+              1
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -1.3144426855544302,
+            "ray_miss_vox": 0.12182087702237232,
+            "center_distance_vox": 1.320075717406408,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.22197261773173474,
+              "indices": [
+                1
+              ],
+              "margin": 14.09298842741625
+            }
+          }
+        },
+        "projected_raw": {
+          "center_minus_raw_xyz_vox": [
+            -3.777853000054165,
+            -4.8389853932681035,
+            -2.8403523304696137
+          ],
+          "normal_xyz": [
+            -0.5720818362723066,
+            -0.7226164566991478,
+            -0.388004934395008
+          ],
+          "peak_offsets_vox": [
+            -16.0,
+            -1.0,
+            12.5,
+            19.0
+          ],
+          "material_center_fraction": 1.0,
+          "nearest_peak_to_center": {
+            "minimum": 1.0,
+            "indices": [
+              1
+            ],
+            "margin": 11.5
+          },
+          "fixed_raw_landmark": {
+            "signed_depth_vox": -1.2872308483363177,
+            "ray_miss_vox": 0.7420287688568866,
+            "center_distance_vox": 1.4857893359153926,
+            "nearest_crest_to_landmark_3d": {
+              "minimum": 0.7956810001797863,
+              "indices": [
+                1
+              ],
+              "margin": 13.011503403568987
+            }
+          }
+        }
+      },
+      "projection_of_fixed_landmark_onto_snap": {
+        "triangle_uv_yx": [
+          [
+            20,
+            68
+          ],
+          [
+            21,
+            69
+          ],
+          [
+            21,
+            68
+          ]
+        ],
+        "barycentric": [
+          0.0072449277967105985,
+          0.003447199243336399,
+          0.989307872959953
+        ],
+        "projected_uv_yx": [
+          20.99275507220329,
+          68.00344719924334
+        ],
+        "distance_vox": 1.3093123449481756,
+        "tied_triangles": 1,
+        "distinct_tied_positions": 1,
+        "projected_minus_raw_xyz_vox": [
+          -4.280221689318296,
+          -4.727318371860292,
+          -2.362411632828298
+        ],
+        "normal_xyz": [
+          -0.5758497292010075,
+          -0.7219060111640638,
+          -0.3837301140441246
+        ]
+      }
+    }
+  ]
+}
