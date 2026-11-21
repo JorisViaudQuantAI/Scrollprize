@@ -5,52 +5,57 @@ const path = require('node:path');
 const { acquire, sha256, saveAtomic } = require('./volume.cjs');
 const { scoreSite } = require('./measure.cjs');
 
-function leaveOneHeightOut(tsv) {
+function measuredRows(tsv) {
   const lines = tsv.trimEnd().split(/\r?\n/);
   const names = lines.shift().split("\t");
-  const rows = lines.map(line => Object.fromEntries(
+  return lines.map(line => Object.fromEntries(
     line.split("\t").map((value, index) => [names[index], value])
   )).filter(row => row.status === "measured");
-  const axes = ["x", "y", "z"];
-  const coord = row => axes.map(axis => Number(row["fixed_" + axis]));
-  const shift = row => axes.map(axis => Number(row["d" + axis + "_vox"]));
-  const avg = a => a.reduce((sum, x) => sum + x, 0) / a.length;
-  function quantile(a, fraction) {
-    const b = [...a].sort((x, y) => x - y);
-    const at = (b.length - 1) * fraction, low = Math.floor(at);
-    return b[low] * (1 - (at - low)) + b[Math.ceil(at)] * (at - low);
-  }
-  function solve(matrix, vector) {
-    const a = matrix.map((row, i) => [...row, vector[i]]);
-    for (let col = 0; col < 3; col++) {
-      let best = col;
-      for (let i = col + 1; i < 3; i++) if (Math.abs(a[i][col]) > Math.abs(a[best][col])) best = i;
-      [a[best], a[col]] = [a[col], a[best]];
-      const pivot = a[col][col];
-      if (Math.abs(pivot) < 1e-10) throw Error("Singular regression");
-      for (let j = col; j < 4; j++) a[col][j] /= pivot;
-      for (let i = 0; i < 3; i++) {
-        if (i === col) continue;
-        const scale = a[i][col];
-        for (let j = col; j < 4; j++) a[i][j] -= scale * a[col][j];
-      }
+}
+
+const axes = ["x", "y", "z"];
+const fixedXYZ = row => axes.map(axis => Number(row["fixed_" + axis]));
+const measuredShift = row => axes.map(axis => Number(row["d" + axis + "_vox"]));
+const avg = a => a.reduce((sum, x) => sum + x, 0) / a.length;
+function quantile(a, fraction) {
+  const b = [...a].sort((x, y) => x - y);
+  const at = (b.length - 1) * fraction, low = Math.floor(at);
+  return b[low] * (1 - (at - low)) + b[Math.ceil(at)] * (at - low);
+}
+function solve(matrix, vector) {
+  const a = matrix.map((row, i) => [...row, vector[i]]);
+  for (let col = 0; col < 3; col++) {
+    let best = col;
+    for (let i = col + 1; i < 3; i++) if (Math.abs(a[i][col]) > Math.abs(a[best][col])) best = i;
+    [a[best], a[col]] = [a[col], a[best]];
+    const pivot = a[col][col];
+    if (Math.abs(pivot) < 1e-10) throw Error("Singular regression");
+    for (let j = col; j < 4; j++) a[col][j] /= pivot;
+    for (let i = 0; i < 3; i++) {
+      if (i === col) continue;
+      const scale = a[i][col];
+      for (let j = col; j < 4; j++) a[i][j] -= scale * a[col][j];
     }
-    return a.map(row => row[3]);
   }
-  function train(examples) {
-    const xyz = examples.map(coord), target = examples.map(shift);
-    const median = axes.map((_, j) => quantile(target.map(r => r[j]), 0.5));
-    const origin = axes.map((_, j) => avg(xyz.map(r => r[j])));
-    const offset = axes.map((_, j) => avg(target.map(r => r[j])));
-    const design = xyz.map(row => row.map((x, j) => (x - origin[j]) / 1000));
-    const gram = axes.map((_, i) => axes.map((_, j) => (i === j ? 1 : 0) + design.reduce((s, x) => s + x[i] * x[j], 0)));
-    const weights = axes.map((_, k) => solve(gram, axes.map((_, j) => design.reduce((s, x, i) => s + x[j] * (target[i][k] - offset[k]), 0))));
-    return row => {
-      const x = coord(row).map((v, j) => (v - origin[j]) / 1000);
-      const linear = offset.map((value, k) => value + weights[k].reduce((s, w, j) => s + x[j] * w, 0));
-      return {original: [0, 0, 0], median, linear};
-    };
-  }
+  return a.map(row => row[3]);
+}
+function fitDisplacements(examples) {
+  const xyz = examples.map(fixedXYZ), target = examples.map(measuredShift);
+  const median = axes.map((_, j) => quantile(target.map(r => r[j]), 0.5));
+  const origin = axes.map((_, j) => avg(xyz.map(r => r[j])));
+  const offset = axes.map((_, j) => avg(target.map(r => r[j])));
+  const design = xyz.map(row => row.map((x, j) => (x - origin[j]) / 1000));
+  const gram = axes.map((_, i) => axes.map((_, j) => (i === j ? 1 : 0) + design.reduce((s, x) => s + x[i] * x[j], 0)));
+  const weights = axes.map((_, k) => solve(gram, axes.map((_, j) => design.reduce((s, x, i) => s + x[j] * (target[i][k] - offset[k]), 0))));
+  return xyz => {
+    const x = xyz.map((v, j) => (v - origin[j]) / 1000);
+    const linear = offset.map((value, k) => value + weights[k].reduce((s, w, j) => s + x[j] * w, 0));
+    return {original: [0, 0, 0], median, linear};
+  };
+}
+
+function leaveOneHeightOut(tsv) {
+  const rows = measuredRows(tsv);
   const result = {};
   for (const sample of [...new Set(rows.map(r => r.sample))]) {
     const items = rows.filter(r => r.sample === sample);
@@ -59,9 +64,9 @@ function leaveOneHeightOut(tsv) {
       const training = items.filter(r => r.site[0] !== height);
       const testing = items.filter(r => r.site[0] === height);
       if (!testing.length || !training.length) throw Error("Missing height");
-      const predict = train(training);
+      const predict = fitDisplacements(training);
       for (const r of testing) {
-        const actual = shift(r), predictions = predict(r), errors = {};
+        const actual = measuredShift(r), predictions = predict(fixedXYZ(r)), errors = {};
         for (const [method, p] of Object.entries(predictions)) errors[method] = Math.hypot(...p.map((x, j) => actual[j] - x));
         details.push({site:r.site, train_n:training.length, predictions, errors});
       }
@@ -79,10 +84,16 @@ function leaveOneHeightOut(tsv) {
   return result;
 }
 
+const RESIDUALS_SHA256 = '624c459a6a6e1148802c8307b17e2514d6dcee77a0b76db801811e6e61a8f480';
+
+function readResidualTable() {
+  const input = fs.readFileSync(path.join(__dirname, 'results', 'residuals.tsv'));
+  if (sha256(input) !== RESIDUALS_SHA256) throw Error('Unexpected residual table');
+  return input.toString('utf8');
+}
+
 async function main() {
-  const input = fs.readFileSync(path.join(__dirname,'results','residuals.tsv'));
-  if (sha256(input) !== '624c459a6a6e1148802c8307b17e2514d6dcee77a0b76db801811e6e61a8f480') throw Error('Unexpected residual table');
-  const result = leaveOneHeightOut(input.toString('utf8'));
+  const result = leaveOneHeightOut(readResidualTable());
   const args = process.argv.slice(2), offline = args.includes('--offline');
   const positional = args.filter(arg => arg !== '--offline');
   if (positional.length > 1 || (offline && !positional.length)) throw Error('Use node height-transfer.cjs [CACHE [--offline]]');
@@ -133,4 +144,4 @@ async function main() {
   console.log(JSON.stringify(summary,null,2));
 }
 if (require.main === module) main().catch(error => {console.error(error);process.exitCode=1;});
-module.exports = {leaveOneHeightOut};
+module.exports = {fixedXYZ, fitDisplacements, leaveOneHeightOut, measuredRows, readResidualTable, RESIDUALS_SHA256};

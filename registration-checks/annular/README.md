@@ -2,6 +2,28 @@
 
 This study estimates the local XYZ residual of the published fine-to-coarse transformations of PHerc. 1203 and PHerc. 0846A. It uses X-ray attenuation and sheet geometry from the two public scans of each scroll. The 48 positions and the measurement protocol were frozen before reading cross-scan similarity in those regions. [Candidate transforms at the exact source commit](https://github.com/JorisViaudQuantAI/Scrollprize/tree/fca6b046ecc97c56227bb13e664db21b7a83df60/firstletters-colab/registration/transforms)
 
+## Predict the residual at a fixed-frame point
+
+From this checkout, supply a scroll ID and one level-0 coordinate in **X Y Z** order on its 9.362 µm fixed scan. Node.js 20 or later reads the bundled measurement table and prints JSON. All files and CT volumes are read-only for this command. This example is the published PHerc. 1203 mesh vertex at UV (81, 145). [Mesh vertex and scan evidence](mesh-transfer/result.json)
+
+```bash
+node registration-checks/annular/predict.cjs PHerc1203 3138.00146484375 5049.03125 9082.197265625
+```
+
+The full-data fit predicts a fixed-frame displacement of **(−0.39575, +0.03758, −0.13007) voxels**, or **(−3.705, +0.352, −1.218) µm**. This vertex lies outside the 17 measured positions’ convex hull. Its nearest calibration site is A12 at 4.987 mm. Use `PHerc0846A` for the 24-site fit on that scroll. Output includes both volume IDs and the SHA-256 of the source measurements. [Measurements](results/residuals.tsv) · [Volume pairs and nominal affines](volumes.json)
+
+The fitted vector `d(q)` uses the fixed scan's axes and units. If the published fine-to-fixed affine places a moving point at nominal fixed XYZ `q`, the corrected fixed location is `q + d(q)`. Thus positive X moves that anatomy towards increasing fixed X. For the reverse operation, a vertex already at a known fixed location `p` requires solving `q + d(q) = p` before applying the inverse affine. The mesh study used `q ≈ p − d(p − d(p))`. The query returns the displacement evaluated at the coordinates supplied. [Frame convention and inverse-sampling example](mesh-transfer/README.md)
+
+Each scroll uses its own centered ridge fit, with coordinates scaled by 1,000 fixed voxels, unit penalty on the three slopes, and a free intercept. The command fits all available material-qualified sites on the chosen scroll. Its support fields give the distance to the nearest measured site and membership of the three-dimensional convex hull. An outside query is an extrapolation. Even inside the hull, the CT measurements cover only two rings at three heights. The output gives no tissue or image-quality assessment or statistical error interval at a new point. [Sampling protocol](protocol-frozen.txt)
+
+The historical leave-one-height-out errors had medians of 4.25 µm on PHerc. 1203 and 5.29 µm on PHerc. 0846A. These measure predictions at omitted sites. The final all-site fits have no separate accuracy estimate. An independent Python check evaluated six real PHerc. 1203 mesh vertices on 12 reserved CT planes. Its withheld-height predictions improve raw and band-pass correlation on 11 of the 12 planes. [Height validation](results/height-transfer.md) · [Independent CT check](mesh-transfer/README.md)
+
+```bash
+node --test registration-checks/annular/predict.test.cjs
+```
+
+The offline tests compare all 41 withheld vectors to the archived implementation at nine decimal places and all six mesh displacements to the independently computed Python results. They also exercise support, units, and command-line errors. [Original validator at the study commit](https://github.com/JorisViaudQuantAI/Scrollprize/blob/af61e5354c1d71fc2d36cabf5b0446ac3c6a325f/registration-checks/annular/height-transfer.cjs)
+
 ## Run the study
 
 Node.js 20 or later and a writable cache directory are sufficient. Run this command from the repository root. HTTPS requests go directly to the public S3 bucket.
