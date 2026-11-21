@@ -27,6 +27,8 @@ A second check used a 768 × 768 crop of the public PHerc. 841 w00 surface and a
 
 The public replication package includes the exact source hashes, the individual timings and a one-command comparison for each papyrus. It also tests PHerc. 841 with its published coarse pyramid. In that configuration both runs read a single chunk and produced identical pixels. [Reproduce the two benchmarks](evidence/README.md)
 
+Four additional paired runs timed the complete native W058 CPU command, including model loading, inference and TIFF writing. Median elapsed time was 26.47 s on the original code and 19.28 s with the patch. Median peak process memory was 2,051 and 1,189 MiB. All eight outputs had identical decoded pixels and ROI geometry. [Full-job timings, conditions and reproduction](evidence/w058-full-cli.md)
+
 ## Measure your own surface
 
 `benchmark.py` uses Python 3.10+, NumPy and Zarr-Python. It compares the scheduling functions from the pinned Git commit with those in the patched working tree on your local input. Set the square patch size and stride to match your model. By default the script uses 384 pixels and half-patch overlap.
