@@ -6,52 +6,17 @@ import time
 from pathlib import Path
 
 import numpy as np
-import requests
 import torch
-import torch.nn.functional as F
 import zarr
-from transformers import AutoModel
 from zarr.storage import FsspecStore
+
+from r50_model import DEPTH, MODEL, REVISION, WEIGHT_SHA, WIDTH, load_model, predict_tile
 
 
 SEGMENT = ("https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/"
            "PHerc0841/segments/20260220213127-w00")
 LABELS = SEGMENT + "/ink-labels/2.403um-volume-20260319124803/20260918/"
 VOLUME = SEGMENT + "/surface-volumes/2.403um-0.22m-77keV-volume-20260319124803.zarr"
-MODEL = "scrollprize/PHerc.1667-iteration-0"
-REVISION = "06c306449b39df42c745608ceade243498d24243"
-GIT_BLOBS = {
-    "config.json": "32accd0facbc9424458e5d268460de0f07e6bd7d",
-    "configuration_inkdetection.py": "24ac6d12668bfb5cf4b448c8f61723e97264ee25",
-    "modeling_inkdetection.py": "c75143f25652f1e5fe9f7f7dc7b5183f00d37fb5",
-}
-WEIGHT_SHA = "62c43b98f55c169ae874c684a59953b5ce1cb45140129107f861501cce3edaef"
-WIDTH = 256
-DEPTH = 62
-
-
-def public_weights(directory):
-    directory.mkdir(parents=True, exist_ok=True)
-    names = list(GIT_BLOBS) + ["model.safetensors"]
-    for name in names:
-        path = directory / name
-        if not path.exists():
-            url = f"https://huggingface.co/{MODEL}/resolve/{REVISION}/{name}"
-            with requests.get(url, stream=True, timeout=(20, 90)) as response:
-                response.raise_for_status()
-                partial = path.with_suffix(path.suffix + ".partial")
-                with partial.open("wb") as f:
-                    for chunk in response.iter_content(1024 * 1024):
-                        f.write(chunk)
-                partial.replace(path)
-        if name in GIT_BLOBS:
-            data = path.read_bytes()
-            header = f"blob {len(data)}".encode() + bytes([0])
-            assert hashlib.sha1(header + data).hexdigest() == GIT_BLOBS[name], name
-        else:
-            with path.open("rb") as f:
-                assert hashlib.file_digest(f, "sha256").hexdigest() == WEIGHT_SHA
-            assert path.stat().st_size == 333531996
 
 
 def array(url, level):
@@ -151,21 +116,9 @@ def main():
     if raw.shape != (DEPTH, WIDTH, WIDTH) or raw.dtype != np.uint8:
         raise ValueError(f"Bad CT tile shape or dtype {raw.shape} {raw.dtype}")
     print("CT acquired", hashlib.sha256(raw.tobytes()).hexdigest(), flush=True)
-    public_weights(args.cache)
-    model = AutoModel.from_pretrained(str(args.cache.resolve()), local_files_only=True,
-                                      trust_remote_code=True).eval()
-    # The paper specifies clip [0,200], then Albumentations Normalize(0,1),
-    # whose default max_pixel_value is 255. Keep public storage depth order.
-    tensor = torch.from_numpy(np.minimum(raw, 200).astype(np.float32)/255.0)[None, None]
+    model = load_model(args.cache, download=True)
     begin = time.monotonic()
-    with torch.inference_mode():
-        logits = model(tensor).logits
-        if tuple(logits.shape) != (1, 1, 64, 64):
-            raise ValueError(f"Unexpected output shape {tuple(logits.shape)}")
-        prob = F.interpolate(logits.sigmoid(), size=(WIDTH, WIDTH), mode="bilinear",
-                             align_corners=False)[0, 0].numpy()
-    if not np.isfinite(prob).all():
-        raise ValueError("Nonfinite model output")
+    prob = predict_tile(model, raw)
     core = np.zeros_like(mask)
     core[32:-32, 32:-32] = True
     out = dict(segment="PHerc0841/20260220213127-w00", scan_pitch_um=2.403,
@@ -174,7 +127,7 @@ def main():
                selection_overview_level=level, volume_shape=tuple(surface.shape),
                depth_range_half_open=[start, start+DEPTH], depth_order="ascending",
                input_shape=list(raw.shape), tile_width_mm=WIDTH*2.403/1000,
-               output_shape=list(logits.shape),
+               output_shape=[1, 1, 64, 64],
                input_sha256=hashlib.sha256(raw.tobytes()).hexdigest(),
                positive_mask_sha256=hashlib.sha256(ink.tobytes()).hexdigest(),
                trusted_mask_sha256=hashlib.sha256(mask.tobytes()).hexdigest(),
