@@ -20,13 +20,14 @@ def acquire(root, asset, offline):
     if len(data) != asset["size"] or hashlib.sha256(data).hexdigest() != asset["sha256"]:
         raise ValueError(f"Published checksum differs for {local.name}")
     local.parent.mkdir(parents=True, exist_ok=True)
-    with NamedTemporaryFile(dir=local.parent, delete=False) as tmp:
-        path = Path(tmp.name)
-        try:
+    path = None
+    try:
+        with NamedTemporaryFile(dir=local.parent, delete=False) as tmp:
+            path = Path(tmp.name)
             tmp.write(data)
-            tmp.flush()
-            path.replace(local)
-        finally:
+        path.replace(local)
+    finally:
+        if path is not None:
             path.unlink(missing_ok=True)
 
 
