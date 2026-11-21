@@ -1,0 +1,112 @@
+{
+  "adapter_sha256": "1082b65dea01a1250d42e8f8873967b15f93e04cd1a99dc223681c6a4c5c9edd",
+  "adjusted_fixed_ray_ties": 0,
+  "audit_code_sha256": "b05c297af1d64b5d20007706e4da0dffab24be15af061858dd6989d9601fc771",
+  "audit_pass": 10,
+  "classifications": {
+    "ambiguous": 1,
+    "switched": 9,
+    "unchanged": 14
+  },
+  "evaluation_status": "Exploratory on previously summarized Codex0813 sites; requires fresh independently reviewed control",
+  "grouped_geometry": {
+    "ambiguous": {
+      "fixed_reference_transverse_miss_projected_raw_um": {
+        "maximum": null,
+        "median": null,
+        "n": 0,
+        "unknown": 1
+      },
+      "fixed_reference_transverse_miss_same_uv_um": {
+        "maximum": null,
+        "median": null,
+        "n": 0,
+        "unknown": 1
+      },
+      "normal_change_deg": {
+        "maximum": 3.390068611257672,
+        "median": 3.390068611257672,
+        "n": 1,
+        "unknown": 0
+      },
+      "sites": 1
+    },
+    "switched": {
+      "fixed_reference_transverse_miss_projected_raw_um": {
+        "maximum": 7.059954550457226,
+        "median": 4.34698181021808,
+        "n": 9,
+        "unknown": 0
+      },
+      "fixed_reference_transverse_miss_same_uv_um": {
+        "maximum": 19.167539645707507,
+        "median": 3.003622177230604,
+        "n": 9,
+        "unknown": 0
+      },
+      "normal_change_deg": {
+        "maximum": 8.642783360234434,
+        "median": 2.6981684245823123,
+        "n": 9,
+        "unknown": 0
+      },
+      "sites": 9
+    },
+    "unchanged": {
+      "fixed_reference_transverse_miss_projected_raw_um": {
+        "maximum": 48.78609438615329,
+        "median": 6.569741972536038,
+        "n": 14,
+        "unknown": 0
+      },
+      "fixed_reference_transverse_miss_same_uv_um": {
+        "maximum": 43.13049185314235,
+        "median": 2.2144685924921697,
+        "n": 14,
+        "unknown": 0
+      },
+      "normal_change_deg": {
+        "maximum": 19.72306477180638,
+        "median": 5.261283796205776,
+        "n": 14,
+        "unknown": 0
+      },
+      "sites": 14
+    }
+  },
+  "hold_for_review": 14,
+  "initial_ties": 1,
+  "limitations": [
+    "Retrospective geometry-only audit on previously summarized sites; no fresh validation or new CT acquisition.",
+    "The switched/unchanged split is exploratory and has no calibrated significance test.",
+    "Unchanged indices refer only to the same fixed original-ray peak list, never indices across newly sampled poses.",
+    "No physical sheet, ink, reading, or whole-winding correctness is established.",
+    "No empirical crest-location uncertainty bound; the optional interval gate remains unevaluated."
+  ],
+  "maximum_same_crest_distance_increase_vox": 0.25,
+  "meaning": "Audit pass preserves a detected-crest association within the fixed scoring tolerance; it does not identify the physical sheet or authorize a mesh edit",
+  "missing_evidence_interpretation": "The legacy schema cannot give after_same_peak or changed identity for an initially tied crest; that complete-but-ambiguous source record remains an abstention, not a guessed identity.",
+  "native_pitch_um": 9.362,
+  "nearest_uniqueness_absolute_tolerance_vox": 1e-09,
+  "nonexclusive_reason_counts": {
+    "detected_nearest_crest_changed": 9,
+    "missing_per_site_evidence": 1,
+    "same_crest_distance_increased": 13
+  },
+  "protocol_sha256": "c826b7ff84b451786765b59d82b54f53774dca585975ff45a6faac8610e660cf",
+  "sites": 24,
+  "source_commit": "1ed75191bbef1c0fa7834c1249f4b0bb8c0eaeaf",
+  "source_coordinate_verifier": "passed",
+  "source_files_sha256": {
+    "registration-checks/atlas-0813/check.py": "ab83eef944ace4b0d0ad62352deb96613bdc273901ecb2ba613bf75e736f1b29",
+    "registration-checks/atlas-0813/paired/README.md": "99e3276bf4a248f5bd5ffae12df61ab4ef5537002e8a5dda613d89f954d5b51a",
+    "registration-checks/atlas-0813/paired/geometry.json": "614dc21a9241662ca28b0da434b8bbece5a015c44ff6ccc763815d3e2f106f90",
+    "registration-checks/atlas-0813/paired/sites.csv": "90546ab762889f5d9ceb8ca2f8785a6db399cdf999e6c4fb5f1d6148e9bdd3cc",
+    "registration-checks/atlas-0813/paired/summary.json": "8e921896cb66ba701520f6eef6245f1c1ff5ac6fbb9952daee1437cbeb8a78ad",
+    "registration-checks/atlas-0813/paired/verify.py": "d2f8726b18b76d2453b9f38304d465acd14c61d2a3a7535bbf9f296b52d38551",
+    "registration-checks/atlas-0813/protocol.txt": "0504c3e44cce218249e096735b3691ce60cbdccf2b1c3fc41abcef4d50463300",
+    "registration-checks/atlas-0813/result.json": "1d26fd86cbf7ef66c60ec1c71f02e157f3cce72b2aa199fd581b528f3184e074"
+  },
+  "status": "audited",
+  "transverse_miss_definition": "Distance from the initial unique original-ray crest point to the indicated changed-pose central ray; source ray_miss_vox times native pitch. It is not a sheet-identity error bound."
+}

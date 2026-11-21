@@ -1,0 +1,318 @@
+{
+  "schema": "public-glyph-plumbing-v1",
+  "frozen_utc": "2026-11-21T15:42:03.838556+00:00",
+  "purpose": "Source/checkpoint and CPU-input plumbing only; no held-out performance, independent discovery or detection threshold claim.",
+  "source_commit": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+  "checkpoint_sha256": "36ae0d6d9fdaac9d8681af75ec9be17e9317f7f77aa9422ea8ff8d09dd6f19ad",
+  "case_selection": "Two author row centres on published306B plus all18 author letter-box centres on published343, fixed before any new glyph outputs. No replacement of rejected windows.",
+  "transform": "For each case separately: z=(score-mean(score[valid]))/(std(score[valid])+1e-6), then exact upstream a_from_z(z,um,valid,down=3). This is a deliberate diagnostic transform for raw306B model products and for already contrast-adjusted343 display opacity; neither is the original discovery-lane input.",
+  "output_um": 50.0,
+  "window_px": 128,
+  "min_output_mask_fraction": 0.7,
+  "center_rule": "After exact a_from_z preparation, x0=round(center_native_x*native_um/50-64), y0=round(center_native_y*native_um/50-64), Python ties-to-even. Reject any128-square outside prepared map; no padding or recentering. Native/display target rounding uncertainty is not corrected by scores.",
+  "tta": "Mean of5 logits: identity, rot90, rot180, rot270, horizontal flip; source evaluate._tta behavior.",
+  "inference": {
+    "device": "cpu",
+    "dtype": "float32",
+    "threads": 2,
+    "batch_size": 4,
+    "max_cpu_seconds": 120
+  },
+  "selection_limit": 20,
+  "cases": [
+    {
+      "case": "pherc306b_context_raw",
+      "map_kind": "model_score",
+      "manifest_sha256": "731a0d24b3c38cae37b6aaa2c9d4842232a818220f251b9fe52ef6a3b9f76dce",
+      "score_sha256": "5132963de1584eb17ce77eda2912b496ab9d0cf3fc6c717dce0dcb89e382c40e",
+      "mask_sha256": "be5d11296c7a81708180558ade2a255e2db16811ab32b646292a7a3dda9c354f",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "windows": [
+        {
+          "id": "published_row_1",
+          "center_native_xy": [
+            3935.0,
+            1674.0
+          ],
+          "source_box_native_xyxy": [
+            1744,
+            1442.5185185185185,
+            6126,
+            1905.4814814814815
+          ]
+        },
+        {
+          "id": "published_row_2",
+          "center_native_xy": [
+            3935.0,
+            2211.0
+          ],
+          "source_box_native_xyxy": [
+            1744,
+            1979.5185185185185,
+            6126,
+            2442.4814814814813
+          ]
+        }
+      ]
+    },
+    {
+      "case": "pherc343_context_display",
+      "map_kind": "display_signal",
+      "manifest_sha256": "899604e50ccef4312370ca57166b95e9be14f119753f9814ded5c9febfe0e771",
+      "score_sha256": "6be8ec88faf68da85cda73fa270a9272fdb7d2831d6fe85487cf92c9477f59ed",
+      "mask_sha256": "3a19ab8bb269ba882a88f2956912bae002254183251e6d958746a1ff37342815",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "windows": [
+        {
+          "id": "1",
+          "center_native_xy": [
+            803.9000000000001,
+            1690.6
+          ],
+          "source_box_native_xyxy": [
+            579.3000000000002,
+            1505.2,
+            1028.5,
+            1876.0
+          ]
+        },
+        {
+          "id": "2",
+          "center_native_xy": [
+            1151.6999999999998,
+            1661.2
+          ],
+          "source_box_native_xyxy": [
+            1086.3999999999996,
+            1491.5,
+            1217.0,
+            1830.9
+          ]
+        },
+        {
+          "id": "3",
+          "center_native_xy": [
+            1327.9,
+            1596.0
+          ],
+          "source_box_native_xyxy": [
+            1198.6999999999998,
+            1423.7,
+            1457.1000000000004,
+            1768.3
+          ]
+        },
+        {
+          "id": "4",
+          "center_native_xy": [
+            1682.6,
+            1574.5
+          ],
+          "source_box_native_xyxy": [
+            1450.5,
+            1354.4,
+            1914.6999999999998,
+            1794.6
+          ]
+        },
+        {
+          "id": "5",
+          "center_native_xy": [
+            2296.05,
+            1541.35
+          ],
+          "source_box_native_xyxy": [
+            2014.1999999999998,
+            1330.3,
+            2577.9,
+            1752.4
+          ]
+        },
+        {
+          "id": "6",
+          "center_native_xy": [
+            2897.8999999999996,
+            1463.1
+          ],
+          "source_box_native_xyxy": [
+            2742.6,
+            1258.2,
+            3053.2,
+            1668.0
+          ]
+        },
+        {
+          "id": "7",
+          "center_native_xy": [
+            3255.5,
+            1414.8000000000002
+          ],
+          "source_box_native_xyxy": [
+            3100.2,
+            1224.2,
+            3410.8,
+            1605.4
+          ]
+        },
+        {
+          "id": "8",
+          "center_native_xy": [
+            3773.65,
+            1279.0500000000002
+          ],
+          "source_box_native_xyxy": [
+            3536.1000000000004,
+            1164.2,
+            4011.2,
+            1393.9
+          ]
+        },
+        {
+          "id": "9",
+          "center_native_xy": [
+            4208.25,
+            1263.4
+          ],
+          "source_box_native_xyxy": [
+            4050.3,
+            1098.9,
+            4366.2,
+            1427.9
+          ]
+        },
+        {
+          "id": "10",
+          "center_native_xy": [
+            4520.15,
+            1224.2
+          ],
+          "source_box_native_xyxy": [
+            4398.1,
+            1075.0,
+            4642.2,
+            1373.4
+          ]
+        },
+        {
+          "id": "11",
+          "center_native_xy": [
+            4755.25,
+            1175.6
+          ],
+          "source_box_native_xyxy": [
+            4644.5,
+            1052.4,
+            4866.0,
+            1298.8
+          ]
+        },
+        {
+          "id": "12",
+          "center_native_xy": [
+            4929.25,
+            1264.95
+          ],
+          "source_box_native_xyxy": [
+            4789.1,
+            982.4000000000001,
+            5069.4,
+            1547.5
+          ]
+        },
+        {
+          "id": "13",
+          "center_native_xy": [
+            5184.65,
+            1177.9
+          ],
+          "source_box_native_xyxy": [
+            5080.7,
+            1041.1,
+            5288.6,
+            1314.7
+          ]
+        },
+        {
+          "id": "14",
+          "center_native_xy": [
+            3074.8,
+            783.45
+          ],
+          "source_box_native_xyxy": [
+            2931.3,
+            665.9000000000001,
+            3218.3,
+            901.0
+          ]
+        },
+        {
+          "id": "15",
+          "center_native_xy": [
+            3424.55,
+            693.9000000000001
+          ],
+          "source_box_native_xyxy": [
+            3225.9,
+            578.4000000000001,
+            3623.2,
+            809.4000000000001
+          ]
+        },
+        {
+          "id": "16",
+          "center_native_xy": [
+            3784.45,
+            694.1500000000001
+          ],
+          "source_box_native_xyxy": [
+            3636.3999999999996,
+            557.4000000000001,
+            3932.5,
+            830.9000000000001
+          ]
+        },
+        {
+          "id": "17",
+          "center_native_xy": [
+            4063.65,
+            673.8
+          ],
+          "source_box_native_xyxy": [
+            3959.7,
+            534.8,
+            4167.6,
+            812.8
+          ]
+        },
+        {
+          "id": "18",
+          "center_native_xy": [
+            4287.35,
+            750.65
+          ],
+          "source_box_native_xyxy": [
+            4149.5,
+            537.0,
+            4425.2,
+            964.3
+          ]
+        }
+      ]
+    }
+  ],
+  "prohibited_interpretations": [
+    "No sigmoid or logit threshold is calibrated.",
+    "No unpublished candidate is scored.",
+    "No unannotated region is labelled negative.",
+    "Overlapping343 crops are not independent samples.",
+    "343 is explicitly in checkpoint realpos;306B exclusion from unpublished negative corpus cannot be verified.",
+    "Scores from differently prepared maps are not a cross-scroll ranking."
+  ]
+}

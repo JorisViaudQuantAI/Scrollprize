@@ -1,0 +1,470 @@
+{
+  "schema": "public-glyph-plumbing-result-v1",
+  "protocol_sha256": "dfe06c991a6e9d35802fc743a1d8c1d559adeda94696e4b44bb70e81d65c8bdf",
+  "source_commit": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+  "checkpoint_audit": {
+    "sha256": "36ae0d6d9fdaac9d8681af75ec9be17e9317f7f77aa9422ea8ff8d09dd6f19ad",
+    "architecture": {
+      "cin": 2,
+      "w": 24
+    },
+    "allowed_training_metadata": {
+      "realpos": "e343,h841,w1447",
+      "n": 300000,
+      "seed": 0,
+      "legib": false
+    },
+    "parameter_count": 684945,
+    "load_method": "torch.load(weights_only=True, map_location='cpu'); strict state dict",
+    "overlap": {
+      "pherc343": "Explicitly named in actual checkpoint realpos; not held out",
+      "pherc306b": "Negative training corpus not released; exclusion cannot be certified"
+    }
+  },
+  "implementation_sha256": {
+    "replay.py": "e7ea2222e6a257804495ce9be57a4220b08df2c45b928e326fa4254279da0fc0",
+    "vendor.py": "50d703a2f5f8ec77614a3eb6c955662ede4c24a4e56593ab490a7be57671c31f"
+  },
+  "runtime": {
+    "torch": "2.13.0+cpu",
+    "numpy": "2.4.6",
+    "opencv": "5.1.0",
+    "device": "cpu",
+    "threads": 2
+  },
+  "cases": [
+    {
+      "case": "pherc306b_context_raw",
+      "map_kind": "model_score",
+      "native_shape": [
+        4051,
+        6945
+      ],
+      "prepared_shape": [
+        700,
+        1200
+      ],
+      "declared_output_um": 50.0,
+      "valid_native_pixels": 27425854,
+      "native_valid_mean": 0.06485098600387573,
+      "native_valid_std": 0.0687924176454544,
+      "transformation": "Valid-map zscore then exact upstream a_from_z(down=3)",
+      "limitation": "Released final product map, not the original discovery-lane fused z map"
+    },
+    {
+      "case": "pherc343_context_display",
+      "map_kind": "display_signal",
+      "native_shape": [
+        2455,
+        5641
+      ],
+      "prepared_shape": [
+        424,
+        975
+      ],
+      "declared_output_um": 50.0,
+      "valid_native_pixels": 8776070,
+      "native_valid_mean": 0.08232086151838303,
+      "native_valid_std": 0.24222949147224426,
+      "transformation": "Valid-map zscore then exact upstream a_from_z(down=3)",
+      "limitation": "Already contrast-adjusted display opacity; raw model signal cannot be recovered"
+    }
+  ],
+  "windows": [
+    {
+      "case": "pherc306b_context_raw",
+      "annotation_id": "published_row_1",
+      "center_native_xy": [
+        3935.0,
+        1674.0
+      ],
+      "crop_50um_xyxy": [
+        616,
+        225,
+        744,
+        353
+      ],
+      "valid_fraction": 1.0,
+      "status": "scored",
+      "input_sha256": "66bed42feef0a6637e60039db60b2ffb064ccfa9b0730a81bda56ddb949f7080",
+      "mean_a_on_valid": 0.26205942034721375,
+      "mean_tta_logit": 7.109591484069824
+    },
+    {
+      "case": "pherc306b_context_raw",
+      "annotation_id": "published_row_2",
+      "center_native_xy": [
+        3935.0,
+        2211.0
+      ],
+      "crop_50um_xyxy": [
+        616,
+        318,
+        744,
+        446
+      ],
+      "valid_fraction": 1.0,
+      "status": "scored",
+      "input_sha256": "0755f21e2e91288555f9c400d25c5170cce93cc6c1717359fe281af48800e172",
+      "mean_a_on_valid": 0.1468261182308197,
+      "mean_tta_logit": 3.655085802078247
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "1",
+      "center_native_xy": [
+        803.9000000000001,
+        1690.6
+      ],
+      "crop_50um_xyxy": [
+        75,
+        228,
+        203,
+        356
+      ],
+      "valid_fraction": 0.9921875,
+      "status": "scored",
+      "input_sha256": "ecd335dd239c8be053631e94d77d2b5d3db76488fcc53f63bfda00eb54d97245",
+      "mean_a_on_valid": 0.05661339312791824,
+      "mean_tta_logit": 2.256873369216919
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "2",
+      "center_native_xy": [
+        1151.6999999999998,
+        1661.2
+      ],
+      "crop_50um_xyxy": [
+        135,
+        223,
+        263,
+        351
+      ],
+      "valid_fraction": 0.99114990234375,
+      "status": "scored",
+      "input_sha256": "7a917d57a96fb062cd82f14a8cffd5e94fdcb00bf4a824550ad2d5d5608e395e",
+      "mean_a_on_valid": 0.05927971750497818,
+      "mean_tta_logit": 2.649462938308716
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "3",
+      "center_native_xy": [
+        1327.9,
+        1596.0
+      ],
+      "crop_50um_xyxy": [
+        165,
+        212,
+        293,
+        340
+      ],
+      "valid_fraction": 0.97613525390625,
+      "status": "scored",
+      "input_sha256": "2e60a8b2e3c8236fda760b54e1f9e2b238f94bed1020ac372a093f9e7a2f57d3",
+      "mean_a_on_valid": 0.06376833468675613,
+      "mean_tta_logit": 2.7879767417907715
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "4",
+      "center_native_xy": [
+        1682.6,
+        1574.5
+      ],
+      "crop_50um_xyxy": [
+        227,
+        208,
+        355,
+        336
+      ],
+      "valid_fraction": 0.986083984375,
+      "status": "scored",
+      "input_sha256": "d56853c3216b932047833f3d0f01007917b0cea504b7202d5202830279c89306",
+      "mean_a_on_valid": 0.09531193226575851,
+      "mean_tta_logit": 1.4519562721252441
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "5",
+      "center_native_xy": [
+        2296.05,
+        1541.35
+      ],
+      "crop_50um_xyxy": [
+        333,
+        202,
+        461,
+        330
+      ],
+      "valid_fraction": 0.9847412109375,
+      "status": "scored",
+      "input_sha256": "961543dfb62c3f652dd900f336d58ae11fb0da12a75301c9d20798c337e19a0c",
+      "mean_a_on_valid": 0.14446419477462769,
+      "mean_tta_logit": 1.0817078351974487
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "6",
+      "center_native_xy": [
+        2897.8999999999996,
+        1463.1
+      ],
+      "crop_50um_xyxy": [
+        437,
+        189,
+        565,
+        317
+      ],
+      "valid_fraction": 0.984375,
+      "status": "scored",
+      "input_sha256": "bb57408ec0f11752a8b0ea90a16ca001f9ec20c4f4df6ab1ff1f99db31b370a3",
+      "mean_a_on_valid": 0.073045514523983,
+      "mean_tta_logit": 2.941979169845581
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "7",
+      "center_native_xy": [
+        3255.5,
+        1414.8000000000002
+      ],
+      "crop_50um_xyxy": [
+        499,
+        180,
+        627,
+        308
+      ],
+      "valid_fraction": 0.98907470703125,
+      "status": "scored",
+      "input_sha256": "21ffbbdced7e01a19d4daa330899e94cb274642149bb75bbfd18db165b55f3f0",
+      "mean_a_on_valid": 0.06681758910417557,
+      "mean_tta_logit": 1.9926071166992188
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "8",
+      "center_native_xy": [
+        3773.65,
+        1279.0500000000002
+      ],
+      "crop_50um_xyxy": [
+        588,
+        157,
+        716,
+        285
+      ],
+      "valid_fraction": 0.98687744140625,
+      "status": "scored",
+      "input_sha256": "58c7b6a7c3e5615b697550400ddd175183f726f5821c45acda0c3775a8bec006",
+      "mean_a_on_valid": 0.08161459863185883,
+      "mean_tta_logit": 3.7764346599578857
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "9",
+      "center_native_xy": [
+        4208.25,
+        1263.4
+      ],
+      "crop_50um_xyxy": [
+        663,
+        154,
+        791,
+        282
+      ],
+      "valid_fraction": 0.9857177734375,
+      "status": "scored",
+      "input_sha256": "95231d4a8ea6d54157e9dd3c7bf9249334edee98450c943e76b07060e41e655b",
+      "mean_a_on_valid": 0.14825712144374847,
+      "mean_tta_logit": 5.701655387878418
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "10",
+      "center_native_xy": [
+        4520.15,
+        1224.2
+      ],
+      "crop_50um_xyxy": [
+        717,
+        148,
+        845,
+        276
+      ],
+      "valid_fraction": 0.987060546875,
+      "status": "scored",
+      "input_sha256": "e71a7b625d9bf681179434730bcbe84f9cee9a1c7b6ec5bbb9a58518c3f40ecf",
+      "mean_a_on_valid": 0.17750801146030426,
+      "mean_tta_logit": 4.237556457519531
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "11",
+      "center_native_xy": [
+        4755.25,
+        1175.6
+      ],
+      "crop_50um_xyxy": [
+        758,
+        139,
+        886,
+        267
+      ],
+      "valid_fraction": 0.98992919921875,
+      "status": "scored",
+      "input_sha256": "b55c12ecf6d34615b76ab556b37edf9665b23101bebf8b905c754c210e7055b7",
+      "mean_a_on_valid": 0.17898176610469818,
+      "mean_tta_logit": 1.3782399892807007
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "12",
+      "center_native_xy": [
+        4929.25,
+        1264.95
+      ],
+      "crop_50um_xyxy": [
+        788,
+        155,
+        916,
+        283
+      ],
+      "valid_fraction": 0.988037109375,
+      "status": "scored",
+      "input_sha256": "0a86da723413767ab800242eb093fe13b47009a782f12ff6e47b507e35c31ea9",
+      "mean_a_on_valid": 0.14491228759288788,
+      "mean_tta_logit": 0.8893968462944031
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "13",
+      "center_native_xy": [
+        5184.65,
+        1177.9
+      ],
+      "crop_50um_xyxy": [
+        832,
+        140,
+        960,
+        268
+      ],
+      "valid_fraction": 0.9908447265625,
+      "status": "scored",
+      "input_sha256": "c892579c9c6b6919698a76f8d59b929b3175a3be8c7fb42d78bf3a1ae9519435",
+      "mean_a_on_valid": 0.11429737508296967,
+      "mean_tta_logit": 0.6866304278373718
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "14",
+      "center_native_xy": [
+        3074.8,
+        783.45
+      ],
+      "crop_50um_xyxy": [
+        467,
+        71,
+        595,
+        199
+      ],
+      "valid_fraction": 0.779296875,
+      "status": "scored",
+      "input_sha256": "59346ea64929293c2d594de9b0d7a2db456431396b9f99f84162a55d7c9d4c50",
+      "mean_a_on_valid": 0.10418009012937546,
+      "mean_tta_logit": 3.5911877155303955
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "15",
+      "center_native_xy": [
+        3424.55,
+        693.9000000000001
+      ],
+      "crop_50um_xyxy": [
+        528,
+        56,
+        656,
+        184
+      ],
+      "valid_fraction": 0.8209228515625,
+      "status": "scored",
+      "input_sha256": "37a2d21f3443712535acb47c95fae0c0ce5d3aae172abc6f789c1c47b854c827",
+      "mean_a_on_valid": 0.1300702840089798,
+      "mean_tta_logit": 4.429438591003418
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "16",
+      "center_native_xy": [
+        3784.45,
+        694.1500000000001
+      ],
+      "crop_50um_xyxy": [
+        590,
+        56,
+        718,
+        184
+      ],
+      "valid_fraction": 0.93017578125,
+      "status": "scored",
+      "input_sha256": "c0149104923e35d66255a2337275633e9f68b7935207b2ba3a827bd7607cffa7",
+      "mean_a_on_valid": 0.1719895899295807,
+      "mean_tta_logit": 1.3984382152557373
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "17",
+      "center_native_xy": [
+        4063.65,
+        673.8
+      ],
+      "crop_50um_xyxy": [
+        638,
+        52,
+        766,
+        180
+      ],
+      "valid_fraction": 0.9376220703125,
+      "status": "scored",
+      "input_sha256": "185ea206aff2e8e58a674509eeebb18e762ab0af4d73c3740601e55fed816192",
+      "mean_a_on_valid": 0.2262801229953766,
+      "mean_tta_logit": -0.7265211343765259
+    },
+    {
+      "case": "pherc343_context_display",
+      "annotation_id": "18",
+      "center_native_xy": [
+        4287.35,
+        750.65
+      ],
+      "crop_50um_xyxy": [
+        677,
+        66,
+        805,
+        194
+      ],
+      "valid_fraction": 0.99224853515625,
+      "status": "scored",
+      "input_sha256": "37d1f187ac2cf67cefb259c5efe5c4f3d7cc8da3d6df996fa9e65119f39f2060",
+      "mean_a_on_valid": 0.1615835428237915,
+      "mean_tta_logit": 1.6441866159439087
+    }
+  ],
+  "timing": {
+    "cpu_seconds": 2.4494904760000002,
+    "wall_seconds": 1.2352643439999156,
+    "cpu_budget_seconds": 120,
+    "budget_incomplete": false,
+    "interpretation": "Raw mean logit only; no calibrated text probability or gate"
+  },
+  "limitations": [
+    "No sigmoid or logit threshold is calibrated.",
+    "No unpublished candidate is scored.",
+    "No unannotated region is labelled negative.",
+    "Overlapping343 crops are not independent samples.",
+    "343 is explicitly in checkpoint realpos;306B exclusion from unpublished negative corpus cannot be verified.",
+    "Scores from differently prepared maps are not a cross-scroll ranking."
+  ]
+}

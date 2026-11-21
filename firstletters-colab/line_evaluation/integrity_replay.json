@@ -1,0 +1,52 @@
+{
+  "status": "identical_substantive_results",
+  "amendment": "Post-outcome input-integrity checks only; no target, Config or ranking changes",
+  "cases": [
+    {
+      "id": "pherc306b_context_raw",
+      "all_result_fields_except_runtime_identical": true,
+      "seconds_v1": 6.517176460999963,
+      "seconds_v2": 5.9787920849998955
+    },
+    {
+      "id": "pherc306b_blank_raw",
+      "all_result_fields_except_runtime_identical": true,
+      "seconds_v1": 0.06709835299989209,
+      "seconds_v2": 0.0610289000001103
+    },
+    {
+      "id": "pherc306b_shuffle_raw",
+      "all_result_fields_except_runtime_identical": true,
+      "seconds_v1": 0.11877911300007327,
+      "seconds_v2": 0.11891172100013137
+    },
+    {
+      "id": "pherc306b_context_matched_raw",
+      "all_result_fields_except_runtime_identical": true,
+      "seconds_v1": 3.599372933000268,
+      "seconds_v2": 2.8067708549997405
+    },
+    {
+      "id": "pherc343_context_display",
+      "all_result_fields_except_runtime_identical": true,
+      "seconds_v1": 4.87074845799998,
+      "seconds_v2": 4.277092824999727
+    }
+  ],
+  "source_comparison": [
+    {
+      "old_sha256": "f188a31e0eb981f70dbd6b6e60a00ba753556634f2d0f98e3db00101ca07f2d7",
+      "new_sha256": "32063be42b8c92f6b2e7d709f7ded64c6b57ea6d62cb9696b595baa5fba6654d",
+      "all_non_main_function_and_class_ASTs_identical": true
+    },
+    {
+      "old_sha256": "16483d4fe146a9e695330a06d72ea08f043a9e7f0556cd7b37ca0687a8635bb8",
+      "new_sha256": "98505d86dfe69e6b464f6d9e5ce4a499435b969fe7c27d2444a630d1d378c785",
+      "all_non_main_function_and_class_ASTs_identical": true
+    }
+  ],
+  "v1_protocol_sha256": "c0b6b2ec02bb0b029e41dc8bcf5ad8dd9fca0bf6f580963b0c174a4bfd393edf",
+  "v2_protocol_sha256": "6fe100af0579e4b1837cfdafe3cb04ebd6a31d62ad8533358821eacc4c9153f7",
+  "v1_results_sha256": "fccab36d0ac5f4300f2f4c2b22b220c54949a61328b8feddce253d1591a7ade7",
+  "v2_results_sha256": "7e23de62873471d4f7070a9eda4717595ccf6cb50c23e2058e9af0007e9687ef"
+}

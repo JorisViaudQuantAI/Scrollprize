@@ -1,0 +1,536 @@
+{
+  "schema": "line-localization-diagnostic-v1",
+  "frozen_utc": "2026-11-21T15:38:29.119731+00:00",
+  "script_sha256": "16483d4fe146a9e695330a06d72ea08f043a9e7f0556cd7b37ca0687a8635bb8",
+  "method_sha256": "f188a31e0eb981f70dbd6b6e60a00ba753556634f2d0f98e3db00101ca07f2d7",
+  "corpus_inventory_sha256": "97f029c7317b36346ccb8c1b06bbf8fd0f834c9f24060a7e56223deb707ce15d",
+  "cases": {
+    "pherc306b_context_raw": {
+      "id": "pherc306b_context_raw",
+      "map": "score.npy",
+      "mask": "validity.npy",
+      "shape": [
+        4051,
+        6945
+      ],
+      "map_kind": "model_score",
+      "role": "published-positive-context",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "source_geometry": {
+        "uv_bounds_mm": [
+          -30,
+          -20,
+          30,
+          15
+        ],
+        "raw_bounds_xyxy": [
+          694,
+          116,
+          7639,
+          4167
+        ],
+        "flip_ud": true,
+        "no_resampling": true,
+        "label_alignment_limit": "Source display uses pixel-center resampling; source image boxes are coarse targets with about one native pixel rounding uncertainty",
+        "support_limit": "CT layer20>0 AND finite released claim score; tissue/model-support proxy, not audited acquisition coverage"
+      },
+      "score_sha256": "5132963de1584eb17ce77eda2912b496ab9d0cf3fc6c717dce0dcb89e382c40e",
+      "mask_sha256": "be5d11296c7a81708180558ade2a255e2db16811ab32b646292a7a3dda9c354f",
+      "valid_pixels": 27425854,
+      "validity_fraction": 0.974822773496807,
+      "targets": [
+        {
+          "id": "published_row_1",
+          "box_xyxy": [
+            1744,
+            1442.5185185185185,
+            6126,
+            1905.4814814814815
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        },
+        {
+          "id": "published_row_2",
+          "box_xyxy": [
+            1744,
+            1979.5185185185185,
+            6126,
+            2442.4814814814813
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        }
+      ],
+      "all_unlabelled_pixels": "unknown; not certified text-free"
+    },
+    "pherc306b_blank_raw": {
+      "id": "pherc306b_blank_raw",
+      "map": "score.npy",
+      "mask": "validity.npy",
+      "shape": [
+        2662,
+        579
+      ],
+      "map_kind": "model_score",
+      "role": "author-described-blank-strip",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "source_geometry": {
+        "uv_bounds_mm": [
+          25,
+          -20,
+          30,
+          3
+        ],
+        "raw_bounds_xyxy": [
+          7060,
+          116,
+          7639,
+          2778
+        ],
+        "flip_ud": true,
+        "no_resampling": true,
+        "support_limit": "Author's negative-control strip; not independently labelled text-free. CT layer20>0 AND finite claim score."
+      },
+      "score_sha256": "ea393fc7a1bf42df816be321f9c37ad5fb4acdf911661a0c31cb88e0dde6e987",
+      "mask_sha256": "962a47b5f53f705c077fb86f1f5a35744dd65f79d3f96885d956f78163f417ce",
+      "valid_pixels": 1504030,
+      "validity_fraction": 0.9758203799654577,
+      "targets": [],
+      "all_unlabelled_pixels": "unknown; not certified text-free"
+    },
+    "pherc306b_shuffle_raw": {
+      "id": "pherc306b_shuffle_raw",
+      "map": "score.npy",
+      "mask": "validity.npy",
+      "shape": [
+        4051,
+        6945
+      ],
+      "map_kind": "model_score",
+      "role": "matched-depth-shuffle-process-control",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "source_geometry": {
+        "uv_bounds_mm": [
+          -30,
+          -20,
+          30,
+          15
+        ],
+        "raw_bounds_xyxy": [
+          694,
+          116,
+          7639,
+          4167
+        ],
+        "flip_ud": true,
+        "no_resampling": true,
+        "label_alignment_limit": "Source display uses pixel-center resampling; source image boxes are coarse targets with about one native pixel rounding uncertainty",
+        "support_limit": "Common CTlayer20>0 AND finiteclaim AND finiteshuffle; missing model coverage is never background"
+      },
+      "score_sha256": "ebedb30817e40ee11c62f8b335d93a2776c17894513a9c8079b78a2edced30af",
+      "mask_sha256": "107afe2d16ba6416956fbd198926c6f839dbeab416be3da7df045f9fdd85727a",
+      "valid_pixels": 4864155,
+      "validity_fraction": 0.17289120943392908,
+      "targets": [
+        {
+          "id": "published_row_1",
+          "box_xyxy": [
+            1744,
+            1442.5185185185185,
+            6126,
+            1905.4814814814815
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        },
+        {
+          "id": "published_row_2",
+          "box_xyxy": [
+            1744,
+            1979.5185185185185,
+            6126,
+            2442.4814814814813
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        }
+      ],
+      "all_unlabelled_pixels": "unknown; not certified text-free"
+    },
+    "pherc306b_context_matched_raw": {
+      "id": "pherc306b_context_matched_raw",
+      "map": "score.npy",
+      "mask": "validity.npy",
+      "shape": [
+        4051,
+        6945
+      ],
+      "map_kind": "model_score",
+      "role": "published-positive-context-common-coverage",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "source_geometry": {
+        "uv_bounds_mm": [
+          -30,
+          -20,
+          30,
+          15
+        ],
+        "raw_bounds_xyxy": [
+          694,
+          116,
+          7639,
+          4167
+        ],
+        "flip_ud": true,
+        "no_resampling": true,
+        "label_alignment_limit": "Source display uses pixel-center resampling; source image boxes are coarse targets with about one native pixel rounding uncertainty",
+        "support_limit": "Common CTlayer20>0 AND finiteclaim AND finiteshuffle; missing model coverage is never background"
+      },
+      "score_sha256": "7639e5e0b7073eb46b224c90731eaba549fecfda8cb7aab89d16dc0bd9e4c8a9",
+      "mask_sha256": "107afe2d16ba6416956fbd198926c6f839dbeab416be3da7df045f9fdd85727a",
+      "valid_pixels": 4864155,
+      "validity_fraction": 0.17289120943392908,
+      "targets": [
+        {
+          "id": "published_row_1",
+          "box_xyxy": [
+            1744,
+            1442.5185185185185,
+            6126,
+            1905.4814814814815
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        },
+        {
+          "id": "published_row_2",
+          "box_xyxy": [
+            1744,
+            1979.5185185185185,
+            6126,
+            2442.4814814814813
+          ],
+          "evidence": "author's coarse row-center annotation; not pixel truth"
+        }
+      ],
+      "all_unlabelled_pixels": "unknown; not certified text-free"
+    },
+    "pherc343_context_display": {
+      "id": "pherc343_context_display",
+      "map": "score.npy",
+      "mask": "validity.npy",
+      "shape": [
+        2455,
+        5641
+      ],
+      "map_kind": "display_signal",
+      "role": "published-positive-context-display-only",
+      "spacing_um_yx": [
+        8.64,
+        8.64
+      ],
+      "source_geometry": {
+        "source_panel_xywh": [
+          173,
+          182,
+          5641,
+          2455
+        ],
+        "no_spatial_resampling": true,
+        "signal": "normalized displayed yellow opacity; raw scores and subthreshold information are not recoverable",
+        "mask_limit": "Display color-consistency mask excludes cyan annotation and black pixels; not CT/acquisition validity"
+      },
+      "score_sha256": "6be8ec88faf68da85cda73fa270a9272fdb7d2831d6fe85487cf92c9477f59ed",
+      "mask_sha256": "3a19ab8bb269ba882a88f2956912bae002254183251e6d958746a1ff37342815",
+      "valid_pixels": 8776070,
+      "validity_fraction": 0.63371280460088,
+      "targets": [
+        {
+          "id": "1",
+          "row": "1",
+          "box_xyxy": [
+            579.3000000000002,
+            1505.2,
+            1028.5,
+            1876.0
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "2",
+          "row": "1",
+          "box_xyxy": [
+            1086.3999999999996,
+            1491.5,
+            1217.0,
+            1830.9
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "3",
+          "row": "1",
+          "box_xyxy": [
+            1198.6999999999998,
+            1423.7,
+            1457.1000000000004,
+            1768.3
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "4",
+          "row": "1",
+          "box_xyxy": [
+            1450.5,
+            1354.4,
+            1914.6999999999998,
+            1794.6
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "5",
+          "row": "1",
+          "box_xyxy": [
+            2014.1999999999998,
+            1330.3,
+            2577.9,
+            1752.4
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "6",
+          "row": "1",
+          "box_xyxy": [
+            2742.6,
+            1258.2,
+            3053.2,
+            1668.0
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "7",
+          "row": "1",
+          "box_xyxy": [
+            3100.2,
+            1224.2,
+            3410.8,
+            1605.4
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "8",
+          "row": "1",
+          "box_xyxy": [
+            3536.1000000000004,
+            1164.2,
+            4011.2,
+            1393.9
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "9",
+          "row": "1",
+          "box_xyxy": [
+            4050.3,
+            1098.9,
+            4366.2,
+            1427.9
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "10",
+          "row": "1",
+          "box_xyxy": [
+            4398.1,
+            1075.0,
+            4642.2,
+            1373.4
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "11",
+          "row": "1",
+          "box_xyxy": [
+            4644.5,
+            1052.4,
+            4866.0,
+            1298.8
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "12",
+          "row": "1",
+          "box_xyxy": [
+            4789.1,
+            982.4000000000001,
+            5069.4,
+            1547.5
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "13",
+          "row": "1",
+          "box_xyxy": [
+            5080.7,
+            1041.1,
+            5288.6,
+            1314.7
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "14",
+          "row": "2",
+          "box_xyxy": [
+            2931.3,
+            665.9000000000001,
+            3218.3,
+            901.0
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "15",
+          "row": "2",
+          "box_xyxy": [
+            3225.9,
+            578.4000000000001,
+            3623.2,
+            809.4000000000001
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "16",
+          "row": "2",
+          "box_xyxy": [
+            3636.3999999999996,
+            557.4000000000001,
+            3932.5,
+            830.9000000000001
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "17",
+          "row": "2",
+          "box_xyxy": [
+            3959.7,
+            534.8,
+            4167.6,
+            812.8
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        },
+        {
+          "id": "18",
+          "row": "2",
+          "box_xyxy": [
+            4149.5,
+            537.0,
+            4425.2,
+            964.3
+          ],
+          "evidence": "published author letter-location box; not an ink segmentation"
+        }
+      ],
+      "all_unlabelled_pixels": "unknown; not certified text-free"
+    }
+  },
+  "config": {
+    "thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "angles_deg": [
+      0.0,
+      5.0,
+      10.0,
+      15.0,
+      20.0,
+      25.0,
+      30.0,
+      35.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      65.0,
+      70.0,
+      75.0,
+      80.0,
+      85.0,
+      90.0,
+      95.0,
+      100.0,
+      105.0,
+      110.0,
+      115.0,
+      120.0,
+      125.0,
+      130.0,
+      135.0,
+      140.0,
+      145.0,
+      150.0,
+      155.0,
+      160.0,
+      165.0,
+      170.0,
+      175.0
+    ],
+    "work_um": 35.0,
+    "link_mm": 0.15,
+    "minimum_area_mm2": 0.06,
+    "minimum_extent_mm": 0.4,
+    "band_half_mm": 1.0,
+    "band_step_mm": 0.25,
+    "maximum_mark_height_mm": 4.0,
+    "maximum_mark_length_mm": 8.0,
+    "slot_gap_mm": 1.2,
+    "maximum_pitch_mm": 6.5,
+    "minimum_slots": 4,
+    "minimum_length_mm": 8.0,
+    "maximum_length_mm": 60.0,
+    "flank_inner_mm": 1.75,
+    "flank_outer_mm": 3.5,
+    "minimum_flank_coverage": 0.5,
+    "maximum_chains_per_threshold": 4000,
+    "maximum_work_pixels": 8000000,
+    "crop_count": 12
+  },
+  "top_k": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "mask_policy": "Known target pixels intersect supplied support only; other pixels are not negatives",
+  "primary_measure": "At each K, report per-target fraction covered by union of proposal band polygons, in original pixel coordinates",
+  "supplementary_measure": "Coverage of each supplied box's horizontal centerline; a coarse spatial diagnostic, not text recall",
+  "letter_box_summary": "For343, also count boxes with at least50% supported-area coverage; never call this recognized letters",
+  "baseline": "No model/glyph score; compare complete claim vs same claim under shuffle-common support explicitly",
+  "resource_limit": "180 seconds of wall time per map for rank_map; timeout is incomplete, not zero proposals",
+  "interpretation": "Geometric localization and implementation evidence on published controls; no candidate threshold, population FPR or unseen-model validation",
+  "adjustments_after_scores": "none; preserve failures and incomplete searches"
+}

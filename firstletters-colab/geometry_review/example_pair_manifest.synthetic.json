@@ -1,0 +1,137 @@
+{
+  "raw": {
+    "frame": {
+      "acquisition": "synthetic-control",
+      "volume_metadata_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "axes": "XYZ",
+      "units": "native_voxels",
+      "level": 0,
+      "voxel_um_xyz": [
+        9.362,
+        9.362,
+        9.362
+      ],
+      "origin_native_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "chart": {
+      "reference_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "shape_yx": [
+        128,
+        128
+      ],
+      "pitch_um_yx": [
+        9.362,
+        9.362
+      ],
+      "pixel_center_convention": "index+0.5"
+    },
+    "mesh_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "model_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "normal_field_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "input_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "validity_mask_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "depth_offsets_um": [
+      74.896,
+      65.534,
+      56.172,
+      46.81,
+      37.448,
+      28.086,
+      18.724,
+      9.362,
+      0.0,
+      -9.362,
+      -18.724,
+      -28.086,
+      -37.448,
+      -46.81,
+      -56.172,
+      -65.534
+    ],
+    "normal_convention": "cross(dy,dx) in native XYZ",
+    "preprocess": {
+      "clip_max": 200,
+      "divide": 255
+    },
+    "inference": {
+      "precision": "fp32",
+      "stride": 48,
+      "blend": "hann",
+      "threshold": null
+    }
+  },
+  "adjusted": {
+    "frame": {
+      "acquisition": "synthetic-control",
+      "volume_metadata_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "axes": "XYZ",
+      "units": "native_voxels",
+      "level": 0,
+      "voxel_um_xyz": [
+        9.362,
+        9.362,
+        9.362
+      ],
+      "origin_native_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "chart": {
+      "reference_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "shape_yx": [
+        128,
+        128
+      ],
+      "pitch_um_yx": [
+        9.362,
+        9.362
+      ],
+      "pixel_center_convention": "index+0.5"
+    },
+    "mesh_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "model_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "normal_field_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "input_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "validity_mask_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "depth_offsets_um": [
+      74.896,
+      65.534,
+      56.172,
+      46.81,
+      37.448,
+      28.086,
+      18.724,
+      9.362,
+      0.0,
+      -9.362,
+      -18.724,
+      -28.086,
+      -37.448,
+      -46.81,
+      -56.172,
+      -65.534
+    ],
+    "normal_convention": "cross(dy,dx) in native XYZ",
+    "preprocess": {
+      "clip_max": 200,
+      "divide": 255
+    },
+    "inference": {
+      "precision": "fp32",
+      "stride": 48,
+      "blend": "hann",
+      "threshold": null
+    }
+  },
+  "common_valid_mask_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+  "normal_policy": "fixed_original_field",
+  "comparison_basis": "common_chart",
+  "claims_same_physical_positions": false,
+  "purpose": "Synthetic schema example only; repeated-digit hashes do not identify real files."
+}

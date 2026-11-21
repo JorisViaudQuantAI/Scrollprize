@@ -1,0 +1,22 @@
+{
+  "schema": "public-line-controls-amendment-v1",
+  "frozen_protocol_sha256": "ff7164e51aae2d2dcffce021fac13ed0e5df9f65d86b638aa491323dcdb49efa",
+  "created_utc": "2026-11-21T15:35:49.699165+00:00",
+  "timing": "After source payload integrity and encoding inspection, before any ranker or glyph result",
+  "reason": "Released maps use NaN outside available model coverage; shuffled map covers only a restricted subset. CT layer20>0 alone would incorrectly assert model coverage.",
+  "observations": {
+    "claim_finite_pixels": 27520437,
+    "claim_nonfinite_on_nonzero_CT": 1877549,
+    "shuffle_finite_pixels": 4864188,
+    "shuffle_nonfinite_on_nonzero_CT": 24439248
+  },
+  "change": "Claim and authorblank support become CTlayer20>0 AND finiteclaim. Shuffle support becomes CTlayer20>0 AND finiteclaim AND finiteshuffle. Add ph306b_context_matched_raw using the unchanged claim values and identical sharedmask for a fair paired comparison. Invalid numerical values are set to0 only where validity=False; these pixels remain unknown and cannot supply blank/background evidence.",
+  "unchanged": "Source/crop/physicalscale/labeltarget selections and all ranking thresholds; no results-based tuning.",
+  "additional_case": {
+    "id": "pherc306b_context_matched_raw",
+    "role": "published-positive-context-common-coverage",
+    "map_kind": "model_score",
+    "score": "Unchanged claim map",
+    "validity": "Same finite intersection as pherc306b_shuffle_raw"
+  }
+}
