@@ -1,0 +1,71 @@
+name: Verify released public dense-native checkpoint
+on:
+  push:
+    branches: [codex/public-dense-native-checkpoint]
+    paths: [.github/workflows/public-dense-native.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify the published weights and model configuration
+        shell: bash
+        run: |
+          set -eu
+          work="$RUNNER_TEMP/weights"
+          mkdir -p "$work/parts"
+          src=https://huggingface.co/Nieuwlaar/ink9um-dense-native/resolve/main
+          curl --fail --location --silent --show-error --retry 3 "$src/weights/dense_native_016000.safetensors" -o "$work/model.safetensors"
+          curl --fail --location --silent --show-error --retry 3 "$src/training/configs/train_dense_native.json" -o "$work/config.json"
+          curl --fail --location --silent --show-error --retry 3 "$src/README.md" -o "$work/MODEL_CARD.md"
+          python - <<'PY'
+          from hashlib import file_digest, sha256
+          from pathlib import Path
+          import json, os, shutil
+          base = Path(os.environ["RUNNER_TEMP"]) / "weights"
+          weight_sha = "d3d95dc41dcb24ed76b84b5e12ca5dae25d7fb34edf1dfbb93e0186f91e6fc6d"
+          config_sha = "5d8459030b36cd3980a03610c684365a7407d497173eff433efdb37f75840c86"
+          source = "https://huggingface.co/Nieuwlaar/ink9um-dense-native"
+          weights = base / "model.safetensors"
+          assert weights.stat().st_size == 272767904
+          with weights.open("rb") as data:
+              assert file_digest(data, "sha256").hexdigest() == weight_sha
+          assert sha256((base / "config.json").read_bytes()).hexdigest() == config_sha
+          assert "license: mit" in (base / "MODEL_CARD.md").read_text().split("---")[1].lower()
+          with weights.open("rb") as data:
+              start = 0
+              for index in range(9):
+                  chunk = data.read(30 * 1024 * 1024)
+                  assert chunk
+                  folder = base / "parts" / f"{index:02d}"
+                  folder.mkdir()
+                  (folder / "weights.part").write_bytes(chunk)
+                  meta = dict(index=index, offset=start, size=len(chunk), sha256=sha256(chunk).hexdigest(),
+                              full_sha256=weight_sha, source=source)
+                  (folder / "provenance.json").write_text(json.dumps(meta) + "\n")
+                  (folder / "NOTICE.txt").write_text("Public dense_native_016000 model by Erwin Nieuwlaar. Unmodified weights from the MIT-licensed Nieuwlaar/ink9um-dense-native release. Training and upstream attributions are preserved in MODEL_CARD.md. Source https://huggingface.co/Nieuwlaar/ink9um-dense-native\n")
+                  shutil.copy(base / "MODEL_CARD.md", folder)
+                  if index == 0:
+                      shutil.copy(base / "config.json", folder)
+                  start += len(chunk)
+              assert start == 272767904 and not data.read(1)
+          print("Verified weights and configuration")
+          PY
+          npm install --silent --ignore-scripts --no-audit --no-fund --prefix "$RUNNER_TEMP/art-tools" @actions/artifact@2.3.2
+      - name: Stage attributed public model parts for one day
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const tmp = process.env.RUNNER_TEMP;
+            const { DefaultArtifactClient } = require(path.join(tmp,'art-tools/node_modules/@actions/artifact'));
+            const client = new DefaultArtifactClient();
+            const root = path.join(tmp, 'weights/parts');
+            for (const part of fs.readdirSync(root).sort()) {
+              const folder = path.join(root, part);
+              const files = fs.readdirSync(folder).map(f => path.join(folder,f));
+              await client.uploadArtifact('public-dense-native-'+part, files, folder, {retentionDays:1, compressionLevel:0});
+            }
