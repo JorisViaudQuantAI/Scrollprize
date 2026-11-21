@@ -111,10 +111,13 @@ async function acquire(sites, cache, offline) {
   const checkFile = path.join(cache, 'range-checksums.json');
   const previous = fs.existsSync(checkFile) ? JSON.parse(fs.readFileSync(checkFile)) : [];
   const indexed = new Map(previous.filter(r => r.sha256).map(r => [r.file, r]));
-  const metadata = offline ? JSON.parse(fs.readFileSync(metaFile)) : {};
+  const metadata = {};
+  const legacyMetadata = offline && fs.existsSync(metaFile) ? JSON.parse(fs.readFileSync(metaFile)) : {};
   const selectedSamples = [...new Set(sites.map(s => s.sample))];
   for (const sample of selectedSamples) {
-    metadata[sample] ??= {};
+    const sampleMeta = path.join(cache, 'metadata-' + sample + '.json');
+    metadata[sample] = offline ? (fs.existsSync(sampleMeta) ? JSON.parse(fs.readFileSync(sampleMeta)) : legacyMetadata[sample]) : {};
+    if (!metadata[sample]) throw Error('Missing offline metadata for ' + sample);
     for (const [type, level] of [
         ['fine', 2],
         ['coarse', 0]
@@ -135,8 +138,8 @@ async function acquire(sites, cache, offline) {
         throw Error('Unsupported source layout ' + url);
       }
     }
+    if (!offline) saveAtomic(sampleMeta, JSON.stringify(metadata[sample], null, 2) + '\n');
   }
-  if (!offline) saveAtomic(metaFile, JSON.stringify(metadata, null, 2) + '\n');
   const ranges = rangesForSites(sites, metadata);
   const folder = path.join(cache, 'ranges');
   fs.mkdirSync(folder, {
@@ -149,10 +152,12 @@ async function acquire(sites, cache, offline) {
       const item = ranges[cursor++],
         file = path.join(folder, item.file);
       try {
-        const prior = indexed.get(item.file);
+        const receipt = file + '.json';
+        const prior = fs.existsSync(receipt) ? JSON.parse(fs.readFileSync(receipt)) : indexed.get(item.file);
         if (prior?.url === item.url && prior.start === item.start && prior.len === item.len && fs
           .existsSync(file) &&
           fs.statSync(file).size === item.len && sha256(fs.readFileSync(file)) === prior.sha256) {
+          if (!fs.existsSync(receipt)) saveAtomic(receipt, JSON.stringify(prior) + '\n');
           results.push(prior);
           continue;
         }
@@ -187,14 +192,9 @@ async function acquire(sites, cache, offline) {
         }
         if (bytes.length !== item.len) throw Error('Incomplete byte range');
         saveAtomic(file, bytes);
-        results.push({
-          file: item.file,
-          url: item.url,
-          start: item.start,
-          len: item.len,
-          status,
-          sha256: sha256(bytes)
-        });
+        const recorded = {file: item.file, url: item.url, start: item.start, len: item.len, status, sha256: sha256(bytes)};
+        saveAtomic(receipt, JSON.stringify(recorded) + '\n');
+        results.push(recorded);
       } catch (error) {
         results.push({
           file: item.file,
@@ -210,10 +210,8 @@ async function acquire(sites, cache, offline) {
     length: 8
   }, worker));
   results.sort((a, b) => a.file.localeCompare(b.file));
-  const updated = new Map(previous.map(r => [r.file, r]));
-  for (const r of results) updated.set(r.file, r);
-  saveAtomic(checkFile, JSON.stringify([...updated.values()].sort((a, b) => a.file.localeCompare(b
-    .file)), null, 2) + '\n');
+  const output = selectedSamples.length === 1 ? path.join(cache, 'range-checksums-' + selectedSamples[0] + '.json') : checkFile;
+  saveAtomic(output, JSON.stringify(results, null, 2) + '\n');
   return {
     ranges,
     results,
