@@ -138,7 +138,7 @@ function referencePlane(raw, D, selection) {
   };
 }
 
-function scoreSite(st, jobs, cacheDir) {
+function scoreSite(st, jobs, cacheDir, suppliedShifts) {
   const N = 80,
     Q = 120,
     fixedRaw = coarseVolume(jobs.filter(j => j.t === 'coarse'), st.fixed, cacheDir),
@@ -239,6 +239,21 @@ function scoreSite(st, jobs, cacheDir) {
     }
     return nr ? wt / nr : null;
   }
+  if (suppliedShifts !== undefined) {
+    res.status = 'measured';
+    res.transferred = {};
+    for (const [name, xyz] of Object.entries(suppliedShifts)) {
+      if (!Array.isArray(xyz) || xyz.length !== 3 || xyz.some(v => !Number.isFinite(v) || Math.abs(v) > 8)) {
+        throw Error('A supplied translation is outside the validated search box');
+      }
+      res.transferred[name] = {
+        raw: correlationAt(xyz, hold, 'raw', 'full'),
+        dog: correlationAt(xyz, hold, 'dog', 'full')
+      };
+    }
+    return res;
+  }
+
   // Search the broad even grid plus the complete central integer grid, then refine locally.
   const seen = new Map();
   let best = null;
