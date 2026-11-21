@@ -27,7 +27,7 @@ A second check used a 768 × 768 crop of the public PHerc. 841 w00 surface and a
 
 The public replication package includes the exact source hashes, the individual timings and a one-command comparison for each papyrus. It also tests PHerc. 841 with its published coarse pyramid. In that configuration both runs read a single chunk and produced identical pixels. [Reproduce the two benchmarks](evidence/README.md)
 
-Four additional paired runs timed the complete native W058 CPU command, including model loading, inference and TIFF writing. Median elapsed time was 26.47 s on the original code and 19.28 s with the patch. Median peak process memory was 2,051 and 1,189 MiB. All eight outputs had identical decoded pixels and ROI geometry. [Full-job timings, conditions and reproduction](evidence/w058-full-cli.md)
+Two series timed the complete native W058 CPU command, including model loading, four inference tiles and TIFF writing. Median elapsed time fell from 26.47 to 19.28 s and from 21.22 to 17.29 s. Seven of eight pairs finished sooner and every patched process used less peak memory. All 16 outputs had identical decoded pixels and ROI metadata. On a second papyrus, the 768 × 768 PHerc. 841 W00 fixture uses a single coarse occupancy chunk and one model tile for the timed ROI. There the requested logical read size halved, the same chunk was accessed, and median time was 15.51 s before and 15.90 s after. The eight W00 outputs were identical. [W058 measurements](evidence/w058-full-cli.md) · [W00 measurements](evidence/w00-full-cli.md)
 
 ## Measure your own surface
 

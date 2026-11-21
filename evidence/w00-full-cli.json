@@ -1,0 +1,32 @@
+{
+  "case": "PHerc. 841 W00",
+  "surface": "20260220213127-w00",
+  "voxel_size_um": 9.366,
+  "source_zarr": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0841/segments/20260220213127-w00/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr/",
+  "manifest": {"file": "evidence/sources.json", "case": "w00", "sorted_case_json_sha256": "ff8ee3522babd1304620fc09b8a8ed740e8a5ba9b470251137d8e236f054c858"},
+  "fixture_source_bounds_yx": [2688, 3456, 2688, 3456],
+  "fixture_levels": {"0": {"shape": [28, 768, 768], "chunks": [28, 128, 128], "uint8_c_order_sha256": "fb536e0be0f5e0d382d05584bd070b560031b1c880a46412439cb2e953026b0d"}, "3": {"shape": [28, 96, 96], "chunks": [28, 128, 128], "uint8_c_order_sha256": "c1dfd90320d9f5120a079b90ccb597f01c3443d99162278f15718f29c39bb09b"}},
+  "inference_roi_fixture_yx": [32, 160, 32, 160],
+  "inference_roi_source_yx": [2720, 2848, 2720, 2848],
+  "villa_revision": "c8f3ba45304f0a317a49a155929e30d294f201eb",
+  "patch_sha256": "9c871814b03297105970f0aa15a7f4a15fa48a6d4d6183c320732d5681630467",
+  "model": {"name": "Domenico Russo, Reader v3", "url": "https://huggingface.co/domenicor046/reader-v3/resolve/aee1d64bced4eb35546348f3d276b9e2a0b99c46/reader-v3.pth", "sha256": "ea405417450abd8ace1b8ff79ebce3adb646c5e48ab95da46844d77efe984d8a"},
+  "host": {"cpu": "Intel Xeon Platinum 8573C", "os": "Linux 6.18.57 x86_64", "logical_cpus_pinned": 1, "math_threads": 1, "shared_host": true, "filesystem_cache": "retained", "python": "3.12.14", "torch": "2.9.1+cpu", "numpy": "2.3.5", "zarr": "3.4.2", "tifffile": "2026.11.16", "native_reader": "vc_reader.reader.zarr_reader.ZarrReader"},
+  "inference": {"device": "cpu", "workers": 0, "batch_size": 1, "compile": false, "tta_mirror": false, "tile_overlap": 0.5, "user_mask": false, "occupancy_level": "3"},
+  "output": {"all_images": 8, "shape_yx": [128, 128], "dtype": "uint8", "identical_pixels": 16384, "different_pixels": 0, "uint8_range": [57, 165], "unique_uint8_values": 109, "decoded_sha256": "59a820918fd86d33d42b0ce6f57caa043872418d3c960560e761bb298de64ada", "encoded_tiff_sha256": "2d062df07c9712caf8d2a4fb58a59972c7986a070d91b8fa3ebe890b6def4a89", "all_sidecars_equal_including_input_field": true, "geometry": {"input": "w00.zarr", "input_resolution": "0", "parent_shape_yx": [768, 768], "roi_row_start_stop_col_start_stop": [32, 160, 32, 160], "patch_size": 384, "stride": 192, "blend_mode": "hann", "layer_indices": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22], "direction": "forward", "parent_grid_retained": true}, "geometry_input_display": "Basename. The comparison used the complete original field."},
+  "occupancy_and_schedule": {"inference_roi": {"baseline_logical_bytes": 258048, "patched_logical_bytes": 129472, "baseline_chunk_positions": 1, "patched_chunk_positions": 1, "tiles_each": 1, "ordered_tiles_sha256": "52477db35f5f39cd0d1f933c2cdc8b7f4918f9e4475c99445003441e0ab40190", "mask_shape_yx": {"baseline": [96, 96], "patched": [68, 68]}}, "full_fixture_planning_only": {"baseline_logical_bytes": 258048, "patched_logical_bytes": 258048, "baseline_chunk_positions": 1, "patched_chunk_positions": 1, "tiles_each": 9, "ordered_tiles_sha256": "97e0a7f4c163eb3f66ad96fcfed69a8b17350612312d7c2f8e28ff264a63ff4d", "roi_yx": [0, 768, 0, 768], "native_mask_shape_yx_each": [96, 96], "native_order_verified": true}},
+  "trials_in_run_order": [
+    {"pair": 1, "version": "baseline", "wall_s": 19.565776, "user_s": 6.779949, "system_s": 2.814501, "cpu_s": 9.59445, "peak_rss_mib": 1038.101562},
+    {"pair": 1, "version": "patched", "wall_s": 17.399738, "user_s": 6.439639, "system_s": 2.081836, "cpu_s": 8.521475, "peak_rss_mib": 1038.863281},
+    {"pair": 2, "version": "patched", "wall_s": 17.00732, "user_s": 6.356635, "system_s": 2.059411, "cpu_s": 8.416046, "peak_rss_mib": 1039.277344},
+    {"pair": 2, "version": "baseline", "wall_s": 16.209185, "user_s": 5.763813, "system_s": 2.095266, "cpu_s": 7.859079, "peak_rss_mib": 1038.820312},
+    {"pair": 3, "version": "baseline", "wall_s": 14.813448, "user_s": 5.565364, "system_s": 1.656043, "cpu_s": 7.221407, "peak_rss_mib": 1038.804688},
+    {"pair": 3, "version": "patched", "wall_s": 14.088246, "user_s": 5.586202, "system_s": 1.344091, "cpu_s": 6.930293, "peak_rss_mib": 1038.9375},
+    {"pair": 4, "version": "patched", "wall_s": 14.788572, "user_s": 5.381467, "system_s": 1.864012, "cpu_s": 7.245479, "peak_rss_mib": 1039.066406},
+    {"pair": 4, "version": "baseline", "wall_s": 14.3578, "user_s": 5.74079, "system_s": 1.335258, "cpu_s": 7.076048, "peak_rss_mib": 1039.039062}
+  ],
+  "medians_by_version": {"baseline": {"wall_s": 15.511317, "cpu_s": 7.540243, "peak_rss_mib": 1038.8125}, "patched": {"wall_s": 15.897946, "cpu_s": 7.830762, "peak_rss_mib": 1039.001953}},
+  "wall_differences_baseline_minus_patched_s": [2.166038, -0.798135, 0.725202, -0.430772],
+  "median_paired_difference_baseline_minus_patched": {"wall_s": 0.147215, "cpu_s": 0.060841, "peak_rss_mib": -0.294922},
+  "pairs_patched_wall_faster": 2
+}
