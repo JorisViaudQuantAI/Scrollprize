@@ -22,7 +22,7 @@ papyrus fibre directions of the render, every square window (default 20 mm = the
   stab_*   stability: Dice overlap of the thresholded map with each companion map
            (other models, neighbouring depth offsets).
   asym     direction asymmetry (cover_fwd - cover_rev) / (cover_fwd + cover_rev) when the
-           reverse-order map is given. Real ink disappears with reversed layers.
+           reverse-order map is given. Its sign depends on the checkpoint, surface and depth order.
 
 The combined score is documented in README.md (it is a calibrated z-score sum, see
 calibrate_scorer.py). This file only depends on numpy / scipy / opencv / scikit-image.
@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import sys
 from pathlib import Path
 
 import cv2
@@ -100,14 +101,29 @@ def row_periodicity(p, m, px_mm, angle_deg):
     mr = _rotate(m.astype(np.float32), angle_deg)
     rs = mr.sum(1)
     good = rs > 0.4 * mr.shape[1]
-    if good.sum() * px_mm < 1.9 * PITCH_MM[1]:
+    rows = np.flatnonzero(good)
+    if rows.size * px_mm < 1.9 * PITCH_MM[1]:
         return 0.0, 0.0, 0.0
-    prof = pr.sum(1)[good] / rs[good]
+    # Trim only the outer margins. One array index still represents one physical row.
+    span = slice(rows[0], rows[-1] + 1)
+    good = good[span]
+    row_sum = pr.sum(1)[span]
+    prof = np.zeros(row_sum.shape, dtype=np.result_type(row_sum, rs))
+    np.divide(row_sum, rs[span], out=prof, where=good)
     n = len(prof)
-    # detrend: remove variation slower than 2x the longest pitch
     sig = 2.0 * PITCH_MM[1] / px_mm / 2.355
-    trend = cv2.GaussianBlur(prof.reshape(-1, 1).astype(np.float32), (1, 0), sig, borderType=cv2.BORDER_REFLECT).ravel()
-    x = (prof - trend) * np.hanning(n)
+
+    def smooth(values):
+        column = values.astype(np.float32).reshape(-1, 1)
+        return cv2.GaussianBlur(column, (1, 0), sig, borderType=cv2.BORDER_REFLECT).ravel()
+
+    trend = smooth(prof)
+    if not good.all():
+        # Normalize the trend by its observed support so a tear does not become a dark stripe.
+        trend[good] /= smooth(good)[good]
+    residual = prof - trend
+    residual[~good] = 0
+    x = residual * np.hanning(n)
     nfft = 1 << int(math.ceil(math.log2(n * 4)))
     P = np.abs(np.fft.rfft(x, nfft)) ** 2
     f = np.fft.rfftfreq(nfft, d=px_mm)  # cycles per mm
@@ -121,10 +137,10 @@ def row_periodicity(p, m, px_mm, angle_deg):
     period = float(P[k] / (P[bg].mean() + 1e-12))
     # modulation of the line-pitch component
     lo, hi = PITCH_MM
-    fp = np.fft.rfft(prof - trend, nfft)
+    fp = np.fft.rfft(residual, nfft)
     fp[~band] = 0
     bp = np.fft.irfft(fp, nfft)[:n]
-    rowmod = float(bp.std() / (prof.mean() + 1e-6))
+    rowmod = float(bp[good].std() / (prof[good].mean() + 1e-6))
     return period, rowmod, float(pitch[k])
 
 
@@ -239,6 +255,23 @@ def combined(rec, cal):
     return round(z / math.sqrt(max(len(used), 1)), 3), used
 
 
+def calibration_warnings(cal, win_mm, step_mm):
+    messages = []
+    window = cal.get("window_mm")
+    step = cal.get("step_mm")
+    if window is None or step is None:
+        messages.append("Calibration window and step are unknown. Treat the combined score as a ranking only.")
+    elif not (math.isclose(window, win_mm) and math.isclose(step, step_mm)):
+        messages.append(
+            f"Calibration used {window:g} mm windows and {step:g} mm steps. "
+            f"Requested {win_mm:g} mm windows and {step_mm:g} mm steps. "
+            "Historical cutoffs do not transfer to this grid."
+        )
+    if cal.get("row_sampling") != "physical":
+        messages.append("Calibration of the corrected spectrum on internally gapped windows is unverified.")
+    return messages
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("map", help="ink map (uint8 png/tif); forward / chosen direction")
@@ -267,15 +300,19 @@ def main():
     rev = load_map(a.reverse, a.rescale) if a.reverse else None
     recs = score_windows(p, m, a.px_um, fibre, comps, rev, a.thr, a.win_mm, a.step_mm)
     cal = json.load(open(a.calibration)) if Path(a.calibration).exists() else None
+    messages = calibration_warnings(cal, a.win_mm, a.step_mm) if cal else []
+    for message in messages:
+        print(message, file=sys.stderr)
     if cal:
         for r in recs:
             r["score"], _ = combined(r, cal)
     key = "score" if cal else "period"
     recs.sort(key=lambda r: -r[key])
     res = {"map": a.map, "fibre_deg": fibre, "n_windows": len(recs), "best": recs[0] if recs else None}
-    print(json.dumps(res))
+    extra = {"calibration_warnings": messages} if messages else {}
+    print(json.dumps({**res, **extra}))
     if a.json:
-        json.dump({"fibre_deg": fibre, "windows": recs}, open(a.json, "w"), indent=0)
+        json.dump({"fibre_deg": fibre, "windows": recs, **extra}, open(a.json, "w"), indent=0)
 
 
 if __name__ == "__main__":
