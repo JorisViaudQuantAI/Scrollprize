@@ -1,0 +1,58 @@
+name: Verify released public A-hn weights
+on:
+  push:
+    branches: [codex/public-ahn306-final-weights]
+    paths: [.github/workflows/public-ahn306-weights.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - name: Prepare artifact transport for public weights
+        shell: bash
+        run: npm install --silent --ignore-scripts --no-audit --no-fund --prefix "$RUNNER_TEMP/art-tools" @actions/artifact@2.3.2
+      - name: Verify and stage the three released finalist models
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+            const { execFileSync } = require('node:child_process');
+            const { DefaultArtifactClient } = require(path.join(process.env.RUNNER_TEMP,'art-tools/node_modules/@actions/artifact'));
+            const client = new DefaultArtifactClient();
+            const base = path.join(process.env.RUNNER_TEMP,'released-ahn');
+            const rev='e57c4d541c239e06450a98c1cf2015d3de8d887e';
+            const src='https://huggingface.co/Prodigle/pherc0306b-ink-ahn/resolve/'+rev+'/checkpoints/';
+            const sums=['9a2812843924c50cafaa2b598f62c92ceca9f0d1f5d05b7bbf25764814ec7009','5c2740c1f33ee5db73ca97425669607a2ffe4ae9af8b9d09d61f1c43165e60ad','a294716b083769e8116d5f8d3cfa6a09378ca5c7e51c32225d04703266ad8ce7'];
+            const digest = p => new Promise((resolve,reject)=>{const h=crypto.createHash('sha256');const s=fs.createReadStream(p);s.on('error',reject);s.on('data',b=>h.update(b));s.on('end',()=>resolve(h.digest('hex')));});
+            fs.mkdirSync(base,{recursive:true});
+            for(let seed=0;seed<3;seed++){
+              const parent=path.join(base,'s'+seed);fs.mkdirSync(parent);
+              const dir='hn4_s'+seed+'_final', url=src+dir+'/';
+              for(const file of ['config.json','meta.json','model.safetensors']){
+                execFileSync('curl',['--fail','--location','--silent','--show-error','--retry','3',url+file,'-o',path.join(parent,file)],{stdio:'inherit'});
+              }
+              const model=path.join(parent,'model.safetensors'), total=fs.statSync(model).size;
+              if(await digest(model)!==sums[seed])throw Error('Author checkpoint fingerprint differs');
+              const notice='Released A-hn finalist, seed '+seed+', by SirProdigle / Prodigle. Unchanged model weights and model configuration, CC BY-NC 4.0. Source https://huggingface.co/Prodigle/pherc0306b-ink-ahn/tree/'+rev+'/checkpoints/'+dir+'. Public model attribution and training disclosure https://github.com/SirProdigle/pherc0306b-first-letters/blob/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/docs/MODELS_AND_DATA.md';
+              const partBytes=30*1024*1024, fd=fs.openSync(model,'r');
+              try{
+                for(let offset=0,index=0;offset<total;offset+=partBytes,index++){
+                  const size=Math.min(partBytes,total-offset),bytes=Buffer.alloc(size);
+                  let done=0;while(done<size){const n=fs.readSync(fd,bytes,done,size-done,offset+done);if(!n)throw Error('Truncated model');done+=n;}
+                  const part=path.join(parent,'part-'+index);fs.mkdirSync(part);
+                  fs.writeFileSync(path.join(part,'weights.part'),bytes);
+                  const meta={seed,index,offset,size,total,full_sha256:sums[seed],source:url+'model.safetensors',sha256:crypto.createHash('sha256').update(bytes).digest('hex')};
+                  fs.writeFileSync(path.join(part,'provenance.json'),JSON.stringify(meta)+'\n');fs.writeFileSync(path.join(part,'NOTICE.txt'),notice+'\n');
+                  if(index===0){for(const file of ['config.json','meta.json'])fs.copyFileSync(path.join(parent,file),path.join(part,file));}
+                  await client.uploadArtifact('public-ahn306-s'+seed+'-'+String(index).padStart(2,'0'),fs.readdirSync(part).map(f=>path.join(part,f)),part,{retentionDays:1,compressionLevel:0});
+                  fs.rmSync(part,{recursive:true});
+                }
+              }finally{fs.closeSync(fd);}
+              fs.unlinkSync(model);core.info('Verified public finalist '+seed+' ('+total+' bytes)');
+            }
