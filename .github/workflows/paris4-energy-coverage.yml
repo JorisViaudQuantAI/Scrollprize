@@ -1,0 +1,26 @@
+name: Paris 4 public mesh energy coverage
+on:
+  push:
+    branches:
+      - codex/paris4-energy-coverage
+    paths:
+      - ".github/workflows/paris4-energy-coverage.yml"
+      - "codex/paris4-energy-coverage/coverage.py"
+permissions: {}
+jobs:
+  coverage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Run public coordinate and scanner bounds check
+        env:
+          OPENBLAS_NUM_THREADS: 1
+          PYTHONUNBUFFERED: 1
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --silent --show-error --fail --retry 3 "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/codex/paris4-energy-coverage/coverage.py" -o coverage.py
+          python3 -m venv coverage-env
+          coverage-env/bin/python -m pip install --disable-pip-version-check --quiet 'numpy>=2,<3' 'tifffile>=2024.5' 'imagecodecs>=2024.6' 'numcodecs>=0.15,<0.17'
+          coverage-env/bin/python coverage.py
