@@ -39,7 +39,8 @@ def main():
         for i in range(a.x0 // cx, (x1 - 1) // cx + 1):
             for k in range(0, (Z - 1) // cz + 1):
                 r = s.get(f"{B}/{a.key}/0/{sep.join(map(str, (k, j, i)))}", timeout=120)
-                if r.status_code in (403, 404):
+                # Only an absent sparse chunk is fill; denied access must abort.
+                if r.status_code == 404:
                     continue
                 r.raise_for_status()
                 c = np.frombuffer(r.content, np.uint8).reshape(cz, cy, cx)

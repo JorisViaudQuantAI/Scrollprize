@@ -53,7 +53,8 @@ def zslice(base, volkey, level, z, y0, y1, x0, x1, workers=8):
             try:
                 r = sess().get(f"{base}/{volkey}/{level}/{kz}/{j}/{i}",
                                headers={"Range": f"bytes={oz * cy * cx}-{(oz + 1) * cy * cx - 1}"}, timeout=60)
-                if r.status_code in (403, 404):
+                # Do not turn denied access into a black anatomical patch.
+                if r.status_code == 404:
                     return ji, None
                 r.raise_for_status()
                 return ji, np.frombuffer(r.content, np.uint8).reshape(cy, cx)

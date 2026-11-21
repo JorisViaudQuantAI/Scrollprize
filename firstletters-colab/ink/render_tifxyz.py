@@ -84,7 +84,8 @@ class RemoteZarrArray:
         for attempt in range(5):
             try:
                 r = self._session().get(f"{self.root}/{key}", timeout=120)
-                if r.status_code in (404, 403):
+                # Only an absent sparse chunk is fill; denied access is not blank CT.
+                if r.status_code == 404:
                     return None
                 r.raise_for_status()
                 return r.content
