@@ -8,6 +8,8 @@ W=${1:-./hecate_measure}; mkdir -p "$W"; cd "$W"
 nvidia-smi --query-gpu=name,memory.total --format=csv
 [ -s hecate_9.6um.pth ] || curl -fsSL -o hecate_9.6um.pth https://huggingface.co/scrollprize/hecate/resolve/main/hecate_9.6um.pth
 [ -s crop.npy ] || python "$HERE/prepare_crop.py" crop.npy
+# record the exact input (same hash as prepare_crop.py's sha256_array)
+python -c "import hashlib, numpy as np; a = np.load('crop.npy'); print('crop', a.shape, 'sha256_array', hashlib.sha256(np.ascontiguousarray(a).tobytes()).hexdigest())"
 for p in fp16 bf16 fp32; do
   rm -f out_$p.png out_$p.json
   s=$(date +%s.%N)

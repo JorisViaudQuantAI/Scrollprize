@@ -12,7 +12,7 @@ real data; anything else is labelled.
 | 1 | Fine↔coarse registration of the 2.4 µm rescans of PHerc. 1203 and PHerc. 0846A to their First-Letters 9.36 µm volumes, in the bucket's `transforms/` format | `registration/` | measured, CPU only |
 | 2 | Headless First Letters window on a free Colab T4: VC3D AppImage GrowPatch + render + reader-v3/ink_9um ensemble, timings, pitfalls, and a Drive-fed job worker | `colab_pipeline/`, `ink/` | one window measured end to end; packaged scripts parametrised afterwards (see limits) |
 | 3 | Model comparison on a known-text control (PHerc. 0841): agreement (AUC) with the organisers' 2.4 µm ink map by depth offset, combinations, reversed-layer control, and a text-likeness triage score with its calibration | `controls/` | measured on one region; combination and thresholds chosen on that same region |
-| 4 | Negative results with coordinates (12 searched regions on 4 scrolls + Scroll 1; 10 negatives, 2 unresolved or uninformative, one location withheld) and their meshes | `negative_results/` | measured / by eye, labelled per row |
+| 4 | Negative results with coordinates (12 regions searched by us on 4 scrolls + Scroll 1: 10 negatives, 2 unresolved or uninformative, one location withheld; plus 3 PHerc. 1203 windows screened by Codex) and their meshes | `negative_results/` | measured / by eye, labelled per row |
 | 5 | `--precision fp16` for the official `hecate.py`: 3.0× faster than its fp32 default end to end on a T4 (patched official script, one small crop); 3.9× model throughput in our wrapper | `hecate_fp16/` | measured on a T4, both ways, one crop of one scroll |
 
 AI assistance: the code, the runs and this text were produced with AI coding agents, directed by the repository
@@ -82,8 +82,10 @@ other vertex as −1, computes the output `bbox` over valid vertices only, and s
   median hold-out error of ≤ 2 fine voxels. Ours is ~4–5 fine voxels RMS from 5–7 slice matches. That is enough
   to move a mesh onto the same sheet (sheets are ~10 coarse voxels apart) and to compare the two scans, but not
   for voxel-exact work. The files can serve as a `--start` transform for `volreg`.
-- Landmarks lie within ~8 mm of the scroll centre in x/y and span the band's height; accuracy farther out is
-  extrapolated, not measured.
+- Landmarks lie within ~8 mm in x/y of the centre of the 2.4 µm field of view (not an umbilicus) and span the
+  band's height; for PHerc. 1203 that is 3.4–11.2 mm from the official umbilicus
+  (`PHerc1203/representations/umbilicus/20250820131727-umbilicus-20260924035533.json`); PHerc. 0846A has no
+  published umbilicus. Accuracy farther out is extrapolated, not measured.
 - Each landmark is a 2-D slice match with coarse-z steps of 2; sub-voxel conventions (pixel centres between
   levels) are not modelled (< 0.5 coarse voxel).
 - No deformable part: if the scroll changed shape between the two scans, it is not captured.
@@ -160,8 +162,10 @@ times; that is the new part, together with the pitfall list and the worker.
 
 **Limits.**
 - One window on one scroll was measured. The packaged `jobs/*.sh` are parametrised copies of the jobs that ran
-  (`rcp_012`, `rcp_025`): only variables, paths and the mesh hand-off changed. They pass `bash -n`; **as of this
-  commit they have not been re-run as shipped** (a fresh-clone re-run is planned and will be reported in `collab/`).
+  (`rcp_012`, `rcp_025`): only variables, paths and the mesh hand-off changed. They pass `bash -n`. They were
+  re-run once as shipped, from a fresh clone at `37011ec`, on one new PHerc0175A window (8-core Colab VM with a T4:
+  `01_grow.sh` 1103 s, `02_render_ink.sh` 1323 s; details in `collab/claude-003.md`). The fallback hand-off without
+  `MESH` and the 2-core free-tier timings were not re-checked in that run.
 - The notebook was written before the runs; its helper and parameter cells were executed on CPU, its GPU cells
   were not executed as a notebook (the same steps ran as worker jobs). Cells are marked `UNTESTED` where so.
 - Colab compute-unit prices and free-tier limits change; the ≈ 1 h per window is for a T4.
@@ -207,6 +211,11 @@ off-sheet z ±20, a noise stack with the render's per-layer statistics):
 | off-sheet | 120 | −0.34 / 1.13 / 2.38 / 3.07 |
 | noise | 60 | −2.99 / −2.07 / −1.59 / −1.15 |
 
+Reversed layer order is a diagnostic, not proof. As Codex notes (`collab/codex-002.md`), which order shows
+ink depends on the model and on the render orientation, so reversing the layers can suppress genuine ink as well
+as artefacts. Our scans run both orders, but the asymmetry gate above (and the forward/reverse ratios in
+section 4) assume that the forward order is the right one for the render.
+
 Every dense-text window scores ≥ 3.70 and every control window ≤ 3.07. Measured line pitch on real text:
 5.7 mm. Decision rule used for the scan in section 4: ≥ 3.1 plus gates (asymmetry ≥ +0.5, depth stability
 ≥ 0.7, cross-model stability ≥ 0.3) = candidate; 2.0–3.1 = look by eye; below = nothing. These thresholds
@@ -227,7 +236,7 @@ segment, so the effective sample size is small. Off-sheet "controls" may contain
 
 ## 4. Negative results with coordinates
 
-`negative_results/negatives.csv` lists every region we searched, with scroll, volume id, mesh or seed, bounding
+`negative_results/negatives.csv` lists every region we searched (and three screened by Codex, marked in `source`), with scroll, volume id, mesh or seed, bounding
 box in level-0 voxels of the listed volume, area, models, depths, faces, verdict, caveats and source run.
 `negative_results/meshes.tar.xz` (1.4 MB) holds our own meshes (tifxyz) for rows N1–N5 and N7.
 
@@ -245,6 +254,14 @@ box in level-0 voxels of the listed volume, area, models, depths, faces, verdict
 | N10 | PHerc1203 2.4 µm | two blocks on crumpled surface | 1.12 | ink_canonical_2um | uninformative |
 | N11 | Scroll 1 (PHerc. Paris. 4), 2.4 µm | agraphon of `20260623141924-w010-027`, canvas x 116160–170160 | ~140 | published predictions only | no line structure (confirms the organisers' statement) |
 | N12 | Scroll 1, 2.4 µm | unmeshed core, z 25500/29000–72900, inside the innermost meshed wrap | ~2 cm wide | published 3D ink volumes | no ink; core holds only ~2 cm of papyrus |
+| N13 | PHerc1203 (9.362 µm) | public mesh `…230830031`, Codex window A; x 1858–4412, y 4729–5087, z 7504–9265 | — | Reader v3 (both layer orders, overlapping 384 px tiles), Hecate on selected regions; 25 depths −12…+12 | screened, no ten-letter sequence identified (Codex) |
+| N14 | PHerc1203 | same mesh, window B; x 1752–4620, y 4441–5069, z 5864–7710 | — | same | screened, no ten-letter sequence identified (Codex) |
+| N15 | PHerc1203 | same mesh, window C; x 1519–3345, y 4500–4907, z 6030–7780 | — | same | screened, no ten-letter sequence identified (Codex) |
+
+Rows N13–N15 are by Codex (`collab/codex-002.md`; surface rectangles in the CSV). Their boxes round the surface
+bounds outward, so they enclose curved sheets and include unscreened tissue off the mesh; B and C overlap. Our
+own 9.36 µm scan lane on PHerc. 1203 also covers the public mesh `…230830031`, so these windows will serve as an
+independent replication once our verdicts are in.
 
 Controls used to read these: PHerc. 0841 known text processed the same way (section 3); for the 2.4 µm rows,
 the same code path reproduces the organisers' published 2.4 µm map of PHerc. 0841 (r = 0.929) and gives
@@ -279,7 +296,13 @@ pass as reported by the wrapper; `cudnn.benchmark` was on, which `hecate.py` doe
 **(b) The patched official script, end to end** (2026-11-21, `hecate_fp16/measure_t4.sh` as committed at
 `fca6b04`; Colab Tesla T4, 15 GB, torch 2.14.1+cu130; official `hecate.py` + the fp16 patch; one 27 × 999 × 999
 crop of the public PHerc. 841 w00 surface volume resampled to 9.6 µm by `prepare_crop.py`; batch size 32; wall
-seconds per fresh process, model load included):
+seconds per fresh process, model load included). Input crop, recomputed here on CPU with the same script and
+defaults (key and `crop_yx` [1408, 2048, 1024], 64 chunks read, none absent): sha256 of the 28 × 1024 × 1024
+source crop `c1599abb9802cff0d3cb70c79103c2c3484c8d5235df45c9fe3732920202a037`, of the resampled 27 × 999 × 999
+array `49c0d7a4475dc5dfc3343e3a6399cf43b85ed26b5f132725e2ac5f3b607758df` (scipy 1.18.1; the resampled bytes may
+differ with another scipy version). The T4 run itself recorded no hash, so its input is identified by key, crop
+and shape only; `prepare_crop.py` and `measure_t4.sh` now print the hash on every run, and `prepare_crop.py`
+stops on any HTTP status other than 200/404 instead of filling the chunk with zeros:
 
 | precision | seconds | vs fp32 output (uint8 levels) |
 |---|---|---|

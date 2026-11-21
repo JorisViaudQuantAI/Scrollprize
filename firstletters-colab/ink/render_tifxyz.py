@@ -84,10 +84,11 @@ class RemoteZarrArray:
         for attempt in range(5):
             try:
                 r = self._session().get(f"{self.root}/{key}", timeout=120)
-                # Only an absent sparse chunk is fill; denied access is not blank CT.
-                if r.status_code == 404:
+                if r.status_code == 404:  # chunk absent from the store: fill value
                     return None
-                r.raise_for_status()
+                r.raise_for_status()  # 403, 500...: never read a refusal as an empty chunk
+                if r.status_code != 200:
+                    raise RuntimeError(f"HTTP {r.status_code} for {self.root}/{key}")
                 return r.content
             except Exception:
                 if attempt == 4:

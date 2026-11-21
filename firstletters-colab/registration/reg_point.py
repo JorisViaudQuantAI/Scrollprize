@@ -53,10 +53,11 @@ def zslice(base, volkey, level, z, y0, y1, x0, x1, workers=8):
             try:
                 r = sess().get(f"{base}/{volkey}/{level}/{kz}/{j}/{i}",
                                headers={"Range": f"bytes={oz * cy * cx}-{(oz + 1) * cy * cx - 1}"}, timeout=60)
-                # Do not turn denied access into a black anatomical patch.
-                if r.status_code == 404:
+                if r.status_code == 404:  # chunk absent from the store: fill value 0
                     return ji, None
-                r.raise_for_status()
+                r.raise_for_status()  # 403, 500...: never read a refusal as an empty chunk
+                if r.status_code not in (200, 206):
+                    raise RuntimeError(f"HTTP {r.status_code} for {volkey}/{level}/{kz}/{j}/{i}")
                 return ji, np.frombuffer(r.content, np.uint8).reshape(cy, cx)
             except Exception:
                 if attempt == 3:
