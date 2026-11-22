@@ -1,0 +1,45 @@
+{
+  "kind": "generated regression and source-integrity record; no new scroll measurement",
+  "prior_public_commit": "122e868",
+  "previous_runner_sha256": "7e02b98d2f6ae15646de8096ab7d0cf14b7ea0652f11c269d6afac9c5fc4c898",
+  "corrected_runner_sha256": "cbd36fb82a1ba2631c3faaf844a825c757fa8ca420f82c965bb3aa73ca96827f",
+  "test_sha256": "4c99cd1879ec65b5e644befafab78ec2b5426603b6c8092fad5427ad76e6fadf",
+  "before": {
+    "exit_code": 1,
+    "generated_cases_failed": 2,
+    "cases": [
+      {
+        "synthetic_xyz": [
+          127.5,
+          127.5,
+          10
+        ],
+        "chunks_reported": 2,
+        "chunks_required": 4
+      },
+      {
+        "synthetic_xyz": [
+          127.5,
+          127.5,
+          127.5
+        ],
+        "chunks_reported": 2,
+        "chunks_required": 8
+      }
+    ]
+  },
+  "after": {
+    "exit_code": 0,
+    "tests_passed": 7,
+    "mixed_corners_and_too_small_chunk_budget_rejected": true
+  },
+  "published_affine_audit_functions_AST_unchanged": {
+    "matrix_and_data": true,
+    "transform_xyz": true,
+    "least_squares_affine": true,
+    "audit_landmarks": true
+  },
+  "data_scope": "Synthetic boundary points and previously committed public metadata only; no CT, photo or label arrays acquired.",
+  "environment_note": "Initial test invocation found pytest absent; installed pytest9.0.2 outside repository, then ran the recorded before/after tests.",
+  "limitations": "This fixes chunk accounting. It does not validate a physical PPM, native correspondence, radiometry, labels or ink."
+}

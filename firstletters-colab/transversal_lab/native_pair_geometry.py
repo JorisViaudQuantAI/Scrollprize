@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import itertools
 import json
 import math
 from pathlib import Path
@@ -151,7 +152,11 @@ def chunk_plan(fixture, points_xyz, normals_xyz, offsets_um, mode, max_chunks=64
         raise ValueError(f'{int((~valid_centers).sum())}/{len(P)} centers lack complete target CT support: reject, never clip/fill')
     chunks = set()
     # Z/Y/X chunk keys, whereas transforms and profile samples use X/Y/Z.
-    for boundary in (lo, hi):
+    # A trilinear sample needs every Cartesian combination of lower/upper
+    # XYZ coordinates. Two diagonal endpoints miss mixed corners when more
+    # than one axis crosses a chunk boundary.
+    for use_upper in itertools.product((False, True), repeat=3):
+        boundary = np.where(use_upper, hi, lo)
         for q in boundary.reshape((-1, 3)):
             chunks.add((int(q[2] // 128), int(q[1] // 128), int(q[0] // 128)))
             if len(chunks) > max_chunks:

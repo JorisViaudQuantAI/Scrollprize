@@ -62,3 +62,24 @@ def test_trilinear_neighbor_on_boundary():
     assert q['decoded_chunks'] == 2
     with pytest.raises(ValueError, match='budget exceeded'):
         g.chunk_plan(synthetic, [[127.5, 10, 10]], [[0, 0, 1]], [0], 'target_normal', max_chunks=1)
+
+
+@pytest.mark.parametrize('point, expected', [
+    ([127.5, 127.5, 10], [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1]]),
+    ([127.5, 127.5, 127.5], [
+        [0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1],
+        [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1],
+    ]),
+])
+def test_mixed_trilinear_corners_count_toward_chunk_budget(point, expected):
+    """One sample can require four/eight chunks, not only two diagonals."""
+    synthetic = dict(F['frag5'])
+    synthetic['affine_xyz'] = np.eye(4).tolist()
+    synthetic['target_shape_zyx'] = [256, 256, 256]
+    synthetic['source_pitch_um'] = synthetic['target_pitch_um'] = 1
+    result = g.chunk_plan(synthetic, [point], [[0, 0, 1]], [0], 'target_normal')
+    assert result['target_chunks_zyx'] == expected
+    assert result['decoded_upper_bound_bytes'] == len(expected) * 4194304
+    with pytest.raises(ValueError, match='budget exceeded'):
+        g.chunk_plan(synthetic, [point], [[0, 0, 1]], [0],
+                     'target_normal', max_chunks=len(expected)-1)
