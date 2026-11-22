@@ -197,6 +197,10 @@ against the organisers' 2.4 µm `new_canon_autoresearch_recipe` map resampled to
 key ≥ 128), inside a 2.6 cm² ROI, at depth shifts along the render normal and with the layer order reversed.
 The reference is itself a model output, so every AUC below measures **agreement with another model**, not
 accuracy against human-labelled ink.
+**Training exposure (added 22 Nov 2026).** PHerc. 0841 w00 is a training donor of the Studio detector and is in
+Hecate's published training bucket (`ink/841/w00`). For those two models this control checks the input path
+only. It is unexposed, as far as the published training lists say, for reader-v3 and ink_9um. PHerc. 0306B is
+the control that none of these models saw.
 Raw numbers: `controls/evidence/controls_summary.json`; panel `controls/fl_002_controls_panel_0841.jpg`.
 
 | model | z −4 | −2 | **0** | +2 | +4 | reversed |
