@@ -1,0 +1,50 @@
+{
+  "adaptive_secondary_diagnostic_only": true,
+  "affects_gate": false,
+  "centers": [
+    {
+      "id": 20,
+      "native_corner_trilinear": 18903.200966430002,
+      "native_corner_trilinear_rounded": 18903,
+      "previous_surface_tiff_k32": 17373,
+      "native_minus_previous_surface_unrounded": 1530.2009664300022,
+      "native_vs_previous_surface_rounded_absolute_error": 1530,
+      "previous_zarr_trilinear_center": 18903.200966430002,
+      "previous_zarr_vs_surface_rounded_absolute_error": 1530,
+      "reproduces_previous_rounded_center_error": true
+    },
+    {
+      "id": 25,
+      "native_corner_trilinear": 26384.79110425027,
+      "native_corner_trilinear_rounded": 26385,
+      "previous_surface_tiff_k32": 26149,
+      "native_minus_previous_surface_unrounded": 235.79110425027102,
+      "native_vs_previous_surface_rounded_absolute_error": 236,
+      "previous_zarr_trilinear_center": 26384.79110425027,
+      "previous_zarr_vs_surface_rounded_absolute_error": 236,
+      "reproduces_previous_rounded_center_error": true
+    },
+    {
+      "id": 65,
+      "native_corner_trilinear": 15528.771124326802,
+      "native_corner_trilinear_rounded": 15529,
+      "previous_surface_tiff_k32": 15529,
+      "native_minus_previous_surface_unrounded": -0.2288756731977628,
+      "native_vs_previous_surface_rounded_absolute_error": 0,
+      "previous_zarr_trilinear_center": 15528.771124326802,
+      "previous_zarr_vs_surface_rounded_absolute_error": 0,
+      "reproduces_previous_rounded_center_error": true
+    },
+    {
+      "id": 70,
+      "native_corner_trilinear": 21271.724560275376,
+      "native_corner_trilinear_rounded": 21272,
+      "previous_surface_tiff_k32": 22176,
+      "native_minus_previous_surface_unrounded": -904.2754397246244,
+      "native_vs_previous_surface_rounded_absolute_error": 904,
+      "previous_zarr_trilinear_center": 21271.724560275376,
+      "previous_zarr_vs_surface_rounded_absolute_error": 904,
+      "reproduces_previous_rounded_center_error": true
+    }
+  ]
+}

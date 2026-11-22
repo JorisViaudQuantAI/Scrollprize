@@ -1,0 +1,275 @@
+{
+  "schema": "frag5-adaptive-native-grid-independent-result-review-v1",
+  "checker_sha256": "78875def22b7d3488c64297abdec7e14edb60fc70734b5f8f1306829707ee1ca",
+  "unchanged_stage1_checker_sha256": "a78c35a71954923eb3e2bb8d7619b0279ea5793e47d3c14e57fada180a157918",
+  "freeze_reference": "1dae1cbf3c9eeb8c7713fa0e50795608afc823ec",
+  "actual_network_requests": 0,
+  "new_source_acquisition": false,
+  "models_or_fits": 0,
+  "label_or_photo_access": false,
+  "footprint_integration_rerun": false,
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy_version": "2.3.5",
+  "numeric_tolerance": 1e-10,
+  "old_stage1_classification_preserved": "neither",
+  "static_support": {
+    "fine_chunks": 8,
+    "coarse_chunks": 6,
+    "shared_chunks": 14,
+    "decoded_bytes_upper_bound": 58720256,
+    "all_cartesian_support_corners_checked": true
+  },
+  "old_cached_objects_verified": 398,
+  "acquisition": {
+    "available": true,
+    "responses": 50,
+    "cached_objects_verified": 50,
+    "new_body_bytes": {
+      "source_chunk": 32492758,
+      "tiff_metadata": 2609
+    },
+    "cumulative_body_bytes": {
+      "source_chunk": 57064081,
+      "tiff_metadata": 1076780
+    },
+    "complete_native_header_ranges": 24,
+    "complete_native_pixel_ranges": 16,
+    "new_raw_chunk_responses": 8,
+    "all_fixed_native_ranges_charged_bytes": 64,
+    "ordering_scope": "Request ledger checked with frozen-code completion barriers; receipt has no individual completion timestamps."
+  },
+  "native_gate": {
+    "available": true,
+    "passed_exact_32_of_32": true,
+    "equal_values": 32,
+    "maximum_absolute_integer_difference": 0,
+    "all32_values_recomputed_from_cached_bytes": true,
+    "scope": "Local equality at these fixed integer corners only."
+  },
+  "secondary_center_diagnostic": {
+    "available": true,
+    "all_four_recomputed": true,
+    "affects_source_or_anatomy_gate": false,
+    "centers": [
+      {
+        "id": 20,
+        "native_center_unrounded": 18903.200966430006,
+        "previous_surface_center": 17373,
+        "native_vs_surface_rounded_absolute_error": 1530,
+        "old_zarr_vs_surface_rounded_absolute_error": 1530,
+        "reproduces_previous_rounded_center_error": true
+      },
+      {
+        "id": 25,
+        "native_center_unrounded": 26384.79110425027,
+        "previous_surface_center": 26149,
+        "native_vs_surface_rounded_absolute_error": 236,
+        "old_zarr_vs_surface_rounded_absolute_error": 236,
+        "reproduces_previous_rounded_center_error": true
+      },
+      {
+        "id": 65,
+        "native_center_unrounded": 15528.771124326804,
+        "previous_surface_center": 15529,
+        "native_vs_surface_rounded_absolute_error": 0,
+        "old_zarr_vs_surface_rounded_absolute_error": 0,
+        "reproduces_previous_rounded_center_error": true
+      },
+      {
+        "id": 70,
+        "native_center_unrounded": 21271.724560275376,
+        "previous_surface_center": 22176,
+        "native_vs_surface_rounded_absolute_error": 904,
+        "old_zarr_vs_surface_rounded_absolute_error": 904,
+        "reproduces_previous_rounded_center_error": true
+      }
+    ]
+  },
+  "anatomy_gate_adapter": "New native 32-value equality gate only; old rendering identity remains neither.",
+  "anatomy": {
+    "performed": true,
+    "centers": [
+      {
+        "id": 20,
+        "shifts": 27,
+        "arms": 2,
+        "comparisons_verified": 54,
+        "zero_shift": [
+          {
+            "arm": "fine_nominal_coarse_footprint",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.7536992015033187,
+              "spearman": 0.5535392441533004,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.2530620729620026,
+              "spearman": 0.18537599859639736,
+              "status": "assessable"
+            }
+          },
+          {
+            "arm": "fine_point",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.6687439552712955,
+              "spearman": 0.48486229084553023,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.1751373406974157,
+              "spearman": 0.13024526235704212,
+              "status": "assessable"
+            }
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "shifts": 27,
+        "arms": 2,
+        "comparisons_verified": 54,
+        "zero_shift": [
+          {
+            "arm": "fine_nominal_coarse_footprint",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.026655110767744246,
+              "spearman": 0.00619504000502822,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": -0.00034073861490156087,
+              "spearman": -0.0029273669577310067,
+              "status": "assessable"
+            }
+          },
+          {
+            "arm": "fine_point",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.014211386053759894,
+              "spearman": -0.0004655560599931599,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": -0.0014577578749610039,
+              "spearman": -0.0061139094773522895,
+              "status": "assessable"
+            }
+          }
+        ]
+      },
+      {
+        "id": 65,
+        "shifts": 27,
+        "arms": 2,
+        "comparisons_verified": 54,
+        "zero_shift": [
+          {
+            "arm": "fine_nominal_coarse_footprint",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.7337569050435819,
+              "spearman": 0.5761044747341657,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.28333224237829335,
+              "spearman": 0.21311004137606374,
+              "status": "assessable"
+            }
+          },
+          {
+            "arm": "fine_point",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.6448316622126773,
+              "spearman": 0.5009468526830211,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.2063495663663626,
+              "spearman": 0.16024755546927894,
+              "status": "assessable"
+            }
+          }
+        ]
+      },
+      {
+        "id": 70,
+        "shifts": 27,
+        "arms": 2,
+        "comparisons_verified": 54,
+        "zero_shift": [
+          {
+            "arm": "fine_nominal_coarse_footprint",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.7030436681768429,
+              "spearman": 0.6099415130493704,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.1556275287174718,
+              "spearman": 0.13564208476464787,
+              "status": "assessable"
+            }
+          },
+          {
+            "arm": "fine_point",
+            "intensity": {
+              "n": 35937,
+              "pearson": 0.618657806885011,
+              "spearman": 0.5411238552087494,
+              "status": "assessable"
+            },
+            "laplacian_interior": {
+              "n": 29791,
+              "pearson": 0.10335127013477623,
+              "spearman": 0.09126352936301306,
+              "status": "assessable"
+            }
+          }
+        ]
+      }
+    ],
+    "total_shift_arm_comparisons_verified": 216,
+    "correlation_metrics_per_comparison": 4,
+    "maximum_correlation_difference": 7.771561172376096e-16,
+    "footprint_array_generation_repeated": false,
+    "all_fixed_shifts_checked_no_best_shift_selection": true
+  },
+  "run_outcome": "completed_separate_adaptive_raw_scanner_grid_anatomy",
+  "run_result_sha256": "c0e57d1deea4dabaea850ee7e0f111cf48a83f5df73482507c55d1647d7a6c7c",
+  "resources": {
+    "followup_cpu_seconds": 8.285423996,
+    "cumulative_cpu_seconds_with_prior_reservation": 68.28546364500001,
+    "followup_wall_seconds": 226.59458260499923,
+    "new_body_bytes_prospectively_charged": {
+      "source_chunk": 32492758,
+      "tiff_metadata": 2609
+    },
+    "cumulative_source_chunk_bytes": 57064081,
+    "cumulative_tiff_metadata_bytes_with_declared_preflights": 1076780,
+    "decoded_unique_chunks": 14
+  },
+  "status": "passed_completed_adaptive_artifact_review",
+  "interpretation_limits": [
+    "Adaptive follow-up after a known failed legacy-render hypothesis; not an independent confirmation or rescue of that hypothesis.",
+    "Exact native/Zarr agreement establishes only the32fixed integer values, not whole-volume identity, source history or physical ink face.",
+    "Four PPM points serve only as previously observed geometric selectors; no photographic or label correspondence is validated.",
+    "All raw-grid shifts are reported descriptively within one physical fragment; no best-shift selection or registration fit.",
+    "The stored125midpoint footprint arrays are hash-checked but not reintegrated in this review; their metrics are independently recomputed.",
+    "No outcome authorizes a label stage automatically."
+  ],
+  "review_cpu_seconds": 3.430105276
+}

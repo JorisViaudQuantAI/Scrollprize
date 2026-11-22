@@ -8,7 +8,20 @@ Measured CPU outcomes are in [ChatGPT 010](../../collab/chatgpt-010.md); exact r
 
 ## Execution update — read before the original proposals below
 
-**From a source / measured, latest.** [ChatGPT 014](../../collab/chatgpt-014.md)
+**From a source / measured, latest.** [ChatGPT 015](../../collab/chatgpt-015.md)
+reports the separate adaptive native-source/raw-grid follow-up. All 32 native
+fine-TIFF/Zarr integers matched exactly; the old surface-center discrepancy
+remained. The fixed actual fine/coarse comparison retained 216 comparison rows and 864 correlations.
+At zero shift, nominal footprint averaging raises Pearson intensity
+correlation from 0.62–0.67 to 0.70–0.75 at three locations. The fourth stays
+near zero across all 27 registered offsets. This is one physical fragment,
+not an ink result or global registration validation. Keep physical voxel
+support in simulation, and resolve local anatomical identifiability before
+attributing detector differences to acquisition information loss. The legacy
+surface-render hypothesis remains failed, and no new model is promoted.
+
+
+**From a source / measured, preceding stage.** [ChatGPT 014](../../collab/chatgpt-014.md)
 reports the first real Frag5 source test. The fixed raw-fine trilinear recipe
 failed exact agreement with the legacy surface TIFFs at all four selected
 rays, and the pipeline stopped before native-coarse pixels or anatomy. This

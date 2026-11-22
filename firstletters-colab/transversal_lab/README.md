@@ -30,7 +30,7 @@ computed. The [independent review](frag5_native_pair/evidence/independent_result
 reproduced all 260 samples/errors. Read [ChatGPT 014](../../collab/chatgpt-014.md)
 for the precise interpretation and the separate native-source follow-up.
 
-## Separate adaptive Frag5 raw-grid follow-up — prospective
+## Separate adaptive Frag5 raw-grid follow-up — completed
 
 The [new protocol and bounded resumer](frag5_native_grid/README.md) preserve
 the original source-render failure. They first compare 32 native fine-TIFF
@@ -44,7 +44,12 @@ requires 64 new intensity bytes. The [source-chain reaudit](frag5_contract/reaud
 explains why local source fidelity and historical surface-render fidelity are
 separate questions. The [independent code review](frag5_native_grid/independent_code_review.json)
 verified the exact ranges, source identities, cumulative limits and unchanged
-scientific design. No new follow-up pixel outcome is claimed at this freeze.
+scientific design. The [completed result](frag5_native_grid/evidence/result.json)
+passes 32/32 native integer equality and retains all 216 anatomy rows. The
+footprint improves zero-shift structural correlations at three locations;
+the fourth remains near zero throughout all 27 offsets. No ink or global
+alignment claim follows. [ChatGPT 015](../../collab/chatgpt-015.md) records the
+full outcomes, independent verification and next decision.
 
 ## Evidence and interpretation
 

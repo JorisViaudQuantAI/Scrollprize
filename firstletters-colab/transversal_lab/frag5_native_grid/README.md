@@ -4,6 +4,26 @@ This is a **separate adaptive experiment**, designed after the failed surface-re
 
 The runner is `frag5_native_grid_followup.py`; the full prospective specification is `frag5_native_grid_followup_protocol.json`. It imports and hash-checks the original stage1 code and protocol. New pixel access requires a separate published follow-up freeze. The code is a bounded resumer using an existing, verified cache. It is not a generic fresh replay of either experiment.
 
+## Completed result
+
+The source check passed **32/32 exact integers**. The secondary center errors
+remain 1,530 / 236 / 0 / 904 counts, so the earlier legacy-render failure
+remains unresolved. The separate anatomy stage completed all 216 comparison
+rows and 864 correlations. At the original zero-shift affine, footprint
+intensity Pearson is 0.7537 / 0.0267 / 0.7338 / 0.7030, compared with
+point-sampled values 0.6687 / 0.0142 / 0.6448 / 0.6187. Record 25 remains
+near zero across all 27 shifts. No offset was selected or applied.
+
+- [Full result](evidence/result.json) and [independent result review](evidence/independent_result_review.json).
+- [All source integers](evidence/native_source_values.csv) and [secondary diagnostics](evidence/native_center_diagnostic.csv).
+- [All shift metrics](evidence/native_grid_all_shifts.csv), [full figure](evidence/native_grid_all_shifts.svg), and [descriptive ranges](evidence/registered_shift_ranges.json).
+- [Acquisition ledger](evidence/acquisition.json), [new HEAD snapshot](evidence/new_heads_freeze.json), and [artifact hashes](evidence/artifact_manifest.json).
+- [Interpretation and next actions](../../../collab/chatgpt-015.md).
+
+This is a measured structural comparison within one physical fragment. It
+establishes no new ink accuracy, physical-face or photographic-label claim.
+The prospective sections below describe the exact executed design.
+
 ## Why this is a new question
 
 **From the prior execution record.** The [original Frag5 result](../frag5_native_pair/evidence/result.json) rejected both declared surface-profile orders at all four fixed geometry locations. Its anatomy stage did not run. Its [independent review](../frag5_native_pair/evidence/independent_result_review.json) verified the cached values and interpolation calculations. This follow-up changes neither that result nor its criterion.
@@ -68,12 +88,44 @@ The dependency requirements are inherited from stage1: Python, NumPy, SciPy and 
 
 ## Open questions
 
-- **ChatGPT:** Are the two raw fine representations exactly equal at the 32 fixed corners? What does the secondary center calculation show about the remaining legacy-render discrepancy?
-- **Codex / Claude Code:** If the raw-grid stage completes, do its full zero-shift and offset-stress results justify a separately designed anatomical or photographic-label validation?
+- **ChatGPT:** Which remaining historical rendering or PPM-provenance detail can explain the preserved center discrepancies, given exact local native-TIFF/Zarr equality?
+- **Codex / Claude Code:** What independent anatomical checks can resolve the near-zero fourth location and establish same-sheet correspondence at useful detection-context scale?
 - **Owner:** This experiment supplies no letters or prize submission. Any later label experiment, candidate handling or submission remains a separate decision.
 
 ## Next actions
 
-- **ChatGPT:** Finish independent review, publish the exact follow-up freeze through the owning agent, execute once and retain every outcome. Keep the original failed surface experiment unchanged.
+- **ChatGPT:** Preserve both completed experiments and the full shift evidence. Define the next bounded control around local anatomical identifiability or an explicit model-input contract; do not rerun these frozen experiments as fresh evidence.
 - **Codex / Claude Code:** Continue existing work; treat this as local source and anatomy evidence without using it to tune a detector or choose a favorable transform.
 - **Owner:** Review a later substantive contribution or submission when evidence supports one. No organiser contact is performed by this experiment.
+
+## Recompute numerical presentation or independently review local caches
+
+The presentation script reads only the committed result JSON. It does not
+recompute correlations, fit anything, choose a shift or fetch data:
+
+```bash
+python plot_results.py --result evidence/result.json --out /tmp/frag5-grid-presentation
+```
+
+The independent reviewer checks the existing original and follow-up caches.
+Its saved-array anatomy check independently recomputes all 864 correlations;
+it does not repeat the 125-point footprint integration. This full audit
+requires all 398 original cached objects, all 50 follow-up objects and the
+four saved anatomy NPZ files. The minimal six-object cache described above
+is sufficient for the resumer, but not for this complete historical-cache
+audit. From this directory, with complete external caches:
+
+```bash
+python review_frag5_native_grid.py \
+  --run-dir /external/frag5-native-grid-run-v1 \
+  --prior-run /external/complete-original-frag5-cache \
+  --protocol frag5_native_grid_followup_protocol.json \
+  --runner frag5_native_grid_followup.py \
+  --stage1-protocol ../frag5_native_pair/frag5_native_pair_stage1_protocol.json \
+  --old-checker ../frag5_native_pair/review_frag5_stage1.py \
+  --out /external/frag5-native-grid-independent-review.json
+```
+
+Original raw source objects, anatomy NPZ arrays and preview PNGs remain in
+external execution directories. Their hashes and public acquisition sources
+are recorded; no second full reproduction is claimed by packaging the code.
