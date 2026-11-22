@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-22",
+  "files_sha256": {
+    "firstletters-colab/gemini_integration/stream_source_support.patch": "cb7342a23c477c47c8fdd36c8b626cc5fdac534f5103b1445f1bf5c13101d816",
+    "firstletters-colab/gemini_integration/verify_pipeline.py": "cb89a4d6271ef591eeca5cc49d2765f2475e69188793d0a4ae1cf82108582da8",
+    "firstletters-colab/producer_support/prepare_studio.py": "b4507b1c404283c11a5782560bf0a35ab13c343f5eb1b28a578a00a477257181",
+    "firstletters-colab/producer_support/support.py": "de74bd1758969021d39f9b1d85f7e8d6f9a62416ca66fc1fd3b69a5b691786e9",
+    "firstletters-colab/studio_t4/studio_t4.py": "348260f45e882dc3574b334d3c76aae42b2655d9b37354d26a0c57b24bda6d28"
+  },
+  "final_total": {
+    "failed": 0,
+    "passed": 69,
+    "skipped": 21
+  },
+  "initial_setup_failures": [
+    "Studio suite initially lacked tifffile; installed and reran",
+    "generated integration output location inside an enclosing Git worktree was rejected; used a fresh temporary directory"
+  ],
+  "integration_result": "stream_studio_integration.json",
+  "patch_apply_check": "passed in an isolated pinned baseline; four patched files matched isolated source bytes",
+  "patch_base_commit": "d80f4f5d323688bcfe010a91bd3c0799db7a5311",
+  "precision_fix_attribution": "Claude concurrently landed the same fix; his commit was adopted intact before final validation.",
+  "precision_routing": {
+    "cpu_auto": "fp32",
+    "explicit_bf16_supported": "accepted",
+    "explicit_bf16_unsupported": "rejected",
+    "mocked_cuda_7_5_auto": "fp16",
+    "mocked_cuda_8_9_auto": "fp16"
+  },
+  "review_findings_fixed": [
+    "preflight-to-executed contradictory flags rejected",
+    "producer declaration staged until final source hashes pass"
+  ],
+  "runtime": {
+    "numpy": "2.5.5",
+    "python": "3.12.14",
+    "requests": "2.34.2",
+    "scipy": "1.17.0",
+    "tifffile": "2026.11.16",
+    "torch_available": false
+  },
+  "schema": "scrollprize.gemini-integration-validation.v1",
+  "scope": "Generated arrays and CPU software routing only; no new CT, real model inference, or GPU measurements.",
+  "shared_branch_parent": "26c8ba7ff7e091f8511d624c733ff1ea8b07efcd",
+  "tests": [
+    {
+      "failed": 0,
+      "passed": 20,
+      "skipped": 0,
+      "suite": "Gemini stream tests (original plus new regression tests)"
+    },
+    {
+      "failed": 0,
+      "passed": 21,
+      "skipped": 0,
+      "suite": "producer_support"
+    },
+    {
+      "failed": 0,
+      "passed": 20,
+      "skip_reason": "torch unavailable",
+      "skipped": 7,
+      "suite": "existing component_export"
+    },
+    {
+      "failed": 0,
+      "passed": 8,
+      "skip_reason": "torch/release checkout unavailable",
+      "skipped": 14,
+      "suite": "existing studio_t4"
+    }
+  ],
+  "unverified": [
+    "real streaming-render-to-GPU positive control",
+    "GPU memory and throughput of patched streaming pipeline",
+    "ink recovery or unread-scroll gain",
+    "physical acquisition/FOV semantics of masked source zeros",
+    "unique physical papyrus area"
+  ]
+}

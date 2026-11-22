@@ -1,0 +1,199 @@
+{
+  "application_body_bytes_read": 1097768,
+  "body_budget_semantics": "Application-read body bytes only; HTTP headers, redirects without body reads, socket buffering and TLS wire bytes are not measured.",
+  "cases": [
+    {
+      "actual_sha256": "5af99575676f4c271f640bcd88d9197d815bd48f2efa7d3cd3e428558aa318d0",
+      "elapsed_seconds": 3.985656,
+      "equal_to_prior_cache": true,
+      "equal_to_whole": true,
+      "id": "inner_row",
+      "range_requests": 1,
+      "requested_bytes": 16,
+      "shape_zyx": [
+        1,
+        1,
+        16
+      ],
+      "voxel_mismatches": 0
+    },
+    {
+      "actual_sha256": "86c5794884522438cb4dfc044f50548b4c56c6109e6a4705c290e878e8761fb0",
+      "elapsed_seconds": 11.153395,
+      "equal_to_prior_cache": true,
+      "equal_to_whole": true,
+      "id": "three_partial_rows",
+      "range_requests": 3,
+      "requested_bytes": 24,
+      "shape_zyx": [
+        1,
+        3,
+        8
+      ],
+      "voxel_mismatches": 0
+    },
+    {
+      "actual_sha256": "533246e368e14bd8c94df837c9f08c6f8cc005dfbce8f995640778448a00461a",
+      "elapsed_seconds": 4.376817,
+      "equal_to_prior_cache": true,
+      "equal_to_whole": true,
+      "id": "two_complete_planes",
+      "range_requests": 1,
+      "requested_bytes": 32768,
+      "shape_zyx": [
+        2,
+        128,
+        128
+      ],
+      "voxel_mismatches": 0
+    }
+  ],
+  "conclusion": "Exact byte ranges verified for this one public HF object and observed transport path only.",
+  "freeze_reference": "e2b20a4bf3864669e30ee1db894eae4ea39de941",
+  "generated_data": false,
+  "latency_interpretation": "One fixed whole-first sequence; no throughput or cold-cache speed claim.",
+  "model_forward_calls": 0,
+  "new_region_acquired": false,
+  "process_peak_rss_kib": 31208,
+  "protocol_sha256": "119a3e4892244c52ea6d828453089d7889056111b1e804afb944ca62f71c3671",
+  "range_to_unique_whole_body_fraction": 0.030806790865384615,
+  "ranges_elapsed_seconds": 19.51598,
+  "ranges_total_requested_bytes": 32808,
+  "request_count_including_redirects": 7,
+  "requests": [
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 0,
+      "body_not_read_reason": "redirect",
+      "elapsed_seconds": 6.029095,
+      "host": "huggingface.co",
+      "if_match_sent": false,
+      "method": "GET",
+      "range": null,
+      "redirect_hop": 0,
+      "requested_representation_bytes": 1064960,
+      "server_declared_body_bytes": 1000,
+      "status": 302
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 1064960,
+      "body_sha256": "94a67b09ecb71d4fbfe05cfba14bdd8156748cc0eade2e3a74321db2bb71911b",
+      "elapsed_seconds": 4.890509,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": false,
+      "method": "GET",
+      "range": null,
+      "redirect_hop": 1,
+      "requested_representation_bytes": 1064960,
+      "server_declared_body_bytes": 1064960,
+      "status": 200
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 16,
+      "body_sha256": "5af99575676f4c271f640bcd88d9197d815bd48f2efa7d3cd3e428558aa318d0",
+      "elapsed_seconds": 3.983983,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": true,
+      "method": "GET",
+      "range": [
+        2060,
+        2075
+      ],
+      "redirect_hop": 0,
+      "requested_representation_bytes": 16,
+      "server_declared_body_bytes": 16,
+      "status": 206
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 8,
+      "body_sha256": "4262784e1e0c4010f9fd5fbbb86435a956fb8a988012d0c3925a941e47ca7f79",
+      "elapsed_seconds": 4.126492,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": true,
+      "method": "GET",
+      "range": [
+        82936,
+        82943
+      ],
+      "redirect_hop": 0,
+      "requested_representation_bytes": 8,
+      "server_declared_body_bytes": 8,
+      "status": 206
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 8,
+      "body_sha256": "bc07b4f1c4408dbc15fb3719b81ba6d7af3cc0f66250b775b4c8e608326fb973",
+      "elapsed_seconds": 3.539178,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": true,
+      "method": "GET",
+      "range": [
+        83064,
+        83071
+      ],
+      "redirect_hop": 0,
+      "requested_representation_bytes": 8,
+      "server_declared_body_bytes": 8,
+      "status": 206
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 8,
+      "body_sha256": "dc6a9ab6c85e218126c2134529cc6527dce90e78ecfc122de03baa97da3003d2",
+      "elapsed_seconds": 3.486071,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": true,
+      "method": "GET",
+      "range": [
+        83192,
+        83199
+      ],
+      "redirect_hop": 0,
+      "requested_representation_bytes": 8,
+      "server_declared_body_bytes": 8,
+      "status": 206
+    },
+    {
+      "accept_encoding": "identity",
+      "application_body_bytes_read": 32768,
+      "body_sha256": "533246e368e14bd8c94df837c9f08c6f8cc005dfbce8f995640778448a00461a",
+      "elapsed_seconds": 4.376143,
+      "etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+      "host": "us.aws.cdn.hf.co",
+      "if_match_sent": true,
+      "method": "GET",
+      "range": [
+        507904,
+        540671
+      ],
+      "redirect_hop": 0,
+      "requested_representation_bytes": 32768,
+      "server_declared_body_bytes": 32768,
+      "status": 206
+    }
+  ],
+  "runner_sha256": "3d7f8ccb4c1b0d7cf106b543971532c0f09084a4487f2e71b05bfbd02b783dcc",
+  "s3_or_paris4_support_established": false,
+  "schema": "scrollprize.public-range-transport.v1",
+  "source": {
+    "array_url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/",
+    "bytes": 1064960,
+    "metadata_bytes": 238,
+    "metadata_sha256": "471b618f6a23e977f8fbd039d8637ad7b468ff31e119cc0fd3e038f2808c46fa",
+    "sha256": "94a67b09ecb71d4fbfe05cfba14bdd8156748cc0eade2e3a74321db2bb71911b",
+    "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/0.17.75"
+  },
+  "source_selection": "First lexicographic non-metadata0841 chunk URL in the pinned old acquisition receipt; no ink score, pixel preview, or alternative outcome used to select it. Slice boxes fixed by array layout before their cached byte hashes were calculated.",
+  "status": "pass",
+  "whole_elapsed_seconds": 10.923828,
+  "whole_unique_object_bytes": 1064960
+}

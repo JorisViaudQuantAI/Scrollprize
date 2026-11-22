@@ -1,0 +1,75 @@
+{
+  "cases": {
+    "missing_context": {
+      "array_support_semantics": "stored source availability, not physical acquisition",
+      "counts": {
+        "chart_pixels": 65536,
+        "complete_context_tiles": 8,
+        "context_supported_pixels": 1792,
+        "contribution_supported_pixels": 65536,
+        "mesh_and_source_pixels": 61440,
+        "mesh_valid_pixels": 65536,
+        "source_all_required_pixels": 61440,
+        "tiles": 49
+      },
+      "handoff_ready": false,
+      "model_forward_calls": 0
+    },
+    "present": {
+      "array_support_semantics": "stored source availability, not physical acquisition",
+      "counts": {
+        "chart_pixels": 65536,
+        "complete_context_tiles": 9,
+        "context_supported_pixels": 4096,
+        "contribution_supported_pixels": 65536,
+        "mesh_and_source_pixels": 65536,
+        "mesh_valid_pixels": 65536,
+        "source_all_required_pixels": 65536,
+        "tiles": 49
+      },
+      "handoff_ready": false,
+      "model_forward_calls": 0
+    }
+  },
+  "finding": "A fully sampled central patch can lose model-context support because one contributing tile sees a missing chunk outside that patch.",
+  "fixtures": {
+    "center_box_yxyx": [
+      96,
+      96,
+      160,
+      160
+    ],
+    "chunks_zyx": [
+      16,
+      64,
+      64
+    ],
+    "mesh_plane_z": 24,
+    "removed_chunk_zyx": [
+      1,
+      0,
+      0
+    ],
+    "source_shape_zyx": [
+      48,
+      256,
+      256
+    ],
+    "stack_shape_lhw": [
+      31,
+      256,
+      256
+    ]
+  },
+  "generated_data_only": true,
+  "integration_code_sha256": "cb89a4d6271ef591eeca5cc49d2765f2475e69188793d0a4ae1cf82108582da8",
+  "limits": "No actual inference, real scroll, physical acquisition, correct face, unique area, or ink improvement is certified.",
+  "model_forward_calls": 0,
+  "network_requests": 0,
+  "preflight_code_sha256": "b4507b1c404283c11a5782560bf0a35ab13c343f5eb1b28a578a00a477257181",
+  "renderer_sha256": "1c2234dfce845e17e9f1be014728cec3c39314db767ed559033f676b45232ff2",
+  "schema": "scrollprize.synthetic-stream-studio-integration.v1",
+  "status": "pass",
+  "studio_code_sha256": "348260f45e882dc3574b334d3c76aae42b2655d9b37354d26a0c57b24bda6d28",
+  "support_code_sha256": "de74bd1758969021d39f9b1d85f7e8d6f9a62416ca66fc1fd3b69a5b691786e9"
+}

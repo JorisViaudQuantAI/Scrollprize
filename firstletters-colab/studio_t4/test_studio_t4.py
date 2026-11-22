@@ -350,6 +350,17 @@ class EndToEnd(unittest.TestCase):
                 st.run(self.rel.argv(self.inp, self.d / prec, "--mesh-index", "20", "--order", "asc",
                                      "--precision", prec), model_loader=self.rel.loader)
 
+    def test_auto_precision_is_fp16_on_any_cuda(self):
+        for capability in ((7, 5), (8, 9)):
+            with self.subTest(capability=capability), \
+                    mock.patch.object(torch.cuda, "is_available", return_value=True), \
+                    mock.patch.object(torch.cuda, "get_device_capability", return_value=capability):
+                self.assertEqual(st.resolve_device_and_precision("auto", "auto"), ("cuda", "fp16"))
+        with mock.patch.object(torch.cuda, "is_available", return_value=True), \
+                mock.patch.object(torch.cuda, "get_device_capability", return_value=(7, 5)):
+            with self.assertRaisesRegex(ValueError, "no native bf16"):
+                st.resolve_device_and_precision("cuda", "bf16")
+
     def test_plane_band_outside_render(self):
         with self.assertRaisesRegex(ValueError, "outside the stack"):
             st.run(self.rel.argv(self.inp, self.d / "z", "--mesh-index", "20", "--order", "desc", "--shift", "13"),

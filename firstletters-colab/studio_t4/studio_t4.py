@@ -321,7 +321,7 @@ def resolve_device_and_precision(device: str, precision: str):
         raise ValueError("CUDA is not available; use --device cpu")
     native_bf16 = device == "cuda" and torch.cuda.get_device_capability()[0] >= 8
     if precision == "auto":
-        precision = "fp32" if device == "cpu" else ("bf16" if native_bf16 else "fp16")
+        precision = "fp32" if device == "cpu" else "fp16"  # bf16 drifts ~10x further from fp32 (README)
     if device == "cpu" and precision != "fp32":
         raise ValueError("on CPU only --precision fp32 is supported")
     if precision == "bf16" and not native_bf16:
@@ -390,7 +390,7 @@ def build_parser():
                    help="48 = Hann blending, no tile pattern (default); 96 = no overlap, no blending, ~4x faster")
     p.add_argument("--batch-size", type=int, help="windows per forward (default 16 on CUDA, 1 on CPU)")
     p.add_argument("--precision", choices=("auto", "fp16", "bf16", "fp32"), default="auto",
-                   help="auto: fp16 on CUDA without native bf16, bf16 with it, fp32 on CPU")
+                   help="auto: fp16 on CUDA, fp32 on CPU; bf16 only when asked for")
     p.add_argument("--device", choices=("auto", "cuda", "cpu"), default="auto")
     p.add_argument("--threads", type=int, help="CPU threads for torch")
     p.add_argument("--weights", type=Path, required=True, help="studio-softloss-20261023-ema.safetensors")

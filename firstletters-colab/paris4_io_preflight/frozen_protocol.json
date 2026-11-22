@@ -1,0 +1,15 @@
+{
+  "schema": "scrollprize.paris4-raw-zarr-chunk-budget.v1",
+  "freeze_date_utc": "2026-11-22",
+  "question": "Does three-paired-2mm-control Paris4 Step 0 fit a <=180 MiB raw network budget when reading native 2.4um Zarr v2 L0 CT, before any actual CT access?",
+  "preregistered_pairs": 3,
+  "side_length_um": 2000,
+  "pixel_pitch_um": 2.4,
+  "sources": ["PHercParis4 78keV 20260411134726 L0", "PHercParis4 137keV 20260323153942 L0"],
+  "depth_request": "minimum 1 voxel plane per source; no alignment halo",
+  "budget_mib": 180,
+  "model": "For a source-supported interior axis-aligned square, bytes per chunk = product(chunk_shape)*dtype.itemsize for uncompressed C-order Zarr v2; minimum number of chunks per XY = ceil(ceil(side_um/pitch_um)/chunk_y)*ceil(ceil(side_um/pitch_um)/chunk_x), 1 chunk in depth. Sum both scans. Assume all involved chunks exist and are fetched as whole HTTP objects, no upstream pre-cropped surface, no compressed transfer; nominal transfer size only, not a measured HTTP transfer.",
+  "decision": "If the single-pair minimum exceeds 180 MiB, reject native direct-fetch Step 0 under that budget; don't attempt unread pixels or reinterpret metadata as measured transfer. Else compare three-pair minimum and exact bbox/halos when selected. If missing chunks, report missing source coverage rather than assuming zero-cost acquired data.",
+  "excluded": ["any unread CT chunk", "alignment", "classification", "visualization", "candidate localization"],
+  "secondary_checks": ["exact published .zarray shape/chunks/dtype/compressor for both sources", "zero-halo one-pair and three-independent-pair minima", "minimum square size for three pairs to fit <=180 MiB in best-case aligned centers"]
+}
