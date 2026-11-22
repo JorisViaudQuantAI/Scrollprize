@@ -1,0 +1,18 @@
+{
+  "generated_only": true,
+  "real_CT_accessed": false,
+  "status": "passed",
+  "checker_sha256": "e6a74715d4d2e05d697c049bc67b6f80ffd43915fa808dacdaa2f4330e41aee3",
+  "checks": [
+    "Exact average ties on independently specified example",
+    "Positive affine Pearson/Spearman invariance",
+    "Nonbinary constants remain undefined",
+    "Manual eight-corner interpolation reproduces multilinear polynomial",
+    "Integer interpolation skips zero-weight corners",
+    "Finite separable binomial impulse coefficients",
+    "Exactly15 unique predeclared positions per site",
+    "Native83-to81 positive-shift support"
+  ],
+  "maximum_multilinear_polynomial_error": 5.684341886080802e-14,
+  "raw_tolerance_predeclared_counts": 1e-06
+}

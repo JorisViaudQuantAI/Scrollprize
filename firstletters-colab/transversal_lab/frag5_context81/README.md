@@ -7,6 +7,36 @@ anatomical context helps. It keeps the old centers and affine unchanged.
 Record 20 and record 25 are deliberately chosen as a previously correlated and
 uncorrelated contrast: this is **adaptive development evidence**.
 
+## Completed result
+
+**From a source / measured.** Both old-overlap gates passed with exactly zero
+error. At record 25, zero-shift footprint Pearson increased from 0.0267 on
+33³ support to 0.3762 on 81³ support, while Spearman increased only from
+0.0062 to 0.0836. The predefined outer shell gave 0.3897/0.0890. Four fixed
+smoothing passes on 65³ support gave Pearson 0.8687 but Spearman 0.1556.
+The original center remained unchanged and unresolved. Record 20 retained
+appreciable correspondence across the declared supports. No transform was
+fitted or applied, and no ink accuracy was measured.
+
+- [Full result](evidence/result.json) and [interpretation](../../../collab/chatgpt-017.md).
+- [All nested contexts and shifts](evidence/nested_contexts_all_shifts.csv),
+  [fixed smoothing comparisons](evidence/fixed65_smoothing_zero_shift.csv),
+  [outer shell](evidence/outer_shell_zero_shift.csv) and [structure records](evidence/fixed65_structure.csv).
+- [Context figure](evidence/context_dependence.svg) and [Pearson/rank figure](evidence/smoothing_and_rank.svg).
+- [Overlap gates](evidence/overlap_gates.json), [source ledger](evidence/acquisition.json)
+  and [artifact manifest](evidence/artifact_manifest.json).
+- [Independent result review](evidence/independent_result_review.json)
+  and [all 30 fixed raw-source checks](evidence/fixed_raw_sample_checks.json).
+
+**From a source / measured.** The run used 41.4822 process CPU seconds and
+151.0277 elapsed seconds, acquiring 175,385,570 new raw bytes plus 801
+metadata bytes. Cumulative raw bytes are 232,449,651 and cumulative unique
+chunks are 57. All 51 HEADs and 45 new bodies passed. Independent verification
+took 10.2543 CPU seconds and reproduced all 896 correlations to within
+1.9984×10⁻¹⁵. It also checked raw interpolation/integration at 30 fixed
+positions, not every output voxel. See the review for exact tolerances and
+coverage. No new source requests were made by the checker.
+
 ## Frozen question and support
 
 **From the protocol.** An 81³ scanner-grid cube at nominal 7.91 µm has 640.71 µm
@@ -37,8 +67,8 @@ conservative box-support chunks. Six are already cached; 43 are new. All old
 14 chunks plus the 43 new ones total 57 unique objects, below the 64-chunk ceiling.
 Reserving at most 4,259,840 compressed bytes per new object gives 183,173,120
 new bytes. Adding 57,064,081 previous raw bytes gives 240,237,201, below 256 MiB.
-These are admission reservations; actual compressed sizes are unknown until
-HEAD and actual transfer is reported after execution.
+These are admission reservations. Actual compressed sizes were unknown until
+HEAD in this run; the measured transfer totals are reported above.
 
 **From the protocol.** Before any new source body, the runner snapshots HEAD
 for all 49 target objects and both Zarr metadata objects. Cached objects must
@@ -84,6 +114,25 @@ numcodecs, inherited from the original verified sampler.
 The generated checks cover inverse-affine point sampling and all 125 midpoint
 samples against an analytic linear field, nested-support invariance, native
 halo bounds, shell size and overlap-gate failure injection. They use no CT.
+
+Independent review of the completed local run:
+
+```bash
+python review_context81.py \
+  --protocol protocol.json --runner run_context81.py \
+  --stage1-protocol ../frag5_native_pair/frag5_native_pair_stage1_protocol.json \
+  --prior-context-result ../frag5_local_structure/evidence/result.json \
+  --stage1-cache /external/frag5-stage1-run-v1 \
+  --native-grid-cache /external/frag5-native-grid-run-v1 \
+  --run-dir /external/frag5-context81-run-v1 \
+  --review-dir /external/frag5-context81-review-v1
+```
+
+This review needs the recorded new source bodies, both saved context81 NPZ
+arrays, the six retained old source bodies and the two old anatomy arrays,
+along with their canonical ledgers. It reconstructs every metric independently
+and manually checks point/125-midpoint integration at the fixed 30 positions.
+It does not redownload source data or repeat the complete integration.
 
 ## Limits
 

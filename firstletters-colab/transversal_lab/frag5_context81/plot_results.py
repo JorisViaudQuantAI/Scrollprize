@@ -52,6 +52,23 @@ def main():
     fig.savefig(args.out / "context_dependence.svg")
     fig.savefig(args.out / "context_dependence.png", dpi=150)
     plt.close(fig)
+    fig, axs = plt.subplots(1, 2, figsize=(10, 4.4), constrained_layout=True)
+    for ax, i in zip(axs, (20, 25)):
+        rows = [a for a in r["fixed65_smoothing_zero_shift"] if a["id"] == i and a["arm"] == "fine_nominal_coarse_footprint"]
+        for metric, color in (("pearson", "#246b95"), ("spearman", "#b64536")):
+            y = [next(a[metric] for a in rows if a["binomial_passes"] == p) for p in (0, 1, 4)]
+            ax.plot(range(3), y, "o-", label=metric.capitalize(), color=color)
+            for x, value in enumerate(y):
+                ax.annotate(f"{value:.3f}", (x, value), xytext=(0, 7 if metric == "pearson" else -15),
+                            textcoords="offset points", ha="center", fontsize=9)
+        ax.set(xticks=range(3), xticklabels=["None", "1 pass", "4 passes"], ylim=(-.08, 1.06),
+               xlabel="Fixed binomial smoothing", ylabel="Cross-scan correlation",
+               title=f"Record {i}; unchanged center, zero shift")
+        ax.legend(loc="lower right" if i == 20 else "upper left")
+    fig.suptitle("Same 65³ support (0.514 mm): fine footprint versus native coarse\nAggregate Pearson and rank agreement can behave differently", fontsize=12)
+    fig.savefig(args.out / "smoothing_and_rank.svg")
+    fig.savefig(args.out / "smoothing_and_rank.png", dpi=150)
+    plt.close(fig)
 
 
 if __name__ == "__main__":
