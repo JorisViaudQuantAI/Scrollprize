@@ -1,0 +1,90 @@
+{
+  "id": "hecate-native-resolution-two-public-fields-v1",
+  "date": "2026-11-22",
+  "status": "Publish runner, protocol and selection before any new checkpoint or CT payload and before all model forwards.",
+  "question": "Does native fine detail materially improve coherent public-control ink maps over exact matched degradation and the current coarse Hecate pipeline?",
+  "selection": {
+    "file": "selection.json",
+    "field_count": 2,
+    "scrolls": ["PHerc0841", "PHerc0814"],
+    "provenance": "Label-only lexicographic selection; at least95percent known labels and10to60percent ink among known labels, complete geometry support. The initial0814 label-only choice overlapped old calibration814-c03; it was replaced before CT access or outputs by the first otherwise eligible field excluding that calibration input plus one coarse-pixel guard. The pre-freeze amendment is not an outcome-directed replacement.",
+    "scope": "Previously published model-assisted annotations on previously used physical donors; these are development controls, not independent unseen specimens or independent photographic truth."
+  },
+  "sampling": {
+    "fine_pitch_um": 2.4,
+    "coarse_pitch_um": 9.6,
+    "fine_source_pitch_um": 2.403,
+    "source_z_center_index": 31.5,
+    "field_core_coarse_yx": [256, 256],
+    "field_context_coarse_yx": [288, 288],
+    "fine_input_zyx": [64, 256, 256],
+    "coarse_input_zyx": [16, 64, 64],
+    "contexts_per_field": 64,
+    "context_order": "Eight by eight row-major grid;32coarse-pixel stride; score only each central32coarse or128fine pixels, with16coarse or64fine context pixels each side.",
+    "fine_regrid": "Exact voxel-overlap box integration of the released uint8 source to isotropic2.4um, nearest-even rounded once. Source voxel i occupies[i-0.5,i+0.5]. Fine XY edges are crop+(4*coarse_origin+arange257)*2.4/source_pitch-0.5; Z edges31.5+(arange65-32)*2.4/source_pitch.",
+    "categorical_labels": "Exact nearest source label cell at9.36um: floor((2*i+1)*20/39), with0unknown,1background,2ink. No new tracing, label selection by predictions, or target training.",
+    "support": "All source interpolation footprints and geometry-mask footprints must exist. No missing-chunk fill, clipping to bounds or reflected external CT. The separate legacy model mask comes from any nonzero native-A voxel in each XY column. A/B share that mask; C uses its4x4XY max-pool. Metrics use the same pooled support for every arm."
+  },
+  "arms": {
+    "A_native_fine": "Unchanged native-derived fine uint8 input through hecate2.4, divide200 with no clipping.",
+    "B_degraded_fine": "C is nearest-even round(mean of A over each exact4x4x4 block)); repeat each C voxel4times on all3axes and run the same fine model, same order, same precision and same A-derived mask, divide200 with no clipping.",
+    "C_coarse": "Run those exact C uint8 values through hecate9.6, divide255 with no clipping, using pooled A-derived validity.",
+    "comparison_limit": "A/B tests fixed-model degradation plus requantization. A/C changes checkpoint and input resolution. Fine checkpoint drops its two outer planes internally; equal nominal153.6um inputs do not imply equal effective depth apertures. A is rounded before averaging, so C is not byte-identical to the prior direct native-to9.6 averaging recipe."
+  },
+  "pilot": {
+    "context": "814-c03 from pinned previous donor manifest",
+    "purpose": "Fix each model's depth order and a feasible fine CPU backend using only an already observed calibration context.",
+    "fp32_forwards": 4,
+    "orders": ["source", "reverse"],
+    "order_rule": "For each model independently choose higher old-calibration central-core AUC; exact ties choose reverse. Reduce fine central128x128 probabilities by fixed4x4means onto central32x32 before scoring. This knowingly uses old calibration labels and cannot establish orientation or physical recto.",
+    "bf16_trigger_projected_seconds": 3600,
+    "projection": "Mean of two finefp32 pilot times times256 plus mean of two coarsefp32 times times128. If greater than3600, run the two fine pilot orders inCPUbf16.",
+    "bf16_acceptance": "Both pilot orders must have maximum absolute full-patch probability difference<=0.005 and absolute common-grid coreAP difference<=0.01 relative to corresponding finefp32; the measured two-order mean bf16 forward time must also be strictly below the fp32 fine mean. Otherwise retainfp32. Preserve both measured means. No field output participates.",
+    "maximum_additional_bf16_forwards": 2,
+    "remaining_budget_rule": "Stop resource-unassessable before field inference if the selected backend's projected full-field inference exceeds remaining whole-run time, checked before and after field acquisition."
+  },
+  "metrics": {
+    "common_grid": "Area-average fineA/B central scores4x4 onto exactly the coarse grid; retain native fine score maps separately for inspection.",
+    "primary": "Equally weighted mean of four quadrant ink recalls, each evaluated at its own descriptive5percentknown-background operating point. Background budget=floor(0.05*Nbackground); strict score>descending_background[budget] handles ties conservatively. This uses evaluation labels, is not a transported target threshold, and is not significance.",
+    "retained": ["Every field and every quadrant AP", "Every field and every quadrant ROC AUC", "Recall and actual background exceedance at the descriptive5percentpoint", "All three complete common-grid maps", "Native fineA/B maps", "Exact labels and common support", "Per-forward timings and source/model/protocol hashes"]
+  },
+  "gate": {
+    "require_both_fields": true,
+    "macro_missed_ink_relative_reduction_vs_C_minimum": 0.2,
+    "macro_recall_absolute_gain_vs_C_minimum": 0.05,
+    "macro_missed_ink_relative_reduction_vs_B_minimum": 0.1,
+    "quadrants_with_AP_nonworse_vs_C_minimum": 3,
+    "ceiling_or_missing_class": "No promotion if any quadrant lacks a supported class, if coarse macro recall>0.95 leaves insufficient headroom, or if B has no misses. Retain the reason.",
+    "interpretation": "A fixed experiment-selection gate, not a statistical test or proof of letters. Inspect complete fixed-scale maps before any target extension. No unread-target extension is executed by this runner."
+  },
+  "limits": {
+    "new_body_bytes": 2000000000,
+    "requests_including_redirects": 1024,
+    "maximum_forwards": 390,
+    "full_field_forwards": 384,
+    "whole_run_wall_seconds": 5400,
+    "peak_rss_soft_kib": 6815744,
+    "retries": 0,
+    "limit_semantics": "Whole-run wall time includes acquisition, loading, pilot and inference. A Unix alarm and between-forward checks stop work; native operations or outstanding HTTP calls can defer Python interruption. RSS is a between-forward soft stop, not an OS memory reservation. Body bytes are application reads, not wire traffic."
+  },
+  "fine_checkpoint": {
+    "url": "https://huggingface.co/scrollprize/hecate/resolve/9cb86e500e944b11a06a7020403cde5dffb5bcb2/hecate_2.4um.pth",
+    "bytes": 522656918,
+    "sha256": "fa2de3827ebd247ff2d33df1b6f899ea79d5269036cf16765997c62f0e9988c7"
+  },
+  "coarse_checkpoint": {
+    "bytes": 522576086,
+    "sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d"
+  },
+  "pins": {
+    "selection_sha256": "c3bdeb1e37b506f596af1bafab9fbd0c1bfc0271b8eed2e2ef644db8ce47b294",
+    "probe_sha256": "41560c98001b4185b2860cf12591aa0a6f35d417ff52f5aa8681f4e957e7f702",
+    "donor_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+    "hecate_source_sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "prior_receipt_sha256": [
+      "8fc138c17ba26453355575d6d1721437ce5f9b9fd705ce37cfb3758c6bb2eb26",
+      "9178251390f8296045d194f50338050d557392ac8aed1fc5ee2cb467146f712a"
+    ]
+  },
+  "public_reporting": "Public known-control aggregate results only after review. Detailed CT, labels, score arrays and local paths stay outsideGit. No candidate, prize or independently legible text claim follows from a numeric pass."
+}

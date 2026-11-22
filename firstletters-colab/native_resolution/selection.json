@@ -1,0 +1,688 @@
+{
+  "rule": {
+    "core_target_shape": [
+      256,
+      256
+    ],
+    "target_pitch_um": 9.6,
+    "context_halo_target_pixels": 16,
+    "origin_lattice_target_pixels": 32,
+    "known_fraction_minimum": 0.95,
+    "ink_fraction_of_known_minimum": 0.1,
+    "ink_fraction_of_known_maximum": 0.6,
+    "selection": "lexicographically first target-core origin satisfying full geometry footprint, >=95% known exact-grid labels, 10%-60% ink among known labels; source/model pixels not viewed",
+    "interpretation": "label-selected development control; no unseen-test or letter-legibility claim",
+    "calibration_exclusion": {
+      "scroll": "PHerc0814",
+      "context_id": "814-c03",
+      "guard_target_pixels": 1,
+      "reason": "Initial label-only selection overlapped old calibration input; exclude before any new CT/model outcomes."
+    }
+  },
+  "results": [
+    {
+      "scroll": "PHerc0841",
+      "scan_counts": {
+        "calibration_overlap_rejected": 0,
+        "origins_examined": 253,
+        "complete_geometry": 217,
+        "bbox_known95": 4,
+        "exact_known95": 1,
+        "balanced": 1
+      },
+      "choice": {
+        "scroll": "PHerc0841",
+        "donor_id": "source-841-grow-a-approved-r000001",
+        "core_origin_target_yx": [
+          160,
+          928
+        ],
+        "core_size_mm": [
+          2.4576,
+          2.4576
+        ],
+        "whole_context_size_mm": [
+          2.7648,
+          2.7648
+        ],
+        "labels": {
+          "known": 64017,
+          "ink": 30442,
+          "background": 33575,
+          "unknown": 1519,
+          "known_fraction": 0.9768218994140625,
+          "ink_fraction": 0.4755299373603886
+        },
+        "source_box_zyx_exclusive": [
+          [
+            0,
+            2367,
+            9531
+          ],
+          [
+            64,
+            3518,
+            10683
+          ]
+        ],
+        "source_bounds_valid": true,
+        "geometry_support_full": true,
+        "unique_full_chunks": 100,
+        "cached_full_chunks": 9,
+        "maximum_uncompressed_chunk_body_bytes": 106496000,
+        "context_grid_8x8": [
+          [
+            144,
+            912
+          ],
+          [
+            144,
+            944
+          ],
+          [
+            144,
+            976
+          ],
+          [
+            144,
+            1008
+          ],
+          [
+            144,
+            1040
+          ],
+          [
+            144,
+            1072
+          ],
+          [
+            144,
+            1104
+          ],
+          [
+            144,
+            1136
+          ],
+          [
+            176,
+            912
+          ],
+          [
+            176,
+            944
+          ],
+          [
+            176,
+            976
+          ],
+          [
+            176,
+            1008
+          ],
+          [
+            176,
+            1040
+          ],
+          [
+            176,
+            1072
+          ],
+          [
+            176,
+            1104
+          ],
+          [
+            176,
+            1136
+          ],
+          [
+            208,
+            912
+          ],
+          [
+            208,
+            944
+          ],
+          [
+            208,
+            976
+          ],
+          [
+            208,
+            1008
+          ],
+          [
+            208,
+            1040
+          ],
+          [
+            208,
+            1072
+          ],
+          [
+            208,
+            1104
+          ],
+          [
+            208,
+            1136
+          ],
+          [
+            240,
+            912
+          ],
+          [
+            240,
+            944
+          ],
+          [
+            240,
+            976
+          ],
+          [
+            240,
+            1008
+          ],
+          [
+            240,
+            1040
+          ],
+          [
+            240,
+            1072
+          ],
+          [
+            240,
+            1104
+          ],
+          [
+            240,
+            1136
+          ],
+          [
+            272,
+            912
+          ],
+          [
+            272,
+            944
+          ],
+          [
+            272,
+            976
+          ],
+          [
+            272,
+            1008
+          ],
+          [
+            272,
+            1040
+          ],
+          [
+            272,
+            1072
+          ],
+          [
+            272,
+            1104
+          ],
+          [
+            272,
+            1136
+          ],
+          [
+            304,
+            912
+          ],
+          [
+            304,
+            944
+          ],
+          [
+            304,
+            976
+          ],
+          [
+            304,
+            1008
+          ],
+          [
+            304,
+            1040
+          ],
+          [
+            304,
+            1072
+          ],
+          [
+            304,
+            1104
+          ],
+          [
+            304,
+            1136
+          ],
+          [
+            336,
+            912
+          ],
+          [
+            336,
+            944
+          ],
+          [
+            336,
+            976
+          ],
+          [
+            336,
+            1008
+          ],
+          [
+            336,
+            1040
+          ],
+          [
+            336,
+            1072
+          ],
+          [
+            336,
+            1104
+          ],
+          [
+            336,
+            1136
+          ],
+          [
+            368,
+            912
+          ],
+          [
+            368,
+            944
+          ],
+          [
+            368,
+            976
+          ],
+          [
+            368,
+            1008
+          ],
+          [
+            368,
+            1040
+          ],
+          [
+            368,
+            1072
+          ],
+          [
+            368,
+            1104
+          ],
+          [
+            368,
+            1136
+          ]
+        ],
+        "quadrant_label_counts": [
+          {
+            "known": 15044,
+            "ink": 12085,
+            "background": 2959
+          },
+          {
+            "known": 16205,
+            "ink": 1137,
+            "background": 15068
+          },
+          {
+            "known": 16384,
+            "ink": 11120,
+            "background": 5264
+          },
+          {
+            "known": 16384,
+            "ink": 6100,
+            "background": 10284
+          }
+        ]
+      }
+    },
+    {
+      "scroll": "PHerc0814",
+      "scan_counts": {
+        "calibration_overlap_rejected": 121,
+        "origins_examined": 2757,
+        "complete_geometry": 1186,
+        "bbox_known95": 3,
+        "exact_known95": 1,
+        "balanced": 1
+      },
+      "choice": {
+        "scroll": "PHerc0814",
+        "donor_id": "source-814-approved-r000001",
+        "core_origin_target_yx": [
+          960,
+          992
+        ],
+        "core_size_mm": [
+          2.4576,
+          2.4576
+        ],
+        "whole_context_size_mm": [
+          2.7648,
+          2.7648
+        ],
+        "labels": {
+          "known": 62716,
+          "ink": 23898,
+          "background": 38818,
+          "unknown": 2820,
+          "known_fraction": 0.95697021484375,
+          "ink_fraction": 0.38105108744180116
+        },
+        "source_box_zyx_exclusive": [
+          [
+            0,
+            3771,
+            3899
+          ],
+          [
+            64,
+            4922,
+            5050
+          ]
+        ],
+        "source_bounds_valid": true,
+        "geometry_support_full": true,
+        "unique_full_chunks": 100,
+        "cached_full_chunks": 3,
+        "maximum_uncompressed_chunk_body_bytes": 106496000,
+        "context_grid_8x8": [
+          [
+            944,
+            976
+          ],
+          [
+            944,
+            1008
+          ],
+          [
+            944,
+            1040
+          ],
+          [
+            944,
+            1072
+          ],
+          [
+            944,
+            1104
+          ],
+          [
+            944,
+            1136
+          ],
+          [
+            944,
+            1168
+          ],
+          [
+            944,
+            1200
+          ],
+          [
+            976,
+            976
+          ],
+          [
+            976,
+            1008
+          ],
+          [
+            976,
+            1040
+          ],
+          [
+            976,
+            1072
+          ],
+          [
+            976,
+            1104
+          ],
+          [
+            976,
+            1136
+          ],
+          [
+            976,
+            1168
+          ],
+          [
+            976,
+            1200
+          ],
+          [
+            1008,
+            976
+          ],
+          [
+            1008,
+            1008
+          ],
+          [
+            1008,
+            1040
+          ],
+          [
+            1008,
+            1072
+          ],
+          [
+            1008,
+            1104
+          ],
+          [
+            1008,
+            1136
+          ],
+          [
+            1008,
+            1168
+          ],
+          [
+            1008,
+            1200
+          ],
+          [
+            1040,
+            976
+          ],
+          [
+            1040,
+            1008
+          ],
+          [
+            1040,
+            1040
+          ],
+          [
+            1040,
+            1072
+          ],
+          [
+            1040,
+            1104
+          ],
+          [
+            1040,
+            1136
+          ],
+          [
+            1040,
+            1168
+          ],
+          [
+            1040,
+            1200
+          ],
+          [
+            1072,
+            976
+          ],
+          [
+            1072,
+            1008
+          ],
+          [
+            1072,
+            1040
+          ],
+          [
+            1072,
+            1072
+          ],
+          [
+            1072,
+            1104
+          ],
+          [
+            1072,
+            1136
+          ],
+          [
+            1072,
+            1168
+          ],
+          [
+            1072,
+            1200
+          ],
+          [
+            1104,
+            976
+          ],
+          [
+            1104,
+            1008
+          ],
+          [
+            1104,
+            1040
+          ],
+          [
+            1104,
+            1072
+          ],
+          [
+            1104,
+            1104
+          ],
+          [
+            1104,
+            1136
+          ],
+          [
+            1104,
+            1168
+          ],
+          [
+            1104,
+            1200
+          ],
+          [
+            1136,
+            976
+          ],
+          [
+            1136,
+            1008
+          ],
+          [
+            1136,
+            1040
+          ],
+          [
+            1136,
+            1072
+          ],
+          [
+            1136,
+            1104
+          ],
+          [
+            1136,
+            1136
+          ],
+          [
+            1136,
+            1168
+          ],
+          [
+            1136,
+            1200
+          ],
+          [
+            1168,
+            976
+          ],
+          [
+            1168,
+            1008
+          ],
+          [
+            1168,
+            1040
+          ],
+          [
+            1168,
+            1072
+          ],
+          [
+            1168,
+            1104
+          ],
+          [
+            1168,
+            1136
+          ],
+          [
+            1168,
+            1168
+          ],
+          [
+            1168,
+            1200
+          ]
+        ],
+        "quadrant_label_counts": [
+          {
+            "known": 15444,
+            "ink": 699,
+            "background": 14745
+          },
+          {
+            "known": 15619,
+            "ink": 6611,
+            "background": 9008
+          },
+          {
+            "known": 15269,
+            "ink": 7047,
+            "background": 8222
+          },
+          {
+            "known": 16384,
+            "ink": 9541,
+            "background": 6843
+          }
+        ]
+      }
+    }
+  ]
+}
