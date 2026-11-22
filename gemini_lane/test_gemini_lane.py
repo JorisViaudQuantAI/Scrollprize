@@ -105,6 +105,14 @@ class TestGeminiLaneEvidence(unittest.TestCase):
         for family in ("Studio", "A-hn", "v8-in", "reader-v3", "ink_9um", "Hecate"):
             self.assertIn(family, raw)
 
+    def test_paris4_recon_doc_clean(self) -> None:
+        path = EVIDENCE / "paris4_title_recon.md"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        for marker in ("54 keV", "78 keV", "137 keV", "1.129", "w130", "20260701183124-w010-027"):
+            self.assertIn(marker, raw)
+
 
 if __name__ == "__main__":
     unittest.main()

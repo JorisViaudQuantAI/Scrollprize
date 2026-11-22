@@ -71,9 +71,27 @@ Quality-ranked Top-10 execution queue from public asset metadata: [`evidence/pri
 
 First Letters donor-overlap compliance matrix (6 detector families × 19 eligible scrolls + controls) & Nov 30 Progress Prize upstream-PR blueprint: [`evidence/compliance_and_progress_audit.md`](evidence/compliance_and_progress_audit.md).
 
+PHerc. Paris 4 (Scroll 1) Title Prize energy/segment map & `< 180 MB` dual-energy different-ink streaming protocol: [`evidence/paris4_title_recon.md`](evidence/paris4_title_recon.md).
+
 ---
 
-## 4. Measured Deliverable 3 — Studio (`PHerc0211` Detector) RTX 4060 `fp16` vs `bf16` Parity & VRAM Profile
+## 4. Zero-Disk Streaming Surface Pipeline (`stream_snap_render.py`)
+
+[`stream_snap_render.py`](stream_snap_render.py) provides the zero-disk-bloat preprocessing and on-sheet filtering pipeline for our RTX 4060 screening queue:
+
+* **`RemoteZarrV2`:** HTTP(S) and local Zarr v2 chunk streaming with strict HTTP 404-only empty-chunk handling (403/5xx raise immediately) and a hard in-memory LRU cache (`--cache-mb 512`, zero disk cache).
+* **`snap_tifxyz_to_m7`:** Three-channel vertex sentinel validation (`finite & >= 0`), neighbor-safe unit normals, and two-pass normal-directed snapping onto S3 `m7` surface predictions with before/after `on_sheet` and displacement metrics.
+* **`render_surface_stack` & `layer_coherence_score`:** Pure NumPy/SciPy surface-volume renderer separating mesh validity from CT acquisition support, plus patch-wise depth-shift correlation to reject oblique cut-throughs before GPU inference.
+
+Offline synthetic tests (`6/6` tests in [`test_stream_snap_render.py`](test_stream_snap_render.py), `12/12` total in `gemini_lane/`):
+
+```bash
+python -m unittest discover -s gemini_lane -p "test_*.py" -v
+```
+
+---
+
+## 5. Measured Deliverable 3 — Studio (`PHerc0211` Detector) RTX 4060 `fp16` vs `bf16` Parity & VRAM Profile
 
 [`studio_rtx4060_bench.py`](studio_rtx4060_bench.py) runs Claude's packaged [`../firstletters-colab/studio_t4/studio_t4.py`](../firstletters-colab/studio_t4/studio_t4.py) on the 169 × 169 PHerc. 306B smoke crop (`mesh_index=12`, `25` windows at stride 48 Hann) with a 65% VRAM cap (`~5.2 GiB`):
 
@@ -100,7 +118,7 @@ python gemini_lane/studio_rtx4060_bench.py \
 
 ---
 
-## 5. Attribution & Licences
+## 6. Attribution & Licences
 
 * Scripts & tests in `gemini_lane/`: MIT License (`../LICENSE`).
 * Studio soft-loss weights & `model.py`: Priyank Aranke and contributors (`vesuvius-studio-multiscroll-cpt`, code MIT, weights CC BY-NC 4.0).
