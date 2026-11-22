@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "kind": "final_bounded_transport_before_any_scientific_outcome",
+  "amendment_document": "parker_transport_final_amendment.md",
+  "amendment_document_sha256": "c9462ffca28fce2e4f47a119d956d41582d606376320d82da3fc74e8e787acc2",
+  "scientific_freeze_reference": "bcd67e3005132b74e295964cea99f4a23d63608c",
+  "previous_transport_reference": "410f233f624efbc3689bd3e33253ff662e7cc0bc",
+  "frozen_runner": "parker_profile_audit.py",
+  "frozen_runner_sha256": "cecc7f956eefdfb3225de46066ee7fe5b32c8a4e2368a751953f12355056227d",
+  "frozen_protocol": "parker_profile_protocol.json",
+  "frozen_protocol_sha256": "30eabd9cf4762e290840db1af5ebaf9f6ee07189212b2984c41608c3af902ecb",
+  "preserved_prior_receipt_sha256": {
+    "parker_attempt001_failure.json": "c2b325365b3d4613bfc80e52cc403a0d289904309ff40f3a51a2af5efe907c9f",
+    "parker_attempt001_download_receipts.json": "4203401211c0dab22c000a0599a78f70a57c9985be439abe217b73d72564a712",
+    "parker_profile_start_001.json": "70ce27363854fbe0e65f6b6595d6c39cf850378746f0e891bd4cde0aac63aced",
+    "parker_attempt002_failure.json": "fc6afc9308e65fde2a448bbee53a5c9985104c1b5e38ade0c0e23138888e9855",
+    "parker_attempt002_download_receipts.json": "3288296d41059d5f7a1c8d61a8e2b7944d7770be2d6939a2528c009de4733ad1",
+    "parker_profile_start_002.json": "5e168df0bf55e2e4ee689b20083cee26d9bdebd485db5a5062e7649845e780cf"
+  },
+  "historically_verified_source_members": 135,
+  "remaining_if_prior_cache_present": 16,
+  "remaining_exact_range_bytes": 11105233,
+  "redirect_max_local_age_seconds": 20,
+  "request_timeout_seconds": 45,
+  "download_workers": 4,
+  "additional_attempts_per_missing_member": 2,
+  "fresh_redirect_before_second_attempt": true,
+  "cumulative_reserved_seed_bytes": {
+    "source_slice": 105902334,
+    "geometry_or_supplied_label": 13000000
+  },
+  "source_download_cap_bytes": 300000000,
+  "all_archive_download_cap_bytes": 350000000,
+  "final_transport_attempt_this_session": true,
+  "no_further_retries_after_failure": true,
+  "no_prior_scientific_outcome": true,
+  "all_scientific_settings_unchanged": true,
+  "signed_url_modification": false,
+  "source_substitution": false
+}

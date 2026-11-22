@@ -1,0 +1,39 @@
+{
+  "published_freeze_reference": "410f233f624efbc3689bd3e33253ff662e7cc0bc",
+  "protocol_sha256": "30eabd9cf4762e290840db1af5ebaf9f6ee07189212b2984c41608c3af902ecb",
+  "manifest_sha256": "92ac975b4e4999090a8eeddce56c87a62d5d37ad9f0765169aa3db3faafca606",
+  "implementation_sha256": "cecc7f956eefdfb3225de46066ee7fe5b32c8a4e2368a751953f12355056227d",
+  "runtime": {
+    "python_version": "3.12.14",
+    "numpy_version": "2.3.5",
+    "pillow_version": "13.0.0",
+    "numerical_thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "declared_dtypes": {
+      "ppm": "<f8",
+      "ct_header_mode": "I;16B",
+      "ct_numpy_expected": ">u2",
+      "profiles": "<u2"
+    },
+    "transport_amendment": {
+      "scientific_freeze_reference": "bcd67e3005132b74e295964cea99f4a23d63608c",
+      "transport_freeze_reference": "410f233f624efbc3689bd3e33253ff662e7cc0bc",
+      "transport_amendment_sha256": "6972eef30a0589c3515bd97dca0ea5ab24d460f898410f0c7b8f818122c125a3",
+      "transport_wrapper_sha256": "dd9f904792473d32950723b8409776d05e7c3483140efab2cc6b530923c93b26",
+      "logical_attempt": 2,
+      "route": "Original public canonical OSF URL for every bounded range; ordinary redirects only.",
+      "additional_attempts_per_uncached_member": 1,
+      "preflight_source_range_bytes": 446773,
+      "preflight_metadata_reserved_upper_bound_bytes": 13000000,
+      "attempt001_source_reserved_upper_bound_bytes": 44711621,
+      "successful_byte_counter_scope": "Successful attempt001 plus attempt002 HTTP range bodies; preflight bytes separately reserved in cumulative caps."
+    }
+  },
+  "status": "started; no outcome yet"
+}
