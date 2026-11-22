@@ -1,0 +1,85 @@
+{
+  "id": "hecate-public-814-context-intervention-v1",
+  "status": "Freeze runner and protocol in a public commit before any new real model forward",
+  "date": "2026-11-22",
+  "purpose": "Measure the effect of artificial external input context on unchanged central CT and labels using an actual released ink model on cached public controls.",
+  "selection": "All five previously evaluated PHerc. 0814 contexts whose central 32 x 32 cores contain known labels. IDs and counts come from the earlier published role-study result; selection and the favorable reversed order are knowingly conditional on prior outcomes. This is a development diagnostic, not a new held-out test.",
+  "context_indices": [
+    0,
+    3,
+    8,
+    9,
+    12
+  ],
+  "expected_label_counts": {
+    "814-c00": [
+      0,
+      1024
+    ],
+    "814-c03": [
+      323,
+      701
+    ],
+    "814-c08": [
+      1024,
+      0
+    ],
+    "814-c09": [
+      207,
+      817
+    ],
+    "814-c12": [
+      0,
+      1024
+    ]
+  },
+  "expected_label_count_order": [
+    "ink",
+    "background"
+  ],
+  "conditions": [
+    "original",
+    "zero_halo",
+    "reflect_halo"
+  ],
+  "intervention": "Input: uint8 [16,64,64]. Preserve every central 32 x 32 CT value at XY [16:48,16:48] in every depth plane. zero_halo replaces everything outside that core by zero. reflect_halo applies NumPy reflect padding of 16 pixels to the unchanged central 32 x 32 core. original is unchanged real context. The replaced halo is 75% of the XY input, or 49,152 of 65,536 voxels. This is a severe context-ablation stress test, not a tiny missing-chunk simulation. Reflection and zero filling are artificial contexts, not imputations certified as real CT.",
+  "source_contract": "Reuse pinned prior context_geometry, SurfaceReader, resample_box and label_indices. Source is a published high-resolution surface slab box-averaged to 9.6 um, rounded once to uint8, reversed in depth, then divided by 255 once. It is not native coarse-acquisition CT. Label-grid mapping remains the exact ratio 40/39; unknown label 0 is excluded, background is 1, ink is 2. Assert every known physical source label cell is unique across the five cores and pooled counts are exactly 1,554 ink and 3,566 background before loading the model.",
+  "model": "Unchanged Hecate 9.6 um checkpoint, strict source pins, eval/inference mode, CPU float32, batch 1, four threads. Official forward(image, valid) uses the same per-XY nonzero-column mask repeated through 16 planes as the prior cached_projection. Every central mask stays unchanged.",
+  "maximum_forwards": 15,
+  "maximum_wall_seconds": 600,
+  "budget_semantics": "Wall cap includes source re-read and loading. A SIGALRM timer is armed before inference for the remaining allowance; native operations may defer Python signal handling until return. No resume, replacement context, tuning or fitted readout.",
+  "prior_baseline_max_abs_logit_tolerance": 1e-05,
+  "prior_gate": "Each original forward must match its pinned prior reverse-order baseline logits within 1e-5 before that context's interventions run. Failure stops with a partial receipt; do not relax the threshold after observing output.",
+  "metrics": [
+    "All central CT and label hashes unchanged across conditions",
+    "Per-context and pooled descriptive known-label AUROC/AP when both classes are present",
+    "Recall and labelled-background exceedance at sigmoid(logit) >= 0.5",
+    "Paired central probability signed/absolute change, quantiles 0/50/95/99/100, Pearson correlation and threshold-0.5 disagreements",
+    "Per-forward seconds, total time, RSS and exact hashes"
+  ],
+  "pins": {
+    "original_runner_sha256": "41560c98001b4185b2860cf12591aa0a6f35d417ff52f5aa8681f4e957e7f702",
+    "original_protocol_sha256": "1bf91c1e8a000c54695eadc97d6268a19a3ee6f1ba40dcd12c61a4f4975ba526",
+    "donor_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+    "prior_acquisition_sha256": "9178251390f8296045d194f50338050d557392ac8aed1fc5ee2cb467146f712a",
+    "prior_result_sha256": "4c34b349e697e760456ff915be1cebc4079f61eeb1be90e7a9715b4ba56d0913",
+    "hecate_source_sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "checkpoint_sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d",
+    "checkpoint_bytes": 522576086
+  },
+  "limitations": [
+    "Public development control reused after seeing its original results; source labels are model-assisted and inherited checkpoint exposure is unresolved.",
+    "Five correlated contexts from one physical donor are not independent scroll replicates. Pooled AP can change through cross-context score ordering; retain within-context results.",
+    "The central 32-pixel side is 0.3072 mm; no complete-letter or line-reading verdict is supported.",
+    "Artificial halo interventions affect a large part of the input and do not estimate frequency of naturally missing chunks or sensitivity to every boundary defect.",
+    "A source-context certificate is separate from original acquisition/FOV truth, correct sheet or face, and ink truth.",
+    "No new labels, training, CT acquisition, unread regions, candidate disclosure or prize claim."
+  ],
+  "sources": [
+    "../transversal_lab/hecate_probe_protocol.json",
+    "../transversal_lab/hecate_donor_manifest.json",
+    "../transversal_lab/evidence/hecate_role_result.json",
+    "https://huggingface.co/scrollprize/hecate/blob/9cb86e500e944b11a06a7020403cde5dffb5bcb2/hecate.py"
+  ],
+  "cache_integrity": "Verify every used local file against the original acquisition receipt when first read; recheck all used file hashes before model loading and after inference. Do not modify any original cached asset."
+}
