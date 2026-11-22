@@ -9,9 +9,22 @@ import unittest
 from unittest import mock
 
 import numpy as np
-import tifffile
+from PIL import Image
+
+try:
+    import tifffile as _tifffile
+except ImportError:
+    _tifffile = None
 
 import screen_scroll_rtx4060 as S
+
+
+def _write_f32_tiff(path: Path, arr: np.ndarray) -> None:
+    arr32 = np.asarray(arr, dtype=np.float32)
+    if _tifffile is not None:
+        _tifffile.imwrite(path, arr32)
+    else:
+        Image.fromarray(arr32, mode="F").save(str(path), format="TIFF")
 
 
 def _write_local_zarr_v2(root: Path, arr: np.ndarray, chunks: tuple[int, int, int]) -> None:
@@ -105,9 +118,9 @@ class TestScreenScrollSafety(unittest.TestCase):
             )
             gz = (30.5 + 0.01 * gy).astype(np.float32)  # Offset by ~1.5 vx to test m7 snap
             mesh_dir.mkdir()
-            tifffile.imwrite(mesh_dir / "x.tif", gx)
-            tifffile.imwrite(mesh_dir / "y.tif", gy)
-            tifffile.imwrite(mesh_dir / "z.tif", gz)
+            _write_f32_tiff(mesh_dir / "x.tif", gx)
+            _write_f32_tiff(mesh_dir / "y.tif", gy)
+            _write_f32_tiff(mesh_dir / "z.tif", gz)
             (mesh_dir / "meta.json").write_text(json.dumps({"scale": [0.1, 0.1]}), encoding="utf-8")
 
             def _fake_studio(
@@ -302,9 +315,9 @@ class TestScreenScrollSafety(unittest.TestCase):
             )
             gz = (24.0 + 0.01 * gy).astype(np.float32)
             mesh_dir.mkdir()
-            tifffile.imwrite(mesh_dir / "x.tif", gx)
-            tifffile.imwrite(mesh_dir / "y.tif", gy)
-            tifffile.imwrite(mesh_dir / "z.tif", gz)
+            _write_f32_tiff(mesh_dir / "x.tif", gx)
+            _write_f32_tiff(mesh_dir / "y.tif", gy)
+            _write_f32_tiff(mesh_dir / "z.tif", gz)
             (mesh_dir / "meta.json").write_text(json.dumps({"scale": [0.1, 0.1]}), encoding="utf-8")
 
             summary = S.screen_one_mesh(

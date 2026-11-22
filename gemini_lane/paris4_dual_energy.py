@@ -21,6 +21,7 @@ documented in ``gemini_lane/evidence/paris4_title_recon.md``:
 from __future__ import annotations
 
 import argparse
+from contextlib import ExitStack
 from dataclasses import dataclass
 import json
 import math
@@ -74,15 +75,23 @@ DEFAULT_URLS: dict[str, str] = {
     "vol_78": f"{S3_BASE}/PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr",
     "vol_137": f"{S3_BASE}/PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr",
     "vol_54": f"{DLS_BASE}/volumes/20230205180739-7.910um-54keV-masked.zarr",
+    "vol_1129": f"{S3_BASE}/PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr",
     "transform_78_to_dls": (
         f"{S3_BASE}/PHercParis4/transforms/20260411134726-to-20230205180739-r1/fit/transform.json"
     ),
     "transform_137_to_dls": (
         f"{S3_BASE}/PHercParis4/transforms/20260323153942-to-20230205180739-r1/fit/transform.json"
     ),
+    "transform_1129_to_78_r2": (
+        f"{S3_BASE}/PHercParis4/transforms/20260608103018-to-20260411134726-r2/fit/transform.json"
+    ),
     "mesh_78": (
         f"{S3_BASE}/PHercParis4/segments/20260701183124-w010-027/mesh/"
         "20260701183124-on-20260411134726-2.4um.tifxyz"
+    ),
+    "mesh_outer_dls": (
+        f"{S3_BASE}/PHercParis4/segments/20260926044226-spiral-output-generation-19/mesh/"
+        "20260926044226-on-20230205180739-7.91um.tifxyz"
     ),
 }
 
@@ -90,6 +99,7 @@ DEFAULT_VOXEL_UM: dict[str, float] = {
     "78keV": 2.400,
     "137keV": 2.400,
     "54keV": 7.910,
+    "1129_78keV": 1.129,
 }
 
 # Verified from S3 metadata.json (zarr_export.target_window_f32_{min,max}).
@@ -97,6 +107,7 @@ DEFAULT_WINDOW_F32: dict[str, tuple[float, float]] = {
     "78keV": (-0.04, 0.22),
     "137keV": (0.01, 0.16),
     "54keV": (-0.03, 0.145),
+    "1129_78keV": (-0.03, 0.145),
 }
 
 FORBIDDEN_PATH_PATTERNS = (
@@ -270,6 +281,92 @@ def apply_affine_vectors(vecs_xyz: np.ndarray, matrix_4x4: np.ndarray, *, normal
         nrm = np.linalg.norm(mapped, axis=-1, keepdims=True)
         good = nrm[..., 0] > 1e-12
         mapped = np.where(good[..., None], mapped / np.where(good[..., None], nrm, 1.0), 0.0)
+    return mapped
+
+
+def load_transform_bundle(
+    source: str | os.PathLike[str],
+    *,
+    session: Any | None = None,
+) -> dict[str, Any]:
+    """Load an S3/local transform.json including its 4x4 affine matrix and optional TPS deformation."""
+    src_str = str(source)
+    if src_str.lower().startswith(("http://", "https://")):
+        data = json.loads(_http_get_bytes(src_str, session=session, timeout=20.0).decode("utf-8"))
+    else:
+        data = json.loads(Path(src_str).read_text(encoding="utf-8"))
+    mat = np.asarray(data["transformation_matrix"], dtype=np.float64)
+    if mat.shape == (3, 4):
+        aff = np.eye(4, dtype=np.float64)
+        aff[:3, :4] = mat
+    elif mat.shape == (4, 4):
+        aff = mat
+    else:
+        raise ValueError(f"Expected 3x4 or 4x4 transformation_matrix, got shape {mat.shape}")
+
+    deform = data.get("deformation")
+    inv_deform = deform.get("inverse") if isinstance(deform, dict) else None
+    if isinstance(inv_deform, dict) and "kernel" not in inv_deform and isinstance(deform, dict):
+        inv_deform = dict(inv_deform)
+        inv_deform["kernel"] = deform.get("kernel", "-r")
+    return {
+        "matrix": aff,
+        "deformation": deform if isinstance(deform, dict) else None,
+        "inverse_deformation": inv_deform if isinstance(inv_deform, dict) else None,
+        "schema_version": data.get("schema_version"),
+    }
+
+
+def eval_tps_displacement(
+    pts_xyz: np.ndarray,
+    tps_dict: dict[str, Any],
+    *,
+    batch_size: int = 2048,
+) -> np.ndarray:
+    """Evaluate a 3D thin-plate-spline displacement field ``K(x_n, c_n) @ W + [1, x_n] @ A``."""
+    pts = np.asarray(pts_xyz, dtype=np.float64)
+    if pts.shape[-1] != 3:
+        raise ValueError(f"Expected last dim 3, got shape {pts.shape}")
+    orig_shape = pts.shape
+    flat = pts.reshape(-1, 3)
+    if flat.shape[0] == 0:
+        return np.zeros(orig_shape, dtype=np.float64)
+
+    kernel = str(tps_dict.get("kernel", "-r"))
+    if kernel != "-r":
+        raise NotImplementedError(f"Unsupported TPS kernel: {kernel!r}")
+
+    centre = np.asarray(tps_dict["centre"], dtype=np.float64)
+    scale = float(tps_dict["scale"])
+    if scale <= 0.0:
+        raise ValueError(f"TPS scale must be positive, got {scale}")
+    cp = np.asarray(tps_dict["control_points"], dtype=np.float64)
+    weights = np.asarray(tps_dict["weights"], dtype=np.float64)
+    affine = np.asarray(tps_dict["affine"], dtype=np.float64)
+
+    cp_norm = (cp - centre) / scale
+    out = np.empty_like(flat)
+    step = max(1, int(batch_size))
+    for i0 in range(0, flat.shape[0], step):
+        i1 = min(i0 + step, flat.shape[0])
+        xn = (flat[i0:i1] - centre) / scale
+        diff = xn[:, None, :] - cp_norm[None, :, :]
+        r = np.linalg.norm(diff, axis=-1)
+        aug = np.concatenate([np.ones((i1 - i0, 1), dtype=np.float64), xn], axis=1)
+        out[i0:i1] = (-r) @ weights + aug @ affine
+    return out.reshape(orig_shape)
+
+
+def map_points_affine_and_tps(
+    pts_xyz: np.ndarray,
+    matrix_4x4: np.ndarray,
+    *,
+    tps_on_input: dict[str, Any] | None = None,
+) -> np.ndarray:
+    """Apply 4x4 affine transform plus optional TPS displacement evaluated on input points."""
+    mapped = apply_affine_points(pts_xyz, matrix_4x4)
+    if tps_on_input is not None:
+        mapped = mapped + eval_tps_displacement(pts_xyz, tps_on_input)
     return mapped
 
 
@@ -1260,6 +1357,7 @@ def evaluate_paired_tile(
     min_ncc: float = 0.10,
     psf_match_to_um: float | None = None,
     v_stride: int = 1,
+    tps_on_ref: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Stream one paired surface tile, run mandatory 3D NCC lock, and return aligned slabs + diagnostics."""
     scale_mesh = mesh_reader.meta.get("scale", [0.05, 0.05])
@@ -1279,7 +1377,7 @@ def evaluate_paired_tile(
     if not uv_valid.any():
         raise ValueError(f"Empty valid mesh patch for v=[{v0},{v1}), u=[{u0},{u1})")
 
-    pts_tgt = apply_affine_points(pts_ref, m_ref_to_tgt)
+    pts_tgt = map_points_affine_and_tps(pts_ref, m_ref_to_tgt, tps_on_input=tps_on_ref)
     e_n_tgt = apply_affine_vectors(e_n_ref, m_ref_to_tgt, normalize=True)
 
     n_arr = np.asarray(n_offsets_um, dtype=np.float64)
@@ -1308,21 +1406,41 @@ def evaluate_paired_tile(
         f32_max=tgt_window[1],
     )
 
+    ref_fwhm_um = float(ref_voxel_um) * float(2 ** int(ref_level))
+    tgt_fwhm_um = float(tgt_voxel_um) * float(2 ** int(tgt_level))
+    target_fwhm: float | None = None
     if psf_match_to_um is not None:
-        mu_ref_cmp = psf_match_volume(
-            mu_ref,
-            val_ref,
-            src_fwhm_um=ref_voxel_um * (2 ** ref_level),
-            dst_fwhm_um=psf_match_to_um,
-            spacing_nvu_um=(dn_um, uv_spacing_um, uv_spacing_um),
+        target_fwhm = max(float(psf_match_to_um), ref_fwhm_um, tgt_fwhm_um)
+        mu_ref_cmp = (
+            psf_match_volume(
+                mu_ref,
+                val_ref,
+                src_fwhm_um=ref_fwhm_um,
+                dst_fwhm_um=target_fwhm,
+                spacing_nvu_um=(dn_um, uv_spacing_um, uv_spacing_um),
+            )
+            if target_fwhm > ref_fwhm_um + 1e-6
+            else mu_ref
+        )
+        mu_tgt_cmp = (
+            psf_match_volume(
+                mu_tgt_raw,
+                val_tgt_raw,
+                src_fwhm_um=tgt_fwhm_um,
+                dst_fwhm_um=target_fwhm,
+                spacing_nvu_um=(dn_um, uv_spacing_um, uv_spacing_um),
+            )
+            if target_fwhm > tgt_fwhm_um + 1e-6
+            else mu_tgt_raw
         )
     else:
         mu_ref_cmp = mu_ref
+        mu_tgt_cmp = mu_tgt_raw
 
     lock = local_ncc_3d_lock(
         mu_ref_cmp,
         val_ref,
-        mu_tgt_raw,
+        mu_tgt_cmp,
         val_tgt_raw,
         spacing_nvu_um=(dn_um, uv_spacing_um, uv_spacing_um),
         max_shift_um=max_shift_um,
@@ -1330,7 +1448,12 @@ def evaluate_paired_tile(
         min_ncc=min_ncc,
     )
 
-    mu_tgt_aligned, val_tgt_aligned = shift_moving_slab(mu_tgt_raw, val_tgt_raw, lock.shift_nvu_vx)
+    mu_tgt_aligned, val_tgt_aligned = shift_moving_slab(mu_tgt_cmp, val_tgt_raw, lock.shift_nvu_vx)
+    mu_tgt_native_aligned, _ = (
+        shift_moving_slab(mu_tgt_raw, val_tgt_raw, lock.shift_nvu_vx)
+        if mu_tgt_cmp is not mu_tgt_raw
+        else (mu_tgt_aligned, val_tgt_aligned)
+    )
     joint_valid = val_ref & val_tgt_aligned
 
     # Optional wrap-behind ghosting slab sampling using the locked translation in target space.
@@ -1369,6 +1492,24 @@ def evaluate_paired_tile(
             f32_max=tgt_window[1],
             shift_xyz_l0=shift_tgt_l0,
         )
+        if target_fwhm is not None:
+            # In-plane PSF matching on sparse ghost depths (do not blur across 50+ um ghost gaps).
+            if target_fwhm > ref_fwhm_um + 1e-6:
+                mu_ref_g = psf_match_volume(
+                    mu_ref_g,
+                    val_ref_g,
+                    src_fwhm_um=ref_fwhm_um,
+                    dst_fwhm_um=target_fwhm,
+                    spacing_nvu_um=(1e9, uv_spacing_um, uv_spacing_um),
+                )
+            if target_fwhm > tgt_fwhm_um + 1e-6:
+                mu_tgt_g = psf_match_volume(
+                    mu_tgt_g,
+                    val_tgt_g,
+                    src_fwhm_um=tgt_fwhm_um,
+                    dst_fwhm_um=target_fwhm,
+                    spacing_nvu_um=(1e9, uv_spacing_um, uv_spacing_um),
+                )
         ghost_data = {
             "offsets_um": g_offs,
             "mu_ref": mu_ref_g,
@@ -1376,17 +1517,19 @@ def evaluate_paired_tile(
             "valid": val_ref_g & val_tgt_g,
         }
 
-    z78_vals = pts_ref[uv_valid, 2]
+    z_ref_vals = pts_ref[uv_valid, 2]
     return {
         "tile_bounds_vu": [int(v0), int(v1), int(u0), int(u1)],
-        "z78_range": [round(float(z78_vals.min()), 1), round(float(z78_vals.max()), 1)],
+        "z78_range": [round(float(z_ref_vals.min()), 1), round(float(z_ref_vals.max()), 1)],
         "slab_shape_nvu": [int(s) for s in mu_ref.shape],
         "uv_valid_fraction": round(float(uv_valid.mean()), 4),
         "joint_valid_fraction": round(float(joint_valid.mean()), 4),
+        "psf_matched_fwhm_um": round(float(target_fwhm), 3) if target_fwhm is not None else None,
         "n_offsets_um": n_arr,
         "mu_ref": mu_ref_cmp,
         "u8_ref": u8_ref,
         "mu_tgt": mu_tgt_aligned,
+        "mu_tgt_native": mu_tgt_native_aligned,
         "joint_valid": joint_valid,
         "lock": lock,
         "ghost_data": ghost_data,
@@ -1395,7 +1538,7 @@ def evaluate_paired_tile(
 
 def evaluate_sheet_integrity_tile(
     mesh_reader: TifxyzPatchReader,
-    reader_78: RemoteZarrV2,
+    reader_vol: RemoteZarrV2,
     *,
     v0: int,
     v1: int,
@@ -1405,11 +1548,12 @@ def evaluate_sheet_integrity_tile(
     window_78: tuple[float, float],
     uv_spacing_um: float,
     v_stride: int = 1,
+    voxel_um: float = DEFAULT_VOXEL_UM["78keV"],
 ) -> dict[str, Any]:
-    """Evaluate Tile C lower-extension sheet integrity (continuity, SNR, layer coherence)."""
+    """Evaluate surface sheet integrity (continuity, SNR, layer coherence)."""
     scale_mesh = mesh_reader.meta.get("scale", [0.05, 0.05])
-    mesh_du_um = (1.0 / float(scale_mesh[0])) * DEFAULT_VOXEL_UM["78keV"]
-    mesh_dv_um = (1.0 / float(scale_mesh[1])) * DEFAULT_VOXEL_UM["78keV"] * float(max(1, v_stride))
+    mesh_du_um = (1.0 / float(scale_mesh[0])) * float(voxel_um)
+    mesh_dv_um = (1.0 / float(scale_mesh[1])) * float(voxel_um) * float(max(1, v_stride))
 
     x, y, z, valid = mesh_reader.read_patch(v0, v1, u0, u1, v_stride=v_stride)
     pts, _, _, e_n, uv_valid = build_surface_frame(
@@ -1423,13 +1567,13 @@ def evaluate_sheet_integrity_tile(
     )
     step_um = max(8.0, float(uv_spacing_um))
     n_offs = np.arange(-4, 5, dtype=np.float64) * step_um
-    mu_78, u8_78, val_3d = sample_surface_slab(
-        reader_78,
+    mu_vol, u8_vol, val_3d = sample_surface_slab(
+        reader_vol,
         pts,
         e_n,
         uv_valid,
         n_offs,
-        native_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+        native_voxel_um=float(voxel_um),
         level=level,
         f32_min=window_78[0],
         f32_max=window_78[1],
@@ -1437,21 +1581,21 @@ def evaluate_sheet_integrity_tile(
     mid_idx = len(n_offs) // 2
     valid_2d = val_3d[mid_idx]
     coherence = layer_coherence_score(
-        np.clip(np.rint(u8_78), 0, 255).astype(np.uint8),
+        np.clip(np.rint(u8_vol), 0, 255).astype(np.uint8),
         mesh_index=mid_idx,
         delta=1,
-        patch_size=min(64, int(u8_78.shape[1]), int(u8_78.shape[2])),
+        patch_size=min(64, int(u8_vol.shape[1]), int(u8_vol.shape[2])),
         max_shift=3,
         valid_mask=valid_2d,
     )
     # Surface-vs-surround contrast along normal.
-    surf_vals = mu_78[mid_idx][valid_2d]
-    outer_vals = np.concatenate([mu_78[0][val_3d[0]], mu_78[-1][val_3d[-1]]])
-    z78_vals = pts[uv_valid, 2]
+    surf_vals = mu_vol[mid_idx][valid_2d]
+    outer_vals = np.concatenate([mu_vol[0][val_3d[0]], mu_vol[-1][val_3d[-1]]])
+    z_vals = pts[uv_valid, 2]
     return {
         "tile_bounds_vu": [int(v0), int(v1), int(u0), int(u1)],
-        "z78_range": [round(float(z78_vals.min()), 1), round(float(z78_vals.max()), 1)],
-        "slab_shape_nvu": [int(s) for s in mu_78.shape],
+        "z78_range": [round(float(z_vals.min()), 1), round(float(z_vals.max()), 1)],
+        "slab_shape_nvu": [int(s) for s in mu_vol.shape],
         "valid_surface_fraction": round(float(valid_2d.mean()), 4),
         "surface_mu_mean": round(float(surf_vals.mean()), 6) if surf_vals.size else 0.0,
         "surface_mu_std": round(float(surf_vals.std()), 6) if surf_vals.size else 0.0,
@@ -1974,35 +2118,1261 @@ def _run_step1_agraphon_strip(
 
 
 # ---------------------------------------------------------------------------
-# 8. CLI entrypoint
+# 8. Phase 2: 54 vs 78 keV (R_{54/78}), outer wraps w130-w135, extended height,
+#    and 1.129 um native crust preflight (strictly < 250 MB, zero overlap)
+# ---------------------------------------------------------------------------
+
+FORBIDDEN_UNREAD_COORD_KEYS = frozenset(
+    {
+        "u_range",
+        "v_range",
+        "tile_bounds_vu",
+        "z78_range",
+        "z_dls_range",
+        "bbox_vu",
+        "candidate_xy",
+        "candidate_uv",
+        "wraps",
+    }
+)
+
+# Non-overlapping Phase 2 outer-wrap tiles on 20260926044226-on-20230205180739-7.91um.tifxyz
+# Scaled from meta.json winding_bounds (grid 956x56913 -> TIFF 1173x69925, factor ~1.2286).
+PHASE2_OUTER_WRAPS: tuple[tuple[str, int, int], ...] = (
+    ("w135", 540, 554),
+    ("w134", 1590, 1604),
+    ("w133", 2600, 2614),
+    ("w132", 3610, 3624),
+    ("w131", 4608, 4622),
+    ("w130", 5600, 5614),
+)
+
+
+def assert_no_unread_coordinates(payload: Any, *, unread_section_names: Sequence[str] = ()) -> None:
+    """Raise ValueError if any unread-scan section in public JSON exposes candidate coordinates."""
+    sections = set(
+        unread_section_names
+        or (
+            "agraphon_strip_54_78",
+            "outer_wraps_w130_w135",
+            "extended_height_20260701",
+            "unread_scans",
+        )
+    )
+
+    def _walk_forbidden(node: Any, path: str) -> None:
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k in FORBIDDEN_UNREAD_COORD_KEYS:
+                    raise ValueError(f"Unread candidate coordinate key {k!r} exposed in public JSON at {path}.{k}")
+                _walk_forbidden(v, f"{path}.{k}")
+        elif isinstance(node, list):
+            for idx, item in enumerate(node):
+                _walk_forbidden(item, f"{path}[{idx}]")
+
+    def _scan_root(node: Any, path: str = "$") -> None:
+        if isinstance(node, dict):
+            for k, v in node.items():
+                child_path = f"{path}.{k}"
+                if k in sections or "unread" in str(k).lower():
+                    _walk_forbidden(v, child_path)
+                else:
+                    _scan_root(v, child_path)
+        elif isinstance(node, list):
+            for idx, item in enumerate(node):
+                _scan_root(item, f"{path}[{idx}]")
+
+    _scan_root(payload)
+
+
+def compute_crust_metrics(
+    mu_native: np.ndarray,
+    valid_3d: np.ndarray,
+    n_offsets_um: Sequence[float],
+    *,
+    surface_max_um: float = 4.0,
+    bulk_min_um: float = 10.0,
+    bulk_max_um: float = 22.0,
+) -> tuple[dict[str, float | int], np.ndarray, np.ndarray, np.ndarray]:
+    """Compute native 1.129 um crust depth top-hat and surface high-frequency micro-roughness."""
+    th, surf, bulk, v2d = compute_depth_tophat(
+        mu_native,
+        valid_3d,
+        n_offsets_um,
+        surface_max_um=surface_max_um,
+        bulk_min_um=bulk_min_um,
+        bulk_max_um=bulk_max_um,
+    )
+    vals_th = th[v2d]
+    vals_surf = surf[v2d]
+    vals_bulk = bulk[v2d]
+
+    # Measure high-frequency micro-roughness via 2D discrete Laplacian strictly inside eroded interior.
+    interior = ndi.binary_erosion(v2d, iterations=1) if v2d.any() else v2d
+    lap = ndi.laplace(np.where(v2d, surf.astype(np.float64), 0.0))
+    lap_vals = lap[interior]
+    hf_rms = float(np.sqrt(np.mean(lap_vals ** 2))) if lap_vals.size else 0.0
+
+    stats: dict[str, float | int] = {
+        "valid_pixels": int(v2d.sum()),
+        "surface_mu_mean": round(float(vals_surf.mean()), 6) if vals_surf.size else 0.0,
+        "surface_mu_std": round(float(vals_surf.std()), 6) if vals_surf.size else 0.0,
+        "bulk_mu_mean": round(float(vals_bulk.mean()), 6) if vals_bulk.size else 0.0,
+        "tophat_mean": round(float(vals_th.mean()), 6) if vals_th.size else 0.0,
+        "tophat_std": round(float(vals_th.std()), 6) if vals_th.size else 0.0,
+        "surface_hf_roughness_rms": round(hf_rms, 6),
+    }
+    return stats, th, surf, v2d
+
+
+def _estimate_extra_chunks_mb(
+    mesh_reader: TifxyzPatchReader,
+    readers_and_mappers: Sequence[tuple[RemoteZarrV2, int, Any]],
+    v0: int,
+    v1: int,
+    u0: int,
+    u1: int,
+    *,
+    v_stride: int = 12,
+    pad_vx_lvl: int = 1,
+) -> float:
+    """Estimate uncached chunk traffic (MiB) for a mesh patch including normal/slab padding."""
+    x_p, y_p, z_p, v_p = mesh_reader.read_patch(v0, v1, u0, u1, v_stride=max(1, int(v_stride)))
+    if not v_p.any():
+        return 0.0
+    pts_base = np.stack([x_p[v_p], y_p[v_p], z_p[v_p]], axis=-1).astype(np.float64)
+    extra_bytes = 0
+    pad = max(0, int(pad_vx_lvl))
+    for reader, level, mapper in readers_and_mappers:
+        pts = mapper(pts_base) if mapper is not None else pts_base
+        scale = float(2 ** int(level))
+        sz, sy, sx = reader.shape
+        cz_s, cy_s, cx_s = reader.chunks
+        q = (pts + 0.5) / scale - 0.5
+        ok = (q[:, 0] >= 0) & (q[:, 0] < sx) & (q[:, 1] >= 0) & (q[:, 1] < sy) & (q[:, 2] >= 0) & (q[:, 2] < sz)
+        if not ok.any():
+            continue
+        q_ok = q[ok]
+        c_set: set[tuple[int, int, int]] = set()
+        offsets = (-pad, 0, pad) if pad > 0 else (0,)
+        for dz in offsets:
+            for dy in offsets:
+                for dx in offsets:
+                    qp = np.clip(
+                        q_ok + np.array([dx, dy, dz], dtype=np.float64),
+                        [0.0, 0.0, 0.0],
+                        [sx - 1.0, sy - 1.0, sz - 1.0],
+                    )
+                    c = np.floor(qp[:, ::-1] / np.array([cz_s, cy_s, cx_s])).astype(int)
+                    for row in np.unique(c, axis=0):
+                        c_set.add((int(row[0]), int(row[1]), int(row[2])))
+        chunk_bytes = int(cz_s * cy_s * cx_s * np.dtype(reader.dtype).itemsize)
+        for cid in c_set:
+            if cid not in reader.cache:
+                extra_bytes += chunk_bytes
+    return float(extra_bytes) / (1024.0 * 1024.0)
+
+
+def _summarize_unread_records(records: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Produce strictly non-identifying aggregate public metrics from unread wrap/tile records."""
+    evaluated = [r for r in records if r.get("residual_computed")]
+    locked = [r for r in records if r.get("ncc_lock", {}).get("passed")]
+    skipped = [r for r in records if r.get("skipped_budget")]
+    ncc_peaks = [float(r["ncc_lock"]["ncc_peak"]) for r in records if "ncc_lock" in r]
+    null_margins = [float(r["ncc_lock"]["null_margin"]) for r in records if "ncc_lock" in r]
+    ghost_dom = sum(1 for r in evaluated if r.get("ghosting_check", {}).get("is_ghost_dominated"))
+    return {
+        "tiles_planned": len(records),
+        "tiles_evaluated": len(evaluated),
+        "tiles_skipped_budget": len(skipped),
+        "tiles_ncc_locked": len(locked),
+        "ncc_peak_min": round(min(ncc_peaks), 6) if ncc_peaks else None,
+        "ncc_peak_median": round(float(np.median(ncc_peaks)), 6) if ncc_peaks else None,
+        "ncc_peak_max": round(max(ncc_peaks), 6) if ncc_peaks else None,
+        "null_margin_min": round(min(null_margins), 6) if null_margins else None,
+        "max_z_p99_9_abs": round(max((float(r["z_p99_9_abs"]) for r in evaluated), default=0.0), 4),
+        "max_z_abs": round(max((float(r["z_max_abs"]) for r in evaluated), default=0.0), 4),
+        "max_frac_ge_3sigma": round(max((float(r["frac_ge_3sigma"]) for r in evaluated), default=0.0), 6),
+        "max_frac_ge_4sigma": round(max((float(r["frac_ge_4sigma"]) for r in evaluated), default=0.0), 6),
+        "max_4sigma_component_span_mm": round(
+            max((float(r["max_4sigma_component_span_mm"]) for r in evaluated), default=0.0), 3
+        ),
+        "ghost_dominated_count": int(ghost_dom),
+        "any_stopping_rule_trigger": any(bool(r.get("exceeds_stopping_rule")) for r in evaluated),
+    }
+
+
+def _compute_component_stats(
+    z_map: np.ndarray,
+    valid_2d: np.ndarray,
+    *,
+    threshold_z: float,
+    uv_spacing_um: float,
+) -> tuple[np.ndarray, int, float]:
+    """Find largest connected component exceeding ``|z| >= threshold_z`` and its physical span in mm."""
+    hi_mask = valid_2d & (np.abs(z_map) >= float(threshold_z))
+    lbl, n_comp = ndi.label(hi_mask)
+    max_comp_px = 0
+    max_comp_span_mm = 0.0
+    if n_comp > 0:
+        sizes = np.bincount(lbl.ravel())[1:]
+        top_cid = int(np.argmax(sizes)) + 1
+        max_comp_px = int(sizes[top_cid - 1])
+        ys, xs = np.nonzero(lbl == top_cid)
+        max_comp_span_mm = float(
+            math.hypot((ys.max() - ys.min() + 1) * uv_spacing_um, (xs.max() - xs.min() + 1) * uv_spacing_um) / 1000.0
+        )
+    return hi_mask, max_comp_px, max_comp_span_mm
+
+
+def run_phase2_scans(
+    *,
+    vol_78_url: str = DEFAULT_URLS["vol_78"],
+    vol_54_url: str = DEFAULT_URLS["vol_54"],
+    vol_1129_url: str = DEFAULT_URLS["vol_1129"],
+    transform_78_url: str = DEFAULT_URLS["transform_78_to_dls"],
+    transform_1129_url: str = DEFAULT_URLS["transform_1129_to_78_r2"],
+    mesh_78_url: str = DEFAULT_URLS["mesh_78"],
+    mesh_outer_url: str = DEFAULT_URLS["mesh_outer_dls"],
+    preflight_level_78: int = 2,
+    preflight_level_54: int = 0,
+    strip_level_78: int = 3,
+    strip_level_54: int = 1,
+    crust_level_1129: int = 0,
+    crust_level_78: int = 1,
+    cache_mb: float = 256.0,
+    workers: int = 8,
+    max_total_mb: float = 225.0,
+    stage_2a1_budget_mb: float = 88.0,
+    stage_2b1_budget_mb: float = 40.0,
+    stage_2b2_budget_mb: float = 24.0,
+    stage_2b3_budget_mb: float = 34.0,
+    out_json: str | os.PathLike[str] | None = None,
+    private_out_dir: str | os.PathLike[str] | None = None,
+    preflight_tile_a_vu: tuple[int, int, int, int] = (640, 656, 4082, 4114),
+    preflight_tile_b_vu: tuple[int, int, int, int] = (640, 656, 5109, 5141),
+    strip_v_range: tuple[int, int] = (1956, 2000),
+    strip_wraps: Sequence[tuple[str, int, int, str]] = STEP1_WRAP_ISLANDS,
+    outer_v_range: tuple[int, int] = (500, 510),
+    outer_wraps: Sequence[tuple[str, int, int]] = PHASE2_OUTER_WRAPS,
+    upper_ext_vu: tuple[int, int, int, int] = (112, 126, 5112, 5132),
+    lower_ext_vu: tuple[int, int, int, int] = (3182, 3196, 5112, 5132),
+    crust_tile_a_vu: tuple[int, int, int, int] = (1100, 1103, 4092, 4096),
+    crust_tile_b_vu: tuple[int, int, int, int] = (1100, 1103, 5122, 5126),
+    run_strip: bool = True,
+    run_outer_wraps: bool = True,
+    run_extended_height: bool = True,
+    run_crust_1129: bool = True,
+) -> dict[str, Any]:
+    """Execute Phase 2 non-overlapping Paris 4 dual-energy CPU scans strictly within < 250 MB.
+
+    Covers:
+      (2A-0) 54 vs 78 keV PSF-matched high-res control preflight outside the 137 keV band;
+      (2A-1) 54 vs 78 keV PSF-matched multi-wrap agraphon strip on Band L (non-overlapping);
+      (2B-1) Outermost wraps w130-w135 (54 vs 78 keV + sheet integrity);
+      (2B-2) 20260701 extended axial height (upper z_78~71k & lower z_78~16k);
+      (2B-3) 1.129 um native L0 crust preflight via r2 affine+TPS + local 3D NCC lock.
+    """
+    if float(cache_mb) > 256.0:
+        raise ValueError(f"cache_mb ({cache_mb}) exceeds strict 256.0 MiB RAM cap.")
+    if float(max_total_mb) > 238.0:
+        raise ValueError(f"max_total_mb ({max_total_mb} MiB) exceeds strict < 250 MB ceiling.")
+
+    if private_out_dir is not None:
+        priv_path = Path(private_out_dir)
+        _assert_outside_git_repo(priv_path)
+        priv_path.mkdir(parents=True, exist_ok=True)
+    else:
+        priv_path = None
+
+    sess = requests.Session() if requests is not None else None
+    w78_lo, w78_hi, _ = load_volume_window_f32(vol_78_url, fallback=DEFAULT_WINDOW_F32["78keV"], session=sess)
+    w54_lo, w54_hi, _ = load_volume_window_f32(vol_54_url, fallback=DEFAULT_WINDOW_F32["54keV"], session=sess)
+    m78_to_dls = load_affine_transform(transform_78_url, session=sess)
+    m_dls_to_78 = np.linalg.inv(m78_to_dls)
+
+    # Track exact bytes & chunks across every stage.
+    stage_io: dict[str, dict[str, int | float]] = {}
+    total_bytes = 0
+    total_chunks = 0
+
+    def _remaining_mb() -> float:
+        return float(max_total_mb) - (total_bytes / (1024.0 * 1024.0))
+
+    # ------------------------------------------------------------------
+    # Stage 2A-0: 54 vs 78 keV PSF-matched high-res control preflight
+    # ------------------------------------------------------------------
+    vox_78_pf = DEFAULT_VOXEL_UM["78keV"] * (2 ** int(preflight_level_78))
+    vox_54_pf = DEFAULT_VOXEL_UM["54keV"] * (2 ** int(preflight_level_54))
+    psf_pf_um = max(vox_78_pf, vox_54_pf)
+    uv_pf_um = psf_pf_um
+    n_step_pf = min(8.0, uv_pf_um)
+    n_offs_pf = np.arange(-12, 13, dtype=np.float64) * n_step_pf  # -96..+96 um for 78->DLS drift margin
+    ghost_offs = np.array([-160.0, -110.0, 0.0, 110.0, 160.0], dtype=np.float64)
+
+    with (
+        TifxyzPatchReader(mesh_78_url) as mesh_78,
+        RemoteZarrV2(vol_78_url, level=str(preflight_level_78), cache_mb=cache_mb, workers=workers) as r78_pf,
+        RemoteZarrV2(vol_54_url, level=str(preflight_level_54), cache_mb=cache_mb, workers=workers) as r54_pf,
+    ):
+        mesh_b0 = int(mesh_78.bytes_fetched)
+        tile_b = evaluate_paired_tile(
+            mesh_78,
+            r78_pf,
+            r54_pf,
+            m78_to_dls,
+            v0=preflight_tile_b_vu[0],
+            v1=preflight_tile_b_vu[1],
+            u0=preflight_tile_b_vu[2],
+            u1=preflight_tile_b_vu[3],
+            ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+            tgt_voxel_um=DEFAULT_VOXEL_UM["54keV"],
+            ref_level=preflight_level_78,
+            tgt_level=preflight_level_54,
+            ref_window=(w78_lo, w78_hi),
+            tgt_window=(w54_lo, w54_hi),
+            uv_spacing_um=uv_pf_um,
+            n_offsets_um=n_offs_pf,
+            ghost_offsets_um=ghost_offs,
+            max_shift_um=70.0,
+            null_offset_um=20.0,
+            min_ncc=0.10,
+            psf_match_to_um=psf_pf_um,
+        )
+        tile_a = evaluate_paired_tile(
+            mesh_78,
+            r78_pf,
+            r54_pf,
+            m78_to_dls,
+            v0=preflight_tile_a_vu[0],
+            v1=preflight_tile_a_vu[1],
+            u0=preflight_tile_a_vu[2],
+            u1=preflight_tile_a_vu[3],
+            ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+            tgt_voxel_um=DEFAULT_VOXEL_UM["54keV"],
+            ref_level=preflight_level_78,
+            tgt_level=preflight_level_54,
+            ref_window=(w78_lo, w78_hi),
+            tgt_window=(w54_lo, w54_hi),
+            uv_spacing_um=uv_pf_um,
+            n_offsets_um=n_offs_pf,
+            ghost_offsets_um=ghost_offs,
+            max_shift_um=70.0,
+            null_offset_um=20.0,
+            min_ncc=0.10,
+            psf_match_to_um=psf_pf_um,
+        )
+        b_2a0 = int(r78_pf.bytes_fetched + r54_pf.bytes_fetched + mesh_78.bytes_fetched)
+        c_2a0 = int(r78_pf.chunks_fetched + r54_pf.chunks_fetched)
+        stage_io["stage_2a0_preflight_54_78"] = {
+            "bytes": b_2a0,
+            "mb": round(b_2a0 / (1024.0 * 1024.0), 3),
+            "chunks": c_2a0,
+            "chunks_78": int(r78_pf.chunks_fetched),
+            "chunks_54": int(r54_pf.chunks_fetched),
+        }
+        total_bytes += b_2a0
+        total_chunks += c_2a0
+
+        bg_pf = fit_papyrus_background(tile_b["mu_ref"], tile_b["mu_tgt"], tile_b["joint_valid"])
+        alpha_pf, beta_pf = float(bg_pf["alpha"]), float(bg_pf["beta"])
+        res_b = compute_dual_energy_residual(tile_b["mu_ref"], tile_b["mu_tgt"], alpha_pf, beta_pf)
+        res_a = compute_dual_energy_residual(tile_a["mu_ref"], tile_a["mu_tgt"], alpha_pf, beta_pf)
+
+        th_b, surf_b, _, v2d_b = compute_depth_tophat(res_b, tile_b["joint_valid"], n_offs_pf)
+        th_a, surf_a, _, v2d_a = compute_depth_tophat(res_a, tile_a["joint_valid"], n_offs_pf)
+        th54_b, _, _, v54_b = compute_depth_tophat(tile_b["mu_tgt"], tile_b["joint_valid"], n_offs_pf)
+        th54_a, _, _, v54_a = compute_depth_tophat(tile_a["mu_tgt"], tile_a["joint_valid"], n_offs_pf)
+
+        blank_pf = compute_blank_fpr_stats(th_b, v2d_b)
+        sep_tophat_r54 = compute_control_separation(th_a[v2d_a], th_b[v2d_b])
+        sep_surf_r54 = compute_control_separation(surf_a[v2d_a], surf_b[v2d_b])
+        sep_tophat_54 = compute_control_separation(th54_a[v54_a], th54_b[v54_b])
+
+        ghost_a = evaluate_ghosting_exclusion(
+            compute_dual_energy_residual(tile_a["ghost_data"]["mu_ref"], tile_a["ghost_data"]["mu_tgt"], alpha_pf, beta_pf),
+            tile_a["ghost_data"]["valid"],
+            tile_a["ghost_data"]["offsets_um"],
+        )
+        ghost_b = evaluate_ghosting_exclusion(
+            compute_dual_energy_residual(tile_b["ghost_data"]["mu_ref"], tile_b["ghost_data"]["mu_tgt"], alpha_pf, beta_pf),
+            tile_b["ghost_data"]["valid"],
+            tile_b["ghost_data"]["offsets_um"],
+        )
+
+        lock_a: NccLockResult = tile_a["lock"]
+        lock_b: NccLockResult = tile_b["lock"]
+        pf_passed = bool(lock_a.passed and lock_b.passed)
+
+        if priv_path is not None:
+            sig_pf = max(float(blank_pf["sigma_blank"]), 1e-6)
+            mu_pf_b = float(blank_pf["mean_blank"])
+            _save_private_heatmap_png((th_a - mu_pf_b) / sig_pf, v2d_a, priv_path / "phase2_2a0_ctrl_a_r54_78_zmap.png", -4.0, 4.0)
+            _save_private_heatmap_png((th_b - mu_pf_b) / sig_pf, v2d_b, priv_path / "phase2_2a0_ctrl_b_r54_78_zmap.png", -4.0, 4.0)
+
+        # ------------------------------------------------------------------
+        # Stage 2B-2 lower/upper extended-height 78 keV L2 integrity (reuses r78_pf!)
+        # ------------------------------------------------------------------
+        ext_height_private: dict[str, Any] = {"executed": False}
+        ext_height_public: dict[str, Any] = {"executed": False}
+        b_ext_l2 = 0
+        c_ext_l2 = 0
+        if run_extended_height and _remaining_mb() > 10.0:
+            b78_before = int(r78_pf.bytes_fetched)
+            c78_before = int(r78_pf.chunks_fetched)
+            m_before = int(mesh_78.bytes_fetched)
+            upper_int = evaluate_sheet_integrity_tile(
+                mesh_78,
+                r78_pf,
+                v0=upper_ext_vu[0],
+                v1=upper_ext_vu[1],
+                u0=upper_ext_vu[2],
+                u1=upper_ext_vu[3],
+                level=preflight_level_78,
+                window_78=(w78_lo, w78_hi),
+                uv_spacing_um=vox_78_pf,
+            )
+            lower_int = evaluate_sheet_integrity_tile(
+                mesh_78,
+                r78_pf,
+                v0=lower_ext_vu[0],
+                v1=lower_ext_vu[1],
+                u0=lower_ext_vu[2],
+                u1=lower_ext_vu[3],
+                level=preflight_level_78,
+                window_78=(w78_lo, w78_hi),
+                uv_spacing_um=vox_78_pf,
+            )
+            b_ext_l2 = int((r78_pf.bytes_fetched - b78_before) + (mesh_78.bytes_fetched - m_before))
+            c_ext_l2 = int(r78_pf.chunks_fetched - c78_before)
+            total_bytes += b_ext_l2
+            total_chunks += c_ext_l2
+            ext_height_private = {
+                "executed": True,
+                "upper_extension_integrity": upper_int,
+                "lower_extension_integrity": lower_int,
+            }
+            ext_height_public = {
+                "executed": True,
+                "upper_extension_integrity": {
+                    k: v for k, v in upper_int.items() if k not in FORBIDDEN_UNREAD_COORD_KEYS
+                },
+                "lower_extension_integrity": {
+                    k: v for k, v in lower_int.items() if k not in FORBIDDEN_UNREAD_COORD_KEYS
+                },
+            }
+
+        # ------------------------------------------------------------------
+        # Stages 2A-1 (Band L agraphon strip) + 2B-1 (outer wraps w130-w135)
+        # + Upper-extension 54 vs 78 keV paired check (shared L3/L1 readers!)
+        # ------------------------------------------------------------------
+        vox_78_st = DEFAULT_VOXEL_UM["78keV"] * (2 ** int(strip_level_78))
+        vox_54_st = DEFAULT_VOXEL_UM["54keV"] * (2 ** int(strip_level_54))
+        psf_st_um = max(vox_78_st, vox_54_st)
+        uv_st_um = psf_st_um
+        n_offs_st = np.arange(-10, 11, dtype=np.float64) * 10.0  # -100..+100 um
+
+        strip_records: list[dict[str, Any]] = []
+        outer_records: list[dict[str, Any]] = []
+        strip_bg_fit: dict[str, Any] | None = None
+        alpha_st, beta_st = alpha_pf, beta_pf
+        mu_st_b, sigma_st_b, p999_st_b = float(blank_pf["mean_blank"]), max(float(blank_pf["sigma_blank"]), 1e-6), float(blank_pf["p99_9_abs_z"])
+
+        with ExitStack() as st_stack:
+            r78_st = (
+                st_stack.enter_context(
+                    RemoteZarrV2(vol_78_url, level=str(strip_level_78), cache_mb=cache_mb, workers=workers)
+                )
+                if (run_strip or run_outer_wraps or run_extended_height)
+                else None
+            )
+            r54_st = (
+                st_stack.enter_context(
+                    RemoteZarrV2(vol_54_url, level=str(strip_level_54), cache_mb=cache_mb, workers=workers)
+                )
+                if (run_strip or run_outer_wraps or run_extended_height)
+                else None
+            )
+            # --- Stage 2A-1: 54 vs 78 keV non-overlapping Band L agraphon strip ---
+            if run_strip and pf_passed and _remaining_mb() > 16.0:
+                b78_s0, b54_s0, m_s0 = int(r78_st.bytes_fetched), int(r54_st.bytes_fetched), int(mesh_78.bytes_fetched)
+                c78_s0, c54_s0 = int(r78_st.chunks_fetched), int(r54_st.chunks_fetched)
+                eff_2a1_cap = min(float(stage_2a1_budget_mb), _remaining_mb() - 4.0)
+
+                blank_wrap_name = next(
+                    (w[0] for w in strip_wraps if w[0] == "wrap_08_blank_agraphon"),
+                    next((w[0] for w in strip_wraps if w[3] == "control_blank"), strip_wraps[0][0] if strip_wraps else ""),
+                )
+                ordered_wraps = [w for w in strip_wraps if w[0] == blank_wrap_name] + [
+                    w for w in strip_wraps if w[0] != blank_wrap_name
+                ]
+                for name, u0, u1, role in ordered_wraps:
+                    used_2a1 = (
+                        (r78_st.bytes_fetched - b78_s0)
+                        + (r54_st.bytes_fetched - b54_s0)
+                        + (mesh_78.bytes_fetched - m_s0)
+                    ) / (1024.0 * 1024.0)
+                    est_extra = _estimate_extra_chunks_mb(
+                        mesh_78,
+                        [
+                            (r78_st, strip_level_78, None),
+                            (r54_st, strip_level_54, lambda p: apply_affine_points(p, m78_to_dls)),
+                        ],
+                        strip_v_range[0],
+                        strip_v_range[1],
+                        u0,
+                        u1,
+                        v_stride=16,
+                    )
+                    if used_2a1 + est_extra > eff_2a1_cap and name != blank_wrap_name:
+                        strip_records.append(
+                            {
+                                "wrap": name,
+                                "role": role,
+                                "skipped_budget": True,
+                                "est_extra_mb": round(est_extra, 2),
+                            }
+                        )
+                        continue
+
+                    tile = evaluate_paired_tile(
+                        mesh_78,
+                        r78_st,
+                        r54_st,
+                        m78_to_dls,
+                        v0=strip_v_range[0],
+                        v1=strip_v_range[1],
+                        u0=u0,
+                        u1=u1,
+                        ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+                        tgt_voxel_um=DEFAULT_VOXEL_UM["54keV"],
+                        ref_level=strip_level_78,
+                        tgt_level=strip_level_54,
+                        ref_window=(w78_lo, w78_hi),
+                        tgt_window=(w54_lo, w54_hi),
+                        uv_spacing_um=uv_st_um,
+                        n_offsets_um=n_offs_st,
+                        ghost_offsets_um=ghost_offs,
+                        max_shift_um=70.0,
+                        null_offset_um=20.0,
+                        min_ncc=0.10,
+                        psf_match_to_um=psf_st_um,
+                        v_stride=2,
+                    )
+                    lock: NccLockResult = tile["lock"]
+                    if name == blank_wrap_name and lock.passed:
+                        strip_bg_fit = fit_papyrus_background(tile["mu_ref"], tile["mu_tgt"], tile["joint_valid"])
+                        alpha_st = float(strip_bg_fit["alpha"])
+                        beta_st = float(strip_bg_fit["beta"])
+
+                    if not lock.passed:
+                        strip_records.append(
+                            {
+                                "wrap": name,
+                                "role": role,
+                                "u_range": [u0, u1],
+                                "z78_range": tile["z78_range"],
+                                "ncc_lock": lock.to_dict(),
+                                "residual_computed": False,
+                            }
+                        )
+                        continue
+
+                    res = compute_dual_energy_residual(tile["mu_ref"], tile["mu_tgt"], alpha_st, beta_st)
+                    th, surf, _, v2d = compute_depth_tophat(res, tile["joint_valid"], n_offs_st)
+                    if name == blank_wrap_name:
+                        bs = compute_blank_fpr_stats(th, v2d)
+                        mu_st_b = float(bs["mean_blank"])
+                        sigma_st_b = max(float(bs["sigma_blank"]), 1e-6)
+                        p999_st_b = float(bs["p99_9_abs_z"])
+
+                    z_map = np.where(v2d, (th - mu_st_b) / sigma_st_b, 0.0).astype(np.float32)
+                    vals_z = z_map[v2d]
+                    abs_z = np.abs(vals_z)
+                    hi_mask, max_comp_px, max_comp_span_mm = _compute_component_stats(
+                        z_map, v2d, threshold_z=max(4.0, p999_st_b), uv_spacing_um=uv_st_um
+                    )
+                    ghost = evaluate_ghosting_exclusion(
+                        compute_dual_energy_residual(tile["ghost_data"]["mu_ref"], tile["ghost_data"]["mu_tgt"], alpha_st, beta_st),
+                        tile["ghost_data"]["valid"],
+                        tile["ghost_data"]["offsets_um"],
+                        candidate_mask_2d=hi_mask if hi_mask.sum() >= 8 else None,
+                    )
+                    if priv_path is not None:
+                        np.savez_compressed(
+                            priv_path / f"phase2_2a1_{name}.npz",
+                            z_map=z_map,
+                            tophat_R=th,
+                            surface_R=surf,
+                            valid_2d=v2d,
+                        )
+                        _save_private_heatmap_png(z_map, v2d, priv_path / f"phase2_2a1_{name}_zmap.png", -4.5, 4.5)
+
+                    strip_records.append(
+                        {
+                            "wrap": name,
+                            "role": role,
+                            "u_range": [u0, u1],
+                            "z78_range": tile["z78_range"],
+                            "slab_shape_nvu": tile["slab_shape_nvu"],
+                            "valid_pixels": int(v2d.sum()),
+                            "ncc_lock": lock.to_dict(),
+                            "residual_computed": True,
+                            "z_mean": round(float(vals_z.mean()), 4) if vals_z.size else 0.0,
+                            "z_std": round(float(vals_z.std()), 4) if vals_z.size else 0.0,
+                            "z_p99_9_abs": round(float(np.percentile(abs_z, 99.9)), 4) if vals_z.size else 0.0,
+                            "z_max_abs": round(float(abs_z.max()), 4) if vals_z.size else 0.0,
+                            "frac_ge_3sigma": round(float(np.mean(abs_z >= 3.0)), 6) if vals_z.size else 0.0,
+                            "frac_ge_4sigma": round(float(np.mean(abs_z >= 4.0)), 6) if vals_z.size else 0.0,
+                            "max_4sigma_component_px": max_comp_px,
+                            "max_4sigma_component_span_mm": round(max_comp_span_mm, 3),
+                            "ghosting_check": ghost,
+                            "exceeds_stopping_rule": bool(
+                                (max_comp_span_mm >= 15.0) and (not ghost.get("is_ghost_dominated", False))
+                            ),
+                        }
+                    )
+
+                b_2a1 = int(
+                    (r78_st.bytes_fetched - b78_s0)
+                    + (r54_st.bytes_fetched - b54_s0)
+                    + (mesh_78.bytes_fetched - m_s0)
+                )
+                c_2a1 = int((r78_st.chunks_fetched - c78_s0) + (r54_st.chunks_fetched - c54_s0))
+                stage_io["stage_2a1_agraphon_strip_54_78"] = {
+                    "bytes": b_2a1,
+                    "mb": round(b_2a1 / (1024.0 * 1024.0), 3),
+                    "chunks": c_2a1,
+                }
+                total_bytes += b_2a1
+                total_chunks += c_2a1
+
+            # --- Stage 2B-2 upper-extension 54 vs 78 keV paired check ---
+            if run_extended_height and _remaining_mb() > 10.0:
+                b78_u0, b54_u0, m_u0 = int(r78_st.bytes_fetched), int(r54_st.bytes_fetched), int(mesh_78.bytes_fetched)
+                c78_u0, c54_u0 = int(r78_st.chunks_fetched), int(r54_st.chunks_fetched)
+                est_u = _estimate_extra_chunks_mb(
+                    mesh_78,
+                    [
+                        (r78_st, strip_level_78, None),
+                        (r54_st, strip_level_54, lambda p: apply_affine_points(p, m78_to_dls)),
+                    ],
+                    upper_ext_vu[0],
+                    upper_ext_vu[1],
+                    upper_ext_vu[2],
+                    upper_ext_vu[3],
+                    v_stride=4,
+                )
+                if est_u <= min(float(stage_2b2_budget_mb), _remaining_mb()):
+                    tile_u = evaluate_paired_tile(
+                        mesh_78,
+                        r78_st,
+                        r54_st,
+                        m78_to_dls,
+                        v0=upper_ext_vu[0],
+                        v1=upper_ext_vu[1],
+                        u0=upper_ext_vu[2],
+                        u1=upper_ext_vu[3],
+                        ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+                        tgt_voxel_um=DEFAULT_VOXEL_UM["54keV"],
+                        ref_level=strip_level_78,
+                        tgt_level=strip_level_54,
+                        ref_window=(w78_lo, w78_hi),
+                        tgt_window=(w54_lo, w54_hi),
+                        uv_spacing_um=uv_st_um,
+                        n_offsets_um=n_offs_st,
+                        ghost_offsets_um=ghost_offs,
+                        max_shift_um=70.0,
+                        null_offset_um=20.0,
+                        min_ncc=0.10,
+                        psf_match_to_um=psf_st_um,
+                    )
+                    lock_u: NccLockResult = tile_u["lock"]
+                    if lock_u.passed:
+                        res_u = compute_dual_energy_residual(tile_u["mu_ref"], tile_u["mu_tgt"], alpha_st, beta_st)
+                        th_u, surf_u, _, v2d_u = compute_depth_tophat(res_u, tile_u["joint_valid"], n_offs_st)
+                        z_u = np.where(v2d_u, (th_u - mu_st_b) / sigma_st_b, 0.0).astype(np.float32)
+                        vz_u = z_u[v2d_u]
+                        abs_u = np.abs(vz_u)
+                        hi_u, px_u, span_u = _compute_component_stats(
+                            z_u, v2d_u, threshold_z=max(4.0, p999_st_b), uv_spacing_um=uv_st_um
+                        )
+                        ghost_u = evaluate_ghosting_exclusion(
+                            compute_dual_energy_residual(
+                                tile_u["ghost_data"]["mu_ref"], tile_u["ghost_data"]["mu_tgt"], alpha_st, beta_st
+                            ),
+                            tile_u["ghost_data"]["valid"],
+                            tile_u["ghost_data"]["offsets_um"],
+                            candidate_mask_2d=hi_u if hi_u.sum() >= 8 else None,
+                        )
+                        if priv_path is not None:
+                            _save_private_heatmap_png(z_u, v2d_u, priv_path / "phase2_2b2_upper_ext_r54_78_zmap.png", -4.5, 4.5)
+                        upper_dual = {
+                            "ncc_lock": lock_u.to_dict(),
+                            "valid_pixels": int(v2d_u.sum()),
+                            "z_p99_9_abs": round(float(np.percentile(abs_u, 99.9)), 4) if abs_u.size else 0.0,
+                            "z_max_abs": round(float(abs_u.max()), 4) if abs_u.size else 0.0,
+                            "frac_ge_3sigma": round(float(np.mean(abs_u >= 3.0)), 6) if abs_u.size else 0.0,
+                            "frac_ge_4sigma": round(float(np.mean(abs_u >= 4.0)), 6) if abs_u.size else 0.0,
+                            "max_4sigma_component_span_mm": round(span_u, 3),
+                            "ghosting_check": ghost_u,
+                            "exceeds_stopping_rule": bool(
+                                (span_u >= 15.0) and (not ghost_u.get("is_ghost_dominated", False))
+                            ),
+                        }
+                    else:
+                        upper_dual = {"ncc_lock": lock_u.to_dict(), "residual_computed": False}
+                    ext_height_private["upper_extension_54_78"] = {
+                        **upper_dual,
+                        "tile_bounds_vu": tile_u["tile_bounds_vu"],
+                        "z78_range": tile_u["z78_range"],
+                    }
+                    ext_height_public["upper_extension_54_78"] = upper_dual
+
+                b_ext_u = int(
+                    (r78_st.bytes_fetched - b78_u0)
+                    + (r54_st.bytes_fetched - b54_u0)
+                    + (mesh_78.bytes_fetched - m_u0)
+                )
+                c_ext_u = int((r78_st.chunks_fetched - c78_u0) + (r54_st.chunks_fetched - c54_u0))
+                total_bytes += b_ext_u
+                total_chunks += c_ext_u
+                stage_io["stage_2b2_extended_height"] = {
+                    "bytes": b_ext_l2 + b_ext_u,
+                    "mb": round((b_ext_l2 + b_ext_u) / (1024.0 * 1024.0), 3),
+                    "chunks": c_ext_l2 + c_ext_u,
+                }
+
+            # --- Stage 2B-1: Outer wraps w130-w135 (54 vs 78 keV + sheet integrity) ---
+            if run_outer_wraps and _remaining_mb() > 12.0:
+                b78_o0, b54_o0 = int(r78_st.bytes_fetched), int(r54_st.bytes_fetched)
+                c78_o0, c54_o0 = int(r78_st.chunks_fetched), int(r54_st.chunks_fetched)
+                eff_2b1_cap = min(float(stage_2b1_budget_mb), _remaining_mb() - 4.0)
+
+                with TifxyzPatchReader(mesh_outer_url) as mesh_outer:
+                    for wname, u0, u1 in outer_wraps:
+                        used_2b1 = (
+                            (r78_st.bytes_fetched - b78_o0)
+                            + (r54_st.bytes_fetched - b54_o0)
+                            + mesh_outer.bytes_fetched
+                        ) / (1024.0 * 1024.0)
+                        est_o = _estimate_extra_chunks_mb(
+                            mesh_outer,
+                            [
+                                (r54_st, strip_level_54, None),
+                                (r78_st, strip_level_78, lambda p: apply_affine_points(p, m_dls_to_78)),
+                            ],
+                            outer_v_range[0],
+                            outer_v_range[1],
+                            u0,
+                            u1,
+                            v_stride=4,
+                        )
+                        if used_2b1 + est_o > eff_2b1_cap:
+                            outer_records.append(
+                                {
+                                    "wrap": wname,
+                                    "skipped_budget": True,
+                                    "est_extra_mb": round(est_o, 2),
+                                }
+                            )
+                            continue
+
+                        # Mesh is in 54 keV DLS coordinates -> ref=54 keV, tgt=78 keV.
+                        tile_o = evaluate_paired_tile(
+                            mesh_outer,
+                            r54_st,
+                            r78_st,
+                            m_dls_to_78,
+                            v0=outer_v_range[0],
+                            v1=outer_v_range[1],
+                            u0=u0,
+                            u1=u1,
+                            ref_voxel_um=DEFAULT_VOXEL_UM["54keV"],
+                            tgt_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+                            ref_level=strip_level_54,
+                            tgt_level=strip_level_78,
+                            ref_window=(w54_lo, w54_hi),
+                            tgt_window=(w78_lo, w78_hi),
+                            uv_spacing_um=uv_st_um,
+                            n_offsets_um=n_offs_st,
+                            ghost_offsets_um=ghost_offs,
+                            max_shift_um=70.0,
+                            null_offset_um=20.0,
+                            min_ncc=0.10,
+                            psf_match_to_um=psf_st_um,
+                        )
+                        # Compute sheet integrity on the already-fetched 54 keV L1 chunks (0 extra CT bytes!).
+                        integ_o = evaluate_sheet_integrity_tile(
+                            mesh_outer,
+                            r54_st,
+                            v0=outer_v_range[0],
+                            v1=outer_v_range[1],
+                            u0=u0,
+                            u1=u1,
+                            level=strip_level_54,
+                            window_78=(w54_lo, w54_hi),
+                            uv_spacing_um=vox_54_st,
+                            voxel_um=DEFAULT_VOXEL_UM["54keV"],
+                        )
+                        lock_o: NccLockResult = tile_o["lock"]
+                        if not lock_o.passed:
+                            outer_records.append(
+                                {
+                                    "wrap": wname,
+                                    "u_range": [u0, u1],
+                                    "z_dls_range": tile_o["z78_range"],
+                                    "ncc_lock": lock_o.to_dict(),
+                                    "sheet_integrity": integ_o,
+                                    "residual_computed": False,
+                                }
+                            )
+                            continue
+
+                        # Keep exact R_{54/78} = mu_54 - (alpha * mu_78 + beta) sign convention!
+                        res_o = compute_dual_energy_residual(tile_o["mu_tgt"], tile_o["mu_ref"], alpha_st, beta_st)
+                        th_o, surf_o, _, v2d_o = compute_depth_tophat(res_o, tile_o["joint_valid"], n_offs_st)
+                        z_o = np.where(v2d_o, (th_o - mu_st_b) / sigma_st_b, 0.0).astype(np.float32)
+                        vz_o = z_o[v2d_o]
+                        abs_o = np.abs(vz_o)
+                        hi_o, px_o, span_o = _compute_component_stats(
+                            z_o, v2d_o, threshold_z=max(4.0, p999_st_b), uv_spacing_um=uv_st_um
+                        )
+                        ghost_o = evaluate_ghosting_exclusion(
+                            compute_dual_energy_residual(
+                                tile_o["ghost_data"]["mu_tgt"], tile_o["ghost_data"]["mu_ref"], alpha_st, beta_st
+                            ),
+                            tile_o["ghost_data"]["valid"],
+                            tile_o["ghost_data"]["offsets_um"],
+                            candidate_mask_2d=hi_o if hi_o.sum() >= 8 else None,
+                        )
+                        if priv_path is not None:
+                            np.savez_compressed(
+                                priv_path / f"phase2_2b1_outer_{wname}.npz",
+                                z_map=z_o,
+                                tophat_R=th_o,
+                                surface_R=surf_o,
+                                valid_2d=v2d_o,
+                            )
+                            _save_private_heatmap_png(z_o, v2d_o, priv_path / f"phase2_2b1_outer_{wname}_zmap.png", -4.5, 4.5)
+
+                        outer_records.append(
+                            {
+                                "wrap": wname,
+                                "u_range": [u0, u1],
+                                "z_dls_range": tile_o["z78_range"],
+                                "slab_shape_nvu": tile_o["slab_shape_nvu"],
+                                "valid_pixels": int(v2d_o.sum()),
+                                "ncc_lock": lock_o.to_dict(),
+                                "sheet_integrity": integ_o,
+                                "residual_computed": True,
+                                "z_mean": round(float(vz_o.mean()), 4) if vz_o.size else 0.0,
+                                "z_std": round(float(vz_o.std()), 4) if vz_o.size else 0.0,
+                                "z_p99_9_abs": round(float(np.percentile(abs_o, 99.9)), 4) if abs_o.size else 0.0,
+                                "z_max_abs": round(float(abs_o.max()), 4) if abs_o.size else 0.0,
+                                "frac_ge_3sigma": round(float(np.mean(abs_o >= 3.0)), 6) if abs_o.size else 0.0,
+                                "frac_ge_4sigma": round(float(np.mean(abs_o >= 4.0)), 6) if abs_o.size else 0.0,
+                                "max_4sigma_component_px": px_o,
+                                "max_4sigma_component_span_mm": round(span_o, 3),
+                                "ghosting_check": ghost_o,
+                                "exceeds_stopping_rule": bool(
+                                    (span_o >= 15.0) and (not ghost_o.get("is_ghost_dominated", False))
+                                ),
+                            }
+                        )
+
+                    b_2b1 = int(
+                        (r78_st.bytes_fetched - b78_o0)
+                        + (r54_st.bytes_fetched - b54_o0)
+                        + mesh_outer.bytes_fetched
+                    )
+                    c_2b1 = int((r78_st.chunks_fetched - c78_o0) + (r54_st.chunks_fetched - c54_o0))
+                    stage_io["stage_2b1_outer_wraps_w130_w135"] = {
+                        "bytes": b_2b1,
+                        "mb": round(b_2b1 / (1024.0 * 1024.0), 3),
+                        "chunks": c_2b1,
+                    }
+                    total_bytes += b_2b1
+                    total_chunks += c_2b1
+
+        # ------------------------------------------------------------------
+        # Stage 2B-3: 1.129 um native L0 crust preflight (Control A & B)
+        # ------------------------------------------------------------------
+        crust_section: dict[str, Any] = {"executed": False}
+        w1129_lo, w1129_hi = DEFAULT_WINDOW_F32["1129_78keV"]
+        if run_crust_1129 and _remaining_mb() > 14.0:
+            w1129_lo, w1129_hi, _ = load_volume_window_f32(
+                vol_1129_url, fallback=DEFAULT_WINDOW_F32["1129_78keV"], session=sess
+            )
+            t_bundle = load_transform_bundle(transform_1129_url, session=sess)
+            m_78_to_1129 = np.linalg.inv(t_bundle["matrix"])
+            tps_inv = t_bundle.get("inverse_deformation")
+
+            vox_78_cr = DEFAULT_VOXEL_UM["78keV"] * (2 ** int(crust_level_78))
+            vox_1129_cr = DEFAULT_VOXEL_UM["1129_78keV"] * (2 ** int(crust_level_1129))
+            psf_cr_um = max(vox_78_cr, vox_1129_cr)
+            uv_cr_um = max(2.4, vox_1129_cr * 2.0)
+            n_offs_cr = np.arange(-8, 9, dtype=np.float64) * 3.0  # -24..+24 um (3 um step)
+
+            with (
+                RemoteZarrV2(vol_78_url, level=str(crust_level_78), cache_mb=cache_mb, workers=workers) as r78_cr,
+                RemoteZarrV2(vol_1129_url, level=str(crust_level_1129), cache_mb=cache_mb, workers=workers) as r1129_cr,
+            ):
+                m_c0 = int(mesh_78.bytes_fetched)
+                est_cr = _estimate_extra_chunks_mb(
+                    mesh_78,
+                    [
+                        (r78_cr, crust_level_78, None),
+                        (
+                            r1129_cr,
+                            crust_level_1129,
+                            lambda p: map_points_affine_and_tps(p, m_78_to_1129, tps_on_input=tps_inv),
+                        ),
+                    ],
+                    crust_tile_a_vu[0],
+                    crust_tile_a_vu[1],
+                    crust_tile_a_vu[2],
+                    crust_tile_a_vu[3],
+                    v_stride=1,
+                    pad_vx_lvl=6,
+                ) + _estimate_extra_chunks_mb(
+                    mesh_78,
+                    [
+                        (r78_cr, crust_level_78, None),
+                        (
+                            r1129_cr,
+                            crust_level_1129,
+                            lambda p: map_points_affine_and_tps(p, m_78_to_1129, tps_on_input=tps_inv),
+                        ),
+                    ],
+                    crust_tile_b_vu[0],
+                    crust_tile_b_vu[1],
+                    crust_tile_b_vu[2],
+                    crust_tile_b_vu[3],
+                    v_stride=1,
+                    pad_vx_lvl=6,
+                )
+                eff_2b3_cap = min(float(stage_2b3_budget_mb), _remaining_mb())
+                if est_cr <= eff_2b3_cap + 14.0 and _remaining_mb() >= 18.0:
+                    cr_b = evaluate_paired_tile(
+                        mesh_78,
+                        r78_cr,
+                        r1129_cr,
+                        m_78_to_1129,
+                        v0=crust_tile_b_vu[0],
+                        v1=crust_tile_b_vu[1],
+                        u0=crust_tile_b_vu[2],
+                        u1=crust_tile_b_vu[3],
+                        ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+                        tgt_voxel_um=DEFAULT_VOXEL_UM["1129_78keV"],
+                        ref_level=crust_level_78,
+                        tgt_level=crust_level_1129,
+                        ref_window=(w78_lo, w78_hi),
+                        tgt_window=(w1129_lo, w1129_hi),
+                        uv_spacing_um=uv_cr_um,
+                        n_offsets_um=n_offs_cr,
+                        max_shift_um=25.0,
+                        null_offset_um=20.0,
+                        min_ncc=0.10,
+                        psf_match_to_um=psf_cr_um,
+                        tps_on_ref=tps_inv,
+                    )
+                    cr_a = evaluate_paired_tile(
+                        mesh_78,
+                        r78_cr,
+                        r1129_cr,
+                        m_78_to_1129,
+                        v0=crust_tile_a_vu[0],
+                        v1=crust_tile_a_vu[1],
+                        u0=crust_tile_a_vu[2],
+                        u1=crust_tile_a_vu[3],
+                        ref_voxel_um=DEFAULT_VOXEL_UM["78keV"],
+                        tgt_voxel_um=DEFAULT_VOXEL_UM["1129_78keV"],
+                        ref_level=crust_level_78,
+                        tgt_level=crust_level_1129,
+                        ref_window=(w78_lo, w78_hi),
+                        tgt_window=(w1129_lo, w1129_hi),
+                        uv_spacing_um=uv_cr_um,
+                        n_offsets_um=n_offs_cr,
+                        max_shift_um=25.0,
+                        null_offset_um=20.0,
+                        min_ncc=0.10,
+                        psf_match_to_um=psf_cr_um,
+                        tps_on_ref=tps_inv,
+                    )
+                    cm_b, th_cb, surf_cb, v_cb = compute_crust_metrics(
+                        cr_b["mu_tgt_native"], cr_b["joint_valid"], n_offs_cr
+                    )
+                    cm_a, th_ca, surf_ca, v_ca = compute_crust_metrics(
+                        cr_a["mu_tgt_native"], cr_a["joint_valid"], n_offs_cr
+                    )
+                    sep_crust_th = compute_control_separation(th_ca[v_ca], th_cb[v_cb])
+                    sep_crust_surf = compute_control_separation(surf_ca[v_ca], surf_cb[v_cb])
+                    blank_cr = compute_blank_fpr_stats(th_cb, v_cb)
+
+                    if priv_path is not None:
+                        sig_c = max(float(blank_cr["sigma_blank"]), 1e-6)
+                        mu_c = float(blank_cr["mean_blank"])
+                        _save_private_heatmap_png((th_ca - mu_c) / sig_c, v_ca, priv_path / "phase2_2b3_1129_ctrl_a_crust_zmap.png", -4.0, 4.0)
+                        _save_private_heatmap_png((th_cb - mu_c) / sig_c, v_cb, priv_path / "phase2_2b3_1129_ctrl_b_crust_zmap.png", -4.0, 4.0)
+
+                    b_2b3 = int(r78_cr.bytes_fetched + r1129_cr.bytes_fetched + (mesh_78.bytes_fetched - m_c0))
+                    c_2b3 = int(r78_cr.chunks_fetched + r1129_cr.chunks_fetched)
+                    stage_io["stage_2b3_crust_1129"] = {
+                        "bytes": b_2b3,
+                        "mb": round(b_2b3 / (1024.0 * 1024.0), 3),
+                        "chunks": c_2b3,
+                        "chunks_1129": int(r1129_cr.chunks_fetched),
+                        "chunks_78": int(r78_cr.chunks_fetched),
+                    }
+                    total_bytes += b_2b3
+                    total_chunks += c_2b3
+
+                    crust_section = {
+                        "executed": True,
+                        "native_voxel_um": round(vox_1129_cr, 3),
+                        "ref_78_voxel_um": round(vox_78_cr, 3),
+                        "psf_matched_fwhm_um": round(psf_cr_um, 3),
+                        "uv_spacing_um": round(uv_cr_um, 3),
+                        "tps_deformation_applied": bool(tps_inv is not None),
+                        "ncc_passed_both_controls": bool(cr_a["lock"].passed and cr_b["lock"].passed),
+                        "control_a_vs_b_crust": {
+                            "tophat_1129_native": sep_crust_th,
+                            "surface_1129_native": sep_crust_surf,
+                        },
+                        "blank_crust_noise_stats": blank_cr,
+                        "control_a_last_legible_column": {
+                            "tile_bounds_vu": cr_a["tile_bounds_vu"],
+                            "z78_range": cr_a["z78_range"],
+                            "ncc_lock": cr_a["lock"].to_dict(),
+                            "crust_metrics": cm_a,
+                        },
+                        "control_b_blank_agraphon": {
+                            "tile_bounds_vu": cr_b["tile_bounds_vu"],
+                            "z78_range": cr_b["z78_range"],
+                            "ncc_lock": cr_b["lock"].to_dict(),
+                            "crust_metrics": cm_b,
+                        },
+                    }
+                else:
+                    crust_section = {
+                        "executed": False,
+                        "skipped_reason": "budget_exceeded",
+                        "est_mb": round(est_cr, 2),
+                        "remaining_mb": round(_remaining_mb(), 2),
+                    }
+
+    outer_integ_vals = [r["sheet_integrity"] for r in outer_records if "sheet_integrity" in r]
+    outer_public_summary: dict[str, Any] = {
+        **_summarize_unread_records(outer_records),
+        "sheet_integrity_aggregate": {
+            "tiles_checked": len(outer_integ_vals),
+            "valid_surface_fraction_min": round(
+                min((float(x["valid_surface_fraction"]) for x in outer_integ_vals), default=0.0), 4
+            ),
+            "sheet_parallel_fraction_mean": round(
+                float(np.mean([float(x["sheet_parallel_fraction"]) for x in outer_integ_vals]))
+                if outer_integ_vals
+                else 0.0,
+                4,
+            ),
+            "mean_zero_shift_r_median": round(
+                float(np.median([float(x["mean_zero_shift_r"]) for x in outer_integ_vals]))
+                if outer_integ_vals
+                else 0.0,
+                4,
+            ),
+        },
+    }
+
+    strip_public_summary: dict[str, Any] = {
+        "zarr_levels": {"vol_78": int(strip_level_78), "vol_54": int(strip_level_54)},
+        "voxel_um": {"vol_78": round(vox_78_st, 3), "vol_54": round(vox_54_st, 3), "psf_matched": round(psf_st_um, 3)},
+        "non_overlapping_with_137keV_band": True,
+        "background_fit_control_b": (
+            {k: (round(float(v), 6) if isinstance(v, float) else int(v)) for k, v in strip_bg_fit.items()}
+            if strip_bg_fit is not None
+            else None
+        ),
+        "blank_sigma": round(sigma_st_b, 6),
+        "blank_p99_9_abs_z": round(p999_st_b, 4),
+        **_summarize_unread_records(strip_records),
+    }
+
+    public_result: dict[str, Any] = {
+        "schema_version": "2.0.0",
+        "pipeline": "gemini_lane/paris4_dual_energy.py",
+        "phase": "phase2_54_78_outer_wraps_extended_1129",
+        "mode": "cpu_only_streaming",
+        "sources": {
+            "vol_78": _sanitize_source_label(vol_78_url),
+            "vol_54": _sanitize_source_label(vol_54_url),
+            "vol_1129": _sanitize_source_label(vol_1129_url),
+            "transform_78_to_dls": _sanitize_source_label(transform_78_url),
+            "transform_1129_to_78_r2": _sanitize_source_label(transform_1129_url),
+            "mesh_78": _sanitize_source_label(mesh_78_url),
+            "mesh_outer_dls": _sanitize_source_label(mesh_outer_url),
+        },
+        "radiometry": {
+            "window_f32_78keV": [w78_lo, w78_hi],
+            "window_f32_54keV": [w54_lo, w54_hi],
+            "window_f32_1129_78keV": [w1129_lo, w1129_hi],
+            "preflight_levels": {"vol_78": int(preflight_level_78), "vol_54": int(preflight_level_54)},
+            "preflight_psf_matched_um": round(psf_pf_um, 3),
+        },
+        "preflight_54_78_passed": pf_passed,
+        "ncc_peak_54_78": round(float(min(lock_a.ncc_peak, lock_b.ncc_peak)), 6),
+        "ncc_6_nulls_54_78": {
+            "tile_a": {k: round(float(v), 6) for k, v in lock_a.ncc_6_nulls.items()},
+            "tile_b": {k: round(float(v), 6) for k, v in lock_b.ncc_6_nulls.items()},
+        },
+        "sigma_blank_54_78": blank_pf["sigma_blank"],
+        "fpr_3sigma_54_78": blank_pf["fpr_3sigma"],
+        "fpr_4sigma_54_78": blank_pf["fpr_4sigma"],
+        "control_a_vs_b_54_78": {
+            "tophat_R_54_78": sep_tophat_r54,
+            "surface_R_54_78": sep_surf_r54,
+            "tophat_mu_54": sep_tophat_54,
+        },
+        "papyrus_background_fit_control_b_54_78": {
+            k: (round(float(v), 6) if isinstance(v, float) else int(v)) for k, v in bg_pf.items()
+        },
+        "blank_noise_stats_54_78": blank_pf,
+        "controls_54_78": {
+            "tile_a_last_legible_column": {
+                "tile_bounds_vu": tile_a["tile_bounds_vu"],
+                "z78_range": tile_a["z78_range"],
+                "slab_shape_nvu": tile_a["slab_shape_nvu"],
+                "joint_valid_fraction": tile_a["joint_valid_fraction"],
+                "psf_matched_fwhm_um": tile_a["psf_matched_fwhm_um"],
+                "ncc_lock": lock_a.to_dict(),
+                "ghosting_check": ghost_a,
+            },
+            "tile_b_blank_agraphon": {
+                "tile_bounds_vu": tile_b["tile_bounds_vu"],
+                "z78_range": tile_b["z78_range"],
+                "slab_shape_nvu": tile_b["slab_shape_nvu"],
+                "joint_valid_fraction": tile_b["joint_valid_fraction"],
+                "psf_matched_fwhm_um": tile_b["psf_matched_fwhm_um"],
+                "ncc_lock": lock_b.to_dict(),
+                "ghosting_check": ghost_b,
+            },
+        },
+        "agraphon_strip_54_78": strip_public_summary,
+        "outer_wraps_w130_w135": outer_public_summary,
+        "extended_height_20260701": ext_height_public,
+        "native_crust_1129_preflight": crust_section,
+        "bytes_fetched": int(total_bytes),
+        "chunks_fetched": int(total_chunks),
+        "total_mib": round(total_bytes / (1024.0 * 1024.0), 3),
+        "total_mb_decimal": round(total_bytes / 1_000_000.0, 3),
+        "within_250mb_budget": bool(total_bytes < 250_000_000),
+        "cache_mb": float(cache_mb),
+        "streaming_breakdown": stage_io,
+        "any_stopping_rule_trigger": bool(
+            strip_public_summary["any_stopping_rule_trigger"]
+            or outer_public_summary["any_stopping_rule_trigger"]
+            or bool(ext_height_public.get("upper_extension_54_78", {}).get("exceeds_stopping_rule", False))
+        ),
+    }
+
+    assert_no_local_paths(public_result)
+    assert_no_unread_coordinates(public_result)
+    if out_json is not None:
+        out_p = Path(out_json)
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        out_p.write_text(json.dumps(public_result, indent=2) + "\n", encoding="utf-8")
+
+    if priv_path is not None:
+        private_summary = {
+            "schema_version": "2.0.0-private",
+            "strip_v_range": list(strip_v_range),
+            "outer_v_range": list(outer_v_range),
+            "strip_54_78_wraps": strip_records,
+            "outer_wraps_w130_w135": outer_records,
+            "extended_height_20260701": ext_height_private,
+            "native_crust_1129_preflight": crust_section,
+            "streaming_breakdown": stage_io,
+            "total_mib": public_result["total_mib"],
+            "total_mb_decimal": public_result["total_mb_decimal"],
+        }
+        (priv_path / "phase2_private_summary.json").write_text(
+            json.dumps(private_summary, indent=2) + "\n", encoding="utf-8"
+        )
+
+    if sess is not None:
+        sess.close()
+    return public_result
+
+
+# ---------------------------------------------------------------------------
+# 9. CLI entrypoint
 # ---------------------------------------------------------------------------
 
 def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(
-        description="CPU-only (<180 MB) PHerc. Paris 4 dual-energy CT preflight and agraphon strip scanner."
+        description="CPU-only (<250 MB) PHerc. Paris 4 dual-energy CT preflight, agraphon strip, outer-wrap, and 1.129 um crust scanner."
     )
     ap.add_argument("--vol-78", default=DEFAULT_URLS["vol_78"], help="78 keV OME-Zarr v2 URL or local dir")
     ap.add_argument("--vol-137", default=DEFAULT_URLS["vol_137"], help="137 keV OME-Zarr v2 URL or local dir")
+    ap.add_argument("--vol-54", default=DEFAULT_URLS["vol_54"], help="54 keV DLS OME-Zarr v2 URL or local dir")
+    ap.add_argument("--vol-1129", default=DEFAULT_URLS["vol_1129"], help="1.129 um 78 keV OME-Zarr v2 URL or local dir")
     ap.add_argument("--transform-78", default=DEFAULT_URLS["transform_78_to_dls"], help="78->DLS transform.json")
     ap.add_argument("--transform-137", default=DEFAULT_URLS["transform_137_to_dls"], help="137->DLS transform.json")
+    ap.add_argument("--transform-1129", default=DEFAULT_URLS["transform_1129_to_78_r2"], help="1.129->78 r2 transform.json")
     ap.add_argument("--mesh-78", default=DEFAULT_URLS["mesh_78"], help="w010-027 tifxyz URL or local dir")
+    ap.add_argument("--mesh-outer", default=DEFAULT_URLS["mesh_outer_dls"], help="20260926 outer-wrap DLS tifxyz URL or local dir")
     ap.add_argument("--level", type=int, default=2, help="Zarr pyramid level for Step 0 preflight (default: 2 = 9.6 um)")
     ap.add_argument("--step1-level", type=int, default=3, help="Zarr pyramid level for Step 1 strip (default: 3 = 19.2 um)")
     ap.add_argument("--cache-mb", type=float, default=256.0, help="In-memory LRU cache cap in MiB (default: 256)")
     ap.add_argument("--workers", type=int, default=8, help="Concurrent chunk-fetch workers (default: 8)")
-    ap.add_argument("--max-total-mb", type=float, default=178.0, help="Hard network streaming cap in MiB (default: 178)")
-    ap.add_argument("--out-json", required=True, help="Output path for public sanitized Step 0 preflight JSON")
+    ap.add_argument("--max-total-mb", type=float, default=225.0, help="Hard network streaming cap in MiB (default: 225)")
+    ap.add_argument("--out-json", required=True, help="Output path for public sanitized JSON receipt")
     ap.add_argument(
         "--private-out-dir",
         default=None,
-        help="Private output directory OUTSIDE the git repo for maps/PNGs/Step 1 results",
+        help="Private output directory OUTSIDE the git repo for maps/PNGs/private summaries",
     )
-    ap.add_argument("--run-step1", action="store_true", help="Execute Step 1 strip if Step 0 NCC lock passes")
+    ap.add_argument("--run-step1", action="store_true", help="Execute Phase 1 Step 1 strip if Step 0 NCC lock passes")
+    ap.add_argument("--phase2", action="store_true", help="Execute Phase 2 (54 vs 78 keV, outer wraps w130-w135, extended height, 1.129 um crust)")
     return ap
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
+    if args.phase2:
+        res = run_phase2_scans(
+            vol_78_url=args.vol_78,
+            vol_54_url=args.vol_54,
+            vol_1129_url=args.vol_1129,
+            transform_78_url=args.transform_78,
+            transform_1129_url=args.transform_1129,
+            mesh_78_url=args.mesh_78,
+            mesh_outer_url=args.mesh_outer,
+            cache_mb=args.cache_mb,
+            workers=args.workers,
+            max_total_mb=args.max_total_mb,
+            out_json=args.out_json,
+            private_out_dir=args.private_out_dir,
+        )
+        print(
+            json.dumps(
+                {
+                    "preflight_54_78_passed": res["preflight_54_78_passed"],
+                    "ncc_peak_54_78": res["ncc_peak_54_78"],
+                    "sigma_blank_54_78": res["sigma_blank_54_78"],
+                    "agraphon_wraps_locked": res["agraphon_strip_54_78"]["tiles_ncc_locked"],
+                    "outer_wraps_locked": res["outer_wraps_w130_w135"]["tiles_ncc_locked"],
+                    "crust_1129_executed": res["native_crust_1129_preflight"]["executed"],
+                    "any_stopping_rule_trigger": res["any_stopping_rule_trigger"],
+                    "total_mib": res["total_mib"],
+                    "total_mb_decimal": res["total_mb_decimal"],
+                },
+                indent=2,
+            )
+        )
+        return 0
+
     res = run_step0_preflight(
         vol_78_url=args.vol_78,
         vol_137_url=args.vol_137,
@@ -2016,7 +3386,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         private_out_dir=args.private_out_dir,
         run_step1=bool(args.run_step1),
         step1_level=args.step1_level,
-        max_total_mb=args.max_total_mb,
+        max_total_mb=min(args.max_total_mb, 178.0),
     )
     print(
         json.dumps(

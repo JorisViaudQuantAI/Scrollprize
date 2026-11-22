@@ -121,6 +121,29 @@ class TestGeminiLaneEvidence(unittest.TestCase):
         for marker in ("PHerc1203", "auto_grown_20251005231446965", "46.66", "numcodecs", "blosc"):
             self.assertIn(marker, raw)
 
+    def test_paris4_phase2_dual_energy_evidence(self) -> None:
+        path = EVIDENCE / "paris4_phase2_dual_energy.json"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        data = json.loads(raw)
+
+        self.assertEqual(data["mode"], "cpu_only_streaming")
+        self.assertTrue(data["preflight_54_78_passed"])
+        self.assertTrue(data["within_250mb_budget"])
+        self.assertLess(data["bytes_fetched"], 250_000_000)
+        self.assertLessEqual(data["cache_mb"], 256.0)
+        self.assertGreaterEqual(data["agraphon_strip_54_78"]["tiles_ncc_locked"], 10)
+        self.assertGreaterEqual(data["outer_wraps_w130_w135"]["tiles_ncc_locked"], 1)
+        self.assertTrue(data["extended_height_20260701"]["executed"])
+        self.assertTrue(data["native_crust_1129_preflight"]["executed"])
+        self.assertTrue(data["native_crust_1129_preflight"]["ncc_passed_both_controls"])
+        # Ensure zero unread candidate coordinates exposed in unread sections.
+        for sec in ("agraphon_strip_54_78", "outer_wraps_w130_w135", "extended_height_20260701"):
+            sec_text = json.dumps(data[sec])
+            for forbidden_k in ('"u_range"', '"v_range"', '"tile_bounds_vu"', '"z78_range"', '"wraps"'):
+                self.assertNotIn(forbidden_k, sec_text)
+
 
 if __name__ == "__main__":
     unittest.main()

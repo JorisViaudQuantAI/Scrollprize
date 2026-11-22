@@ -421,6 +421,273 @@ class TestParis4DualEnergy(unittest.TestCase):
             np.testing.assert_allclose(v_min, v_ref, atol=1e-4)
             self.assertEqual(chunks_min, 1, f"Expected exactly 1 chunk fetched, got {chunks_min}")
 
+    def test_g_tps_deformation_and_transform_bundle(self) -> None:
+        """(g) Verify 3D thin-plate-spline (TPS) transform bundle loading, batching, and mapping."""
+        aff = np.array(
+            [
+                [0.5, 0.0, 0.0, 10.0],
+                [0.0, 0.5, 0.0, 20.0],
+                [0.0, 0.0, 0.5, 30.0],
+            ],
+            dtype=np.float64,
+        )
+        tps_inv = {
+            "centre": [100.0, 200.0, 300.0],
+            "scale": 50.0,
+            "control_points": [[100.0, 200.0, 300.0], [150.0, 200.0, 300.0]],
+            "weights": [[1.0, -0.5, 0.25], [-1.0, 0.5, -0.25]],
+            "affine": [[0.5, 0.0, -0.5], [0.2, 0.0, 0.0], [0.0, 0.3, 0.0], [0.0, 0.0, 0.4]],
+        }
+        payload = {
+            "schema_version": "1.3.0",
+            "transformation_matrix": aff.tolist(),
+            "deformation": {"model": "thin-plate-spline", "kernel": "-r", "inverse": tps_inv},
+        }
+        with tempfile.TemporaryDirectory() as td:
+            tpath = Path(td) / "r2_transform.json"
+            tpath.write_text(json.dumps(payload), encoding="utf-8")
+            bundle = p4.load_transform_bundle(tpath)
+
+        self.assertEqual(bundle["matrix"].shape, (4, 4))
+        self.assertIsNotNone(bundle["inverse_deformation"])
+        self.assertEqual(bundle["inverse_deformation"]["kernel"], "-r")
+
+        pts = np.array([[100.0, 200.0, 300.0], [125.0, 210.0, 290.0], [150.0, 200.0, 300.0]], dtype=np.float64)
+        # Verify exact analytic value at control point 0 (x_norm = [0, 0, 0], r = [0, 1]).
+        disp_single = p4.eval_tps_displacement(pts, bundle["inverse_deformation"], batch_size=1)
+        disp_full = p4.eval_tps_displacement(pts, bundle["inverse_deformation"], batch_size=1024)
+        np.testing.assert_allclose(disp_single, disp_full, atol=1e-12)
+        expected_p0 = np.array([1.0 + 0.5, -0.5 + 0.0, 0.25 - 0.5], dtype=np.float64)
+        np.testing.assert_allclose(disp_full[0], expected_p0, atol=1e-12)
+
+        mapped = p4.map_points_affine_and_tps(pts, bundle["matrix"], tps_on_input=bundle["inverse_deformation"])
+        expected_m0 = p4.apply_affine_points(pts[:1], bundle["matrix"])[0] + expected_p0
+        np.testing.assert_allclose(mapped[0], expected_m0, atol=1e-12)
+
+    def test_h_symmetric_psf_matching_in_evaluate_paired_tile(self) -> None:
+        """(h) Verify symmetric PSF matching blurs finer target (e.g. 54 keV L1 vs 78 keV L3) and keeps native."""
+        rng = np.random.default_rng(11)
+        u8_78, u8_54, w78, w54, _, _, _ = _build_synthetic_dual_energy_pair(
+            shape=(44, 64, 64), shift_zyx=(1, -1, 1), ink_delta_mu=0.0, seed=11
+        )
+        # Add high-frequency noise strictly to target to verify symmetric PSF smoothing acts on target.
+        u8_54_noisy = np.clip(u8_54.astype(np.int32) + rng.integers(-12, 13, size=u8_54.shape), 1, 255).astype(np.uint8)
+        yy, xx = np.meshgrid(np.arange(8, 56, dtype=np.float32), np.arange(8, 56, dtype=np.float32), indexing="ij")
+        zz = np.full_like(xx, 22.0)
+
+        with tempfile.TemporaryDirectory() as td:
+            td_p = Path(td)
+            r78_dir = _write_synthetic_zarr_v2(td_p / "v78.zarr", u8_78, f32_min=w78[0], f32_max=w78[1])
+            r54_dir = _write_synthetic_zarr_v2(td_p / "v54.zarr", u8_54_noisy, f32_min=w54[0], f32_max=w54[1])
+            mesh_dir = td_p / "mesh.tifxyz"
+            ssr.write_tifxyz(mesh_dir, xx, yy, zz, meta={"scale": [1.0, 1.0]})
+
+            n_offs = np.arange(-6, 7, dtype=np.float64) * 8.0
+            with (
+                p4.TifxyzPatchReader(mesh_dir) as mr,
+                ssr.RemoteZarrV2(r78_dir, level="0", cache_mb=16) as z78,
+                ssr.RemoteZarrV2(r54_dir, level="0", cache_mb=16) as z54,
+            ):
+                # ref voxel = 9.6 um (coarser), tgt voxel = 5.0 um (finer) -> tgt must be PSF-matched to 9.6 um!
+                tile = p4.evaluate_paired_tile(
+                    mr,
+                    z78,
+                    z54,
+                    np.eye(4, dtype=np.float64),
+                    v0=4,
+                    v1=44,
+                    u0=4,
+                    u1=44,
+                    ref_voxel_um=9.6,
+                    tgt_voxel_um=5.0,
+                    ref_level=0,
+                    tgt_level=0,
+                    ref_window=w78,
+                    tgt_window=w54,
+                    uv_spacing_um=9.6,
+                    n_offsets_um=n_offs,
+                    max_shift_um=30.0,
+                    null_offset_um=20.0,
+                    psf_match_to_um=9.6,
+                )
+        self.assertAlmostEqual(float(tile["psf_matched_fwhm_um"]), 9.6, places=3)
+        jv = tile["joint_valid"]
+        self.assertLess(float(tile["mu_tgt"][jv].std()), float(tile["mu_tgt_native"][jv].std()))
+
+    def test_i_crust_metrics_and_unread_coordinate_privacy_guard(self) -> None:
+        """(i) Verify 1.129 um crust metrics detect surface crust and unread-coordinate guard blocks leaks."""
+        n_offs = np.arange(-10, 11, dtype=np.float64) * 3.0  # -30..+30 um
+        rng = np.random.default_rng(19)
+        blank = 0.05 + rng.normal(0.0, 0.002, size=(len(n_offs), 32, 32)).astype(np.float32)
+        crust = blank.copy()
+        # Add thin surface crust at |n| <= 3 um with high-frequency spatial texture.
+        surf_idx = np.abs(n_offs) <= 3.5
+        checker = ((np.arange(32)[:, None] + np.arange(32)[None, :]) % 2).astype(np.float32)
+        crust[surf_idx] += 0.025 + 0.015 * checker[None, :, :]
+        valid = np.ones_like(blank, dtype=bool)
+
+        m_b, th_b, _, v_b = p4.compute_crust_metrics(blank, valid, n_offs)
+        m_a, th_a, _, v_a = p4.compute_crust_metrics(crust, valid, n_offs)
+        sep = p4.compute_control_separation(th_a[v_a], th_b[v_b])
+        self.assertGreater(float(m_a["tophat_mean"]), float(m_b["tophat_mean"]) + 0.02)
+        self.assertGreater(float(m_a["surface_hf_roughness_rms"]), float(m_b["surface_hf_roughness_rms"]) * 2.0)
+        self.assertGreater(float(sep["roc_auc"]), 0.99)
+
+        # Unread coordinate privacy guard: aggregate counts pass, coordinate keys fail.
+        p4.assert_no_unread_coordinates(
+            {
+                "controls_54_78": {"tile_a": {"tile_bounds_vu": [1, 2, 3, 4]}},
+                "agraphon_strip_54_78": {"tiles_evaluated": 10, "any_stopping_rule_trigger": False},
+                "outer_wraps_w130_w135": {"tiles_evaluated": 6, "ncc_peak_min": 0.85},
+            }
+        )
+        for bad_key in ("u_range", "tile_bounds_vu", "z78_range", "wraps"):
+            with self.assertRaises(ValueError):
+                p4.assert_no_unread_coordinates({"agraphon_strip_54_78": {bad_key: [1, 2]}})
+            with self.assertRaises(ValueError):
+                p4.assert_no_unread_coordinates({"outer_wraps_w130_w135": {bad_key: [1, 2]}})
+
+    def test_j_phase2_end_to_end_offline_and_budget_caps(self) -> None:
+        """(j) Verify full Phase 2 pipeline offline (54/78, outer wraps, extended height, 1.129 crust) + guards."""
+        with self.assertRaises(ValueError):
+            p4.run_phase2_scans(cache_mb=300.0)
+        with self.assertRaises(ValueError):
+            p4.run_phase2_scans(max_total_mb=245.0)
+
+        # Build synthetic 78 keV (level 2 = 9.6 um) and 54 keV (level 0 = 7.91 um) sharing physical space via m78_to_dls.
+        u8_78, u8_54, w78, w54, _, _, _ = _build_synthetic_dual_energy_pair(
+            shape=(56, 72, 72), shift_zyx=(2, -1, 2), ink_delta_mu=0.025, seed=29
+        )
+        # Map 78 keV L0 (2.4 um) -> 54 keV L0 (7.91 um): factor = 2.4 / 7.91 = 0.303413...
+        # In our synthetic test, put u8_78 at level "2" (scale=4 -> 9.6 um) and u8_54 at level "0" (7.91 um)
+        # so level-2 indices [0..56) correspond to L0 [0..224). Using m78_to_dls = diag(0.25) aligns L2(78) == L0(54)!
+        s78_to_54 = 0.25
+        m78_to_dls = np.diag([s78_to_54, s78_to_54, s78_to_54, 1.0])
+        # Put u8_1129 at level "0" with m_1129_to_78 = diag(2.0) -> m_78_to_1129 = diag(0.5) aligns L1(78) == L0(1129).
+        m1129_to_78 = np.diag([2.0, 2.0, 2.0, 1.0])
+
+        # Mesh in 78 keV L0 coords: vertices spaced by 4 L0 voxels (= 1 L2 voxel = 9.6 um), z_L0 = 28*4 = 112.
+        yy78, xx78 = np.meshgrid(
+            np.arange(6, 66, dtype=np.float32) * 4.0,
+            np.arange(6, 66, dtype=np.float32) * 4.0,
+            indexing="ij",
+        )
+        zz78 = np.full_like(xx78, 28.0 * 4.0)
+        # Outer mesh in 54 keV L0 coords: z = 28.0, spacing 1 voxel.
+        yy54, xx54 = np.meshgrid(
+            np.arange(6, 66, dtype=np.float32),
+            np.arange(6, 66, dtype=np.float32),
+            indexing="ij",
+        )
+        zz54 = np.full_like(xx54, 28.0)
+
+        with tempfile.TemporaryDirectory() as td:
+            td_p = Path(td)
+            r78_dir = _write_synthetic_zarr_v2(td_p / "v78.zarr", u8_78, f32_min=w78[0], f32_max=w78[1], level="2")
+            # Also populate level "1" for crust stage (same synthetic array, L1 scale=2).
+            _write_synthetic_zarr_v2(td_p / "v78.zarr", u8_78, f32_min=w78[0], f32_max=w78[1], level="1")
+            r54_dir = _write_synthetic_zarr_v2(td_p / "v54.zarr", u8_54, f32_min=w54[0], f32_max=w54[1], level="0")
+            r1129_dir = _write_synthetic_zarr_v2(td_p / "v1129.zarr", u8_54, f32_min=-0.03, f32_max=0.145, level="0")
+            mesh_78 = td_p / "mesh78.tifxyz"
+            mesh_outer = td_p / "mesh_outer.tifxyz"
+            ssr.write_tifxyz(mesh_78, xx78, yy78, zz78, meta={"scale": [0.25, 0.25]})
+            ssr.write_tifxyz(mesh_outer, xx54, yy54, zz54, meta={"scale": [1.0, 1.0]})
+
+            t78_p = td_p / "t78.json"
+            t1129_p = td_p / "t1129.json"
+            t78_p.write_text(json.dumps({"transformation_matrix": m78_to_dls[:3].tolist()}), encoding="utf-8")
+            t1129_p.write_text(json.dumps({"transformation_matrix": m1129_to_78[:3].tolist()}), encoding="utf-8")
+
+            # Mesh for crust stage in L1 coords (L0 = 2 * L1 -> vertices spaced by 2 L0 voxels, z_L0 = 28*2 = 56).
+            out_json = td_p / "phase2_public.json"
+            priv_dir = td_p / "private_out"
+            res = p4.run_phase2_scans(
+                vol_78_url=str(r78_dir),
+                vol_54_url=str(r54_dir),
+                vol_1129_url=str(r1129_dir),
+                transform_78_url=str(t78_p),
+                transform_1129_url=str(t1129_p),
+                mesh_78_url=str(mesh_78),
+                mesh_outer_url=str(mesh_outer),
+                preflight_level_78=2,
+                preflight_level_54=0,
+                strip_level_78=2,
+                strip_level_54=0,
+                crust_level_1129=0,
+                crust_level_78=2,
+                cache_mb=32.0,
+                workers=2,
+                max_total_mb=100.0,
+                out_json=out_json,
+                private_out_dir=priv_dir,
+                preflight_tile_a_vu=(10, 50, 10, 50),
+                preflight_tile_b_vu=(4, 30, 4, 52),
+                strip_v_range=(4, 52),
+                strip_wraps=(
+                    ("wrap_08_blank_agraphon", 4, 28, "control_blank"),
+                    ("wrap_09_agraphon", 28, 52, "test_agraphon"),
+                ),
+                outer_v_range=(6, 48),
+                outer_wraps=(("w135", 6, 30), ("w134", 28, 52)),
+                upper_ext_vu=(8, 44, 8, 44),
+                lower_ext_vu=(10, 46, 10, 46),
+                crust_tile_a_vu=(10, 36, 10, 36),
+                crust_tile_b_vu=(4, 28, 4, 32),
+                run_crust_1129=False,  # Crust tested separately with dedicated L0/L1 geometry below.
+            )
+            raw_text = out_json.read_text(encoding="utf-8")
+            parsed = json.loads(raw_text)
+            p4.assert_no_local_paths(parsed)
+            p4.assert_no_unread_coordinates(parsed)
+            self.assertTrue(res["preflight_54_78_passed"], f"Preflight failed: {res['controls_54_78']}")
+            self.assertEqual(res["agraphon_strip_54_78"]["tiles_evaluated"], 2)
+            self.assertEqual(res["outer_wraps_w130_w135"]["tiles_evaluated"], 2)
+            self.assertTrue(res["extended_height_20260701"]["executed"])
+            self.assertTrue((priv_dir / "phase2_private_summary.json").is_file())
+
+            # Dedicated offline test of Stage 2B-3 (1.129 um native crust with TPS bundle).
+            yy_c, xx_c = np.meshgrid(
+                np.arange(6, 66, dtype=np.float32) * 2.0,
+                np.arange(6, 66, dtype=np.float32) * 2.0,
+                indexing="ij",
+            )
+            zz_c = np.full_like(xx_c, 28.0 * 2.0)
+            mesh_c = td_p / "mesh_crust.tifxyz"
+            ssr.write_tifxyz(mesh_c, xx_c, yy_c, zz_c, meta={"scale": [0.5, 0.5]})
+            t78_c = td_p / "t78_c.json"
+            t78_c.write_text(json.dumps({"transformation_matrix": np.diag([0.5, 0.5, 0.5, 1.0])[:3].tolist()}), encoding="utf-8")
+            out_json_c = td_p / "phase2_crust_public.json"
+            res_c = p4.run_phase2_scans(
+                vol_78_url=str(r78_dir),
+                vol_54_url=str(r54_dir),
+                vol_1129_url=str(r1129_dir),
+                transform_78_url=str(t78_c),
+                transform_1129_url=str(t1129_p),
+                mesh_78_url=str(mesh_c),
+                mesh_outer_url=str(mesh_outer),
+                preflight_level_78=1,
+                preflight_level_54=0,
+                crust_level_1129=0,
+                crust_level_78=1,
+                cache_mb=32.0,
+                workers=2,
+                max_total_mb=100.0,
+                out_json=out_json_c,
+                private_out_dir=priv_dir,
+                preflight_tile_a_vu=(10, 50, 10, 50),
+                preflight_tile_b_vu=(4, 30, 4, 52),
+                crust_tile_a_vu=(10, 46, 10, 46),
+                crust_tile_b_vu=(4, 34, 4, 46),
+                run_strip=False,
+                run_outer_wraps=False,
+                run_extended_height=False,
+                run_crust_1129=True,
+            )
+            p4.assert_no_local_paths(res_c)
+            p4.assert_no_unread_coordinates(res_c)
+            self.assertTrue(res_c["native_crust_1129_preflight"]["executed"])
+            self.assertTrue(res_c["native_crust_1129_preflight"]["ncc_passed_both_controls"])
+
 
 if __name__ == "__main__":
     unittest.main()

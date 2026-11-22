@@ -682,7 +682,22 @@ def screen_one_mesh(
         render_sec = round(time.perf_counter() - t_render, 2)
 
         mesh_idx = (num_slices - 1) // 2
-        coherence = onsheet_score.score_stack(stack_lhw, mid=mesh_idx, dk=2)
+        try:
+            coherence = onsheet_score.score_stack(stack_lhw, mid=mesh_idx, dk=2)
+        except ModuleNotFoundError:
+            fb = SSR.layer_coherence_score(
+                stack_lhw,
+                mesh_index=mesh_idx,
+                delta=min(2, mesh_idx),
+                valid_mask=valid_ct,
+            )
+            coherence = {
+                "f_parallel": fb["sheet_parallel_fraction"],
+                "n_tiles": fb["patch_count"],
+                "mean_zero_shift_r": fb["mean_zero_shift_r"],
+                "mean_best_shifted_r": fb["mean_best_shifted_r"],
+                "backend": "stream_snap_render_fallback",
+            }
 
         detector_stats: dict[str, dict] = {}
         panels: list[tuple[str, np.ndarray, np.ndarray]] = []
