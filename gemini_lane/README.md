@@ -69,6 +69,8 @@ python -m unittest discover -s gemini_lane -p "test_*.py" -v
 
 Quality-ranked Top-10 execution queue from public asset metadata: [`evidence/priority_queue_scout.md`](evidence/priority_queue_scout.md).
 
+First Letters donor-overlap compliance matrix (6 detector families × 19 eligible scrolls + controls) & Nov 30 Progress Prize upstream-PR blueprint: [`evidence/compliance_and_progress_audit.md`](evidence/compliance_and_progress_audit.md).
+
 ---
 
 ## 4. Measured Deliverable 3 — Studio (`PHerc0211` Detector) RTX 4060 `fp16` vs `bf16` Parity & VRAM Profile

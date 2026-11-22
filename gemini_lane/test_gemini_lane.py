@@ -97,6 +97,14 @@ class TestGeminiLaneEvidence(unittest.TestCase):
         for scroll in ("PHerc0125", "PHerc1203", "PHerc1218", "PHerc0191", "PHerc0846A"):
             self.assertIn(scroll, raw)
 
+    def test_compliance_audit_doc_clean(self) -> None:
+        path = EVIDENCE / "compliance_and_progress_audit.md"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        for family in ("Studio", "A-hn", "v8-in", "reader-v3", "ink_9um", "Hecate"):
+            self.assertIn(family, raw)
+
 
 if __name__ == "__main__":
     unittest.main()
