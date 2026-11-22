@@ -1,0 +1,123 @@
+{
+  "schema": "public-native-pair-geometry-measured-v1",
+  "date_utc": "2026-11-22",
+  "scope": "Previously published five-point fine-to-actual-coarse XYZ transforms, new deterministic leave-one-landmark-out refits and 4096 generated normals; no CT, image, ink label or unread tissue used.",
+  "protocol": "firstletters-colab/transversal_lab/native_pair_geometry_protocol.md",
+  "fixture_sha256": "38fbe5932b856c7c1d11489caaa2224dacb6f0699b33f4026c10e002ddec5599",
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "pytest": "9.0.2",
+    "unit_tests": "5 passed, 0 failed"
+  },
+  "computation": "Unweighted full-rank 4x4 least-squares fit separately on four of the five known landmark pairs, followed by deterministic omitted-fifth prediction. Full-five published affine separately scored in-sample. No robustness weighting, data deletion, threshold tuning or repetition.",
+  "frag5": {
+    "published_full5_rms_vox": 0.2681881587759519,
+    "published_full5_max_vox": 0.38228618275147735,
+    "published_full5_residuals_vox": [
+      0.1550917234626311,
+      0.366750932345818,
+      0.08052815616043633,
+      0.2200846292173637,
+      0.38228618275147735
+    ],
+    "leave_one_out_rms_vox": 2.4428202183542926,
+    "leave_one_out_max_vox": 4.465822386704069,
+    "leave_one_out_error_xyz_vox": [
+      [
+        -0.139267452604372,
+        2.3095791424860295,
+        0.15236484472062273
+      ],
+      [
+        -0.058893454219060004,
+        0.9766753894674594,
+        0.06443208259452149
+      ],
+      [
+        -0.2682195926710733,
+        4.448091534290995,
+        0.2934442745452088
+      ],
+      [
+        0.09814056221688361,
+        -1.6275403282650132,
+        -0.1073701804942857
+      ],
+      [
+        0.05650015674655151,
+        -0.9369854989402029,
+        -0.061813707713099575
+      ]
+    ],
+    "loo_design_conditions": [
+      27586.36287897836,
+      21503.303231497324,
+      149115.79703176572,
+      25602.704728733785,
+      18200.54948075476
+    ],
+    "all5_design_condition": 23683.85932307935,
+    "sampled_synthetic_ray_normal_angle_degrees_p50": 0.17355992994477082,
+    "sampled_synthetic_ray_normal_angle_degrees_max": 0.2491271484465879,
+    "local_full_output_sha256": "6f2b5615df1a8edb8b5c4e2df2b8b1624bb648842d3f28286f138811217dccc8"
+  },
+  "frag6": {
+    "published_full5_rms_vox": 0.8841420438889254,
+    "published_full5_max_vox": 1.061223696581624,
+    "published_full5_residuals_vox": [
+      1.0344130106417,
+      0.07748164890639668,
+      1.061223696581624,
+      0.9486562759333219,
+      0.8979853129669254
+    ],
+    "leave_one_out_rms_vox": 22.840428647264005,
+    "leave_one_out_max_vox": 50.44466430538998,
+    "leave_one_out_error_xyz_vox": [
+      [
+        1.5244480008168466,
+        3.342416130116362,
+        0.8839798132515
+      ],
+      [
+        20.35203004023765,
+        44.62267879957699,
+        11.80150697472709
+      ],
+      [
+        -1.4859344464020978,
+        -3.257973547990332,
+        -0.8616470051645138
+      ],
+      [
+        -1.66225521940396,
+        -3.6445642322570393,
+        -0.9638899179508371
+      ],
+      [
+        1.756051934610241,
+        3.8502174612804083,
+        1.0182797054285402
+      ]
+    ],
+    "loo_design_conditions": [
+      65364.68321909592,
+      168601.31305356862,
+      63179.797759431414,
+      62055.11519242246,
+      58303.91062685721
+    ],
+    "all5_design_condition": 47617.20963958858,
+    "sampled_synthetic_ray_normal_angle_degrees_p50": 0.23473467020596983,
+    "sampled_synthetic_ray_normal_angle_degrees_max": 0.4062990603436468,
+    "local_full_output_sha256": "6e9acfcdf7504346267eea3d32fdcab27700f032f04ece94408fa7a2c75f9f64"
+  },
+  "independent_check": "A separate JavaScript partial-pivot four-landmark affine solver reproduced both in-sample RMSs and all 10 leave-one-out norms to numerical precision, using the committed fixture contents.",
+  "limitations": [
+    "This is five-point hold-one-out sensitivity on originally fitted landmarks, not held-out local anatomical registration or a statistical error distribution.",
+    "Large Frag6 LOO depends on one especially extrapolative four-point training geometry; it does not show the original full-five affine has a 50-voxel in-sample defect.",
+    "The 4096 directions are synthetic, not source PPM sheet normals; their differences do not identify the ink-bearing face.",
+    "No CT chunks, label pixels, source PPMs, detector scores, native-coarse radiometry, or sheet-identity data acquired."
+  ]
+}
