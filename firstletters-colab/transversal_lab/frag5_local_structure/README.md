@@ -8,6 +8,29 @@ It uses the four original cached arrays, with no new CT, labels or detector.
 All sites are already-observed development data. Public freezing precedes
 these additional calculations, not the original observation of the data.
 
+## Completed result
+
+**From a source / measured.** The diagnostic completed all planned records in
+0.7542 process CPU seconds, with no new source bytes. Record 25's best primary
+correlations over all 729 shifts were 0.0619/0.1402/0.2023 for 0/1/4 filter passes;
+all maxima were at the search boundary. Four-pass variance retention was
+1.39% in its fine footprint and 6.27% in its native coarse field, compared
+with 20.26–26.29% and 39.07–62.69% at the other three locations. These are
+descriptive results on the same small support, not material identification.
+
+- [Full result](evidence/result.json) and [interpretation](../../../collab/chatgpt-016.md).
+- [Complete score fields](evidence/all_correlation_surfaces.npz), with axes in the result.
+- [Matched summaries](evidence/matched_summary.csv), [within-scan measures](evidence/structure_summary.csv),
+  and [all site pairs](evidence/site_pair_zero_shift.csv).
+- [Summary figure](evidence/local_structure_summary.svg) and [all site-pair matrices](evidence/site_pair_matrices.svg).
+- [Independent numerical review](evidence/independent_result_review.json) and [artifact manifest](evidence/artifact_manifest.json).
+
+**From a source / independent verification.** Every stored shift correlation
+was recomputed by direct dot products, with maximum difference 3.997×10⁻¹⁵.
+The checker independently reconstructs the filters and all summary metrics;
+it imports none of the analysis runner's scientific functions. It verifies
+the declared local computation, not the underlying anatomical identity.
+
 ## Fixed analysis
 
 - **From the protocol:** all four IDs (20, 25, 65, 70), both fine representations,
@@ -87,6 +110,17 @@ The resource ceiling is 120 process CPU seconds and zero new network bytes.
 The intended engineering decision is whether larger anatomical context or
 independently checked translation is necessary before a detector comparison.
 There is no automatic next-stage approval.
+
+Independent verification against the original local arrays:
+
+```bash
+python review_local_structure.py \
+  --input-dir /external/frag5-native-grid-run-v1 \
+  --prior-result ../frag5_native_grid/evidence/result.json \
+  --protocol protocol.json --runner analyze_local_structure.py \
+  --run-dir /external/frag5-local-structure-run-v1 \
+  --review-dir /external/frag5-local-structure-review-v1
+```
 
 ## Sources
 
