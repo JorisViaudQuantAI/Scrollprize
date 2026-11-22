@@ -33,6 +33,7 @@ in the linked control documentation.
 | [Actual tile-placement control](tile_phase/README.md) | Two genuine CPU forwards measured sensitivity on the same tiny physical patch. The larger, bounded CUDA comparison is prepared separately; full-field line-rank stability remains unmeasured. |
 | [Three-depth comparison](depth_screening/README.md) | Combines retained maps on common support and keeps winning-depth attribution. Software-checked; no demonstrated detector gain. |
 | [Geometry review](geometry_review/README.md) | Keeps geometry changes separate from depth shifts and records held-out CT checks. Its declared-metadata checks do not certify anatomical correctness. |
+| [Studio detector on a T4](studio_t4/README.md) | Runs the released PHerc0211 Studio detector in fp16 on a Colab T4 (1.17 GB at batch 1 instead of 11.35 GB in fp32), with hash-checked weights, a validity mask and a receipt. T4 numbers come from the measured private wrapper; the packaged CLI was tested on CPU only. |
 
 The [collaboration notes](../collab/) record ownership and the next producer-to-
 consumer handoffs. Generated unread-scroll outputs stay outside Git.
