@@ -1,0 +1,71 @@
+{
+  "schema": "frag5-context81-independent-code-review-v1",
+  "status": "passed_after_constant_variance_guard",
+  "scope": "Independent static scientific/transport review and generated or metadata-only checks before new CT pixel access.",
+  "reviewed_sha256": {
+    "run_context81.py": "0626d8497302edd85134bf6fb0a8740aaab2783c6a50409bd626712f2125a689",
+    "protocol.json": "5a311410a8999eaf03a8db93e20662bf1fcf920640b6d12a5e74de9e20b181dc",
+    "test_context81.py": "387ac2f406d8af81ea26285d7566eeced4b7873172303a31d6e4b88472389d4c"
+  },
+  "new_pixel_data_accessed": false,
+  "labels_or_models_accessed": false,
+  "new_network_bytes": 0,
+  "independent_geometry_check": {
+    "method": "Inverse-affine midpoint plus absolute inverse-matrix halfextent; independent Cartesian chunk enumeration.",
+    "unchanged_centers_verified": [
+      20,
+      25
+    ],
+    "fine_target_chunks": 45,
+    "coarse_target_chunks": 4,
+    "target_chunks": 49,
+    "prior_unique_chunks": 14,
+    "cached_target_chunks": 6,
+    "new_target_chunks": 43,
+    "cumulative_unique_chunks": 57,
+    "worst_case_cumulative_source_bytes": 240237201,
+    "cumulative_source_limit": 268435456
+  },
+  "independent_generated_sampling_check": {
+    "field": "Analytic quadratic plus linear XYZ terms, under a sheared affine; no CT source.",
+    "quadrature_calls": 125,
+    "every_declared_offset_checked": true,
+    "maximum_point_absolute_error": 2.7284841053187847e-12,
+    "maximum_quadrature_absolute_error": 8.185452315956354e-12,
+    "expected_quadrature_correction_formula": "0.08 * trace(M.T @ H @ M), M=inverse affine linear part",
+    "declared_tests_passed": 5
+  },
+  "verified_measurement_design": {
+    "nested_rows": 432,
+    "fixed65_smoothing_rows": 12,
+    "outer_shell_rows": 4,
+    "pearson_plus_spearman_values": 896,
+    "fixed65_structure_rows": 18,
+    "outer_shell_samples": 495504,
+    "nested_counts": [
+      4913,
+      35937,
+      274625,
+      531441
+    ],
+    "native_halo_side": 83,
+    "fine_point_and_footprint_side": 81
+  },
+  "static_findings": [
+    "All source support is derived from fixed old centers and the unchanged published affine; no fit or region replacement is performed.",
+    "New source objects are admitted from a complete HEAD snapshot before any body; old identities must retain ETag and length, and new objects must satisfy per-object and cumulative limits.",
+    "Metadata hashes pass before raw GETs; imported acquisition code pins If-Match, exact status/length/ETag, records failures, bounds I/O and validates Blosc decoded size.",
+    "Prior canonical acquisition receipts and old source/array hashes are checked before decoding or acquiring new CT.",
+    "Both sites must reproduce old central33 fine arrays within1e-8 counts and old central35 native arrays exactly before new anatomical metrics are computed.",
+    "All 27 declared shifts are retained on each nested support; finite65 smoothing has complete81 support, and outer-shell data are reported separately.",
+    "Constant variance retention is undefined when raw support is constant; exact-constant descriptive mean/SD are handled explicitly.",
+    "Resource totals preserve original14 objects and add only43 new objects; six target objects are reused.",
+    "The protocol and README explicitly retain adaptive selection and prohibit anatomical, label-transfer and ink-improvement certification from correlation alone."
+  ],
+  "limits": [
+    "This pre-pixel review does not verify future server responses or real-data outcomes.",
+    "Nested supports and outer shells are related development measurements, not independent trials.",
+    "High surrounding correlation cannot certify the original central patch, material identity, physical face or same-sheet correspondence.",
+    "The125-midpoint nominal-footprint approximation does not reproduce the actual scanner PSF."
+  ]
+}

@@ -1,0 +1,1220 @@
+{
+  "schema": "frag5-adaptive-context81-v1",
+  "question": "Does a larger unchanged-center anatomical context restore cross-scan agreement around a locally uninformative patch, and is any gain confined to the surroundings?",
+  "adaptive_selection": "IDs 20 and 25 chosen as a previously correlated and previously uncorrelated contrast after ChatGPT 016; neither is an independent held-out sample. Centers and published affine are unchanged.",
+  "prior_context_result_sha256": "352e0bf0c8214f839689adb2a6b79e6375cff795c9b3c09e042e67e7196253c5",
+  "prior_context_commit": "2deb4d8aafa99919146c092dd30b54ad580df912",
+  "stage1_runner_sha256": "e18bdff3a75729dbbb2785f4caa56892388f36c2b5603d3c86d082cb21877600",
+  "stage1_protocol_sha256": "3cae8c53394bd92de8f07bcc3eb81afaf9db81c3cfe039616cc27566b18c18a2",
+  "local_structure_runner_sha256": "65f9fe9b6bb50c6c4f3e98f03a43b5b3910d77f398c26ef5907fc9f75750c6f4",
+  "canonical_acquisition_sha256": {
+    "stage1": "b09cff61cabc0b7f8dea44caf7baa32b7aa4e68228ba73799b761c20105ef725",
+    "native_grid": "aa90bc0bd3f0601c14d96a4b420a717771e1e0cebdc47934a7f2c5d29e8e0682"
+  },
+  "centers": [
+    {
+      "id": 20,
+      "center_xyz": [
+        659,
+        439,
+        2105
+      ],
+      "fine_point": {
+        "inclusive_box_xyz": [
+          [
+            1268,
+            756,
+            4856
+          ],
+          [
+            1463,
+            951,
+            5050
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            37,
+            5,
+            9
+          ],
+          [
+            37,
+            5,
+            10
+          ],
+          [
+            37,
+            5,
+            11
+          ],
+          [
+            37,
+            6,
+            9
+          ],
+          [
+            37,
+            6,
+            10
+          ],
+          [
+            37,
+            6,
+            11
+          ],
+          [
+            37,
+            7,
+            9
+          ],
+          [
+            37,
+            7,
+            10
+          ],
+          [
+            37,
+            7,
+            11
+          ],
+          [
+            38,
+            5,
+            9
+          ],
+          [
+            38,
+            5,
+            10
+          ],
+          [
+            38,
+            5,
+            11
+          ],
+          [
+            38,
+            6,
+            9
+          ],
+          [
+            38,
+            6,
+            10
+          ],
+          [
+            38,
+            6,
+            11
+          ],
+          [
+            38,
+            7,
+            9
+          ],
+          [
+            38,
+            7,
+            10
+          ],
+          [
+            38,
+            7,
+            11
+          ],
+          [
+            39,
+            5,
+            9
+          ],
+          [
+            39,
+            5,
+            10
+          ],
+          [
+            39,
+            5,
+            11
+          ],
+          [
+            39,
+            6,
+            9
+          ],
+          [
+            39,
+            6,
+            10
+          ],
+          [
+            39,
+            6,
+            11
+          ],
+          [
+            39,
+            7,
+            9
+          ],
+          [
+            39,
+            7,
+            10
+          ],
+          [
+            39,
+            7,
+            11
+          ]
+        ],
+        "count": 27
+      },
+      "fine_footprint": {
+        "inclusive_box_xyz": [
+          [
+            1267,
+            755,
+            4855
+          ],
+          [
+            1464,
+            951,
+            5051
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            37,
+            5,
+            9
+          ],
+          [
+            37,
+            5,
+            10
+          ],
+          [
+            37,
+            5,
+            11
+          ],
+          [
+            37,
+            6,
+            9
+          ],
+          [
+            37,
+            6,
+            10
+          ],
+          [
+            37,
+            6,
+            11
+          ],
+          [
+            37,
+            7,
+            9
+          ],
+          [
+            37,
+            7,
+            10
+          ],
+          [
+            37,
+            7,
+            11
+          ],
+          [
+            38,
+            5,
+            9
+          ],
+          [
+            38,
+            5,
+            10
+          ],
+          [
+            38,
+            5,
+            11
+          ],
+          [
+            38,
+            6,
+            9
+          ],
+          [
+            38,
+            6,
+            10
+          ],
+          [
+            38,
+            6,
+            11
+          ],
+          [
+            38,
+            7,
+            9
+          ],
+          [
+            38,
+            7,
+            10
+          ],
+          [
+            38,
+            7,
+            11
+          ],
+          [
+            39,
+            5,
+            9
+          ],
+          [
+            39,
+            5,
+            10
+          ],
+          [
+            39,
+            5,
+            11
+          ],
+          [
+            39,
+            6,
+            9
+          ],
+          [
+            39,
+            6,
+            10
+          ],
+          [
+            39,
+            6,
+            11
+          ],
+          [
+            39,
+            7,
+            9
+          ],
+          [
+            39,
+            7,
+            10
+          ],
+          [
+            39,
+            7,
+            11
+          ]
+        ],
+        "count": 27
+      },
+      "coarse_all_27_shifts": {
+        "inclusive_box_xyz": [
+          [
+            618,
+            398,
+            2064
+          ],
+          [
+            700,
+            480,
+            2146
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            16,
+            3,
+            4
+          ],
+          [
+            16,
+            3,
+            5
+          ]
+        ],
+        "count": 2
+      }
+    },
+    {
+      "id": 25,
+      "center_xyz": [
+        1554,
+        341,
+        2102
+      ],
+      "fine_point": {
+        "inclusive_box_xyz": [
+          [
+            3430,
+            521,
+            4849
+          ],
+          [
+            3625,
+            715,
+            5043
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            37,
+            4,
+            26
+          ],
+          [
+            37,
+            4,
+            27
+          ],
+          [
+            37,
+            4,
+            28
+          ],
+          [
+            37,
+            5,
+            26
+          ],
+          [
+            37,
+            5,
+            27
+          ],
+          [
+            37,
+            5,
+            28
+          ],
+          [
+            38,
+            4,
+            26
+          ],
+          [
+            38,
+            4,
+            27
+          ],
+          [
+            38,
+            4,
+            28
+          ],
+          [
+            38,
+            5,
+            26
+          ],
+          [
+            38,
+            5,
+            27
+          ],
+          [
+            38,
+            5,
+            28
+          ],
+          [
+            39,
+            4,
+            26
+          ],
+          [
+            39,
+            4,
+            27
+          ],
+          [
+            39,
+            4,
+            28
+          ],
+          [
+            39,
+            5,
+            26
+          ],
+          [
+            39,
+            5,
+            27
+          ],
+          [
+            39,
+            5,
+            28
+          ]
+        ],
+        "count": 18
+      },
+      "fine_footprint": {
+        "inclusive_box_xyz": [
+          [
+            3429,
+            520,
+            4848
+          ],
+          [
+            3626,
+            716,
+            5044
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            37,
+            4,
+            26
+          ],
+          [
+            37,
+            4,
+            27
+          ],
+          [
+            37,
+            4,
+            28
+          ],
+          [
+            37,
+            5,
+            26
+          ],
+          [
+            37,
+            5,
+            27
+          ],
+          [
+            37,
+            5,
+            28
+          ],
+          [
+            38,
+            4,
+            26
+          ],
+          [
+            38,
+            4,
+            27
+          ],
+          [
+            38,
+            4,
+            28
+          ],
+          [
+            38,
+            5,
+            26
+          ],
+          [
+            38,
+            5,
+            27
+          ],
+          [
+            38,
+            5,
+            28
+          ],
+          [
+            39,
+            4,
+            26
+          ],
+          [
+            39,
+            4,
+            27
+          ],
+          [
+            39,
+            4,
+            28
+          ],
+          [
+            39,
+            5,
+            26
+          ],
+          [
+            39,
+            5,
+            27
+          ],
+          [
+            39,
+            5,
+            28
+          ]
+        ],
+        "count": 18
+      },
+      "coarse_all_27_shifts": {
+        "inclusive_box_xyz": [
+          [
+            1513,
+            300,
+            2061
+          ],
+          [
+            1595,
+            382,
+            2143
+          ]
+        ],
+        "chunk_keys_zyx": [
+          [
+            16,
+            2,
+            11
+          ],
+          [
+            16,
+            2,
+            12
+          ]
+        ],
+        "count": 2
+      }
+    }
+  ],
+  "source_objects": [
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        4,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/4/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        4,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/4/27",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        4,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/4/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/27",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        5,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/5/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        6,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/6/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        6,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/6/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        6,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/6/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        7,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/7/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        7,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/7/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        37,
+        7,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/37/7/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        4,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/4/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        4,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/4/27",
+      "cached": {
+        "cache_group": "stage1",
+        "cache_file": "objects/7c6761eb56734b06163f8199d438b612d0f56b58881eb836167210714a42746d.bin",
+        "bytes": 4034926,
+        "sha256": "1418b8d513cfa6b47c527cafde1bfeab7cb92faaef4a5cd8884e95a7e8200bd4",
+        "head": {
+          "length": 4034926,
+          "etag": "\"67b5d23e-3d916e\"",
+          "last_modified": "Wed, 19 Feb 2025 12:44:46 GMT"
+        }
+      }
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        4,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/4/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/27",
+      "cached": {
+        "cache_group": "stage1",
+        "cache_file": "objects/6e859d29df5e2bbfbc471df242aa01451aa4cf98b598be6213b255b7f3a18f71.bin",
+        "bytes": 4030670,
+        "sha256": "07a3e8bd0b24ad43867a3f70c568094491ce1ad05e6b1653996c39b9fa3b4ed1",
+        "head": {
+          "length": 4030670,
+          "etag": "\"67b5d243-3d80ce\"",
+          "last_modified": "Wed, 19 Feb 2025 12:44:51 GMT"
+        }
+      }
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        5,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        6,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/6/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        6,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/6/10",
+      "cached": {
+        "cache_group": "stage1",
+        "cache_file": "objects/ed65bd66fa23b655eca5c547fcfd6feb0b3b097d6d3baf03f7f5d24cf4bde55a.bin",
+        "bytes": 4084605,
+        "sha256": "9e682856ff0249ed0d6e0324e30fd40654afb4f252762a7a21e35191d1e58891",
+        "head": {
+          "length": 4084605,
+          "etag": "\"67b5d245-3e537d\"",
+          "last_modified": "Wed, 19 Feb 2025 12:44:53 GMT"
+        }
+      }
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        6,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/6/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        7,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/7/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        7,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/7/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        38,
+        7,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/7/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        4,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/4/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        4,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/4/27",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        4,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/4/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        26
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/26",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/27",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        5,
+        28
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/5/28",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        6,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/6/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        6,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/6/10",
+      "cached": {
+        "cache_group": "native_grid",
+        "cache_file": "objects/9fe114ba913bacce14c6a9343045ca0df8c8a0aadac41d145207d89497a2f231.bin",
+        "bytes": 4078794,
+        "sha256": "db523ceb528f6cb8de7980c3725ad1ca3302c6df3afc11f39359ad1ebb1935b6",
+        "head": {
+          "length": 4078794,
+          "etag": "\"67b5d286-3e3cca\"",
+          "last_modified": "Wed, 19 Feb 2025 12:45:58 GMT"
+        }
+      }
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        6,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/6/11",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        7,
+        9
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/7/9",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        7,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/7/10",
+      "cached": null
+    },
+    {
+      "volume": "fine",
+      "key_zyx": [
+        39,
+        7,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/7/11",
+      "cached": null
+    },
+    {
+      "volume": "coarse",
+      "key_zyx": [
+        16,
+        2,
+        11
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/2/11",
+      "cached": null
+    },
+    {
+      "volume": "coarse",
+      "key_zyx": [
+        16,
+        2,
+        12
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/2/12",
+      "cached": {
+        "cache_group": "native_grid",
+        "cache_file": "objects/a8449afd64ff31e527cf56666fd5ccfd10bda167a844125c73798b157a214332.bin",
+        "bytes": 3919675,
+        "sha256": "dc295f5c9807ab93d263eb8ed5de2dfb81d7ce97e51731497f903af3276ffc88",
+        "head": {
+          "length": 3919675,
+          "etag": "\"67b5d5f1-3bcf3b\"",
+          "last_modified": "Wed, 19 Feb 2025 13:00:33 GMT"
+        }
+      }
+    },
+    {
+      "volume": "coarse",
+      "key_zyx": [
+        16,
+        3,
+        4
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/3/4",
+      "cached": null
+    },
+    {
+      "volume": "coarse",
+      "key_zyx": [
+        16,
+        3,
+        5
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/3/5",
+      "cached": {
+        "cache_group": "native_grid",
+        "cache_file": "objects/81864f742366bdac1e2902509274caf3b06c7fd46e8dcb11f2df8d0407ff9c7b.bin",
+        "bytes": 4098430,
+        "sha256": "7ad41c424380daabd03c09abd087fc69ea3b3aa2cdf9387122f740e24df445a1",
+        "head": {
+          "length": 4098430,
+          "etag": "\"67b5d5f1-3e897e\"",
+          "last_modified": "Wed, 19 Feb 2025 13:00:33 GMT"
+        }
+      }
+    }
+  ],
+  "prior_arrays": [
+    {
+      "id": 20,
+      "file": "anatomy_20.npz",
+      "sha256": "3f82f3b92bf3eaa359d8a78cede9e830e9feed84733b132cf946dd4216b4009f"
+    },
+    {
+      "id": 25,
+      "file": "anatomy_25.npz",
+      "sha256": "283846c3637e1328f5bb38ed35328e1ca4fd2a3c318da8b69047a4be1f5c785e"
+    }
+  ],
+  "design": {
+    "side": 81,
+    "quadrature_per_axis": 5,
+    "coarse_shift_values": [
+      -1,
+      0,
+      1
+    ],
+    "nested_sides": [
+      17,
+      33,
+      65,
+      81
+    ],
+    "smoothing_support_side": 65,
+    "binomial_passes": [
+      0,
+      1,
+      4
+    ],
+    "shell_outer_side": 81,
+    "shell_excluded_side": 33,
+    "prior_fine_max_error_counts": 1e-08,
+    "prior_native_max_error_counts": 0
+  },
+  "physical_scale": {
+    "nominal_pitch_um": 7.91,
+    "voxel_support_um": 640.71,
+    "center_span_um": 632.8,
+    "context_claim": "Scanner-grid cube only; no oriented detector tensor or physical same-sheet identity is certified."
+  },
+  "caps": {
+    "cumulative_source_body_bytes": 268435456,
+    "prior_source_body_bytes": 57064081,
+    "new_object_body_bytes": 4259840,
+    "new_metadata_bytes": 1048576,
+    "cumulative_unique_raw_chunks": 64,
+    "prior_unique_raw_chunks": 14,
+    "planned_new_chunks": 43,
+    "planned_target_chunks": 49,
+    "cpu_seconds": 360,
+    "threads": 4
+  },
+  "sequence": [
+    "Hash-check original scientific helpers, protocol, prior acquisition receipts and selected old array/chunk files. Only metadata and hashing before source admission.",
+    "HEAD all 49 target raw objects and both metadata objects. Retained old objects must match the pinned ETag and size. Reject any new object above the per-object cap or total cumulative body/chunk limits. Record the complete snapshot before new bodies.",
+    "Fetch and hash-check both Zarr metadata records. Acquire only 43 new target chunks with If-Match, bounded four-thread I/O and pinned original Blosc checks. Retain failures without retries, replacement or refitting.",
+    "At both fixed centers, reconstruct81\u00b3fine point and 125-midpoint footprint grids and83\u00b3native coarse grids. Reproduce both old central33\u00b3fine arrays within 1e-8 counts and the complete old35\u00b3coarse array exactly. Stop interpretation if either site fails; all acquired data and failures remain.",
+    "After both overlap gates pass, report Pearson and Spearman on all four nested supports 17/33/65/81 at all 27 original shifts for both fine arms; zero shift primary. Publish all 432 rows and no fitted transform.",
+    "Report all fixed 0/1/4-pass binomial zero-shift correlations and variance retention on the same65\u00b3support, for both fine arms and native coarse. Outer shell81\u00b3minuscentral33\u00b3at zero shift is a separate check; a high outer score cannot validate the center.",
+    "No labels, photographs, detector, language model, candidate ranking, coordinate adjustment, or ink improvement claim. Every source is the public opened Frag5 control."
+  ]
+}
