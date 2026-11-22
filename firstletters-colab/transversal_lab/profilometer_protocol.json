@@ -1,0 +1,339 @@
+{
+  "schema": "vesuvius.profilometer_pilot.v1",
+  "status": "preregistered_before_image_download_or_inspection",
+  "created_utc_date": "2026-11-22",
+  "objective": "Bounded optical-height morphology and degradation-matched linear-head diagnostic; not CT ink detection or prize evidence.",
+  "source": {
+    "repo_id": "scrollprize/profilometer",
+    "repo_type": "dataset",
+    "revision": "a806bead2f3b9100c20e19de37814fb285cfeefd",
+    "url": "https://huggingface.co/datasets/scrollprize/profilometer",
+    "paper_url": "https://doi.org/10.1038/s41598-026-58467-1"
+  },
+  "split": {
+    "official_fold_index": 5,
+    "design": "explicit four-case subset of official leave-one-papyrus-out fold 5; not complete fold replication",
+    "train_case_ids": [
+      "248_090925_PI",
+      "250_090925_C"
+    ],
+    "heldout_case_ids": [
+      "500P2_230925_H",
+      "500P2_230925_N2"
+    ],
+    "heldout_specimen": "PHerc. 500P2",
+    "split_source_sha256": "fa82a0e845139ca27b941551f37e3984d626905cc160fdedadf858cb4fc038e5",
+    "selection_basis": "metadata-only fixed small subset; no image/model-score-based selection"
+  },
+  "records": [
+    {
+      "case_id": "248_090925_PI",
+      "fold5_role": "train",
+      "width_px": 4183,
+      "height_px": 3620,
+      "files": [
+        {
+          "path": "data/pherc0248/π_z.tif",
+          "bytes": 30286882,
+          "sha256_lfs": "c895976a3b3ecfef219225b540e4e7dd4b9fdb26c4a993077a26a61fb4d3cd59"
+        },
+        {
+          "path": "data/pherc0248/π_label.png",
+          "bytes": 76461,
+          "sha256_lfs": "0a17aca48b23f4edb7ae5ff100a8129efa9673fdb7fb2347266147f8e72d2fc3"
+        }
+      ]
+    },
+    {
+      "case_id": "250_090925_C",
+      "fold5_role": "train",
+      "width_px": 3622,
+      "height_px": 4490,
+      "files": [
+        {
+          "path": "data/pherc0250/ϲ_z.tif",
+          "bytes": 32527954,
+          "sha256_lfs": "d51eaf53c07696e22656d4cf981429f9c8dca44781c58d25cea2685efceaee59"
+        },
+        {
+          "path": "data/pherc0250/ϲ_label.png",
+          "bytes": 76278,
+          "sha256_lfs": "6a47dc68ebd618b2d131ed4dad9af9e2c03c4e7f7aa72e6013816a918a92dfc6"
+        }
+      ]
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "fold5_role": "val",
+      "width_px": 5369,
+      "height_px": 3617,
+      "files": [
+        {
+          "path": "data/pherc0500p2/η_z.tif",
+          "bytes": 38841308,
+          "sha256_lfs": "9ad47f0cee5c1309c5aa13cb58d9dff66b99c20e1c13d63b4281b0d03ed17948"
+        },
+        {
+          "path": "data/pherc0500p2/η_label.png",
+          "bytes": 88007,
+          "sha256_lfs": "b6fd327caa056702b2c5590cc95418f323ba5e5df96fac3c87f49fd0cc4b2b4a"
+        }
+      ]
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "fold5_role": "val",
+      "width_px": 4499,
+      "height_px": 3628,
+      "files": [
+        {
+          "path": "data/pherc0500p2/ν2_z.tif",
+          "bytes": 32646706,
+          "sha256_lfs": "01c6cc9f9b58200d2e36f65e722cbf72f9d51d86966d56d4bbc7a05e920a1904"
+        },
+        {
+          "path": "data/pherc0500p2/ν2_label.png",
+          "bytes": 77290,
+          "sha256_lfs": "561c41ac3da18251ba7974c0d310cfcfbac424a0a6a98584208154f9abbb2a77"
+        }
+      ]
+    }
+  ],
+  "metadata_files": [
+    {
+      "path": "folds/splits_final.json",
+      "bytes": 3771,
+      "sha256": "fa82a0e845139ca27b941551f37e3984d626905cc160fdedadf858cb4fc038e5"
+    },
+    {
+      "path": "configs/experiment.json",
+      "bytes": 8241,
+      "sha256": "3c75128564e676981eb490df155c112d537984480cd5065f48854d034d6f76b7"
+    },
+    {
+      "path": "configs/sampling.json",
+      "bytes": 707,
+      "sha256": "3ebc6c41dd7bfa38f885543c46674ebfdc1e4ba350993c3b4d1722c56549efd3"
+    },
+    {
+      "path": "configs/case_manifest.json",
+      "bytes": 5627,
+      "sha256": "18439a435675875497bede3d22af3d6569ccdb40f0f9a781fd194df1160d8c21"
+    },
+    {
+      "path": "manifest.csv",
+      "bytes": 3047,
+      "sha256": "cfdadaca5e34f310f3c758dfbec6ac460179af6604888e08ff97f64ed41445af"
+    }
+  ],
+  "input_height": {
+    "accepted_dtype": "uint16",
+    "normalization": "upstream per-sample normalized height; divide by 65535 only; no further per-sample normalization",
+    "require_declared_native_dimensions": true,
+    "original_missingness": "original nonfinite/inpainting mask unavailable; no claim of excluding missingness artifacts"
+  },
+  "working_grid": {
+    "native_blockmean_factor": 4,
+    "height_reduction": "nonoverlapping arithmetic block mean",
+    "label_native_rule": "PNG converted to grayscale; nonzero foreground",
+    "label_reduction": "blockmean of binary native labels >= 0.5",
+    "incomplete_native_blocks": "crop trailing bottom/right",
+    "scoring_mask": "fixed 32-working-pixel exclusion on all four sides; all remaining pixels; same labels/mask in all conditions",
+    "boundary_exclusion_working_pixels": 32
+  },
+  "degradation": {
+    "factors": [
+      1,
+      2,
+      4
+    ],
+    "factor_interpretation": "additional factors relative to the working grid, already blockmean4 from native; report factors only",
+    "method": "factor>1: edge-pad working height bottom/right to factor multiple, nonoverlapping block mean, Pillow float32 bilinear resize to padded working shape, crop back to same working grid",
+    "labels_and_mask": "never degraded, resampled, rethresholded or selected by output",
+    "post_degradation_normalization": "none"
+  },
+  "features": {
+    "names": [
+      "height",
+      "height_minus_gaussian8",
+      "std_gaussian2",
+      "std_gaussian8",
+      "gradient_magnitude_sigma1",
+      "absolute_gaussian_laplacian_sigma1",
+      "log_std2_over_std8",
+      "tensor_anisotropy_sigma1_gaussian4"
+    ],
+    "height_scale": "height divided by 65535 before block means",
+    "smoothing": "scipy.ndimage.gaussian_filter; mode=reflect; truncate=4.0",
+    "local_std": "sqrt(max(G_sigma(height^2)-G_sigma(height)^2,0)); float64 moments",
+    "gradient": "np.gradient of Gaussian(sigma=1) height; default edge_order=1",
+    "laplacian": "abs(scipy.ndimage.gaussian_laplace(height,sigma=1,mode=reflect,truncate=4.0))",
+    "roughness_ratio_epsilon": 0.0001,
+    "tensor": "G4(gx^2),G4(gy^2),G4(gx*gy), gradients of G1(height)",
+    "anisotropy": "sqrt((Jxx-Jyy)^2+4*Jxy^2)/(Jxx+Jyy+1e-12)",
+    "computed_dtype": "float64, features stored float32",
+    "no_feature_or_hyperparameter_search": true
+  },
+  "sampling": {
+    "seed": 20261122,
+    "max_pixels_per_class_per_training_case": 8192,
+    "classes": [
+      0,
+      1
+    ],
+    "within_case_sampling": "Equal count per class: min(8192, eligible ink count, eligible background count); uniform without replacement inside each class of fixed scoring mask; deterministic numpy Generator",
+    "reuse": "identical sampled indices for every degradation condition and model",
+    "case_order": [
+      "248_090925_PI",
+      "250_090925_C"
+    ],
+    "heldout": "evaluate all fixed scored pixels; no class rebalance"
+  },
+  "models": {
+    "pipeline": "StandardScaler + LogisticRegression",
+    "C": 1.0,
+    "max_iter": 500,
+    "solver": "lbfgs",
+    "class_weight": null,
+    "penalty": "l2",
+    "tol": 0.0001,
+    "threads": 1,
+    "random_state": 20261122,
+    "fits": [
+      {
+        "id": "full_train_f1",
+        "columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "train_factor": 1,
+        "test_factors": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "id": "full_train_f2",
+        "columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "train_factor": 2,
+        "test_factors": [
+          2
+        ]
+      },
+      {
+        "id": "full_train_f4",
+        "columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "train_factor": 4,
+        "test_factors": [
+          4
+        ]
+      },
+      {
+        "id": "height_train_f1",
+        "columns": [
+          0
+        ],
+        "train_factor": 1,
+        "test_factors": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "id": "roughness_train_f1",
+        "columns": [
+          2
+        ],
+        "train_factor": 1,
+        "test_factors": [
+          1,
+          2,
+          4
+        ]
+      }
+    ],
+    "convergence": "record warning and n_iter; no increased iterations or parameter retry"
+  },
+  "evaluation": {
+    "unit": "each held-out case separately; both cases share one held-out papyrus",
+    "metrics": [
+      "ROC_AUC",
+      "average_precision",
+      "ink_prevalence",
+      "precision_at_top_1_percent",
+      "recall_at_top_1_percent"
+    ],
+    "top_fraction": 0.01,
+    "top_count": "ceil(0.01*n_scored)",
+    "ties": "descending float32 score with stable row-major ties",
+    "threshold_tuning": "none",
+    "confidence_intervals": "none; no independent-pixel inference",
+    "primary_contrasts": [
+      "full_train_f1 vs height_train_f1 and roughness_train_f1 at each factor",
+      "full_train_f2/f4 vs full_train_f1 on identical f2/f4 held-out inputs"
+    ],
+    "interpretation": "descriptive paired held-out-case differences, no claims of significance or CT transfer",
+    "score_dtype": "float32 saved probability maps"
+  },
+  "limits": {
+    "whole_run_cpu_seconds": 900,
+    "one_cpu_thread": true,
+    "expected_image_bytes": 134620886,
+    "network_retries": 0,
+    "request_timeout_seconds": 45,
+    "no_parameter_retries": true,
+    "no_more_cases_or_conditions_after_results": true
+  },
+  "outputs": {
+    "location": "private work directory outside git repository",
+    "save": [
+      "download receipts and verified hashes",
+      "protocol and code hashes",
+      "source metadata copies/hashes",
+      "training index arrays/hashes",
+      "fitted scaler/head files/hashes",
+      "float32 probability maps and fixed scoring masks",
+      "per-case metrics and elapsed wall/CPU time",
+      "sanitized_results.json without paths or images"
+    ],
+    "public_release": "sanitized aggregate numeric results only; owner reviews provenance and interpretation"
+  },
+  "limitations": [
+    "Optical profilometry of opened fragments is not CT imaging of rolled papyrus.",
+    "The selected four cases are a subset of official fold 5, not its published full protocol.",
+    "Both held-out cases come from PHerc. 500P2; there is one held-out specimen.",
+    "Height TIFFs are per-sample normalized and do not establish absolute micrometre relief.",
+    "Dataset calibration 0.68793625 um/pixel differs from paper 0.34 um/pixel; report degradation factors, not a physical resolution cutoff.",
+    "Original nonfinite/inpainting mask absent from normalized TIFF; missingness confounding cannot be excluded.",
+    "Working grid starts at blockmean4; working factor1 is not native optical resolution.",
+    "No trained backbone or target-scroll input; this does not establish First Letters model eligibility for another pipeline.",
+    "The fixed 32-working-pixel border matches the sigma8 kernel radius but degradation/interpolation adds support; a narrow inner band may retain edge-padding influence. The border is not changed after viewing results.",
+    "Balanced training scores are not calibrated probabilities of ink at the held-out prevalence."
+  ]
+}
