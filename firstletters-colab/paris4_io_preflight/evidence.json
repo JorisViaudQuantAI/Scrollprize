@@ -1,0 +1,58 @@
+{
+  "budget_mib": 180,
+  "chunk_shape_zyx": [
+    [
+      128,
+      128,
+      128
+    ],
+    [
+      128,
+      128,
+      128
+    ]
+  ],
+  "controls": 3,
+  "depth_chunks_per_volume_modeled": 1,
+  "frozen_protocol_sha256": "16c2286dd480d90f8848132832caf86f969ef93ecb46c75737619ff5580864ff",
+  "interpretation": "Nominal full-chunk network payload under wholly present uncompressed interior Zarr chunks; minimum aligned request counts. HTTP headers/handshakes, chunk-boundary overlaps, 3D alignment halos and RAM are excluded. Independent nonoverlapping controls were assumed for 3-pair sum. Missing chunks can reduce transfer but fail source support, not certify zero-valued anatomy. No actual chunk was requested; this is an I/O feasibility decision, not measured network traffic.",
+  "max_square_side_for_three_disjoint_pairs_aligned_px": 384,
+  "max_square_side_for_three_disjoint_pairs_aligned_um": 921.5999999999999,
+  "min_chunk_objects_one_pair_each_source": [
+    49,
+    49
+  ],
+  "nominal_complete_chunk_payload_bytes": [
+    2097152,
+    2097152
+  ],
+  "one_pair_best_aligned_no_halo_bytes": 205520896,
+  "one_pair_best_aligned_no_halo_mib": 196.0,
+  "one_pair_interior_misalignment_ceiling_mib": 256.0,
+  "pixel_pitch_um": 2.4,
+  "schema": "scrollprize.paris4-raw-zarr-chunk-budget-result.v1",
+  "shape_zyx": [
+    [
+      75784,
+      32693,
+      32693
+    ],
+    [
+      6625,
+      8431,
+      8431
+    ]
+  ],
+  "side_pixels_ceil": 834,
+  "single_pair_exceeds_budget": true,
+  "source_count": 2,
+  "square_side_um": 2000,
+  "stage": "metadata_only_no_pixels",
+  "three_disjoint_pairs_best_aligned_no_halo_bytes": 616562688,
+  "three_disjoint_pairs_best_aligned_no_halo_mib": 588.0,
+  "three_disjoint_pairs_exceed_budget": true,
+  "zarray_metadata_sha256": [
+    "439876a328164e1afe6b21d9d8cea163a92ba2deb8a151096012edef064b2a96",
+    "c1de7f6b5207c37809b462912f52a8e71ef0aa4d34f0346f9fec3b5ba95cf5c1"
+  ]
+}
