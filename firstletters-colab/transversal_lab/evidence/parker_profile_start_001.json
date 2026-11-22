@@ -1,0 +1,26 @@
+{
+  "published_freeze_reference": "bcd67e3005132b74e295964cea99f4a23d63608c",
+  "protocol_sha256": "30eabd9cf4762e290840db1af5ebaf9f6ee07189212b2984c41608c3af902ecb",
+  "manifest_sha256": "92ac975b4e4999090a8eeddce56c87a62d5d37ad9f0765169aa3db3faafca606",
+  "implementation_sha256": "cecc7f956eefdfb3225de46066ee7fe5b32c8a4e2368a751953f12355056227d",
+  "runtime": {
+    "python_version": "3.12.14",
+    "numpy_version": "2.3.5",
+    "pillow_version": "13.0.0",
+    "numerical_thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "declared_dtypes": {
+      "ppm": "<f8",
+      "ct_header_mode": "I;16B",
+      "ct_numpy_expected": ">u2",
+      "profiles": "<u2"
+    }
+  },
+  "status": "started; no outcome yet"
+}

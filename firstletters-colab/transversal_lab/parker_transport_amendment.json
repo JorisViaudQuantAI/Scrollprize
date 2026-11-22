@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "kind": "transport_only_before_any_scientific_outcome",
+  "amendment_document": "parker_transport_amendment.md",
+  "amendment_document_sha256": "34ebf1bb373b15f64baab05346d4375af5894b6d473b89039b510edae821ad86",
+  "scientific_freeze_reference": "bcd67e3005132b74e295964cea99f4a23d63608c",
+  "frozen_runner": "parker_profile_audit.py",
+  "frozen_runner_sha256": "cecc7f956eefdfb3225de46066ee7fe5b32c8a4e2368a751953f12355056227d",
+  "frozen_protocol": "parker_profile_protocol.json",
+  "frozen_protocol_sha256": "30eabd9cf4762e290840db1af5ebaf9f6ee07189212b2984c41608c3af902ecb",
+  "preserved_attempt001_sha256": {
+    "parker_attempt001_failure.json": "c2b325365b3d4613bfc80e52cc403a0d289904309ff40f3a51a2af5efe907c9f",
+    "parker_attempt001_download_receipts.json": "4203401211c0dab22c000a0599a78f70a57c9985be439abe217b73d72564a712",
+    "parker_profile_start_001.json": "70ce27363854fbe0e65f6b6595d6c39cf850378746f0e891bd4cde0aac63aced"
+  },
+  "public_canonical_download_url": "https://osf.io/download/pvmu3/",
+  "cached_source_members_from_attempt001": 53,
+  "additional_attempts_per_uncached_member": 1,
+  "attempt001_source_reserved_upper_bound_bytes": 44711621,
+  "attempt001_successfully_received_bytes": 37358441,
+  "preflight_source_range_bytes": 446773,
+  "preflight_metadata_reserved_upper_bound_bytes": 13000000,
+  "source_download_cap_bytes": 300000000,
+  "all_archive_download_cap_bytes": 350000000,
+  "retained_scientific_settings": "All frozen members, hashes, sample eligibility, depth offsets, descriptors, shifts, metric orientation and interpretation unchanged.",
+  "no_prior_scientific_outcome": true,
+  "source_substitution": false,
+  "signed_url_modification": false,
+  "metadata_diagnostics": [
+    {
+      "source": "https://osf.io/download/pvmu3/",
+      "range_start": 0,
+      "range_end": 15,
+      "requested_at_utc": "2026-11-22T13:53:15.977958+00:00",
+      "http_status": 206,
+      "content_range": "bytes 0-15/1807653999",
+      "etag_matches_frozen": true,
+      "bytes": 16,
+      "sha256": "496ce7c7c7843e61bf84299c6ea85fb7a6268c43d593186169425e0a8762abdf",
+      "starts_with_zip_local_header": true,
+      "ordinary_redirect_lifetime_seconds": "60",
+      "seconds": 13.337360317000275
+    },
+    {
+      "source": "https://osf.io/download/pvmu3/",
+      "range_start": 0,
+      "range_end": 15,
+      "requested_at_utc": "2026-11-22T13:55:13.116269+00:00",
+      "http_status": 206,
+      "content_range": "bytes 0-15/1807653999",
+      "etag_matches_frozen": true,
+      "bytes": 16,
+      "sha256": "496ce7c7c7843e61bf84299c6ea85fb7a6268c43d593186169425e0a8762abdf",
+      "starts_with_zip_local_header": true,
+      "ordinary_redirect_lifetime_seconds": "60",
+      "seconds": 14.63757433200044
+    }
+  ],
+  "metadata_diagnostic_separation_seconds": 117.138311
+}
