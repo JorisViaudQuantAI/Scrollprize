@@ -1,0 +1,358 @@
+{
+  "all_context_metrics": [
+    {
+      "context_id": "814-c00",
+      "metrics": {
+        "original": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    },
+    {
+      "context_id": "814-c03",
+      "metrics": {
+        "original": {
+          "auroc": 0.9960383883262743,
+          "average_precision": 0.9914565763133227,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.19258202567760344,
+          "false_positive_at_0_5": 135,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 1.0,
+          "true_positive_at_0_5": 323,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": 0.9873643578611714,
+          "average_precision": 0.9738018251585915,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.021398002853067047,
+          "false_positive_at_0_5": 15,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.8328173374613003,
+          "true_positive_at_0_5": 269,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": 0.8625492993202989,
+          "average_precision": 0.8031095845601892,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    },
+    {
+      "context_id": "814-c08",
+      "metrics": {
+        "original": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 0,
+          "background_exceedance_at_0_5": null,
+          "false_positive_at_0_5": 0,
+          "ink": 1024,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.1455078125,
+          "true_positive_at_0_5": 149,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 0,
+          "background_exceedance_at_0_5": null,
+          "false_positive_at_0_5": 0,
+          "ink": 1024,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.2177734375,
+          "true_positive_at_0_5": 223,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 0,
+          "background_exceedance_at_0_5": null,
+          "false_positive_at_0_5": 0,
+          "ink": 1024,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    },
+    {
+      "context_id": "814-c09",
+      "metrics": {
+        "original": {
+          "auroc": 0.9976761925035035,
+          "average_precision": 0.9908554847136504,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.044063647490820076,
+          "false_positive_at_0_5": 36,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 1.0,
+          "true_positive_at_0_5": 207,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": 0.992106150107321,
+          "average_precision": 0.9690368149434234,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": 0.6204566015645788,
+          "average_precision": 0.25014255587339845,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    },
+    {
+      "context_id": "814-c12",
+      "metrics": {
+        "original": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": null,
+          "average_precision": null,
+          "background": 1024,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 0,
+          "known_pixels": 1024,
+          "recall_at_0_5": null,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    }
+  ],
+  "central_value_and_mask_comparisons": 15,
+  "experiment_freeze": "0540b2ee4b9e60d4c10381265f16b13dd1561c8c",
+  "input_file_hashes_verified": 15,
+  "interpretation": [
+    "All central CT samples, labels and scoring masks remain unchanged across conditions.",
+    "No newly acquired source, training or condition-specific label/mask selection was found. Existing source/development exposure and favorable-order selection remain disclosed.",
+    "Reflection improves pooled AP while reducing AP and AUC within both mixed-class contexts; pooled gain is not evidence of improved within-patch ink ranking.",
+    "Zero halo yields0TP/0FP at0.5; reflection yields492TP/15FP versus original679TP/171FP. The threshold comparison changes recall and background exceedance jointly; it is not a fixed-sensitivity gain.",
+    "Reported no-training/buffer states are consistent with reviewed runner and receipts; no model was rerun in this review.",
+    "This intervention replaces75percent of XYinput area, uses five previously evaluated contexts from one donor, and cannot establish natural-error frequency, readable letters, or deployable padding policy."
+  ],
+  "logit_file_hashes_verified": 15,
+  "maximum_absolute_scalar_metric_error": 2.220446049250313e-16,
+  "maximum_paired_drift_error": 6.661338147750939e-16,
+  "maximum_sigmoid_difference": 2.220446049250313e-16,
+  "method": "Independent scipy.special.expit plus sklearn AP/AUC; direct original-label indexing and manual reflection-index construction; no experiment helper functions imported.",
+  "mixed_context_metrics": [
+    {
+      "context_id": "814-c03",
+      "metrics": {
+        "original": {
+          "auroc": 0.9960383883262743,
+          "average_precision": 0.9914565763133227,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.19258202567760344,
+          "false_positive_at_0_5": 135,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 1.0,
+          "true_positive_at_0_5": 323,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": 0.9873643578611714,
+          "average_precision": 0.9738018251585915,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.021398002853067047,
+          "false_positive_at_0_5": 15,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.8328173374613003,
+          "true_positive_at_0_5": 269,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": 0.8625492993202989,
+          "average_precision": 0.8031095845601892,
+          "background": 701,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 323,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    },
+    {
+      "context_id": "814-c09",
+      "metrics": {
+        "original": {
+          "auroc": 0.9976761925035035,
+          "average_precision": 0.9908554847136504,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.044063647490820076,
+          "false_positive_at_0_5": 36,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 1.0,
+          "true_positive_at_0_5": 207,
+          "unknown_or_unsupported": 0
+        },
+        "reflect_halo": {
+          "auroc": 0.992106150107321,
+          "average_precision": 0.9690368149434234,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        },
+        "zero_halo": {
+          "auroc": 0.6204566015645788,
+          "average_precision": 0.25014255587339845,
+          "background": 817,
+          "background_exceedance_at_0_5": 0.0,
+          "false_positive_at_0_5": 0,
+          "ink": 207,
+          "known_pixels": 1024,
+          "recall_at_0_5": 0.0,
+          "true_positive_at_0_5": 0,
+          "unknown_or_unsupported": 0
+        }
+      }
+    }
+  ],
+  "new_source_acquisitions": 0,
+  "pooled_metrics": {
+    "original": {
+      "auroc": 0.9413458005718243,
+      "average_precision": 0.8473568837618859,
+      "background": 3566,
+      "background_exceedance_at_0_5": 0.04795288839035334,
+      "false_positive_at_0_5": 171,
+      "ink": 1554,
+      "known_pixels": 5120,
+      "recall_at_0_5": 0.4369369369369369,
+      "true_positive_at_0_5": 679,
+      "unknown_or_unsupported": 0
+    },
+    "reflect_halo": {
+      "auroc": 0.9747358326999381,
+      "average_precision": 0.9352137222355089,
+      "background": 3566,
+      "background_exceedance_at_0_5": 0.004206393718452047,
+      "false_positive_at_0_5": 15,
+      "ink": 1554,
+      "known_pixels": 5120,
+      "recall_at_0_5": 0.3166023166023166,
+      "true_positive_at_0_5": 492,
+      "unknown_or_unsupported": 0
+    },
+    "zero_halo": {
+      "auroc": 0.8270632622847991,
+      "average_precision": 0.7482558181783922,
+      "background": 3566,
+      "background_exceedance_at_0_5": 0.0,
+      "false_positive_at_0_5": 0,
+      "ink": 1554,
+      "known_pixels": 5120,
+      "recall_at_0_5": 0.0,
+      "true_positive_at_0_5": 0,
+      "unknown_or_unsupported": 0
+    }
+  },
+  "prior_baseline_arrays_exactly_equal": 5,
+  "real_model_forwards": 0,
+  "result_sha256": "a99efafd6f3017862871f361da0aeeccf79ba6e65f190591e2e9a3b8b83a6cd1",
+  "review_arrays_sha256": "4e2891298d0f47344e7e5504033017039beed5f2f89982e39da033b26326b4f4",
+  "review_script_sha256": "cf16ab66534beca2249eb09ff8635e1e9722385a58be5ea7c930c57537b961dd",
+  "scalar_metric_comparisons": 180,
+  "schema": "scrollprize.context-intervention-independent-review.v1",
+  "status": "pass",
+  "verified_source_assets": 48,
+  "verified_source_bytes": 43554705
+}

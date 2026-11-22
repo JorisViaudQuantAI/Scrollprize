@@ -1,0 +1,107 @@
+{
+  "all_range_if_match_flags_true": true,
+  "body_bearing_response_count": 6,
+  "cached_metadata_sha256": "471b618f6a23e977f8fbd039d8637ad7b468ff31e119cc0fd3e038f2808c46fa",
+  "cached_whole_sha256": "94a67b09ecb71d4fbfe05cfba14bdd8156748cc0eade2e3a74321db2bb71911b",
+  "cases": [
+    {
+      "bytes": 16,
+      "id": "inner_row",
+      "matches_frozen_and_reported_case_hashes": true,
+      "sha256": "5af99575676f4c271f640bcd88d9197d815bd48f2efa7d3cd3e428558aa318d0"
+    },
+    {
+      "bytes": 24,
+      "id": "three_partial_rows",
+      "matches_frozen_and_reported_case_hashes": true,
+      "sha256": "86c5794884522438cb4dfc044f50548b4c56c6109e6a4705c290e878e8761fb0"
+    },
+    {
+      "bytes": 32768,
+      "id": "two_complete_planes",
+      "matches_frozen_and_reported_case_hashes": true,
+      "sha256": "533246e368e14bd8c94df837c9f08c6f8cc005dfbce8f995640778448a00461a"
+    }
+  ],
+  "freeze_reference": "e2b20a4bf3864669e30ee1db894eae4ea39de941",
+  "frozen_files_byte_identical": true,
+  "latency_interpretation": "Only exact-value payload reduction is established. The five ranges took longer than the whole request including its redirect in this single whole-first sequence; no speedup, cold-cache or general throughput claim is supported.",
+  "limitations": [
+    "Fresh response body bytes and raw headers were not retained; this independently verifies their recorded hashes and byte counts against the pinned old cache, not a separate HTTP capture.",
+    "ETag agreement is checked through recorded SHA256 digests; strong ETag and exact Content-Range validation rely on the frozen runner.",
+    "Application-read payload bytes exclude HTTP/TLS framing, socket buffering, unread redirect/error bodies and trailing bytes hidden by Content-Length.",
+    "One published PHerc.0841 object on the observed HF path; no S3/Paris4 support, full scientific I/O budget, or ink outcome is established."
+  ],
+  "logical_requests": 6,
+  "matching_etag_sha256": "c0aa40c445452966a13844553aad782590111e35249f7e28fa2f6ac136d1be46",
+  "model_forwards_during_review": 0,
+  "network_requests_during_review": 0,
+  "observed_range_to_whole_elapsed_ratio": 1.786551381072642,
+  "prior_lexical_selection_verified": true,
+  "prior_receipt_sha256": "8fc138c17ba26453355575d6d1721437ce5f9b9fd705ce37cfb3758c6bb2eb26",
+  "range_body_bytes": 32808,
+  "range_body_reduction_percent": 96.91932091346153,
+  "range_elapsed_seconds_five_requests": 19.51598,
+  "range_to_whole_body_fraction": 0.030806790865384615,
+  "ranges": [
+    {
+      "bytes": 16,
+      "inclusive_range": [
+        2060,
+        2075
+      ],
+      "matches_recorded_returned_body_hash": true,
+      "sha256": "5af99575676f4c271f640bcd88d9197d815bd48f2efa7d3cd3e428558aa318d0"
+    },
+    {
+      "bytes": 8,
+      "inclusive_range": [
+        82936,
+        82943
+      ],
+      "matches_recorded_returned_body_hash": true,
+      "sha256": "4262784e1e0c4010f9fd5fbbb86435a956fb8a988012d0c3925a941e47ca7f79"
+    },
+    {
+      "bytes": 8,
+      "inclusive_range": [
+        83064,
+        83071
+      ],
+      "matches_recorded_returned_body_hash": true,
+      "sha256": "bc07b4f1c4408dbc15fb3719b81ba6d7af3cc0f66250b775b4c8e608326fb973"
+    },
+    {
+      "bytes": 8,
+      "inclusive_range": [
+        83192,
+        83199
+      ],
+      "matches_recorded_returned_body_hash": true,
+      "sha256": "dc6a9ab6c85e218126c2134529cc6527dce90e78ecfc122de03baa97da3003d2"
+    },
+    {
+      "bytes": 32768,
+      "inclusive_range": [
+        507904,
+        540671
+      ],
+      "matches_recorded_returned_body_hash": true,
+      "sha256": "533246e368e14bd8c94df837c9f08c6f8cc005dfbce8f995640778448a00461a"
+    }
+  ],
+  "redirect_count": 1,
+  "request_count_including_redirects": 7,
+  "review_method": "Independent standard-library recomputation from the retained receipt, prior acquisition cache and Git freeze; no runner functions imported, no network requests.",
+  "reviewed_receipt_sha256": "73200e9f1a5d1cb4db5e42df8a1bec164bf61d2477cbeb7479ba84d55ef29901",
+  "schema": "scrollprize.public-range-independent-review.v1",
+  "source_hashes": {
+    "frozen_protocol.json": "119a3e4892244c52ea6d828453089d7889056111b1e804afb944ca62f71c3671",
+    "run_transport.py": "3d7f8ccb4c1b0d7cf106b543971532c0f09084a4487f2e71b05bfbd02b783dcc"
+  },
+  "status": "pass",
+  "total_application_body_bytes": 1097768,
+  "unread_redirect_declared_body_bytes": 1000,
+  "whole_elapsed_seconds_including_redirect": 10.923828,
+  "whole_unique_body_bytes": 1064960
+}

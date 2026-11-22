@@ -5,6 +5,42 @@ outcome has been observed for this experiment. The root agent must publish the
 protocol and runner before the first live object request. The runner enforces a
 byte-identical Git freeze of those two files.
 
+## Measured result: exact values, smaller Range bodies, higher observed latency
+
+**From a source — measured locally after the
+[public freeze](https://github.com/JorisViaudQuantAI/Scrollprize/commit/e2b20a4bf3864669e30ee1db894eae4ea39de941):**
+the [executed receipt](evidence/result.json) passes all three fixed boxes with
+zero voxel mismatches against both the fresh whole GET and the independently
+acquired old cache. The whole GET followed one redirect; the five subsequent
+Range responses were all 206, with the same strong ETag and the exact requested
+bounds and lengths. There were seven counted HTTP requests in total.
+
+| Observation | Whole-object reference | Five Range requests |
+| --- | ---: | ---: |
+| Application body bytes returned | 1,064,960 | 32,808 |
+| Elapsed time | 10.923828 s, including redirect | 19.515980 s |
+| Source bytes matched | Entire pinned chunk | Every selected byte |
+
+**Calculated from the measured receipt:** the Range bodies are 3.080679% of the
+unique full object, a 32.46-fold reduction for these particular slices. The
+verification experiment intentionally also downloads the complete reference, so
+its actual completed-read total is **1,097,768 bytes**, not 32,808. This verifier
+is not a production downloader that already avoids the initial whole GET.
+Peak process RSS was 31,208 KiB.
+
+**My inference:** Range transport can recover the selected values exactly on this
+observed public HF path, but this serial five-request sequence was slower than
+the one complete-object retrieval. The fixed whole-first order and one observation
+do not establish a general speed ratio. An operational reader needs a request
+budget and an interval-coalescing policy as well as a byte budget. The next
+source-specific experiment must verify its version acquisition and transport
+contract without claiming that this HF result proves S3/Paris 4 behavior.
+
+The [independent receipt review](evidence/independent_review.json) recomputes the
+Range plans, byte totals, body hashes and reconstructed-box hashes from the old
+cache. It issues no new request. It checks the retained observations; it is not a
+second independent wire capture. The frozen runner and protocol remain unchanged.
+
 ## Question and fixed source
 
 **My inference:** the native whole-chunk budget failure described in

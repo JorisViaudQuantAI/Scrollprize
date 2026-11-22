@@ -11,6 +11,60 @@ protocol file written immediately before inference is not the public freeze.
 At preparation time no result is claimed. A completed `result.json` is the
 record of a real run.
 
+## Measured results
+
+**From a source — measured:** the [completed receipt](evidence/result.json)
+records **15 real CPU forwards in 36.64 seconds wall time**, including
+31.18 seconds of inference, after the
+[public protocol freeze](https://github.com/JorisViaudQuantAI/Scrollprize/commit/0540b2ee4b9e60d4c10381265f16b13dd1561c8c).
+All five original predictions exactly reproduced the previously cached
+baselines. The [independent review](evidence/independent_review.json) passed:
+it verified the unchanged central values and scoring masks and recomputed
+metrics with maximum absolute scalar error 2.22 × 10⁻¹⁶. The review required
+no further model forwards.
+
+| Condition | Pooled AP | Pooled AUC | Ink recall at p ≥ 0.5 | Background exceedance at p ≥ 0.5 |
+| --- | ---: | ---: | ---: | ---: |
+| Original | 0.8474 | 0.9413 | 43.69% (679/1,554) | 4.80% (171/3,566) |
+| Zero halo | 0.7483 | 0.8271 | 0% (0/1,554) | 0% (0/3,566) |
+| Reflected halo | 0.9352 | 0.9747 | 31.66% (492/1,554) | 0.42% (15/3,566) |
+
+**From a source — measured:** reflection increases pooled AP and AUC, but
+**reduces both metrics in each of the two mixed-label contexts**. In c03, AP
+falls from 0.9915 to 0.9738 and AUC from 0.9960 to 0.9874. In c09, AP falls
+from 0.9909 to 0.9690 and AUC from 0.9977 to 0.9921; its thresholded ink
+recall falls from **207/207 to 0/207**, despite identical central CT. Zero
+padding eliminates every positive call at the fixed threshold. The exact
+per-context results, including all three pure-class contexts, remain in the
+[receipt](evidence/result.json).
+
+![Aggregate context-intervention metrics, with fixed scales and the reflection-versus-original difference](evidence/context_intervention_metrics.png)
+
+**My inference:** pooled ranking gains alone do not establish better local
+ink recovery. They can coexist with worse ranking within every mixed-label
+patch because the ordering of scores between patches also changes. This
+experiment demonstrates sensitivity to external context; it does not validate
+reflection as an ink-detection improvement. The intervention replaces **75%
+of the input**, so it is a severe stress test, not a measurement of typical
+missing-data effects. Five previously evaluated sub-letter cores from one
+public donor, correlated model-assisted labels, favorable depth-order reuse,
+and unresolved training exposure cannot establish new-scroll generalisation
+or letter legibility.
+
+**From the [executed runner](run.py):** Hecate's nonzero-column input mask is recomputed
+from each altered array. Its central values remain identical, but its halo can
+change along with the CT. This is a joint CT-and-validity-context intervention;
+it does not isolate an intensity-only effect or validate that legacy mask as an
+acquisition-support certificate. The result measures this Hecate checkpoint,
+not the magnitude of the effect in Studio or another model family.
+
+The figure uses aggregate JSON only; no CT, prediction images, or review
+arrays are published here. Regenerate it without loading a model:
+
+```bash
+python firstletters-colab/context_intervention/plot_results.py
+```
+
 ## Fixed inputs and scope
 
 **From the prior measured source:**
