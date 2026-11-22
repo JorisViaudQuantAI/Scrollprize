@@ -1,0 +1,1374 @@
+{
+  "schema": "hecate-public-donor-probe-v1",
+  "status": "prospective manifest; root review/public freeze required before CT access",
+  "created_date": "2026-11-22",
+  "dataset_repo": "paranke/vesuvius-814-841-9b-studio-training-data",
+  "dataset_revision": "a63c3796ebd13e1c70282433cdeb5c34aaa45c07",
+  "primary_code_repo": "priyankaranke/vesuvius-studio-multiscroll-cpt",
+  "primary_code_revision": "bf66f753176792a966bca17822629fb8821f20c8",
+  "physical_parent_count": 3,
+  "independent_test_donor_count": 1,
+  "planned_contexts_per_donor": 16,
+  "planned_forward_calls": 96,
+  "input_shape_zyx": [
+    16,
+    64,
+    64
+  ],
+  "score_core_yx": [
+    16,
+    16,
+    48,
+    48
+  ],
+  "target_pitch_um": 9.6,
+  "depth_source_center_index": 31.5,
+  "resampling": {
+    "method": "exact separable voxel-volume box average; round nearest-even to uint8; divide by255 exactly once at Hecate input",
+    "source_z_center": "31.5+(k-7.5)*9.6/source_pitch_um",
+    "source_yx_center": "crop_yx+(origin_target_yx+[i,j]+0.5)*9.6/source_pitch_um-0.5",
+    "source_z_box_edges": "31.5+(k-8)*9.6/source_pitch_um and31.5+(k-7)*9.6/source_pitch_um in source-center coordinates",
+    "source_voxel_cell_edges": "index-0.5 to index+0.5",
+    "label_nearest_indices": "floor((origin_target_yx+[i,j]+0.5)*9.6/9.36)",
+    "geometry_footprint_lower_inclusive": "floor(origin_target_yx*9.6/9.36)",
+    "geometry_footprint_upper_exclusive": "ceil((origin_target_yx+64)*9.6/9.36)",
+    "required_geometry_fraction": 1.0,
+    "missing_geometry_policy": "drop whole predefined context before inference, report ID and reason; no replacement; both depth orders share the same decision",
+    "missing_source_policy": "hard fail on missing CT objects, metadata mismatch, decode error or source-bound violation; no silent fill, extrapolation or context substitution",
+    "unknown_label_policy": "exclude from fitting and scoring",
+    "intensity_policy": "preserve released uint8 scale; no clipping at200; no per-image normalization; prior scanner intensity window is not independently reconstructed"
+  },
+  "selection": {
+    "selector_sha256": "efc58333ee9809a8efdd518c5630d38f3c98708fa1f7d2521c42cbeb51e24ed3",
+    "historical_sampling_bias": "814 and9B coordinates were published by a sampler requiring any ink in each256-pixel parent; their four128-pixel children include potentially empty children; selected contexts are historically label-enriched",
+    "calibration_selection": "pooled known-label support >=128 of central32x32 pixels, complete saved geometry footprint,64-pixel origin lattice; class identities not used",
+    "farthest_point": "lexicographically sorted candidates; closest to centroid first; repeatedly maximize minimum squared distance; lexical tie break",
+    "leakage_boundary": "whole physical donor roles; no alternative scans, aliases or geometries of any donor enter another role; held-out814 labels remain undecoded until readouts frozen",
+    "duplicate_policy": "deduplicate scored physical target-grid pixels; no input/core overlaps among the selected origins in this manifest",
+    "no_prize_claim": "public donor mechanism test only; model-assisted labels and unknown Hecate pretraining exposure limit interpretation"
+  },
+  "preflight_access": {
+    "CT_arrays_opened": false,
+    "detector_outputs_computed": false,
+    "test_814_labels_opened": false,
+    "calibration_labels_access": "pooled0-vs-nonzero support only, with authorization"
+  },
+  "download_budget_bytes": 1073741824,
+  "budget_note": "Count actual unique transferred source+label+metadata+checkpoint bytes; cache CT chunks across both depth orders; compressed chunk sizes need stage-time enforcement",
+  "source_support_limit": "Released surface-array bounds and complete HTTP chunk presence plus saved approved UV geometry; not a new raw-scan acquisition-support or sheet-identity proof",
+  "donors": [
+    {
+      "id": "source-9b-approved-r000001",
+      "scroll": "PHerc0009B",
+      "split": "train",
+      "physical_parent_id": "ink/0009b/auto_grown_20250919055754487_inp_hr_2um/auto_grown_20250919055754487_inp_hr_2um.zarr",
+      "source_zarr_url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/0009b/auto_grown_20250919055754487_inp_hr_2um/auto_grown_20250919055754487_inp_hr_2um.zarr/0/",
+      "source_pitch_um": 2.401,
+      "source_shape_zyx": [
+        65,
+        25984,
+        21248
+      ],
+      "source_zarr_metadata": {
+        "chunks": [
+          65,
+          128,
+          128
+        ],
+        "compressor": {
+          "blocksize": 0,
+          "clevel": 2,
+          "cname": "zstd",
+          "id": "blosc",
+          "shuffle": 1
+        },
+        "dtype": "|u1",
+        "fill_value": 0,
+        "filters": null,
+        "order": "C",
+        "shape": [
+          65,
+          25984,
+          21248
+        ],
+        "zarr_format": 2
+      },
+      "source_zarr_metadata_sha256": "3e777da40bba5c5726b349e486311e0135e3a20ce3c727030ff85bb2762f3239",
+      "source_zattrs_sha256": "e68e2fa0d0ebeb36bfca21100f61f0d41b577658288ff18806a8ba225097ddea",
+      "crop_xyxy": [
+        0,
+        0,
+        21248,
+        25984
+      ],
+      "label_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-9b-approved-r000001/refined_state.png",
+      "label_sha256": "c7a6ceb78714d4a017c9055329b3d9842e935e29fad7502161b73c6e5093e111",
+      "label_size_bytes": 88046,
+      "label_format": "png",
+      "label_shape_yx": [
+        6665,
+        5450
+      ],
+      "label_pitch_um": 9.36,
+      "label_values": {
+        "unknown": 0,
+        "background": 1,
+        "ink": 2
+      },
+      "label_revision": 49,
+      "declared_full_canvas_counts": {
+        "ink": 1197568,
+        "background": 3321378
+      },
+      "geometry_mask_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-9b-approved-r000001/geometry-valid.png",
+      "geometry_mask_sha256": "72d1908d5d6ab15e0a74378e6219a534b3b0518839a43bfb2dbb512a5b60fa6d",
+      "geometry_mask_size_bytes": 59734,
+      "geometry_mask_format": "png",
+      "geometry_mask_shape_yx": [
+        6665,
+        5450
+      ],
+      "geometry_mask_pitch_um": 9.36,
+      "geometry_mask_valid": "nonzero",
+      "geometry_mask_grid": "same as categorical labels",
+      "metadata_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-9b-approved-r000001/label.json",
+      "metadata_sha256": "2e1436b06781708dde28dd3c95ad3232e4cff470ff0ec29bc935dc1c034dd64f",
+      "source_metadata_sha256": "c8908bf041387db30b55c7dccc0c741250a9b97aa9115ca016fd019141702fea",
+      "frozen_snapshot_state_binding_verified": true,
+      "acquisition_energy_keV": 77,
+      "source_domain": "released high-resolution CT; resampled here to 9.6 um; not native coarse CT",
+      "legacy_z_centers_source_index": [
+        2.262182423990005,
+        6.160558100791338,
+        10.05893377759267,
+        13.957309454394004,
+        17.855685131195337,
+        21.754060807996666,
+        25.652436484798002,
+        29.55081216159933,
+        33.44918783840067,
+        37.347563515202,
+        41.245939192003334,
+        45.14431486880466,
+        49.04269054560599,
+        52.94106622240733,
+        56.839441899208666,
+        60.737817576009995
+      ],
+      "legacy_recipe": "4x4x4 area mean of original planes 0:64, then linear resampling to 9.36 um; original plane 64 omitted",
+      "legacy_orientation": {
+        "normal_basis": "stored_depth_axis",
+        "normal_sign": -1,
+        "s1_orientation_verification": "empirically_calibrated",
+        "canonical_to_s1_sign": 1
+      },
+      "legacy_runtime_reverse": false,
+      "experiment_depth_order": "ascending released source index primary; fixed reversal sensitivity arm; no test-directed order choice",
+      "contexts": [
+        {
+          "id": "9b-c00",
+          "origin_target_yx": [
+            4648,
+            3150
+          ]
+        },
+        {
+          "id": "9b-c01",
+          "origin_target_yx": [
+            2526,
+            4024
+          ]
+        },
+        {
+          "id": "9b-c02",
+          "origin_target_yx": [
+            5771,
+            1528
+          ]
+        },
+        {
+          "id": "9b-c03",
+          "origin_target_yx": [
+            5709,
+            4398
+          ]
+        },
+        {
+          "id": "9b-c04",
+          "origin_target_yx": [
+            3837,
+            4149
+          ]
+        },
+        {
+          "id": "9b-c05",
+          "origin_target_yx": [
+            5896,
+            2838
+          ]
+        },
+        {
+          "id": "9b-c06",
+          "origin_target_yx": [
+            4523,
+            1902
+          ]
+        },
+        {
+          "id": "9b-c07",
+          "origin_target_yx": [
+            3275,
+            3088
+          ]
+        },
+        {
+          "id": "9b-c08",
+          "origin_target_yx": [
+            4773,
+            4274
+          ]
+        },
+        {
+          "id": "9b-c09",
+          "origin_target_yx": [
+            5397,
+            3587
+          ]
+        },
+        {
+          "id": "9b-c10",
+          "origin_target_yx": [
+            4024,
+            2589
+          ]
+        },
+        {
+          "id": "9b-c11",
+          "origin_target_yx": [
+            5272,
+            2277
+          ]
+        },
+        {
+          "id": "9b-c12",
+          "origin_target_yx": [
+            3213,
+            3837
+          ]
+        },
+        {
+          "id": "9b-c13",
+          "origin_target_yx": [
+            2589,
+            3338
+          ]
+        },
+        {
+          "id": "9b-c14",
+          "origin_target_yx": [
+            4086,
+            3525
+          ]
+        },
+        {
+          "id": "9b-c15",
+          "origin_target_yx": [
+            5085,
+            1590
+          ]
+        }
+      ],
+      "context_selection": {
+        "eligible_contexts": 1562,
+        "selection_source": "published_coordinates",
+        "origins_target_yx": [
+          [
+            4648,
+            3150
+          ],
+          [
+            2526,
+            4024
+          ],
+          [
+            5771,
+            1528
+          ],
+          [
+            5709,
+            4398
+          ],
+          [
+            3837,
+            4149
+          ],
+          [
+            5896,
+            2838
+          ],
+          [
+            4523,
+            1902
+          ],
+          [
+            3275,
+            3088
+          ],
+          [
+            4773,
+            4274
+          ],
+          [
+            5397,
+            3587
+          ],
+          [
+            4024,
+            2589
+          ],
+          [
+            5272,
+            2277
+          ],
+          [
+            3213,
+            3837
+          ],
+          [
+            2589,
+            3338
+          ],
+          [
+            4086,
+            3525
+          ],
+          [
+            5085,
+            1590
+          ]
+        ],
+        "minimum_center_distance_um": 6170.851325384529,
+        "overlapping_input_pairs": 0,
+        "overlapping_scored_core_pairs": 0
+      },
+      "required_chunk_keys": [
+        "0.78.125",
+        "0.78.126",
+        "0.78.127",
+        "0.79.125",
+        "0.79.126",
+        "0.79.127",
+        "0.80.104",
+        "0.80.105",
+        "0.80.106",
+        "0.80.125",
+        "0.80.126",
+        "0.80.127",
+        "0.81.104",
+        "0.81.105",
+        "0.81.106",
+        "0.82.104",
+        "0.82.105",
+        "0.82.106",
+        "0.100.119",
+        "0.100.120",
+        "0.100.121",
+        "0.101.119",
+        "0.101.120",
+        "0.101.121",
+        "0.102.96",
+        "0.102.97",
+        "0.102.98",
+        "0.102.119",
+        "0.102.120",
+        "0.102.121",
+        "0.103.96",
+        "0.103.97",
+        "0.103.98",
+        "0.104.96",
+        "0.104.97",
+        "0.104.98",
+        "0.119.129",
+        "0.119.130",
+        "0.119.131",
+        "0.120.129",
+        "0.120.130",
+        "0.120.131",
+        "0.121.129",
+        "0.121.130",
+        "0.121.131",
+        "0.125.80",
+        "0.125.81",
+        "0.125.82",
+        "0.126.80",
+        "0.126.81",
+        "0.126.82",
+        "0.127.80",
+        "0.127.81",
+        "0.127.82",
+        "0.127.110",
+        "0.127.111",
+        "0.127.112",
+        "0.128.110",
+        "0.128.111",
+        "0.128.112",
+        "0.129.110",
+        "0.129.111",
+        "0.129.112",
+        "0.141.59",
+        "0.141.60",
+        "0.141.61",
+        "0.142.59",
+        "0.142.60",
+        "0.142.61",
+        "0.143.59",
+        "0.143.60",
+        "0.143.61",
+        "0.145.98",
+        "0.145.99",
+        "0.145.100",
+        "0.146.98",
+        "0.146.99",
+        "0.146.100",
+        "0.147.98",
+        "0.147.99",
+        "0.147.100",
+        "0.149.133",
+        "0.149.134",
+        "0.149.135",
+        "0.150.133",
+        "0.150.134",
+        "0.150.135",
+        "0.151.133",
+        "0.151.134",
+        "0.151.135",
+        "0.158.49",
+        "0.158.50",
+        "0.158.51",
+        "0.159.49",
+        "0.159.50",
+        "0.159.51",
+        "0.160.49",
+        "0.160.50",
+        "0.160.51",
+        "0.164.71",
+        "0.164.72",
+        "0.164.73",
+        "0.165.71",
+        "0.165.72",
+        "0.165.73",
+        "0.166.71",
+        "0.166.72",
+        "0.166.73",
+        "0.168.112",
+        "0.168.113",
+        "0.168.114",
+        "0.169.112",
+        "0.169.113",
+        "0.169.114",
+        "0.170.112",
+        "0.170.113",
+        "0.170.114",
+        "0.178.137",
+        "0.178.138",
+        "0.178.139",
+        "0.179.137",
+        "0.179.138",
+        "0.179.139",
+        "0.180.47",
+        "0.180.48",
+        "0.180.49",
+        "0.180.137",
+        "0.180.138",
+        "0.180.139",
+        "0.181.47",
+        "0.181.48",
+        "0.181.49",
+        "0.182.47",
+        "0.182.48",
+        "0.182.49",
+        "0.184.88",
+        "0.184.89",
+        "0.184.90",
+        "0.185.88",
+        "0.185.89",
+        "0.185.90",
+        "0.186.88",
+        "0.186.89",
+        "0.186.90"
+      ],
+      "required_unique_chunk_count": 144,
+      "uncompressed_chunk_payload_bytes": 153354240
+    },
+    {
+      "id": "source-841-grow-a-approved-r000001",
+      "scroll": "PHerc0841",
+      "split": "calibration",
+      "physical_parent_id": "ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr",
+      "source_zarr_url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/",
+      "source_pitch_um": 2.403,
+      "source_shape_zyx": [
+        65,
+        16763,
+        18712
+      ],
+      "source_zarr_metadata": {
+        "chunks": [
+          65,
+          128,
+          128
+        ],
+        "compressor": null,
+        "dimension_separator": ".",
+        "dtype": "|u1",
+        "fill_value": 0,
+        "filters": null,
+        "order": "C",
+        "shape": [
+          65,
+          16763,
+          18712
+        ],
+        "zarr_format": 2
+      },
+      "source_zarr_metadata_sha256": "471b618f6a23e977f8fbd039d8637ad7b468ff31e119cc0fd3e038f2808c46fa",
+      "source_zattrs_sha256": "507c566bcd2762ce74d5a19b7f2f737e89ae2560a04fd15cde050f757f660d60",
+      "crop_xyxy": [
+        5888,
+        1792,
+        14208,
+        12160
+      ],
+      "label_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-841-grow-a-approved-r000001/refined_state.png",
+      "label_sha256": "54b254d887625050e63596e8016ade073f085d38555935ddfc8c8298acdfe81b",
+      "label_size_bytes": 30940,
+      "label_format": "png",
+      "label_shape_yx": [
+        2661,
+        2136
+      ],
+      "label_pitch_um": 9.36,
+      "label_values": {
+        "unknown": 0,
+        "background": 1,
+        "ink": 2
+      },
+      "label_revision": 2,
+      "declared_full_canvas_counts": {
+        "ink": 369155,
+        "background": 749921
+      },
+      "geometry_mask_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-841-grow-a-approved-r000001/geometry-valid.png",
+      "geometry_mask_sha256": "b0389a95ea9f9b131591ae08520bfbaccf023615d9c90b95b9e91dadb5a75602",
+      "geometry_mask_size_bytes": 11860,
+      "geometry_mask_format": "png",
+      "geometry_mask_shape_yx": [
+        2661,
+        2136
+      ],
+      "geometry_mask_pitch_um": 9.36,
+      "geometry_mask_valid": "nonzero",
+      "geometry_mask_grid": "same as categorical labels",
+      "metadata_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-841-grow-a-approved-r000001/label.json",
+      "metadata_sha256": "5bd9e1a83bfec6ff5792d64292a6d28aeb7f4e53a56ccd54e33172b6557f53d5",
+      "source_metadata_sha256": "fa582fc4e12a14a66a88fa44025fec70c2126a491fb56552d691ad540a6dbb18",
+      "frozen_snapshot_state_binding_verified": true,
+      "acquisition_energy_keV": 77,
+      "source_domain": "released high-resolution CT; resampled here to 9.6 um; not native coarse CT",
+      "legacy_z_centers_source_index": [
+        2.2865168539325893,
+        6.181647940074907,
+        10.076779026217231,
+        13.971910112359552,
+        17.867041198501873,
+        21.762172284644194,
+        25.65730337078652,
+        29.55243445692884,
+        33.447565543071164,
+        37.342696629213485,
+        41.237827715355806,
+        45.13295880149813,
+        49.02808988764045,
+        52.92322097378277,
+        56.81835205992509,
+        60.71348314606741
+      ],
+      "legacy_recipe": "4x4x4 area mean of original planes 0:64, then linear resampling to 9.36 um; original plane 64 omitted",
+      "legacy_orientation": null,
+      "legacy_runtime_reverse": null,
+      "experiment_depth_order": "ascending released source index primary; fixed reversal sensitivity arm; no test-directed order choice",
+      "contexts": [
+        {
+          "id": "841-c00",
+          "origin_target_yx": [
+            1216,
+            1152
+          ]
+        },
+        {
+          "id": "841-c01",
+          "origin_target_yx": [
+            2240,
+            128
+          ]
+        },
+        {
+          "id": "841-c02",
+          "origin_target_yx": [
+            2432,
+            1664
+          ]
+        },
+        {
+          "id": "841-c03",
+          "origin_target_yx": [
+            128,
+            960
+          ]
+        },
+        {
+          "id": "841-c04",
+          "origin_target_yx": [
+            448,
+            1920
+          ]
+        },
+        {
+          "id": "841-c05",
+          "origin_target_yx": [
+            1984,
+            768
+          ]
+        },
+        {
+          "id": "841-c06",
+          "origin_target_yx": [
+            640,
+            1344
+          ]
+        },
+        {
+          "id": "841-c07",
+          "origin_target_yx": [
+            1792,
+            320
+          ]
+        },
+        {
+          "id": "841-c08",
+          "origin_target_yx": [
+            256,
+            1536
+          ]
+        },
+        {
+          "id": "841-c09",
+          "origin_target_yx": [
+            512,
+            768
+          ]
+        },
+        {
+          "id": "841-c10",
+          "origin_target_yx": [
+            1024,
+            1536
+          ]
+        },
+        {
+          "id": "841-c11",
+          "origin_target_yx": [
+            2048,
+            1472
+          ]
+        },
+        {
+          "id": "841-c12",
+          "origin_target_yx": [
+            2368,
+            576
+          ]
+        },
+        {
+          "id": "841-c13",
+          "origin_target_yx": [
+            704,
+            1664
+          ]
+        },
+        {
+          "id": "841-c14",
+          "origin_target_yx": [
+            2112,
+            1792
+          ]
+        },
+        {
+          "id": "841-c15",
+          "origin_target_yx": [
+            320,
+            1216
+          ]
+        }
+      ],
+      "context_selection": {
+        "eligible_contexts": 282,
+        "selection_source": "calibration_known_label_support_only",
+        "origins_target_yx": [
+          [
+            1216,
+            1152
+          ],
+          [
+            2240,
+            128
+          ],
+          [
+            2432,
+            1664
+          ],
+          [
+            128,
+            960
+          ],
+          [
+            448,
+            1920
+          ],
+          [
+            1984,
+            768
+          ],
+          [
+            640,
+            1344
+          ],
+          [
+            1792,
+            320
+          ],
+          [
+            256,
+            1536
+          ],
+          [
+            512,
+            768
+          ],
+          [
+            1024,
+            1536
+          ],
+          [
+            2048,
+            1472
+          ],
+          [
+            2368,
+            576
+          ],
+          [
+            704,
+            1664
+          ],
+          [
+            2112,
+            1792
+          ],
+          [
+            320,
+            1216
+          ]
+        ],
+        "minimum_center_distance_um": 3072.0,
+        "overlapping_input_pairs": 0,
+        "overlapping_scored_core_pairs": 0
+      },
+      "required_chunk_keys": [
+        "0.17.75",
+        "0.17.76",
+        "0.17.77",
+        "0.18.75",
+        "0.18.76",
+        "0.18.77",
+        "0.19.75",
+        "0.19.76",
+        "0.19.77",
+        "0.21.93",
+        "0.21.94",
+        "0.21.95",
+        "0.22.93",
+        "0.22.94",
+        "0.22.95",
+        "0.23.83",
+        "0.23.84",
+        "0.23.85",
+        "0.23.93",
+        "0.23.94",
+        "0.23.95",
+        "0.24.83",
+        "0.24.84",
+        "0.24.85",
+        "0.25.83",
+        "0.25.84",
+        "0.25.85",
+        "0.27.105",
+        "0.27.106",
+        "0.27.107",
+        "0.28.105",
+        "0.28.106",
+        "0.28.107",
+        "0.29.69",
+        "0.29.70",
+        "0.29.71",
+        "0.29.105",
+        "0.29.106",
+        "0.29.107",
+        "0.30.69",
+        "0.30.70",
+        "0.30.71",
+        "0.31.69",
+        "0.31.70",
+        "0.31.71",
+        "0.33.87",
+        "0.33.88",
+        "0.33.89",
+        "0.34.87",
+        "0.34.88",
+        "0.34.89",
+        "0.35.87",
+        "0.35.88",
+        "0.35.89",
+        "0.35.97",
+        "0.35.98",
+        "0.35.99",
+        "0.36.97",
+        "0.36.98",
+        "0.36.99",
+        "0.37.97",
+        "0.37.98",
+        "0.37.99",
+        "0.45.93",
+        "0.45.94",
+        "0.45.95",
+        "0.46.93",
+        "0.46.94",
+        "0.46.95",
+        "0.47.93",
+        "0.47.94",
+        "0.47.95",
+        "0.51.81",
+        "0.51.82",
+        "0.51.83",
+        "0.52.81",
+        "0.52.82",
+        "0.52.83",
+        "0.53.81",
+        "0.53.82",
+        "0.53.83",
+        "0.69.55",
+        "0.69.56",
+        "0.69.57",
+        "0.70.55",
+        "0.70.56",
+        "0.70.57",
+        "0.71.55",
+        "0.71.56",
+        "0.71.57",
+        "0.75.69",
+        "0.75.70",
+        "0.75.71",
+        "0.76.69",
+        "0.76.70",
+        "0.76.71",
+        "0.77.69",
+        "0.77.70",
+        "0.77.71",
+        "0.77.91",
+        "0.77.92",
+        "0.77.93",
+        "0.78.91",
+        "0.78.92",
+        "0.78.93",
+        "0.79.91",
+        "0.79.92",
+        "0.79.93",
+        "0.79.101",
+        "0.79.102",
+        "0.79.103",
+        "0.80.101",
+        "0.80.102",
+        "0.80.103",
+        "0.81.101",
+        "0.81.102",
+        "0.81.103",
+        "0.83.49",
+        "0.83.50",
+        "0.83.51",
+        "0.84.49",
+        "0.84.50",
+        "0.84.51",
+        "0.85.49",
+        "0.85.50",
+        "0.85.51",
+        "0.87.63",
+        "0.87.64",
+        "0.87.65",
+        "0.88.63",
+        "0.88.64",
+        "0.88.65",
+        "0.89.63",
+        "0.89.64",
+        "0.89.65",
+        "0.89.97",
+        "0.89.98",
+        "0.89.99",
+        "0.90.97",
+        "0.90.98",
+        "0.90.99",
+        "0.91.97",
+        "0.91.98",
+        "0.91.99"
+      ],
+      "required_unique_chunk_count": 144,
+      "uncompressed_chunk_payload_bytes": 153354240
+    },
+    {
+      "id": "source-814-approved-r000001",
+      "scroll": "PHerc0814",
+      "split": "test",
+      "physical_parent_id": "ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr",
+      "source_zarr_url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/",
+      "source_pitch_um": 2.403,
+      "source_shape_zyx": [
+        65,
+        10240,
+        13160
+      ],
+      "source_zarr_metadata": {
+        "chunks": [
+          65,
+          128,
+          128
+        ],
+        "compressor": {
+          "blocksize": 0,
+          "clevel": 2,
+          "cname": "zstd",
+          "id": "blosc",
+          "shuffle": 1
+        },
+        "dtype": "|u1",
+        "fill_value": 0,
+        "filters": null,
+        "order": "C",
+        "shape": [
+          65,
+          10240,
+          13160
+        ],
+        "zarr_format": 2
+      },
+      "source_zarr_metadata_sha256": "21f58f5909b767c84ed8213ee2cf5efd26b0f9f4898e1f11af1a7680b61631ec",
+      "source_zattrs_sha256": "c798cb11a1b96f8a30c80d6e6287958fdc974fd0b787e803f3160a3c230a5f25",
+      "crop_xyxy": [
+        0,
+        0,
+        13160,
+        10240
+      ],
+      "label_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/refined_state.png",
+      "label_sha256": "a5b080bf2a090f46a10bca780b2e19586fadf56f8da93e71f06cb9999c2ad986",
+      "label_size_bytes": 27957,
+      "label_format": "png",
+      "label_shape_yx": [
+        2628,
+        3378
+      ],
+      "label_pitch_um": 9.36,
+      "label_values": {
+        "unknown": 0,
+        "background": 1,
+        "ink": 2
+      },
+      "label_revision": 4,
+      "declared_full_canvas_counts": {
+        "ink": 288657,
+        "background": 650405
+      },
+      "geometry_mask_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/geometry-valid.png",
+      "geometry_mask_sha256": "97327701b7b0bd08dc9bfc6231d235ba3e682573f17f9e9c3f0a12d75f267a9a",
+      "geometry_mask_size_bytes": 16500,
+      "geometry_mask_format": "png",
+      "geometry_mask_shape_yx": [
+        2628,
+        3378
+      ],
+      "geometry_mask_pitch_um": 9.36,
+      "geometry_mask_valid": "nonzero",
+      "geometry_mask_grid": "same as categorical labels",
+      "metadata_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/label.json",
+      "metadata_sha256": "1ffe5c5c2901e6bb3fc0b4cbc8a3eb1a880469b61955bcef053b3723488846db",
+      "source_metadata_sha256": "2073701a8953c0d120044750f1c8a318a6be538a597a7534dd18765778db7244",
+      "frozen_snapshot_state_binding_verified": true,
+      "acquisition_energy_keV": 77,
+      "source_domain": "released high-resolution CT; resampled here to 9.6 um; not native coarse CT",
+      "legacy_z_centers_source_index": [
+        2.2865168539325893,
+        6.181647940074907,
+        10.076779026217231,
+        13.971910112359552,
+        17.867041198501873,
+        21.762172284644194,
+        25.65730337078652,
+        29.55243445692884,
+        33.447565543071164,
+        37.342696629213485,
+        41.237827715355806,
+        45.13295880149813,
+        49.02808988764045,
+        52.92322097378277,
+        56.81835205992509,
+        60.71348314606741
+      ],
+      "legacy_recipe": "4x4x4 area mean of original planes 0:64, then linear resampling to 9.36 um; original plane 64 omitted",
+      "legacy_orientation": null,
+      "legacy_runtime_reverse": true,
+      "experiment_depth_order": "ascending released source index primary; fixed reversal sensitivity arm; no test-directed order choice",
+      "contexts": [
+        {
+          "id": "814-c00",
+          "origin_target_yx": [
+            1528,
+            842
+          ]
+        },
+        {
+          "id": "814-c01",
+          "origin_target_yx": [
+            2339,
+            405
+          ]
+        },
+        {
+          "id": "814-c02",
+          "origin_target_yx": [
+            842,
+            1278
+          ]
+        },
+        {
+          "id": "814-c03",
+          "origin_target_yx": [
+            904,
+            530
+          ]
+        },
+        {
+          "id": "814-c04",
+          "origin_target_yx": [
+            1590,
+            1528
+          ]
+        },
+        {
+          "id": "814-c05",
+          "origin_target_yx": [
+            1715,
+            218
+          ]
+        },
+        {
+          "id": "814-c06",
+          "origin_target_yx": [
+            2090,
+            966
+          ]
+        },
+        {
+          "id": "814-c07",
+          "origin_target_yx": [
+            1278,
+            280
+          ]
+        },
+        {
+          "id": "814-c08",
+          "origin_target_yx": [
+            1278,
+            1216
+          ]
+        },
+        {
+          "id": "814-c09",
+          "origin_target_yx": [
+            1902,
+            592
+          ]
+        },
+        {
+          "id": "814-c10",
+          "origin_target_yx": [
+            1029,
+            904
+          ]
+        },
+        {
+          "id": "814-c11",
+          "origin_target_yx": [
+            1778,
+            1154
+          ]
+        },
+        {
+          "id": "814-c12",
+          "origin_target_yx": [
+            1216,
+            592
+          ]
+        },
+        {
+          "id": "814-c13",
+          "origin_target_yx": [
+            1216,
+            1528
+          ]
+        },
+        {
+          "id": "814-c14",
+          "origin_target_yx": [
+            1590,
+            530
+          ]
+        },
+        {
+          "id": "814-c15",
+          "origin_target_yx": [
+            2027,
+            280
+          ]
+        }
+      ],
+      "context_selection": {
+        "eligible_contexts": 387,
+        "selection_source": "published_coordinates",
+        "origins_target_yx": [
+          [
+            1528,
+            842
+          ],
+          [
+            2339,
+            405
+          ],
+          [
+            842,
+            1278
+          ],
+          [
+            904,
+            530
+          ],
+          [
+            1590,
+            1528
+          ],
+          [
+            1715,
+            218
+          ],
+          [
+            2090,
+            966
+          ],
+          [
+            1278,
+            280
+          ],
+          [
+            1278,
+            1216
+          ],
+          [
+            1902,
+            592
+          ],
+          [
+            1029,
+            904
+          ],
+          [
+            1778,
+            1154
+          ],
+          [
+            1216,
+            592
+          ],
+          [
+            1216,
+            1528
+          ],
+          [
+            1590,
+            530
+          ],
+          [
+            2027,
+            280
+          ]
+        ],
+        "minimum_center_distance_um": 3053.7658849361715,
+        "overlapping_input_pairs": 0,
+        "overlapping_scored_core_pairs": 0
+      },
+      "required_chunk_keys": [
+        "0.26.39",
+        "0.26.40",
+        "0.26.41",
+        "0.27.39",
+        "0.27.40",
+        "0.27.41",
+        "0.28.16",
+        "0.28.17",
+        "0.28.18",
+        "0.28.39",
+        "0.28.40",
+        "0.28.41",
+        "0.29.16",
+        "0.29.17",
+        "0.29.18",
+        "0.30.16",
+        "0.30.17",
+        "0.30.18",
+        "0.32.28",
+        "0.32.29",
+        "0.32.30",
+        "0.33.28",
+        "0.33.29",
+        "0.33.30",
+        "0.34.28",
+        "0.34.29",
+        "0.34.30",
+        "0.37.18",
+        "0.37.19",
+        "0.37.20",
+        "0.37.47",
+        "0.37.48",
+        "0.37.49",
+        "0.38.18",
+        "0.38.19",
+        "0.38.20",
+        "0.38.47",
+        "0.38.48",
+        "0.38.49",
+        "0.39.8",
+        "0.39.9",
+        "0.39.10",
+        "0.39.18",
+        "0.39.19",
+        "0.39.20",
+        "0.39.37",
+        "0.39.38",
+        "0.39.39",
+        "0.39.47",
+        "0.39.48",
+        "0.39.49",
+        "0.40.8",
+        "0.40.9",
+        "0.40.10",
+        "0.40.37",
+        "0.40.38",
+        "0.40.39",
+        "0.41.8",
+        "0.41.9",
+        "0.41.10",
+        "0.41.37",
+        "0.41.38",
+        "0.41.39",
+        "0.47.26",
+        "0.47.27",
+        "0.47.28",
+        "0.48.26",
+        "0.48.27",
+        "0.48.28",
+        "0.49.16",
+        "0.49.17",
+        "0.49.18",
+        "0.49.26",
+        "0.49.27",
+        "0.49.28",
+        "0.49.47",
+        "0.49.48",
+        "0.49.49",
+        "0.50.16",
+        "0.50.17",
+        "0.50.18",
+        "0.50.47",
+        "0.50.48",
+        "0.50.49",
+        "0.51.16",
+        "0.51.17",
+        "0.51.18",
+        "0.51.47",
+        "0.51.48",
+        "0.51.49",
+        "0.53.6",
+        "0.53.7",
+        "0.53.8",
+        "0.54.6",
+        "0.54.7",
+        "0.54.8",
+        "0.55.6",
+        "0.55.7",
+        "0.55.8",
+        "0.55.36",
+        "0.55.37",
+        "0.55.38",
+        "0.56.36",
+        "0.56.37",
+        "0.56.38",
+        "0.57.36",
+        "0.57.37",
+        "0.57.38",
+        "0.59.18",
+        "0.59.19",
+        "0.59.20",
+        "0.60.18",
+        "0.60.19",
+        "0.60.20",
+        "0.61.18",
+        "0.61.19",
+        "0.61.20",
+        "0.63.8",
+        "0.63.9",
+        "0.63.10",
+        "0.64.8",
+        "0.64.9",
+        "0.64.10",
+        "0.65.8",
+        "0.65.9",
+        "0.65.10",
+        "0.65.30",
+        "0.65.31",
+        "0.65.32",
+        "0.66.30",
+        "0.66.31",
+        "0.66.32",
+        "0.67.30",
+        "0.67.31",
+        "0.67.32",
+        "0.73.12",
+        "0.73.13",
+        "0.73.14",
+        "0.74.12",
+        "0.74.13",
+        "0.74.14"
+      ],
+      "required_unique_chunk_count": 141,
+      "uncompressed_chunk_payload_bytes": 150159360
+    }
+  ],
+  "estimated_uncompressed_CT_chunk_bytes": 456867840,
+  "label_and_geometry_download_bytes": 235037
+}

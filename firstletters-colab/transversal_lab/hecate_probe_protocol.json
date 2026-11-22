@@ -1,0 +1,130 @@
+{
+  "id": "hecate-frozen-readout-three-donor-v1",
+  "status": "prospectively_frozen_before_run",
+  "date": "2026-11-22",
+  "purpose": "Determine whether fixed depth reweighting or a tiny decoder-feature readout improves agreement with released Studio donor labels across one held-out public surface; not an unread-scroll search or independent ink validation.",
+  "amends": "IDEAS.md package 1: 16 parent proposal reduced prospectively to three physical donor parents, one each for fitting, calibration and testing, with 16 fixed contexts per parent.",
+  "seed": 20261122,
+  "model": {
+    "repository": "scrollprize/hecate",
+    "revision": "9cb86e500e944b11a06a7020403cde5dffb5bcb2",
+    "checkpoint": "hecate_9.6um.pth",
+    "checkpoint_bytes": 522576086,
+    "checkpoint_sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d",
+    "source_sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "state": "All parameters frozen, every module eval, inference_mode; verify normalization buffers unchanged.",
+    "feature_shape_per_context": [
+      64,
+      16,
+      64,
+      64
+    ],
+    "volumetric_logit_shape_per_context": [
+      16,
+      64,
+      64
+    ],
+    "base_model_training_exposure": "Unknown for these donors; only the newly fitted heads have a documented donor holdout.",
+    "source_url": "https://huggingface.co/scrollprize/hecate/blob/9cb86e500e944b11a06a7020403cde5dffb5bcb2/hecate.py"
+  },
+  "splits": {
+    "train": "PHerc0009B public approved donor surface",
+    "calibration": "PHerc0841 public growA donor surface",
+    "test": "PHerc0814 public approved donor surface",
+    "contexts_per_surface": 16,
+    "context_selection": "Fixed public geometry/published coordinate metadata or calibration annotation support only; neither test-label classes nor any model output may select or replace contexts.",
+    "test_labels": "Do not download or decode before both depth-order heads and calibration thresholds are written to and hashed in readout_freeze.json.",
+    "historical_selection_bias": "The published 9B/814 candidate parents were originally sampled requiring some ink. Our farthest-point selection did not decode held-out classes, but the test set remains historically label-enriched."
+  },
+  "sampling": {
+    "target_pitch_um": 9.6,
+    "native_input": "Released uint8 high-resolution surface slabs of 65 fine planes; these are not native coarse-acquisition scans.",
+    "resampling": "Exact separable voxel-volume box integration of piecewise-constant native uint8 cells; round-nearest ties-even once to uint8; divide by255 exactly once. No clipping, per-image scaling, padding or extrapolation.",
+    "z_center_source_index": 31.5,
+    "z_target_edges_source_indices": "31.5+(k-8)*9.6/source_pitch_um, k=0..16; preserves legacy first64-plane midpoint.",
+    "xy_target_centers_source_indices": "crop_origin+(target_index+0.5)*9.6/source_pitch_um-0.5",
+    "categorical_labels": "Nearest source label cell: floor((target_index+0.5)*9.6/9.36); Studio0unknown/1background/2ink.",
+    "context_shape_zyx": [
+      16,
+      64,
+      64
+    ],
+    "scored_xy_slice": [
+      16,
+      48
+    ],
+    "central_feature_depth_slice": [
+      6,
+      10
+    ],
+    "geometry_policy": "Require every released geometry-mask cell intersecting the complete physical 64 by 64 input-cell rectangle to be nonzero. Lower label-grid indices=floor(origin*9.6/9.36); upper exclusive indices=ceil((origin+64)*9.6/9.36). This is a mesh-support proxy, not proof of acquisition validity. Drop incomplete predefined contexts before inference in both depth orders, report them and do not replace them.",
+    "source_support": "All required source chunks must exist and all target volume cells must lie inside source/crop support. Missing chunks fail, never fill. Hecate's nonzero-column support is retained for common scoring across heads; it is not an acquisition-validity audit.",
+    "deduplication": "Score each labeled source pixel at most once per physical parent and depth-order arm; first frozen context then row-major ordering wins.",
+    "minimum_geometry_footprint_coverage": 1.0,
+    "label_and_geometry_integer_arithmetic": "Implement 9.6/9.36 exactly as40/39: nearest label index=((2*i+1)*20)//39; footprint lower=(origin*40)//39; upper=((origin+64)*40+38)//39. This fixes categorical boundary ties and avoids an extra mask row from floating-point ceil."
+  },
+  "depth_orders": [
+    "source",
+    "reverse"
+  ],
+  "depth_order_interpretation": "Source-order primary, reversal sensitivity separate. Each order has a separately fitted frozen readout and calibration threshold. Never select an order using held-out results; reversal is not an ink-absent control.",
+  "readouts": {
+    "arms": [
+      "baseline",
+      "depth",
+      "features"
+    ],
+    "baseline": "Exact released 2D logit reconstructed from cached features/logits and released attention weights, validated against official forward on synthetic input. No scalar calibration: positive affine calibration leaves AP and the quantile operating point unchanged.",
+    "depth": "One global nonnegative vector of 16 weights summing to 1 and a scalar bias, fitted to volumetric logits. Mean class-balanced logistic loss plus 0.01/2 times squared distance from uniform weights. No per-context depth search.",
+    "depth_uniform_l2_penalty": 0.01,
+    "depth_initialization": "All 16 weights=1/16; bias=0.",
+    "depth_max_iterations": 500,
+    "depth_function_tolerance": 1e-09,
+    "features": "Mean decoder features over fixed depth planes 6:10; 64 channels per scored pixel. StandardScaler fitted on selected training rows only, then L2 logistic regression C=1, solver=lbfgs.",
+    "feature_logistic_C": 1.0,
+    "feature_max_iterations": 1000,
+    "feature_tolerance": 1e-08,
+    "maximum_training_pixels_per_class": 50000,
+    "minimum_training_pixels_per_class": 16,
+    "sampling": "Choose equal ink/background counts without replacement using seed20261122 after support filtering and deduplication. Both depth orders use identical label coordinates where support matches.",
+    "fit_failure": "Report convergence and constraint status; invalidate failed arms and do not retry or tune. Retain valid arms. Fewer than 16 training pixels per class makes fitting unassessable; this is an execution minimum, not a statistical sufficiency claim."
+  },
+  "evaluation": {
+    "calibration_background_fpr": 0.01,
+    "threshold": "Sort calibration background scores descending; threshold=background[floor(0.01*Nbackground)], then select STRICT score>threshold. Ties cannot raise empirical calibration FPR above 1%. No background makes the operating point unassessable.",
+    "metrics": [
+      "counts and prevalence",
+      "AUROC",
+      "average precision",
+      "precision and recall in top1%",
+      "precision and recall in top5%",
+      "FPR and recall at frozen calibration threshold"
+    ],
+    "aggregation": "Report each retained context and pooled physical parent. Do not treat contexts or pixels as independent replicates or report independent-parent confidence intervals. AUROC and AP require both classes. A missing class makes the corresponding class-conditional metric unassessable.",
+    "primary_comparisons": "On source-order held-out PHerc0814, compare depth and feature AP and tail precision with the unmodified baseline on identical pixels. These are two exploratory comparisons. Retain both and all reversal-arm results.",
+    "interpretation": "One held-out physical parent cannot satisfy the original three-of-four-parent gate or establish promotion. No rule here permits immediate unread-scroll deployment or a prize claim."
+  },
+  "budgets": {
+    "maximum_forwards": 96,
+    "maximum_cpu_seconds": 1800,
+    "maximum_source_bytes_excluding_checkpoint": 514000000,
+    "maximum_data_and_derived_bytes": 1073741824,
+    "threads": 4,
+    "interop_threads": 1,
+    "network_workers": 4,
+    "no_retries_for_model_or_head_selection": true
+  },
+  "limitations": [
+    "Three physical donor parents, only one held-out parent: contexts and pixels are not independent replicates.",
+    "Studio labels include teacher/model-assisted judgments and unknown regions; agreement is not independent ink or readable-letter truth.",
+    "Inherited Hecate exposure to these donors is unresolved; only new readout fitting is donor-separated.",
+    "Fine-source box-averaged CT does not reproduce the noise, energy or transfer function of native coarse CT.",
+    "Prior source-volume uint8 intensity mapping is undocumented; preserve the released values and make no raw-radiometry claim.",
+    "Geometry and nonzero masks are support proxies; depth reversal is an orientation sensitivity test, not a population false-positive control.",
+    "No unread image access, candidate review, legibility result, organiser submission or prize claim is authorized by this runner.",
+    "Published candidate coordinates are historically label-enriched; observed prevalence and review precision do not estimate those quantities in an unread atlas."
+  ],
+  "donor_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+  "source_integrity": "Model, code, labels, geometry masks and manifest are hash-pinned before execution. Bucket CT chunks are mutable public objects with no known prior content hash: record canonical URL, transferred bytes and SHA256 on acquisition. Verify live Zarr metadata against its frozen hash. Do not describe chunks as immutable pre-pinned inputs.",
+  "audit": "Require a full forty-character public freeze commit. Save source-acquisition receipts as chunks arrive, feature progress after every forward, a hashed readout+threshold freeze before held-out labels, and a sanitized failure receipt without automatic retries."
+}
