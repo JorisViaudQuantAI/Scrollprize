@@ -1,0 +1,1841 @@
+{
+  "scope": "Metadata and sparse geometry only; no CT intensities or photographic/label pixels",
+  "plan_sha256": "d6eeebaaae064f451514cd063f5f3f78a2356902159823e144784de9df92f7f7",
+  "preflight_runner_sha256": "10845f2cb6f59483ab7927b4a5391e46882b25d246784509dfaf0c82fe01b5b5",
+  "headers_sha256": "ec65d49fb02cdf85acf66f3339e3d808b179daa28d5e631b592bf7fe1b2995be",
+  "geometry_records_sha256": "e8275973279ff25f36750fc0ee8b3ebc34785a5188be71a0df98797778e17fb7",
+  "range_receipt_sha256": "e4ac0897a8f61dbb853fd6f84f5e6256a292399019797330927925a12c22f50f",
+  "response_body_bytes": 4862,
+  "response_body_cap": 16777216,
+  "requests_attempted": 102,
+  "successful_exact_206_requests": 102,
+  "no_unexpected_200_body_read": true,
+  "objects": {
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/surface_volume/00.tif": {
+      "content_length": 66658265,
+      "etag": "\"656a5741-3f91fd9\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:29 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/surface_volume/32.tif": {
+      "content_length": 66658265,
+      "etag": "\"656a5748-3f91fd9\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:36 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/surface_volume/64.tif": {
+      "content_length": 66658265,
+      "etag": "\"656a5759-3f91fd9\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:53 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/inklabels.png": {
+      "content_length": 33481,
+      "etag": "\"656a572f-82c9\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:11 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/mask.png": {
+      "content_length": 81169,
+      "etag": "\"656a572f-13d11\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:11 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/ir.png": {
+      "content_length": 4685885,
+      "etag": "\"656a572f-47803d\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:11 GMT"
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/result.ppm": {
+      "content_length": 1599793993,
+      "etag": "\"656a5735-5f5aeb49\"",
+      "last_modified": "Fri, 01 Dec 2023 21:59:17 GMT"
+    }
+  },
+  "surface_shape_yx": [
+    7309,
+    4560
+  ],
+  "ppm_data_offset_bytes": 73,
+  "ppm_record_stride_bytes": 48,
+  "ppm_index_formula": "73 + 48 * (v * 4560 + u), fields X,Y,Z,NX,NY,NZ; no source-volume ID or endian field in header",
+  "source_identity_status": "Directory-name/shape compatibility only; no embedded fine-volume UUID or render invocation was found in acquired headers",
+  "fine_source_shape_xyz": [
+    4420,
+    1400,
+    7010
+  ],
+  "coarse_target_shape_xyz": [
+    2046,
+    668,
+    3131
+  ],
+  "affine_metadata_sha256": "e4653b4d904c98ac215e28e43cb0d3033ea214eaf7c696264d10a9029b4c706f",
+  "geometry_sample_count": 85,
+  "byte_order_compatibility": {
+    "little": {
+      "finite_records": 85,
+      "all_six_values_zero": 21,
+      "unit_normal_within_1e_minus6": 64,
+      "unit_normal_and_fine_center_in_bounds": 64
+    },
+    "big": {
+      "finite_records": 85,
+      "all_six_values_zero": 21,
+      "unit_normal_within_1e_minus6": 0,
+      "unit_normal_and_fine_center_in_bounds": 0
+    }
+  },
+  "conditional_bounds": [
+    {
+      "id": 2,
+      "surface_yx": [
+        730,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1390.763414707828,
+        1065.732584561572,
+        6335.89138758978
+      ],
+      "stored_normal_xyz": [
+        -0.276333710764832,
+        -0.9601913227127281,
+        0.04089381471713794
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        669.7622549836155,
+        526.5748899008827,
+        2676.730007085035
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 3,
+      "surface_yx": [
+        730,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1825.0592571184711,
+        1037.4129769295303,
+        6333.523713886975
+      ],
+      "stored_normal_xyz": [
+        -0.17596311140393775,
+        -0.9841642286809222,
+        -0.02139519595448151
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        849.5884209786454,
+        514.7430672618996,
+        2675.7243645094727
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 4,
+      "surface_yx": [
+        730,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2259.9948378757717,
+        1015.231154951309,
+        6330.7776004933785
+      ],
+      "stored_normal_xyz": [
+        -0.04702583060670528,
+        -0.986241778467962,
+        0.15847941714967426
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1029.6898057408775,
+        505.45614153425123,
+        2674.562457571946
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 5,
+      "surface_yx": [
+        730,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2681.860234471245,
+        867.6512084735024,
+        6335.763205041374
+      ],
+      "stored_normal_xyz": [
+        -0.5095537662381012,
+        -0.754287943785753,
+        0.4140104553897486
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1204.1683292334717,
+        444.1756601946479,
+        2676.5931120924874
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 6,
+      "surface_yx": [
+        730,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3107.548990209139,
+        756.7533821411878,
+        6338.487086715949
+      ],
+      "stored_normal_xyz": [
+        -0.1664399634854895,
+        -0.9427489628191014,
+        0.2890019578799729
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1380.2916817334965,
+        398.10460771500624,
+        2677.689861712584
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 11,
+      "surface_yx": [
+        1461,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1374.891428966199,
+        934.0418071547446,
+        5645.597823347712
+      ],
+      "stored_normal_xyz": [
+        -0.14848630715552924,
+        -0.9658753752834067,
+        0.21221822732379134
+      ],
+      "normal_magnitude": 1.0000000000000002,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        663.0643287246066,
+        472.20149824735915,
+        2391.3609730716657
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 12,
+      "surface_yx": [
+        1461,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1806.5945363113362,
+        880.8469483010467,
+        5644.763892090732
+      ],
+      "stored_normal_xyz": [
+        -0.18379627553677202,
+        -0.935276302060661,
+        0.3024519265975106
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        841.7750865967089,
+        450.0557035061951,
+        2390.988639555763
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 13,
+      "surface_yx": [
+        1461,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2237.6603918562864,
+        821.5381602487935,
+        5644.306929598371
+      ],
+      "stored_normal_xyz": [
+        -0.09974459698129208,
+        -0.9927078096702752,
+        0.06769209697360944
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1020.2116954268454,
+        425.3749034046144,
+        2390.7719630307006
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 14,
+      "surface_yx": [
+        1461,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2662.382753862793,
+        701.3685470813657,
+        5647.602485218708
+      ],
+      "stored_normal_xyz": [
+        -0.3441716876799415,
+        -0.9273342978441441,
+        0.14695900598959252
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1195.9193003125931,
+        375.45950982053097,
+        2392.1047668136116
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 15,
+      "surface_yx": [
+        1461,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3093.329517703013,
+        640.9171679047832,
+        5647.215971884428
+      ],
+      "stored_normal_xyz": [
+        -0.2019572604148182,
+        -0.9676727107843612,
+        -0.1510721343232674
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1374.3046752713649,
+        350.30495960983495,
+        2391.9171799770947
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 19,
+      "surface_yx": [
+        2192,
+        911
+      ],
+      "xyz_fine_candidate": [
+        931.9055626079268,
+        899.5759051286435,
+        4953.423415559498
+      ],
+      "stored_normal_xyz": [
+        -0.01720055708516785,
+        -0.9971083636033162,
+        -0.07402061921030408
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        479.62995382355217,
+        458.2299727238577,
+        2105.243294614415
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 20,
+      "surface_yx": [
+        2192,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1364.2950810959785,
+        852.9666206548737,
+        4952.183435138768
+      ],
+      "stored_normal_xyz": [
+        0.1485746531362551,
+        -0.988638878937831,
+        0.022775853397633692
+      ],
+      "normal_magnitude": 1.0000000000000002,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        658.6360093427843,
+        438.8147405738478,
+        2104.7032963026595
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 21,
+      "surface_yx": [
+        2192,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1802.6028846807267,
+        863.1386211416642,
+        4947.442470301978
+      ],
+      "stored_normal_xyz": [
+        -0.08607159256175062,
+        -0.9962311462849541,
+        -0.01073238676393511
+      ],
+      "normal_magnitude": 1.0000000000000002,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        840.1881419211352,
+        442.94261091517467,
+        2102.7176803420903
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 22,
+      "surface_yx": [
+        2192,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2233.715919497229,
+        804.2824810471307,
+        4946.95759872924
+      ],
+      "stored_normal_xyz": [
+        -0.14958377232212444,
+        -0.9887302817962851,
+        -0.0060930219859895605
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1018.6450475195084,
+        418.4494912662025,
+        2102.4894796699996
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 23,
+      "surface_yx": [
+        2192,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2666.6068137036086,
+        762.4835017664328,
+        4945.421027565114
+      ],
+      "stored_normal_xyz": [
+        -0.1324433974775361,
+        -0.9901378069708845,
+        0.04567132219998419
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1197.8667974829207,
+        401.0287456491015,
+        2101.827013857057
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 24,
+      "surface_yx": [
+        2192,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3092.5085059325484,
+        653.6286333820592,
+        4948.018945835668
+      ],
+      "stored_normal_xyz": [
+        -0.08515658107577738,
+        -0.9445111522821448,
+        0.3172491763805536
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1374.0817563699381,
+        355.8047604450115,
+        2102.871750986289
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 25,
+      "surface_yx": [
+        2192,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3526.0979255552293,
+        618.5314553946704,
+        4946.069159262561
+      ],
+      "stored_normal_xyz": [
+        0.03592760677441485,
+        -0.9924993390436251,
+        -0.11685148295777195
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1553.6040156039583,
+        341.1627683350659,
+        2102.0386613096
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 28,
+      "surface_yx": [
+        2923,
+        911
+      ],
+      "xyz_fine_candidate": [
+        928.2353327681326,
+        884.9513669383009,
+        4255.911855468474
+      ],
+      "stored_normal_xyz": [
+        -0.08197806244722568,
+        -0.9760588711605696,
+        0.20146631804386936
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        478.18128647570535,
+        452.39550494399106,
+        1816.8938239728666
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 29,
+      "surface_yx": [
+        2923,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1361.350443906871,
+        845.3035725568068,
+        4254.242647911682
+      ],
+      "stored_normal_xyz": [
+        -0.04864214125998361,
+        -0.9961276513535692,
+        -0.07323690533102788
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        657.4994957306892,
+        435.8667005112953,
+        1816.1765902754307
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 30,
+      "surface_yx": [
+        2923,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1794.7684117415306,
+        808.5614496785242,
+        4252.394284306236
+      ],
+      "stored_normal_xyz": [
+        -0.07124254790583812,
+        -0.9264720875385951,
+        0.3695591568068123
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        836.9479955129268,
+        420.5426684266324,
+        1815.385379914563
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 31,
+      "surface_yx": [
+        2923,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2228.105859428461,
+        771.0467993909313,
+        4250.593552705295
+      ],
+      "stored_normal_xyz": [
+        -0.015197022038670549,
+        -0.9311562444491122,
+        0.3643035807463075
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1016.3618551084242,
+        404.89832495790364,
+        1814.6138376407755
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 32,
+      "surface_yx": [
+        2923,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2659.483980652301,
+        714.7339546240689,
+        4249.951868244053
+      ],
+      "stored_normal_xyz": [
+        -0.22561155834952518,
+        -0.9724302778222068,
+        0.05898117931785218
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1194.9328022592704,
+        381.45972639993334,
+        1814.3208861865496
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 33,
+      "surface_yx": [
+        2923,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3083.8891660583104,
+        591.521281745685,
+        4253.435050907923
+      ],
+      "stored_normal_xyz": [
+        -0.18280752683315546,
+        -0.9092124251343051,
+        0.374051031430928
+      ],
+      "normal_magnitude": 1.0000000000000002,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1370.503956120267,
+        330.2825954896859,
+        1815.7311644547171
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 34,
+      "surface_yx": [
+        2923,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3512.174790140012,
+        505.5383621854586,
+        4254.622745079922
+      ],
+      "stored_normal_xyz": [
+        -0.04132606187371432,
+        -0.9756472427975024,
+        0.2154173025354302
+      ],
+      "normal_magnitude": 0.9999999999999998,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1547.744494901063,
+        294.54195740811224,
+        1816.1935954084918
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 36,
+      "surface_yx": [
+        3654,
+        455
+      ],
+      "xyz_fine_candidate": [
+        451.1884055441094,
+        523.6964083734036,
+        3583.8863998407423
+      ],
+      "stored_normal_xyz": [
+        0.01610177688152907,
+        -0.9664303405417366,
+        0.25642373069129276
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        280.09366586873654,
+        302.9281332718149,
+        1539.0959999870227
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 37,
+      "surface_yx": [
+        3654,
+        911
+      ],
+      "xyz_fine_candidate": [
+        892.2103268721464,
+        559.9082312885156,
+        3577.539888166086
+      ],
+      "stored_normal_xyz": [
+        0.695276563590215,
+        -0.6545295776552426,
+        0.2969537541379663
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        462.8134260299143,
+        317.85283937886993,
+        1536.447425678462
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 38,
+      "surface_yx": [
+        3654,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1331.5156692337846,
+        579.650830795859,
+        3572.2088254115297
+      ],
+      "stored_normal_xyz": [
+        -0.15424012429867728,
+        -0.9575114336295976,
+        0.24368389057326165
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        644.794704983258,
+        325.9489466806825,
+        1534.2181479750595
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 39,
+      "surface_yx": [
+        3654,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1771.2545261325824,
+        603.5526609024008,
+        3566.6213154575016
+      ],
+      "stored_normal_xyz": [
+        0.11089231755839309,
+        -0.9912417850170681,
+        -0.07171204600836115
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        826.9624841473594,
+        335.7695868519088,
+        1531.8829787413079
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 40,
+      "surface_yx": [
+        3654,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2206.171051097636,
+        581.188013603668,
+        3563.8864745914375
+      ],
+      "stored_normal_xyz": [
+        0.06492255718917625,
+        -0.9968909577592393,
+        0.04464840317284251
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1007.0556710085627,
+        326.40685665344216,
+        1530.7257264273992
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 41,
+      "surface_yx": [
+        3654,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2642.692872985577,
+        574.2249261378096,
+        3560.2020141280827
+      ],
+      "stored_normal_xyz": [
+        -0.17556165171771138,
+        -0.9767970932784563,
+        0.12266028293179329
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1187.8394649631482,
+        323.43004220034265,
+        1529.1763595861578
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 42,
+      "surface_yx": [
+        3654,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3073.2685972107647,
+        510.21371404195816,
+        3560.0349907117006
+      ],
+      "stored_normal_xyz": [
+        -0.3329409198955659,
+        -0.9037447022125044,
+        -0.2690647823144569
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1366.0652167479054,
+        296.7994860956518,
+        1529.0794039725608
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 45,
+      "surface_yx": [
+        4384,
+        455
+      ],
+      "xyz_fine_candidate": [
+        452.31989160589876,
+        555.1123882518534,
+        2884.4915244298395
+      ],
+      "stored_normal_xyz": [
+        -0.009493037490220731,
+        -0.9908003215462275,
+        -0.13499853726282138
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        280.71054347146867,
+        316.1830331830682,
+        1249.9693334818637
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 46,
+      "surface_yx": [
+        4384,
+        911
+      ],
+      "xyz_fine_candidate": [
+        895.2848128371418,
+        609.9657651610216,
+        2876.995623655065
+      ],
+      "stored_normal_xyz": [
+        0.010899718261901727,
+        -0.9492436682118566,
+        -0.31435275488137504
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        464.2661923062396,
+        338.83704687068786,
+        1246.8461563270691
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 47,
+      "surface_yx": [
+        4384,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1341.842536177129,
+        699.2892490370448,
+        2867.3743869109708
+      ],
+      "stored_normal_xyz": [
+        -0.13786913009193646,
+        -0.9436873637501062,
+        -0.30074285106394044
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        649.3674833122764,
+        375.78332713472776,
+        1242.8453908080385
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 48,
+      "surface_yx": [
+        4384,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1781.3202261304157,
+        720.6853879656503,
+        2861.941371272658
+      ],
+      "stored_normal_xyz": [
+        -0.148204437771232,
+        -0.976755966463169,
+        -0.15486518848183328
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        831.4229070967867,
+        384.56503794296464,
+        1240.574014977198
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 49,
+      "surface_yx": [
+        4384,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2214.7997629813403,
+        684.5339713139412,
+        2860.0565862777507
+      ],
+      "stored_normal_xyz": [
+        -0.037640605861627735,
+        -0.9177558699184457,
+        -0.3953572410119823
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1010.897894190349,
+        369.485929115043,
+        1239.7677655881191
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 50,
+      "surface_yx": [
+        4384,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2646.625992022963,
+        632.5203681819197,
+        2859.149821905498
+      ],
+      "stored_normal_xyz": [
+        -0.29214493000376485,
+        -0.9471439690988092,
+        0.1325505249814173
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1189.6616196572493,
+        347.8299159021276,
+        1239.3653580060839
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 51,
+      "surface_yx": [
+        4384,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3074.0975841727113,
+        538.7274532699778,
+        2860.8190598121073
+      ],
+      "stored_normal_xyz": [
+        -0.05541642941636001,
+        -0.9879064171966959,
+        0.14480997967104708
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1366.5519576630784,
+        308.85103618600795,
+        1240.026626783367
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 52,
+      "surface_yx": [
+        4384,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3519.113647053616,
+        613.259919070774,
+        2852.1097982692613
+      ],
+      "stored_normal_xyz": [
+        0.33985520923728213,
+        -0.9393555776269911,
+        0.045929680331406285
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1550.9900183137524,
+        339.66454832516035,
+        1236.4024317626672
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 54,
+      "surface_yx": [
+        5115,
+        455
+      ],
+      "xyz_fine_candidate": [
+        471.50006599213185,
+        759.7194843310692,
+        2173.4627194293703
+      ],
+      "stored_normal_xyz": [
+        0.06604449734716053,
+        -0.9400169079926389,
+        0.3346734782711643
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        289.0922389805851,
+        401.24810807005963,
+        956.0383561889912
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 55,
+      "surface_yx": [
+        5115,
+        911
+      ],
+      "xyz_fine_candidate": [
+        907.7371178708818,
+        750.0242528782396,
+        2169.946715765249
+      ],
+      "stored_normal_xyz": [
+        -0.14678290428574273,
+        -0.9872727669148325,
+        -0.061214889673780956
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        469.7535233947075,
+        397.13847061108714,
+        954.558548104115
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 56,
+      "surface_yx": [
+        5115,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1338.6949760992438,
+        689.6793156192538,
+        2169.5536395027966
+      ],
+      "stored_normal_xyz": [
+        0.00042162591725469035,
+        -0.9999656540108502,
+        -0.00827725982668795
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        648.1436712170153,
+        372.0280541845612,
+        954.3682513198617
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 57,
+      "surface_yx": [
+        5115,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1767.8172848753607,
+        611.723726827902,
+        2170.2463896110276
+      ],
+      "stored_normal_xyz": [
+        -0.4031850950514059,
+        -0.9122494641244004,
+        0.07240645228937052
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        825.7441561091189,
+        339.61577105576373,
+        954.6263112200328
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 58,
+      "surface_yx": [
+        5115,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2197.831341957165,
+        542.3237607939892,
+        2170.411622563486
+      ],
+      "stored_normal_xyz": [
+        -0.15537934603510753,
+        -0.9727935329644303,
+        0.1718429546076417
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1003.7282757647599,
+        310.7508874547421,
+        954.6665500676629
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 59,
+      "surface_yx": [
+        5115,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2623.210036575027,
+        428.4511421824835,
+        2173.3189220916342
+      ],
+      "stored_normal_xyz": [
+        -0.3074671098686566,
+        -0.9457758735351756,
+        0.10474718797080448
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1179.7182383567726,
+        263.4464032278604,
+        955.8390361249214
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 60,
+      "surface_yx": [
+        5115,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3052.964892326987,
+        356.5643435050655,
+        2173.6374865922653
+      ],
+      "stored_normal_xyz": [
+        -0.4928127339324064,
+        -0.8552340734100427,
+        0.1603442825688926
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1357.5908482509158,
+        233.55040953756358,
+        955.9425882484236
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 61,
+      "surface_yx": [
+        5115,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3492.754287348859,
+        380.95104710465483,
+        2168.020080616264
+      ],
+      "stored_normal_xyz": [
+        0.15774221918779266,
+        -0.9313742988644026,
+        0.32811477824162855
+      ],
+      "normal_magnitude": 1.0000000000000002,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1539.7803691786646,
+        243.57209176604655,
+        953.5950744247343
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 63,
+      "surface_yx": [
+        5846,
+        455
+      ],
+      "xyz_fine_candidate": [
+        469.14593152950283,
+        757.7218448833684,
+        1475.172618032849
+      ],
+      "stored_normal_xyz": [
+        -0.18878236489287484,
+        -0.9778390432675494,
+        -0.0905098014971676
+      ],
+      "normal_magnitude": 0.9999999999999998,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        288.20976271557123,
+        400.6491042542831,
+        667.3674122365665
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 64,
+      "surface_yx": [
+        5846,
+        911
+      ],
+      "xyz_fine_candidate": [
+        910.7886071942238,
+        799.8893168261767,
+        1468.4588967318512
+      ],
+      "stored_normal_xyz": [
+        -0.3990103424542194,
+        -0.7680895384630321,
+        -0.5008285210710479
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        471.19657462403,
+        418.04318835373266,
+        664.5672106559114
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 65,
+      "surface_yx": [
+        5846,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1322.1888337474836,
+        551.9043049250536,
+        1479.6352130537095
+      ],
+      "stored_normal_xyz": [
+        -0.17242718722352943,
+        -0.8029313074974775,
+        -0.5705875748266632
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        641.1729274829161,
+        315.13196992263124,
+        669.1541182571456
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 66,
+      "surface_yx": [
+        5846,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1750.8269480501658,
+        469.3032514554684,
+        1480.6143902735341
+      ],
+      "stored_normal_xyz": [
+        -0.03163541593027097,
+        -0.8967107750263263,
+        -0.4414849786919182
+      ],
+      "normal_magnitude": 0.9999999999999998,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        818.5651093918377,
+        280.7935477303113,
+        669.5304489173117
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 67,
+      "surface_yx": [
+        5846,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2185.4361380163423,
+        443.9899668632457,
+        1478.0613546135387
+      ],
+      "stored_normal_xyz": [
+        0.0252542419007006,
+        -0.8664379010883506,
+        -0.4986457528382591
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        998.5260791365417,
+        270.2082303702715,
+        668.4482671502278
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 68,
+      "surface_yx": [
+        5846,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2619.5901408495733,
+        414.3095201820361,
+        1475.7775866607922
+      ],
+      "stored_normal_xyz": [
+        0.11040886699710563,
+        -0.8749888247523421,
+        -0.4713856580836233
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1178.2912250069537,
+        257.8121659528392,
+        667.4772707252064
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 69,
+      "surface_yx": [
+        5846,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3056.123536921366,
+        407.45747789576325,
+        1472.0862794442596
+      ],
+      "stored_normal_xyz": [
+        0.6354220426530133,
+        -0.6956028617789038,
+        -0.3352245313154625
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1359.0799982356875,
+        254.88139392456276,
+        665.9250767399237
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 70,
+      "surface_yx": [
+        5846,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3503.8343655769827,
+        507.84409922571325,
+        1461.7829187953294
+      ],
+      "stored_normal_xyz": [
+        -0.0510664227424515,
+        -0.9974387142996571,
+        -0.050082249196057166
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1544.6773611515603,
+        296.4147591609568,
+        661.6426503397464
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 72,
+      "surface_yx": [
+        6577,
+        455
+      ],
+      "xyz_fine_candidate": [
+        478.14486812640547,
+        864.6479819141867,
+        770.1665635849912
+      ],
+      "stored_normal_xyz": [
+        -0.43549970137073113,
+        -0.8644192355281052,
+        -0.25123573662003246
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        292.21143672431765,
+        445.21293243779024,
+        375.9233339008311
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 73,
+      "surface_yx": [
+        6577,
+        911
+      ],
+      "xyz_fine_candidate": [
+        905.493069358929,
+        769.6712283195893,
+        771.9087938654429
+      ],
+      "stored_normal_xyz": [
+        -0.06876635268310327,
+        -0.9215479559246859,
+        0.3821263582503784
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        469.0486913151852,
+        405.7432002258469,
+        376.61474250489306
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 74,
+      "surface_yx": [
+        6577,
+        1367
+      ],
+      "xyz_fine_candidate": [
+        1340.9535037371331,
+        752.5249635212324,
+        768.8522012844692
+      ],
+      "stored_normal_xyz": [
+        0.0225843737305508,
+        -0.7950450926139423,
+        0.6061297276769114
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        649.3758708375115,
+        398.5441567796383,
+        375.3246332849452
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 75,
+      "surface_yx": [
+        6577,
+        1823
+      ],
+      "xyz_fine_candidate": [
+        1770.6013216591996,
+        679.6112211563379,
+        769.2340844269479
+      ],
+      "stored_normal_xyz": [
+        -0.0954633167350191,
+        -0.9185849149899031,
+        0.3835211977335045
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        827.2024324999968,
+        368.2223636291164,
+        375.4543307822268
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 76,
+      "surface_yx": [
+        6577,
+        2279
+      ],
+      "xyz_fine_candidate": [
+        2201.4245952631213,
+        617.975050408801,
+        768.9206222190926
+      ],
+      "stored_normal_xyz": [
+        -0.30924774200207233,
+        -0.9152020383414964,
+        0.25840097345441587
+      ],
+      "normal_magnitude": 0.9999999999999999,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1005.5346813162244,
+        342.5765658285635,
+        375.2969080324568
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 77,
+      "surface_yx": [
+        6577,
+        2735
+      ],
+      "xyz_fine_candidate": [
+        2629.481485972984,
+        529.7976142691615,
+        770.2436245009845
+      ],
+      "stored_normal_xyz": [
+        -0.29484935087508407,
+        -0.9493206564289123,
+        0.1088767723893421
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1182.6768178096718,
+        305.92602004088644,
+        375.8152100694588
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 78,
+      "surface_yx": [
+        6577,
+        3191
+      ],
+      "xyz_fine_candidate": [
+        3054.4060178454056,
+        411.5676617600735,
+        773.4195857559948
+      ],
+      "stored_normal_xyz": [
+        -0.12189870182559089,
+        -0.985000937602194,
+        0.12212231334213398
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1358.4713972242303,
+        256.81486379855096,
+        377.09863124888784
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 79,
+      "surface_yx": [
+        6577,
+        3647
+      ],
+      "xyz_fine_candidate": [
+        3481.3629379154045,
+        312.8368735378758,
+        775.3932799199731
+      ],
+      "stored_normal_xyz": [
+        -0.21267642213740345,
+        -0.9624360724903255,
+        0.1687766151936634
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1535.1403206219748,
+        215.78860425449443,
+        377.8856153355352
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    },
+    {
+      "id": 80,
+      "surface_yx": [
+        6577,
+        4103
+      ],
+      "xyz_fine_candidate": [
+        3904.292366927953,
+        175.46548019566018,
+        779.749451980432
+      ],
+      "stored_normal_xyz": [
+        -0.4980412936878567,
+        -0.8657246734216033,
+        -0.04975600075151013
+      ],
+      "normal_magnitude": 1.0,
+      "fine_center_in_bounds": true,
+      "mapped_coarse_center_xyz": [
+        1710.0765963997346,
+        158.74087342285188,
+        379.6563661819715
+      ],
+      "mapped_coarse_center_in_bounds": true,
+      "conditional_fine_complete_trilinear_support_radius32": true,
+      "conditional_mapped_ray_complete_coarse_trilinear_support_radius32": true
+    }
+  ],
+  "little_endian_nonzero_geometry_summary": {
+    "count": 64,
+    "xyz_min": [
+      451.1884055441094,
+      175.46548019566018,
+      768.8522012844692
+    ],
+    "xyz_max": [
+      3904.292366927953,
+      1065.732584561572,
+      6338.487086715949
+    ],
+    "normal_magnitude_min": 0.9999999999999998,
+    "normal_magnitude_max": 1.0000000000000002,
+    "fine_centers_in_bounds": 64,
+    "mapped_coarse_centers_in_bounds": 64,
+    "conditional_fine_complete_radius32": 64,
+    "conditional_mapped_ray_complete_coarse_radius32": 64
+  },
+  "limitations": [
+    "Sparse predeclared records are not a tissue/mask coverage estimate and do not certify any complete rectangular region.",
+    "Little-endian plausibility does not make the host-native PPM format universally little-endian.",
+    "Affine application is conditional on the unproven exact PPM source-volume identity; no independent registration validation is claimed.",
+    "Radius32/interval1 bounds are a conditional geometry check, not recovered rendering-command provenance.",
+    "Stored normals are used without normalization in the conditional original-ray support check.",
+    "No photographic ink-label polarity, pixel values, manual annotation accuracy, physical face, scan radiometry or CT intensity comparison was inspected."
+  ]
+}

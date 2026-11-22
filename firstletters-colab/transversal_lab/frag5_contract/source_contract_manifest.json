@@ -1,0 +1,364 @@
+{
+  "scope": "source code and metadata only; no experimental image payload",
+  "maximum_direct_response_body_bytes": 16777216,
+  "direct_response_body_bytes": 3114259,
+  "primary_reference_vc_tag": "v2.26.0",
+  "primary_reference_vc_commit": "7640ba6c8e41f39a7aef63e9780cd13c296b2d15",
+  "villa_reference_commit": "c8f3ba45304f0a317a49a155929e30d294f201eb",
+  "hecate_reference_revision": "9cb86e500e944b11a06a7020403cde5dffb5bcb2",
+  "hecate_source_sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+  "experimental_ct_or_label_pixels_acquired": false,
+  "entries": [
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/commits?per_page=1",
+      "file": "vc_head.json",
+      "bytes": 4657,
+      "sha256": "316b9986af4ea937536ffb745034c2ea41a21ae49fff4b27de6c06bc7f85aa91",
+      "status": 200
+    },
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/git/trees/7a3ebcd20cc9844dd055e8c59c505b7edcd33795?recursive=1",
+      "file": "vc_tree.json",
+      "status": 200,
+      "bytes": 227013,
+      "sha256": "a6dcebdd3e4c32d66f25db853ad24555471ae2294dfc90bfb0b46c99311d4b3d"
+    },
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/commits?until=2023-12-02T00:00:00Z&per_page=1",
+      "file": "vc_2023_head.json",
+      "status": 200,
+      "bytes": 4167,
+      "sha256": "7c3a4f45865986e31836e91fc284c1d17dde693aeaa71d8e6daf680d7551d7c4"
+    },
+    {
+      "url": "https://api.github.com/repos/ScrollPrize/villa/commits?per_page=1",
+      "file": "villa_head.json",
+      "status": 200,
+      "bytes": 6770,
+      "sha256": "9e631b0be30b83e20fcbe60d69a19c8aa8903a93bcce6d386d925f0ba2c5d7a2"
+    },
+    {
+      "url": "https://arxiv.org/html/2304.02084v4",
+      "file": "educelab_scrolls_v4.html",
+      "status": 200,
+      "bytes": 341230,
+      "sha256": "9e11406d3300020d7010b12b4ebc7451726426015abe5b47d4461caee971ce43"
+    },
+    {
+      "url": "https://api.github.com/repos/ScrollPrize/villa/git/trees/c8f3ba45304f0a317a49a155929e30d294f201eb?recursive=1",
+      "file": "villa_tree.json",
+      "status": 200,
+      "bytes": 1945028,
+      "sha256": "b2257e17ebfc099273af119e3d2e29b0eb9fb739701d9ac50ccb034a40bd2ee3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/src/PerPixelMap.cpp",
+      "file": "vc2023_PerPixelMap.cpp",
+      "status": 200,
+      "bytes": 4134,
+      "sha256": "c901d84536b454a413549976ed41b580e824a76dd580da3a02536b0c977ec768"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/include/vc/core/types/PerPixelMap.hpp",
+      "file": "vc2023_PerPixelMap.hpp",
+      "status": 200,
+      "bytes": 6829,
+      "sha256": "e02c314102b0740ef7f35a6fc3aeddf485755a9edd58f2b979d9f5cf175c0436"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/src/LineGenerator.cpp",
+      "file": "vc2023_LineGenerator.cpp",
+      "status": 200,
+      "bytes": 1691,
+      "sha256": "dd0c48cd93b3b4f9ab207ee11cf9fd27384a506c5a59ce101d9782b944c374dd"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/texturing/src/LayerTexture.cpp",
+      "file": "vc2023_LayerTexture.cpp",
+      "status": 200,
+      "bytes": 1569,
+      "sha256": "27cee6611c367d993c39ad666771d9bca5efa564b6b03676cd387c6c4132df61"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/texturing/src/PPMGenerator.cpp",
+      "file": "vc2023_PPMGenerator.cpp",
+      "status": 200,
+      "bytes": 8735,
+      "sha256": "e9712d2d0417ef106334732a0f2f8d2448fc16973f4b007f4e9bbe6fe85d5b6a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/src/Transforms.cpp",
+      "file": "vc2023_Transforms.cpp",
+      "status": 200,
+      "bytes": 14959,
+      "sha256": "ddf3baca7ffbb37268eab188e4d29aba7622bc3f52337e9226cae0c980f17e86"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/src/Volume.cpp",
+      "file": "vc2023_Volume.cpp",
+      "status": 200,
+      "bytes": 5900,
+      "sha256": "ac43a991c93b3b027d6665afc98f2975fce9a744f935af0a23b0bef4fb9b405d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/src/ImageConversion.cpp",
+      "file": "vc2023_ImageConversion.cpp",
+      "status": 200,
+      "bytes": 5506,
+      "sha256": "b893e7efebcc5b160734e25e124e9d0a0c2d844effb9ba4d96a8dee824517cc6"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/include/vc/core/io/PointSetIO.hpp",
+      "file": "vc2023_PointSetIO.hpp",
+      "status": 200,
+      "bytes": 18410,
+      "sha256": "f03ea46b80798ec428e8459b1f40ffd77cdc1250306b2e237f3e2a1bbd8099c6"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/apps/src/Render.cpp",
+      "file": "vc2023_Render.cpp",
+      "status": 200,
+      "bytes": 43285,
+      "sha256": "d8b643599ade312880ed605f904bd5bffae5d7c4bc5a32cbf2d4fe3463bcc3c3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/apps/src/RenderFromPPM.cpp",
+      "file": "vc2023_RenderFromPPM.cpp",
+      "status": 200,
+      "bytes": 11658,
+      "sha256": "cf3568232237c2d39dda286ab0604aaa5c9cb5d41b392caac557b5d8644a9e29"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/64d03764f674029601e7ced49f97d679fd71691f/core/include/vc/core/types/Volume.hpp",
+      "file": "vc2023_Volume.hpp",
+      "status": 200,
+      "bytes": 7200,
+      "sha256": "aa2a656d721213ed51a2b296d50fcaa8317873b50d83446547d28509d881203f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ScrollPrize/villa/c8f3ba45304f0a317a49a155929e30d294f201eb/volume-cartographer/apps/src/vc_render_tifxyz.cpp",
+      "file": "villa_render_tifxyz.cpp",
+      "status": 200,
+      "bytes": 82208,
+      "sha256": "2d315d553b698943c15fad0021da3b75a5c1d5ebd03c005c1b66f3c16fe52798"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/metadata/",
+      "file": "frag5_fine_metadata_directory.html",
+      "status": 200,
+      "bytes": 2724,
+      "sha256": "6ed01c1a1235e56041c5af616c5d949a69410e72738c1e953c6d62b83539ee84"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_7.91um/metadata/",
+      "file": "frag5_coarse_metadata_directory.html",
+      "status": 200,
+      "bytes": 2440,
+      "sha256": "986f34924ef3e6e29197c89c02f2e3433b1f7c485b2844d31df2950dab6c864d"
+    },
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/tags?per_page=100",
+      "file": "vc_tags.json",
+      "status": 200,
+      "bytes": 22117,
+      "sha256": "b9f3d6e90e03226fab631ba039ead7031685c40cb825e7bbb398e467e6fcf0c7"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/renders/",
+      "file": "frag5_renders_directory.html",
+      "status": 200,
+      "bytes": 1017,
+      "sha256": "e25d1506711d5f0241006f875ee8162377a93d92f2e02300f6ee0a2639df5720"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/config.json",
+      "file": "frag5_config.json",
+      "status": 200,
+      "bytes": 65,
+      "sha256": "c5af019a89405302753a0298f4d2f2f36ae2ff769ca3e7edad5adf3008fef183"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/metadata/window.json",
+      "file": "frag5_fine_window.json",
+      "status": 200,
+      "bytes": 101,
+      "sha256": "bf00a253353e37196e38a6ed02b7419b32c0d85acc756dcca3bbf37dfa85e6e8"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_7.91um/metadata/window.json",
+      "file": "frag5_coarse_window.json",
+      "status": 200,
+      "bytes": 101,
+      "sha256": "f864bfa73d816cade96d6f18668f42e3de4c912c22b6ba1ed4fcc452dd2f3a34"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/metadata/crop.json",
+      "file": "frag5_fine_crop.json",
+      "status": 200,
+      "bytes": 315,
+      "sha256": "c30795e6ecfb82e6f38e34d901050b76ab55d424a5bc26163e16211519618efd"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_7.91um/metadata/crop.json",
+      "file": "frag5_coarse_crop.json",
+      "status": 200,
+      "bytes": 313,
+      "sha256": "1b06ceee635685b42c3dfd3569c859ed5cb09965ecd74bafcd503a7a5d582f85"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_standardized/",
+      "file": "frag5_standardized_directory.html",
+      "status": 200,
+      "bytes": 1251,
+      "sha256": "2fa617ea11bbe8a272da7f1487a29ddd794229209c7ea5860647bb5b4597302e"
+    },
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/commits/7640ba6c8e41f39a7aef63e9780cd13c296b2d15",
+      "file": "vc226_commit.json",
+      "status": 200,
+      "bytes": 7373,
+      "sha256": "4ab4fae4a53eb04e7de24f918b27078f8059bf571c70a5b07f47c7b8abc781f7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/LineGenerator.cpp",
+      "file": "vc226_LineGenerator.cpp",
+      "status": 200,
+      "bytes": 1750,
+      "sha256": "28cea0c007afae6c90c0af55ef0cd6fa4862adb895dfa68b4edfeffa9d62f6bf"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/texturing/src/LayerTexture.cpp",
+      "file": "vc226_LayerTexture.cpp",
+      "status": 200,
+      "bytes": 1702,
+      "sha256": "7d05fe5fc9c1fc3fe288ef4811f6d86290f84b7d5a60e7afe9b9d19bc3daf2fa"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/include/vc/core/io/PointSetIO.hpp",
+      "file": "vc226_PointSetIO.hpp",
+      "status": 200,
+      "bytes": 18524,
+      "sha256": "f2e71c20cd78cd2b4bf03d08988b7d98352d6fbf07d27b21ced6d1aa739ab5d1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/PerPixelMap.cpp",
+      "file": "vc226_PerPixelMap.cpp",
+      "status": 200,
+      "bytes": 5781,
+      "sha256": "353dcf3b7dafce2cbf7edda903d45c6b7fc78b60a74d68da7797be4440da48b7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/texturing/src/PPMGenerator.cpp",
+      "file": "vc226_PPMGenerator.cpp",
+      "status": 200,
+      "bytes": 8800,
+      "sha256": "9b651236a40baa14ca90bac4365fe8871f1460a718390f6930239679ca0ad9a3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/Transforms.cpp",
+      "file": "vc226_Transforms.cpp",
+      "status": 200,
+      "bytes": 16259,
+      "sha256": "bf264f41aa4fcfb52c8634442ab84b6523b9ff45b8e86b116f813bad331ae3d4"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/Volume.cpp",
+      "file": "vc226_Volume.cpp",
+      "status": 200,
+      "bytes": 6183,
+      "sha256": "095e846d366edc4209f52cebb42af1d45c45357720a48dfe299a92dff6d3b0af"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/ImageConversion.cpp",
+      "file": "vc226_ImageConversion.cpp",
+      "status": 200,
+      "bytes": 5596,
+      "sha256": "f6e0330bb74730f17e3c1c7395ea2d8545b9055a669a264009bb4addc9fee3e9"
+    },
+    {
+      "url": "https://api.github.com/repos/educelab/volume-cartographer/git/trees/7640ba6c8e41f39a7aef63e9780cd13c296b2d15?recursive=1",
+      "file": "vc226_tree.json",
+      "status": 200,
+      "bytes": 213623,
+      "sha256": "0b22d442fc832fc12be17a460f33e900dd1dc6fc0f9e5b152db1268cdb8865cf"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_standardized/70keV_3.24um_.zarr/.zattrs",
+      "file": "frag5_fine_standardized_zattrs.json",
+      "status": 200,
+      "bytes": 3018,
+      "sha256": "97e968dbbf11cc856dc57648aaaa9e6cade5e6575472dcfdeac7cfa50f546dd9"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_standardized/70keV_7.91um_.zarr/.zattrs",
+      "file": "frag5_coarse_standardized_zattrs.json",
+      "status": 200,
+      "bytes": 3018,
+      "sha256": "97e968dbbf11cc856dc57648aaaa9e6cade5e6575472dcfdeac7cfa50f546dd9"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_standardized/70keV_7.91um_.zarr/0/.zarray",
+      "file": "frag5_coarse_standardized_zarray.json",
+      "status": 200,
+      "bytes": 400,
+      "sha256": "e7ee5a75139094ab835eaa597909b8d22ce2fd818f1922a5ba61ffdc2e336c47"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/apps/src/LayerFromPPM.cpp",
+      "file": "vc226_LayerFromPPM.cpp",
+      "status": 200,
+      "bytes": 10210,
+      "sha256": "e75a7bf3c439d57637018e5692c487340fcca94a810c2f2baf4058f80235c2fb"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/include/vc/core/io/ImageIO.hpp",
+      "file": "vc226_ImageIO.hpp",
+      "status": 200,
+      "bytes": 2439,
+      "sha256": "273a9be751db52f7058ededbd2f477195745528cd907c7fe8eeb4a14505f5a9e"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/ImageIO.cpp",
+      "file": "vc226_ImageIO.cpp",
+      "status": 200,
+      "bytes": 3070,
+      "sha256": "e1895e36001858170f009ffa995c02b540a4f73cae83af20f4163d5edf7be70a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/src/BarycentricCoordinates.cpp",
+      "file": "vc226_BarycentricCoordinates.cpp",
+      "status": 200,
+      "bytes": 1986,
+      "sha256": "ae92a2d7bf61fc1e25bdfaf86580c869efc7a8ff1cc659c313e9c7a6e9056550"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/educelab/volume-cartographer/7640ba6c8e41f39a7aef63e9780cd13c296b2d15/core/include/vc/core/types/Transforms.hpp",
+      "file": "vc226_Transforms.hpp",
+      "status": 200,
+      "bytes": 17755,
+      "sha256": "33f3c43e9c40dd4055e5c8c3af0f29fe89aa4f480c757661f5c3df9fbd67b9d0"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ScrollPrize/villa/c8f3ba45304f0a317a49a155929e30d294f201eb/vc_object_store/src/Tiff.cpp",
+      "file": "villa_Tiff.cpp",
+      "status": 200,
+      "bytes": 14577,
+      "sha256": "3ba835db642fdb1e05659c5f515681345bd191eec6d6bf89bdaac21c0353b7a5"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/.zarray",
+      "file": "frag5_fine_raw_zarray.json",
+      "status": 200,
+      "bytes": 401,
+      "sha256": "2795b898b2055d1cb2a1ee2d7c8566921c8f9a089a9cadd47d5dae01aab87f49"
+    },
+    {
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_standardized/70keV_3.24um_.zarr/0/.zarray",
+      "file": "frag5_fine_standardized_zarray.json",
+      "status": 200,
+      "bytes": 401,
+      "sha256": "9d12b1a162ee0beb49181786b10f1375d395df175475e8afeedaf308474c971c"
+    }
+  ],
+  "report_sha256": "41f779c79b55d5399ea84e6d1f66aaa187d8d2fea99982024a7e11023c8a5868"
+}

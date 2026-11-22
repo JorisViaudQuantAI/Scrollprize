@@ -1,0 +1,45 @@
+{
+  "scope": "Generated-input and pinned geometry checks only; no network requests, CT or photograph/label pixels.",
+  "tests_passed": 8,
+  "last_test_wall_seconds": 1.94,
+  "initial_environment_issue": "pytest absent from the CT dependency path; reused existing native-pair-test-deps, no package installation.",
+  "test_command": "PYTHONPATH=<analysis-dependencies>:<test-dependencies> python -m pytest -q test_frag5_native_pair_stage1.py",
+  "checks": [
+    "All Cartesian chunk corners and complete bounds",
+    "XYZ trilinear linear-field weights and terminal integer support",
+    "Inverse-affine125-midpoint average preserves a linear field",
+    "Valid interior Laplacian and constant-input unassessability",
+    "UnexpectedHTTP200 for a range is rejected without reading body",
+    "Exact frozen geometry reproduces and missing chunk rejects",
+    "Ambiguous/zero/mixed-direction identity never allows anatomy",
+    "Changed TIFF IFD pointer rejected before following it"
+  ],
+  "review_changes": [
+    "Unique order gate required before anatomy",
+    "TIFF IFD pointer checked against preflight before metadata ranges",
+    "Record scipy/numcodecs versions",
+    "Decode sequentially after closing four-thread network pool"
+  ],
+  "post_test_edits": "Only added compressor-id validation and scipy/numcodecs version receipt fields after the eight-test execution; no experimental sample, metric or gate changed.",
+  "files": {
+    "frag5_native_pair_stage1.py": {
+      "sha256": "e18bdff3a75729dbbb2785f4caa56892388f36c2b5603d3c86d082cb21877600",
+      "bytes": 29888
+    },
+    "frag5_native_pair_stage1_protocol.json": {
+      "sha256": "3cae8c53394bd92de8f07bcc3eb81afaf9db81c3cfe039616cc27566b18c18a2",
+      "bytes": 13259
+    },
+    "test_frag5_native_pair_stage1.py": {
+      "sha256": "e2a8dc80dc4411ba62ca8b6fd3d23ecf14eddab425b350d8afe39bdf5bec622b",
+      "bytes": 4764
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "numcodecs": "0.16.5"
+  },
+  "publication_note": "Only the private workspace/dependency paths in the recorded command are redacted. The executable, scientific protocol and test files are copied unchanged."
+}

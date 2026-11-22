@@ -1,0 +1,34 @@
+{
+  "scope": "Frag5 header and sparse geometry preflight only; no CT or PNG pixel decoding",
+  "physical_parent": "PHerc1667",
+  "fragment": "PHerc1667Cr1Fr3",
+  "surface_url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/surface_processing/",
+  "response_body_byte_cap": 16777216,
+  "maximum_single_range_bytes": 65536,
+  "required_range_status": 206,
+  "unexpected_200_policy": "Close without reading body and stop this execution; do not fall back to full download",
+  "tiff_planes": ["00", "32", "64"],
+  "tiff_scope": "Header, IFD entries and referenced metadata only; no strip/tile pixel payload",
+  "png_files": ["inklabels.png", "mask.png", "ir.png"],
+  "png_scope": "First 33 bytes only: signature, IHDR and IHDR CRC; no PLTE/IDAT/pixel decoding",
+  "ppm_header_scope": "64-byte ranges up to first <> line, at most 4096 header bytes; any incidental binary suffix remains undecoded",
+  "ppm_geometry_selection": {
+    "interior_fractions": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+    "formula": "floor(k * (dimension - 1) / 10), k=1..9; Cartesian product in row-major YX order",
+    "additional_controls": "Four corners (0,0),(0,width-1),(height-1,0),(height-1,width-1)",
+    "count": 85,
+    "record_scope": "Only prescribed geometry records; no data-dependent additional locations",
+    "endianness": "Report header declaration if available and empirical little/big-endian compatibility separately; do not infer format guarantee from plausibility alone"
+  },
+  "metadata_only_source_context": {
+    "fine_shape_zyx": [7010, 1400, 4420],
+    "fine_pitch_um": 3.24,
+    "fine_volume_uuid": "20231121133215",
+    "coarse_shape_zyx": [3131, 668, 2046],
+    "coarse_pitch_um": 7.91,
+    "coarse_volume_uuid": "20231130111236"
+  },
+  "no_unread_scroll_or_candidate_analysis": true,
+  "no_registration_accuracy_claim": true,
+  "no_model_inference_or_fit": true
+}

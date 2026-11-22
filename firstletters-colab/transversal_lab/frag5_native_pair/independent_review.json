@@ -1,0 +1,75 @@
+{
+  "schema": "frag5-stage1-independent-code-review-v1",
+  "created_utc": "2026-11-22T15:48:31.766619+00:00",
+  "scope": "Source code, existing geometry metadata and generated arrays/responses only; no experimental payload access.",
+  "reviewed_assets": {
+    "frag5_native_pair_stage1.py": {
+      "sha256": "e18bdff3a75729dbbb2785f4caa56892388f36c2b5603d3c86d082cb21877600",
+      "bytes": 29888
+    },
+    "frag5_native_pair_stage1_protocol.json": {
+      "sha256": "3cae8c53394bd92de8f07bcc3eb81afaf9db81c3cfe039616cc27566b18c18a2",
+      "bytes": 13259
+    }
+  },
+  "status": "no_blocking_issue_after_two_prospective_fixes",
+  "independent_checks": {
+    "manual_trilinear_reference": {
+      "tested_draft_sha256": "63fd9ba16c9bb1445366e9b60152d2f24b504cb94ba2c58a1c290cc180764ded",
+      "generated_points": 128,
+      "seed": 184,
+      "maximum_absolute_difference": 7.275957614183426e-12,
+      "terminal_integer_exact": true,
+      "outside_support_rejections": 4,
+      "three_axis_chunk_boundary_returns_all_eight": true
+    },
+    "selection_from_existing_metadata": {
+      "source_geometry_sha256": "e8275973279ff25f36750fc0ee8b3ebc34785a5188be71a0df98797778e17fb7",
+      "candidate_records": 85,
+      "valid_unit_normal_records": 64,
+      "selected_ids": [
+        20,
+        25,
+        65,
+        70
+      ],
+      "all_xyz_normals_surface_coordinates_byte_offsets_equal": true
+    },
+    "generated_http_responses": {
+      "changed_ETag_rejected_before_body": true,
+      "incorrect_Content_Length_rejected_before_body": true,
+      "incorrect_Content_Range_rejected_before_body": true,
+      "failed_responses_prospectively_charged": true
+    },
+    "generated_blosc_headers": {
+      "advertised_4GiB_size_rejected_before_decoder": true,
+      "incorrect_compressed_length_rejected_before_decoder": true
+    },
+    "final_code_inspection": {
+      "unique_global_order_required_for_anatomy": true,
+      "ambiguous_or_neither_stops": true,
+      "fixed_IFD_pointer_checked_before_following_range": 66658088,
+      "all65_TIFF_headers_checked_before_any_pixel_body": true,
+      "four_fixed_centers_all65_depths_no_phase_or_center_fit": true,
+      "shared_chunk_union_fine": 8,
+      "shared_chunk_union_coarse": 6,
+      "shared_chunk_total": 14,
+      "decoded_bytes_upper_bound": 58720256,
+      "all27_shifts_reported_zero_primary": true,
+      "integration_is125_midpoints_of_trilinear_field": true,
+      "labels_or_photographs_in_protocol": false,
+      "automatic_label_GO": false,
+      "python_numpy_scipy_numcodecs_versions_recorded": true
+    },
+    "version_scope": "Generated numerical/support/HTTP/decoder checks were performed during draft review. Their checked routines are unchanged in the final inspected runner; final changes add the unique-order gate, fixed TIFF IFD pointer and dependency versions. New gate and pointer regression checks are separately recorded by the author."
+  },
+  "actual_network_requests_by_reviewer": 0,
+  "real_CT_intensity_or_label_access_by_reviewer": false,
+  "model_fits_or_forwards_by_reviewer": 0,
+  "acceptance_limits": [
+    "A unique match establishes local consistency at four frozen rays with one declared rendering hypothesis, not whole-surface provenance or the physical ink-facing side.",
+    "The inverse-affine 5x5x5 integration approximates a nominal voxel footprint of the interpolated fine field; it does not reproduce the coarse acquisition PSF or noise.",
+    "All anatomy statistics remain descriptive within one physical fragment; no fitted affine, selected best shift, pixel-IID confidence interval or automatic label-stage approval.",
+    "Raw source chunks are mutable and not prehashed here. Execution must freeze HEAD ETags/lengths, enforce conditional retrieval, and record acquired SHA256 values."
+  ]
+}

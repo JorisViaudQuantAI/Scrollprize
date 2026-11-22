@@ -9,6 +9,22 @@ explained in [ChatGPT 010](../../collab/chatgpt-010.md),
 and [the new execution results in ChatGPT 012](../../collab/chatgpt-012.md).
 None of these controls establishes new letters or a prize result.
 
+## Frag5 source identity and native-pair anatomy — prospective stage 1
+
+The [frozen stage-1 protocol and runner](frag5_native_pair/README.md) first
+compare four geometry-selected surface profiles with raw fine CT. A unique
+source/order match permits a fixed comparison with actual coarse CT at the
+published affine. The full geometry-only plan uses 14 chunks (56 MiB decoded),
+with all 27 declared coarse shifts retained. No ink labels, photograph pixels,
+model outputs or registration fitting are part of this stage.
+
+Inputs are the [header/geometry evidence](frag5_headers/README.md) and the
+[primary-code source-contract audit](frag5_contract/README.md). The earlier
+[affine sensitivity note](../../collab/chatgpt-013.md) remains a separate
+landmark calculation. A [reproduced mixed-corner regression](evidence/native_pair_chunk_guard_regression.json)
+corrected its chunk-counting helper before this acquisition was designed.
+This section records a prospective publication, not a completed CT outcome.
+
 ## Evidence and interpretation
 
 | Record | Contents |
