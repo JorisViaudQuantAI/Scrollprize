@@ -1,0 +1,194 @@
+{
+  "out_of_bounds_depth": {
+    "depth_values": [
+      0,
+      100,
+      100
+    ],
+    "reported_valid_pixels": 4,
+    "total_pixels": 4,
+    "expected_full_depth_supported_pixels": 0
+  },
+  "missing_chunk_interpolation": {
+    "sample_values_at_boundary": [
+      100.0,
+      50.0,
+      0.0
+    ],
+    "render_values": [
+      [
+        [
+          50,
+          0
+        ],
+        [
+          50,
+          0
+        ]
+      ]
+    ],
+    "reported_valid_mask": [
+      [
+        true,
+        false
+      ],
+      [
+        true,
+        false
+      ]
+    ],
+    "expected_full_stencil_supported_pixels": 0
+  },
+  "stored_zero_voxels": {
+    "reported_valid_pixels": 0,
+    "source_supported_pixels": 4
+  },
+  "missing_nonzero_fill": {
+    "reported_valid_pixels": 4,
+    "source_supported_pixels": 0,
+    "output_unique": [
+      128
+    ],
+    "fetched_existing_chunks": 0
+  },
+  "m7_out_of_bounds_clipping": {
+    "raw_z": 100.0,
+    "snapped_z": 7.0,
+    "declared_per_pass_radius": 2,
+    "passes": 2,
+    "reported_median_disp": 93.0,
+    "m7_support_before": 0.0,
+    "m7_support_after": 0.0
+  },
+  "even_depth_normal_flip": {
+    "forward_depth_values": [
+      16,
+      19,
+      22,
+      25
+    ],
+    "flipped_depth_values": [
+      22,
+      19,
+      16,
+      13
+    ],
+    "exact_depth_reversal": false
+  },
+  "cache_vs_live_chunk_memory": {
+    "cache_cap_bytes": 512,
+    "reported_cache_bytes": 512,
+    "live_returned_chunk_bytes": 4096
+  },
+  "zero_byte_cache_missing_entries": {
+    "cache_cap_bytes": 0,
+    "reported_cache_bytes": 0,
+    "retained_dictionary_entries": 10000
+  },
+  "coherence_semantics": {
+    "shared_zero_shift_texture": {
+      "sheet_parallel_fraction": 1.0,
+      "patch_count": 4,
+      "mean_zero_shift_r": 1.0,
+      "mean_best_shifted_r": 0.0388215,
+      "patch_scores": [
+        {
+          "row": 0,
+          "col": 0,
+          "zero_shift_r": 1.0,
+          "best_shifted_r": 0.033842,
+          "best_shift": [
+            1,
+            -2
+          ],
+          "sheet_parallel": true
+        },
+        {
+          "row": 0,
+          "col": 64,
+          "zero_shift_r": 1.0,
+          "best_shifted_r": 0.037371,
+          "best_shift": [
+            -4,
+            2
+          ],
+          "sheet_parallel": true
+        },
+        {
+          "row": 64,
+          "col": 0,
+          "zero_shift_r": 1.0,
+          "best_shifted_r": 0.040084,
+          "best_shift": [
+            -4,
+            -1
+          ],
+          "sheet_parallel": true
+        },
+        {
+          "row": 64,
+          "col": 64,
+          "zero_shift_r": 1.0,
+          "best_shifted_r": 0.043989,
+          "best_shift": [
+            0,
+            1
+          ],
+          "sheet_parallel": true
+        }
+      ]
+    },
+    "independent_depth_texture": {
+      "sheet_parallel_fraction": 0.0,
+      "patch_count": 4,
+      "mean_zero_shift_r": -0.0012357499999999999,
+      "mean_best_shifted_r": 0.05680999999999999,
+      "patch_scores": [
+        {
+          "row": 0,
+          "col": 0,
+          "zero_shift_r": 0.018397,
+          "best_shifted_r": 0.05078,
+          "best_shift": [
+            -3,
+            2
+          ],
+          "sheet_parallel": false
+        },
+        {
+          "row": 0,
+          "col": 64,
+          "zero_shift_r": -0.000343,
+          "best_shifted_r": 0.079516,
+          "best_shift": [
+            3,
+            0
+          ],
+          "sheet_parallel": false
+        },
+        {
+          "row": 64,
+          "col": 0,
+          "zero_shift_r": -0.01753,
+          "best_shifted_r": 0.044138,
+          "best_shift": [
+            1,
+            -1
+          ],
+          "sheet_parallel": false
+        },
+        {
+          "row": 64,
+          "col": 64,
+          "zero_shift_r": -0.005467,
+          "best_shifted_r": 0.052806,
+          "best_shift": [
+            -1,
+            0
+          ],
+          "sheet_parallel": false
+        }
+      ]
+    }
+  }
+}
