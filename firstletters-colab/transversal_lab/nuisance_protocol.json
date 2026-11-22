@@ -1,0 +1,43 @@
+{
+  "schema": "published-306b-nuisance-pilot-v1",
+  "status": "Frozen before computing any new standardized score map",
+  "purpose": "Test a fixed local-standardization recovery idea on released model scores; no ink-truth, false-positive-rate, generalization or unread-scroll claim",
+  "cases": ["pherc306b_context_raw", "pherc306b_context_matched_raw", "pherc306b_shuffle_raw"],
+  "source_inventory": "../line_controls/inventory.json",
+  "source_representation": "Released TRACE times mean-A-hn model score, not raw CT or a new independent detector",
+  "work_um": 35.0,
+  "views": ["raw", "global_standardized", "local_standardized"],
+  "local_sigma_mm": 1.5,
+  "gaussian_truncate": 3.0,
+  "standard_deviation_floor": 0.025,
+  "standardized_mapping": "clip(((score-mean)/max(sd,0.025))/4,0,1)",
+  "global_statistics_support": "Same complete-kernel common work-grid mask used by all three ranked views",
+  "local_statistics": "Gaussian mean and second moment, population variance max(second_moment-mean**2,0), mode constant with zero fill; scoring restricted to complete real kernel support",
+  "common_support": "existing work_grid conservative support eroded by a rectangular kernel with radii ceil(3*1.5mm/effective_work_spacing); no wrap, padding, interpolation or mask renormalization can manufacture coverage",
+  "source_row_metric": "Rasterize proposals on the work grid; count each original source row/box pixel through its work-cell centre mapping. Preserve the full original source denominator and separately report observed conditional coverage.",
+  "minimum_original_centreline_support_fraction": 0.5,
+  "line_ranker": "Unchanged line_review.Config defaults, thresholds 0.25/0.5/0.75; transformed views declared display_signal with no probability or calibration claim",
+  "threshold_interpretation": "For standardized views, the fixed thresholds correspond to standardized contrasts 1,2,3; they do not inherit any previous null calibration",
+  "weak_row_id": "published_row_2",
+  "strong_row_id": "published_row_1",
+  "localization_continuation_gate": {
+    "weak_first_individual_half_coverage_rank_at_most": 5,
+    "weak_rank_strictly_improves_over_both_raw_and_global": true,
+    "strong_top5_centreline_coverage_allowed_loss_vs_each_baseline": 0.05,
+    "maximum_proposals_relative_to_each_baseline": 2.0,
+    "zero_baseline_count_convention": "Use max(1, baseline_count) only in the proposal-explosion check; zero is retained in the report",
+    "no_search_truncation": true,
+    "minimum_source_support_required_for_every_row": true
+  },
+  "process_control": "Apply identical transforms to the released depth-shuffle map. Missing eroded support is unassessable, never a successful zero-proposal control. It is a process intervention, not a population of certified blank papyrus.",
+  "operational_gate": "Not established by one already inspected published source, even if the localization continuation gate passes; requires independent positive and artifact controls with adequate support",
+  "time_limit_seconds_per_input_case": 180,
+  "no_parameter_sweep_or_retuning": true,
+  "network_forward_calls": 0,
+  "excluded": ["narrow blank strip as approval control", "343 display overlay as same-scale score control", "unlabelled pixels treated as certified negatives", "using the previous 88 proposals as the common-mask raw baseline", "shrinking the kernel after insufficient-support outcomes", "deployment on unread pixels"],
+  "background": "CFAR-inspired local standardization only; correlated and nonstationary papyrus does not satisfy a calibrated CFAR guarantee",
+  "source_links": [
+    "https://github.com/SirProdigle/pherc0306b-first-letters/tree/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+    "https://ieeexplore.ieee.org/document/4102829/"
+  ]
+}
