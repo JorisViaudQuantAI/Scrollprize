@@ -67,10 +67,40 @@ python gemini_lane/coverage_inventory.py --out gemini_lane/evidence/coverage_mat
 python -m unittest discover -s gemini_lane -p "test_*.py" -v
 ```
 
+Quality-ranked Top-10 execution queue from public asset metadata: [`evidence/priority_queue_scout.md`](evidence/priority_queue_scout.md).
+
 ---
 
-## 4. Attribution & Licences
+## 4. Measured Deliverable 3 — Studio (`PHerc0211` Detector) RTX 4060 `fp16` vs `bf16` Parity & VRAM Profile
+
+[`studio_rtx4060_bench.py`](studio_rtx4060_bench.py) runs Claude's packaged [`../firstletters-colab/studio_t4/studio_t4.py`](../firstletters-colab/studio_t4/studio_t4.py) on the 169 × 169 PHerc. 306B smoke crop (`mesh_index=12`, `25` windows at stride 48 Hann) with a 65% VRAM cap (`~5.2 GiB`):
+
+| Run | Precision | Order | Batch | Time (s) | ms / window | Peak alloc / reserved (MiB) | Max \|diff\| vs CPU `fp32` | Pearson *r* vs CPU `fp32` |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `cpu_fp32_desc_s48_b1` | `fp32` | `desc` | 1 | 48.88 | 1955.0 | — | — | — |
+| `cpu_fp32_asc_s48_b1` | `fp32` | `asc` | 1 | 49.25 | 1969.9 | — | — | — |
+| `cuda_fp16_desc_s48_b2` | `fp16` | `desc` | 2 | **3.29** | 131.5 | **2,164 / 2,354** | `0.002526` | **`0.999996`** |
+| `cuda_fp16_desc_s48_b4` | `fp16` | `desc` | 4 | **3.35** | 133.9 | 3,010 / 3,364 | `0.002538` | **`0.999996`** |
+| `cuda_fp16_asc_s48_b4` | `fp16` | `asc` | 4 | **2.30** | 92.0 | 2,514 / 2,842 | **`0.002113`** | **`0.999993`** |
+| `cuda_bf16_desc_s48_b2` | `bf16` | `desc` | 2 | 3.10 | 124.1 | 2,164 / 2,354 | `0.011070` | `0.999928` |
+| `cuda_bf16_desc_s48_b4` | `bf16` | `desc` | 4 | 3.41 | 136.5 | 3,010 / 3,364 | `0.011210` | `0.999928` |
+| `cuda_bf16_asc_s48_b4` | `bf16` | `asc` | 4 | 2.42 | 97.0 | 2,514 / 2,938 | **`0.061742`** | **`0.996717`** |
+
+**Key technical finding:** Although `studio_t4.py --precision auto` selects `bf16` on Ada/Ampere GPUs (`cc >= 8`), `bf16` (7-bit mantissa) exhibits up to `0.061742` probability drift (`r = 0.996717`) on `asc`, whereas explicit `--precision fp16` (10-bit mantissa) achieves **4.4x–29.2x lower max error** (`0.002113–0.002538`, `r >= 0.999993`) at identical peak VRAM (`2.11 GiB` at `batch=2`, `2.94 GiB` at `batch=4`). Receipt: [`evidence/studio_rtx4060_parity.json`](evidence/studio_rtx4060_parity.json).
+
+### Reproduce
+
+```bash
+python gemini_lane/studio_rtx4060_bench.py \
+  --vram-fraction 0.65 \
+  --output gemini_lane/evidence/studio_rtx4060_parity.json
+```
+
+---
+
+## 5. Attribution & Licences
 
 * Scripts & tests in `gemini_lane/`: MIT License (`../LICENSE`).
+* Studio soft-loss weights & `model.py`: Priyank Aranke and contributors (`vesuvius-studio-multiscroll-cpt`, code MIT, weights CC BY-NC 4.0).
 * PHerc. 306B A-hn weights, smoke crop, and upstream `ink_v8.py` / `smoke_v7.py` / `v8in`: Liam Warner and Nicola Bodill (`SirProdigle/pherc0306b-first-letters`, code MIT, model/data CC BY-NC 4.0; underlying `v8-in` base weights by `YoussefMoNader`).
 * Scroll CT data, S3 `m7` surface predictions, `pscamillo/vesuvius-eligible-meshes`, `rodriguescarson/eligible-scroll-*`, and `IyanDopico/vesuvius-sheet-tools`: CC BY-NC 4.0 / respective author licences.

@@ -63,6 +63,40 @@ class TestGeminiLaneEvidence(unittest.TestCase):
             self.assertGreaterEqual(res["pearson_r"], 0.999)
             self.assertLess(res["peak_vram_allocated_mib"], 5500.0)
 
+    def test_studio_rtx4060_parity(self) -> None:
+        path = EVIDENCE / "studio_rtx4060_parity.json"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        data = json.loads(raw)
+
+        self.assertTrue(data["fp16_s48_parity_pass"])
+        self.assertEqual(data["recommended_rtx4060_precision"], "fp16")
+        self.assertTrue(data["runtime"]["bf16_supported"])
+        cuda_runs = [r for r in data["runs"] if r["device"] == "cuda"]
+        self.assertGreaterEqual(len(cuda_runs), 8)
+        bf16_s48_orders = set()
+        for rec in cuda_runs:
+            self.assertLess(rec["peak_allocated_mib"], 4500.0)
+            if rec["stride"] == 48:
+                parity = rec["parity_vs_cpu_fp32"]
+                self.assertIn("max_abs_diff", parity)
+                self.assertIn("pearson_r", parity)
+                if rec["precision"] == "fp16":
+                    self.assertGreaterEqual(parity["pearson_r"], 0.9999)
+                    self.assertLessEqual(parity["max_abs_diff"], 0.01)
+                elif rec["precision"] == "bf16":
+                    bf16_s48_orders.add(rec["order"])
+        self.assertEqual(bf16_s48_orders, {"desc", "asc"})
+
+    def test_priority_queue_doc_clean(self) -> None:
+        path = EVIDENCE / "priority_queue_scout.md"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        for scroll in ("PHerc0125", "PHerc1203", "PHerc1218", "PHerc0191", "PHerc0846A"):
+            self.assertIn(scroll, raw)
+
 
 if __name__ == "__main__":
     unittest.main()
