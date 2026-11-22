@@ -57,15 +57,28 @@ stride 48 Hann), each precision compared with CPU fp32 on the same crop:
 | **fp16, asc, batch 4** | **0.002113** | **0.000156** | **0.999993** | **2514 MiB** |
 
 On Ada, fp16 has the same peak memory as bf16 at equal batch and a similar speed (92–139 ms per window across
-both), and a 4.4× (descending plane order) to 29.2× (ascending order) smaller max |Δp| against fp32. This is why `--precision fp16` is also offered on
-cc ≥ 8.0. `auto` still picks bf16 there so existing outputs do not change; happy to switch `auto` to fp16 on all
-GPUs if you prefer.
+both), and a 4.4× (descending plane order) to 29.2× (ascending order) smaller max |Δp| against fp32.
+
+**Colab L4 (Ada, cc 8.9)**, 41 × 1024 × 1024 crop of the same PHerc. 0306B render, stride 48 Hann, 529 windows,
+GPU fp32 reference at batch 4:
+
+| precision, batch | ms per window | peak allocated | max \|Δp\| vs fp32 | mean \|Δp\| |
+| --- | ---: | ---: | ---: | ---: |
+| fp32, 4 | 95.6 | 15.7 GB | — | — |
+| fp16, 16 | 82.7 | 7.6 GB | 0.0031 | 0.00028 |
+| bf16, 16 | 82.0 | 7.6 GB | 0.035 | 0.0027 |
+
+On both Ada GPUs, bf16 is no faster than fp16 and about ten times further from fp32. This is why
+`--precision fp16` is also offered on cc ≥ 8.0. `auto` still picks bf16 there so existing outputs do not change.
+Given these numbers we would suggest `auto` → fp16 on every CUDA GPU (our own CLI now does this); happy to make
+that one-line change in this PR if you agree.
 
 ## What these numbers are not
 
 - Parity and memory only. They are not an accuracy claim: the PHerc. 0306B crop (not in this model's training
   lists) is sub-letter scale, and no AUC is reported here.
-- The GPU numbers come from the wrapper with the same code path; this exact patched CLI was tested on CPU only.
+- The T4 and RTX 4060 numbers come from a wrapper with the same code path, the L4 numbers from our packaged
+  re-implementation of it; this exact patched CLI has been tested on CPU only so far (see checklist).
 - One GPU of each kind, one torch version each, no repeats.
 
 ## Tests
@@ -73,6 +86,10 @@ GPUs if you prefer.
 `python -m unittest test_infer_release test_inference_tiling -v` on CPU: the 4 new tests pass. On Windows, 4
 existing tests fail before and after the patch (backslash path in `test_loaded_weights_invoke_documented_codepath`,
 memmap file lock in `test_same_output_fewer_windows`); to be confirmed green on Linux before posting.
+
+The patch was re-checked against a fresh clone of `main` @ `bf66f753`: `git apply --check` passes, pre- and
+post-image blob hashes match the patch's `index` lines, and the patched `predict()` gives identical output for
+fp32, fp16 and bf16 on CPU (autocast is CUDA-only).
 
 ## Licence
 
@@ -82,7 +99,11 @@ Code changes under the repository's MIT licence. Weights untouched (CC BY-NC 4.0
 
 ## Pre-posting checklist (owner)
 
-- [ ] Run the patched CLI end to end on a T4 (`auto` → fp16) and on the RTX 4060 (`--precision fp16`), weights hash-checked.
+- [ ] Run the patched CLI end to end on a T4 (`auto` → fp16) and on the RTX 4060 (`--precision fp16`), weights
+      hash-checked: `python verify_upstream_gpu_burst.py --stages studio --output studio_burst.json` (clones and
+      patches `main`, runs `infer_release.py` on the 169 × 169 PHerc. 0306B smoke crop: CPU fp32 reference, CUDA
+      fp16, `auto`, and bf16 on cc ≥ 8.0; defaults `--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`).
+- [ ] Decide whether `auto` should mean fp16 on every CUDA GPU before posting.
 - [ ] Run the upstream tests on Linux.
 - [ ] Confirm `main` is still `bf66f753` (`git apply --check` again if not).
 - [ ] Owner approval before opening the PR.

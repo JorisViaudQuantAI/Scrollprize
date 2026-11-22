@@ -10,6 +10,9 @@ Target: [huggingface.co/scrollprize/hecate](https://huggingface.co/scrollprize/h
 Both make the same change. They differ only in the context of the argparse hunk: #3 adds `--resample` on the line
 right after `--precision`, so `0002` and #3 touch adjacent lines and git reports a one-line conflict whichever
 merges second (checked with `git merge-file`). `0002b` is that conflict resolved (both arguments kept).
+Both were re-checked against fresh clones of `main` @ `9cb86e50` and `refs/pr/3` @ `f4386b19`: `git apply --check`
+passes, blob hashes match the patches' `index` lines, and the patched `predict()` runs fp32 on CPU and refuses
+fp16/bf16 there.
 
 ---
 
@@ -62,7 +65,14 @@ MIT, as the repository.
 ## Pre-posting checklist (owner)
 
 - [ ] Run patched `hecate.py` fp16 vs fp32 with **both** checkpoints (`hecate_2.4um.pth` and `hecate_9.6um.pth`),
-      2D `--output` and `--output-3d`, with and without `--reverse`, on a T4; preferably on a PHerc. 0306B crop.
-- [ ] Check the state of discussion #3 and pick `0002` or `0002b`; re-run `git apply --check` on the chosen base.
+      2D `--output` and `--output-3d`, with and without `--reverse`, on a T4; preferably on a PHerc. 0306B crop:
+      `python verify_upstream_gpu_burst.py --stages hecate --hecate-patch main --hecate-input-2p4 <crop_2.4um.npy>
+      --hecate-input-9p6 <crop_9.6um.npy> --output hecate_burst.json` (uint8 Z,Y,X inputs already rendered at each
+      spacing; central 512 × 512 crop by default; checkpoints hash-checked against their LFS pointers; gate max ≤ 3
+      and mean ≤ 0.25 uint8 levels, 2D and 3D; defaults `--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`).
+      fp32 memory at batch 1 is unmeasured; if a run stops on the cap on an 8 GB laptop GPU, use a T4. Add the
+      receipt's numbers above as a separate table (batch 1; the existing table is batch 32).
+- [ ] Check the state of discussion #3 and pick `0002` or `0002b` (`--hecate-patch pr3`); re-run
+      `git apply --check` on the chosen base.
 - [ ] Optionally mention the overlap in a short comment on #3.
 - [ ] Owner approval before opening the HF pull request.
