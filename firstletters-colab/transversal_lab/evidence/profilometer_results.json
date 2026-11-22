@@ -1,0 +1,475 @@
+{
+  "status": "completed_fixed_protocol",
+  "protocol_sha256": "d545a59735797a2f6f3cbe022a4c1a6ad527f338374f2d894544d3f22fc7b78e",
+  "code_sha256": "b59be0ff688d770cfa9239e3962b94223f97fef0e43a01cfcda63e18fd1f7d2b",
+  "source_revision": "a806bead2f3b9100c20e19de37814fb285cfeefd",
+  "split_source_sha256": "fa82a0e845139ca27b941551f37e3984d626905cc160fdedadf858cb4fc038e5",
+  "experiment": "Bounded optical-height morphology and degradation-matched linear-head diagnostic; not CT ink detection or prize evidence.",
+  "split_design": "explicit four-case subset of official leave-one-papyrus-out fold 5; not complete fold replication",
+  "source_url": "https://huggingface.co/datasets/scrollprize/profilometer",
+  "paper_url": "https://doi.org/10.1038/s41598-026-58467-1",
+  "feature_names": [
+    "height",
+    "height_minus_gaussian8",
+    "std_gaussian2",
+    "std_gaussian8",
+    "gradient_magnitude_sigma1",
+    "absolute_gaussian_laplacian_sigma1",
+    "log_std2_over_std8",
+    "tensor_anisotropy_sigma1_gaussian4"
+  ],
+  "results": [
+    {
+      "case_id": "500P2_230925_H",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6412595825554631,
+      "average_precision": 0.4324174795563725,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.4326564828614009,
+      "recall_at_top_1_percent": 0.013021088837745179
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.43723106612313006,
+      "average_precision": 0.31995784174146114,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.6791169895678092,
+      "recall_at_top_1_percent": 0.020438484115392917
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6825722142863326,
+      "average_precision": 0.5728550573291109,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.7565201192250373,
+      "recall_at_top_1_percent": 0.02276798353932537
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6525654034067886,
+      "average_precision": 0.43785316897118687,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.3777011922503726,
+      "recall_at_top_1_percent": 0.01136717227923718
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "full_train_f2",
+      "training_degradation_factor": 2,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6226622102915849,
+      "average_precision": 0.4224592688145476,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.4424366616989568,
+      "recall_at_top_1_percent": 0.013315429920191519
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.43948297520917384,
+      "average_precision": 0.3107235822357897,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.37248509687034276,
+      "recall_at_top_1_percent": 0.011210190368599132
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6711351230221664,
+      "average_precision": 0.5597279596824949,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.7447839046199702,
+      "recall_at_top_1_percent": 0.022414774240389762
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6553660580951787,
+      "average_precision": 0.4472479598634893,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.4273472429210134,
+      "recall_at_top_1_percent": 0.012861303678702881
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "full_train_f4",
+      "training_degradation_factor": 4,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.602331018678498,
+      "average_precision": 0.42229675768429875,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.5470380029806259,
+      "recall_at_top_1_percent": 0.01646347787816522
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.4390703388731637,
+      "average_precision": 0.30610155351884744,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.29815573770491804,
+      "recall_at_top_1_percent": 0.008973198142006958
+    },
+    {
+      "case_id": "500P2_230925_H",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.671837614782089,
+      "average_precision": 0.5556652689515623,
+      "ink_prevalence": 0.33229842015053285,
+      "scored_pixels": 1073520,
+      "ink_pixels": 356729,
+      "top_1_percent_count": 10736,
+      "precision_at_top_1_percent": 0.7327682563338301,
+      "recall_at_top_1_percent": 0.022053155196241403
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6188256434585147,
+      "average_precision": 0.43115852104445085,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.6369740376007162,
+      "recall_at_top_1_percent": 0.019921113510448785
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6760789660543997,
+      "average_precision": 0.4367112347439974,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.32162041181736795,
+      "recall_at_top_1_percent": 0.010058552394418448
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 1,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.5135784683764547,
+      "average_precision": 0.3311126406339106,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.0756490599820949,
+      "recall_at_top_1_percent": 0.002365894717685063
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6124754586343235,
+      "average_precision": 0.4194078572111385,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.5747538048343778,
+      "recall_at_top_1_percent": 0.01797520010359539
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "full_train_f2",
+      "training_degradation_factor": 2,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6186991962612947,
+      "average_precision": 0.426442587149638,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.5978066248880931,
+      "recall_at_top_1_percent": 0.018696168020523086
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6787718640504077,
+      "average_precision": 0.43964634393040897,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.12970008952551476,
+      "recall_at_top_1_percent": 0.004056319493782527
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 2,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.5036196050947223,
+      "average_precision": 0.32211379981435,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.05539391226499552,
+      "recall_at_top_1_percent": 0.0017324229071806305
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "full_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6053136927902592,
+      "average_precision": 0.4063625401054801,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.540734109221128,
+      "recall_at_top_1_percent": 0.0169112474494885
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "full_train_f4",
+      "training_degradation_factor": 4,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6244949310010486,
+      "average_precision": 0.42738854316622055,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.5973589973142346,
+      "recall_at_top_1_percent": 0.018682168643495364
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "height_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.6806459642347529,
+      "average_precision": 0.44342351770791344,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.09702327663384064,
+      "recall_at_top_1_percent": 0.0030343649707588014
+    },
+    {
+      "case_id": "500P2_230925_N2",
+      "model": "roughness_train_f1",
+      "training_degradation_factor": 1,
+      "test_degradation_factor": 4,
+      "native_to_working_factor": 4,
+      "roc_auc": 0.4985728322700789,
+      "average_precision": 0.3150908817041409,
+      "ink_prevalence": 0.31975536605564137,
+      "scored_pixels": 893580,
+      "ink_pixels": 285727,
+      "top_1_percent_count": 8936,
+      "precision_at_top_1_percent": 0.06927036705461057,
+      "recall_at_top_1_percent": 0.0021664035950400206
+    }
+  ],
+  "models": [
+    {
+      "id": "full_train_f1",
+      "train_factor": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "n_training_pixels": 32768,
+      "n_iter": [
+        13
+      ],
+      "warnings": [
+        {
+          "category": "FutureWarning",
+          "message": "'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None."
+        }
+      ]
+    },
+    {
+      "id": "full_train_f2",
+      "train_factor": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "n_training_pixels": 32768,
+      "n_iter": [
+        11
+      ],
+      "warnings": [
+        {
+          "category": "FutureWarning",
+          "message": "'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None."
+        }
+      ]
+    },
+    {
+      "id": "full_train_f4",
+      "train_factor": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "n_training_pixels": 32768,
+      "n_iter": [
+        15
+      ],
+      "warnings": [
+        {
+          "category": "FutureWarning",
+          "message": "'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None."
+        }
+      ]
+    },
+    {
+      "id": "height_train_f1",
+      "train_factor": 1,
+      "columns": [
+        0
+      ],
+      "n_training_pixels": 32768,
+      "n_iter": [
+        2
+      ],
+      "warnings": [
+        {
+          "category": "FutureWarning",
+          "message": "'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None."
+        }
+      ]
+    },
+    {
+      "id": "roughness_train_f1",
+      "train_factor": 1,
+      "columns": [
+        2
+      ],
+      "n_training_pixels": 32768,
+      "n_iter": [
+        1
+      ],
+      "warnings": [
+        {
+          "category": "FutureWarning",
+          "message": "'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None."
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 14.12130812800001,
+  "cpu_seconds": 14.100592563,
+  "limitations": [
+    "Optical profilometry of opened fragments is not CT imaging of rolled papyrus.",
+    "The selected four cases are a subset of official fold 5, not its published full protocol.",
+    "Both held-out cases come from PHerc. 500P2; there is one held-out specimen.",
+    "Height TIFFs are per-sample normalized and do not establish absolute micrometre relief.",
+    "Dataset calibration 0.68793625 um/pixel differs from paper 0.34 um/pixel; report degradation factors, not a physical resolution cutoff.",
+    "Original nonfinite/inpainting mask absent from normalized TIFF; missingness confounding cannot be excluded.",
+    "Working grid starts at blockmean4; working factor1 is not native optical resolution.",
+    "No trained backbone or target-scroll input; this does not establish First Letters model eligibility for another pipeline.",
+    "The fixed 32-working-pixel border matches the sigma8 kernel radius but degradation/interpolation adds support; a narrow inner band may retain edge-padding influence. The border is not changed after viewing results.",
+    "Balanced training scores are not calibrated probabilities of ink at the held-out prevalence."
+  ]
+}

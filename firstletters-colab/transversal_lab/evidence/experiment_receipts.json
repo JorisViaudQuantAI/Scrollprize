@@ -1,0 +1,199 @@
+{
+  "schema": "vesuvius.transversal_evidence.v1",
+  "date": "2026-11-22",
+  "claim": "Completed bounded public-data diagnostics; no new CT ink recovery or prize result.",
+  "preregistration_commits": {
+    "nuisance_v1": "901658658371369b0b4d00f566e89b4bb0122c16",
+    "profilometer": "e387d75301293c4c3c6d20360a3d35d8d2addb15",
+    "nuisance_v2": "a813c75ad4acf0767b24b69401ecc9ffe0ea10e1"
+  },
+  "frozen_files_sha256": {
+    "nuisance_pilot.py": "e7db21c5f203a52102bc546849db85dace573c7cb700fde2044da4a038399507",
+    "nuisance_pilot_v2.py": "e16d01f95c90a9f357fb96bc5e5bb042573aba09ba426d1bc0ec0dd63860f6f0",
+    "profilometer_pilot.py": "b59be0ff688d770cfa9239e3962b94223f97fef0e43a01cfcda63e18fd1f7d2b",
+    "nuisance_protocol.json": "534dff0132056f364e65985d219fdc4614655e1cebddf1f41b9cbb51e994f14f",
+    "nuisance_protocol_v2.json": "489132d889913cd7e27e9901032ac45f0f04e8d6a664d8d1d07603ad5bc32f73",
+    "profilometer_protocol.json": "d545a59735797a2f6f3cbe022a4c1a6ad527f338374f2d894544d3f22fc7b78e"
+  },
+  "public_result_sha256": {
+    "nuisance_v1_result.json": "b3bbc83a192420d778fc17e7f93f74cac416deab49e142241ae6d932c729c081",
+    "nuisance_v2_summary.json": "039c5f7935032d8fc807e98395595965a7cf5a61560763f9cca0d2546ea6ca4f",
+    "profilometer_metrics.csv": "9f3ffd68f23e2dd306d81211550421c1ca62c11ef8a85862b9738ddd9b0411ff",
+    "profilometer_results.json": "470a63f66d3a10ce5fcbc98e379040aed0c8f5bdc010f45ec31157e4747649a9"
+  },
+  "optical": {
+    "source_url": "https://huggingface.co/datasets/scrollprize/profilometer",
+    "source_revision": "a806bead2f3b9100c20e19de37814fb285cfeefd",
+    "prepare_receipt_sha256": "7f0f3721ddf2f5a8c2406231cc44f698df317becde2c2b98321347beaabc93a3",
+    "full_private_run_receipt_sha256": "f285d95e11be532764c91dc2c081713634503a8f5ab7d96e9f3792ccffd2f4d6",
+    "verified_files": [
+      {
+        "path": "folds/splits_final.json",
+        "bytes": 3771,
+        "sha256": "fa82a0e845139ca27b941551f37e3984d626905cc160fdedadf858cb4fc038e5",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/folds/splits_final.json"
+      },
+      {
+        "path": "configs/experiment.json",
+        "bytes": 8241,
+        "sha256": "3c75128564e676981eb490df155c112d537984480cd5065f48854d034d6f76b7",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/configs/experiment.json"
+      },
+      {
+        "path": "configs/sampling.json",
+        "bytes": 707,
+        "sha256": "3ebc6c41dd7bfa38f885543c46674ebfdc1e4ba350993c3b4d1722c56549efd3",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/configs/sampling.json"
+      },
+      {
+        "path": "configs/case_manifest.json",
+        "bytes": 5627,
+        "sha256": "18439a435675875497bede3d22af3d6569ccdb40f0f9a781fd194df1160d8c21",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/configs/case_manifest.json"
+      },
+      {
+        "path": "manifest.csv",
+        "bytes": 3047,
+        "sha256": "cfdadaca5e34f310f3c758dfbec6ac460179af6604888e08ff97f64ed41445af",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/manifest.csv"
+      },
+      {
+        "path": "data/pherc0248/π_z.tif",
+        "bytes": 30286882,
+        "sha256": "c895976a3b3ecfef219225b540e4e7dd4b9fdb26c4a993077a26a61fb4d3cd59",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0248/%CF%80_z.tif"
+      },
+      {
+        "path": "data/pherc0248/π_label.png",
+        "bytes": 76461,
+        "sha256": "0a17aca48b23f4edb7ae5ff100a8129efa9673fdb7fb2347266147f8e72d2fc3",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0248/%CF%80_label.png"
+      },
+      {
+        "path": "data/pherc0250/ϲ_z.tif",
+        "bytes": 32527954,
+        "sha256": "d51eaf53c07696e22656d4cf981429f9c8dca44781c58d25cea2685efceaee59",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0250/%CF%B2_z.tif"
+      },
+      {
+        "path": "data/pherc0250/ϲ_label.png",
+        "bytes": 76278,
+        "sha256": "6a47dc68ebd618b2d131ed4dad9af9e2c03c4e7f7aa72e6013816a918a92dfc6",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0250/%CF%B2_label.png"
+      },
+      {
+        "path": "data/pherc0500p2/η_z.tif",
+        "bytes": 38841308,
+        "sha256": "9ad47f0cee5c1309c5aa13cb58d9dff66b99c20e1c13d63b4281b0d03ed17948",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0500p2/%CE%B7_z.tif"
+      },
+      {
+        "path": "data/pherc0500p2/η_label.png",
+        "bytes": 88007,
+        "sha256": "b6fd327caa056702b2c5590cc95418f323ba5e5df96fac3c87f49fd0cc4b2b4a",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0500p2/%CE%B7_label.png"
+      },
+      {
+        "path": "data/pherc0500p2/ν2_z.tif",
+        "bytes": 32646706,
+        "sha256": "01c6cc9f9b58200d2e36f65e722cbf72f9d51d86966d56d4bbc7a05e920a1904",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0500p2/%CE%BD2_z.tif"
+      },
+      {
+        "path": "data/pherc0500p2/ν2_label.png",
+        "bytes": 77290,
+        "sha256": "561c41ac3da18251ba7974c0d310cfcfbac424a0a6a98584208154f9abbb2a77",
+        "canonical_source_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/data/pherc0500p2/%CE%BD2_label.png"
+      }
+    ],
+    "python": "3.12.14",
+    "versions": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "Pillow": "13.0.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "threadpools": [
+      {
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openmp",
+        "num_threads": 1
+      }
+    ],
+    "preparation_wall_seconds": 114.36541159700005,
+    "preparation_cpu_seconds": 0.691717126,
+    "experiment_wall_seconds": 14.12130812800001,
+    "experiment_cpu_seconds": 14.100592563,
+    "model_artifact_sha256": {
+      "full_train_f1": "ea9b6f1908038d8bb9151c328f6987f3f116668a777853a37b36a8ef72b1275e",
+      "full_train_f2": "194e6a9ce58d0b963a0b771f2e0b0269781b59c8b15cc1c1ee8efdd4fb01e496",
+      "full_train_f4": "50e91ab93fedb297e042dcdf3f807fc70e63435e09048c17756d91be802b493a",
+      "height_train_f1": "158b4f56a6a18d40a403b6d6f229e25923af74eae5f7a75b61f8e0777d68f0c9",
+      "roughness_train_f1": "4bb9b061d772983ee07b4fd168b7fc54eb321bc05a8c04cfd52549da9f963b13"
+    },
+    "limitations": [
+      "Optical profilometry of opened fragments is not CT imaging of rolled papyrus.",
+      "The selected four cases are a subset of official fold 5, not its published full protocol.",
+      "Both held-out cases come from PHerc. 500P2; there is one held-out specimen.",
+      "Height TIFFs are per-sample normalized and do not establish absolute micrometre relief.",
+      "Dataset calibration 0.68793625 um/pixel differs from paper 0.34 um/pixel; report degradation factors, not a physical resolution cutoff.",
+      "Original nonfinite/inpainting mask absent from normalized TIFF; missingness confounding cannot be excluded.",
+      "Working grid starts at blockmean4; working factor1 is not native optical resolution.",
+      "No trained backbone or target-scroll input; this does not establish First Letters model eligibility for another pipeline.",
+      "The fixed 32-working-pixel border matches the sigma8 kernel radius but degradation/interpolation adds support; a narrow inner band may retain edge-padding influence. The border is not changed after viewing results.",
+      "Balanced training scores are not calibrated probabilities of ink at the held-out prevalence."
+    ]
+  },
+  "nuisance_v1": {
+    "runtime": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "opencv": "4.12.0"
+    },
+    "started_utc": "2026-11-22T12:24:49.379718+00:00",
+    "case_processing_seconds": 6.053363028999911,
+    "full_result_sha256": "b3bbc83a192420d778fc17e7f93f74cac416deab49e142241ae6d932c729c081",
+    "run_started_sha256": "e677a24ace0181bb6441b7c26b5fc10ee890b9dd9b3701026f336905509f8b74",
+    "outcome": "Unassessable: both target centrelines excluded."
+  },
+  "nuisance_v2": {
+    "runtime": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "opencv": "4.12.0"
+    },
+    "started_utc": "2026-11-22T12:35:08.356753+00:00",
+    "case_processing_seconds": 75.95975665499986,
+    "full_private_result_sha256": "4caaa6dd9b31212680a9d7e44f664ce0ac0f36ba0c0988819e0f888810882708",
+    "run_started_sha256": "ee36ec63c6319920fd81beba7a01f8b92f11927e10fcbf72637c5e3955558d2a",
+    "public_context_comparison_png_sha256": "0b611f5d95cc8f1517b5f084c9a8f79acc2dfae4f35dbc6833df5d17b2b0ddc7",
+    "outcome": "Adaptive follow-up: weak-row rank improves; frozen continuation gate fails.",
+    "limitations": [
+      "Adaptive amendment motivated by v1 support-only failure; same reused known rows",
+      "Gaussian proxy-mask coverage is not audited physical acquisition support",
+      "Unobserved centres remain excluded; structured missingness can still bias normalized moments",
+      "Coarse published rows are localization targets, not ink truth",
+      "All unlabelled pixels remain unknown",
+      "No new model inference or independent detector",
+      "No population false-positive estimate",
+      "Local standardization can enhance crack and blob rims",
+      "Any continuation gate requires independent controls before operational use"
+    ]
+  },
+  "presentation_artifacts_sha256": {
+    "plot_results.py": "081b834e8f36af36b6e301ec321807a343a85784523e7e1c6fba8d09fa16ec6e",
+    "evidence/profilometer_review_budget.png": "123d36723163e790648a3e2fb09a590ac95db5636821f0336215ecf9217f18d0",
+    "evidence/profilometer_review_budget.svg": "1e8e3c7d108b2b1485d54f53175789c6ff52f0a417f3502606bd0ec68e077805"
+  }
+}

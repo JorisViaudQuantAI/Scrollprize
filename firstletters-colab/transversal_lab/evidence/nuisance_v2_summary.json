@@ -1,0 +1,1701 @@
+{
+  "summary_schema": "published-306b-nuisance-pilot-v2-reduced-numeric-summary",
+  "summary_status": "Numerical values copied without rounding from the completed receipt; no experiment rerun or score recomputation",
+  "full_receipt": {
+    "filename": "result.json",
+    "sha256": "4caaa6dd9b31212680a9d7e44f664ce0ac0f36ba0c0988819e0f888810882708",
+    "bytes": 1136845
+  },
+  "removed_fields": [
+    "cases[].views[].proposals: complete proposal lists including coordinate polygons",
+    "cases[].views[].ranker_trials: per-threshold search trial details; aggregate truncation flags retained",
+    "cases[].views[].rows[].individual: all per-proposal row-overlap records",
+    "cases[].views[].rows[].first_half_supported_centreline_proposal: detailed first qualifying proposal record; first supported/full-source half-coverage ranks retained",
+    "cases[].source_target_support[].source_box_xyxy and work_box_xyxy: coordinate lists; all source-support pixel counts and fractions retained",
+    "cases[].views[].rows[].source_box_xyxy and work_box_xyxy: coordinate lists; all support, top-K, rank and denominator fields retained"
+  ],
+  "pilot_version": "v2",
+  "protocol_status": "Frozen before observing v2 transformed target outputs; adaptively motivated by the v1 support-only failure",
+  "experimental_status": "adaptive_support_amendment_on_reused_published_controls_not_independent_validation",
+  "row_metric_semantics": {
+    "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+    "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+    "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+    "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+    "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+    "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+    "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+  },
+  "protocol_sha256": "489132d889913cd7e27e9901032ac45f0f04e8d6a664d8d1d07603ad5bc32f73",
+  "script_sha256": "e16d01f95c90a9f357fb96bc5e5bb042573aba09ba426d1bc0ec0dd63860f6f0",
+  "prior_v1_result_sha256": "b3bbc83a192420d778fc17e7f93f74cac416deab49e142241ae6d932c729c081",
+  "prior_v1_protocol_sha256": "534dff0132056f364e65985d219fdc4614655e1cebddf1f41b9cbb51e994f14f",
+  "reused_v1_runner_sha256": "e7db21c5f203a52102bc546849db85dace573c7cb700fde2044da4a038399507",
+  "ranker_sha256": "32063be42b8c92f6b2e7d709f7ded64c6b57ea6d62cb9696b595baa5fba6654d",
+  "inventory_sha256": "97f029c7317b36346ccb8c1b06bbf8fd0f834c9f24060a7e56223deb707ce15d",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "opencv": "4.12.0"
+  },
+  "config": {
+    "thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "angles_deg": [
+      0.0,
+      5.0,
+      10.0,
+      15.0,
+      20.0,
+      25.0,
+      30.0,
+      35.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      65.0,
+      70.0,
+      75.0,
+      80.0,
+      85.0,
+      90.0,
+      95.0,
+      100.0,
+      105.0,
+      110.0,
+      115.0,
+      120.0,
+      125.0,
+      130.0,
+      135.0,
+      140.0,
+      145.0,
+      150.0,
+      155.0,
+      160.0,
+      165.0,
+      170.0,
+      175.0
+    ],
+    "work_um": 35.0,
+    "link_mm": 0.15,
+    "minimum_area_mm2": 0.06,
+    "minimum_extent_mm": 0.4,
+    "band_half_mm": 1.0,
+    "band_step_mm": 0.25,
+    "maximum_mark_height_mm": 4.0,
+    "maximum_mark_length_mm": 8.0,
+    "slot_gap_mm": 1.2,
+    "maximum_pitch_mm": 6.5,
+    "minimum_slots": 4,
+    "minimum_length_mm": 8.0,
+    "maximum_length_mm": 60.0,
+    "flank_inner_mm": 1.75,
+    "flank_outer_mm": 3.5,
+    "minimum_flank_coverage": 0.5,
+    "maximum_chains_per_threshold": 4000,
+    "maximum_work_pixels": 8000000,
+    "crop_count": 12
+  },
+  "started_utc": "2026-11-22T12:35:08.356753+00:00",
+  "network_forward_calls": 0,
+  "status": "completed",
+  "cases": [
+    {
+      "id": "pherc306b_context_raw",
+      "role": "published-positive-context",
+      "source_hashes": {
+        "score": "5132963de1584eb17ce77eda2912b496ab9d0cf3fc6c717dce0dcb89e382c40e",
+        "mask": "be5d11296c7a81708180558ade2a255e2db16811ab32b646292a7a3dda9c354f"
+      },
+      "source_shape": [
+        4051,
+        6945
+      ],
+      "work_shape_yx": [
+        1000,
+        1714
+      ],
+      "effective_work_spacing_mm_yx": [
+        0.03500064,
+        0.035008634772462084
+      ],
+      "original_source_valid_pixels": 27425854,
+      "work_observed_pixels": 1664001,
+      "common_gaussian_mass_pixels": 1311516,
+      "common_fraction_of_observed_work": 0.7881701994169474,
+      "minimum_gaussian_observed_mass": 0.95,
+      "sigma_work_pixels": [
+        42.85635919800324,
+        42.846572274218055
+      ],
+      "gaussian_mass_quantiles_on_observed_centres": [
+        0.25468844175338745,
+        0.9750714302062988,
+        0.9926194548606873,
+        0.9995520114898682,
+        1.0
+      ],
+      "source_validity_semantics": "CT display layer20>0 AND finite released claim score; matched cases additionally require finite released shuffle score. These are tissue/model-support proxies, not audited physical acquisition coverage. Invalid stored zeroes remain invalid.",
+      "source_target_support": [
+        {
+          "id": "published_row_1",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 4374,
+          "observed_source_box_pixels": 2011928,
+          "source_centreline_support_fraction": 0.9981743496120493,
+          "source_box_support_fraction": 0.9895143140433434,
+          "status": "observed",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        },
+        {
+          "id": "published_row_2",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 4374,
+          "observed_source_box_pixels": 2011856,
+          "source_centreline_support_fraction": 0.9981743496120493,
+          "source_box_support_fraction": 0.9894789027211633,
+          "status": "observed",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        }
+      ],
+      "statistics": {
+        "global_mean": 0.06862371501095288,
+        "global_population_sd": 0.07437549472356546,
+        "global_sd_after_floor": 0.07437549472356546,
+        "local_sd_quantiles_on_common": [
+          0.008787962608039379,
+          0.021074867341667414,
+          0.04108269326388836,
+          0.07225419394671917,
+          0.1848260760307312
+        ],
+        "local_sd_floor_fraction_on_common": 0.3099908807822398,
+        "gaussian_mass_quantiles_on_common": [
+          0.9500003457069397,
+          0.9902947545051575,
+          0.9965876936912537,
+          0.9998761415481567,
+          1.0
+        ],
+        "coverage_interpretation": "Gaussian weight of the released tissue/model-support proxy, not audited acquisition support"
+      },
+      "views": [
+        {
+          "name": "raw",
+          "proposal_count": 95,
+          "search_truncated": false,
+          "seconds": 5.367421366999906,
+          "score_quantiles": [
+            0.01591993123292923,
+            0.035653913393616676,
+            0.044001588597893715,
+            0.06451078876852989,
+            0.2064063772559166,
+            0.4382777422666556,
+            0.7075572609901428
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011928,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9895143140433434,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 709,
+                  "covered_source_box_pixels": 253811,
+                  "conditional_centreline_fraction": 0.16209419295839048,
+                  "conditional_box_fraction": 0.12615312277576535,
+                  "observed_covered_fraction_of_full_source_centreline": 0.16179826563213145,
+                  "observed_covered_fraction_of_full_source_box": 0.12483032074788712
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 3420,
+                  "covered_source_box_pixels": 902673,
+                  "conditional_centreline_fraction": 0.7818930041152263,
+                  "conditional_box_fraction": 0.4486606876588029,
+                  "observed_covered_fraction_of_full_source_centreline": 0.7804655408489274,
+                  "observed_covered_fraction_of_full_source_box": 0.4439561725869151
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 3630,
+                  "covered_source_box_pixels": 933276,
+                  "conditional_centreline_fraction": 0.8299039780521262,
+                  "conditional_box_fraction": 0.46387147054964195,
+                  "observed_covered_fraction_of_full_source_centreline": 0.8283888635326335,
+                  "observed_covered_fraction_of_full_source_box": 0.4590074599852059
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 3946,
+                  "covered_source_box_pixels": 1181551,
+                  "conditional_centreline_fraction": 0.9021490626428899,
+                  "conditional_box_fraction": 0.5872730038053051,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9005020538566865,
+                  "observed_covered_fraction_of_full_source_box": 0.5811150435165804
+                }
+              },
+              "first_half_supported_centreline_rank": 2,
+              "best_individual_conditional_centreline_fraction": 0.5278920896204847,
+              "first_half_full_source_centreline_rank": 2,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011856,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9894789027211633,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 1816,
+                  "covered_source_box_pixels": 485589,
+                  "conditional_centreline_fraction": 0.4151806127114769,
+                  "conditional_box_fraction": 0.24136369601005242,
+                  "observed_covered_fraction_of_full_source_centreline": 0.4144226380648106,
+                  "observed_covered_fraction_of_full_source_box": 0.2388242850847511
+                }
+              },
+              "first_half_supported_centreline_rank": 13,
+              "best_individual_conditional_centreline_fraction": 0.9435299497027893,
+              "first_half_full_source_centreline_rank": 13,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "global_standardized",
+          "proposal_count": 148,
+          "search_truncated": false,
+          "seconds": 23.46145440400005,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.46313194930553436,
+            1.0,
+            1.0
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011928,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9895143140433434,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 855,
+                  "covered_source_box_pixels": 273073,
+                  "conditional_centreline_fraction": 0.19547325102880658,
+                  "conditional_box_fraction": 0.13572702402869288,
+                  "observed_covered_fraction_of_full_source_centreline": 0.19511638521223185,
+                  "observed_covered_fraction_of_full_source_box": 0.13430383307889643
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 3939,
+                  "covered_source_box_pixels": 1054224,
+                  "conditional_centreline_fraction": 0.9005486968449932,
+                  "conditional_box_fraction": 0.5239869418786358,
+                  "observed_covered_fraction_of_full_source_centreline": 0.8989046097672295,
+                  "observed_covered_fraction_of_full_source_box": 0.5184925793607076
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 3991,
+                  "covered_source_box_pixels": 1202072,
+                  "conditional_centreline_fraction": 0.9124371284865112,
+                  "conditional_box_fraction": 0.597472672978357,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9107713372889091,
+                  "observed_covered_fraction_of_full_source_box": 0.5912077621618219
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 3991,
+                  "covered_source_box_pixels": 1324163,
+                  "conditional_centreline_fraction": 0.9124371284865112,
+                  "conditional_box_fraction": 0.6581562560886871,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9107713372889091,
+                  "observed_covered_fraction_of_full_source_box": 0.6512550362769323
+                }
+              },
+              "first_half_supported_centreline_rank": 2,
+              "best_individual_conditional_centreline_fraction": 0.8968907178783722,
+              "first_half_full_source_centreline_rank": 2,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011856,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9894789027211633,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 8997,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0044719900430249485,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.004424939800752294
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 11831,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.005880639568637119,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.005818768787673712
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 1775,
+                  "covered_source_box_pixels": 512727,
+                  "conditional_centreline_fraction": 0.40580704160951075,
+                  "conditional_box_fraction": 0.2548527329987832,
+                  "observed_covered_fraction_of_full_source_centreline": 0.40506617982656323,
+                  "observed_covered_fraction_of_full_source_box": 0.25217140260312565
+                }
+              },
+              "first_half_supported_centreline_rank": 11,
+              "best_individual_conditional_centreline_fraction": 1.0,
+              "first_half_full_source_centreline_rank": 11,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "local_standardized",
+          "proposal_count": 180,
+          "search_truncated": true,
+          "seconds": 35.47749263699984,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.020645791199058294,
+            0.39406874775886536,
+            0.78865189254284,
+            1.0
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011928,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9895143140433434,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 644,
+                  "covered_source_box_pixels": 245756,
+                  "conditional_centreline_fraction": 0.14723365340649291,
+                  "conditional_box_fraction": 0.12214950037973527,
+                  "observed_covered_fraction_of_full_source_centreline": 0.14696485623003194,
+                  "observed_covered_fraction_of_full_source_box": 0.12086867907899086
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 3222,
+                  "covered_source_box_pixels": 841162,
+                  "conditional_centreline_fraction": 0.7366255144032922,
+                  "conditional_box_fraction": 0.418087525994966,
+                  "observed_covered_fraction_of_full_source_centreline": 0.7352806937471474,
+                  "observed_covered_fraction_of_full_source_box": 0.4137035914949873
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 3222,
+                  "covered_source_box_pixels": 841162,
+                  "conditional_centreline_fraction": 0.7366255144032922,
+                  "conditional_box_fraction": 0.418087525994966,
+                  "observed_covered_fraction_of_full_source_centreline": 0.7352806937471474,
+                  "observed_covered_fraction_of_full_source_box": 0.4137035914949873
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 3979,
+                  "covered_source_box_pixels": 1174618,
+                  "conditional_centreline_fraction": 0.9096936442615455,
+                  "conditional_box_fraction": 0.5838270554413478,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9080328617069832,
+                  "observed_covered_fraction_of_full_source_box": 0.5777052282849903
+                }
+              },
+              "first_half_supported_centreline_rank": 2,
+              "best_individual_conditional_centreline_fraction": 0.5893918609967993,
+              "first_half_full_source_centreline_rank": 2,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 4374,
+              "observed_source_box_pixels": 2011856,
+              "source_centreline_support_fraction": 0.9981743496120493,
+              "source_box_support_fraction": 0.9894789027211633,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 4374,
+                  "covered_source_box_pixels": 1010282,
+                  "conditional_centreline_fraction": 1.0,
+                  "conditional_box_fraction": 0.5021641707955241,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9981743496120493,
+                  "observed_covered_fraction_of_full_source_box": 0.4968808527046381
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 4374,
+                  "covered_source_box_pixels": 1238546,
+                  "conditional_centreline_fraction": 1.0,
+                  "conditional_box_fraction": 0.6156235833976189,
+                  "observed_covered_fraction_of_full_source_centreline": 0.9981743496120493,
+                  "observed_covered_fraction_of_full_source_box": 0.6091465477895466
+                }
+              },
+              "first_half_supported_centreline_rank": 5,
+              "best_individual_conditional_centreline_fraction": 1.0,
+              "first_half_full_source_centreline_rank": 5,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        }
+      ],
+      "localization_gate": {
+        "status": "continuation_gate_only",
+        "passed": false,
+        "checks": {
+          "adequate_original_centreline_support": true,
+          "weak_row_rank_at_most_five": true,
+          "no_search_truncation": false,
+          "weak_rank_improves_vs_raw": true,
+          "strong_preserved_vs_raw": false,
+          "bounded_proposals_vs_raw": true,
+          "weak_rank_improves_vs_global_standardized": true,
+          "strong_preserved_vs_global_standardized": false,
+          "bounded_proposals_vs_global_standardized": true
+        },
+        "interpretation": "A pass would justify a held-out-control follow-up, not deployment, text accuracy, or a finding",
+        "coverage_denominator": "Supported original centreline samples; conditional, not full-original-source coverage",
+        "coverage_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+      },
+      "target_support_assessment": "adequate_for_localization_gate",
+      "status": "completed",
+      "seconds_total": 67.70690412999988,
+      "output_sha256": {
+        "common_valid.npy": "fbce5c9a01a4cdf23225d092b2c323b594a2f7d49d4e254cba4a5d2525f4fbb3",
+        "comparison.png": "0b611f5d95cc8f1517b5f084c9a8f79acc2dfae4f35dbc6833df5d17b2b0ddc7",
+        "gaussian_observed_mass.npy": "886121f951c614649cbf08059bc6140d5403c753163901eb766f9d9212313dfe",
+        "global_standardized.npy": "e5585990255ec775b8e739d252cce7cf14ba4872e55d0879aba8bffcc0c0b8e8",
+        "local_standardized.npy": "2fb82f662c089ca1a5e069389db15660c6cf3893f013b34ed337a276a83fbcfb",
+        "raw.npy": "b4944fe3d41b614984347b77162163052d85d0265fd36da4e62792f87461eedc"
+      }
+    },
+    {
+      "id": "pherc306b_context_matched_raw",
+      "role": "published-positive-context-common-coverage",
+      "source_hashes": {
+        "score": "7639e5e0b7073eb46b224c90731eaba549fecfda8cb7aab89d16dc0bd9e4c8a9",
+        "mask": "107afe2d16ba6416956fbd198926c6f839dbeab416be3da7df045f9fdd85727a"
+      },
+      "source_shape": [
+        4051,
+        6945
+      ],
+      "work_shape_yx": [
+        1000,
+        1714
+      ],
+      "effective_work_spacing_mm_yx": [
+        0.03500064,
+        0.035008634772462084
+      ],
+      "original_source_valid_pixels": 4864155,
+      "work_observed_pixels": 292385,
+      "common_gaussian_mass_pixels": 110618,
+      "common_fraction_of_observed_work": 0.37832994168647505,
+      "minimum_gaussian_observed_mass": 0.95,
+      "sigma_work_pixels": [
+        42.85635919800324,
+        42.846572274218055
+      ],
+      "gaussian_mass_quantiles_on_observed_centres": [
+        0.25304684042930603,
+        0.7273097634315491,
+        0.9044580459594727,
+        0.9748492240905762,
+        0.9903948307037354
+      ],
+      "source_validity_semantics": "CT display layer20>0 AND finite released claim score; matched cases additionally require finite released shuffle score. These are tissue/model-support proxies, not audited physical acquisition coverage. Invalid stored zeroes remain invalid.",
+      "source_target_support": [
+        {
+          "id": "published_row_1",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 0,
+          "observed_source_box_pixels": 638522,
+          "source_centreline_support_fraction": 0.0,
+          "source_box_support_fraction": 0.3140403925148334,
+          "status": "unassessable_centreline",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        },
+        {
+          "id": "published_row_2",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 3149,
+          "observed_source_box_pixels": 900767,
+          "source_centreline_support_fraction": 0.7186216339570972,
+          "source_box_support_fraction": 0.4430187561969814,
+          "status": "observed",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        }
+      ],
+      "statistics": {
+        "global_mean": 0.1169990517166238,
+        "global_population_sd": 0.12473351439262423,
+        "global_sd_after_floor": 0.12473351439262423,
+        "local_sd_quantiles_on_common": [
+          0.046823326498270035,
+          0.08135103434324265,
+          0.11814398691058159,
+          0.1462925411760807,
+          0.18604694306850433
+        ],
+        "local_sd_floor_fraction_on_common": 0.0,
+        "gaussian_mass_quantiles_on_common": [
+          0.9500025510787964,
+          0.9701312184333801,
+          0.9806999564170837,
+          0.9868391454219818,
+          0.9903948307037354
+        ],
+        "coverage_interpretation": "Gaussian weight of the released tissue/model-support proxy, not audited acquisition support"
+      },
+      "views": [
+        {
+          "name": "raw",
+          "proposal_count": 8,
+          "search_truncated": false,
+          "seconds": 0.7242895629999566,
+          "score_quantiles": [
+            0.026732798665761948,
+            0.044005067087709904,
+            0.061162764206528664,
+            0.1254100240767002,
+            0.42684271633624976,
+            0.5659343647956849,
+            0.7075572609901428
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 263859,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.41323399976821473,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.12977216748768472
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 464103,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7268394824297362,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.2282569563575127
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 464335,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7272028215159384,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.22837105950675962
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 465343,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7287814672008169,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.22886681801728073
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 133611,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.14833025632599772,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.06571308566392295
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 174,
+                  "covered_source_box_pixels": 283779,
+                  "conditional_centreline_fraction": 0.05525563671006669,
+                  "conditional_box_fraction": 0.31504151462031804,
+                  "observed_covered_fraction_of_full_source_centreline": 0.03970789593792789,
+                  "observed_covered_fraction_of_full_source_box": 0.13956929995750642
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 397,
+                  "covered_source_box_pixels": 383248,
+                  "conditional_centreline_fraction": 0.12607176881549698,
+                  "conditional_box_fraction": 0.42546851738573904,
+                  "observed_covered_fraction_of_full_source_centreline": 0.09059790050205385,
+                  "observed_covered_fraction_of_full_source_box": 0.18849053337320387
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 751,
+                  "covered_source_box_pixels": 478534,
+                  "conditional_centreline_fraction": 0.2384884090187361,
+                  "conditional_box_fraction": 0.5312516999401621,
+                  "observed_covered_fraction_of_full_source_centreline": 0.17138293016887265,
+                  "observed_covered_fraction_of_full_source_box": 0.23535446733502258
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": 0.0927278501111464,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "global_standardized",
+          "proposal_count": 7,
+          "search_truncated": false,
+          "seconds": 1.0781292980000217,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.016857882495969534,
+            0.6210112541913975,
+            0.8997888356447221,
+            1.0
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 209035,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.3273732150184332,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.10280841294323172
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 449429,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7038582852274471,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.22103993216764506
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 450453,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7054619887803396,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.22154355986087285
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 450453,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.7054619887803396,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.22154355986087285
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 142,
+                  "covered_source_box_pixels": 231865,
+                  "conditional_centreline_fraction": 0.0450936805335027,
+                  "conditional_box_fraction": 0.25740840861177194,
+                  "observed_covered_fraction_of_full_source_centreline": 0.03240529438612506,
+                  "observed_covered_fraction_of_full_source_box": 0.11403675301783157
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 203,
+                  "covered_source_box_pixels": 362999,
+                  "conditional_centreline_fraction": 0.0644649094950778,
+                  "conditional_box_fraction": 0.40298878622329637,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0463258785942492,
+                  "observed_covered_fraction_of_full_source_box": 0.178531590833976
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 480,
+                  "covered_source_box_pixels": 455097,
+                  "conditional_centreline_fraction": 0.15242934264845984,
+                  "conditional_box_fraction": 0.5052327627455269,
+                  "observed_covered_fraction_of_full_source_centreline": 0.10953902327704244,
+                  "observed_covered_fraction_of_full_source_box": 0.2238275901414879
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 751,
+                  "covered_source_box_pixels": 488277,
+                  "conditional_centreline_fraction": 0.2384884090187361,
+                  "conditional_box_fraction": 0.5420680375724244,
+                  "observed_covered_fraction_of_full_source_centreline": 0.17138293016887265,
+                  "observed_covered_fraction_of_full_source_box": 0.24014630777947402
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": 0.09780882819942839,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "local_standardized",
+          "proposal_count": 12,
+          "search_truncated": false,
+          "seconds": 0.9968613109999751,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.01593204028904438,
+            0.4438382536172865,
+            0.6374144440889359,
+            1.0
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 240097,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.3760199335340051,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.11808544752042052
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 322459,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.5050084413692872,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.15859304915091518
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 330755,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.5180009459345175,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.16267322038433088
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 406587,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.6367627113866084,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.1999692118226601
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 160667,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.1783668806694739,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.07901987362092573
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 511,
+                  "covered_source_box_pixels": 449846,
+                  "conditional_centreline_fraction": 0.1622737376945062,
+                  "conditional_box_fraction": 0.49940328631044434,
+                  "observed_covered_fraction_of_full_source_centreline": 0.11661341853035144,
+                  "observed_covered_fraction_of_full_source_box": 0.22124502274193802
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 2777,
+                  "covered_source_box_pixels": 768074,
+                  "conditional_centreline_fraction": 0.8818672594474436,
+                  "conditional_box_fraction": 0.8526888751475131,
+                  "observed_covered_fraction_of_full_source_centreline": 0.6337288909173893,
+                  "observed_covered_fraction_of_full_source_box": 0.3777571648908544
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 2777,
+                  "covered_source_box_pixels": 768559,
+                  "conditional_centreline_fraction": 0.8818672594474436,
+                  "conditional_box_fraction": 0.8532273051743681,
+                  "observed_covered_fraction_of_full_source_centreline": 0.6337288909173893,
+                  "observed_covered_fraction_of_full_source_box": 0.3779956994916508
+                }
+              },
+              "first_half_supported_centreline_rank": 4,
+              "best_individual_conditional_centreline_fraction": 0.8818672594474436,
+              "first_half_full_source_centreline_rank": 4,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        }
+      ],
+      "localization_gate": {
+        "status": "continuation_gate_only",
+        "passed": false,
+        "checks": {
+          "adequate_original_centreline_support": false,
+          "weak_row_rank_at_most_five": true,
+          "no_search_truncation": true,
+          "weak_rank_improves_vs_raw": true,
+          "strong_preserved_vs_raw": false,
+          "bounded_proposals_vs_raw": true,
+          "weak_rank_improves_vs_global_standardized": true,
+          "strong_preserved_vs_global_standardized": false,
+          "bounded_proposals_vs_global_standardized": true
+        },
+        "interpretation": "A pass would justify a held-out-control follow-up, not deployment, text accuracy, or a finding",
+        "coverage_denominator": "Supported original centreline samples; conditional, not full-original-source coverage",
+        "coverage_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+      },
+      "target_support_assessment": "unassessable_at_least_one_original_centreline_below_half_support",
+      "status": "completed",
+      "seconds_total": 5.4544077440000365,
+      "output_sha256": {
+        "common_valid.npy": "f631a91f4dcf1369a344a28e5cf7efd76dc84f3f92a69805bce99e2123435b3d",
+        "comparison.png": "a0a932e93bd665e201115bdb1b8d1f34ea914c0b0ea6341546ec08a6ab955ac3",
+        "gaussian_observed_mass.npy": "86abbd3073a2d4647ce2be18f7e33c31168ab10cb3333a77a805af71a3a43e31",
+        "global_standardized.npy": "5e5b7f3aff7722cdf32aa63bb81cfda1741e10b9c7b19f7ae9f03bdf00b37a4d",
+        "local_standardized.npy": "7820a79945d423456632fca4ceed647e1407f5b5f1678c8e90c492b19bc0cf78",
+        "raw.npy": "4bf238ccbeb3512132c0997882895ac6d4fc75288c4c402e6422e185cfcd7ce5"
+      }
+    },
+    {
+      "id": "pherc306b_shuffle_raw",
+      "role": "matched-depth-shuffle-process-control",
+      "source_hashes": {
+        "score": "ebedb30817e40ee11c62f8b335d93a2776c17894513a9c8079b78a2edced30af",
+        "mask": "107afe2d16ba6416956fbd198926c6f839dbeab416be3da7df045f9fdd85727a"
+      },
+      "source_shape": [
+        4051,
+        6945
+      ],
+      "work_shape_yx": [
+        1000,
+        1714
+      ],
+      "effective_work_spacing_mm_yx": [
+        0.03500064,
+        0.035008634772462084
+      ],
+      "original_source_valid_pixels": 4864155,
+      "work_observed_pixels": 292385,
+      "common_gaussian_mass_pixels": 110618,
+      "common_fraction_of_observed_work": 0.37832994168647505,
+      "minimum_gaussian_observed_mass": 0.95,
+      "sigma_work_pixels": [
+        42.85635919800324,
+        42.846572274218055
+      ],
+      "gaussian_mass_quantiles_on_observed_centres": [
+        0.25304684042930603,
+        0.7273097634315491,
+        0.9044580459594727,
+        0.9748492240905762,
+        0.9903948307037354
+      ],
+      "source_validity_semantics": "CT display layer20>0 AND finite released claim score; matched cases additionally require finite released shuffle score. These are tissue/model-support proxies, not audited physical acquisition coverage. Invalid stored zeroes remain invalid.",
+      "source_target_support": [
+        {
+          "id": "published_row_1",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 0,
+          "observed_source_box_pixels": 638522,
+          "source_centreline_support_fraction": 0.0,
+          "source_box_support_fraction": 0.3140403925148334,
+          "status": "unassessable_centreline",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        },
+        {
+          "id": "published_row_2",
+          "full_source_centreline_pixels": 4382,
+          "full_source_box_pixels": 2033248,
+          "observed_source_centreline_pixels": 3149,
+          "observed_source_box_pixels": 900767,
+          "source_centreline_support_fraction": 0.7186216339570972,
+          "source_box_support_fraction": 0.4430187561969814,
+          "status": "observed",
+          "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding"
+        }
+      ],
+      "statistics": {
+        "global_mean": 0.02834860478654992,
+        "global_population_sd": 0.004410752707282966,
+        "global_sd_after_floor": 0.025,
+        "local_sd_quantiles_on_common": [
+          0.0030195924919098616,
+          0.004015131387859583,
+          0.004630828974768519,
+          0.005589293083176017,
+          0.0089687155559659
+        ],
+        "local_sd_floor_fraction_on_common": 1.0,
+        "gaussian_mass_quantiles_on_common": [
+          0.9500025510787964,
+          0.9701312184333801,
+          0.9806999564170837,
+          0.9868391454219818,
+          0.9903948307037354
+        ],
+        "coverage_interpretation": "Gaussian weight of the released tissue/model-support proxy, not audited acquisition support"
+      },
+      "views": [
+        {
+          "name": "raw",
+          "proposal_count": 0,
+          "search_truncated": false,
+          "seconds": 0.017099298000175622,
+          "score_quantiles": [
+            0.01996113918721676,
+            0.025493777822703123,
+            0.027438673190772533,
+            0.03011193359270692,
+            0.03627213593572378,
+            0.04371453817933798,
+            0.08718787878751755
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "global_standardized",
+          "proposal_count": 0,
+          "search_truncated": false,
+          "seconds": 0.017174970000041867,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.017633293755352497,
+            0.07923531346023083,
+            0.15365934208035473,
+            0.5883927345275879
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        },
+        {
+          "name": "local_standardized",
+          "proposal_count": 0,
+          "search_truncated": false,
+          "seconds": 0.02065227999992203,
+          "score_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.014495211653411388,
+            0.07395512089133259,
+            0.1427380414307119,
+            0.5774537920951843
+          ],
+          "rows": [
+            {
+              "id": "published_row_1",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 0,
+              "observed_source_box_pixels": 638522,
+              "source_centreline_support_fraction": 0.0,
+              "source_box_support_fraction": 0.3140403925148334,
+              "status": "unassessable_centreline",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": null,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            },
+            {
+              "id": "published_row_2",
+              "full_source_centreline_pixels": 4382,
+              "full_source_box_pixels": 2033248,
+              "observed_source_centreline_pixels": 3149,
+              "observed_source_box_pixels": 900767,
+              "source_centreline_support_fraction": 0.7186216339570972,
+              "source_box_support_fraction": 0.4430187561969814,
+              "status": "observed",
+              "policy": "Original pixel-centre samples mapped to work cells; proposal polygons rasterized on work grid, not an exact replay of prior native-grid boundary rounding",
+              "top_k": {
+                "1": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "3": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "5": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                },
+                "10": {
+                  "covered_source_centreline_pixels": 0,
+                  "covered_source_box_pixels": 0,
+                  "conditional_centreline_fraction": 0.0,
+                  "conditional_box_fraction": 0.0,
+                  "observed_covered_fraction_of_full_source_centreline": 0.0,
+                  "observed_covered_fraction_of_full_source_box": 0.0
+                }
+              },
+              "first_half_supported_centreline_rank": null,
+              "best_individual_conditional_centreline_fraction": null,
+              "first_half_full_source_centreline_rank": null,
+              "coverage_semantics": {
+                "conditional_centreline_fraction": "Covered supported original centreline pixels / supported original centreline pixels; null when no centreline support exists",
+                "conditional_box_fraction": "Covered supported original box pixels / supported original box pixels; null when no box support exists",
+                "observed_covered_fraction_of_full_source_centreline": "Covered supported original centreline pixels / all original centreline pixels; descriptive known-supported coverage, not a claim that unsupported pixels contain no signal",
+                "observed_covered_fraction_of_full_source_box": "Covered supported original box pixels / all original box pixels; descriptive known-supported coverage, not an ink segmentation",
+                "first_half_supported_centreline_rank": "First individual proposal covering >=50% of supported original centreline samples; inherited continuation-gate metric",
+                "first_half_full_source_centreline_rank": "First individual proposal whose supported covered pixels constitute >=50% of the full original centreline; descriptive only, NOT added to the inherited gate",
+                "gate_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+              }
+            }
+          ],
+          "ranker_work_shape_yx": [
+            1000,
+            1714
+          ],
+          "ranker_work_spacing_mm_yx": [
+            0.03500064,
+            0.035008634772462084
+          ]
+        }
+      ],
+      "localization_gate": {
+        "status": "not_applicable_process_intervention",
+        "passed": null,
+        "coverage_denominator": "Supported original centreline samples; conditional, not full-original-source coverage",
+        "coverage_limitation": "The unchanged gate requires >=50% original centreline support and >=50% conditional coverage. Together these can represent only 25% of the full original row. Strong-row top-five preservation is also conditional on the same support. Full-source fractions are reported separately and do not silently replace the v1 gate."
+      },
+      "target_support_assessment": "unassessable_at_least_one_original_centreline_below_half_support",
+      "status": "completed",
+      "seconds_total": 2.7984447809999438,
+      "output_sha256": {
+        "common_valid.npy": "f631a91f4dcf1369a344a28e5cf7efd76dc84f3f92a69805bce99e2123435b3d",
+        "comparison.png": "a73ccd56e436805f1ed8586636f4adb12ab5997746a393dfd8a8e7d6d18b1dca",
+        "gaussian_observed_mass.npy": "86abbd3073a2d4647ce2be18f7e33c31168ab10cb3333a77a805af71a3a43e31",
+        "global_standardized.npy": "643c42c4f895a1b9a30c97a18a30f106f9b2273807334dcaaaacc30c825ac6a6",
+        "local_standardized.npy": "8801beaa576ccb0b3a4dafd8cf752dc4b9d8acbbb50bd908e64b3b57314bcef2",
+        "raw.npy": "999d019da10f77e5dfdd5f7bdf92f2862e237cc44ffe910ed3243ff351a71078"
+      }
+    }
+  ],
+  "operational_gate": "not_established_adaptive_amendment_single_previously_inspected_published_source",
+  "limitations": [
+    "Adaptive amendment motivated by v1 support-only failure; same reused known rows",
+    "Gaussian proxy-mask coverage is not audited physical acquisition support",
+    "Unobserved centres remain excluded; structured missingness can still bias normalized moments",
+    "Coarse published rows are localization targets, not ink truth",
+    "All unlabelled pixels remain unknown",
+    "No new model inference or independent detector",
+    "No population false-positive estimate",
+    "Local standardization can enhance crack and blob rims",
+    "Any continuation gate requires independent controls before operational use"
+  ]
+}
