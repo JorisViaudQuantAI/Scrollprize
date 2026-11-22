@@ -1,0 +1,84 @@
+{
+  "byte_accounting": "Report requested representation sizes, server-declaredContent-Length and application-read body bytes separately. No hard socket,TLS,header or wire-traffic cap is established.",
+  "cases": [
+    {
+      "box_zyx": [
+        0,
+        16,
+        12,
+        1,
+        17,
+        28
+      ],
+      "expected_sha256": "5af99575676f4c271f640bcd88d9197d815bd48f2efa7d3cd3e428558aa318d0",
+      "id": "inner_row",
+      "requested_bytes": 16
+    },
+    {
+      "box_zyx": [
+        5,
+        7,
+        120,
+        6,
+        10,
+        128
+      ],
+      "expected_sha256": "86c5794884522438cb4dfc044f50548b4c56c6109e6a4705c290e878e8761fb0",
+      "id": "three_partial_rows",
+      "requested_bytes": 24
+    },
+    {
+      "box_zyx": [
+        31,
+        0,
+        0,
+        33,
+        128,
+        128
+      ],
+      "expected_sha256": "533246e368e14bd8c94df837c9f08c6f8cc005dfbce8f995640778448a00461a",
+      "id": "two_complete_planes",
+      "requested_bytes": 32768
+    }
+  ],
+  "chunk_shape_zyx": [
+    65,
+    128,
+    128
+  ],
+  "compressor": null,
+  "decision": "Pass only if all three frozen boxes match voxel-for-voxel and all transport guards pass. Any failure is preserved; no replacement object or alternate endpoint.",
+  "dtype": "|u1",
+  "expected_range_requests": 5,
+  "expected_whole_requests": 1,
+  "failure_semantics": "403,404,412,weak/missing/changedETag,missing/wrongContent-Range,length,orencoding are hard failures, never zero-fill.",
+  "filters": null,
+  "fixed_request_order": [
+    "whole",
+    "inner_row",
+    "three_partial_rows",
+    "two_complete_planes"
+  ],
+  "if_range_ignored": "reject before body read and stop; never silently use a full-object response",
+  "maximum_application_body_bytes_read": 5242880,
+  "maximum_redirects_per_logical_request": 3,
+  "maximum_requests_including_redirects": 24,
+  "object_identity": "Fresh whole GET must match independently acquired cached whole-object SHA256 and bytes; each206 response must match the whole-GET strongETag underIf-Match and exactContent-Range; reassembled slices must match both sources exactly.",
+  "order": "C",
+  "prior_acquisition_receipt_sha256": "8fc138c17ba26453355575d6d1721437ce5f9b9fd705ce37cfb3758c6bb2eb26",
+  "request_timeout_seconds": 25,
+  "retries": 0,
+  "schema": "scrollprize.public-range-transport-protocol.v1",
+  "scope": "One previously acquired public0841 surface object served throughHF. No newregion, model output, S3/Paris4 endpoint proof, volume-wide access proof, or end-to-end scientific I/O budget proof.",
+  "selection": "First lexicographic non-metadata0841 chunk URL in the pinned old acquisition receipt; no ink score, pixel preview, or alternative outcome used to select it. Slice boxes fixed by array layout before their cached byte hashes were calculated.",
+  "source": {
+    "array_url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/",
+    "bytes": 1064960,
+    "metadata_bytes": 238,
+    "metadata_sha256": "471b618f6a23e977f8fbd039d8637ad7b468ff31e119cc0fd3e038f2808c46fa",
+    "sha256": "94a67b09ecb71d4fbfe05cfba14bdd8156748cc0eade2e3a74321db2bb71911b",
+    "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/0.17.75"
+  },
+  "status": "frozen design; no live transport observed before publication",
+  "timing_limit": "One whole-first observation only; latency is diagnostic and cannot establish general speedup."
+}
