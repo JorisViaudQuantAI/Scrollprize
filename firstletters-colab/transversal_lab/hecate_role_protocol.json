@@ -1,0 +1,164 @@
+{
+  "id": "hecate-support-only-role-amendment-v1",
+  "status": "prospective amendment; publish before any new fits or held-out access",
+  "date": "2026-11-22",
+  "reason": "Original fixed PHerc0009B cores contained 0 ink and 4650 background labels. The published parent sampler admitted empty children; the smaller predefined input contexts missed its ink. The original run is unassessable, not a negative model result. Only support counts were examined; no score-quality comparison, fit or held-out access occurred.",
+  "original_freeze_commit": "0dd77c76effa551e3de99c1af87b62e553413939",
+  "original_orientation_supplement_commit": "8561904425118c7ed8d8c9aa93b15e83c8418203",
+  "original_runner_sha256": "41560c98001b4185b2860cf12591aa0a6f35d417ff52f5aa8681f4e957e7f702",
+  "original_protocol_sha256": "1bf91c1e8a000c54695eadc97d6268a19a3ee6f1ba40dcd12c61a4f4975ba526",
+  "original_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+  "prior_outcome_summary_sha256": "dbff009726f0e7d489fad9b6ca9168eff9959b6aa758dd63a780465e0d36f719",
+  "prior_receipt_sha256": {
+    "start_receipt.json": "a32883c5f9310f338281983af969f59c5fab153c08d8910a33a16c18b5c0fdfd",
+    "source_acquisition.json": "8fc138c17ba26453355575d6d1721437ce5f9b9fd705ce37cfb3758c6bb2eb26",
+    "progress.json": "f77b5ccea4f29b6376430f13c230fc31b118700f6a8d19b17c03f31885fbeeb7",
+    "failure.json": "05497cbfdad1de580f32f8d23bf2657aa77dba93c6cd0b1d5d2300f868f5113c"
+  },
+  "prior_feature_sha256": {
+    "features/train-00-source.npz": "c4713ddc614ed31db7b4e783e70c99e8ffc683f59bbbdb3a1f329aceca142754",
+    "features/train-00-reverse.npz": "0b73596ab30ed6033fa9b1e5cafd4ab075c888d3ff03e890f35bd7c17204af58",
+    "features/train-01-source.npz": "1c9f17feb32a7235fae24ee8a423b852ac782be63dcfc01c06933df03aeb9f7a",
+    "features/train-01-reverse.npz": "923e09c4719702079bc01dbf687058e0b1f2463e14164328a023769be4923671",
+    "features/train-02-source.npz": "cef789b82a9697daa21cf78a4ba5dc7e2d3e5a45d104879dabca60bddc287caa",
+    "features/train-02-reverse.npz": "29faebf5f2e4089c13276f5ca2368f223024071234738574717609c8cc4010a8",
+    "features/train-03-source.npz": "96faf20095c615ee89421d31575e50482f2edefff286c097185245c83c301d2f",
+    "features/train-03-reverse.npz": "c85188b9959fab5cc20fa2fdf3d044525fbfe53ef6697191d7e30e902b13affa",
+    "features/train-04-source.npz": "0d69f7be4cce1a54355de8bb23b199c100920d16501db6c546e868e0dff3edae",
+    "features/train-04-reverse.npz": "29a975995763ebf36f7854cd4dd936cb7ade0a66bb4be154aefa980c1fa9512e",
+    "features/train-05-source.npz": "23d8d7499de923a657ac344bd0e85d928cc3700c4bdc0d5fbfde7413725f2c76",
+    "features/train-05-reverse.npz": "c0228d57e1fe37d2b51c154d5bd18a59d27e42a90e2d1d0cf6db97120add3605",
+    "features/train-06-source.npz": "ecd09cab875a8ebd33d6258ec0af322ffe09ae5d4869eabe69ec1d336853dca8",
+    "features/train-06-reverse.npz": "a4020f70e1850f07470479e7a345a27f026b26b02dc5feb28d527e4d568f7791",
+    "features/train-07-source.npz": "fb4a33de796988170075e962431d61b9ac7ef5867f7d2c0025846123ab5c1358",
+    "features/train-07-reverse.npz": "0545ebacfa8c375f911c7a5dc22c6ac0daf955408c7f99697677bca0b0951977",
+    "features/train-08-source.npz": "8af3b16261303c734f7d344a8a47d51b787255af9e4bad53babd59ce52133c4e",
+    "features/train-08-reverse.npz": "f87e369c2ddce1ff6c6d4b367003b5bd65eda3bdbe88b3427c9b66ee3b9024c6",
+    "features/train-09-source.npz": "f9bd8b70b5608a3bb4fd0150480375d821c5d46ce6a0bf30551a15deb140ae3d",
+    "features/train-09-reverse.npz": "063aaa822cabce971d737ea9bf990290178960c318fccfa3e1643711db8002a2",
+    "features/train-10-source.npz": "3a7683169b9c367f1ff4a4633e24db924d1351f665a1067d4cfda14b073ccf7e",
+    "features/train-10-reverse.npz": "fc6b63ad80b306743a62006b57500f1aa3f0cf2cfdcf7071c48b3e9fd8818439",
+    "features/train-11-source.npz": "e2093abca540e770ca71b0a2df00921f911d7eff24f1dad277afb6c18d49c2a0",
+    "features/train-11-reverse.npz": "c489ac9e3d3a6d12a6438336bc26397c731e2fee78470d21e0e98906c8109c4e",
+    "features/train-12-source.npz": "0e3094ebe13c069c920ea0fe41ef65fd8c1c5977619d311718d85cdbe33453c8",
+    "features/train-12-reverse.npz": "0a6441b7da5b839baebab97076706258108f2459461cb94c2109b490160fd73b",
+    "features/train-13-source.npz": "3f3fb65025c899cf969d28b2114629ce7c5e39a3f96bdd3ce4831d9f25e16b65",
+    "features/train-13-reverse.npz": "1974d46e726948103ce50c242558c4ba399c6340811331f4666fda6570a574c7",
+    "features/train-14-source.npz": "bf7f1449c94b279265b9054900dd144205649e648073b6ca4f30211003d62de2",
+    "features/train-14-reverse.npz": "9c2aa11ad6b42ea0200bd9cc2d7c4ddf409e044fa4ed240e1fb3c3ef07e3b277",
+    "features/train-15-source.npz": "5c5a94bc59f7813b0f805402e764dfa62a09681452bc36e9dec50f74e8ccb5d4",
+    "features/train-15-reverse.npz": "3ccf3b6c898d48735ce57ce01eddbe0ab22c2e7bd9f5c588dbfb360e68a3609a",
+    "features/calibration-00-source.npz": "60662ee2fb4a4a5ca7e6a746627b0e7f3851bc2adc6f99a5ae37ca68ce9e7adb",
+    "features/calibration-00-reverse.npz": "e96c8b0bac5a6f6bc75b729633c6cfd0cd6cefac75526f5868a152c4985e7b8d",
+    "features/calibration-01-source.npz": "6aab0665b1201e4ba0da318dd6a3b12a4c550a5f39f0b8a1365c26137f6c7d68",
+    "features/calibration-01-reverse.npz": "19af739ad2ba09f493b43e7f6dee1dd00878733ad30c303b874e1e3417fe02b4",
+    "features/calibration-02-source.npz": "42c166cc4cc84f89d69a8c7aa9572f3f4ab788b806bff28a74bce3a2920a21a7",
+    "features/calibration-02-reverse.npz": "c82e1ea497b2eea7aeb6d83ff2dea9d8332e03cab828718527b466aae41e9aef",
+    "features/calibration-03-source.npz": "7347f119cb7f5b5c13dbb0f2f4415aee0c7af1a3747cca10a06ed6cf2febcaaa",
+    "features/calibration-03-reverse.npz": "cf201d2b4c247b8de97c74006df5b070517d1daf6b4b17f571ec0e4cb7890281",
+    "features/calibration-04-source.npz": "45be464a1aa7330cc731726d4321b8c91457fd54b001a71d0e8f4f691c6fe3d1",
+    "features/calibration-04-reverse.npz": "0beb5d0e7b791bd8a813fa80dbc6316485e64a30068174a79cb1d06e004eb353",
+    "features/calibration-05-source.npz": "64690f1faacc495b2f603090bb46609569cec3f80a4bf38ffb6dea4ed7d7288d",
+    "features/calibration-05-reverse.npz": "b0a7144d4744a304ebd28479ba0eca77688cb6f6e1a2854577696d3144b89e71",
+    "features/calibration-06-source.npz": "42d3a10d51a167954ec7b075f9b7059a46cf08c72adbfcd793ed27b1d31e4680",
+    "features/calibration-06-reverse.npz": "866a5bd144208bb7b26a2ff2a7f6cb814d09e0358076c8a43f3019be7a0969b8",
+    "features/calibration-07-source.npz": "3cc73987165679bf0676cd365d5786d8dff244ef661df4245ea0cc37a5eee0d0",
+    "features/calibration-07-reverse.npz": "2c0053c4594bacc57e609f0e8d3a76b81ea1e25e0b9ac1abb0f463797acd8fcc",
+    "features/calibration-08-source.npz": "1594cf6136e3b9df5953293c4241973f9a46ed4dbd0c4625bdd5b1fb8d722d9e",
+    "features/calibration-08-reverse.npz": "c57fde4f464287d49fc996a52133c026ab980e1c3b19aa89cca683a590610b0b",
+    "features/calibration-09-source.npz": "5f5c2e2197ccc5e212661e4f59aa24539cccb4e84c43266c055f721d0d585d9a",
+    "features/calibration-09-reverse.npz": "464b665456e84fa1c6831439a79051bd0ee1a20b3ae0a2dee7c59c21b3929cac",
+    "features/calibration-10-source.npz": "8082b2020cbb7d015d5de2cd441952b8371e1c93a0477a5125af280c16c47fde",
+    "features/calibration-10-reverse.npz": "71c9ce3da8e82495f15ef859641b49499c30d8b54940e7e5921a8331bd46d303",
+    "features/calibration-11-source.npz": "f9a3c928661f204a55b4cfa0afe47d964cd1d713f26b42ca848db1e18fe26503",
+    "features/calibration-11-reverse.npz": "1a563ac17d3b43b0695362f846df525c7ce235b5dd189e845f21653098a532a1",
+    "features/calibration-12-source.npz": "1ee6f3c9040b7322fa1b57cec14c6c5ced74f6a2824599b0ad0fee4941bd0357",
+    "features/calibration-12-reverse.npz": "ab62c3e857861d5833041931484cafca81410b9005ceb51f30ac02ccd91398c6",
+    "features/calibration-13-source.npz": "331d70226a6044759430d885e44c1524807b8dee0f6b621b98bb6bc7272ea187",
+    "features/calibration-13-reverse.npz": "45220f4f7a4ad4422d6a23113ff49be76f23310aa40f943094f08ba847907ef2",
+    "features/calibration-14-source.npz": "186c71353076cdd783a3edb4608722d0583f55e28a2cab4c9c090c2cba5411df",
+    "features/calibration-14-reverse.npz": "c778c5051ecab4052cfeb7f7ae16c114c063aea654601a871b92f59f5cbc8a56",
+    "features/calibration-15-source.npz": "51026e8cfb057da60ed2cc38c2e3701d2fea081aefb0583c34a2093a97a9268e",
+    "features/calibration-15-reverse.npz": "a136fb3a58aa83c480cfc730d208fd0849ec0c11a1c6ef831c7232336e8f4e76"
+  },
+  "prior_forwards": 64,
+  "prior_source_bytes": 289424947,
+  "prior_run_directory_bytes": 300855260,
+  "logical_roles_to_original_splits": {
+    "train": {
+      "scroll": "PHerc0841",
+      "original_split": "calibration",
+      "cache_prefix": "calibration-XX",
+      "use": "fit frozen-form readouts on existing feature caches"
+    },
+    "calibration": {
+      "scroll": "PHerc0009B",
+      "original_split": "train",
+      "cache_prefix": "train-XX",
+      "use": "background-only calibration of fixed1%FPR threshold"
+    },
+    "test": {
+      "scroll": "PHerc0814",
+      "original_split": "test",
+      "cache_prefix": "test-XX",
+      "use": "unchanged locked16 contexts; no CT or labels until all heads and thresholds freeze"
+    }
+  },
+  "expected_labeled_counts_background_ink": {
+    "train": [
+      8927,
+      2712
+    ],
+    "calibration": [
+      4650,
+      0
+    ]
+  },
+  "fit_contract": "Reuse the exact original fit_heads function and its fixed settings, selecting 2712 ink plus 2712 background rows without replacement, seed 20261122, for each training depth order. Require identical selected label IDs across orders. No retries, tuning or alternate heads.",
+  "calibration_contract": "Use all 4650 original 9B background rows. For each frozen training-order head and each calibration input order, sort background scores descending; threshold is index floor(0.01*4650)=46. Strict score>threshold gives empirical FPR at most 46/4650. No calibration positives exist, so calibration AUROC/AP/recall are unassessable. Do not invent positive controls or use held-out values to choose thresholds.",
+  "freeze_contract": "Before ANY 814 CT or label access, write and hash both fitted heads and all four training-order by calibration-order threshold sets. Both input depth orders and every scored pixel remain fixed. Held-out labels are decoded after the frozen heads, thresholds and original held-out geometry have been applied.",
+  "orientation_combinations": {
+    "training_order": [
+      "source",
+      "reverse"
+    ],
+    "calibration_order": [
+      "source",
+      "reverse"
+    ],
+    "test_order": [
+      "source",
+      "reverse"
+    ],
+    "count": 8,
+    "primary": "source/source/source",
+    "all_reversed": "unchanged named sensitivity within this amended experiment"
+  },
+  "orientation_interpretation": "Report all eight combinations symmetrically; baseline repeats across training-order choices. Historical normal_sign and runtime_reverse must be composed; 9B and 814 legacy streams are both net reversed, 841 remains unverified. Do not select a best held-out combination or infer a verified physical ink face.",
+  "unchanged": "All 64 prior feature caches and scored labels/supports, original 16 held-out contexts, exact 9.6 um box sampling, uint8/255 normalization, baseline projection, depth and feature heads, class sampling, convergence rules and metrics remain as originally specified. Only logical fit/calibration donor roles change.",
+  "budgets": {
+    "prior_cpu_seconds_charged": 600,
+    "maximum_new_cpu_seconds": 1200,
+    "cumulative_cpu_seconds_cap": 1800,
+    "prior_forwards": 64,
+    "maximum_new_forwards": 32,
+    "cumulative_forwards_cap": 96,
+    "cumulative_source_byte_cap": 514000000,
+    "checkpoint_bytes": 522576086,
+    "total_checkpoint_and_all_run_directories_byte_cap": 1073741824,
+    "cpu_charge_basis": "Last completed-forward CPU was527.6238s. Failure followed the last progress receipt by8.4983 wall seconds, so4*tail adds about34s. Charge600s conservatively; exact final v1 CPU was not recorded. New execution time is measured separately.",
+    "new_timing_scope": "Start new CPU and wall measurements before prior-artifact verification and numerical-library imports. Report them separately from the 600-second conservative charge for the failed original attempt."
+  },
+  "prior_failure_integrity": "Never modify or overwrite the original runner, protocol, manifest, receipts, arrays or failed status. Verify original hashes before and after the amendment. This is not completion of a successful v1 and not a post-test retune.",
+  "limitations": [
+    "One held-out physical donor; correlated contexts and pixels are not independent replicates.",
+    "Model-assisted Studio labels and unknown inherited Hecate donor exposure remain.",
+    "Historical label enrichment prevents an unread-atlas precision or prevalence claim.",
+    "Fine-source box-averaged CT is not native coarse-acquisition CT.",
+    "Negative-only9B calibration estimates only its sampled background operating point; it cannot validate calibration recall, AUROC or AP.",
+    "This prospective role amendment was motivated by a documented support failure, and its original failed attempt must be reported alongside it.",
+    "No unread data, candidate location, readable letters or prize result is claimed."
+  ],
+  "output_integrity": "Reject output paths inside the repository or inside the preserved prior-run directory before any output creation. Prior files remain unchanged and are hash-verified again after scoring.",
+  "training_diagnostics": "Report in-sample metrics for both fitted depth orders on all original scored PHerc0841 pixels, using the matching calibration input order threshold (source/source or reverse/reverse). Use the original evaluate function; label these as fitting-parent diagnostics, not independent validation. They do not select or change any head, threshold or result."
+}

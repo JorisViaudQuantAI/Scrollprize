@@ -1,0 +1,497 @@
+{
+  "scope": "PHerc0009B training labels and geometry only; no CT/features/calibration/test labels accessed",
+  "label": {
+    "mode": "L",
+    "shape": [
+      6665,
+      5450
+    ],
+    "dtype": "uint8",
+    "sha256": "c7a6ceb78714d4a017c9055329b3d9842e935e29fad7502161b73c6e5093e111",
+    "values_counts": {
+      "0": 31805304,
+      "1": 3321378,
+      "2": 1197568
+    }
+  },
+  "geometry": {
+    "mode": "L",
+    "shape": [
+      6665,
+      5450
+    ],
+    "dtype": "uint8",
+    "sha256": "72d1908d5d6ab15e0a74378e6219a534b3b0518839a43bfb2dbb512a5b60fa6d",
+    "values_counts": {
+      "0": 10518991,
+      "255": 25805259
+    }
+  },
+  "declared_full_canvas_counts": {
+    "ink": 1197568,
+    "background": 3321378
+  },
+  "geometry_masked_label_counts": {
+    "0": 31805304,
+    "1": 3321378,
+    "2": 1197568
+  },
+  "coordinate_semantics": "YX origins of 128-pixel children at 9.36 um, from any-ink 256-pixel parents on stride64. All four children are retained, whether a child contains ink or not.",
+  "coordinate_file_sha256": "fdfa5b3635a45070c50ad10d48ca44416f950d098b6486dac5415fe03e8f6755",
+  "published_coordinates_shape": [
+    1562,
+    2
+  ],
+  "rebuilt_entries": 4992,
+  "rebuilt_distinct_coordinates": 1562,
+  "rebuilt_coordinates_equal_published": true,
+  "selected_contexts": [
+    {
+      "id": "9b-c00",
+      "origin_target_yx": [
+        4648,
+        3150
+      ],
+      "published_128_child_origin_yx": [
+        4736,
+        3200
+      ],
+      "core_counts": {
+        "0": 0,
+        "1": 1024,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 0,
+        "1": 4096,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 3734,
+        "1": 12650,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c01",
+      "origin_target_yx": [
+        2526,
+        4024
+      ],
+      "published_128_child_origin_yx": [
+        2560,
+        4096
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c02",
+      "origin_target_yx": [
+        5771,
+        1528
+      ],
+      "published_128_child_origin_yx": [
+        5888,
+        1536
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c03",
+      "origin_target_yx": [
+        5709,
+        4398
+      ],
+      "published_128_child_origin_yx": [
+        5824,
+        4480
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c04",
+      "origin_target_yx": [
+        3837,
+        4149
+      ],
+      "published_128_child_origin_yx": [
+        3904,
+        4224
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c05",
+      "origin_target_yx": [
+        5896,
+        2838
+      ],
+      "published_128_child_origin_yx": [
+        6016,
+        2880
+      ],
+      "core_counts": {
+        "0": 342,
+        "1": 682,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 1746,
+        "1": 2350,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 7679,
+        "1": 8705,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c06",
+      "origin_target_yx": [
+        4523,
+        1902
+      ],
+      "published_128_child_origin_yx": [
+        4608,
+        1920
+      ],
+      "core_counts": {
+        "0": 128,
+        "1": 896,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 1280,
+        "1": 2816,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 6528,
+        "1": 9856,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c07",
+      "origin_target_yx": [
+        3275,
+        3088
+      ],
+      "published_128_child_origin_yx": [
+        3328,
+        3136
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c08",
+      "origin_target_yx": [
+        4773,
+        4274
+      ],
+      "published_128_child_origin_yx": [
+        4864,
+        4352
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c09",
+      "origin_target_yx": [
+        5397,
+        3587
+      ],
+      "published_128_child_origin_yx": [
+        5504,
+        3648
+      ],
+      "core_counts": {
+        "0": 0,
+        "1": 1024,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 0,
+        "1": 4096,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 0,
+        "1": 16384,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c10",
+      "origin_target_yx": [
+        4024,
+        2589
+      ],
+      "published_128_child_origin_yx": [
+        4096,
+        2624
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c11",
+      "origin_target_yx": [
+        5272,
+        2277
+      ],
+      "published_128_child_origin_yx": [
+        5376,
+        2304
+      ],
+      "core_counts": {
+        "0": 0,
+        "1": 1024,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 0,
+        "1": 4096,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 0,
+        "1": 16384,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c12",
+      "origin_target_yx": [
+        3213,
+        3837
+      ],
+      "published_128_child_origin_yx": [
+        3264,
+        3904
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 15096,
+        "1": 576,
+        "2": 712
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c13",
+      "origin_target_yx": [
+        2589,
+        3338
+      ],
+      "published_128_child_origin_yx": [
+        2624,
+        3392
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c14",
+      "origin_target_yx": [
+        4086,
+        3525
+      ],
+      "published_128_child_origin_yx": [
+        4160,
+        3584
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    },
+    {
+      "id": "9b-c15",
+      "origin_target_yx": [
+        5085,
+        1590
+      ],
+      "published_128_child_origin_yx": [
+        5184,
+        1600
+      ],
+      "core_counts": {
+        "0": 1024,
+        "1": 0,
+        "2": 0
+      },
+      "input_64_counts": {
+        "0": 4096,
+        "1": 0,
+        "2": 0
+      },
+      "original_128_child_counts": {
+        "0": 16384,
+        "1": 0,
+        "2": 0
+      },
+      "geometry_footprint_valid_fraction": 1.0
+    }
+  ],
+  "aggregate_core_counts": {
+    "0": 11734,
+    "1": 4650,
+    "2": 0
+  },
+  "aggregate_input64_counts": {
+    "0": 48082,
+    "1": 17454,
+    "2": 0
+  },
+  "aggregate_original128_counts": {
+    "0": 196877,
+    "1": 64555,
+    "2": 712
+  }
+}
