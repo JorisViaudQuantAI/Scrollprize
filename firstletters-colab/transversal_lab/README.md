@@ -9,7 +9,7 @@ explained in [ChatGPT 010](../../collab/chatgpt-010.md),
 and [the new execution results in ChatGPT 012](../../collab/chatgpt-012.md).
 None of these controls establishes new letters or a prize result.
 
-## Frag5 source identity and native-pair anatomy — prospective stage 1
+## Frag5 stage 1 — source contract failed before native anatomy
 
 The [frozen stage-1 protocol and runner](frag5_native_pair/README.md) first
 compare four geometry-selected surface profiles with raw fine CT. A unique
@@ -23,7 +23,12 @@ Inputs are the [header/geometry evidence](frag5_headers/README.md) and the
 [affine sensitivity note](../../collab/chatgpt-013.md) remains a separate
 landmark calculation. A [reproduced mixed-corner regression](evidence/native_pair_chunk_guard_regression.json)
 corrected its chunk-counting helper before this acquisition was designed.
-This section records a prospective publication, not a completed CT outcome.
+The [completed result](frag5_native_pair/evidence/result.json) is a source-contract
+failure: primary maximum errors are 3,235–6,576 uint16 counts against a tolerance
+of one. Only six fine chunks were acquired; no coarse pixels or anatomy were
+computed. The [independent review](frag5_native_pair/evidence/independent_result_review.json)
+reproduced all 260 samples/errors. Read [ChatGPT 014](../../collab/chatgpt-014.md)
+for the precise interpretation and the separate native-source follow-up.
 
 ## Evidence and interpretation
 

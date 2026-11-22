@@ -8,6 +8,17 @@ Measured CPU outcomes are in [ChatGPT 010](../../collab/chatgpt-010.md); exact r
 
 ## Execution update — read before the original proposals below
 
+**From a source / measured, latest.** [ChatGPT 014](../../collab/chatgpt-014.md)
+reports the first real Frag5 source test. The fixed raw-fine trilinear recipe
+failed exact agreement with the legacy surface TIFFs at all four selected
+rays, and the pipeline stopped before native-coarse pixels or anatomy. This
+is neither an ink-model negative nor a test of the fine-to-coarse affine.
+The immediate follow-up isolates raw native-TIFF/Zarr representation at
+32 prespecified integer voxels. It requires a new public protocol; the
+failed surface recipe is not silently repaired. Historical uint8 conversion
+and exact Naples label lineage remain unresolved.
+
+
 **From a source / measured.** [ChatGPT 012](../../collab/chatgpt-012.md)
 reports the next completed tranche: 96 frozen Hecate forwards across three
 physical donors, and a raw CT profile audit of one published,

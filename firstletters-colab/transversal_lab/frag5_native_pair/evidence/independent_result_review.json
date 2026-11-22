@@ -1,0 +1,87 @@
+{
+  "schema": "frag5-stage1-independent-result-review-v1",
+  "checker_sha256": "a78c35a71954923eb3e2bb8d7619b0279ea5793e47d3c14e57fada180a157918",
+  "freeze_reference": "4ea8eedb90d5757272cef59144c94d0b82cbb5e0",
+  "actual_network_requests": 0,
+  "models_or_fits": 0,
+  "new_source_acquisition": false,
+  "label_or_photo_access": false,
+  "numeric_tolerance": 1e-10,
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy_version": "2.3.5",
+  "static_support": {
+    "fine_chunks": 8,
+    "coarse_chunks": 6,
+    "shared_chunks": 14,
+    "decoded_bytes_upper_bound": 58720256,
+    "all_cartesian_support_corners_checked": true
+  },
+  "acquisition": {
+    "available": true,
+    "responses": 398,
+    "complete_cached_objects_verified": 398,
+    "body_bytes_prospectively_charged": {
+      "tiff_metadata": 11591,
+      "source_chunk": 24571323
+    },
+    "cpu_seconds": 5.606629135,
+    "complete_tiff_header_ranges": 130,
+    "complete_tiff_pixel_ranges": 260,
+    "coarse_response_count": 0,
+    "all_pixel_requests_after_header_request_set": true,
+    "first_coarse_request_index": null,
+    "last_tiff_pixel_request_index": 397,
+    "ordering_scope": "Ordered request ledger plus published code completion barriers; receipt has no per-response completion timestamps."
+  },
+  "identity": {
+    "available": true,
+    "classification": "neither",
+    "anatomy_allowed": false,
+    "raw_source_and_tiff_recomputed": true,
+    "profiles": [
+      {
+        "id": 20,
+        "source_samples": 65,
+        "maximum_raw_interpolation_difference": 1.4551915228366852e-11,
+        "primary_max_abs_error_uint16": 3235,
+        "reverse_max_abs_error_uint16": 17791
+      },
+      {
+        "id": 25,
+        "source_samples": 65,
+        "maximum_raw_interpolation_difference": 7.275957614183426e-12,
+        "primary_max_abs_error_uint16": 3321,
+        "reverse_max_abs_error_uint16": 9573
+      },
+      {
+        "id": 65,
+        "source_samples": 65,
+        "maximum_raw_interpolation_difference": 7.275957614183426e-12,
+        "primary_max_abs_error_uint16": 6576,
+        "reverse_max_abs_error_uint16": 40114
+      },
+      {
+        "id": 70,
+        "source_samples": 65,
+        "maximum_raw_interpolation_difference": 7.275957614183426e-12,
+        "primary_max_abs_error_uint16": 3964,
+        "reverse_max_abs_error_uint16": 32017
+      }
+    ],
+    "claim_scope": "Local consistency at four fixed rays with the declared source/order/phase hypothesis only."
+  },
+  "run_result_sha256": "e473ad97f5afa8126e6d2f6e57ebc1080f906980cc3b7a46ed0c7381d8f3fe36",
+  "anatomy": {
+    "performed": false,
+    "reason": "No unique accepted identity"
+  },
+  "run_outcome": "declared_source_contract_failed_anatomy_not_run",
+  "status": "passed_completed_artifact_review",
+  "interpretation_limits": [
+    "Identity is local consistency at four frozen rays; not whole-surface provenance or physical ink-face authentication.",
+    "Anatomy correlations are descriptive within one physical fragment; all27shifts are retained and no affine is fitted.",
+    "The footprint is125midpoint samples of the interpolated fine field, not an authenticated coarse acquisition PSF.",
+    "No result gives automatic permission for a label stage."
+  ],
+  "review_cpu_seconds": 0.265289538
+}

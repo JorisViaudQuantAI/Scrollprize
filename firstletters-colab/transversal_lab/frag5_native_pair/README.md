@@ -6,6 +6,25 @@ The executable is `frag5_native_pair_stage1.py`; every location, source, acquisi
 
 The [source-contract audit](../frag5_contract/README.md) and [header/geometry bundle](../frag5_headers/README.md) record the completed input preflight. This experiment is a separate, publicly frozen CT procedure.
 
+## Completed outcome — read before reproduction
+
+The single frozen run completed with `neither`: the source-contract gate
+failed at all four points. Primary maximum errors were 3,235 / 3,321 /
+6,576 / 3,964 stored uint16 counts against a tolerance of one. Only seven
+of 260 primary samples were within tolerance. The pipeline acquired six
+fine chunks and **stopped before coarse pixels or anatomy**. This does not
+test the fine-to-coarse affine or any ink model.
+
+- [Full result](evidence/result.json) and [identity vectors](evidence/identity_result.json).
+- [All profile samples](evidence/source_profiles.csv) and [complete figure](evidence/source_identity.svg).
+- [Acquisition ledger](evidence/acquisition.json), [pre-pixel snapshot](evidence/acquisition_heads_freeze.json), and [all TIFF headers](evidence/all_tiff_headers.json).
+- [Independent result review](evidence/independent_result_review.json) and [artifact hashes](evidence/artifact_manifest.json).
+- [Interpretation and next decision](../../../collab/chatgpt-014.md).
+
+The original prospective sections below are preserved; their anatomy plan
+was not executed. No retry, fitted correction or relaxed acceptance gate
+converted this negative into a pass.
+
 ## Source facts and the interpretation boundary
 
 **From a source.** The official [Frag5 data page](https://scrollprize.org/data_browser/PHerc1667Cr1Fr3) links the raw scan package. The fine [volume metadata](https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/meta.json), coarse [volume metadata](https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231130111236/meta.json), and [fine-to-coarse affine](https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/transforms/20231121133215-to-20231130111236.json) identify the nominal 3.24 µm and 7.91 µm scans used here. The raw level-zero sources are [fine Zarr metadata](https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/.zarray) and [coarse Zarr metadata](https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/.zarray). Their metadata content hashes are fixed in the protocol. The source chunk bytes are hash-recorded on acquisition; they are not presented as an immutable release with prior published chunk hashes.
@@ -67,3 +86,32 @@ The executable refuses an existing output directory. Preserve failed attempts. T
 - **ChatGPT:** Complete independent review, publish the exact protocol and runner through the owning agent, and execute once only after the published freeze handoff. Preserve every gate result.
 - **Codex / Claude Code:** Continue existing work; use any later result to assess rendering and registration assumptions, without retuning a model on these four locations.
 - **Owner:** Review any later substantive contribution or prize submission; no action is required for this bounded internal test.
+
+## Recompute presentation or review an existing complete cache
+
+The figure/CSV generator reads only the result JSON and copies its numbers:
+
+```bash
+python plot_results.py --result evidence/result.json --out /tmp/frag5-result-presentation
+```
+
+It produces no anatomy figure for this failed gate. An empty anatomy CSV
+contains column names only; it is not a measured comparison.
+
+The independent checker requires the complete original or freshly acquired
+external run cache, including its source objects. It makes no requests and
+reconstructs the source profiles from those cached raw bytes:
+
+```bash
+PYTHONPATH=/tmp/vesuvius-ct-deps python review_frag5_stage1.py \
+  --run-dir /tmp/frag5-stage1-verification \
+  --protocol frag5_native_pair_stage1_protocol.json \
+  --runner frag5_native_pair_stage1.py \
+  --out /tmp/frag5-independent-review.json
+```
+
+The checker is tied to the original published freeze reference and exact
+runner/protocol hashes. Its numerical and acquisition checks were executed
+for this failed identity outcome; its anatomy-review branch was not exercised.
+Raw source caches, generated preview PNGs and original execution directories
+are not bundled in this repository.
