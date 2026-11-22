@@ -1,0 +1,161 @@
+{
+  "interpretation": [
+    "No training on these donors occurs in this experiment. Inherited backbone/checkpoint data exposure remains subject to audit; do not claim a proven unseen-donor evaluation.",
+    "The public labels are model assisted, not independent transcription.",
+    "Fine-derived7.9um tensors do not replicate native7.9um scanner appearance.",
+    "Small fixed cores may contain no class contrast or no complete letter.",
+    "Results do not rescue or change the separate Hecate native-resolution gates.",
+    "No promotion rule or target acquisition is built in."
+  ],
+  "limits": {
+    "HTTP_retries": 0,
+    "HTTP_timeout_seconds": 40,
+    "RSS_soft_kib": 6815744,
+    "cumulative_inference_seconds_soft": 1200,
+    "maximum_CT_requests": 0,
+    "maximum_HTTP_requests_per_asset": 4,
+    "maximum_forwards": 4,
+    "maximum_new_application_body_bytes": 400000000,
+    "maximum_requests_including_redirects": 16,
+    "per_forward_seconds_soft": 300,
+    "resource_semantics": "Soft forward/RSS guards checked between forwards; completed outputs preserved before a stop. Whole-run alarm can be deferred by native operations and blocking HTTP calls. Application-body bytes are counted; wire bytes not measured.",
+    "whole_run_seconds": 1800
+  },
+  "model_assets": {
+    "common.py": {
+      "bytes": 14191,
+      "sha256": "559e422b62cf2ef8373da87a11d10b95e20dcc9034f50aea13920e7fdf96685d",
+      "url": "https://raw.githubusercontent.com/Nieuwlaar/resnet50-scroll1-checkpoint-repair/1e47872dcac8e26e4ca7e1befeec7dbb8be5200d/scripts/common.py"
+    },
+    "config.json": {
+      "bytes": 414,
+      "sha256": "ae7ddb52ed4f457b028c802516441284e65492278ee5ef87f2f6c6728141b737",
+      "url": "https://huggingface.co/scrollprize/resnet50_7.9um_scroll1_frags/resolve/f3975de34d4734dd507360304f828808b7182139/config.json"
+    },
+    "model.safetensors": {
+      "bytes": 342867696,
+      "sha256": "6133ef74905d32a40d0e053d9378bf76207c29614cb77210218f1df898b8d3cf",
+      "url": "https://huggingface.co/Nieuwlaar/resnet50_7.9um_scroll1_frags-repaired/resolve/1c35111679394a8f0c9c0eee033edf8e9dfa29e4/model.safetensors"
+    },
+    "resnetall.py": {
+      "bytes": 8094,
+      "sha256": "3e1b2b9a042721c3a1f4390a6c7190fb46cf0d829b8550bb90acce4ad8aa276a",
+      "url": "https://huggingface.co/scrollprize/resnet50_7.9um_scroll1_frags/resolve/f3975de34d4734dd507360304f828808b7182139/resnetall.py"
+    }
+  },
+  "model_execution": {
+    "batch_size": 1,
+    "device": "cpu",
+    "expected_config": {
+      "model_depth": 50,
+      "n_classes": 1139,
+      "num_layers": 18,
+      "window_size": 256
+    },
+    "forwards": "Exactly PHerc0841/source,PHerc0841/reverse,PHerc0814/source,PHerc0814/reverse, unless a declared resource/source failure stops the run. No warmup or retries.",
+    "loader": "Pinned common.load_resnet_model(asset_dir,ckpt_path=...,strict=True)",
+    "mandatory": "model.eval(); torch.inference_mode(); unchanged running-normalization buffers",
+    "precision": "float32",
+    "torch_interop_threads": 1,
+    "torch_threads": 4
+  },
+  "outputs": {
+    "activation": "sigmoid",
+    "core_shape_yx": [
+      32,
+      32
+    ],
+    "core_size_mm": 1.0112,
+    "label_index_exact": "For original coarse core origin o and decoder index j=16..47: floor(5*(48*(o+128)+79*(2*j+1-64))/234), independently peraxis.",
+    "label_interpretation": "Centre-point categorical comparison at31.6um; the model was trained with area-downsampled labels, so this does not replicate its area-averaged training target.",
+    "labels": "Read original categorical PNG/NPY via the pinned donor manifest and cached label hash. Category0 staysunknown;1background;2ink. Use only cell-centre category, no interpolation, majority threshold or existing9.6um label raster.",
+    "metrics": [
+      "AP",
+      "ROC_AUC",
+      "descriptive_ink_recall_at_5pct_known_background",
+      "achieved_known_background_fraction",
+      "known/ink/background/unknown_counts"
+    ],
+    "model_logits_shape": [
+      1,
+      1,
+      64,
+      64
+    ],
+    "model_output_pitch_um": 31.6,
+    "operating_point": "Each donor/order uses its own descriptive known-background threshold after prediction. k=floor(.05*Nbg); threshold=background sorted descending[k]; select score>threshold. Ties cannot exceed5%; not a transferred threshold or inferential FPR guarantee.",
+    "panels": "One complete32x32 core per donor: categorical labels plus source/reverse scores, every probability panel fixed0..1, no min/max normalization; plots and all raw arrays outsideGit.",
+    "scoring_core_yx": [
+      16,
+      48,
+      16,
+      48
+    ],
+    "support": "Every model input cell is inside the complete retained fine tensor. Score all original known centre categories. Do not discard known labels through an intensity/nonzero-column veto. Stored zeros remain values; zero-column counts are diagnostic.",
+    "undefined": "Retain all four outputs. AP/AUC undefined if either class absent; recall-at-background-point undefined without both classes. No replacement field or new orientation."
+  },
+  "purpose": "A fixed four-forward architecture-transfer probe on two public model-assisted controls; no training, orientation selection, promotion rule, unread acquisition, or letter-reading claim",
+  "sampling": {
+    "cell_edges": "Source fine cell coordinates have cell i occupying[i,i+1]. For source lengthN and target lengthM, edge numerators are24*(N//2)+79*(j-M//2),j=0..M, denominator24.",
+    "depth_aperture_um": 142.2,
+    "depth_edges": "19/8 + j*79/24, j=0..18",
+    "depth_margin_um_each_side": 5.7,
+    "depth_order": "Source means increasing retained fine-array depth; reverse means exact reversal of all18 already-resampled planes. Both retained; no oracle selection.",
+    "input_xy_mm": 2.0224,
+    "integration": "Exact separable integer voxel-cell overlap sums, each axis weights sum79. Divide the three-axis result by79^3 and round nearest even to uint8 once; no extrapolation or missing fill.",
+    "model_input_shape_zyx": [
+      18,
+      256,
+      256
+    ],
+    "normalization": "np.minimum(input_uint8,200).astype(float32) / np.float32(255.0); no image-dependent rescaling",
+    "orders": [
+      "source",
+      "reverse"
+    ],
+    "pitch_ratio_exact": "79/24",
+    "source_recipe_difference": "Author standard65-plane stack selects global24:42, an upper-centred even-depth crop. This experiment instead uses a physically symmetric142.2um slab about the centre of the retained fine context, itself from the prior fixed source-centre31.5 recipe. No donor-specific offset tuning; not exact native-acquisition/author-crop replication.",
+    "target_pitch_um": 7.9,
+    "xy_edges": "464/3 + j*79/24, j=0..256"
+  },
+  "schema": "scrollprize.repaired-resnet-central-probe.v1",
+  "selection": "The centre of each previously fixed retained fine context, selected without inspecting native-resolution model outputs. No replacement if a class is absent.",
+  "source_inputs": {
+    "donor_manifest_relative_path": "../transversal_lab/hecate_donor_manifest.json",
+    "donor_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+    "dtype": "uint8",
+    "fields": [
+      {
+        "donor_id": "source-841-grow-a-approved-r000001",
+        "fine_context_relative_path": "PHerc0841/fine_context_uint8.npy",
+        "fine_context_sha256": "cd3f15527da7601ce069bb62929757849e3760cff20d0a399f1876996b1a5982",
+        "original_coarse_core_origin_yx": [
+          160,
+          928
+        ],
+        "scroll": "PHerc0841"
+      },
+      {
+        "donor_id": "source-814-approved-r000001",
+        "fine_context_relative_path": "PHerc0814/fine_context_uint8.npy",
+        "fine_context_sha256": "34508c1cf6b3f0d04b8d413a6badbc52e58f04e71ed5f5c8b0e83e25dd9c00cf",
+        "original_coarse_core_origin_yx": [
+          960,
+          992
+        ],
+        "scroll": "PHerc0814"
+      }
+    ],
+    "npy_bytes": 84934784,
+    "pitch_um": 2.4,
+    "reference_experiment_freeze": "80c109fdac5162df1f6c92094dd73bb1c24949a1",
+    "selection_relative_path": "../native_resolution/selection.json",
+    "selection_sha256": "c3bdeb1e37b506f596af1bafab9fbd0c1bfc0271b8eed2e2ef644db8ce47b294",
+    "shape_zyx": [
+      64,
+      1152,
+      1152
+    ]
+  },
+  "status": "Prepared before any probe downloads or model forwards; root must publish the exact package freeze before run"
+}
