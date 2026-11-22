@@ -1,0 +1,49 @@
+{
+  "schema": "frag5-adaptive-local-structure-v1",
+  "question": "Do the four already observed small neighborhoods contain persistent local structure, and can bounded translation account for poor cross-scan agreement?",
+  "status": "Adaptive development diagnostic, prospectively frozen before additional metrics; original CT and prior correlations have already been observed",
+  "physical_parent": "Public opened PHerc.1667 Cornice1 Fragment3 (Frag5)",
+  "prior_result_sha256": "c0e57d1deea4dabaea850ee7e0f111cf48a83f5df73482507c55d1647d7a6c7c",
+  "prior_result_commit": "d00c325c5528e798a6543a3a9b55b3e4284c2428",
+  "inputs": [
+    {"id": 20, "file": "anatomy_20.npz", "sha256": "3f82f3b92bf3eaa359d8a78cede9e830e9feed84733b132cf946dd4216b4009f"},
+    {"id": 25, "file": "anatomy_25.npz", "sha256": "283846c3637e1328f5bb38ed35328e1ca4fd2a3c318da8b69047a4be1f5c785e"},
+    {"id": 65, "file": "anatomy_65.npz", "sha256": "35538424c9ed87531dc1985e850e8553bcc1385ede24d7ce13e759d756947ec5"},
+    {"id": 70, "file": "anatomy_70.npz", "sha256": "b23882f953329ccc1ae9beef5d914498976becceb3ea5771c3d770ce4ad759c5"}
+  ],
+  "numerical_design": {
+    "core_side": 17,
+    "search_radius_coarse_voxels": 4,
+    "binomial_passes": [0, 1, 4],
+    "fine_arms": ["fine_nominal_coarse_footprint", "fine_point"],
+    "mask_names": ["full", "negative_x_slab", "positive_x_slab"],
+    "slab_width": 4
+  },
+  "recorded_reconstruction_zero": {"fine": 20244, "coarse": 13506},
+  "recorded_zero_sources": {
+    "fine": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_3.24um/metadata/window.json",
+    "coarse": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/working/PHerc1667Cr01Fr03_70keV_7.91um/metadata/window.json"
+  },
+  "physical_scale": {
+    "nominal_coarse_pitch_um": 7.91,
+    "cached_33_cell_support_um": 261.03,
+    "metric_17_cell_support_um": 134.47,
+    "metric_center_to_center_span_um": 126.56,
+    "maximum_translation_per_axis_um": 31.64,
+    "binomial_rms_width_voxels": [0, 0.7071067811865476, 1.4142135623730951]
+  },
+  "analysis_rules": [
+    "Fine footprint is primary; fine point is a prespecified sensitivity. Unfiltered zero shift is the baseline. Report every filter, site and shift; no best setting is promoted.",
+    "Apply separable binomial [1,2,1]/4 zero, one or four times and remove touched boundaries. No wraparound or edge padding enters a comparison.",
+    "Compute directional within-scan Pearson at lags 1,2,4 on identical 17-cubed centers; compute variance retention and central-difference XYZ structure tensor and trace on those same centers.",
+    "Compute 729 finite-support Pearson shifts per site, fine arm, filter and mask. Positive shift compares fine(q) with coarse(q+s). Record the full fields, zero score, maximum, lexicographically first argmax, boundary flag and counts within 0.01 and 0.05 of the maximum.",
+    "Fit/check slabs occupy x=-8..-5 and x=+5..+8, with all central Y,Z. At one fixed shift their support in the cached analysis grids is disjoint even after four filter passes. Fine grids already contain interpolation and footprint integration, so this is not a claim about independent original CT support. Across the whole shift search the contributing supports can overlap. These are descriptive same-site spatial checks, not independent holdouts or statistical replication.",
+    "For each slab-selected translation, report opposite slab score and its zero-shift score, in both directions. No selected translation changes any affine, coordinates, model input, or later label association.",
+    "Report all 16 site-pair zero-shift comparisons for both fine arms and all filters. Different sites are stress controls, not exchangeable nulls or a calibrated false-positive distribution.",
+    "Keep undefined correlations as null or NaN, never as zero. No voxel-level confidence intervals, p-values, tissue/noise labels, photographic identity, same-sheet certification or automatic ink-stage approval.",
+    "Means relative to recorded reconstruction zero are descriptive. They do not calibrate attenuation or establish air/material identity.",
+    "Before real diagnostics, test constants, known translated 3D texture with affine intensity change, planar tangential ambiguity, periodic ambiguity, independent white noise and independent filtered noise. Fixed seed 20261122. Report synthetic counterexamples, not fitted thresholds."
+  ],
+  "caps": {"new_network_bytes": 0, "cpu_seconds": 120, "sites": 4},
+  "decision": "Use the whole evidence to choose whether larger anatomical context or independently checked translation is the next engineering step. This small development diagnostic alone cannot certify a detector context, transfer labels, or claim ink improvement."
+}

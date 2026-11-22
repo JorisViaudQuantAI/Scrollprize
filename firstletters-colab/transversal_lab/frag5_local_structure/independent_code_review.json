@@ -1,0 +1,41 @@
+{
+  "schema": "frag5-local-structure-independent-code-review-v1",
+  "status": "passed_after_constant_guard_fix",
+  "review_scope": "Static scientific and source-provenance review plus independent generated-data arithmetic checks; no real CT arrays decoded or new outcomes computed.",
+  "reviewed_sha256": {
+    "analyze_local_structure.py": "65f9fe9b6bb50c6c4f3e98f03a43b5b3910d77f398c26ef5907fc9f75750c6f4",
+    "protocol.json": "fbe930aec8c79d5141748d58198e59b2ce56e5adf553ad141c1b07ffe68793b0",
+    "test_local_structure.py": "ba507fff2c545396ddcddacc254c4abb4fe2ba74a23b0ab1d219caef3f0a5b2a"
+  },
+  "generated_only": true,
+  "new_network_bytes": 0,
+  "real_ct_arrays_accessed": false,
+  "independent_generated_checks": {
+    "seed": 43181,
+    "finite_filter_reference": "Independent full binomial coefficients comb(2p,k)/4**p, valid 1D convolution along each axis, p in {0,1,4}.",
+    "maximum_filter_absolute_error": 1.0913936421275139e-11,
+    "ncc_reference": "Direct numpy.corrcoef for all 729 shifts, all three masks and all three filter settings; centered support sliced independently of crop().",
+    "correlations_compared": 6561,
+    "maximum_ncc_absolute_error": 8.157335917857722e-12,
+    "nonbinary_constant_ncc_fields_checked": 36,
+    "constant_sd_and_variance_retention_checked": true,
+    "linear_xyz_gradient_tensor_exact": true,
+    "declared_test_suite": "All 9 test_local_structure.py tests passed in a separate generated-only execution."
+  },
+  "static_findings": [
+    "Finite filtering removes every touched boundary; maximum 4-pass radius plus 4-voxel translation fits 33-cubed input on a 17-cubed core.",
+    "FFT uses finite valid correlation, with positive XYZ shift meaning coarse(q+s); all mask-specific means and variances are recomputed at every shift.",
+    "All four input NPZ hashes are cross-checked against the exact published parent-result hash before decoding; pickle loading is disabled.",
+    "All 52488 shift correlations, 96 site-pair zero-shift comparisons and 36 structure records are retained; no affine or model input is altered.",
+    "Slab checks are explicitly descriptive and not independent holdouts; cached-grid support does not imply independent source CT support.",
+    "Exact-constant guards now precede numerical centering, resolving the reproduced 0.1/0.7 constant-array false-NCC defect.",
+    "Constant SD and variance-retention semantics are handled explicitly; undefined correlation is preserved as NaN/null.",
+    "The protocol does not infer tissue identity, anatomical truth, label-transfer permission or ink improvement from these metrics."
+  ],
+  "limits": [
+    "This review validates implementation and frozen scope, not local anatomical correspondence.",
+    "Wrong-site comparisons are descriptive stress cases, not calibrated statistical nulls.",
+    "Adaptive development data and only a 134.47-micrometre nominal core cannot certify detector-context registration.",
+    "Synthetic checks do not estimate real-tissue accuracy; all real results remain unseen by this reviewer at this review stage."
+  ]
+}
