@@ -1,0 +1,117 @@
+{
+  "project": "RTX 4060 CUDA parity replay on the three published PHerc. 306B A-hn finalist weights",
+  "method_repo_commit": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+  "dataset_revision": "f435998b55269762942a979052044309b29650ac",
+  "finalist_revision": "e57c4d541c239e06450a98c1cf2015d3de8d887e",
+  "manifest_sha256": "6e56c61594cfce44ab24d9566da2f6d88ad14e3a6edbafea1b1f465cfdd97770",
+  "authors": "Liam Warner and Nicola Bodill; see the published credits for the underlying models and data.",
+  "reference_cpu_replay": "origin/codex/public-306b-cpu-replay:public-controls/pherc0306b-replay.json",
+  "runtime": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch_version": "2.10.0+cu128",
+    "cuda_version": "12.8",
+    "bf16_supported": true,
+    "autocast_dtype": "float16",
+    "batch_size": 2,
+    "vram_fraction_cap": 0.65
+  },
+  "input_hashes_sha256": {
+    "code/claim/ink_v8.py": "708083e926db66a86722fd4eb70557a55062f63a600b0478f450288fb454e816",
+    "code/claim/smoke_v7.py": "740737988a7ada6a9c2bf0e0aba3dff8553b80e2d819f98e1f1ce539a7910365",
+    "v8in/config.json": "30f46a55d61dc3f4e9bf7e9ca261c1486575f1ce05a27f28d09f10ee57597018",
+    "v8in/ink8um/__init__.py": "7e1c7a9867614e3819a7556520f5f9769631f9fe4214f75d2710afc6479bae3b",
+    "v8in/ink8um/inference.py": "bca4a2ba12e46f65df810b4f54d37a8b42ec9923e56f2a3c6acb3e3ffd984f38",
+    "v8in/ink8um/modeling.py": "0656550dc10556ad09f5b6c21b36c97aa97a5696f71ef4b384eada124095c109",
+    "v8in/model.safetensors": "3b94548d7f9ba9f99bc4b0ad8cafcec6d42585c06304e1bd11e47b5d0f88c4cd",
+    "data/smoke/crop.npz": "4a81e193e253e8b6234eaa4c1b274e33c08b214183951ed8e573c9ae3f8f639d",
+    "finalist/hn4_s0.safetensors": "9a2812843924c50cafaa2b598f62c92ceca9f0d1f5d05b7bbf25764814ec7009",
+    "data/members/fwd_hn4_s0.npy": "3ca5a625959d6bb6a287ea56ff469ea33a7717bdcd9558c31da95fa003542a22",
+    "finalist/hn4_s1.safetensors": "5c2740c1f33ee5db73ca97425669607a2ffe4ae9af8b9d09d61f1c43165e60ad",
+    "data/members/fwd_hn4_s1.npy": "60b4c91c5e5df9637b40ca4107db6533772c0cc715d9e8b5e06b5cff64e318ea",
+    "finalist/hn4_s2.safetensors": "a294716b083769e8116d5f8d3cfa6a09378ca5c7e51c32225d04703266ad8ce7",
+    "data/members/fwd_hn4_s2.npy": "a0a668f4de7d86df777aff601f30f8cd711eeab67b6ffa21280ca19fd3a180aa"
+  },
+  "results": [
+    {
+      "seed": 0,
+      "weights_sha256": "9a2812843924c50cafaa2b598f62c92ceca9f0d1f5d05b7bbf25764814ec7009",
+      "tiles": 36,
+      "flips": [
+        "id"
+      ],
+      "compared_px": 1849,
+      "window_render_px": [
+        2173,
+        2216,
+        4558,
+        4601
+      ],
+      "max_abs_diff": 0.00042,
+      "mean_abs_diff": 0.00012,
+      "pearson_r": 0.999999,
+      "map_range": [
+        0.2554,
+        0.6987
+      ],
+      "inference_seconds": 4.338,
+      "peak_vram_allocated_mib": 1715.72,
+      "peak_vram_reserved_mib": 2446.0,
+      "verdict": "PASS"
+    },
+    {
+      "seed": 1,
+      "weights_sha256": "5c2740c1f33ee5db73ca97425669607a2ffe4ae9af8b9d09d61f1c43165e60ad",
+      "tiles": 36,
+      "flips": [
+        "id"
+      ],
+      "compared_px": 1849,
+      "window_render_px": [
+        2173,
+        2216,
+        4558,
+        4601
+      ],
+      "max_abs_diff": 0.00033,
+      "mean_abs_diff": 7.9e-05,
+      "pearson_r": 1.0,
+      "map_range": [
+        0.2074,
+        0.6152
+      ],
+      "inference_seconds": 3.677,
+      "peak_vram_allocated_mib": 1715.72,
+      "peak_vram_reserved_mib": 2446.0,
+      "verdict": "PASS"
+    },
+    {
+      "seed": 2,
+      "weights_sha256": "a294716b083769e8116d5f8d3cfa6a09378ca5c7e51c32225d04703266ad8ce7",
+      "tiles": 36,
+      "flips": [
+        "id"
+      ],
+      "compared_px": 1849,
+      "window_render_px": [
+        2173,
+        2216,
+        4558,
+        4601
+      ],
+      "max_abs_diff": 0.00068,
+      "mean_abs_diff": 0.000162,
+      "pearson_r": 0.999999,
+      "map_range": [
+        0.3337,
+        0.7783
+      ],
+      "inference_seconds": 3.77,
+      "peak_vram_allocated_mib": 1715.72,
+      "peak_vram_reserved_mib": 2446.0,
+      "verdict": "PASS"
+    }
+  ],
+  "all_pass": true,
+  "scope": "Numerical parity reproduction on the original published PHerc. 306B CT smoke field, using the complete author-selected 36-window grid per seed, one pose (tta=1). This verifies local CUDA arithmetic parity and VRAM safety; it does not measure transfer to an unknown scroll."
+}

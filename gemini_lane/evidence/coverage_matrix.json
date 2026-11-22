@@ -1,0 +1,492 @@
+{
+  "generated_utc": "2026-11-22T19:35:53Z",
+  "source_pages": {
+    "prizes": "https://scrollprize.org/prizes",
+    "s3_bucket": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com",
+    "pscamillo": "https://github.com/pscamillo/vesuvius-eligible-meshes",
+    "hf_atlas": "https://huggingface.co/datasets/rodriguescarson/eligible-scroll-atlas-renders",
+    "hf_spiral_fits": "https://huggingface.co/datasets/rodriguescarson/eligible-scroll-spiral-fits",
+    "iyandopico": "https://github.com/IyanDopico/vesuvius-sheet-tools",
+    "umbilici": "https://github.com/AlexeyDrobkovStrikesBack/herculaneum-umbilici"
+  },
+  "caveat": "Raw mesh/winding counts are NOT unique on-sheet papyrus area. Spiral fits overlap across bands and can drift off-sheet; verify m7 support and layer coherence before inference.",
+  "summary": {
+    "eligible_scroll_count": 19,
+    "scrolls_with_s3_m7": 19,
+    "scrolls_with_2_4um_rescan": [
+      "PHerc0846A",
+      "PHerc1203"
+    ],
+    "scrolls_with_zero_public_meshes": [
+      "PHerc0175A",
+      "PHerc0175B",
+      "PHerc0483A",
+      "PHerc0483B",
+      "PHerc0490A",
+      "PHerc0490B",
+      "PHerc0846A",
+      "PHerc0846B",
+      "PHerc1545"
+    ],
+    "untouched_pscamillo_0125_new_meshes": 276,
+    "total_hf_spiral_fit_runs": 4
+  },
+  "scrolls": [
+    {
+      "scroll": "PHerc0125",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151825-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 340,
+      "hf_atlas_renders": 62,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Claude: 1 own window N4 (3.49 cm2, rejected/negative) + 62 old atlas windings queued on L4; Codex: claimed 2 of 278 new pscamillo windings (>4 cm2 scored privately, codex-008..010)",
+      "remaining_gap": "276 of 278 new pscamillo windings unscreened",
+      "gemini_priority": "P1-G2"
+    },
+    {
+      "scroll": "PHerc0175A",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521115057-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code"
+      ],
+      "recorded_work": "Claude: 3 negative GrowPatch/m7 windows (N1-N3: 7.45, 3.91, 2.18 cm2; N2 overlaps N1)",
+      "remaining_gap": "No public spiral atlas; other axial z-bands require GrowPatch/spiral fit",
+      "gemini_priority": "P3-after-claude011"
+    },
+    {
+      "scroll": "PHerc0175B",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521125822-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [],
+      "recorded_work": "No recorded screening in collab notes through claude-010/codex-010",
+      "remaining_gap": "Untouched scroll (no public meshes; S3 m7 available)",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc0191",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151635-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 1,
+      "hf_spiral_fit_names": [
+        "2026-09-15_PHerc0191_slice-11600-12400_0-patch_w90"
+      ],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Codex (mentioned in codex-001, no published coverage count)"
+      ],
+      "recorded_work": "Zero screening recorded on the 90-winding HF spiral fit (415.63 cm2 raw surface)",
+      "remaining_gap": "90 HF spiral windings completely unscreened + umbilicus + S3 m7 available",
+      "gemini_priority": "P0-G1"
+    },
+    {
+      "scroll": "PHerc0257",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151750-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 6,
+      "hf_atlas_renders": 6,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Claude: 6 atlas windings queued on L4 (claude-010); Codex mentioned early screening (codex-001)",
+      "remaining_gap": "Outside the 6 atlas windings (23 cm2), rest of scroll unmeshed",
+      "gemini_priority": "P3-G4"
+    },
+    {
+      "scroll": "PHerc0268",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20251110183117-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 6,
+      "hf_atlas_renders": 6,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code"
+      ],
+      "recorded_work": "Claude: 6 atlas windings queued on L4 (claude-010; layer-coherence 0.31)",
+      "remaining_gap": "Low sheet-parallel quality in 6-winding atlas; new spiral/GrowPatch needed",
+      "gemini_priority": "P3-G4"
+    },
+    {
+      "scroll": "PHerc0358",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151737-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 3,
+      "hf_atlas_renders": 3,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Claude: 3 atlas windings queued + 7k-step T4 spiral lane stopped (0.286 within 2 vx of m7); Codex: spiral replay fixture",
+      "remaining_gap": "Only 3 atlas windings (11 cm2) rendered; full spiral needs deeper fit or GrowPatch",
+      "gemini_priority": "P3-G4"
+    },
+    {
+      "scroll": "PHerc0483A",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521140913-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [],
+      "recorded_work": "No recorded screening in collab notes through claude-010/codex-010",
+      "remaining_gap": "Untouched scroll (no public meshes; S3 m7 available)",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc0483B",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20251124083638-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Codex (mentioned in codex-001)"
+      ],
+      "recorded_work": "Mentioned in codex-001; no published mesh/coverage table in collab-001..010",
+      "remaining_gap": "No public meshes; S3 m7 available",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc0490A",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521151210-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code"
+      ],
+      "recorded_work": "Included in Claude pre-protocol 30 cm2 search (claude-001); no public meshes",
+      "remaining_gap": "Most axial volume unmeshed; S3 m7 available",
+      "gemini_priority": "P3-after-claude011"
+    },
+    {
+      "scroll": "PHerc0490B",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521151215-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [],
+      "recorded_work": "No recorded screening in collab notes through claude-010/codex-010",
+      "remaining_gap": "Untouched scroll (no public meshes; S3 m7 available)",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc0800",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521135224-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 6,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 95,
+      "hf_atlas_renders": 95,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code"
+      ],
+      "recorded_work": "Claude: all 95 atlas windings screened with reader-v3 (477 cm2 valid, claude-008; Studio interrupted)",
+      "remaining_gap": "6 separate S3 auto_grown segments not recorded as screened; Studio re-pass pending 306B row gate",
+      "gemini_priority": "P1-G3-s3-segments"
+    },
+    {
+      "scroll": "PHerc0813",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151723-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 75,
+      "hf_atlas_renders": 75,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Claude: all 75 atlas windings screened with reader-v3 (407 cm2 valid) + Studio on top 5 (29 cm2); Codex: 24-profile m7 paired geometry audit",
+      "remaining_gap": "Studio on remaining atlas pending 306B row gate + paired physical-anchor check",
+      "gemini_priority": "P3-conditional"
+    },
+    {
+      "scroll": "PHerc0826",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151701-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 3,
+      "hf_atlas_renders": 3,
+      "hf_spiral_fit_runs": 3,
+      "hf_spiral_fit_names": [
+        "2026-09-15_PHerc0826_slice-6528-7328_0-patch",
+        "2026-09-15_PHerc0826_slice-8928-9728_0-patch",
+        "2026-09-15_PHerc0826_slice-9328-10128_0-patch"
+      ],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code"
+      ],
+      "recorded_work": "Claude: 1 small own window N5 (1.16 cm2) + 3 atlas windings (14 cm2) queued on L4",
+      "remaining_gap": "3 complete spiral-fit bands (270 windings total raw) on HF eligible-scroll-spiral-fits unscreened",
+      "gemini_priority": "P0-G1"
+    },
+    {
+      "scroll": "PHerc0846A",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": true,
+      "s3_volume_count": 4,
+      "s3_native_volumes": [
+        "20250728152254-9.362um-1.2m-113keV-masked.zarr",
+        "20260319102732-2.403um-0.2m-77keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Registration only (2.4 um -> 9.36 um transform + Codex annular residual check); no ink screening recorded",
+      "remaining_gap": "Zero ink screening recorded; has BOTH 9.362 um and 2.403 um rescan volumes",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc0846B",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250804142305-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": false,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [],
+      "recorded_work": "No recorded screening; Codex noted no workable local CT/mesh pair (codex-008)",
+      "remaining_gap": "Untouched scroll (no public meshes; S3 m7 available)",
+      "gemini_priority": "P2-G4-pending-claude011"
+    },
+    {
+      "scroll": "PHerc1203",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": true,
+      "s3_volume_count": 4,
+      "s3_native_volumes": [
+        "20250820131727-9.362um-1.2m-113keV-masked.zarr",
+        "20260319130212-2.403um-0.2m-77keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 22,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Claude Code",
+        "Codex"
+      ],
+      "recorded_work": "Codex: windows A/B/C (N13-N15) + 2.4 um cached blocks; Claude: N6-N10 at 9.36 um & 2.4 um; N9 unresolved",
+      "remaining_gap": "Other S3 segments/raw/ meshes (~20 remaining) + resolve N9 at 9.36 um",
+      "gemini_priority": "P2-G3"
+    },
+    {
+      "scroll": "PHerc1218",
+      "voxel_um": 8.64,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250521120456-8.640um-1.2m-116keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 25,
+      "team_owners": [
+        "Codex"
+      ],
+      "recorded_work": "Codex: staged S3 CT + m7 near 25 IyanDopico verified patches on CPU (codex/dls-public-depth-fixture); zero GPU ink runs recorded",
+      "remaining_gap": "25 verified patches ready for GPU ink inference (Studio BF16 + A-hn)",
+      "gemini_priority": "P1-G3"
+    },
+    {
+      "scroll": "PHerc1545",
+      "voxel_um": 9.362,
+      "has_2_4um_rescan": false,
+      "s3_volume_count": 2,
+      "s3_native_volumes": [
+        "20250821151648-9.362um-1.2m-113keV-masked.zarr"
+      ],
+      "s3_has_m7_and_normal_grids": true,
+      "s3_segments_count": 0,
+      "has_umbilicus_json": true,
+      "pscamillo_meshes": 0,
+      "hf_atlas_renders": 0,
+      "hf_spiral_fit_runs": 0,
+      "hf_spiral_fit_names": [],
+      "iyandopico_verified_patches": 0,
+      "team_owners": [
+        "Codex"
+      ],
+      "recorded_work": "Codex: packaged 3 uniformly sampled anatomy cubes (codex/pherc1545-public-anatomy-grid); zero ink screening recorded",
+      "remaining_gap": "Untouched for ink screening (no public meshes; S3 m7 + umbilicus JSON available)",
+      "gemini_priority": "P2-G4-pending-claude011"
+    }
+  ],
+  "paris4_title_summary": {
+    "prize_usd": 50000,
+    "deadline": "2027-06-25",
+    "recorded_work": {
+      "Claude": "N11 agraphon right of last column (~140 cm2) + N12 unmeshed core + control-then-agraphon GPU run queued",
+      "Codex": "codex/paris4-energy-coverage: 78 keV vs 53 keV mesh overlap & RLE coverage comparison"
+    },
+    "unexplored_title_zones": [
+      "Below the final prose column (8 of 106 surviving Herculaneum end titles per Ranocchia / chatgpt-001)",
+      "Outermost wraps / initial title / detached outer flakes",
+      "Physical 2.4 um CT attenuation & crust anomalies targeting the organisers' 'possibly a different ink' note"
+    ]
+  }
+}
