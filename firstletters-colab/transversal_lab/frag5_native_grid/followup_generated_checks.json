@@ -1,0 +1,19 @@
+{
+  "scope": "Generated-input and pinned geometry only; no new CT pixels acquired or real CT arrays decoded.",
+  "tests_passed": 3,
+  "last_test_wall_seconds": 1.78,
+  "checks": [
+    "32 unique original floor/ceil corners,16 ranges and64 bytes; all14 raw HEADs required",
+    "Exact32integer gate rejects missing values or one differing value",
+    "Native-center trilinear diagnostic agrees with an analytic field and reports allfour after a simulated failedgate"
+  ],
+  "post_test_edit": "Only Python runtime version reporting was added after these tests; scientific operations unchanged.",
+  "test_command": "FRAG5_ORIGINAL_DIR=/path/to/frag5_native_pair python -m pytest -q test_frag5_native_grid_followup.py",
+  "metadata_preflight_note": "One initial script invocation had a syntax error before any request; it was corrected before header acquisition. Metadata-only acquisition then completed once.",
+  "files": {
+    "frag5_native_grid_followup.py": "6d9f0eee1ddaf6e4563a0ec790441141df0e36591e0be5c4c5ae836ea80cab29",
+    "frag5_native_grid_followup_protocol.json": "b0d1cd17d9e651d39f3e199d8a354ad8c9aacb2e2f657c5df6fc6479f49a6745",
+    "test_frag5_native_grid_followup.py": "77ed9e111bb29bd649b49d5b46f77b18fefe0acad0b7f0eb221fab2cd06c28e4",
+    "README.md": "62b25394237b78dbaddafa5467b894394475fec872f1731b5db9fa3ab0ef721b"
+  }
+}

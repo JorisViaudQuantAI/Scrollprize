@@ -1,0 +1,57 @@
+{
+  "schema": "frag5-native-grid-followup-independent-code-review-v1",
+  "status": "no_blocking_issue",
+  "reviewed_runner_sha256": "6d9f0eee1ddaf6e4563a0ec790441141df0e36591e0be5c4c5ae836ea80cab29",
+  "reviewed_protocol_sha256": "b0d1cd17d9e651d39f3e199d8a354ad8c9aacb2e2f657c5df6fc6479f49a6745",
+  "scope": "Static code and frozen metadata review, independent parsing of already-cached TIFF headers, and generated gate inputs only.",
+  "independent_checks": {
+    "all_eight_native_IFDs_parsed": true,
+    "little_endian_unsigned16_single_channel": true,
+    "width": 4420,
+    "height": 1400,
+    "native_strip_offset": 368,
+    "native_strip_bytes": 12376000,
+    "native_total_object_bytes": 12376368,
+    "uncompressed_orientation_predictor_fill_order_compatible": true,
+    "all_sixteen_four_byte_ranges_match_fixed_integer_addresses": true,
+    "fixed_integer_values": 32,
+    "new_native_intensity_bytes": 64,
+    "all_fourteen_raw_HEAD_entries_match_previous_frozen_snapshot": true,
+    "prior_metadata_components_balance": true,
+    "shared_chunks": 14,
+    "cumulative_raw_source_bytes_if_complete": 57064081,
+    "generated_exact_gate_cases": {
+      "all_32_equal_pass": true,
+      "only_31_values_reject": true,
+      "one_integer_mismatch_reject": true
+    }
+  },
+  "scientific_code_review": {
+    "original_failed_result_hash_preserved": true,
+    "six_old_raw_chunks_pinned_individually": true,
+    "all_eight_native_headers_checked_before_new_pixel_GETs": true,
+    "new_raw_fine_and_coarse_payloads_only_after_exact_32_gate": true,
+    "native_center_secondary_diagnostic_does_not_affect_gate": true,
+    "same_four_selectors_affine_and_rounded_coarse_centers": true,
+    "same_33_cubed_arrays_and_125_midpoint_samples": true,
+    "all_27_shifts_zero_shift_primary_no_shift_selection": true,
+    "same_intensity_and_interior_Laplacian_metrics": true,
+    "original_safe_HTTP_and_Blosc_helpers_reused_unchanged": true,
+    "cumulative_byte_and_CPU_caps_preserved": true,
+    "new_output_tree_separate_from_prior_run": true,
+    "python_numpy_scipy_numcodecs_versions_recorded": true,
+    "no_automatic_label_GO": true
+  },
+  "interpretation_limits": [
+    "This is a separately frozen adaptive raw-scanner-grid question, not a reclassification or rescue of the failed surface-render identity test.",
+    "Equality establishes only the 32 integer values sampled. It does not establish whole-volume identity, historical rendering phase, physical face, photographic mapping or label correspondence.",
+    "The prior PPM points are fixed geometric selectors only; raw-grid correlation alone does not authenticate physical sheet identity.",
+    "The footprint is an approximation based on125midpoints of the trilinear fine field, not a calibrated acquisition PSF.",
+    "The bounded resumer requires canonical prior receipts and six hash-pinned raw objects; this is not a portable fresh replay."
+  ],
+  "actual_network_requests_by_reviewer": 0,
+  "decoded_CT_arrays_by_reviewer": 0,
+  "new_pixel_access_by_reviewer": false,
+  "models_or_fits_by_reviewer": 0,
+  "stage1_failure_remains_preserved": true
+}

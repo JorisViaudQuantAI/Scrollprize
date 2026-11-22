@@ -1,0 +1,44 @@
+{
+  "scope": "Metadata-only native TIFF preflight; no intensity values or photo/label pixels acquired",
+  "listing_bytes": 1052555,
+  "TIFF_header_bytes": 1744,
+  "total_metadata_bytes": 1054299,
+  "metadata_cap_bytes": 16777216,
+  "native_slice_count": 8,
+  "native_slices": [
+    1461,
+    1462,
+    1479,
+    1480,
+    4946,
+    4947,
+    4952,
+    4953
+  ],
+  "header_contract": {
+    "shape_yx": [
+      1400,
+      4420
+    ],
+    "dtype": "little-endianuint16",
+    "channels": 1,
+    "compression": 1,
+    "photometric": 1,
+    "orientation_tag": "absent",
+    "predictor_tag": "absent",
+    "fill_order_tag": "absent",
+    "strip_count": 1,
+    "strip_offset": 368,
+    "strip_bytes": 12376000,
+    "file_bytes": 12376368
+  },
+  "proposed_fixed_native_integer_count": 32,
+  "proposed_native_pixel_body_bytes": 64,
+  "files": {
+    "native_volume_listing.html": "16e6917e55463af0b0f57391b18715e32d028b3a25fc4aff69dea735fc9438c5",
+    "listing_receipt.json": "9c0d9773e8a1cb1d99e6ab6d94421b46f2a2c15344ba7442e4959697caef846e",
+    "native_tiff_headers.json": "cb3fd3185d272554218663e8f03a0b161a77e9fd333762f47385b39233d9040a",
+    "header_range_receipt.json": "f25283706d17c59f215a3474122b3b6279540d0c202026d7c49d93aca2f72f0d",
+    "native_tiff_metadata.py": "dde20e14106c72bcd8a433bb34871a122b539e28b7c135cb7e1654aa4c60111c"
+  }
+}

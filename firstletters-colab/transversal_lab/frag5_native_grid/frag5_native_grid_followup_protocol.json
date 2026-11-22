@@ -1,0 +1,927 @@
+{
+  "schema": "frag5-adaptive-native-source-and-raw-grid-v1",
+  "original_public_freeze": "4ea8eedb90d5757272cef59144c94d0b82cbb5e0",
+  "original_runner_sha256": "e18bdff3a75729dbbb2785f4caa56892388f36c2b5603d3c86d082cb21877600",
+  "original_protocol_sha256": "3cae8c53394bd92de8f07bcc3eb81afaf9db81c3cfe039616cc27566b18c18a2",
+  "original_failed_result_sha256": "e473ad97f5afa8126e6d2f6e57ebc1080f906980cc3b7a46ed0c7381d8f3fe36",
+  "prior_receipt_sha256": {
+    "result.json": "e473ad97f5afa8126e6d2f6e57ebc1080f906980cc3b7a46ed0c7381d8f3fe36",
+    "identity_result.json": "3f8512c21f215d58fe672b4c624e75d633bc3d0673c163a3d74a12b04567cfa7",
+    "acquisition.json": "b09cff61cabc0b7f8dea44caf7baa32b7aa4e68228ba73799b761c20105ef725",
+    "acquisition_heads_freeze.json": "38db11c9bd9088811b395c75440a8c6f03e27460b015d4ce28996ef330757d70",
+    "start.json": "d54bc9dc4d7d62515f4b549da2d8c07da66661507a668851ed144600ffd7a491"
+  },
+  "native_volume_base_url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/",
+  "native_volume_metadata_url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/meta.json",
+  "native_volume_listing_sha256": "16e6917e55463af0b0f57391b18715e32d028b3a25fc4aff69dea735fc9438c5",
+  "native_header_preflight_sha256": "cb3fd3185d272554218663e8f03a0b161a77e9fd333762f47385b39233d9040a",
+  "native_header_range_receipt_sha256": "f25283706d17c59f215a3474122b3b6279540d0c202026d7c49d93aca2f72f0d",
+  "native_slices": [
+    {
+      "slice_z": 1461,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1461.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf843-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 1462,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1462.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf843-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 1479,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1479.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf845-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 1480,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1480.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf845-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 4946,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4946.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf9a5-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 4947,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4947.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf9a5-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 4952,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4952.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf9a6-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    },
+    {
+      "slice_z": 4953,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4953.tif",
+      "head": {
+        "length": 12376368,
+        "etag": "\"655cf9a6-bcd930\""
+      },
+      "header_contract": {
+        "shape_yx": [
+          1400,
+          4420
+        ],
+        "dtype": "<u2",
+        "compression": 1,
+        "samples_per_pixel": 1,
+        "photometric": 1,
+        "orientation": "absent_TIFF_default1",
+        "strip_offset": 368,
+        "strip_bytes": 12376000,
+        "ifd_offset": 8,
+        "ifd_entries": 17,
+        "predictor_and_fill_order_tags": "absent"
+      },
+      "header_ranges": [
+        {
+          "range": [
+            0,
+            7
+          ],
+          "sha256": "e14e7408990dc136663693d7e57816e5e10b2c0668ede991ca62072d380c3d7a"
+        },
+        {
+          "range": [
+            8,
+            9
+          ],
+          "sha256": "d94e7f1e9bb1f8a9b90996ba12c461b84956f0e7f230145cc594c2f80b067aa0"
+        },
+        {
+          "range": [
+            10,
+            217
+          ],
+          "sha256": "d100a75152db31994a7b0d8ac5d9ac069fccf71ed8488a697e698fdc3bbc02c7"
+        }
+      ]
+    }
+  ],
+  "corner_rows": [
+    {
+      "center_id": 20,
+      "slice_z": 4952,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4952.tif",
+      "xyz": [
+        [
+          1364,
+          852,
+          4952
+        ],
+        [
+          1365,
+          852,
+          4952
+        ]
+      ],
+      "byte_range": [
+        7534776,
+        7534779
+      ]
+    },
+    {
+      "center_id": 20,
+      "slice_z": 4952,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4952.tif",
+      "xyz": [
+        [
+          1364,
+          853,
+          4952
+        ],
+        [
+          1365,
+          853,
+          4952
+        ]
+      ],
+      "byte_range": [
+        7543616,
+        7543619
+      ]
+    },
+    {
+      "center_id": 20,
+      "slice_z": 4953,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4953.tif",
+      "xyz": [
+        [
+          1364,
+          852,
+          4953
+        ],
+        [
+          1365,
+          852,
+          4953
+        ]
+      ],
+      "byte_range": [
+        7534776,
+        7534779
+      ]
+    },
+    {
+      "center_id": 20,
+      "slice_z": 4953,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4953.tif",
+      "xyz": [
+        [
+          1364,
+          853,
+          4953
+        ],
+        [
+          1365,
+          853,
+          4953
+        ]
+      ],
+      "byte_range": [
+        7543616,
+        7543619
+      ]
+    },
+    {
+      "center_id": 25,
+      "slice_z": 4946,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4946.tif",
+      "xyz": [
+        [
+          3526,
+          618,
+          4946
+        ],
+        [
+          3527,
+          618,
+          4946
+        ]
+      ],
+      "byte_range": [
+        5470540,
+        5470543
+      ]
+    },
+    {
+      "center_id": 25,
+      "slice_z": 4946,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4946.tif",
+      "xyz": [
+        [
+          3526,
+          619,
+          4946
+        ],
+        [
+          3527,
+          619,
+          4946
+        ]
+      ],
+      "byte_range": [
+        5479380,
+        5479383
+      ]
+    },
+    {
+      "center_id": 25,
+      "slice_z": 4947,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4947.tif",
+      "xyz": [
+        [
+          3526,
+          618,
+          4947
+        ],
+        [
+          3527,
+          618,
+          4947
+        ]
+      ],
+      "byte_range": [
+        5470540,
+        5470543
+      ]
+    },
+    {
+      "center_id": 25,
+      "slice_z": 4947,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/4947.tif",
+      "xyz": [
+        [
+          3526,
+          619,
+          4947
+        ],
+        [
+          3527,
+          619,
+          4947
+        ]
+      ],
+      "byte_range": [
+        5479380,
+        5479383
+      ]
+    },
+    {
+      "center_id": 65,
+      "slice_z": 1479,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1479.tif",
+      "xyz": [
+        [
+          1322,
+          551,
+          1479
+        ],
+        [
+          1323,
+          551,
+          1479
+        ]
+      ],
+      "byte_range": [
+        4873852,
+        4873855
+      ]
+    },
+    {
+      "center_id": 65,
+      "slice_z": 1479,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1479.tif",
+      "xyz": [
+        [
+          1322,
+          552,
+          1479
+        ],
+        [
+          1323,
+          552,
+          1479
+        ]
+      ],
+      "byte_range": [
+        4882692,
+        4882695
+      ]
+    },
+    {
+      "center_id": 65,
+      "slice_z": 1480,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1480.tif",
+      "xyz": [
+        [
+          1322,
+          551,
+          1480
+        ],
+        [
+          1323,
+          551,
+          1480
+        ]
+      ],
+      "byte_range": [
+        4873852,
+        4873855
+      ]
+    },
+    {
+      "center_id": 65,
+      "slice_z": 1480,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1480.tif",
+      "xyz": [
+        [
+          1322,
+          552,
+          1480
+        ],
+        [
+          1323,
+          552,
+          1480
+        ]
+      ],
+      "byte_range": [
+        4882692,
+        4882695
+      ]
+    },
+    {
+      "center_id": 70,
+      "slice_z": 1461,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1461.tif",
+      "xyz": [
+        [
+          3503,
+          507,
+          1461
+        ],
+        [
+          3504,
+          507,
+          1461
+        ]
+      ],
+      "byte_range": [
+        4489254,
+        4489257
+      ]
+    },
+    {
+      "center_id": 70,
+      "slice_z": 1461,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1461.tif",
+      "xyz": [
+        [
+          3503,
+          508,
+          1461
+        ],
+        [
+          3504,
+          508,
+          1461
+        ]
+      ],
+      "byte_range": [
+        4498094,
+        4498097
+      ]
+    },
+    {
+      "center_id": 70,
+      "slice_z": 1462,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1462.tif",
+      "xyz": [
+        [
+          3503,
+          507,
+          1462
+        ],
+        [
+          3504,
+          507,
+          1462
+        ]
+      ],
+      "byte_range": [
+        4489254,
+        4489257
+      ]
+    },
+    {
+      "center_id": 70,
+      "slice_z": 1462,
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/1462.tif",
+      "xyz": [
+        [
+          3503,
+          508,
+          1462
+        ],
+        [
+          3504,
+          508,
+          1462
+        ]
+      ],
+      "byte_range": [
+        4498094,
+        4498097
+      ]
+    }
+  ],
+  "cached_fine_chunks": [
+    {
+      "key_zyx": [
+        11,
+        3,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/3/27",
+      "cache_file": "objects/42c9e87b08d862dcd262b2b88c021f257d696e54b9d58baeaacb7b7fb5d18bb9.bin",
+      "bytes": 4062803,
+      "sha256": "c83f9cd0e60017004bb2cee11d6d77998a580776b8ec4f17f64bb548c8b14236"
+    },
+    {
+      "key_zyx": [
+        11,
+        4,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/4/10",
+      "cache_file": "objects/76f4e1c3b7b52906a65d124d3b69775c2c369e25f1ccc2cd1bd9f48c883c437e.bin",
+      "bytes": 4163999,
+      "sha256": "3ff170f0e8d6a4cac766b45af2f377483895b959f502dff66e98e4ab7d830d0e"
+    },
+    {
+      "key_zyx": [
+        11,
+        4,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/4/27",
+      "cache_file": "objects/62108c6e152f60e22cef9ea8bcbc5d8383cc982b7dbc893144f9dc6924cc9a86.bin",
+      "bytes": 4194320,
+      "sha256": "c79032fa7a48cda6d5717c61e7267af0d232f5c9593074adabc7f6430ad2db5e"
+    },
+    {
+      "key_zyx": [
+        38,
+        4,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/4/27",
+      "cache_file": "objects/7c6761eb56734b06163f8199d438b612d0f56b58881eb836167210714a42746d.bin",
+      "bytes": 4034926,
+      "sha256": "1418b8d513cfa6b47c527cafde1bfeab7cb92faaef4a5cd8884e95a7e8200bd4"
+    },
+    {
+      "key_zyx": [
+        38,
+        5,
+        27
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/27",
+      "cache_file": "objects/6e859d29df5e2bbfbc471df242aa01451aa4cf98b598be6213b255b7f3a18f71.bin",
+      "bytes": 4030670,
+      "sha256": "07a3e8bd0b24ad43867a3f70c568094491ce1ad05e6b1653996c39b9fa3b4ed1"
+    },
+    {
+      "key_zyx": [
+        38,
+        6,
+        10
+      ],
+      "url": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/6/10",
+      "cache_file": "objects/ed65bd66fa23b655eca5c547fcfd6feb0b3b097d6d3baf03f7f5d24cf4bde55a.bin",
+      "bytes": 4084605,
+      "sha256": "9e682856ff0249ed0d6e0324e30fd40654afb4f252762a7a21e35191d1e58891"
+    }
+  ],
+  "gate": {
+    "corners": 32,
+    "native_intensity_bytes": 64,
+    "maximum_absolute_integer_difference": 0,
+    "anatomy_only_if_all_32_equal": true,
+    "legacy_surface_contract_status": "failed_and_not_retested"
+  },
+  "cumulative_caps": {
+    "source_chunk_body_bytes": 268435456,
+    "tiff_metadata_body_bytes": 2097152,
+    "decoded_unique_chunks": 64,
+    "cpu_seconds": 3600,
+    "threads": 4
+  },
+  "prior_charges": {
+    "source_chunk_bytes": 24571323,
+    "tiff_metadata_bytes": 1074171,
+    "reserved_cpu_seconds": 60,
+    "cpu_reservation_explanation": "The prior CT run used5.605329821CPU seconds. Reserve60seconds conservatively for that run and related small preflights; this followup has3540CPU seconds available.",
+    "metadata_charge_components": {
+      "original_stage1_run": 11591,
+      "new_native_listing_and_headers": 1054299,
+      "earlier_PPM_and_surface_header_preflight": 4862,
+      "earlier_fine_Zarr_metadata": 3419
+    }
+  },
+  "planned_counts": {
+    "old_fine_chunks_reused": 6,
+    "new_fine_chunks": 2,
+    "new_coarse_chunks": 6,
+    "shared_unique_decoded_chunks": 14,
+    "new_source_chunk_body_bytes_from_original_HEADs": 32492758,
+    "cumulative_raw_source_bytes_if_complete": 57064081,
+    "new_native_intensity_bytes": 64,
+    "new_native_header_bytes": 1744,
+    "new_zarr_metadata_bytes": 801,
+    "anatomy_centers": 4,
+    "anatomy_cells_per_center": 35937,
+    "quadrature_samples_per_cell": 125,
+    "native_coarse_shift_arms": 27,
+    "fine_representation_arms": 2
+  },
+  "science_contract": [
+    "This is an adaptive followup designed after the failed exact surface-rendering test. The oldneither result remains failed and is never reclassified.",
+    "The32 integer positions are exactly the Cartesianfloor/ceil corners around the same four PPMpoints; they are independent of any historical surfaceplanephase. No new locations, alignment, phase or normal alternatives.",
+    "Require exact integer equality at all32 locations. Passing supports local representation fidelity at these32voxels only, not wholevolumeidentity, valid surfacephase or correctface.",
+    "Only after exact32/32 equality, compare rawscannergrids using the original affine and originalroundedcoarsecenters. PPMpoints serve as fixed geometric selectors; no surface TIFF intensity enters anatomy.",
+    "Anatomy is unchanged:four33^3grids;point-sampled fine and125midpoint integration of its trilinearfield over inverse-affinecoarsecubes;all27 nativecoarse shifts in{-1,0,1}^3;zero shift remains primary;Pearson/Spearman intensity and31^3interiorLaplacian correlations.",
+    "No registration fitting, selected shift, intensity calibration, label/photo/model access, physicalfaceclaim, pixelIID statistical inference or automaticlabelstage approval.",
+    "Nativecoarse pixel outcomes remain unseen beforethisfreeze. Reuse sixindividuallyhashpinnedoldfinechunks without changingtheoriginalrun; newsourcepayloads are only theoriginalremainingtwofineplus sixcoarsechunks.",
+    "Rawuint16windows are source-specific. The nominalcoarsefootprint is not a simulatedscannerPSF, and correlationdoesnotcertifysame-sheet identity.",
+    "Every response is validated against HEAD identity/length; strict206 ranges; originalsafe decoder and sourcecornerchecks; no retries, replacing data, thresholdchanges or extra requests after a failedgate."
+  ],
+  "sources": {
+    "native_volume": "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes/20231121133215/",
+    "volume_cartographer_source": "https://github.com/educelab/volume-cartographer/tree/7640ba6c8e41f39a7aef63e9780cd13c296b2d15",
+    "radiometry": "https://dl.ash2txt.org/other/EduceLab%20Herculaneum%20Scroll%20Data%20(2023)%20Info%20Sheet%20v3.pdf"
+  },
+  "runner_sha256": "6d9f0eee1ddaf6e4563a0ec790441141df0e36591e0be5c4c5ae836ea80cab29",
+  "all_source_expected_heads": {
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/3/10": {
+      "length": 4043013,
+      "etag": "\"67b5cf93-3db105\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/3/27": {
+      "length": 4062803,
+      "etag": "\"67b5cf93-3dfe53\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/4/10": {
+      "length": 4163999,
+      "etag": "\"67b5cf94-3f899f\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/11/4/27": {
+      "length": 4194320,
+      "etag": "\"67b5cf94-400010\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/4/27": {
+      "length": 4034926,
+      "etag": "\"67b5d23e-3d916e\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/5/27": {
+      "length": 4030670,
+      "etag": "\"67b5d243-3d80ce\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/38/6/10": {
+      "length": 4084605,
+      "etag": "\"67b5d245-3e537d\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_3.24um_.zarr/0/39/6/10": {
+      "length": 4078794,
+      "etag": "\"67b5d286-3e3cca\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/5/2/4": {
+      "length": 4045594,
+      "etag": "\"67b5d59b-3dbb1a\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/5/2/5": {
+      "length": 4105836,
+      "etag": "\"67b5d59b-3ea66c\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/5/2/11": {
+      "length": 4159704,
+      "etag": "\"67b5d59b-3f78d8\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/5/2/12": {
+      "length": 4041712,
+      "etag": "\"67b5d59b-3dabf0\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/2/12": {
+      "length": 3919675,
+      "etag": "\"67b5d5f1-3bcf3b\""
+    },
+    "https://dl.ash2txt.org/fragments/Frag5/PHerc1667Cr1Fr3.volpkg/volumes_zarr/70keV_7.91um_.zarr/0/16/3/5": {
+      "length": 4098430,
+      "etag": "\"67b5d5f1-3e897e\""
+    }
+  },
+  "secondary_adaptive_diagnostic": {
+    "description": "At each original PPM center, trilinearly interpolate its eight native TIFF integer corners with the unchanged original Region helper; round with numpy.rint and report signed/unrounded and absolute/rounded errors against the already observed surface TIFF k32.",
+    "report_all_four_regardless_of_source_gate": true,
+    "affects_source_gate_or_anatomy_decision": false,
+    "no_additional_io_or_parameter_search": true,
+    "interpretation": "Separates local native/Zarr source fidelity from residual disagreement with the old candidate surface-center contract. It does not establish historical plane phase."
+  }
+}
