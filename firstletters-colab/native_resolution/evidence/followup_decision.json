@@ -1,0 +1,39 @@
+{
+  "candidate_claim": false,
+  "coarse_fields": [
+    {
+      "field_AP": 0.9032138503396784,
+      "macro_recall": 0.7256679422646082,
+      "numeric_operational_pass": true,
+      "scroll": "PHerc0841"
+    },
+    {
+      "field_AP": 0.7057477530039964,
+      "macro_recall": 0.37873335265691516,
+      "numeric_operational_pass": false,
+      "scroll": "PHerc0814"
+    }
+  ],
+  "complete_fixed_scale_visual_review": true,
+  "control_result_sha256": "754603f2409f21b843cc161f75602a9d4c402c02f1cd008fca1fb4c08a4ff303",
+  "fine_rule_relaxed": false,
+  "followup_status": "not_executed_existing_operational_gates_failed",
+  "interpretation": "Positive within-control information signal; failed prespecified two-field advancement. No unread-scroll absence claim follows.",
+  "original_fine_two_field_gate_pass": false,
+  "planned_followup_scroll": "PHerc1203",
+  "preparation_scope": "Geometry and source metadata only; no target CT voxel/chunk payload was acquired.",
+  "schema": "scrollprize.native-resolution.followup-decision.v1",
+  "separate_coarse_operational_rule": "Both complete control fields must have quadrant-macro recall >=0.50 and full-field AP >=0.80, plus fixed-scale coherent-stroke review. This rule was fixed before new field outputs were inspected; it does not alter the fine-resolution hypothesis.",
+  "unread_scroll_CT_payload_requests": 0,
+  "unread_scroll_model_forwards": 0,
+  "visual_observations": [
+    {
+      "observation": "Native fine and coarse broadly follow the labelled stroke; degraded fine is almost blank on the fixed0-1 scale. Patch boundaries and texture remain. This is a fragment of published labelled writing, not new letters.",
+      "scroll": "PHerc0841"
+    },
+    {
+      "observation": "Native fine restores broader continuous stroke structure relative to the fragmented coarse map, but misses labelled shape and has saturated regions and tile discontinuities. The image does not supply a new legibility or sensitivity claim.",
+      "scroll": "PHerc0814"
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # Native fine detail versus matched degradation
 
+**Completed experiment:** see [RESULTS.md](RESULTS.md) for all 388 executed CPU
+forwards, the positive within-control information signal, and the failed
+prespecified two-field advancement decision. The frozen runner, protocol and
+selection below are unchanged.
+
 This is a real-model experiment designed to test whether a fine-resolution
 pipeline recovers coherent ink structure lost by the current coarse pipeline.
 At protocol preparation, no new model or CT outcome is known.
