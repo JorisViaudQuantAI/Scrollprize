@@ -118,7 +118,24 @@ python gemini_lane/studio_rtx4060_bench.py \
 
 ---
 
-## 6. Attribution & Licences
+## 6. Colab T4 notebook & `PHerc1203` CPU on-sheet triage
+
+[`colab_t4_firstletters_screener.ipynb`](colab_t4_firstletters_screener.ipynb) is a zero-setup Colab T4 wrapper around `screen_scroll_rtx4060.py` (Studio fp16 stride 48 + A-hn fp16, both depth orders). It clones `gemini/coverage-gpu-lane`, installs only `numcodecs safetensors tifffile opencv-python-headless requests`, and has pre-filled cells for: (i) `PHerc0306B` positive gate (`--uv-crop 80:140,120:345`, must be reviewed before (ii)/(iii) unlock), (ii) `PHerc0125` Tier-1 (`z10544_w035`, `z14144_w035`, `z8736_w035`, `z6944_w030`, `z15936_w030`; skips `z14144_w045`), (iii) the 6 clean `PHerc1203` S3 sheets (`46.66 cm²`, `--snap-passes 2`), (iv) `verify_upstream_gpu_burst.py` (skips cleanly if the script is not on the branch). Outputs go to `/content/scrollprize_private` (outside git); only `montage.png`, `hotspots.png`, `summary.json` are zipped / copied to Drive.
+
+[`evidence/pherc1203_onsheet_triage.json`](evidence/pherc1203_onsheet_triage.json) is the sanitized CPU-only result (`m7` snap + `onsheet_score` + `valid_ct_cm2`, no ink detector, no images/paths), built by `build_pherc1203_onsheet_triage.py` from the private per-sheet summaries.
+
+```bash
+CUDA_VISIBLE_DEVICES="" python gemini_lane/screen_scroll_rtx4060.py --scroll PHerc1203 --mesh <sheet URL> \
+  --ct-zarr <CT zarr> --m7-zarr <m7 zarr> --detectors none --num-slices 5 --snap-passes 2 --cache-mb 256 \
+  --voxel-um 9.362 --out-private-dir <private dir outside repo>
+python gemini_lane/build_pherc1203_onsheet_triage.py --private-dir <private dir> \
+  --output gemini_lane/evidence/pherc1203_onsheet_triage.json
+python -m unittest discover -s gemini_lane -p "test_*.py" -v
+```
+
+---
+
+## 7. Attribution & Licences
 
 * Scripts & tests in `gemini_lane/`: MIT License (`../LICENSE`).
 * Studio soft-loss weights & `model.py`: Priyank Aranke and contributors (`vesuvius-studio-multiscroll-cpt`, code MIT, weights CC BY-NC 4.0).
