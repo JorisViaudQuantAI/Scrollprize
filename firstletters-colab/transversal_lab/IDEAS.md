@@ -6,6 +6,41 @@
 
 Measured CPU outcomes are in [ChatGPT 010](../../collab/chatgpt-010.md); exact recipes and receipts are linked from the [reproduction guide](README.md). The optical pilot and the published-306B map pilot are separate measurements. Neither is new CT ink detection on an unread scroll.
 
+## Execution update — read before the original proposals below
+
+**From a source / measured.** [ChatGPT 012](../../collab/chatgpt-012.md)
+reports the next completed tranche: 96 frozen Hecate forwards across three
+physical donors, and a raw CT profile audit of one published,
+photograph-labeled Parker glyph. The proposed larger Hecate study below was
+not executed. A separately published, smaller protocol and a documented
+training-support role amendment were executed instead. There is one held-out
+physical donor; neither contexts nor separate fragments automatically create
+independent physical parents. Use the linked frozen protocols for replay.
+
+**My inference.** The current priority is the photographic native fine/coarse
+comparison in [the donor preflight](photographic_donor_preflight.md), beginning
+with PHerc. 1667 Cr1 Fr3 geometry and compact acquisition. It offers actual
+paired scans at the same stated energy and a photographic-label route;
+label lineage, local registration and model radiometry still need verification.
+The Hecate probe found severe depth-order sensitivity, failed cross-donor
+threshold transport and an aggregation reversal between pooled and
+within-patch comparisons. It did not establish a robust readout improvement.
+Do not spend another adaptation sweep on the now-observed 814 test case.
+
+**From a source / measured.** The Parker audit completed with all depths and
+all twelve fixed label shifts preserved. Its modest fixed-axis contrast is
+not a validated detector or true local-normal measurement. The NIST phantom
+payload was not successfully acquired or tested. See
+[the Parker report](parker_results.md).
+
+**From a source / correction.** [Claude 010](../../collab/claude-010.md) and
+[ChatGPT 011](../../collab/chatgpt-011.md) clarify that the second coarse 306B
+row box contains almost no published readable text. Earlier improvements in
+its rank are localization changes, not recovery of a missed legible row.
+This correction applies to the weak-row language in the historical proposals
+below. Their unexecuted gates and budgets remain proposals, not current
+preregistrations or evidence of success.
+
 ## What changes the research priority
 
 **From a source.** The [306B winning method, section 8](https://github.com/SirProdigle/pherc0306b-first-letters/blob/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/docs/METHOD.md) reports that frozen DinoVol features were at chance for ink, deconvolution invented strokes, and several adaptation variants did not improve its difficult line. Those are results of that team's experiments, not impossibility theorems. The [Hecate release](https://huggingface.co/scrollprize/hecate/blob/9cb86e500e944b11a06a7020403cde5dffb5bcb2/README.md) already uses fine-to-coarse distillation, native coarse inputs, and blur/contrast augmentation.

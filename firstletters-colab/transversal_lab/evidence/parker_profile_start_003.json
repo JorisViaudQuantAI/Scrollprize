@@ -1,0 +1,43 @@
+{
+  "published_freeze_reference": "abc3298d0c6f7e73a2b21794488214dd106f8bc1",
+  "protocol_sha256": "30eabd9cf4762e290840db1af5ebaf9f6ee07189212b2984c41608c3af902ecb",
+  "manifest_sha256": "92ac975b4e4999090a8eeddce56c87a62d5d37ad9f0765169aa3db3faafca606",
+  "implementation_sha256": "cecc7f956eefdfb3225de46066ee7fe5b32c8a4e2368a751953f12355056227d",
+  "runtime": {
+    "python_version": "3.12.14",
+    "numpy_version": "2.3.5",
+    "pillow_version": "13.0.0",
+    "numerical_thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "declared_dtypes": {
+      "ppm": "<f8",
+      "ct_header_mode": "I;16B",
+      "ct_numpy_expected": ">u2",
+      "profiles": "<u2"
+    },
+    "final_transport_amendment": {
+      "scientific_freeze_reference": "bcd67e3005132b74e295964cea99f4a23d63608c",
+      "previous_transport_reference": "410f233f624efbc3689bd3e33253ff662e7cc0bc",
+      "final_transport_reference": "abc3298d0c6f7e73a2b21794488214dd106f8bc1",
+      "final_transport_amendment_sha256": "c95ad758d2c970921c4b418820ff8c64568ecb21a7c06164ceac94e45f358aa1",
+      "final_transport_wrapper_sha256": "a3d9810a3816443b7a1c3c4fdd5b88bbf79e7da1079eb6c5ef22a73ff99716d7",
+      "logical_attempt": 3,
+      "redirect_max_local_age_seconds": 20,
+      "request_timeout_seconds": 45,
+      "additional_attempts_per_missing_member": 2,
+      "redirect_refreshes": 0,
+      "cumulative_reserved_seed_bytes": {
+        "source_slice": 105902334,
+        "geometry_or_supplied_label": 13000000
+      },
+      "successful_byte_counter_scope": "Successful attempt001+002+003 range bodies; preflight separately reserved in cumulative caps."
+    }
+  },
+  "status": "started; no outcome yet"
+}

@@ -1,0 +1,17 @@
+{
+  "result_sha256": "4c34b349e697e760456ff915be1cebc4079f61eeb1be90e7a9715b4ba56d0913",
+  "freeze_sha256": "a4da6a372999ff7fc8456423ce72146f1b4ebdb6f9c030a720ffa4e3f64be6ec",
+  "review_scope": "Existing result/freeze JSON only; no CT, feature arrays, model calls, new fits, tuning, or new metrics.",
+  "errors": [],
+  "nonfinite_paths": [],
+  "null_fields": 7608,
+  "null_interpretation": "Expected for zero-scored or single-class context metrics; background-only calibration has no AUROC/AP/recall.",
+  "new_directory_bytes": 143316136,
+  "cumulative_directory_plus_checkpoint_bytes": 966747482,
+  "cumulative_disk_cap_bytes": 1073741824,
+  "labeled_test_contexts": 5,
+  "test_contexts_with_both_classes": 2,
+  "all_eight_combinations_present": true,
+  "metric_objects_validated": 1122,
+  "unexpected_null_fields": []
+}

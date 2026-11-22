@@ -1,0 +1,47 @@
+{
+  "evidence_kind": "portable replay packaging checks; no fresh scientific replay",
+  "runner": "firstletters-colab/transversal_lab/replay_hecate_role.py",
+  "runner_sha256": "4abb703b64b05ca0b386b99c56f26a1d7e430b83e9badcdaad57b7ab8efbf78f",
+  "recorded_utc": "2026-11-22T14:39:00.198430+00:00",
+  "check": {
+    "command": "python firstletters-colab/transversal_lab/replay_hecate_role.py check",
+    "exit_code": 0,
+    "status": "pinned_json_hash_and_role_contract_passed",
+    "published_source_assets_pinned": 438
+  },
+  "synthetic_check": {
+    "command": "python firstletters-colab/transversal_lab/replay_hecate_role.py synthetic-check",
+    "exit_code": 0,
+    "original_generated_geometry_and_threshold_checks": "passed",
+    "generated_held_out_access_gate_checks": "passed",
+    "generated_fixed_label_support_upper_bound_checks": "passed"
+  },
+  "compile": {
+    "command": "python -m py_compile firstletters-colab/transversal_lab/replay_hecate_role.py",
+    "exit_code": 0
+  },
+  "independent_review": {
+    "metadata_and_generated_checks_repeated": "passed",
+    "scientific_orchestration_read_review": "passed",
+    "blocking_issues_found": 0
+  },
+  "publication_source_receipt_sha256": {
+    "hecate_v1_source_acquisition.json": "8fc138c17ba26453355575d6d1721437ce5f9b9fd705ce37cfb3758c6bb2eb26",
+    "hecate_role_source_acquisition.json": "9178251390f8296045d194f50338050d557392ac8aed1fc5ee2cb467146f712a"
+  },
+  "validation_scope": {
+    "real_source_acquisitions": 0,
+    "real_ct_decodes": 0,
+    "real_label_decodes": 0,
+    "model_fits": 0,
+    "model_forwards": 0,
+    "fresh_full_replay_executed": false,
+    "frozen_scientific_files_modified": false
+  },
+  "limitations": [
+    "The full fresh replay path was not executed in this session.",
+    "These are software and integrity checks, not scientific outcomes or an independent replication.",
+    "Historical source-acquisition receipts are immutable input integrity manifests; historical timing, fitted state, feature arrays, thresholds and outcomes are not replay inputs."
+  ],
+  "receipt_basis": "Records successful checks on the stated unchanged runner hash; only the hash was rechecked when writing this receipt."
+}

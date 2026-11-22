@@ -1,0 +1,728 @@
+{
+  "transferred_body_bytes": 135980433,
+  "maximum_source_bytes_excluding_checkpoint": 224575053,
+  "source_chunks": "Mutable public bucket chunks are hash-recorded on acquisition, not pre-pinned.",
+  "completed_assets": [
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/.zarray",
+      "bytes": 368,
+      "sha256": "21f58f5909b767c84ed8213ee2cf5efd26b0f9f4898e1f11af1a7680b61631ec"
+    },
+    {
+      "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/geometry-valid.png",
+      "bytes": 16500,
+      "sha256": "97327701b7b0bd08dc9bfc6231d235ba3e682573f17f9e9c3f0a12d75f267a9a"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.48.26",
+      "bytes": 1023564,
+      "sha256": "6a9064d7afb6f28010a7fb03e02073136aebaa31c809ea28d3df84b058abb3a8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.47.26",
+      "bytes": 1022116,
+      "sha256": "a2b7fc13c4aa7168ec657ce7bc421689176801a055e1312e9f8b005d16bd6474"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.47.28",
+      "bytes": 1023142,
+      "sha256": "2a42bf99bec31d2abebc4aae391e5764f808b6446a0e349255a68b18c1d61d30"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.47.27",
+      "bytes": 1009178,
+      "sha256": "e4206edcc15395eccb6cebe390cf605e91d1450f0fc3c1c98566409be849138f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.48.28",
+      "bytes": 1021337,
+      "sha256": "789aa37468f58f1b10a901103b4e5abd73a182007bc9043a269ce357a4eccfaf"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.26",
+      "bytes": 1014811,
+      "sha256": "72f71372b2f226794f57656668ba3e27f851abcb8f54090f83132441c58d0984"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.48.27",
+      "bytes": 1022339,
+      "sha256": "6e19b7e24cffc469d1816334e353e6ef8d785da8f738db9adb1d4a7151ea8738"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.27",
+      "bytes": 1024426,
+      "sha256": "cfff929f3b9772f463388d0d7ec3f8c7388902d39d82a596e166081246c8ec9d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.28",
+      "bytes": 1006024,
+      "sha256": "2112766830d5da1577a022b97efca789d1d2b1d69aee3920a99eb9354ff1d3bb"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.73.14",
+      "bytes": 978729,
+      "sha256": "7a08fbbdb49f712f92d0e4c10c8d47e37980d1a3880ec0a4a54d3483bf81dd22"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.74.12",
+      "bytes": 791046,
+      "sha256": "af7a65b9f1c86bf806d87955572cc617b6eed975bdc1e2ed39df90cd81f63c28"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.73.13",
+      "bytes": 893024,
+      "sha256": "3f2da9ed395d3273bba97e71fd8c87968676c81018b74c7300887b1b1503c8b8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.73.12",
+      "bytes": 970084,
+      "sha256": "48523f477e75a2bd73c89c83d279c448b98831b9188372f700a0e5280806c5ca"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.74.14",
+      "bytes": 984447,
+      "sha256": "fd4d5305ca8c1cb3347c580f0949df326c0e822918336b24c82f0e9fcdffea7a"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.74.13",
+      "bytes": 835564,
+      "sha256": "4246d02c6173c6b8cde72df62b93cef08f629f8274d26ff0295f49916e0905c8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.26.39",
+      "bytes": 979035,
+      "sha256": "3eb499f07572c8d8b2db5cf023da0bb9fc7d9505e7982a1786511e1db0c3746c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.26.40",
+      "bytes": 962497,
+      "sha256": "3c3a1f1c1fb9036ed81ea35eaed5a538a537d333fc840626ff5de99eaa3241da"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.27.39",
+      "bytes": 948613,
+      "sha256": "977ff650910a4f571c6f156fbb05c26503f4d83f5acabb1ef81a1dacb8393ad4"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.26.41",
+      "bytes": 1002083,
+      "sha256": "9fc69e778cb4986827fd586fbfc207c110560e3b441e35a52b826e46c6f21a1d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.40",
+      "bytes": 971550,
+      "sha256": "e5bcbd451fe165ab1fdcbb48c09eb7b23270b905e16f4473481200b90a9f6507"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.27.40",
+      "bytes": 897511,
+      "sha256": "b3e70caeb8c1bdd67d7e8e4aac6d9720b10decdda84fdbc88e7ba8c80aab08c9"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.39",
+      "bytes": 997341,
+      "sha256": "9fc5ca90b162397a05e506dcfae8850d3f8b63a39497953112aa2dd94cef4cbe"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.27.41",
+      "bytes": 937919,
+      "sha256": "b3dcd808597a60b4f20ee78a317db1a02979aabd9c8259da7aa7a1cf9ce729ba"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.41",
+      "bytes": 1000598,
+      "sha256": "2ada5a7a28fb916b6462039afe751db99d39f447fc27fa0c43eed6d0c65fce2d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.18",
+      "bytes": 997630,
+      "sha256": "5e6eaaa917f67e431826d29ed04c7d8d720cda724536b6cd9552e1510bbf76b2"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.17",
+      "bytes": 1010262,
+      "sha256": "013b2ecbe4e752a67a43f26f0948da5d030619bd4ff01489f8090bf961bed858"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.29.16",
+      "bytes": 994436,
+      "sha256": "f6be85691bd1aabc958ac73a53c07f350bf91d6314613f01b69c1a8a08690237"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.28.16",
+      "bytes": 1043442,
+      "sha256": "5ac7b00615e0d8dda5c1b4beb64ea16c3182fc5a098434a00f95cc473b0281c7"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.29.18",
+      "bytes": 1008602,
+      "sha256": "0abb12935c592b75133306a5cf7218876e25f4b64a9ab0f0120f80a98ee3db68"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.30.17",
+      "bytes": 899858,
+      "sha256": "94af6355aa077a83f1bc3939a3c1713613ccb4b6209eaae2fee3deedce2b285f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.30.16",
+      "bytes": 911442,
+      "sha256": "3f9996c7153cb200901f947411988bb83737054fc8c34234ed26a2d17247f3a8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.29.17",
+      "bytes": 948432,
+      "sha256": "1a67d46db10d4d5f53176fe2c3e56b12f79c01697f5c03195211df4939ebf5bf"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.30.18",
+      "bytes": 929800,
+      "sha256": "0d13153643702129fecdd3bd2c7965e1432db7a5d755af77adb0461caf03302f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.47",
+      "bytes": 900733,
+      "sha256": "e898e31c939d8f803312df57b076c0fd1502b0d45b7fc6efd85e13d533fda63b"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.49",
+      "bytes": 969119,
+      "sha256": "ca14cb6ec9691ae17c9cf0fdc46b7fbcdf9d2e45e2f86d477752ea67b9250d40"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.48",
+      "bytes": 890211,
+      "sha256": "9b9880b124003becc7ed23cddd92ad8559e4f9fd6bda3543796b8bd21bde1ee8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.47",
+      "bytes": 943822,
+      "sha256": "797b70dd3db1a6e5c4a3087517bf77f79bf50e3558309c760a1e135c0951d771"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.49",
+      "bytes": 937282,
+      "sha256": "b9c0fc2dc0201c33c21e06a26d378f44dd76ba761ebd38ccdd08f2489ec1c733"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.48",
+      "bytes": 902148,
+      "sha256": "9bbacb893130b7cf022dbfb0a5ad17aeea62442c2d950c593b3538ef9c058185"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.48",
+      "bytes": 877164,
+      "sha256": "77f7de55886561012ed1049b63bfcb55e66520f958dfff0a794392b76b4de762"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.47",
+      "bytes": 884226,
+      "sha256": "168c21f6f0105a052ba7faded21f34679d252ae0feb499d3cb469792d1a3251e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.49",
+      "bytes": 920546,
+      "sha256": "2314d79f4e0639445fa654afe5a27e2273e648f5efcb49cbad8e6bd02745a2ed"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.53.8",
+      "bytes": 956024,
+      "sha256": "4693774cb132c3f0cbd76342728ee44a544e92ff6c7b7a71c51695856d0d093f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.54.6",
+      "bytes": 981960,
+      "sha256": "e99f7f7969d83cebc8cefa9fdfa2afdfe4d0e45405e5a7d37449895431270dfe"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.53.7",
+      "bytes": 1034691,
+      "sha256": "eaa8a13e7813e41ef8bb96e2745c749e6afce17e678821abbd5b47028870c8a0"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.53.6",
+      "bytes": 1003114,
+      "sha256": "9d0fc661767363694abae1890da1971f53cf428bb44127488f444e05207c3a1a"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.7",
+      "bytes": 974093,
+      "sha256": "42b1b6510366629d0f7b6803fbdc84c666162effae546ff30e5ba267c80fbb50"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.54.7",
+      "bytes": 1035749,
+      "sha256": "710adcc0d756b3569b375c94b02d3e65751d93fce4aa14c60c86f5f1eff8472d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.6",
+      "bytes": 1008232,
+      "sha256": "ef45e763d2fa6916d49674bbd69fe6fb14fbff996f529b16840ddb32c5050940"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.54.8",
+      "bytes": 985008,
+      "sha256": "02078dd43fdeae3f4485a7ba6e9d465081e9cc85051d9e0ebaaea9d2e420344d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.8",
+      "bytes": 977594,
+      "sha256": "4006b4278f9d849fb874fa611ca98ccf20d57024d43168de0bba9a333ff5b418"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.31",
+      "bytes": 972144,
+      "sha256": "a80d43e3f12148b4a8728adf2596293ad4be4208d8bc5b9f9ddaddbc7b61b103"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.32",
+      "bytes": 1006397,
+      "sha256": "40ee9945afaf9d06e87cf986cda8e9edf2f8ee9d147f6c05b9f20cadacea1470"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.30",
+      "bytes": 995522,
+      "sha256": "20baa875984615daa5e931a96ae55f5a22c7770694677b821a35b3b69b8a8f80"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.66.30",
+      "bytes": 999514,
+      "sha256": "0f558fba8bcaae481ee52e7fe51d84120ca7f897c542e96f9b58f792f9f4fff5"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.66.31",
+      "bytes": 1005906,
+      "sha256": "2048798d906eb0d5539647a56c60cc2bfc6dabe684d9223394c8362020ffb505"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.67.30",
+      "bytes": 1008457,
+      "sha256": "d405bb4734e7a8633bb7a8089f1ef9eee0fef15ed2fe0670dc04730f9b33a001"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.67.31",
+      "bytes": 1014104,
+      "sha256": "a497aa30db390c7c66aa4cbdd3aef816958cf05cd977fd97d8f9c18dc0db4bee"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.66.32",
+      "bytes": 1026261,
+      "sha256": "891ccbbb1215e7b6e3e207866dbd0740be1bab794fd6bd918119dca599bde5d6"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.67.32",
+      "bytes": 1038669,
+      "sha256": "00cbb0bebbfd1879b5b400416829711b5420fa74a10fd85b6b8caa51209e949d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.9",
+      "bytes": 908830,
+      "sha256": "996cdb0419463174e28dd6650d64a284a4c7fc8d2ce295ba0c2f067b9b941587"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.8",
+      "bytes": 837156,
+      "sha256": "d33c9c9abcc75eddcca0476fe789a2b4f9832dafc9cbee0bb2e0d170801b1ba2"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.8",
+      "bytes": 985190,
+      "sha256": "cafde361b4b5c9af58a530e83243210f103d2df744ae9fda6dd16fe89dfa36a2"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.10",
+      "bytes": 932154,
+      "sha256": "085921aa4603e41db1f0515b7538d2070affbebab298d5885fe34b0a4d2fec7d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.10",
+      "bytes": 1001487,
+      "sha256": "9bb811a5f4112d9ff439459527c41f74e48f95dacd8926499fcd864d83e38cd2"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.8",
+      "bytes": 984627,
+      "sha256": "2403c2f942525798fcd12201ef7e99d6a661fdfe7d7c5330532bd2d55d3422f4"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.9",
+      "bytes": 1006640,
+      "sha256": "d88ddbb23f66e189b8cc8c32a4b2fa40b40031f5b4cde9fe148d602a1472a799"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.9",
+      "bytes": 1014553,
+      "sha256": "9710f3043c1da83ae2c4ef74a86e952f44ccd5b81d5130d95b769420d693adaf"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.10",
+      "bytes": 1009098,
+      "sha256": "ac84f553b00f35b83cba6ba12df8c55a30b2555c9c22b96f1ff36356a26ed924"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.38",
+      "bytes": 1021182,
+      "sha256": "081236bff8e3202d140eb10a7344e8ad08646c5210ad2f74083e96dd7dcc691e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.39",
+      "bytes": 1007767,
+      "sha256": "70fa914b7a8842cba5152529a6f77a631366bbb071afbe62c7435bde0c079d40"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.37",
+      "bytes": 995056,
+      "sha256": "2f1483ec71929cf0874fdc36883c4d28e15805e3f67ea612818a8e5420e9b3c6"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.37",
+      "bytes": 949670,
+      "sha256": "aa9d3bb8e38836298014e74124190e8d1fc79154ff5afea391ce60fe857345fd"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.39",
+      "bytes": 1031463,
+      "sha256": "7c96e220f5df1e92f51ab766f263e32df59ba2ea89715a4ec67d25566ffe6dd2"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.38",
+      "bytes": 1014798,
+      "sha256": "41e67c3abf2e906d659f0206c32d33ac90761a83ba4cf88dabd9d927ed839dcf"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.40.38",
+      "bytes": 1032622,
+      "sha256": "0eea19cdb3b558e1af9eccb9c240bbae1a8fab88674711b38662169951e5b27e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.37",
+      "bytes": 1002133,
+      "sha256": "11385e3b506f3cebaf192991e7bd066e4ac9703342ed47a4333b0974944de0a9"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.41.39",
+      "bytes": 1017592,
+      "sha256": "c076239a6ab1688df70ce349a17ba634a3cd066481616bbedc23f3989ebd7c15"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.59.19",
+      "bytes": 968747,
+      "sha256": "e07a072330aaf9378e53d4a37be63b0e82e42e45f8ecffe42dfc0da3c0e5ad3c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.60.18",
+      "bytes": 968015,
+      "sha256": "7155a8ba36c78c21f144fb35b26ddc36cc2611c4b32f41dba7008c6875c07d7b"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.59.20",
+      "bytes": 957169,
+      "sha256": "bdeb93da181102c54c4feff5baa2f6b8a560178908a75d367548f146edd6fc3d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.59.18",
+      "bytes": 917024,
+      "sha256": "d7400b408abd5219d25f2dc8a7a082a4ece50bd2cda4dc4dee87379b3dd0206d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.60.20",
+      "bytes": 1022711,
+      "sha256": "829929ad8ed2c527d69d88a1a3fcbdeb78dd19cfe7a64d416a8e521707a3a760"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.60.19",
+      "bytes": 1015919,
+      "sha256": "24bc872b97c9ae1bb6f2f650cc4b11859902421c19c1b7871dd993feb205cc3e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.61.18",
+      "bytes": 998411,
+      "sha256": "3ba9b0fa73870dc00c86a5b7b92c268b9e2f13e55079b404805f9bda1a47cf7f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.61.19",
+      "bytes": 1008312,
+      "sha256": "3126203136f9c5b0fbab099660d8cd4066a72bfcd45b277c6cdbc5af1e48e161"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.61.20",
+      "bytes": 1028308,
+      "sha256": "2e8fc770daf0e7475e68192373a5f14b9b0fa1bd47c6e3b7d4c89edc156967b3"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.33.28",
+      "bytes": 967268,
+      "sha256": "cd519ccb7384806354431badbac061ad34bdde74ce8d4a57f2886e3231ee4420"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.32.28",
+      "bytes": 1022304,
+      "sha256": "30c95bd4ffe46754eeb8705dff05d19f89948650f38d48de7838ca15646f0e22"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.32.30",
+      "bytes": 1018729,
+      "sha256": "44e110b89f41e2e93201fd989fa65d6ae17418915705c5aa4649f09d82414384"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.32.29",
+      "bytes": 991173,
+      "sha256": "8cf62e89a285332169e8e6dc61ca64a8a769f1ca8cd9f4e05a24168bf43b1d14"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.34.28",
+      "bytes": 984408,
+      "sha256": "2710da7545f6273851485f0d3c3f046428fe1343960dee7f8e8e88f94e4bb56f"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.33.30",
+      "bytes": 998279,
+      "sha256": "e5842457f0233344a7c0db542bb3c5fe0f58660665ccefad2a533f6ca5d1f9d8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.34.29",
+      "bytes": 1006248,
+      "sha256": "35f6f890ba34ab9674eea934d3f4a0e9a374164e93e3d454d5e1abc71e08bad8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.33.29",
+      "bytes": 1022600,
+      "sha256": "989b4ddeca12989dfec82a5158fa44a9ced74ae189c5a25180a80daba4eb12d6"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.34.30",
+      "bytes": 1020715,
+      "sha256": "ce8b72ee5119b3db8540acf2b86c5738718aafe94dea7a722634c3bd31cd6383"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.36",
+      "bytes": 897605,
+      "sha256": "cf68c9efceb3dee68e298eca6c7b3d6e26209f43857203e798bd10c9de526c6b"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.38",
+      "bytes": 950051,
+      "sha256": "764f8eea9883716ccdf3c689069f0c7164fd6654b08b739cec31d71e54d7cb77"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.55.37",
+      "bytes": 941201,
+      "sha256": "7377e0a903dfc203d7f47c34c63881f35580e17a9d150fa0e062c3cb511d0c3d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.56.36",
+      "bytes": 919283,
+      "sha256": "a841be9f8e8249c829e1692d3930a17cc8528e380382ae65a8dbfeb284f11393"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.56.37",
+      "bytes": 947417,
+      "sha256": "e28c4c3ec8fee024598b09b6270e2908408c708eb919b5617741cb365d1a1bd7"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.56.38",
+      "bytes": 981296,
+      "sha256": "21bea2222e76aed0744ee4b9768689e12a8e7f2af8ce1b34fbed1575b2a9e952"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.57.37",
+      "bytes": 972460,
+      "sha256": "cc38a140957c7a72c40410e68620426126d7fa6fcb24dbeb471dd15ad20bae5e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.57.36",
+      "bytes": 1008865,
+      "sha256": "7dc266782b72fa7e8fa4c3cb9ebe1a558c1f34c9a7bbdda538c1e989e4b0e414"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.57.38",
+      "bytes": 824540,
+      "sha256": "d82073eb2254fa7c929656fb1ad0e3d31a9d6126b92e22c07024fe3aad9e1d88"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.20",
+      "bytes": 794050,
+      "sha256": "6b9317b96dae9a3cc48ec930d68b0f94228bbd60d1cd9de1b664bfa4463b89e7"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.19",
+      "bytes": 788451,
+      "sha256": "8418767175b81c8c3978c45e3ce66ea6a7a2c6975087dda4f75bdc05b5362411"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.18",
+      "bytes": 830941,
+      "sha256": "1af491fb007e6d60827476289eb491da93eebff5530baa7dbc2cc6c1162085d6"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.18",
+      "bytes": 842599,
+      "sha256": "6f0389ce3adcbc8d9001ac60aaf848f41b9a811d535f0d93eea7c7d8bda6dafe"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.18",
+      "bytes": 940942,
+      "sha256": "467956116a44d155c87bbefa86c7a00081268497adaad5378f486e4d93e091ff"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.19",
+      "bytes": 861457,
+      "sha256": "2c3f29b5b0b558eac88ce7a8a96b0e91a1ed43bdcf031f4d7c97246eee2495be"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.19",
+      "bytes": 861810,
+      "sha256": "5fb71ca6f1d6cc49c9101a21938a33241db0fd7991208d40cf7c35005bb72ee8"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.20",
+      "bytes": 877348,
+      "sha256": "5c3f13cf802c443d1e71ca904c4f58db09949064a936940114377832b4f62dfb"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.20",
+      "bytes": 844542,
+      "sha256": "28b2c2b1b040f972b67f37c139228dd0cd4eb53d13335e7e2bf02e7199783869"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.48",
+      "bytes": 975733,
+      "sha256": "8918e5cefbeac2545c1a710d5e5849939060e61f79ec9395f54be80ff3626c23"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.47",
+      "bytes": 1028060,
+      "sha256": "662dc3ca3ef0b58c2ce8094f1e46177c2f87950130ac1de75d2f13e4ec5de655"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.47",
+      "bytes": 979370,
+      "sha256": "2ea4990e5f62dfe06f91be2ab1ae99d5b5b6738f3236978835d821d321e96bdb"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.37.49",
+      "bytes": 1002781,
+      "sha256": "cd710a8f620defab23bc7fc50bc323f159b1255ad2babeb24ca9b9d1356923f7"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.47",
+      "bytes": 990492,
+      "sha256": "911e555e76b7877735972819c95af769e5c104c6943dfddbf15b5f8d94119342"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.49",
+      "bytes": 985840,
+      "sha256": "38b84273f2874438b5ba5f16d761582c97d83c8655c4837250f1cca40ccb349d"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.38.48",
+      "bytes": 916049,
+      "sha256": "0bcb22820cf673621a96b0dde541c85f18b5ff3c5291cdf0d73395f5734d4f96"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.48",
+      "bytes": 1029302,
+      "sha256": "bd9db327bfde53f15bd004c02b24c7e7cd9ff53a6c4e74c6d7bcef63af8d5c9b"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.39.49",
+      "bytes": 866232,
+      "sha256": "a2a1501632fd6be1629c25f1d8ffae8cc9b09de81c3361e96299848e4cb00112"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.17",
+      "bytes": 898348,
+      "sha256": "5736b28ceeab0121bee1cdf5a92eb4359186c53a6fd87a48b8aff12c92c847d4"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.16",
+      "bytes": 917030,
+      "sha256": "b01bbbc7767b9732a1fc348fc436d1a2f19b2d1d86a6971c00147811daee5651"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.16",
+      "bytes": 860489,
+      "sha256": "430d7da62b0f92c5ab74149488ca2110a9f16b40293752eec1d60557502cf774"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.49.18",
+      "bytes": 975923,
+      "sha256": "fbecc5803f366599e95bc257627d56af2cad7061bb216a323687a87bf2afada0"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.17",
+      "bytes": 1000005,
+      "sha256": "9bfdde0343df3ff41170be250dfe4979baecf4429b74b00fff2a7a8cfc3b4d34"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.16",
+      "bytes": 952920,
+      "sha256": "2c212134ff7bbbb906d0020276dd2d79758b92fc227443f0d98ebf9032960393"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.17",
+      "bytes": 860046,
+      "sha256": "77d588c0db1cfc274ceb853278748f6e9812d3f060a5b2b9e73ce713af984a5c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.50.18",
+      "bytes": 929404,
+      "sha256": "d65b5ad39ec3189ede2fa1c7313872952b9f250a4ea71129addc8f0da599680e"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.51.18",
+      "bytes": 951563,
+      "sha256": "9cd83d446411b23d7ad0481a7fda1e660bd37f1785d8f2fe48eae2ccdd79ab1b"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.63.10",
+      "bytes": 968064,
+      "sha256": "f31b359587d728f5193a9cb194a44c137d801f44509ca06453eea6e47ab06483"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.63.8",
+      "bytes": 1009063,
+      "sha256": "98aa4df4b21c44c5faf845bae1f744933aa518282d5ee46c260481bf07ad0f2c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.63.9",
+      "bytes": 1013278,
+      "sha256": "9e264ec820549d0289e7a1c2622fb3f737a9470e1228fd9195f196ec2c20b817"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.64.8",
+      "bytes": 921744,
+      "sha256": "4223c06f27e3d2608c7ebbeaeb302e7e9808c73b9893c2b0eb69e92b0d06d7e5"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.64.10",
+      "bytes": 1004923,
+      "sha256": "53f637d908a52b60f11c0d158b2345e27e95d3720b36ea49ea65efcdb99d3c3c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.9",
+      "bytes": 936681,
+      "sha256": "64f541e697fa5761cc92945dc358e2a7b11af817974885782731d732140e077c"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.8",
+      "bytes": 949807,
+      "sha256": "935d54d7ab136b2b3ca761affcbc183559498217d98fd258ed88445a3055c163"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.64.9",
+      "bytes": 988167,
+      "sha256": "152bb7db2067a725051a18f1abfb7e730ec1d749b54a24348846f08462c8fb88"
+    },
+    {
+      "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/814/814_46527_2um_try2/814_46527_2um_try2.zarr/0/0.65.10",
+      "bytes": 961506,
+      "sha256": "2769adb7afbc1f5ec15ff40221b34bccbbf8336dce3ef9532d071960484b65fb"
+    },
+    {
+      "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/refined_state.png",
+      "bytes": 27957,
+      "sha256": "a5b080bf2a090f46a10bca780b2e19586fadf56f8da93e71f06cb9999c2ad986"
+    }
+  ],
+  "failed_assets": []
+}
