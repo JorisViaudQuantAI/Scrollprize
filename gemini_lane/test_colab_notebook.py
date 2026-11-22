@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import screen_scroll_rtx4060 as S  # noqa: E402
+from progress_prize_fp16 import verify_upstream_gpu_burst as B  # noqa: E402
 
 NOTEBOOK = HERE / "colab_t4_firstletters_screener.ipynb"
 EVIDENCE = HERE / "evidence" / "pherc1203_onsheet_triage.json"
@@ -118,6 +119,20 @@ class HelperTests(unittest.TestCase):
         self.assertEqual(args.out_private_dir, Path("/content/scrollprize_private"))
         self.assertLessEqual(args.vram_fraction, 0.9)
         self.assertFalse(args.uv_crop)
+
+    def test_burst_command_parses_with_real_burst_cli(self):
+        ns = self.ns
+        self.assertTrue((HERE.parent / ns["BURST_SCRIPT"]).is_file())
+        with tempfile.TemporaryDirectory() as tmp:
+            cmd = ns["build_burst_cmd"](Path(tmp) / "receipt.json")
+            self.assertEqual(Path(cmd[1]), ns["BURST_SCRIPT"])
+            args = B.build_parser().parse_args(cmd[2:])
+            self.assertEqual(B.validate(args), [])
+        self.assertEqual(args.stages, "studio")
+        self.assertFalse(args.dry_run)
+        self.assertLessEqual(args.vram_fraction, 0.35)
+        self.assertEqual(args.batch, 1)
+        self.assertEqual(args.studio_stride, 48)
 
     def test_pherc0125_tier1_excludes_codex_mesh(self):
         ns = self.ns
