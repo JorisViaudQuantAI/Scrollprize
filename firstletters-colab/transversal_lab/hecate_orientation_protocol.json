@@ -1,0 +1,61 @@
+{
+  "id": "hecate-frozen-readout-orientation-supplement-v1",
+  "status": "prospective supplement; publish before original experiment begins",
+  "date": "2026-11-22",
+  "purpose": "Separate fixed input-depth orientation sensitivity from readout information loss using the original frozen heads and original caches; retain the original source/source/source primary result.",
+  "original_freeze_commit": "0dd77c76effa551e3de99c1af87b62e553413939",
+  "original_runner_sha256": "41560c98001b4185b2860cf12591aa0a6f35d417ff52f5aa8681f4e957e7f702",
+  "original_protocol_sha256": "1bf91c1e8a000c54695eadc97d6268a19a3ee6f1ba40dcd12c61a4f4975ba526",
+  "original_manifest_sha256": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+  "motivation": "Pre-execution review showed that per-donor orientation requires composing normal_sign and runtime_reverse. The isolated runtime flag is misleading: the documented 9B and 814 legacy streams are both reversed relative to their stored ascending source order; 841 remains unverified. This supplement measures all combinations without asserting a known cross-donor mismatch.",
+  "combination_grid": {
+    "training_head_order": [
+      "source",
+      "reverse"
+    ],
+    "calibration_input_order": [
+      "source",
+      "reverse"
+    ],
+    "test_input_order": [
+      "source",
+      "reverse"
+    ],
+    "count": 8,
+    "arms": [
+      "baseline",
+      "depth",
+      "features"
+    ]
+  },
+  "unchanged": "Reuse the exact original context exclusions, input arrays, scored label pixels, support mask, two frozen training-order heads and three readout definitions. No new downloads, backbone passes, contexts, fitting, model selection or new labels.",
+  "per_combination_procedure": "Select one already frozen training-order head. Score its selected calibration-order cache, then recompute the same fixed calibration operating threshold independently for each arm. Apply the same head and threshold to the selected held-out test-order cache.",
+  "calibration_rule": "For each arm, sort scored calibration background values descending and take background[floor(0.01*Nbackground)]. Prediction uses STRICT score>threshold. No background makes the threshold unassessable. No alternative FPR targets or tuning.",
+  "primary": "source/source/source remains the sole original primary combination and must exactly reproduce the full original test metrics, including per-context results.",
+  "direction_interpretation": "The original all-reversed combination remains its original sensitivity arm. All eight combinations are reported symmetrically and no cross-order combination is privileged. Historical runtime direction is not a verified physical ink face.",
+  "reporting": "Report all eight combinations, all three arm validity states, per-context and pooled-parent calibration/test metrics, thresholds, hashes and execution costs. Keep invalid original fit arms invalid; never retry. Never choose or promote the best held-out combination.",
+  "budgets": {
+    "new_model_forwards": 0,
+    "new_fits": 0,
+    "new_downloads": 0,
+    "new_contexts": 0,
+    "expected_cost": "Small CPU rescoring of existing central 32 by 32 pixel caches; no GPU required. Runtime measured, not promised."
+  },
+  "limitations": [
+    "This is a prospective sensitivity supplement, not a replacement of the original primary result.",
+    "The metadata direction is evidence about a historical runtime convention, not an independently verified physical ink face.",
+    "One held-out physical donor, model-assisted labels, historical label enrichment and unknown inherited Hecate exposure remain.",
+    "All eight combinations share the same tissue and frozen heads; they are not independent replications.",
+    "Orientation robustness does not establish transfer to native coarse acquisition, unread scrolls or readable letters.",
+    "No result here authorizes selecting a held-out winner, retraining or claiming a prize."
+  ],
+  "baseline_duplicates": "For fixed calibration and test input orders, the baseline is identical across the two training-head orders. These duplicate rows complete the table and are not independent tests.",
+  "orientation_correction": "A draft interpretation used runtime_reverse alone and incorrectly inferred opposite 9B/814 directions. Independent code review corrected that interpretation before publication or any CT access; the original experiment and all eight scoring combinations remain unchanged.",
+  "orientation_sources": [
+    "https://github.com/priyankaranke/vesuvius-studio-multiscroll-cpt/blob/bf66f753176792a966bca17822629fb8821f20c8/donor-studio-resunet-scratch-20260926/render.py",
+    "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-9b-approved-r000001/label.json",
+    "https://github.com/JorisViaudQuantAI/Scrollprize/blob/0dd77c76effa551e3de99c1af87b62e553413939/firstletters-colab/transversal_lab/hecate_donor_manifest.json",
+    "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-studio-resunet-scratch-20260926/data.json"
+  ],
+  "consistency_checks": "Require the complete source/source/source and reverse/reverse/reverse test metrics to exactly reproduce their original results. Verify identical label IDs, labels and context order across cached input directions. Record reused feature-file hashes."
+}
