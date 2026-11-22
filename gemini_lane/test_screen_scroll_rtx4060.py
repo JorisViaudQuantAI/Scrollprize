@@ -275,6 +275,64 @@ class TestScreenScrollSafety(unittest.TestCase):
         )
         self.assertEqual(args_none.detectors, "none")
 
+    def test_screen_one_mesh_uv_crop_cpu_only_dir_naming(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="scrollprize-crop-test-") as tmp:
+            root = Path(tmp)
+            ct_zarr = root / "ct.zarr"
+            mesh_dir = root / "mesh_dir"
+            work_root = root / "work"
+            out_dir = root / "out_private"
+            work_root.mkdir()
+            out_dir.mkdir()
+
+            zz, yy, _ = np.meshgrid(
+                np.arange(48, dtype=np.float32),
+                np.arange(160, dtype=np.float32),
+                np.arange(160, dtype=np.float32),
+                indexing="ij",
+            )
+            z_sheet = 24.0 + 0.01 * yy
+            ct = np.clip(100.0 + 90.0 * np.exp(-0.5 * ((zz - z_sheet) / 1.5) ** 2), 15, 235).astype(np.uint8)
+            _write_local_zarr_v2(ct_zarr, ct, chunks=(24, 80, 80))
+
+            gy, gx = np.meshgrid(
+                np.linspace(12.0, 148.0, 20, dtype=np.float32),
+                np.linspace(12.0, 148.0, 20, dtype=np.float32),
+                indexing="ij",
+            )
+            gz = (24.0 + 0.01 * gy).astype(np.float32)
+            mesh_dir.mkdir()
+            tifffile.imwrite(mesh_dir / "x.tif", gx)
+            tifffile.imwrite(mesh_dir / "y.tif", gy)
+            tifffile.imwrite(mesh_dir / "z.tif", gz)
+            (mesh_dir / "meta.json").write_text(json.dumps({"scale": [0.1, 0.1]}), encoding="utf-8")
+
+            summary = S.screen_one_mesh(
+                scroll="TEST",
+                mesh_source=str(mesh_dir),
+                ct_zarr_url=str(ct_zarr),
+                m7_zarr_url=None,
+                snap_passes=0,
+                num_slices=5,
+                uv_crop=(0, 15, 0, 15),
+                voxel_um=9.362,
+                detectors=set(),
+                studio_stride=96,
+                studio_batch=1,
+                ahn_batch=1,
+                cache_mb=32,
+                staged={},
+                work_root=work_root,
+                out_private_dir=out_dir,
+            )
+
+            self.assertEqual(summary["uv_crop"], [0, 15, 0, 15])
+            self.assertEqual(summary["detectors"], {})
+            crop_out = out_dir / "TEST_mesh_dir_r0-15_c0-15"
+            self.assertTrue((crop_out / "summary.json").is_file())
+            self.assertTrue((crop_out / "montage.png").is_file())
+            self.assertEqual(list(work_root.iterdir()), [])
+
 
 if __name__ == "__main__":
     unittest.main()

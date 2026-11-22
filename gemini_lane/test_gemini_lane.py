@@ -113,6 +113,14 @@ class TestGeminiLaneEvidence(unittest.TestCase):
         for marker in ("54 keV", "78 keV", "137 keV", "1.129", "w130", "20260701183124-w010-027"):
             self.assertIn(marker, raw)
 
+    def test_pherc1203_dedup_manifest_clean(self) -> None:
+        path = EVIDENCE / "pherc1203_s3_dedup_manifest.md"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        for marker in ("PHerc1203", "auto_grown_20251005231446965", "46.66", "numcodecs", "blosc"):
+            self.assertIn(marker, raw)
+
 
 if __name__ == "__main__":
     unittest.main()

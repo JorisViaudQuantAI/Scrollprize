@@ -629,7 +629,12 @@ def screen_one_mesh(
     import onsheet_score
 
     mesh_tag = _mesh_dir_tag(mesh_source)
-    mesh_out_dir = out_private_dir / f"{scroll}_{mesh_tag}"
+    crop_suffix = (
+        f"_r{uv_crop[0]}-{uv_crop[1]}_c{uv_crop[2]}-{uv_crop[3]}"
+        if uv_crop is not None
+        else ""
+    )
+    mesh_out_dir = out_private_dir / f"{scroll}_{mesh_tag}{crop_suffix}"
     t_total = time.perf_counter()
 
     with tempfile.TemporaryDirectory(
