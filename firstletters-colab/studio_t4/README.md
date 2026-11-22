@@ -36,8 +36,8 @@ Windows with no CT data in their central 96 px are skipped. Pixels with all 16 p
 ## Measured numbers on a T4
 
 All numbers in this section and the next three were measured on one Colab T4, torch 2.14.1+cu130, with a
-private wrapper. This CLI is the same code path as the measured private wrapper, re-packaged; this packaged
-CLI itself was tested on CPU only.
+private wrapper. This CLI is the same code path as the measured private wrapper, re-packaged. The packaged
+CLI itself has since run on a Colab L4 and, independently, on an RTX 4060 (section "Measured on an L4").
 
 | setting | time per 128 px window | peak allocated GPU memory |
 | --- | ---: | ---: |
@@ -52,6 +52,28 @@ CLI itself was tested on CPU only.
 - Scan speed, fp16, batch 16, stride 48 Hann: 45 s per megapixel of data, about 52 s/cm² per pass at 9.37 µm.
 - Stride 96 without blending is about 4× faster: 12.1–12.6 s per megapixel, about 17 s/cm² per pass at
   8.64 µm. It leaves a visible 96 px tile grid.
+
+## Measured on an L4 and on an RTX 4060 (packaged CLI)
+
+Colab L4, 41 × 1024 × 1024 crop of the PHerc. 0306B render, stride 48 Hann, 529 windows, reference fp32 at
+batch 4:
+
+| precision | batch | ms per window | peak allocated | peak reserved | max \|Δp\| vs fp32 | mean \|Δp\| |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| fp32 | 4 | 95.6 | 15.7 GB | | | |
+| fp16 | 16 | 82.7 | 7.6 GB | 9.2 GB | 0.0031 | 0.00028 |
+| fp16 | 32 | 87.8 | 14.3 GB | 17.5 GB | 0.0031 | 0.00028 |
+| bf16 | 16 | 82.0 | 7.6 GB | 9.2 GB | 0.035 | 0.0027 |
+| bf16 | 32 | 86.6 | 14.3 GB | 17.5 GB | 0.036 | 0.0027 |
+
+- bf16 is no faster than fp16 and sits about ten times further from fp32. A second measurement on an
+  RTX 4060 (Gemini, `collab/gemini-002.md`) found the same: max |Δp| 0.0025 for fp16 and 0.011–0.062 for bf16
+  against CPU fp32. **`--precision auto` therefore now means fp16 on every CUDA GPU.** bf16 runs only when
+  asked for.
+- On an 8 GB card, batch 4 at stride 48 peaked at 3.0 GB allocated (same measurement).
+- Stride 96 at 9.36 µm: about 10 s/cm² per order on the L4.
+- Do not rank stride-96 maps with a line finder. Without blending, the tile seams break chains: on the known
+  PHerc. 0343 letters the best chain was 3.8 at stride 96 and 9.5 at stride 48.
 
 ## Plane convention
 
@@ -139,7 +161,7 @@ python repo/firstletters-colab/studio_t4/studio_t4.py \
 - Run `--order asc` with a new `--out-prefix` too (see above).
 - `--prepared` takes a `[16,H,W]` `.npy` already in model order, e.g. from `../studio_inputs/prepare.py`.
 - `--stride 96` for a quick first pass; `--batch-size` (default 16 on CUDA); `--precision` (default fp16 on a
-  GPU without native bf16, bf16 with it, fp32 on CPU); `--device cpu` works but is slow (about 3 s per window
+  GPU, fp32 on CPU; bf16 only on request); `--device cpu` works but is slow (about 3 s per window
   in fp32 with 4 threads on our CPU test host).
 - Without `--fetch-weights`, download the asset yourself from the
   [release page](https://github.com/priyankaranke/vesuvius-studio-multiscroll-cpt/releases/tag/studio-softloss-20261023).
@@ -164,8 +186,8 @@ a synthetic 41-layer stack: its map equals the release's `hf/inference.py` outpu
 
 ## Limits and what was not measured
 
-- This packaged CLI has not run on a GPU. Its CUDA path (fp16 and bf16) is the same code as the measured
-  wrapper, re-packaged. bf16 was not run on any GPU by us.
+- The packaged CLI has run on two GPUs (L4, RTX 4060), not on a T4. The T4 numbers above are from the
+  wrapper it was re-packaged from.
 - The T4 numbers come from one GPU, one torch version and one control. fp16 against fp32 was compared on one
   512 × 512 px crop.
 - The zarr reader was tested on a store written by zarr 3.4, not on `vc_render_tifxyz --zarr-output`.
