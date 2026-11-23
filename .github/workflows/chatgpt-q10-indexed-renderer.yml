@@ -1,0 +1,48 @@
+name: Q10 indexed native renderer parity
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-q10-indexed-renderer.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned CPU dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'scipy==1.12.0' 'pillow==11.3.0' 'numcodecs==0.15.1' 'requests==2.32.5'
+      - name: Generated parity checks
+        run: python firstletters-colab/adaptive_surface_recovery/indexed_native_renderer/run.py --self-test
+      - uses: actions/download-artifact@v4
+        with:
+          name: q10-multichart-public-receipt
+          run-id: 45265373300
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/q10-atlas-input
+      - name: Retrieve exact public renderer modules
+        run: |
+          mkdir /tmp/q10-gemini
+          git fetch --no-tags --depth=1 origin 0b92a3e06d686562f0f8bfb7baa264c3e98a9ca6
+          git show FETCH_HEAD:gemini_lane/stream_snap_render.py > /tmp/q10-gemini/stream_snap_render.py
+          git show FETCH_HEAD:gemini_lane/grow_m7_patch.py > /tmp/q10-gemini/grow_m7_patch.py
+          test "$(git hash-object /tmp/q10-gemini/stream_snap_render.py)" = 042fee4984205615b39d669c6f01500ecdff74a3
+          test "$(git hash-object /tmp/q10-gemini/grow_m7_patch.py)" = 51c549f55437f57103a7e3f62483e194e3750125
+      - name: Execute native geometry and real CT comparison
+        run: |
+          atlas="$(find /tmp/q10-atlas-input -name source_atlas.npz -type f)"
+          test -f "$atlas"
+          python firstletters-colab/adaptive_surface_recovery/indexed_native_renderer/run.py --atlas "$atlas" --gemini /tmp/q10-gemini --output /tmp/q10-indexed.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q10-indexed-native-renderer-receipt
+          path: /tmp/q10-indexed.json
+          retention-days: 30

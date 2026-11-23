@@ -1,0 +1,125 @@
+{
+  "schema": "adaptive.polar_sense.v1",
+  "script_sha256": "89eac11d6bc0cb65d9f784c6b0c9d41176fce28cb54646dd139b69f530ff131d",
+  "synthetic": [
+    {
+      "ellipticity": 1,
+      "expected": -10,
+      "displaced": false,
+      "estimated": -9.643992796132807,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": -10,
+      "displaced": true,
+      "estimated": -10.159093823691364,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": 10,
+      "mirror": true,
+      "estimated": 9.68515395806753,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": 0,
+      "displaced": false,
+      "estimated": 3.9444789577828487,
+      "pass": false
+    },
+    {
+      "ellipticity": 1,
+      "expected": 0,
+      "displaced": true,
+      "estimated": -0.2677831823530141,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": 10,
+      "displaced": false,
+      "estimated": 9.68515395806753,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": 10,
+      "displaced": true,
+      "estimated": 9.43915573740378,
+      "pass": true
+    },
+    {
+      "ellipticity": 1,
+      "expected": -10,
+      "mirror": true,
+      "estimated": -9.643992796132807,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": -10,
+      "displaced": false,
+      "estimated": -11.830233560882334,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": -10,
+      "displaced": true,
+      "estimated": -9.432710116689123,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": 10,
+      "mirror": true,
+      "estimated": 10.07144067628542,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": 0,
+      "displaced": false,
+      "estimated": -0.9385492000365048,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": 0,
+      "displaced": true,
+      "estimated": 0.04325243648781907,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": 10,
+      "displaced": false,
+      "estimated": 10.07144067628542,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": 10,
+      "displaced": true,
+      "estimated": 11.37752117297714,
+      "pass": true
+    },
+    {
+      "ellipticity": 1.25,
+      "expected": -10,
+      "mirror": true,
+      "estimated": -11.830233560882334,
+      "pass": true
+    }
+  ],
+  "cases": [],
+  "pass": false,
+  "synthetic_pass": false,
+  "stop": "synthetic gate failed before real CT",
+  "charged_bytes": 0,
+  "requests": 0,
+  "wall_seconds": 1.7472030780000125
+}

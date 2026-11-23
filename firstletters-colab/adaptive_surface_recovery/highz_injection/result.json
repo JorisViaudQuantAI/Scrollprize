@@ -1,0 +1,848 @@
+{
+  "experiment": "Q43_digital_bright_deposit_v1",
+  "source_array_sha256": "fb536e0be0f5e0d382d05584bd070b560031b1c880a46412439cb2e953026b0d",
+  "source_inventory_sha256": "58144cd99ad5dde242dd0b092b68f458c880cf9049341f65df8a5a5ddd1a89d4",
+  "protocol_sha256": "3455d1e9545acef70d2b405e2e5a10a8153483f242124a501a343d8170dc8bab",
+  "thresholds": {
+    "raw_max": 219,
+    "local_max": 69.11079756139772,
+    "local_mass": 915.8441504601725
+  },
+  "summary": {
+    "0.1": {
+      "realized_fraction_of_requested": {
+        "median": 0.7510524577161592,
+        "minimum": 0.40318682805856926,
+        "maximum": 0.9484806914440244
+      },
+      "cells_with_80pct_dose": 5,
+      "scores": {
+        "raw_max": {
+          "auc": {
+            "median": 0.5238456802678524,
+            "minimum": 0.3851929007372919,
+            "maximum": 0.7655157107326337
+          },
+          "sensitivity": {
+            "median": 0.003184812299562532,
+            "minimum": 0,
+            "maximum": 0.02454473475851148
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.009084845875562127,
+            "minimum": 0.00628693574751666,
+            "maximum": 0.021375581541556644
+          },
+          "original_flagged_fraction": {
+            "median": 0.009060329861111112,
+            "minimum": 0.007052951388888889,
+            "maximum": 0.019205729166666668
+          }
+        },
+        "local_max": {
+          "auc": {
+            "median": 0.5238231558147586,
+            "minimum": 0.40388417628345413,
+            "maximum": 0.7612147808446236
+          },
+          "sensitivity": {
+            "median": 0.003184812299562532,
+            "minimum": 0,
+            "maximum": 0.026920031670625493
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.01109007145033006,
+            "minimum": 0.00704136803721866,
+            "maximum": 0.020243933107003648
+          },
+          "original_flagged_fraction": {
+            "median": 0.009928385416666668,
+            "minimum": 0.007378472222222222,
+            "maximum": 0.018771701388888888
+          }
+        },
+        "local_mass": {
+          "auc": {
+            "median": 0.4660836110994113,
+            "minimum": 0.29968662885744324,
+            "maximum": 0.7742529298284252
+          },
+          "sensitivity": {
+            "median": 0.0028446492845574213,
+            "minimum": 0,
+            "maximum": 0.03976801988400994
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.004334118967510754,
+            "minimum": 0.001248595330253465,
+            "maximum": 0.022224996878511673
+          },
+          "original_flagged_fraction": {
+            "median": 0.003851996527777778,
+            "minimum": 0.002495659722222222,
+            "maximum": 0.01953125
+          }
+        }
+      }
+    },
+    "0.3": {
+      "realized_fraction_of_requested": {
+        "median": 0.8276540992900063,
+        "minimum": 0.5378753659409655,
+        "maximum": 0.9586538984312061
+      },
+      "cells_with_80pct_dose": 8,
+      "scores": {
+        "raw_max": {
+          "auc": {
+            "median": 0.6601491601639442,
+            "minimum": 0.43980860181839754,
+            "maximum": 0.941253641434662
+          },
+          "sensitivity": {
+            "median": 0.07244655581947743,
+            "minimum": 0.012427506213753107,
+            "maximum": 0.371996685998343
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.009084845875562127,
+            "minimum": 0.00628693574751666,
+            "maximum": 0.021375581541556644
+          },
+          "original_flagged_fraction": {
+            "median": 0.009060329861111112,
+            "minimum": 0.007052951388888889,
+            "maximum": 0.019205729166666668
+          }
+        },
+        "local_max": {
+          "auc": {
+            "median": 0.6493435453479215,
+            "minimum": 0.452767148970664,
+            "maximum": 0.9329607753828724
+          },
+          "sensitivity": {
+            "median": 0.08709422011084719,
+            "minimum": 0.02642113690952762,
+            "maximum": 0.3595691797845899
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.010964332735379726,
+            "minimum": 0.00704136803721866,
+            "maximum": 0.018609329812649313
+          },
+          "original_flagged_fraction": {
+            "median": 0.009928385416666668,
+            "minimum": 0.007378472222222222,
+            "maximum": 0.018771701388888888
+          }
+        },
+        "local_mass": {
+          "auc": {
+            "median": 0.5002621173348916,
+            "minimum": 0.3209726103645935,
+            "maximum": 0.8489978600089811
+          },
+          "sensitivity": {
+            "median": 0.019967647157220252,
+            "minimum": 0,
+            "maximum": 0.08234362628661916
+          },
+          "offstroke_flagged_fraction": {
+            "median": 0.004208601206747606,
+            "minimum": 0.000998876264202772,
+            "maximum": 0.021975277812460982
+          },
+          "original_flagged_fraction": {
+            "median": 0.003851996527777778,
+            "minimum": 0.002495659722222222,
+            "maximum": 0.01953125
+          }
+        }
+      }
+    }
+  },
+  "gate": {
+    "dose_retained": false,
+    "sensitivity": false,
+    "original_flagged": true,
+    "offstroke_flagged": true,
+    "gain_over_local_max": false
+  },
+  "passed": false,
+  "cases": [
+    {
+      "cell": "r4c0",
+      "dose": 0.1,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.9484806914440244,
+      "requested_digital_mass": 97789.55,
+      "realized_digital_mass": 92751.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.7655157107326337,
+          "sensitivity": 0.0016570008285004142,
+          "offstroke_flagged_fraction": 0.007866150580596828,
+          "original_flagged_fraction": 0.007052951388888889
+        },
+        "local_max": {
+          "auc": 0.7612147808446236,
+          "sensitivity": 0.0016570008285004142,
+          "offstroke_flagged_fraction": 0.009364464976900987,
+          "original_flagged_fraction": 0.008572048611111112
+        },
+        "local_mass": {
+          "auc": 0.7742529298284252,
+          "sensitivity": 0.03976801988400994,
+          "offstroke_flagged_fraction": 0.001248595330253465,
+          "original_flagged_fraction": 0.0037977430555555555
+        }
+      }
+    },
+    {
+      "cell": "r4c0",
+      "dose": 0.3,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.9586538984312061,
+      "requested_digital_mass": 293368.64999999997,
+      "realized_digital_mass": 281239,
+      "scores": {
+        "raw_max": {
+          "auc": 0.941253641434662,
+          "sensitivity": 0.371996685998343,
+          "offstroke_flagged_fraction": 0.007866150580596828,
+          "original_flagged_fraction": 0.007052951388888889
+        },
+        "local_max": {
+          "auc": 0.9329607753828724,
+          "sensitivity": 0.3595691797845899,
+          "offstroke_flagged_fraction": 0.008115869646647522,
+          "original_flagged_fraction": 0.008572048611111112
+        },
+        "local_mass": {
+          "auc": 0.8489978600089811,
+          "sensitivity": 0.0811930405965203,
+          "offstroke_flagged_fraction": 0.000998876264202772,
+          "original_flagged_fraction": 0.0037977430555555555
+        }
+      }
+    },
+    {
+      "cell": "r4c1",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.7285816521441978,
+      "requested_digital_mass": 48138.05,
+      "realized_digital_mass": 35072.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.41995585904082766,
+          "sensitivity": 0.00870942201108472,
+          "offstroke_flagged_fraction": 0.00980761976612599,
+          "original_flagged_fraction": 0.009657118055555556
+        },
+        "local_max": {
+          "auc": 0.4272023116012432,
+          "sensitivity": 0.012668250197941409,
+          "offstroke_flagged_fraction": 0.01332830378473532,
+          "original_flagged_fraction": 0.013346354166666666
+        },
+        "local_mass": {
+          "auc": 0.42982221660728676,
+          "sensitivity": 0.007125890736342043,
+          "offstroke_flagged_fraction": 0.002263296869105998,
+          "original_flagged_fraction": 0.0026041666666666665
+        }
+      }
+    },
+    {
+      "cell": "r4c1",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.8229768343337547,
+      "requested_digital_mass": 144414.15,
+      "realized_digital_mass": 118849.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.47949906412764065,
+          "sensitivity": 0.0831353919239905,
+          "offstroke_flagged_fraction": 0.00980761976612599,
+          "original_flagged_fraction": 0.009657118055555556
+        },
+        "local_max": {
+          "auc": 0.4893979763732674,
+          "sensitivity": 0.0958036421219319,
+          "offstroke_flagged_fraction": 0.012825348924933987,
+          "original_flagged_fraction": 0.013346354166666666
+        },
+        "local_mass": {
+          "auc": 0.4722983075847723,
+          "sensitivity": 0.03800475059382423,
+          "offstroke_flagged_fraction": 0.0021375581541556647,
+          "original_flagged_fraction": 0.0026041666666666665
+        }
+      }
+    },
+    {
+      "cell": "r4c2",
+      "dose": 0.1,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.9072437400573196,
+      "requested_digital_mass": 56228.55,
+      "realized_digital_mass": 51013,
+      "scores": {
+        "raw_max": {
+          "auc": 0.5998588251798879,
+          "sensitivity": 0.008006405124099279,
+          "offstroke_flagged_fraction": 0.014560060248525167,
+          "original_flagged_fraction": 0.013454861111111112
+        },
+        "local_max": {
+          "auc": 0.6030066176701874,
+          "sensitivity": 0.009607686148919135,
+          "offstroke_flagged_fraction": 0.014560060248525167,
+          "original_flagged_fraction": 0.013780381944444444
+        },
+        "local_mass": {
+          "auc": 0.4807458870322064,
+          "sensitivity": 0.005604483586869495,
+          "offstroke_flagged_fraction": 0.0031379440190786997,
+          "original_flagged_fraction": 0.0029296875
+        }
+      }
+    },
+    {
+      "cell": "r4c2",
+      "dose": 0.3,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.9336686315640957,
+      "requested_digital_mass": 168685.65,
+      "realized_digital_mass": 157496.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.7808958852785756,
+          "sensitivity": 0.11208967173738991,
+          "offstroke_flagged_fraction": 0.014560060248525167,
+          "original_flagged_fraction": 0.013454861111111112
+        },
+        "local_max": {
+          "auc": 0.7728387806266099,
+          "sensitivity": 0.10168134507606084,
+          "offstroke_flagged_fraction": 0.013053847119367391,
+          "original_flagged_fraction": 0.013780381944444444
+        },
+        "local_mass": {
+          "auc": 0.5310906689453483,
+          "sensitivity": 0.02642113690952762,
+          "offstroke_flagged_fraction": 0.0030124262583155516,
+          "original_flagged_fraction": 0.0029296875
+        }
+      }
+    },
+    {
+      "cell": "r4c3",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.8932103825607997,
+      "requested_digital_mass": 101433.55,
+      "realized_digital_mass": 90601.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6059752371389355,
+          "sensitivity": 0.006334125098970704,
+          "offstroke_flagged_fraction": 0.021375581541556644,
+          "original_flagged_fraction": 0.019205729166666668
+        },
+        "local_max": {
+          "auc": 0.5975716996897549,
+          "sensitivity": 0.0055423594615993665,
+          "offstroke_flagged_fraction": 0.020243933107003648,
+          "original_flagged_fraction": 0.018771701388888888
+        },
+        "local_mass": {
+          "auc": 0.5763363919798412,
+          "sensitivity": 0.027711797307996833,
+          "offstroke_flagged_fraction": 0.01018483591097699,
+          "original_flagged_fraction": 0.010525173611111112
+        }
+      }
+    },
+    {
+      "cell": "r4c3",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.9118498432389153,
+      "requested_digital_mass": 304300.64999999997,
+      "realized_digital_mass": 277476.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.8391919311385905,
+          "sensitivity": 0.3499604117181314,
+          "offstroke_flagged_fraction": 0.021375581541556644,
+          "original_flagged_fraction": 0.019205729166666668
+        },
+        "local_max": {
+          "auc": 0.8241456960275029,
+          "sensitivity": 0.26365795724465557,
+          "offstroke_flagged_fraction": 0.018609329812649313,
+          "original_flagged_fraction": 0.018771701388888888
+        },
+        "local_mass": {
+          "auc": 0.6556986268993839,
+          "sensitivity": 0.08234362628661916,
+          "offstroke_flagged_fraction": 0.00943040362127499,
+          "original_flagged_fraction": 0.010525173611111112
+        }
+      }
+    },
+    {
+      "cell": "r4c4",
+      "dose": 0.1,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.8822521612827907,
+      "requested_digital_mass": 32978.1,
+      "realized_digital_mass": 29095,
+      "scores": {
+        "raw_max": {
+          "auc": 0.4956312611443857,
+          "sensitivity": 0.0008285004142502071,
+          "offstroke_flagged_fraction": 0.0088650268447996,
+          "original_flagged_fraction": 0.0078125
+        },
+        "local_max": {
+          "auc": 0.5059279313258086,
+          "sensitivity": 0.0008285004142502071,
+          "offstroke_flagged_fraction": 0.009489324509926332,
+          "original_flagged_fraction": 0.008355034722222222
+        },
+        "local_mass": {
+          "auc": 0.4570518895323126,
+          "sensitivity": 0.0033140016570008283,
+          "offstroke_flagged_fraction": 0.022224996878511673,
+          "original_flagged_fraction": 0.01953125
+        }
+      }
+    },
+    {
+      "cell": "r4c4",
+      "dose": 0.3,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.9109479725433949,
+      "requested_digital_mass": 98934.3,
+      "realized_digital_mass": 90124,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6281327768894625,
+          "sensitivity": 0.03976801988400994,
+          "offstroke_flagged_fraction": 0.0088650268447996,
+          "original_flagged_fraction": 0.0078125
+        },
+        "local_max": {
+          "auc": 0.6266217903367411,
+          "sensitivity": 0.04308202154101077,
+          "offstroke_flagged_fraction": 0.009364464976900987,
+          "original_flagged_fraction": 0.008355034722222222
+        },
+        "local_mass": {
+          "auc": 0.4883522193290626,
+          "sensitivity": 0.02568351284175642,
+          "offstroke_flagged_fraction": 0.021975277812460982,
+          "original_flagged_fraction": 0.01953125
+        }
+      }
+    },
+    {
+      "cell": "r4c5",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.7579638720837947,
+      "requested_digital_mass": 42083.8,
+      "realized_digital_mass": 31898,
+      "scores": {
+        "raw_max": {
+          "auc": 0.5232986969466996,
+          "sensitivity": 0.000791765637371338,
+          "offstroke_flagged_fraction": 0.017980636237897647,
+          "original_flagged_fraction": 0.015625
+        },
+        "local_max": {
+          "auc": 0.5288619133051969,
+          "sensitivity": 0.000791765637371338,
+          "offstroke_flagged_fraction": 0.01684898780334465,
+          "original_flagged_fraction": 0.0146484375
+        },
+        "local_mass": {
+          "auc": 0.47511533266650996,
+          "sensitivity": 0.001583531274742676,
+          "offstroke_flagged_fraction": 0.00943040362127499,
+          "original_flagged_fraction": 0.008246527777777778
+        }
+      }
+    },
+    {
+      "cell": "r4c5",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.8323313642462579,
+      "requested_digital_mass": 126251.4,
+      "realized_digital_mass": 105083,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6616007304991249,
+          "sensitivity": 0.06175771971496437,
+          "offstroke_flagged_fraction": 0.017980636237897647,
+          "original_flagged_fraction": 0.015625
+        },
+        "local_max": {
+          "auc": 0.6532845033056938,
+          "sensitivity": 0.05146476642913698,
+          "offstroke_flagged_fraction": 0.016346032943543316,
+          "original_flagged_fraction": 0.0146484375
+        },
+        "local_mass": {
+          "auc": 0.5121720153407205,
+          "sensitivity": 0.014251781472684086,
+          "offstroke_flagged_fraction": 0.009304664906324657,
+          "original_flagged_fraction": 0.008246527777777778
+        }
+      }
+    },
+    {
+      "cell": "r5c0",
+      "dose": 0.1,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.7441410433485238,
+      "requested_digital_mass": 40617.3,
+      "realized_digital_mass": 30225,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6044107282813824,
+          "sensitivity": 0.0032025620496397116,
+          "offstroke_flagged_fraction": 0.008786243253420358,
+          "original_flagged_fraction": 0.008029513888888888
+        },
+        "local_max": {
+          "auc": 0.5994806639839297,
+          "sensitivity": 0.0032025620496397116,
+          "offstroke_flagged_fraction": 0.009664867578762395,
+          "original_flagged_fraction": 0.009114583333333334
+        },
+        "local_mass": {
+          "auc": 0.4175665372262665,
+          "sensitivity": 0.0008006405124099279,
+          "offstroke_flagged_fraction": 0.004393121626710179,
+          "original_flagged_fraction": 0.00390625
+        }
+      }
+    },
+    {
+      "cell": "r5c0",
+      "dose": 0.3,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.8138937513489737,
+      "requested_digital_mass": 121851.9,
+      "realized_digital_mass": 99174.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.7291580471607109,
+          "sensitivity": 0.02241793434747798,
+          "offstroke_flagged_fraction": 0.008786243253420358,
+          "original_flagged_fraction": 0.008029513888888888
+        },
+        "local_max": {
+          "auc": 0.7170821632830301,
+          "sensitivity": 0.02642113690952762,
+          "offstroke_flagged_fraction": 0.009539349817999247,
+          "original_flagged_fraction": 0.009114583333333334
+        },
+        "local_mass": {
+          "auc": 0.4637574751655221,
+          "sensitivity": 0.0040032025620496394,
+          "offstroke_flagged_fraction": 0.004142086105183884,
+          "original_flagged_fraction": 0.00390625
+        }
+      }
+    },
+    {
+      "cell": "r5c1",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.6895994956873192,
+      "requested_digital_mass": 58217.850000000006,
+      "realized_digital_mass": 40147,
+      "scores": {
+        "raw_max": {
+          "auc": 0.524392663589005,
+          "sensitivity": 0.003167062549485352,
+          "offstroke_flagged_fraction": 0.010813529485728656,
+          "original_flagged_fraction": 0.009548611111111112
+        },
+        "local_max": {
+          "auc": 0.5187843983243201,
+          "sensitivity": 0.003167062549485352,
+          "offstroke_flagged_fraction": 0.011442223060480322,
+          "original_flagged_fraction": 0.010308159722222222
+        },
+        "local_mass": {
+          "auc": 0.5634572830342633,
+          "sensitivity": 0.0023752969121140144,
+          "offstroke_flagged_fraction": 0.004275116308311329,
+          "original_flagged_fraction": 0.003689236111111111
+        }
+      }
+    },
+    {
+      "cell": "r5c1",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.7605685655974357,
+      "requested_digital_mass": 174653.55,
+      "realized_digital_mass": 132836,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6586975898287634,
+          "sensitivity": 0.10768012668250197,
+          "offstroke_flagged_fraction": 0.010813529485728656,
+          "original_flagged_fraction": 0.009548611111111112
+        },
+        "local_max": {
+          "auc": 0.6454025873901491,
+          "sensitivity": 0.11084718923198733,
+          "offstroke_flagged_fraction": 0.011190745630579655,
+          "original_flagged_fraction": 0.010308159722222222
+        },
+        "local_mass": {
+          "auc": 0.5958439123596179,
+          "sensitivity": 0.035629453681710214,
+          "offstroke_flagged_fraction": 0.004275116308311329,
+          "original_flagged_fraction": 0.003689236111111111
+        }
+      }
+    },
+    {
+      "cell": "r5c2",
+      "dose": 0.1,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.7234672402902659,
+      "requested_digital_mass": 34354.700000000004,
+      "realized_digital_mass": 24854.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.3851929007372919,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.0088650268447996,
+          "original_flagged_fraction": 0.007703993055555556
+        },
+        "local_max": {
+          "auc": 0.40388417628345413,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.010737919840179798,
+          "original_flagged_fraction": 0.009331597222222222
+        },
+        "local_mass": {
+          "auc": 0.3929772253935946,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.012985391434636034,
+          "original_flagged_fraction": 0.011393229166666666
+        }
+      }
+    },
+    {
+      "cell": "r5c2",
+      "dose": 0.3,
+      "stroke_pixels": 1207,
+      "realized_fraction_of_requested": 0.7949567308112137,
+      "requested_digital_mass": 103064.09999999999,
+      "realized_digital_mass": 81931.5,
+      "scores": {
+        "raw_max": {
+          "auc": 0.43980860181839754,
+          "sensitivity": 0.012427506213753107,
+          "offstroke_flagged_fraction": 0.0088650268447996,
+          "original_flagged_fraction": 0.007703993055555556
+        },
+        "local_max": {
+          "auc": 0.452767148970664,
+          "sensitivity": 0.027340513670256836,
+          "offstroke_flagged_fraction": 0.010737919840179798,
+          "original_flagged_fraction": 0.009331597222222222
+        },
+        "local_mass": {
+          "auc": 0.42847105622578907,
+          "sensitivity": 0.0024855012427506215,
+          "offstroke_flagged_fraction": 0.012735672368585341,
+          "original_flagged_fraction": 0.011393229166666666
+        }
+      }
+    },
+    {
+      "cell": "r5c3",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.40318682805856926,
+      "requested_digital_mass": 28448.350000000002,
+      "realized_digital_mass": 11470,
+      "scores": {
+        "raw_max": {
+          "auc": 0.47917640444818377,
+          "sensitivity": 0.02454473475851148,
+          "offstroke_flagged_fraction": 0.00628693574751666,
+          "original_flagged_fraction": 0.008572048611111112
+        },
+        "local_max": {
+          "auc": 0.48277792760894644,
+          "sensitivity": 0.026920031670625493,
+          "offstroke_flagged_fraction": 0.00704136803721866,
+          "original_flagged_fraction": 0.009548611111111112
+        },
+        "local_mass": {
+          "auc": 0.3616333050894114,
+          "sensitivity": 0.00395882818685669,
+          "offstroke_flagged_fraction": 0.002514774299006664,
+          "original_flagged_fraction": 0.002495659722222222
+        }
+      }
+    },
+    {
+      "cell": "r5c3",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.5378753659409655,
+      "requested_digital_mass": 85345.05,
+      "realized_digital_mass": 45905,
+      "scores": {
+        "raw_max": {
+          "auc": 0.49243083798233067,
+          "sensitivity": 0.04117181314330958,
+          "offstroke_flagged_fraction": 0.00628693574751666,
+          "original_flagged_fraction": 0.008572048611111112
+        },
+        "local_max": {
+          "auc": 0.4981299975041413,
+          "sensitivity": 0.04275534441805225,
+          "offstroke_flagged_fraction": 0.00704136803721866,
+          "original_flagged_fraction": 0.009548611111111112
+        },
+        "local_mass": {
+          "auc": 0.3813512859944494,
+          "sensitivity": 0.0055423594615993665,
+          "offstroke_flagged_fraction": 0.002514774299006664,
+          "original_flagged_fraction": 0.002495659722222222
+        }
+      }
+    },
+    {
+      "cell": "r5c4",
+      "dose": 0.1,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.8568110013578997,
+      "requested_digital_mass": 73827.25,
+      "realized_digital_mass": 63256,
+      "scores": {
+        "raw_max": {
+          "auc": 0.6445078241581592,
+          "sensitivity": 0.0016012810248198558,
+          "offstroke_flagged_fraction": 0.008158654449604619,
+          "original_flagged_fraction": 0.007052951388888889
+        },
+        "local_max": {
+          "auc": 0.6452659052056506,
+          "sensitivity": 0.0024019215372297837,
+          "offstroke_flagged_fraction": 0.008535207731894062,
+          "original_flagged_fraction": 0.007378472222222222
+        },
+        "local_mass": {
+          "auc": 0.5987388128150317,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.004016568344420736,
+          "original_flagged_fraction": 0.003472222222222222
+        }
+      }
+    },
+    {
+      "cell": "r5c4",
+      "dose": 0.3,
+      "stroke_pixels": 1249,
+      "realized_fraction_of_requested": 0.9234485459862946,
+      "requested_digital_mass": 221481.75,
+      "realized_digital_mass": 204527,
+      "scores": {
+        "raw_max": {
+          "auc": 0.8110122590352941,
+          "sensitivity": 0.23698959167333866,
+          "offstroke_flagged_fraction": 0.008158654449604619,
+          "original_flagged_fraction": 0.007052951388888889
+        },
+        "local_max": {
+          "auc": 0.8022615908717937,
+          "sensitivity": 0.21937550040032025,
+          "offstroke_flagged_fraction": 0.007531065645788879,
+          "original_flagged_fraction": 0.007378472222222222
+        },
+        "local_mass": {
+          "auc": 0.6888531284422542,
+          "sensitivity": 0.0008006405124099279,
+          "offstroke_flagged_fraction": 0.0036400150621312918,
+          "original_flagged_fraction": 0.003472222222222222
+        }
+      }
+    },
+    {
+      "cell": "r5c5",
+      "dose": 0.1,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.630287020687764,
+      "requested_digital_mass": 17868.05,
+      "realized_digital_mass": 11262,
+      "scores": {
+        "raw_max": {
+          "auc": 0.46138666606136863,
+          "sensitivity": 0.011876484560570071,
+          "offstroke_flagged_fraction": 0.009304664906324657,
+          "original_flagged_fraction": 0.009657118055555556
+        },
+        "local_max": {
+          "auc": 0.4538897814047872,
+          "sensitivity": 0.022169437846397466,
+          "offstroke_flagged_fraction": 0.017854897522947315,
+          "original_flagged_fraction": 0.018120659722222224
+        },
+        "local_mass": {
+          "auc": 0.29968662885744324,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.014837168364139319,
+          "original_flagged_fraction": 0.012912326388888888
+        }
+      }
+    },
+    {
+      "cell": "r5c5",
+      "dose": 0.3,
+      "stroke_pixels": 1263,
+      "realized_fraction_of_requested": 0.7322753928567097,
+      "requested_digital_mass": 53604.15,
+      "realized_digital_mass": 39253,
+      "scores": {
+        "raw_max": {
+          "auc": 0.47998549275887364,
+          "sensitivity": 0.040380047505938245,
+          "offstroke_flagged_fraction": 0.009304664906324657,
+          "original_flagged_fraction": 0.009657118055555556
+        },
+        "local_max": {
+          "auc": 0.4684501852182045,
+          "sensitivity": 0.07838479809976247,
+          "offstroke_flagged_fraction": 0.017729158807996984,
+          "original_flagged_fraction": 0.018120659722222224
+        },
+        "local_mass": {
+          "auc": 0.3209726103645935,
+          "sensitivity": 0,
+          "offstroke_flagged_fraction": 0.014585690934238652,
+          "original_flagged_fraction": 0.012912326388888888
+        }
+      }
+    }
+  ],
+  "limits": "Synthetic digital strokes on real public CT; not true lead, confirmed blank, or ink recognition."
+}

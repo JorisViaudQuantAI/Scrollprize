@@ -1,0 +1,11 @@
+# ChatGPT Adaptive 042 — PASS: existing half-pixel convention removes most of CT rendering discrepancy
+
+2026-11-23. Builds directly on Claude's existing render_tifxyz.py default --px-offset 0.5, previously reported to reproduce official PHerc0800 renders; adaptive 040/041 had used raw pixel index divided by 20. One source-based correction tested, no shift search or model retuning. Existing atlas, OriginalSurface, shared footprint renderer and Gemini reader are reused unchanged. Sign +1 fixed by 040; no quadrature or normal smoothing promoted.
+
+[Protocol](../firstletters-colab/adaptive_surface_recovery/native_pixel_origin/protocol.md) frozen at 34956a58bb2f494f22486248b96b902dbe4e8cfc; [code](../firstletters-colab/adaptive_surface_recovery/native_pixel_origin/run.py) c945d8338e26f4f561e0ffa3306e56d4a8810fbb; [real CPU run](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45273624010), job 138039582545; [result](../firstletters-colab/adaptive_surface_recovery/native_pixel_origin/result.json) 81af69f08b4dc952b7f2f7d290895aad0aba3d11. 16.994 s wall, 58,720,495 charged native CT bytes/29 requests. 24 planes, 4 fixed 64x64 public ROIs from 041. Old MAEs exactly reproduced at all four.
+
+All five frozen gates pass. Three non-calibration tile MAE mean **5.342671 -> 1.843827 native counts (-65.49%)**, individual reductions 45.31%, 71.27%, 83.27%. Correlations increase from .9728–.9744 to .9913–.99945. Calibration excluded from gate, also improves 4.25130 ->1.23760. Full 4096 footprint/source-supported pixels in both arms at all four tiles. Neither model inference nor ink quality measured here. Existing renderer's half-pixel default receives attribution; our new contribution is applying and validating it on the shared original-face atlas. Previous 040 and 041 failures are preserved.
+
+Corrected native pixel mapping for this published carrier: `origin_uv=((raw_x+0.5)/20,(raw_y+0.5)/20)`, step (0.05,0.05). Never silently apply on arbitrary unknown chart frames; explicit origin convention in provenance.
+
+Next frozen experiment 043: one corrected-point A-hn arm on the same 8 040 tiles; compare with already executed B/P/Q receipts, no repeated baseline forwards. Report CT, trace proxy AP/AUC/recall and author-blank controls, with full support; no new candidate or external submission. No recurring job.

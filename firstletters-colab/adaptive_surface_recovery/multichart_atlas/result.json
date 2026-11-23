@@ -1,0 +1,221 @@
+{
+  "schema": "q10.multichart_atlas.v1",
+  "public_control": "PHerc0306B",
+  "synthetic_checks_passed": 5,
+  "acquisition": {
+    "requests": 17,
+    "body_bytes": 14205351
+  },
+  "source_manifest_sha256": "087464bd4c3163ce7314779aa05d917dcacac5791a00280b6bc57073473f1ba2",
+  "script_sha256": "2996227742e285bc2a88302ca1a992afee08a7d8904747dcf8ee9c66931c2fc8",
+  "source_vertices": 77185,
+  "source_faces": 153224,
+  "primary_faces": 145388,
+  "fallback_faces": 7836,
+  "primary_source_area_fraction": 0.9434177318507136,
+  "fallback_source_area_fraction": 0.05658226814928635,
+  "total_3d_area_mm2": 2475.8505574511983,
+  "partition": {
+    "nonpositive_or_degenerate_faces": 1334,
+    "additional_conflicting_positive_faces": 6502,
+    "initial_positive_pair_counts": {
+      "candidate_intersecting_pairs": 926349,
+      "positive_area_pairs": 25300,
+      "nonincident_touch_pairs": 1,
+      "single_vertex_long_contact_pairs": 0,
+      "incompatible_pairs": 25301
+    }
+  },
+  "primary_recheck": {
+    "candidate_intersecting_pairs": 862968,
+    "positive_area_pairs": 0,
+    "nonincident_touch_pairs": 0,
+    "single_vertex_long_contact_pairs": 0,
+    "incompatible_pairs": 0
+  },
+  "fallback_recheck": {
+    "candidate_intersecting_pairs": 41010,
+    "positive_area_pairs": 0,
+    "nonincident_touch_pairs": 0,
+    "single_vertex_long_contact_pairs": 0,
+    "incompatible_pairs": 0
+  },
+  "seam_edges": 1573,
+  "metric": {
+    "A_bad_fraction": 0.5851237404062026,
+    "B_bad_fraction": 0.29992690440139924,
+    "atlas_bad_fraction": 0.30520022972902416,
+    "A_area_weighted_bad_fraction": 0.6176314675526006,
+    "B_area_weighted_bad_fraction": 0.34745929301376804,
+    "atlas_area_weighted_bad_fraction": 0.35253438289947175,
+    "primary_area_weighted_bad_fraction": 0.3137146957881754,
+    "fallback_area_weighted_bad_fraction": 0.9997898281754899
+  },
+  "primary_same_grid_B_retention": 0.9659012953472418,
+  "primary_claim_B_retention": 0.9998017053341265,
+  "right_group": {
+    "A": {
+      "cells": 1150,
+      "stretch_u_p5_p50_p95": [
+        0.9246872471848495,
+        0.9561705112486905,
+        0.9736046827209883
+      ],
+      "stretch_v_p5_p50_p95": [
+        1.0752071687247482,
+        1.1360084958676875,
+        1.2481651397240987
+      ],
+      "shear_deg_p5_p50_p95": [
+        -2.8039725511413516,
+        -1.612549986492222,
+        -0.5900059047919175
+      ],
+      "area_ratio_p5_p50_p95": [
+        1.0401052526233152,
+        1.088326981662867,
+        1.161350789578417
+      ],
+      "median_abs_v_stretch_error": 0.13600849586768748,
+      "p95_abs_shear_degrees": 2.8039725511413502,
+      "either_axis_outside_5pct_fraction": 1,
+      "either_axis_outside_10pct_or_shear_10deg_fraction": 0.7756521739130435
+    },
+    "B": {
+      "cells": 1150,
+      "stretch_u_p5_p50_p95": [
+        0.9816081589743866,
+        0.9989405082922431,
+        1.006988237336878
+      ],
+      "stretch_v_p5_p50_p95": [
+        0.9993181307947491,
+        1.0028948711863082,
+        1.0151590313474441
+      ],
+      "shear_deg_p5_p50_p95": [
+        -0.42635609049013456,
+        0.19307268914427442,
+        0.8913683152952595
+      ],
+      "area_ratio_p5_p50_p95": [
+        0.9834205790981102,
+        1.0020903253984266,
+        1.0200612549229613
+      ],
+      "median_abs_v_stretch_error": 0.002971186573163198,
+      "p95_abs_shear_degrees": 0.8913683152952595,
+      "either_axis_outside_5pct_fraction": 0,
+      "either_axis_outside_10pct_or_shear_10deg_fraction": 0
+    },
+    "primary": {
+      "cells": 1150,
+      "stretch_u_p5_p50_p95": [
+        0.9816081589743866,
+        0.9989405082922431,
+        1.006988237336878
+      ],
+      "stretch_v_p5_p50_p95": [
+        0.9993181307947491,
+        1.0028948711863082,
+        1.0151590313474441
+      ],
+      "shear_deg_p5_p50_p95": [
+        -0.42635609049013456,
+        0.19307268914427442,
+        0.8913683152952595
+      ],
+      "area_ratio_p5_p50_p95": [
+        0.9834205790981102,
+        1.0020903253984266,
+        1.0200612549229613
+      ],
+      "median_abs_v_stretch_error": 0.002971186573163198,
+      "p95_abs_shear_degrees": 0.8913683152952595,
+      "either_axis_outside_5pct_fraction": 0,
+      "either_axis_outside_10pct_or_shear_10deg_fraction": 0
+    }
+  },
+  "primary_raster": {
+    "source_triangles": 145388,
+    "positive_uv_triangles": 145388,
+    "negative_uv_triangles": 0,
+    "degenerate_uv_triangles": 0,
+    "zero_3d_area_triangles": 0,
+    "requested_pixels": 96472,
+    "valid_pixels": 74082,
+    "ambiguous_pixels": 0,
+    "negative_uv_covered_pixels": 0,
+    "degenerate_uv_covered_pixels": 0,
+    "source_components": 10,
+    "source_components_without_output": 3,
+    "source_triangles_without_requested_grid_coverage": 72969,
+    "original_face_centroids_nonunique": 0,
+    "max_barycentric_xyz_error_vox": 0,
+    "provenance_pass": true,
+    "shape_yx": [
+      248,
+      389
+    ],
+    "origin_xy": [
+      0,
+      -3
+    ]
+  },
+  "fallback_raster": {
+    "source_triangles": 7836,
+    "positive_uv_triangles": 7836,
+    "negative_uv_triangles": 0,
+    "degenerate_uv_triangles": 0,
+    "zero_3d_area_triangles": 0,
+    "requested_pixels": 95305,
+    "valid_pixels": 4836,
+    "ambiguous_pixels": 0,
+    "negative_uv_covered_pixels": 0,
+    "degenerate_uv_covered_pixels": 0,
+    "source_components": 72,
+    "source_components_without_output": 0,
+    "source_triangles_without_requested_grid_coverage": 0,
+    "original_face_centroids_nonunique": 0,
+    "max_barycentric_xyz_error_vox": 0,
+    "provenance_pass": true,
+    "shape_yx": [
+      245,
+      389
+    ],
+    "origin_xy": [
+      0,
+      0
+    ]
+  },
+  "artifacts": {
+    "fallback_coarse_samples.npz": {
+      "bytes": 77777,
+      "sha256": "9b125cfdda9d8641776eb20a3f9a2cbe8a1e3a095ea533399d4af9f7b6adc1cf"
+    },
+    "source_atlas.npz": {
+      "bytes": 2890471,
+      "sha256": "43c12969b32c42b978e9d1cbb3bd70fb645a998100062d889d66228a130fd8d0"
+    },
+    "primary_coarse_samples.npz": {
+      "bytes": 2601742,
+      "sha256": "a65ee52f2accf5023a9059af5882223af14a120c990f0ae1dd3c20f83c431a71"
+    }
+  },
+  "gates": {
+    "exact_B": true,
+    "face_partition_exact": true,
+    "zero_incompatible_intersections": true,
+    "zero_nonpositive_faces": true,
+    "primary_area_ge_90pct": true,
+    "weighted_metric_improvement_ge_10pp": true,
+    "primary_claim_support_ge_995": true,
+    "right_group": true,
+    "unique_centroids_and_raster_provenance": true
+  },
+  "pass": true,
+  "CT_requests": 0,
+  "CNN_forwards": 0,
+  "wall_seconds": 53.822413074,
+  "peak_rss_bytes": 393535488
+}

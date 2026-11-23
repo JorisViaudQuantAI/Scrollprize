@@ -1,0 +1,499 @@
+{
+  "experiment": "fixed_review_windows_v1",
+  "units": "nominal chart millimetres, no support mask",
+  "self_tests": "pass",
+  "gate": {
+    "full306b_minrow_gain10pp": false,
+    "full306b_no_row_loss5pp": true,
+    "display343_count_not_lower": true,
+    "display343_mean_box_no_loss5pp": true,
+    "same_budget": true,
+    "empty_controls": true
+  },
+  "passed": false,
+  "cases": [
+    {
+      "id": "pherc306b_context_raw",
+      "chart_mm": [
+        60.0048,
+        35.00064
+      ],
+      "proposal_count": 10,
+      "baseline": {
+        "windows_mm": [
+          [
+            37.07777210399006,
+            3.60129823047148,
+            57.07777210399006,
+            23.60129823047148
+          ],
+          [
+            18.759593465577602,
+            4.694195481695768,
+            38.7595934655776,
+            24.69419548169577
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 7.682016307113785,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0.9024990315606775,
+            "centerline_fraction": 0.9024990315606775
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0.9024990315606775,
+            "centerline_fraction": 0.9024990315606775
+          }
+        ],
+        "mean_box_fraction": 0.9024990315606775,
+        "minimum_centerline_fraction": 0.9024990315606775,
+        "mean_centerline_fraction": 0.9024990315606775,
+        "boxes_at_least_half": 2
+      },
+      "adaptive": {
+        "windows_mm": [
+          [
+            32,
+            10,
+            52,
+            30
+          ],
+          [
+            12,
+            3.60129823,
+            32,
+            23.60129823
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 8,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0.975472048954477,
+            "centerline_fraction": 0.975472048954477
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0.975472048954477,
+            "centerline_fraction": 0.975472048954477
+          }
+        ],
+        "mean_box_fraction": 0.975472048954477,
+        "minimum_centerline_fraction": 0.975472048954477,
+        "mean_centerline_fraction": 0.975472048954477,
+        "boxes_at_least_half": 2
+      },
+      "adaptive_marginal_score_area": [
+        423.88772698033426,
+        289.9713501185233
+      ]
+    },
+    {
+      "id": "pherc306b_blank_raw",
+      "chart_mm": [
+        5.00256,
+        22.99968
+      ],
+      "proposal_count": 0,
+      "baseline": {
+        "windows_mm": [],
+        "display_area_cm2": 0,
+        "union_chart_area_cm2": 0,
+        "targets": [],
+        "mean_box_fraction": null,
+        "minimum_centerline_fraction": null,
+        "mean_centerline_fraction": null,
+        "boxes_at_least_half": 0
+      },
+      "adaptive": {
+        "windows_mm": [],
+        "display_area_cm2": 0,
+        "union_chart_area_cm2": 0,
+        "targets": [],
+        "mean_box_fraction": null,
+        "minimum_centerline_fraction": null,
+        "mean_centerline_fraction": null,
+        "boxes_at_least_half": 0
+      },
+      "adaptive_marginal_score_area": []
+    },
+    {
+      "id": "pherc306b_shuffle_raw",
+      "chart_mm": [
+        60.0048,
+        35.00064
+      ],
+      "proposal_count": 0,
+      "baseline": {
+        "windows_mm": [],
+        "display_area_cm2": 0,
+        "union_chart_area_cm2": 0,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          }
+        ],
+        "mean_box_fraction": 0,
+        "minimum_centerline_fraction": 0,
+        "mean_centerline_fraction": 0,
+        "boxes_at_least_half": 0
+      },
+      "adaptive": {
+        "windows_mm": [],
+        "display_area_cm2": 0,
+        "union_chart_area_cm2": 0,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          }
+        ],
+        "mean_box_fraction": 0,
+        "minimum_centerline_fraction": 0,
+        "mean_centerline_fraction": 0,
+        "boxes_at_least_half": 0
+      },
+      "adaptive_marginal_score_area": []
+    },
+    {
+      "id": "pherc306b_context_matched_raw",
+      "chart_mm": [
+        60.0048,
+        35.00064
+      ],
+      "proposal_count": 10,
+      "baseline": {
+        "windows_mm": [
+          [
+            17.544453224773676,
+            5.114635296830006,
+            37.544453224773676,
+            25.114635296830006
+          ],
+          [
+            23.04906264430347,
+            4.955386282784483,
+            43.04906264430347,
+            24.95538628278448
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 5.124005650487406,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0.6736472812687475,
+            "centerline_fraction": 0.6736472812687475
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0.6736472812687475,
+            "centerline_fraction": 0.6736472812687475
+          }
+        ],
+        "mean_box_fraction": 0.6736472812687475,
+        "minimum_centerline_fraction": 0.6736472812687475,
+        "mean_centerline_fraction": 0.6736472812687475,
+        "boxes_at_least_half": 2
+      },
+      "adaptive": {
+        "windows_mm": [
+          [
+            18,
+            2,
+            38,
+            22
+          ],
+          [
+            32,
+            4,
+            52,
+            24
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 6.92,
+        "targets": [
+          {
+            "id": "published_row_1",
+            "box_fraction": 0.8980340449989012,
+            "centerline_fraction": 0.8980340449989012
+          },
+          {
+            "id": "published_row_2",
+            "box_fraction": 0.8980340449989012,
+            "centerline_fraction": 0.8980340449989012
+          }
+        ],
+        "mean_box_fraction": 0.8980340449989012,
+        "minimum_centerline_fraction": 0.8980340449989012,
+        "mean_centerline_fraction": 0.8980340449989012,
+        "boxes_at_least_half": 2
+      },
+      "adaptive_marginal_score_area": [
+        297.8376923719029,
+        110.33874138870317
+      ]
+    },
+    {
+      "id": "pherc343_context_display",
+      "chart_mm": [
+        48.73824,
+        21.2112
+      ],
+      "proposal_count": 10,
+      "baseline": {
+        "windows_mm": [
+          [
+            18.00542953710724,
+            1.2112000000000016,
+            38.00542953710724,
+            21.2112
+          ],
+          [
+            23.28964217349222,
+            0,
+            43.28964217349222,
+            20
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 5.2350801438251,
+        "targets": [
+          {
+            "id": "1",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "2",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "3",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "4",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "5",
+            "box_fraction": 0.8762431222636068,
+            "centerline_fraction": 0.8762431222636068
+          },
+          {
+            "id": "6",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "7",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "8",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "9",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "10",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "11",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "12",
+            "box_fraction": 0.7894229452786272,
+            "centerline_fraction": 0.7894229452786273
+          },
+          {
+            "id": "13",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "14",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "15",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "16",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "17",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "18",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          }
+        ],
+        "mean_box_fraction": 0.7036481148634574,
+        "minimum_centerline_fraction": 0,
+        "mean_centerline_fraction": 0.7036481148634574,
+        "boxes_at_least_half": 13
+      },
+      "adaptive": {
+        "windows_mm": [
+          [
+            18,
+            0,
+            38,
+            20
+          ],
+          [
+            0,
+            0,
+            20,
+            20
+          ]
+        ],
+        "display_area_cm2": 8,
+        "union_chart_area_cm2": 7.6,
+        "targets": [
+          {
+            "id": "1",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "2",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "3",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "4",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "5",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "6",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "7",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "8",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "9",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "10",
+            "box_fraction": 0.0001972476368188321,
+            "centerline_fraction": 0.00019724763681883213
+          },
+          {
+            "id": "11",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "12",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "13",
+            "box_fraction": 0,
+            "centerline_fraction": 0
+          },
+          {
+            "id": "14",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "15",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "16",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "17",
+            "box_fraction": 1,
+            "centerline_fraction": 1
+          },
+          {
+            "id": "18",
+            "box_fraction": 0.9018793911793552,
+            "centerline_fraction": 0.9018793911793551
+          }
+        ],
+        "mean_box_fraction": 0.772337591045343,
+        "minimum_centerline_fraction": 0,
+        "mean_centerline_fraction": 0.772337591045343,
+        "boxes_at_least_half": 14
+      },
+      "adaptive_marginal_score_area": [
+        554.2397753053725,
+        264.6439002935024
+      ]
+    }
+  ],
+  "limitations": "retrospective geometry using top ten published bands and known coarse target boxes, not actual reader recall, ink recognition or valid-area coverage",
+  "runtime_v8_ms": 1047,
+  "execution": "Identical evaluate function executed in V8; Node CLI wrapper not exercised."
+}
