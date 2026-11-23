@@ -29,8 +29,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 16.9421,
-    "meshes_screened": 4,
+    "total_unique_valid_ct_cm2": 20.5269,
+    "meshes_screened": 5,
     "two_family_followups": 2,
     "candidates_found": 0
   },
@@ -251,6 +251,40 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Heavy papyrus delamination cracks with only sparse crack-edge specks; no two-family follow-up warranted."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005231446963",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.5848,
+      "on_sheet_after_snap": 0.9546,
+      "f_parallel": 0.9045,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1050.32,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.54595,
+          "p995": 0.64875,
+          "max": 0.90904,
+          "frac_gt_05": 0.013296,
+          "frac_gt_07": 0.003237
+        },
+        "studio_asc": {
+          "p99": 0.71076,
+          "p995": 0.7991,
+          "max": 0.94837,
+          "frac_gt_05": 0.029839,
+          "frac_gt_07": 0.01079
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Sparse isolated 128px border and fiber-flap blobs only; zero connected strokes on flat papyrus."
     }
   ]
 }

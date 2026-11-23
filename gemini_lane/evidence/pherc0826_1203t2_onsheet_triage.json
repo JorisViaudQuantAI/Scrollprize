@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.0.0",
+  "renderer_commit": "4f347c1",
+  "renderer_semantics": {
+    "source_support_patch": "chatgpt-018 ported in stream_snap_render.py (HEAD 4f347c1)",
+    "full_source_support_all_planes": true,
+    "require_nonzero_intensity": true,
+    "missing_chunk_and_fill_excluded_from_support": true,
+    "no_oob_m7_snap_clipping": true,
+    "float32_candidate_snap_validation": true,
+    "no_ink_detector_run": true
+  },
+  "voxel_um": 9.362,
+  "num_slices": 5,
+  "snap_passes": 2,
+  "method": "CPU-only m7 2x snap + onsheet_score under patched source-support renderer semantics (4f347c1); no ink detector run",
+  "public_sources": {
+    "PHerc1203": {
+      "ct_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr",
+      "m7_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/representations/predictions/surfaces/20250820131727-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "segments_prefix": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/segments/raw/",
+      "dedup_note": "Verified Tier-2 strips disjoint from Claude N6 (r=30:175, c=62:158) and low-overlap left half (c=0:68) per pherc1203_s3_dedup_manifest.md"
+    },
+    "PHerc0826": {
+      "ct_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0826/volumes/20250821151701-9.362um-1.2m-113keV-masked.zarr",
+      "m7_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0826/representations/predictions/surfaces/20250821151701-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "hf_meshes_prefix": "https://huggingface.co/datasets/rodriguescarson/eligible-scroll-spiral-fits/resolve/main/2026-09-15_PHerc0826_slice-8928-9728_0-patch/meshes/fitted/",
+      "dedup_note": "Representative non-overlapping windings w020, w030, w040, w050 from slice-8928-9728; skipped w027 and w051 per priority_queue_scout.md"
+    }
+  },
+  "total_valid_ct_cm2": 15.9277,
+  "cohort_totals_valid_ct_cm2": {
+    "PHerc1203_tier2": 6.8161,
+    "PHerc0826_slice_8928_9728": 9.1116
+  },
+  "targets": [
+    {
+      "rank": 1,
+      "target_id": "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+      "scroll": "PHerc1203",
+      "cohort": "PHerc1203_tier2",
+      "mesh_id": "auto_grown_20251005230830030",
+      "uv_crop": [
+        0,
+        165,
+        0,
+        68
+      ],
+      "valid_vertex_fraction": 0.7672905525846703,
+      "valid_vertex_count": 8609,
+      "total_vertex_count": 11220,
+      "on_sheet_raw": 0.44128237890579625,
+      "on_sheet_after_snap": 0.9768846555929841,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 2.872306930720202,
+      "p90_disp_vx": 7.635372773532994,
+      "center_vs_outer_disp_diff": -0.009093110400815618,
+      "onsheet_score": {
+        "tiles": 147,
+        "f_parallel": 0.966,
+        "f_drift": 0.0272,
+        "f_still": 0.0068,
+        "response_median": 0.001,
+        "shift_median_confident": 5.75,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 2.9407
+    },
+    {
+      "rank": 2,
+      "target_id": "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+      "scroll": "PHerc1203",
+      "cohort": "PHerc1203_tier2",
+      "mesh_id": "auto_grown_20251005221856743",
+      "uv_crop": [
+        0,
+        253,
+        158,
+        226
+      ],
+      "valid_vertex_fraction": 0.36061381074168797,
+      "valid_vertex_count": 6204,
+      "total_vertex_count": 17204,
+      "on_sheet_raw": 0.4019987105093488,
+      "on_sheet_after_snap": 0.930528691166989,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 2.4033798955491164,
+      "p90_disp_vx": 8.406660004723886,
+      "center_vs_outer_disp_diff": -0.8110505900681133,
+      "onsheet_score": {
+        "tiles": 108,
+        "f_parallel": 0.9444,
+        "f_drift": 0.0556,
+        "f_still": 0.0,
+        "response_median": 0.016,
+        "shift_median_confident": 4.03,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 2.0965
+    },
+    {
+      "rank": 3,
+      "target_id": "PHerc0826/w030",
+      "scroll": "PHerc0826",
+      "cohort": "PHerc0826_slice_8928_9728",
+      "mesh_id": "w030",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7303822937625755,
+      "valid_vertex_count": 5808,
+      "total_vertex_count": 7952,
+      "on_sheet_raw": 0.30079201101928377,
+      "on_sheet_after_snap": 0.8581267217630854,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.3773566043378507,
+      "p90_disp_vx": 8.964558975646382,
+      "center_vs_outer_disp_diff": -0.6305350070941986,
+      "onsheet_score": {
+        "tiles": 94,
+        "f_parallel": 0.9255,
+        "f_drift": 0.0745,
+        "f_still": 0.0,
+        "response_median": 0.007,
+        "shift_median_confident": 3.97,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 1.9682
+    },
+    {
+      "rank": 4,
+      "target_id": "PHerc0826/w050",
+      "scroll": "PHerc0826",
+      "cohort": "PHerc0826_slice_8928_9728",
+      "mesh_id": "w050",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7194749694749695,
+      "valid_vertex_count": 9428,
+      "total_vertex_count": 13104,
+      "on_sheet_raw": 0.38555366991938905,
+      "on_sheet_after_snap": 0.9396478574459058,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.246067478396249,
+      "p90_disp_vx": 9.043204737730235,
+      "center_vs_outer_disp_diff": -0.6192655020845041,
+      "onsheet_score": {
+        "tiles": 153,
+        "f_parallel": 0.8562,
+        "f_drift": 0.1111,
+        "f_still": 0.0327,
+        "response_median": 0.025,
+        "shift_median_confident": 4.02,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 3.2029
+    },
+    {
+      "rank": 5,
+      "target_id": "PHerc0826/w040",
+      "scroll": "PHerc0826",
+      "cohort": "PHerc0826_slice_8928_9728",
+      "mesh_id": "w040",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7237841945288754,
+      "valid_vertex_count": 7620,
+      "total_vertex_count": 10528,
+      "on_sheet_raw": 0.3494750656167979,
+      "on_sheet_after_snap": 0.9,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.168334133445967,
+      "p90_disp_vx": 9.905283496934963,
+      "center_vs_outer_disp_diff": 0.21727299227199692,
+      "onsheet_score": {
+        "tiles": 122,
+        "f_parallel": 0.8197,
+        "f_drift": 0.1721,
+        "f_still": 0.0082,
+        "response_median": 0.022,
+        "shift_median_confident": 4.34,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 2.5875
+    },
+    {
+      "rank": 6,
+      "target_id": "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62",
+      "scroll": "PHerc1203",
+      "cohort": "PHerc1203_tier2",
+      "mesh_id": "auto_grown_20251005221856743",
+      "uv_crop": [
+        0,
+        253,
+        0,
+        62
+      ],
+      "valid_vertex_fraction": 0.33660589060308554,
+      "valid_vertex_count": 5280,
+      "total_vertex_count": 15686,
+      "on_sheet_raw": 0.3306818181818182,
+      "on_sheet_after_snap": 0.924810606060606,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.1441873753725886,
+      "p90_disp_vx": 9.027185656828175,
+      "center_vs_outer_disp_diff": 0.0412700885831625,
+      "onsheet_score": {
+        "tiles": 84,
+        "f_parallel": 0.7857,
+        "f_drift": 0.2024,
+        "f_still": 0.0119,
+        "response_median": 0.029,
+        "shift_median_confident": 4.17,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 1.7789
+    },
+    {
+      "rank": 7,
+      "target_id": "PHerc0826/w020",
+      "scroll": "PHerc0826",
+      "cohort": "PHerc0826_slice_8928_9728",
+      "mesh_id": "w020",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7516917293233083,
+      "valid_vertex_count": 3999,
+      "total_vertex_count": 5320,
+      "on_sheet_raw": 0.11602900725181295,
+      "on_sheet_after_snap": 0.49087271817954486,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 0.0,
+      "p90_disp_vx": 10.388443247133512,
+      "center_vs_outer_disp_diff": -0.6216304068009015,
+      "onsheet_score": {
+        "tiles": 63,
+        "f_parallel": 0.5873,
+        "f_drift": 0.3651,
+        "f_still": 0.0476,
+        "response_median": 0.085,
+        "shift_median_confident": 2.72,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 1.353
+    }
+  ],
+  "rankings": {
+    "combined": {
+      "by_onsheet_f_parallel": [
+        "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+        "PHerc0826/w030",
+        "PHerc0826/w050",
+        "PHerc0826/w040",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62",
+        "PHerc0826/w020"
+      ],
+      "by_on_sheet_after_snap": [
+        "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+        "PHerc0826/w050",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62",
+        "PHerc0826/w040",
+        "PHerc0826/w030",
+        "PHerc0826/w020"
+      ],
+      "by_valid_ct_cm2": [
+        "PHerc0826/w050",
+        "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+        "PHerc0826/w040",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+        "PHerc0826/w030",
+        "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62",
+        "PHerc0826/w020"
+      ]
+    },
+    "by_cohort": {
+      "PHerc1203_tier2": {
+        "by_onsheet_f_parallel": [
+          "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62"
+        ],
+        "by_on_sheet_after_snap": [
+          "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62"
+        ],
+        "by_valid_ct_cm2": [
+          "PHerc1203/auto_grown_20251005230830030_r0-165_c0-68",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c158-226",
+          "PHerc1203/auto_grown_20251005221856743_r0-253_c0-62"
+        ]
+      },
+      "PHerc0826_slice_8928_9728": {
+        "by_onsheet_f_parallel": [
+          "PHerc0826/w030",
+          "PHerc0826/w050",
+          "PHerc0826/w040",
+          "PHerc0826/w020"
+        ],
+        "by_on_sheet_after_snap": [
+          "PHerc0826/w050",
+          "PHerc0826/w040",
+          "PHerc0826/w030",
+          "PHerc0826/w020"
+        ],
+        "by_valid_ct_cm2": [
+          "PHerc0826/w050",
+          "PHerc0826/w040",
+          "PHerc0826/w030",
+          "PHerc0826/w020"
+        ]
+      }
+    }
+  }
+}
