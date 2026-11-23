@@ -1,0 +1,45 @@
+{
+  "id": "q12-winding-storage-order-20261123-v1",
+  "purpose": "Test representation invariance of the published winding-chain diagnostic on public PHerc0175A surface tracks; do not infer an anatomical winding sense.",
+  "base_repository_commit": "f7fc619ec11f9dc95caa0c90fb2148cbf7c86ebd",
+  "source_root": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175A/20250521115057/tracks/PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm",
+  "selection": {
+    "z0": 7700,
+    "dz": 40,
+    "family": 0,
+    "track_inclusion": "all transverse tracks wholly in inclusive [7660,7740]; no image, ink label, or detector output consulted",
+    "minimum_start_points": 40,
+    "nstart": 512,
+    "start_seed": 0,
+    "rmax": 1000000000.0,
+    "center_yx": [4681.0, 4681.0],
+    "center_basis": "geometric center of official 9363 x 9363 native image, deliberately not asserted to be the biological umbilicus"
+  },
+  "traversal": {"rtol": 20.0, "front": 0.3, "jmax": 200, "zstep": 16.0, "max_hops": 60},
+  "conditions": ["original", "reverse_transverse", "reverse_all", "random_half", "reverse_crossing_rows", "mirror_x"],
+  "random_half_seed": 20261123,
+  "transformation_contract": "When any track is reversed, both its self_local and all partner_local references are mapped to length-1-index. Coordinates are otherwise identical. Original global track IDs and longitudinal index distances are preserved. mirror_x changes only the x coordinate about the fixed center through the algorithm's mirror argument.",
+  "primary_gates": [
+    "The fixed algorithm's ordered completed-start IDs, drift arrays, and summary statistics must be identical under the four storage-only transformations.",
+    "Report legacy results in all six conditions, even if no full turn completes; do not substitute another band or center after viewing the outcomes.",
+    "Analytic synthetic CW/ACW spirals must recover their known full-turn pitch within a declared 2-voxel rasterization tolerance and reverse physical sign under reflection.",
+    "The analytic taper counterexample must demonstrate that cross-height drift and a successful mirror sign check are insufficient evidence of anatomical sense."
+  ],
+  "real_data_mirror": "Descriptive only. A greedy walk chooses different physical paths after reflection, so unpaired real-data counts need not negate exactly.",
+  "source_validation": [
+    "Match track-store metadata source_db_signature to crossing metadata db_signature.",
+    "Verify source_ids alignment for every retained transverse track and every directly linked longitudinal track.",
+    "Range GETs must return HTTP 206, exact Content-Range and exact body length; reject changed ETags for an object.",
+    "Crossing members must be uncompressed ZIP_STORED, numeric non-object NumPy arrays in C order.",
+    "Retain all original crossing rows for the required nodes; no fabricated graph edge, padded CT, interpolation or silently missing source object."
+  ],
+  "budgets": {"maximum_source_body_bytes": 1800000000, "maximum_requests": 1500, "maximum_acquisition_seconds": 1800, "maximum_analysis_seconds": 1800, "maximum_range_coalesce_gap_bytes": 262144},
+  "outputs": "Public code, tests, aggregate statistics, compact source receipts, hashes and methodological conclusions. Raw track arrays and per-chain coordinates remain outside git; no unread ink candidate is examined.",
+  "limitations": [
+    "This is a software and geometry diagnostic, not an ink detector experiment, an independent anatomical validation, a reading or a prize claim.",
+    "Surface tracks are model-derived; exact intersections do not prove correct sheet identity.",
+    "The image center is not a validated umbilicus; no geometric sense verdict will be made from the real-data sign counts.",
+    "Chains share tracks and are dependent; no binomial significance or independent-sample confidence interval will be computed.",
+    "Synthetic defect and taper counterexample were discovered before this protocol. The real public coordinate subset has not yet been analyzed."
+  ]
+}
