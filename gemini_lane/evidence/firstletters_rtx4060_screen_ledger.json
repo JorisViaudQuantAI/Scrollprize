@@ -29,8 +29,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 27.2775,
-    "meshes_screened": 6,
+    "total_unique_valid_ct_cm2": 38.6762,
+    "meshes_screened": 7,
     "two_family_followups": 4,
     "candidates_found": 0
   },
@@ -399,6 +399,40 @@
       },
       "verdict": "NEGATIVE",
       "note": "Bilateral diffuse 2-4 mm papyrus-mottle clouds (ROI 2 elevated across all 4 passes with studio_desc > studio_asc; ROI 1 A-hn 6.1x below Studio asc); zero crisp connected letter strokes in either family."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005231446965",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 11.3987,
+      "on_sheet_after_snap": 0.9159,
+      "f_parallel": 0.8009,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 3368.73,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.66468,
+          "p995": 0.75652,
+          "max": 0.9347,
+          "frac_gt_05": 0.023306,
+          "frac_gt_07": 0.007908
+        },
+        "studio_asc": {
+          "p99": 0.75509,
+          "p995": 0.82465,
+          "max": 0.94863,
+          "frac_gt_05": 0.036898,
+          "frac_gt_07": 0.014372
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Isolated coarse delamination-seam, fiber-tear, and border-fold blobs only; zero connected strokes on flat papyrus."
     }
   ]
 }

@@ -361,6 +361,7 @@ class TestScreenScrollSafety(unittest.TestCase):
             "r12-56",
             "r118-164",
             "r68-112",
+            "r120-164",
         )
         for forbidden in forbidden_substrings:
             self.assertNotIn(forbidden, raw_text)
@@ -368,7 +369,7 @@ class TestScreenScrollSafety(unittest.TestCase):
         data = json.loads(raw_text)
         total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
         self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
-        self.assertEqual(total_cm2, 27.2775)
+        self.assertEqual(total_cm2, 38.6762)
         self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
         self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 4)
         self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
