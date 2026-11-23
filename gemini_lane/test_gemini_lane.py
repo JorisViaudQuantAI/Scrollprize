@@ -144,6 +144,42 @@ class TestGeminiLaneEvidence(unittest.TestCase):
             for forbidden_k in ('"u_range"', '"v_range"', '"tile_bounds_vu"', '"z78_range"', '"wraps"'):
                 self.assertNotIn(forbidden_k, sec_text)
 
+    def test_paris4_crust_1129_preflight_evidence(self) -> None:
+        path = EVIDENCE / "paris4_crust_1129_preflight.json"
+        self.assertTrue(path.is_file(), f"Missing {path}")
+        raw = path.read_text(encoding="utf-8")
+        self.assert_no_private_paths_or_tokens(raw)
+        data = json.loads(raw)
+
+        self.assertEqual(data["mode"], "cpu_only_streaming")
+        self.assertTrue(data["radiometry"]["tps_deformation_applied"])
+        self.assertTrue(data["ncc_passed_all_controls"])
+        self.assertTrue(data["within_250mb_budget"])
+        self.assertLess(data["bytes_fetched"], 250_000_000)
+        self.assertLessEqual(data["cache_mb"], 256.0)
+        self.assertEqual(len(data["control_pairs"]), 3)
+        for mkey in (
+            "tophat_recentered",
+            "hf_roughness_local",
+            "hf_roughness_excess",
+            "crackle_dog_rms",
+            "crackle_isotropic",
+            "crust_composite_z",
+        ):
+            self.assertIn(mkey, data["pooled_control_a_vs_b"])
+            self.assertIn(mkey, data["blank_noise_floor_control_b"])
+        # Gate consistency: unread scan only runs if ROC-AUC >= gate threshold.
+        if data["control_gate_passed"]:
+            self.assertGreaterEqual(data["best_crust_roc_auc"], data["gate_threshold_roc_auc"])
+            self.assertTrue(data["targeted_agraphon_scan"]["executed"])
+        else:
+            self.assertFalse(data["targeted_agraphon_scan"]["executed"])
+            self.assertEqual(data["targeted_agraphon_scan"]["tiles_evaluated"], 0)
+        # Ensure zero unread candidate coordinates exposed in targeted_agraphon_scan.
+        scan_text = json.dumps(data["targeted_agraphon_scan"])
+        for forbidden_k in ('"u_range"', '"v_range"', '"tile_bounds_vu"', '"z78_range"', '"wraps"', '"tiles"'):
+            self.assertNotIn(forbidden_k, scan_text)
+
 
 if __name__ == "__main__":
     unittest.main()
