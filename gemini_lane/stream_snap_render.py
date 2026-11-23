@@ -5,10 +5,10 @@ Designed for CPU-bounded streaming against remote HTTP(S) or local OME-Zarr v2
 volumes (supporting the RTX 4060 ink queue: PHerc0125, PHerc1203, PHerc0191,
 PHerc0826) with:
 - Strict 404-only empty-chunk handling (HTTP 403/5xx/other errors raise cleanly).
-- Strictly bounded in-memory LRU chunk cache (zero disk cache by default).
+- Byte-capped in-memory LRU chunk cache (not a process-RAM cap; zero disk cache).
 - Three-channel sentinel-safe tifxyz validation and two-pass m7 normal snapping.
-- Trilinear surface-volume rendering with mesh + CT acquisition support masking.
-- Patch-wise layer-coherence on-sheet filtering (per collab/claude-010.md).
+- Trilinear rendering with explicit mesh and positive-weight source availability.
+- A layer-alignment diagnostic, not an on-sheet certificate or Claude-score parity.
 """
 from __future__ import annotations
 
@@ -122,6 +122,8 @@ class RemoteZarrV2:
     Guarantees:
     - Zero disk cache: chunks live only in an in-memory LRU OrderedDict capped
       at ``cache_mb`` MiB (``cache_bytes <= cache_max`` strictly enforced).
+      This bounds cached array payloads only: one request can retain more live
+      chunks, and output arrays, decoded buffers and dictionary overhead are extra.
     - Strict 404-only empty-chunk handling: only HTTP 404 (or a missing local
       chunk file) yields the fill value. HTTP 403, 5xx, short reads, and
       transport errors raise ``requests.HTTPError`` / ``OSError``.
@@ -366,16 +368,23 @@ class RemoteZarrV2:
         return out
 
     def read_box(
-        self, lo_zyx: Sequence[int], hi_zyx: Sequence[int]
-    ) -> tuple[np.ndarray, tuple[int, int, int]]:
+        self, lo_zyx: Sequence[int], hi_zyx: Sequence[int], *, return_support: bool = False
+    ):
         """Read dense block for ``[lo_zyx, hi_zyx)`` clipped to array bounds.
 
-        Returns ``(block, origin_zyx)``.
+        Returns ``(block, origin_zyx)``; with ``return_support=True``, also returns
+        a boolean voxel mask. That mask is true only for finite values from an
+        existing decoded chunk. Missing chunks are legal Zarr fill, but are
+        conservatively unavailable for scientific source-support claims. Stored
+        zero values remain available. This is not a tissue/ink mask.
+        Stored zeros in a masked volume do not prove original acquisition; that
+        requires the acquisition mask/provenance as a separate producer assertion.
         """
         lo = [max(0, int(v)) for v in lo_zyx]
         hi = [min(s, int(v)) for s, v in zip(self.shape, hi_zyx)]
         if any(h <= l for l, h in zip(lo, hi)):
-            return np.full((1, 1, 1), self.fill_value, dtype=self.dtype), (0, 0, 0)
+            block = np.full((1, 1, 1), self.fill_value, dtype=self.dtype)
+            return (block, (0, 0, 0), np.zeros_like(block, dtype=bool)) if return_support else (block, (0, 0, 0))
 
         c0 = [l // c for l, c in zip(lo, self.chunks)]
         c1 = [(h - 1) // c for h, c in zip(hi, self.chunks)]
@@ -387,6 +396,7 @@ class RemoteZarrV2:
         ]
         chunks = self.get_chunks(idxs)
         block = np.full([h - l for l, h in zip(lo, hi)], self.fill_value, dtype=self.dtype)
+        support = np.zeros(block.shape, dtype=bool) if return_support else None
         for idx, arr in chunks.items():
             if arr is None:
                 continue
@@ -404,20 +414,36 @@ class RemoteZarrV2:
                 a0[1] - s[1] : a1[1] - s[1],
                 a0[2] - s[2] : a1[2] - s[2],
             ]
-        return block, (lo[0], lo[1], lo[2])
+            if support is not None:
+                support[
+                    a0[0] - lo[0] : a1[0] - lo[0],
+                    a0[1] - lo[1] : a1[1] - lo[1],
+                    a0[2] - lo[2] : a1[2] - lo[2],
+                ] = np.isfinite(arr[
+                    a0[0] - s[0] : a1[0] - s[0],
+                    a0[1] - s[1] : a1[1] - s[1],
+                    a0[2] - s[2] : a1[2] - s[2],
+                ])
+        origin = (lo[0], lo[1], lo[2])
+        return (block, origin, support) if return_support else (block, origin)
 
     def sample_trilinear(
         self,
         xyz: np.ndarray,
         *,
         max_direct_box_voxels: int = 16_000_000,
-    ) -> np.ndarray:
+        return_support: bool = False,
+    ):
         """Trilinearly sample volume at ``xyz`` coordinates (shape ``(..., 3)``).
 
         Coordinates are in ``(x, y, z)`` voxel order (tifxyz convention) while the
         underlying Zarr volume is indexed ``(z, y, x)``. Out-of-bounds or non-finite
         coordinates receive ``fill_value``. For sparse or wide point sets, queries
         are partitioned by chunk cell to avoid allocating a huge bounding box.
+        With ``return_support=True``, returns ``(values, source_available)``.
+        Every strictly positive-weight trilinear corner must be in bounds, from
+        an existing chunk, and finite. Zero-weight neighbors do not invalidate an
+        exact integer sample. Intensity is never used as an availability test.
         """
         pts = np.asarray(xyz, dtype=np.float64)
         if pts.shape[-1] != 3:
@@ -425,8 +451,14 @@ class RemoteZarrV2:
         orig_shape = pts.shape[:-1]
         flat = pts.reshape(-1, 3)
         out = np.full(flat.shape[0], float(self.fill_value), dtype=np.float32)
+        available = np.zeros(flat.shape[0], dtype=bool)
+
+        def result():
+            values = out.reshape(orig_shape)
+            return (values, available.reshape(orig_shape)) if return_support else values
+
         if flat.shape[0] == 0:
-            return out.reshape(orig_shape)
+            return result()
 
         sz, sy, sx = self.shape
         in_bounds = (
@@ -439,7 +471,7 @@ class RemoteZarrV2:
             & (flat[:, 2] <= sz - 1.0)
         )
         if not in_bounds.any():
-            return out.reshape(orig_shape)
+            return result()
 
         valid_indices = np.flatnonzero(in_bounds)
         q = flat[valid_indices]  # (N, 3) in xyz
@@ -449,22 +481,30 @@ class RemoteZarrV2:
         hi = np.minimum(self.shape, np.ceil(q_zyx.max(axis=0)).astype(int) + 2)
         box_voxels = int(np.prod(np.maximum(0, hi - lo)))
 
-        if box_voxels <= max_direct_box_voxels:
-            block, org = self.read_box(lo.tolist(), hi.tolist())
+        def sample_box(lower, upper, coordinates_zyx, output_indices):
+            if return_support:
+                block, org, voxel_support = self.read_box(lower, upper, return_support=True)
+            else:
+                block, org = self.read_box(lower, upper)
+                voxel_support = None
             blockf = block.astype(np.float32, copy=False)
-            coords = np.stack(
-                [q_zyx[:, 0] - org[0], q_zyx[:, 1] - org[1], q_zyx[:, 2] - org[2]],
-                axis=0,
+            # A zero-weight NaN neighbor must not poison an otherwise supported
+            # exact integer sample. Its source mask still remains false.
+            if not np.isfinite(blockf).all():
+                if voxel_support is not None:
+                    voxel_support &= np.isfinite(blockf)
+                blockf = np.where(np.isfinite(blockf), blockf, 0.0)
+            coords = (coordinates_zyx - np.asarray(org)[None, :]).T
+            out[output_indices] = ndi.map_coordinates(
+                blockf, coords, order=1, mode="constant",
+                cval=float(self.fill_value), output=np.float32,
             )
-            out[valid_indices] = ndi.map_coordinates(
-                blockf,
-                coords,
-                order=1,
-                mode="constant",
-                cval=float(self.fill_value),
-                output=np.float32,
-            )
-            return out.reshape(orig_shape)
+            if voxel_support is not None:
+                available[output_indices] = _positive_weight_stencil_support(voxel_support, coords)
+
+        if box_voxels <= max_direct_box_voxels:
+            sample_box(lo.tolist(), hi.tolist(), q_zyx, valid_indices)
+            return result()
 
         # Partition by Zarr chunk cell so memory stays bounded for curved/wide meshes.
         cshape = np.asarray(self.chunks, dtype=np.int64)
@@ -482,21 +522,28 @@ class RemoteZarrV2:
             sub_zyx = q_zyx[grp]
             slo = np.maximum(0, np.floor(sub_zyx.min(axis=0)).astype(int) - 1)
             shi = np.minimum(self.shape, np.ceil(sub_zyx.max(axis=0)).astype(int) + 2)
-            block, org = self.read_box(slo.tolist(), shi.tolist())
-            blockf = block.astype(np.float32, copy=False)
-            coords = np.stack(
-                [sub_zyx[:, 0] - org[0], sub_zyx[:, 1] - org[1], sub_zyx[:, 2] - org[2]],
-                axis=0,
-            )
-            out[valid_indices[grp]] = ndi.map_coordinates(
-                blockf,
-                coords,
-                order=1,
-                mode="constant",
-                cval=float(self.fill_value),
-                output=np.float32,
-            )
-        return out.reshape(orig_shape)
+            sample_box(slo.tolist(), shi.tolist(), sub_zyx, valid_indices[grp])
+        return result()
+
+
+def _positive_weight_stencil_support(voxel_support: np.ndarray, coords_zyx: np.ndarray) -> np.ndarray:
+    """All and only positive-weight corners of finite local trilinear coordinates."""
+    lower = np.floor(coords_zyx).astype(np.int64)
+    fraction = coords_zyx - lower
+    supported = np.ones(coords_zyx.shape[1], dtype=bool)
+    shape = np.asarray(voxel_support.shape)[:, None]
+    for dz in (0, 1):
+        for dy in (0, 1):
+            for dx in (0, 1):
+                offset = np.array([dz, dy, dx])[:, None]
+                positive = np.where(offset == 1, fraction > 0.0, fraction < 1.0).all(axis=0)
+                needed = positive & supported
+                corner = lower + offset
+                inside = ((corner >= 0) & (corner < shape)).all(axis=0)
+                supported[needed & ~inside] = False
+                indices = np.flatnonzero(needed & inside)
+                supported[indices] &= voxel_support[tuple(corner[:, indices])]
+    return supported
 
 
 # ---------------------------------------------------------------------------
@@ -669,7 +716,7 @@ def _pick_nearest_ridge_offset(
                 y_c = float(profile[k_peak])
                 y_r = float(profile[k_peak + 1])
                 denom = y_l - 2.0 * y_c + y_r
-                if denom < -1e-9 and y_c > y_l and y_c > y_r:
+                if np.isfinite([y_l, y_c, y_r]).all() and denom < -1e-9 and y_c > y_l and y_c > y_r:
                     frac = 0.5 * (y_l - y_r) / denom
                     cand += float(np.clip(frac, -0.5, 0.5)) * step
         else:
@@ -720,7 +767,7 @@ def snap_tifxyz_to_m7(
     """
     if passes < 0:
         raise ValueError("passes must be >= 0")
-    if search_radius <= 0 or step <= 0:
+    if not np.isfinite([search_radius, step, threshold]).all() or search_radius <= 0 or step <= 0:
         raise ValueError("search_radius and step must be > 0")
 
     cx, cy, cz, valid = validate_tifxyz_channels(x, y, z)
@@ -748,10 +795,10 @@ def snap_tifxyz_to_m7(
         }
         return cx, cy, cz, metrics
 
-    raw_vals = m7_reader.sample_trilinear(p_raw[valid])
-    on_sheet_raw = float(np.mean(raw_vals >= threshold))
+    raw_vals, raw_support = m7_reader.sample_trilinear(p_raw[valid], return_support=True)
+    on_sheet_raw = float(np.mean(raw_support & (raw_vals >= threshold)))
 
-    n_steps = int(round(float(search_radius) / float(step)))
+    n_steps = int(np.floor(float(search_radius) / float(step)))
     offsets = np.arange(-n_steps, n_steps + 1, dtype=np.float64) * float(step)
     sz, sy, sx = m7_reader.shape
     max_xyz = np.array([sx - 1.0, sy - 1.0, sz - 1.0], dtype=np.float64)
@@ -760,7 +807,11 @@ def snap_tifxyz_to_m7(
         normals, normal_ok = compute_grid_normals(
             p_cur[..., 0], p_cur[..., 1], p_cur[..., 2], valid=valid
         )
-        active = valid & normal_ok
+        # Missing or out-of-bounds center data cannot justify a correction. In
+        # particular, never clip an unsupported mesh into an m7 array's bounds.
+        center_support = np.zeros(valid.shape, dtype=bool)
+        _, center_support[valid] = m7_reader.sample_trilinear(p_cur[valid], return_support=True)
+        active = valid & normal_ok & center_support
         if not active.any():
             break
 
@@ -772,15 +823,24 @@ def snap_tifxyz_to_m7(
         for i0 in range(0, pts_act.shape[0], batch_size):
             i1 = min(i0 + batch_size, pts_act.shape[0])
             rays = pts_act[i0:i1, None, :] + offsets[None, :, None] * nrm_act[i0:i1, None, :]
-            profiles = m7_reader.sample_trilinear(rays)  # (B, K)
+            profiles, ray_support = m7_reader.sample_trilinear(rays, return_support=True)
+            profiles = np.where(ray_support & np.isfinite(profiles), profiles, -np.inf)
             for j in range(i1 - i0):
                 disps[i0 + j] = _pick_nearest_ridge_offset(
                     profiles[j], offsets, float(threshold), float(step)
                 )
 
-        shifted = pts_act + disps[:, None] * nrm_act
-        shifted = np.clip(shifted, 0.0, max_xyz[None, :])
-        p_cur[active] = shifted
+        # Validate the coordinates that will actually be stored (float32), not
+        # a higher-precision candidate whose later rounding can exceed the bound.
+        shifted = (pts_act + disps[:, None] * nrm_act).astype(np.float32).astype(np.float64)
+        shifted_vals, shifted_support = m7_reader.sample_trilinear(shifted, return_support=True)
+        accepted = (
+            shifted_support & np.isfinite(shifted).all(axis=1)
+            & (shifted >= 0.0).all(axis=1) & (shifted <= max_xyz[None, :]).all(axis=1)
+            & (np.linalg.norm(shifted - pts_act, axis=1) <= float(search_radius) + 1e-6)
+            & (shifted_vals >= threshold)
+        )
+        p_cur[active] = np.where(accepted[:, None], shifted, pts_act)
 
     # Enforce 3-channel sentinel consistency for invalid vertices.
     snapped_x = np.where(valid, p_cur[..., 0], -1.0).astype(np.float32)
@@ -788,8 +848,8 @@ def snap_tifxyz_to_m7(
     snapped_z = np.where(valid, p_cur[..., 2], -1.0).astype(np.float32)
 
     p_final = np.stack([snapped_x, snapped_y, snapped_z], axis=-1).astype(np.float64)
-    after_vals = m7_reader.sample_trilinear(p_final[valid])
-    on_sheet_after_snap = float(np.mean(after_vals >= threshold))
+    after_vals, after_support = m7_reader.sample_trilinear(p_final[valid], return_support=True)
+    on_sheet_after_snap = float(np.mean(after_support & (after_vals >= threshold)))
 
     disp_grid = np.zeros(valid.shape, dtype=np.float64)
     disp_grid[valid] = np.linalg.norm(p_final[valid] - p_raw[valid], axis=-1)
@@ -801,6 +861,8 @@ def snap_tifxyz_to_m7(
         "total_vertex_count": n_total,
         "on_sheet_raw": on_sheet_raw,
         "on_sheet_after_snap": on_sheet_after_snap,
+        "m7_source_available_fraction_raw": float(raw_support.mean()),
+        "m7_source_available_fraction_after_snap": float(after_support.mean()),
         "median_disp_vx": float(np.median(valid_disps)),
         "p90_disp_vx": float(np.percentile(valid_disps, 90)),
         "center_vs_outer_disp_diff": _compute_center_vs_outer_disp_diff(disp_grid, valid),
@@ -848,7 +910,10 @@ def render_surface_stack(
     *,
     uv_stride: float | None = None,
     tile_size: int = 256,
-) -> tuple[np.ndarray, np.ndarray]:
+    return_support: bool = False,
+    require_nonzero_intensity: bool = True,
+    strict_uint8: bool = False,
+):
     """Render a ``[num_slices, H_out, W_out]`` uint8 CT surface volume stack.
 
     - Upsamples valid mesh grid coordinates by ``1 / scale`` (or uses ``uv_stride``
@@ -857,13 +922,31 @@ def render_surface_stack(
       ``flip_normals=True``).
     - Samples ``num_slices`` planes along ``N`` with center mesh at
       ``(num_slices - 1) // 2``.
-    - Returns ``(stack_uint8_lhw, valid_mask)`` where ``valid_mask`` is True only
-      where BOTH the mesh is valid AND the CT volume has non-zero acquisition support.
+    - Non-uint8 integer CT keeps the legacy dtype-max scaling to uint8. That is
+      not a measured intensity-transfer function; pass ``strict_uint8=True`` to
+      reject any non-uint8 source and require an explicit upstream mapping.
+    - Returns ``(stack_uint8_lhw, valid_mask)``. ``valid_mask`` requires a usable
+      mesh and full positive-weight source availability at EVERY rendered plane.
+      With the default ``require_nonzero_intensity=True`` it ALSO keeps the legacy
+      "some plane is nonzero" condition, so masked-volume zeros never add area
+      (``valid_ct_cm2`` callers). Set it to False to count stored zeros as source.
+    - With ``return_support=True``, a third result contains ``mesh_valid_yx``,
+      ``source_available_lhw``, ``full_source_available_yx`` and diagnostic
+      ``nonzero_intensity_yx`` masks. These masks do not certify same-sheet
+      anatomy or model receptive-field context.
     """
     if num_slices < 1:
         raise ValueError("num_slices must be >= 1")
     if slice_step <= 0:
         raise ValueError("slice_step must be > 0")
+    ct_dtype = np.dtype(ct_reader.dtype)
+    if strict_uint8 and ct_dtype != np.dtype(np.uint8):
+        raise ValueError("Renderer requires uint8 CT with an explicit, validated intensity mapping; dtype-max scaling is not supported")
+    dtype_max = (
+        float(np.iinfo(ct_dtype).max)
+        if np.issubdtype(ct_dtype, np.integer) and ct_dtype != np.uint8
+        else None
+    )
     sx, sy = _normalize_scale(uv_stride if uv_stride is not None else scale)
 
     cx, cy, cz, valid = validate_tifxyz_channels(x, y, z)
@@ -873,28 +956,39 @@ def render_surface_stack(
 
     stack = np.zeros((num_slices, out_h, out_w), dtype=np.uint8)
     mesh_valid_out = np.zeros((out_h, out_w), dtype=bool)
+    full_source_out = np.zeros((out_h, out_w), dtype=bool)
+    source_available_lhw = np.zeros(stack.shape, dtype=bool) if return_support else None
+
+    def result():
+        nonzero = stack.max(axis=0) > 0
+        valid_mask = mesh_valid_out & full_source_out
+        if require_nonzero_intensity:
+            valid_mask &= nonzero
+        if not return_support:
+            return stack, valid_mask
+        return stack, valid_mask, {
+            "mesh_valid_yx": mesh_valid_out,
+            "source_available_lhw": source_available_lhw,
+            "full_source_available_yx": mesh_valid_out & full_source_out,
+            "nonzero_intensity_yx": nonzero,
+        }
+
     if not valid.any():
-        return stack, mesh_valid_out
+        return result()
 
     normals, normal_ok = compute_grid_normals(cx, cy, cz, valid=valid)
     if flip_normals:
         normals = -normals
     usable = valid & normal_ok
     if not usable.any():
-        return stack, mesh_valid_out
+        return result()
 
     pts = np.stack([cx, cy, cz], axis=-1).astype(np.float32)
     ptsf = _fill_invalid_nearest(pts, valid)
     nrmf = _fill_invalid_nearest(normals, usable)
-    vmask = usable.astype(np.float32)
 
     mesh_idx = (num_slices - 1) // 2
     offsets = (np.arange(num_slices, dtype=np.float64) - float(mesh_idx)) * float(slice_step)
-    dtype_max = (
-        float(np.iinfo(ct_reader.dtype).max)
-        if np.issubdtype(ct_reader.dtype, np.integer) and ct_reader.dtype != np.uint8
-        else None
-    )
 
     t_sz = max(16, int(tile_size))
     for ty in range(0, out_h, t_sz):
@@ -905,7 +999,10 @@ def render_surface_stack(
             gu_1d = (np.arange(tx, tx + tw, dtype=np.float64)) * sx
             gv, gu = np.meshgrid(gv_1d, gu_1d, indexing="ij")
 
-            m = ndi.map_coordinates(vmask, [gv, gu], order=1, mode="constant", cval=0.0) > 0.999
+            # Exactly positive-weight mesh contributors must be usable too;
+            # a 0.999 intensity-like threshold admits tiny sentinel contributions.
+            mesh_coords = np.stack([np.zeros(gv.size), gv.ravel(), gu.ravel()])
+            m = _positive_weight_stencil_support(usable[None, ...], mesh_coords).reshape(gv.shape)
             if not m.any():
                 continue
 
@@ -938,7 +1035,7 @@ def render_surface_stack(
             # Sample all num_slices along N for this tile.
             # Shape: (num_slices, M, 3) -> sampled (num_slices, M)
             rays = p_tile[None, :, :] + offsets[:, None, None] * n_tile[None, :, :]
-            vals = ct_reader.sample_trilinear(rays)  # (L, M) float32
+            vals, source_available = ct_reader.sample_trilinear(rays, return_support=True)
             if dtype_max is not None and dtype_max > 0.0:
                 vals = vals * (255.0 / dtype_max)
             vals_u8 = np.clip(np.rint(vals), 0.0, 255.0).astype(np.uint8)
@@ -947,14 +1044,19 @@ def render_surface_stack(
             tile_out[:, m] = vals_u8
             stack[:, ty : ty + th, tx : tx + tw] = tile_out
             mesh_valid_out[ty : ty + th, tx : tx + tw] = m
+            source_tile = np.zeros((th, tw), dtype=bool)
+            source_tile[m] = source_available.all(axis=0)
+            full_source_out[ty : ty + th, tx : tx + tw] = source_tile
+            if source_available_lhw is not None:
+                support_tile = np.zeros((num_slices, th, tw), dtype=bool)
+                support_tile[:, m] = source_available
+                source_available_lhw[:, ty : ty + th, tx : tx + tw] = support_tile
 
-    ct_support = stack.max(axis=0) > 0
-    valid_mask = mesh_valid_out & ct_support
-    return stack, valid_mask
+    return result()
 
 
 # ---------------------------------------------------------------------------
-# 4. Layer-coherence on-sheet filter (per collab/claude-010.md)
+# 4. Layer-alignment diagnostic (not the Claude layer-coherence classifier)
 # ---------------------------------------------------------------------------
 
 def layer_coherence_score(
@@ -967,14 +1069,16 @@ def layer_coherence_score(
     valid_mask: np.ndarray | None = None,
     min_valid_fraction: float = 0.5,
 ) -> dict[str, Any]:
-    """Score whether a rendered stack is sheet-parallel vs an oblique cut.
+    """Report zero-shift dominance under the legacy ``layer_coherence_score`` API.
 
-    Compares plane ``mesh_index - delta`` against plane ``mesh_index + delta``
-    over non-overlapping valid patches: on a sheet-parallel render, features align
-    at zero shift ``(0, 0)`` so zero-shift Pearson correlation beats the maximum
-    shifted-patch correlation over ``[-max_shift, max_shift]^2 \\ {(0, 0)}``;
-    on an oblique cut, the sheet pattern translates laterally so a non-zero shift
-    correlates more strongly.
+    This Pearson diagnostic compares zero shift against a finite shift search;
+    it is NOT Claude's phase-correlation classifier and is NOT a sheet-parallel
+    fraction (``sheet_parallel_fraction`` is only a deprecated alias of
+    ``zero_shift_dominant_fraction``). Without ``valid_mask`` the legacy
+    nonzero-intensity mask is used; callers should pass the renderer mask. Independent fibre layers, shared artifacts, and constant regions
+    cannot be distinguished by this test alone. Do not gate valid physical area
+    or ink eligibility on this value. A fixed common mask supports every tested
+    shift so missing pixels cannot enter only one side of a comparison.
     """
     arr = np.asarray(stack)
     if arr.ndim != 3:
@@ -998,6 +1102,7 @@ def layer_coherence_score(
         if vm.shape != (height, width):
             raise ValueError(f"valid_mask shape {vm.shape} does not match stack HW {(height, width)}")
     else:
+        # Legacy fallback: intensity is NOT source support; pass the renderer's mask.
         vm = (plane_a > 0.0) | (plane_b > 0.0)
 
     s = int(max_shift)
@@ -1005,13 +1110,7 @@ def layer_coherence_score(
     p_h = int(patch_size) if height >= patch_size else height
     p_w = int(patch_size) if width >= patch_size else width
     if p_h <= 2 * s or p_w <= 2 * s:
-        return {
-            "sheet_parallel_fraction": 0.0,
-            "patch_count": 0,
-            "mean_zero_shift_r": 0.0,
-            "mean_best_shifted_r": 0.0,
-            "patch_scores": [],
-        }
+        return _alignment_result()
 
     shifts = [
         (dy, dx)
@@ -1023,10 +1122,11 @@ def layer_coherence_score(
     patch_scores: list[dict[str, Any]] = []
     inner_h = p_h - 2 * s
     inner_w = p_w - 2 * s
+    all_shifts_valid = ndi.minimum_filter(vm.astype(np.uint8), size=2 * s + 1, mode="constant", cval=0).astype(bool)
 
     for r0 in range(0, height - p_h + 1, p_h):
         for c0 in range(0, width - p_w + 1, p_w):
-            vm_in = vm[r0 + s : r0 + s + inner_h, c0 + s : c0 + s + inner_w]
+            vm_in = all_shifts_valid[r0 + s : r0 + s + inner_h, c0 + s : c0 + s + inner_w]
             if float(vm_in.mean()) < min_valid_fraction:
                 continue
 
@@ -1064,7 +1164,7 @@ def layer_coherence_score(
                     best_r = r_val
                     best_shift = (dy, dx)
 
-            is_parallel = bool(zero_r > best_r and zero_r > 0.0)
+            zero_dominant = bool(zero_r > best_r and zero_r > 0.0)
             patch_scores.append(
                 {
                     "row": int(r0),
@@ -1072,35 +1172,60 @@ def layer_coherence_score(
                     "zero_shift_r": round(zero_r, 6),
                     "best_shifted_r": round(best_r, 6),
                     "best_shift": [int(best_shift[0]), int(best_shift[1])],
-                    "sheet_parallel": is_parallel,
+                    "zero_shift_dominant": zero_dominant,
                 }
             )
 
     count = len(patch_scores)
     if count == 0:
-        return {
-            "sheet_parallel_fraction": 0.0,
-            "patch_count": 0,
-            "mean_zero_shift_r": 0.0,
-            "mean_best_shifted_r": 0.0,
-            "patch_scores": [],
-        }
+        return _alignment_result()
 
-    parallel_frac = float(sum(1 for p in patch_scores if p["sheet_parallel"]) / count)
+    dominant_frac = float(sum(1 for p in patch_scores if p["zero_shift_dominant"]) / count)
     mean_zero = float(np.mean([p["zero_shift_r"] for p in patch_scores]))
     mean_best = float(np.mean([p["best_shifted_r"] for p in patch_scores]))
+    return _alignment_result(dominant_frac, mean_zero, mean_best, patch_scores)
+
+
+def _alignment_result(
+    dominant_frac: float = 0.0,
+    mean_zero: float = 0.0,
+    mean_best: float = 0.0,
+    patch_scores: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    scores = patch_scores or []
     return {
-        "sheet_parallel_fraction": parallel_frac,
-        "patch_count": count,
+        "diagnostic_kind": "zero-shift-dominance-only",
+        "zero_shift_dominant_fraction": dominant_frac,
+        # Deprecated alias kept for screen_scroll_rtx4060 / paris4_dual_energy and
+        # published receipts; same value, NOT a sheet-parallel certificate.
+        "sheet_parallel_fraction": dominant_frac,
+        "patch_count": len(scores),
         "mean_zero_shift_r": mean_zero,
         "mean_best_shifted_r": mean_best,
-        "patch_scores": patch_scores,
+        "patch_scores": scores,
     }
 
 
 # ---------------------------------------------------------------------------
 # 5. CLI pipeline with zero-local-path JSON receipt
 # ---------------------------------------------------------------------------
+
+def _private_output_path(path: str | os.PathLike[str]) -> Path:
+    """Detailed mesh/stack/receipt outputs must not be placed in any Git worktree."""
+    resolved = Path(path).resolve()
+    for ancestor in (resolved, *resolved.parents):
+        if os.path.lexists(ancestor / ".git"):
+            raise ValueError("Detailed renderer outputs must be private, outside every Git worktree")
+    return resolved
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
 
 def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(
@@ -1123,16 +1248,31 @@ def build_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--coherence-delta", type=int, default=2, help="Plane half-offset for layer coherence (default: 2)")
     ap.add_argument("--coherence-patch-size", type=int, default=64, help="Patch size for layer coherence (default: 64)")
     ap.add_argument("--coherence-max-shift", type=int, default=4, help="Max lateral shift for coherence (default: 4)")
-    ap.add_argument("--cache-mb", type=float, default=512.0, help="In-memory LRU chunk cache cap in MiB (default: 512)")
+    ap.add_argument("--cache-mb", type=float, default=512.0, help="LRU cached-array payload cap in MiB, NOT total live RAM (default: 512)")
     ap.add_argument("--workers", type=int, default=8, help="Concurrent chunk-fetch workers (default: 8)")
     ap.add_argument("--out-npy", required=True, help="Output .npy path for rendered [L, H, W] uint8 stack")
     ap.add_argument("--out-receipt", required=True, help="Output .json path for zero-local-path receipt")
+    ap.add_argument("--out-support-npz", default=None, help="Optional private .npz containing separate mesh, source LHW, full-stack and intensity masks")
     ap.add_argument("--out-snapped-mesh", default=None, help="Optional output directory for snapped tifxyz")
+    ap.add_argument(
+        "--count-stored-zeros",
+        action="store_true",
+        help="Count explicitly stored zero voxels as valid source (default: legacy masked-zero exclusion)",
+    )
     return ap
 
 
 def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
-    """Execute snap -> render -> layer-coherence and write stack .npy + sanitized receipt."""
+    """Write private stack, support and diagnostic receipt, never inside a Git worktree.
+
+    Sanitizing a URL/basename does not make a detailed receipt safe to publish:
+    mesh identities and patch rows/columns can still localize a surface.
+    """
+    for path in (args.out_npy, args.out_receipt, args.out_snapped_mesh, getattr(args, "out_support_npz", None)):
+        if path is not None:
+            _private_output_path(path)
+    if str(args.ct_level) != "0" or (args.m7_zarr and str(args.m7_level) != "0"):
+        raise ValueError("CLI requires native level-0 coordinates; explicit pyramid/frame transforms are not implemented")
     x, y, z, valid, meta = read_tifxyz(args.mesh_dir)
     mesh_shape = [int(x.shape[0]), int(x.shape[1])]
 
@@ -1186,7 +1326,7 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
     with RemoteZarrV2(
         args.ct_zarr, level=args.ct_level, cache_mb=args.cache_mb, workers=args.workers
     ) as ct_reader:
-        stack, valid_mask = render_surface_stack(
+        rendered = render_surface_stack(
             x,
             y,
             z,
@@ -1196,7 +1336,11 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
             flip_normals=bool(args.flip_normals),
             scale=(sx, sy),
             uv_stride=args.uv_stride,
+            return_support=bool(getattr(args, "out_support_npz", None)),
+            require_nonzero_intensity=not bool(getattr(args, "count_stored_zeros", False)),
         )
+        stack, valid_mask = rendered[:2]
+        support_masks = rendered[2] if len(rendered) == 3 else None
         ct_chunks = ct_reader.chunks_fetched
         ct_bytes = ct_reader.bytes_fetched
 
@@ -1211,24 +1355,27 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
             valid_mask=valid_mask,
         )
     else:
-        coherence = {
-            "sheet_parallel_fraction": 0.0,
-            "patch_count": 0,
-            "mean_zero_shift_r": 0.0,
-            "mean_best_shifted_r": 0.0,
-            "patch_scores": [],
-        }
+        coherence = _alignment_result()
 
     out_npy = Path(args.out_npy)
     out_npy.parent.mkdir(parents=True, exist_ok=True)
-    np.save(out_npy, stack)
+    with out_npy.open("wb") as stream:
+        np.save(stream, stack, allow_pickle=False)
+
+    support_file_sha256 = None
+    if support_masks is not None:
+        support_path = _private_output_path(args.out_support_npz)
+        support_path.parent.mkdir(parents=True, exist_ok=True)
+        with support_path.open("wb") as stream:
+            np.savez(stream, **support_masks, full_stack_valid_yx=valid_mask)
+        support_file_sha256 = _sha256_file(support_path)
 
     stack_sha256 = hashlib.sha256(np.ascontiguousarray(stack).tobytes()).hexdigest()
     valid_pixels = int(valid_mask.sum())
     total_pixels = int(valid_mask.size)
 
     receipt: dict[str, Any] = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "renderer": "gemini_lane/stream_snap_render.py",
         "inputs": {
             "mesh_name": _sanitize_source_label(args.mesh_dir),
@@ -1242,11 +1389,17 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
             "snap_step": float(args.snap_step),
             "m7_threshold": float(args.m7_threshold),
             "num_slices": int(args.num_slices),
+            "mesh_index": mesh_idx,
+            "depth_offsets_native_voxels": ((np.arange(int(args.num_slices)) - mesh_idx) * float(args.slice_step)).tolist(),
             "slice_step": float(args.slice_step),
             "flip_normals": bool(args.flip_normals),
+            "normal_convention": "normalize(cross(dP/du,dP/dv)); u=columns, v=rows; negated when flip_normals is true",
+            "plane_order": "increasing depth offset along the effective normal",
             "scale": [sx, sy],
             "uv_stride": None if args.uv_stride is None else float(args.uv_stride),
             "cache_mb": float(args.cache_mb),
+            "ct_level": str(args.ct_level),
+            "m7_level": str(args.m7_level),
         },
         "mesh_shape": mesh_shape,
         "stack_shape": [int(s) for s in stack.shape],
@@ -1254,6 +1407,21 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
         "total_pixels": total_pixels,
         "valid_pixel_fraction": float(valid_pixels / total_pixels) if total_pixels > 0 else 0.0,
         "stack_sha256": stack_sha256,
+        "stack_sha256_kind": "C-order-array-payload",
+        "stack_npy_sha256": _sha256_file(out_npy),
+        "support_npz_sha256": support_file_sha256,
+        "validity_definition": (
+            "Usable mesh and every positive-weight source corner stored, in bounds and finite at every rendered plane"
+            + (
+                "; stored zeros count as source."
+                if getattr(args, "count_stored_zeros", False)
+                else "; AND some rendered plane nonzero (legacy masked-zero exclusion)."
+            )
+            + " This is observed source availability, not proof of original acquisition in masked-zero chunks."
+            " An acquisition mask/assertion, model-context and same-sheet validity are additional requirements."
+        ),
+        "cache_limit_definition": "Cached ndarray payload only; live fetched chunks, output stack, optional LHW masks, decoder buffers and cache dictionary overhead are additional.",
+        "privacy": "Private detailed receipt. Sanitized sources, basenames and patch scores may still localize surfaces; do not commit or publish.",
         "chunks_fetched": int(ct_chunks + m7_chunks),
         "bytes_fetched": int(ct_bytes + m7_bytes),
         "ct_chunks_fetched": int(ct_chunks),
