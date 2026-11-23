@@ -297,46 +297,101 @@ class RealCTBenchmarkTests(unittest.TestCase):
         data = json.loads(self.RECEIPT.read_text(encoding="utf-8"))
         self.assertEqual(data["schema_version"], self.B.SCHEMA_VERSION)
         self.assertEqual({s["role"] for s in data["strips"]}, {"intact_clean_papyrus", "delaminated_crack_void"})
+        crack_ids = {s["mesh_id"] for s in data["strips"] if s["role"] == "delaminated_crack_void"}
+        self.assertEqual(crack_ids, {"w050", "w030"})
         total = round(sum(s["streamed_mib"]["total"] for s in data["strips"]), 2)
-        self.assertEqual(total, data["total_streamed_mib"])
+        self.assertAlmostEqual(total, data["total_streamed_mib"], places=2)
         self.assertLess(total, self.B.MIB_BUDGET)
+        self.assertLessEqual(self.B.MIB_BUDGET * 1024 ** 2, 125829120)
         self.assertTrue(data["within_budget"])
+        self.assertGreater(data["n_windows"]["delaminated_crack_void"], 1)
         for s in data["strips"]:
-            h = s["halo"]
-            self.assertLessEqual(s["subwindow"]["dry_run_ct_chunks"], self.B.CHUNKS_PER_STRIP)
-            self.assertLessEqual(s["streamed_mib"]["ct"], self.B.CT_MIB_CAP_PER_STRIP)
-            self.assertAlmostEqual(h["clean_papyrus_retention_frac"] + h["crack_halo_frac"], 1.0, places=5)
-            self.assertAlmostEqual(h["void_halo_frac"] + h["border_halo_only_frac"], h["crack_halo_frac"], places=5)
-            self.assertEqual(h["void_detection_fired"], h["void_halo_frac"] > 0)
+            self.assertLessEqual(s["budget_accounted_mib"], self.B.STREAM_CAP_MIB)
+            self.assertEqual(s["windows"][0]["rule"], "fewest_chunks")
+            for w in s["windows"]:
+                self.assertLessEqual(w["dry_run_ct_chunks"], self.B.CHUNKS_PER_WINDOW)
+                h = w["halo"]
+                self.assertEqual(set(h["modes"]), set(F.VOID_MODES))
+                for m in h["modes"].values():
+                    self.assertAlmostEqual(m["clean_papyrus_retention_frac"] + m["crack_halo_frac"], 1.0, places=5)
+                    self.assertAlmostEqual(m["void_halo_frac"] + m["border_halo_only_frac"], m["crack_halo_frac"], places=5)
+                    self.assertEqual(m["void_detection_fired"], m["void_halo_frac"] > 0)
+                self.assertGreaterEqual(h["modes"]["hybrid"]["threshold"], h["modes"]["robust_sigma"]["threshold"] - 1e-3)
         v = data["verdict"]
-        clean = next(s for s in data["strips"] if s["role"] == "intact_clean_papyrus")["halo"]
-        self.assertEqual(v["clean_retention_observed"], clean["clean_papyrus_retention_frac"])
-        self.assertEqual(v["clean_retention_meets_target"], clean["clean_papyrus_retention_frac"] >= v["clean_retention_target"])
+        self.assertEqual(v["default_mode"], "robust_sigma")
+        clean = [w["halo"] for s in data["strips"] if s["role"] == "intact_clean_papyrus" for w in s["windows"]]
+        for mode, vm in v["by_mode"].items():
+            got = min(h["modes"][mode]["clean_papyrus_retention_frac"] for h in clean)
+            self.assertEqual(vm["clean_retention_min"], got)
+            self.assertEqual(vm["clean_retention_meets_target"], got >= v["clean_retention_target"])
 
     def test_receipt_privacy(self):
         raw = self.RECEIPT.read_text(encoding="utf-8")
         for forbidden in ("C:\\\\", "C:/", "/Users/", "/home/", "Scrollprize_private", ".png", "top_hotspots",
-                          "prob", "studio", "ahn", "detectors", "fp_diagnostics"):
+                          "prob", "studio", "ahn", "detectors", "fp_diagnostics", "Temp", "fpbench-"):
             self.assertNotIn(forbidden, raw)
         data = json.loads(raw)
-        unread = next(s for s in data["strips"] if s["role"] == "delaminated_crack_void")
-        self.assertIsNone(unread["subwindow"]["window"])
-        self.assertTrue(all(s["ct_volume"].startswith("https://") for s in data["strips"]))
+        for s in data["strips"]:
+            self.assertTrue(s["ct_volume"].startswith("https://"))
+            if s["role"] == "delaminated_crack_void":
+                self.assertTrue(all(w["window"] is None for w in s["windows"]))
+
+    def test_void_threshold_modes(self):
+        vals = np.concatenate([np.full(900, 100.0), np.full(100, 30.0), np.linspace(40, 160, 200)]).astype(np.float32)
+        robust = F.void_threshold(vals)
+        med = float(np.median(vals))
+        self.assertAlmostEqual(F.void_threshold(vals, void_mode="physical"), 0.5 * med, places=4)
+        self.assertEqual(F.void_threshold(vals, void_mode="physical", abs_dark_floor=42.0), 42.0)
+        self.assertEqual(F.void_threshold(vals, void_mode="hybrid"), max(robust, 0.5 * med))
+        with self.assertRaises(ValueError):
+            F.void_threshold(vals, void_mode="nope")
+
+    def test_physical_mode_fires_where_robust_sigma_collapses(self):
+        # Real-CT-like: median ~100, weave robust sigma ~30 (median - 4 sigma ~ 0), plus a dark partial-volume seam.
+        rng = np.random.default_rng(3)
+        yy, xx = np.mgrid[:200, :200].astype(np.float32)
+        ct = 100 + 45 * np.sin(2 * np.pi * xx / 24.0) * np.sin(2 * np.pi * yy / 28.0) + rng.normal(0, 6, (200, 200))
+        ct[96:104, 10:190] = 20.0
+        ct = np.clip(ct, 1, 255).astype(np.float32)
+        valid = np.ones(ct.shape, bool)
+        self.assertLess(F.void_threshold(F._masked_smooth(ct, valid, 1.0).ravel()), 20.0)
+        robust = F.build_crack_void_halo_mask(ct, valid)
+        self.assertFalse(robust.any())
+        self.assertTrue(np.array_equal(robust, F.build_crack_void_halo_mask(ct, valid, void_mode="robust_sigma")))
+        for mode in ("physical", "hybrid"):
+            m = F.build_crack_void_halo_mask(ct, valid, void_mode=mode)
+            self.assertTrue(m[96:104, 20:180].all(), mode)
+            self.assertFalse(m[:60].any(), mode)
 
     def test_centered_crop_and_subwindow_selection(self):
         self.assertEqual(self.B.centered_crop((56, 245)), (3, 53, 97, 147))
         with self.assertRaises(ValueError):
             self.B.centered_crop((40, 245))
-        grid = np.zeros((40, 40), dtype=np.float32)
+        g = np.mgrid[0:40, 0:40].astype(np.float32)
+        x, y = g[1] * 20, g[0] * 20
+        z = np.where(g[1] > 20, 0.5 * (g[1] - 20) ** 2, 0.0).astype(np.float32)  # flat left, curved right
         valid = np.ones((40, 40), dtype=bool)
-        # Footprint grows with area: only windows of <= 120 vertices fit the per-strip chunk budget.
-        footprint = lambda x, y, z: int(np.ceil(x.size / 120 * self.B.CHUNKS_PER_STRIP))  # noqa: E731
-        window, factor, n = self.B.select_subwindow(grid, grid, grid, valid, (0, 20, 0, 20), footprint)
-        self.assertEqual(factor, 0.5)
-        self.assertEqual((window[1] - window[0], window[3] - window[2]), (10, 10))
-        self.assertLessEqual(n, self.B.CHUNKS_PER_STRIP)
+        # Footprint grows with area: only windows of <= 120 vertices fit the per-window chunk budget.
+        footprint = lambda a, b, c: int(np.ceil(a.size / 120 * self.B.CHUNKS_PER_WINDOW))  # noqa: E731
+        wins, factor = self.B.select_subwindows(x, y, z, valid, (0, 20, 0, 40), footprint)
+        self.assertEqual([w["rule"] for w in wins], ["fewest_chunks", "max_curvature"])
+        a, b = wins[0]["window"], wins[1]["window"]
+        self.assertEqual((a[1] - a[0], a[3] - a[2]), (b[1] - b[0], b[3] - b[2]))
+        self.assertLessEqual((a[1] - a[0]) * (a[3] - a[2]), 120)
+        self.assertFalse(self.B._overlaps(a, b))
+        self.assertGreater(wins[1]["roughness_vx"], wins[0]["roughness_vx"])
+        for w in wins:
+            self.assertLessEqual(w["dry_run_ct_chunks"], self.B.CHUNKS_PER_WINDOW)
         with self.assertRaises(RuntimeError):
-            self.B.select_subwindow(grid, grid, grid, valid, (0, 20, 0, 20), lambda *_: 10 ** 6)
+            self.B.select_subwindows(x, y, z, valid, (0, 20, 0, 40), lambda *_: 10 ** 6)
+
+    def test_geometry_roughness(self):
+        g = np.mgrid[0:10, 0:10].astype(np.float32)
+        valid = np.ones((10, 10), bool)
+        self.assertEqual(self.B.geometry_roughness(g[1], g[0], np.zeros_like(g[0]), valid), 0.0)
+        self.assertAlmostEqual(self.B.geometry_roughness(g[1], g[0], g[1] ** 2, valid), 1.0, places=5)  # pooled 2 and 0
+        self.assertAlmostEqual(self.B.geometry_roughness(g[1], g[0], g[1] ** 2 + g[0] ** 2, valid), 2.0, places=5)
+        self.assertEqual(self.B.geometry_roughness(g[1], g[0], g[1], np.zeros_like(valid)), 0.0)
 
     def test_summarize_halo_and_receipt_on_synthetic_ct(self):
         rng = np.random.default_rng(7)
@@ -346,15 +401,31 @@ class RealCTBenchmarkTests(unittest.TestCase):
         valid = np.ones((240, 240), dtype=bool)
         clean_stats = self.B.summarize_halo(woven, valid, VOXEL_UM)
         crack_stats = self.B.summarize_halo(cracked, valid, VOXEL_UM)
-        self.assertFalse(clean_stats["void_detection_fired"])
-        self.assertTrue(crack_stats["void_detection_fired"])
-        self.assertGreater(crack_stats["crack_halo_frac"], clean_stats["crack_halo_frac"])
-        mk = lambda role, h: {"role": role, "halo": h, "streamed_mib": {"total": 1.0}}  # noqa: E731
+        for mode in F.VOID_MODES:
+            self.assertFalse(clean_stats["modes"][mode]["void_detection_fired"], mode)
+            self.assertTrue(crack_stats["modes"][mode]["void_detection_fired"], mode)
+            self.assertGreater(crack_stats["modes"][mode]["crack_halo_frac"], clean_stats["modes"][mode]["crack_halo_frac"])
+        self.assertEqual(set(crack_stats["physical_by_dark_frac"]), {f"{f:g}" for f in self.B.FRAC_SWEEP})
+        mk = lambda role, h: {"role": role, "windows": [{"halo": h}], "streamed_mib": {"total": 1.0}}  # noqa: E731
         receipt = self.B.build_receipt([mk("intact_clean_papyrus", clean_stats), mk("delaminated_crack_void", crack_stats)])
-        self.assertTrue(receipt["verdict"]["clean_retention_meets_target"])
-        self.assertGreater(receipt["verdict"]["delaminated_minus_clean_halo_frac"], 0)
+        for vm in receipt["verdict"]["by_mode"].values():
+            self.assertTrue(vm["clean_retention_meets_target"])
+            self.assertGreater(vm["delaminated_minus_clean_void_halo_frac"], 0)
+        with self.assertRaises(ValueError):
+            self.B.build_receipt([mk("intact_clean_papyrus", clean_stats)])
         with self.assertRaises(ValueError):
             self.B.summarize_halo(woven, np.zeros_like(valid), VOXEL_UM)
+
+    def test_stream_budget_shared_and_settles(self):
+        b = self.B.StreamBudget(1.0 / 1024)  # 1024 bytes
+        b.reserve(800)
+        b.settle(800, 100)
+        self.assertEqual(b.used, 100)
+        b.reserve(900)
+        with self.assertRaises(self.B.BudgetExceeded):
+            b.reserve(100)
+        with self.assertRaises(self.B.BudgetExceeded):
+            b.charge(100)
 
     def test_budgeted_reader_refuses_fetch_past_cap(self):
         import tempfile

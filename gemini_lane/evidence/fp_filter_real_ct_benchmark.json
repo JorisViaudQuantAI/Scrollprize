@@ -1,12 +1,17 @@
 {
-  "schema_version": 1,
-  "method": "CPU-only stream-render of the mid CT slice + build_crack_void_halo_mask (default parameters); no ink detector run, no ink prediction read, zero persistent CT on disk",
-  "filter_parameters": "screening_fp_filter.build_crack_void_halo_mask defaults (untuned on these strips)",
-  "mib_budget": 80.0,
-  "chunks_per_strip": 16,
+  "schema_version": 2,
+  "method": "CPU-only stream-render of the mid CT slice on geometry-selected sub-windows + build_crack_void_halo_mask under robust_sigma (default), physical and hybrid void modes; no ink detector run, no ink prediction read, zero persistent CT on disk",
+  "filter_parameters": "screening_fp_filter.build_crack_void_halo_mask defaults per void_mode (dark_sigma=4, dark_frac_of_median=0.5); untuned on these strips",
+  "mib_budget": 120.0,
+  "stream_cap_mib": 118.0,
+  "chunks_per_window": 7,
   "render_tile": 32,
-  "total_streamed_mib": 64.47,
+  "total_streamed_mib": 88.37,
   "within_budget": true,
+  "n_windows": {
+    "intact_clean_papyrus": 2,
+    "delaminated_crack_void": 4
+  },
   "strips": [
     {
       "name": "PHerc0306B_w074_positive_control",
@@ -20,48 +25,160 @@
       "snap_passes": 0,
       "num_slices": 5,
       "voxel_um": 8.64,
-      "subwindow": {
-        "factor_of_outer": 0.4,
-        "grid_shape": [
-          10,
-          24
-        ],
-        "dry_run_ct_chunks": 15,
-        "window": [
-          99,
-          109,
-          190,
-          214
-        ]
-      },
-      "m7_snap": null,
+      "factor_of_outer": 0.25,
       "streamed_mib": {
-        "ct": 30.0,
+        "ct": 24.0,
         "m7": 0.0,
         "mesh_geometry": 1.09,
-        "total": 31.09
+        "total": 25.09
       },
-      "ct_chunks_fetched": 15,
-      "seconds": 8.18,
-      "halo": {
-        "valid_px": 82800,
-        "valid_cm2": 0.06181,
-        "valid_frame_frac": 0.992318,
-        "ct_median": 97.0,
-        "ct_robust_sigma": 37.065,
-        "ct_p01": 28.0,
-        "raw_dark_threshold_est": -51.26,
-        "clean_papyrus_retention_frac": 0.954058,
-        "crack_halo_frac": 0.045942,
-        "void_halo_frac": 0.0,
-        "border_halo_only_frac": 0.045942,
-        "void_detection_fired": false,
-        "retention_by_dark_sigma": {
-          "3": 0.954058,
-          "4": 0.954058,
-          "5": 0.954058
+      "budget_accounted_mib": 25.09,
+      "ct_chunks_fetched": 12,
+      "seconds": 5.48,
+      "windows": [
+        {
+          "rule": "fewest_chunks",
+          "grid_shape": [
+            6,
+            15
+          ],
+          "window": [
+            98,
+            104,
+            190,
+            205
+          ],
+          "dry_run_ct_chunks": 5,
+          "roughness_vx": 0.7112,
+          "m7_snap": null,
+          "halo": {
+            "valid_px": 28000,
+            "valid_cm2": 0.020902,
+            "valid_frame_frac": 0.986576,
+            "ct_median": 97.0,
+            "ct_robust_sigma": 40.03,
+            "ct_p01": 28.0,
+            "ct_p05": 41.0,
+            "ct_dark_px_frac_below_half_median": 0.090964,
+            "modes": {
+              "robust_sigma": {
+                "threshold": -52.946,
+                "clean_papyrus_retention_frac": 0.919857,
+                "crack_halo_frac": 0.080143,
+                "void_halo_frac": 0.0,
+                "border_halo_only_frac": 0.080143,
+                "void_detection_fired": false
+              },
+              "physical": {
+                "threshold": 48.689,
+                "clean_papyrus_retention_frac": 0.635357,
+                "crack_halo_frac": 0.364643,
+                "void_halo_frac": 0.293071,
+                "border_halo_only_frac": 0.071571,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 48.689,
+                "clean_papyrus_retention_frac": 0.635357,
+                "crack_halo_frac": 0.364643,
+                "void_halo_frac": 0.293071,
+                "border_halo_only_frac": 0.071571,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 0.919857,
+              "4": 0.919857,
+              "5": 0.919857
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.837536,
+                "void_halo_frac": 0.082321
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.635357,
+                "void_halo_frac": 0.293071
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.421964,
+                "void_halo_frac": 0.527321
+              }
+            }
+          }
+        },
+        {
+          "rule": "max_curvature",
+          "grid_shape": [
+            6,
+            15
+          ],
+          "window": [
+            97,
+            103,
+            205,
+            220
+          ],
+          "dry_run_ct_chunks": 7,
+          "roughness_vx": 1.6636,
+          "m7_snap": null,
+          "halo": {
+            "valid_px": 28000,
+            "valid_cm2": 0.020902,
+            "valid_frame_frac": 0.986576,
+            "ct_median": 97.0,
+            "ct_robust_sigma": 40.03,
+            "ct_p01": 26.0,
+            "ct_p05": 36.0,
+            "ct_dark_px_frac_below_half_median": 0.136464,
+            "modes": {
+              "robust_sigma": {
+                "threshold": -48.714,
+                "clean_papyrus_retention_frac": 0.919857,
+                "crack_halo_frac": 0.080143,
+                "void_halo_frac": 0.0,
+                "border_halo_only_frac": 0.080143,
+                "void_detection_fired": false
+              },
+              "physical": {
+                "threshold": 48.695,
+                "clean_papyrus_retention_frac": 0.619607,
+                "crack_halo_frac": 0.380393,
+                "void_halo_frac": 0.345786,
+                "border_halo_only_frac": 0.034607,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 48.695,
+                "clean_papyrus_retention_frac": 0.619607,
+                "crack_halo_frac": 0.380393,
+                "void_halo_frac": 0.345786,
+                "border_halo_only_frac": 0.034607,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 0.919857,
+              "4": 0.919857,
+              "5": 0.919857
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.84725,
+                "void_halo_frac": 0.092393
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.619607,
+                "void_halo_frac": 0.345786
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.435893,
+                "void_halo_frac": 0.539536
+              }
+            }
+          }
         }
-      }
+      ]
     },
     {
       "name": "PHerc0191_w050_delaminated",
@@ -75,62 +192,377 @@
       "snap_passes": 2,
       "num_slices": 5,
       "voxel_um": 9.362,
-      "subwindow": {
-        "factor_of_outer": 0.3,
-        "grid_shape": [
-          15,
-          15
-        ],
-        "dry_run_ct_chunks": 12,
-        "window": null
-      },
-      "m7_snap": {
-        "on_sheet_raw": 0.3956,
-        "on_sheet_after_snap": 0.8844,
-        "median_disp_vx": 3.3346
-      },
+      "factor_of_outer": 0.2,
       "streamed_mib": {
-        "ct": 28.0,
-        "m7": 5.22,
+        "ct": 22.0,
+        "m7": 10.22,
         "mesh_geometry": 0.16,
-        "total": 33.38
+        "total": 32.38
       },
-      "ct_chunks_fetched": 14,
-      "seconds": 8.01,
-      "halo": {
-        "valid_px": 78961,
-        "valid_cm2": 0.069207,
-        "valid_frame_frac": 1.0,
-        "ct_median": 112.0,
-        "ct_robust_sigma": 26.687,
-        "ct_p01": 33.0,
-        "raw_dark_threshold_est": 5.253,
-        "clean_papyrus_retention_frac": 1.0,
-        "crack_halo_frac": 0.0,
-        "void_halo_frac": 0.0,
-        "border_halo_only_frac": 0.0,
-        "void_detection_fired": false,
-        "retention_by_dark_sigma": {
-          "3": 0.919492,
-          "4": 1.0,
-          "5": 1.0
+      "budget_accounted_mib": 32.38,
+      "ct_chunks_fetched": 11,
+      "seconds": 15.7,
+      "windows": [
+        {
+          "rule": "fewest_chunks",
+          "grid_shape": [
+            10,
+            10
+          ],
+          "window": null,
+          "dry_run_ct_chunks": 4,
+          "roughness_vx": 2.8364,
+          "m7_snap": {
+            "on_sheet_raw": 0.15,
+            "on_sheet_after_snap": 0.87,
+            "median_disp_vx": 5.3032
+          },
+          "halo": {
+            "valid_px": 32761,
+            "valid_cm2": 0.028714,
+            "valid_frame_frac": 1.0,
+            "ct_median": 120.0,
+            "ct_robust_sigma": 22.239,
+            "ct_p01": 33.0,
+            "ct_p05": 54.0,
+            "ct_dark_px_frac_below_half_median": 0.063093,
+            "modes": {
+              "robust_sigma": {
+                "threshold": 38.988,
+                "clean_papyrus_retention_frac": 0.935014,
+                "crack_halo_frac": 0.064986,
+                "void_halo_frac": 0.064986,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              },
+              "physical": {
+                "threshold": 59.964,
+                "clean_papyrus_retention_frac": 0.741827,
+                "crack_halo_frac": 0.258173,
+                "void_halo_frac": 0.258173,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 59.964,
+                "clean_papyrus_retention_frac": 0.741827,
+                "crack_halo_frac": 0.258173,
+                "void_halo_frac": 0.258173,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 0.744361,
+              "4": 0.935014,
+              "5": 1.0
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.914594,
+                "void_halo_frac": 0.085406
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.741827,
+                "void_halo_frac": 0.258173
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.621165,
+                "void_halo_frac": 0.378835
+              }
+            }
+          }
+        },
+        {
+          "rule": "max_curvature",
+          "grid_shape": [
+            10,
+            10
+          ],
+          "window": null,
+          "dry_run_ct_chunks": 7,
+          "roughness_vx": 10.3391,
+          "m7_snap": {
+            "on_sheet_raw": 0.49,
+            "on_sheet_after_snap": 0.87,
+            "median_disp_vx": 2.4589
+          },
+          "halo": {
+            "valid_px": 32761,
+            "valid_cm2": 0.028714,
+            "valid_frame_frac": 1.0,
+            "ct_median": 107.0,
+            "ct_robust_sigma": 37.065,
+            "ct_p01": 32.0,
+            "ct_p05": 43.0,
+            "ct_dark_px_frac_below_half_median": 0.126003,
+            "modes": {
+              "robust_sigma": {
+                "threshold": -14.649,
+                "clean_papyrus_retention_frac": 1.0,
+                "crack_halo_frac": 0.0,
+                "void_halo_frac": 0.0,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": false
+              },
+              "physical": {
+                "threshold": 53.933,
+                "clean_papyrus_retention_frac": 0.623302,
+                "crack_halo_frac": 0.376698,
+                "void_halo_frac": 0.376698,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 53.933,
+                "clean_papyrus_retention_frac": 0.623302,
+                "crack_halo_frac": 0.376698,
+                "void_halo_frac": 0.376698,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.963615,
+                "void_halo_frac": 0.036385
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.623302,
+                "void_halo_frac": 0.376698
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.469613,
+                "void_halo_frac": 0.530387
+              }
+            }
+          }
         }
-      }
+      ]
+    },
+    {
+      "name": "PHerc0191_w030_delaminated",
+      "role": "delaminated_crack_void",
+      "scroll": "PHerc0191",
+      "ct_volume": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr",
+      "mesh_source": "rodriguescarson/eligible-scroll-spiral-fits",
+      "mesh_revision": "63c641ba1dc794073208c24f7f88fa59c4f77621",
+      "mesh_id": "w030",
+      "outer_window_rule": "centred 50x50 mesh-grid window",
+      "snap_passes": 2,
+      "num_slices": 5,
+      "voxel_um": 9.362,
+      "factor_of_outer": 0.2,
+      "streamed_mib": {
+        "ct": 26.0,
+        "m7": 4.8,
+        "mesh_geometry": 0.1,
+        "total": 30.9
+      },
+      "budget_accounted_mib": 30.9,
+      "ct_chunks_fetched": 13,
+      "seconds": 8.8,
+      "windows": [
+        {
+          "rule": "fewest_chunks",
+          "grid_shape": [
+            10,
+            10
+          ],
+          "window": null,
+          "dry_run_ct_chunks": 6,
+          "roughness_vx": 3.8596,
+          "m7_snap": {
+            "on_sheet_raw": 0.32,
+            "on_sheet_after_snap": 0.99,
+            "median_disp_vx": 4.1478
+          },
+          "halo": {
+            "valid_px": 32761,
+            "valid_cm2": 0.028714,
+            "valid_frame_frac": 1.0,
+            "ct_median": 115.0,
+            "ct_robust_sigma": 29.652,
+            "ct_p01": 32.0,
+            "ct_p05": 53.0,
+            "ct_dark_px_frac_below_half_median": 0.063185,
+            "modes": {
+              "robust_sigma": {
+                "threshold": 12.068,
+                "clean_papyrus_retention_frac": 1.0,
+                "crack_halo_frac": 0.0,
+                "void_halo_frac": 0.0,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": false
+              },
+              "physical": {
+                "threshold": 57.388,
+                "clean_papyrus_retention_frac": 0.784622,
+                "crack_halo_frac": 0.215378,
+                "void_halo_frac": 0.215378,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 57.388,
+                "clean_papyrus_retention_frac": 0.784622,
+                "crack_halo_frac": 0.215378,
+                "void_halo_frac": 0.215378,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 0.937639,
+              "4": 1.0,
+              "5": 1.0
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.93245,
+                "void_halo_frac": 0.06755
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.784622,
+                "void_halo_frac": 0.215378
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.598455,
+                "void_halo_frac": 0.401545
+              }
+            }
+          }
+        },
+        {
+          "rule": "max_curvature",
+          "grid_shape": [
+            10,
+            10
+          ],
+          "window": null,
+          "dry_run_ct_chunks": 7,
+          "roughness_vx": 6.6024,
+          "m7_snap": {
+            "on_sheet_raw": 0.38,
+            "on_sheet_after_snap": 0.99,
+            "median_disp_vx": 4.0814
+          },
+          "halo": {
+            "valid_px": 32761,
+            "valid_cm2": 0.028714,
+            "valid_frame_frac": 1.0,
+            "ct_median": 119.0,
+            "ct_robust_sigma": 25.204,
+            "ct_p01": 36.0,
+            "ct_p05": 61.0,
+            "ct_dark_px_frac_below_half_median": 0.047434,
+            "modes": {
+              "robust_sigma": {
+                "threshold": 32.801,
+                "clean_papyrus_retention_frac": 1.0,
+                "crack_halo_frac": 0.0,
+                "void_halo_frac": 0.0,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": false
+              },
+              "physical": {
+                "threshold": 59.108,
+                "clean_papyrus_retention_frac": 0.893868,
+                "crack_halo_frac": 0.106132,
+                "void_halo_frac": 0.106132,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              },
+              "hybrid": {
+                "threshold": 59.108,
+                "clean_papyrus_retention_frac": 0.893868,
+                "crack_halo_frac": 0.106132,
+                "void_halo_frac": 0.106132,
+                "border_halo_only_frac": 0.0,
+                "void_detection_fired": true
+              }
+            },
+            "retention_by_dark_sigma": {
+              "3": 0.921736,
+              "4": 1.0,
+              "5": 1.0
+            },
+            "physical_by_dark_frac": {
+              "0.35": {
+                "clean_papyrus_retention_frac": 0.972559,
+                "void_halo_frac": 0.027441
+              },
+              "0.5": {
+                "clean_papyrus_retention_frac": 0.893868,
+                "void_halo_frac": 0.106132
+              },
+              "0.65": {
+                "clean_papyrus_retention_frac": 0.681298,
+                "void_halo_frac": 0.318702
+              }
+            }
+          }
+        }
+      ]
     }
   ],
   "caveats": [
-    "Streaming budget limits each strip to a ~0.06-0.07 cm2 sub-window; fewest-chunk selection favours flat geometry and can under-sample delamination.",
-    "clean_papyrus_retention_frac counts BOTH void halo and mesh-border erosion halo; void_detection_fired separates them.",
-    "raw_dark_threshold_est (median - 4 * robust sigma, unsmoothed) below the CT floor means the default robust rule cannot flag voids on that strip; retention there is not evidence of weave-vs-void discrimination.",
-    "Parameters are the library defaults; the dark_sigma sweep is reported, never used to tune."
+    "Streaming budget limits each sub-window to <= 7 CT chunks (~0.02-0.04 cm2); results are per-window aggregates, not whole-strip coverage.",
+    "Sub-windows are chosen from mesh geometry only (fewest chunks / max curvature); presence of a dark seam in a window is measured afterwards (ct_dark_px_frac_below_half_median), never used for selection.",
+    "clean_papyrus_retention_frac counts BOTH void halo and mesh-border erosion halo; void_halo_frac and void_detection_fired isolate the dark-void rule.",
+    "Rendered pixels with zero CT intensity (masked-out air) are invalid, so fully empty gaps appear as border halo; the void rule can only fire on partial-volume dark seams.",
+    "The physical rule is fixed a priori (dark_frac_of_median = 0.5: majority-air under linear partial-volume mixing); sweeps are reported, never used to tune."
   ],
   "verdict": {
     "clean_retention_target": 0.85,
-    "clean_retention_observed": 0.954058,
-    "clean_retention_meets_target": true,
-    "delaminated_crack_halo_frac": 0.0,
-    "delaminated_void_detection_fired": false,
-    "clean_void_detection_fired": false,
-    "delaminated_minus_clean_halo_frac": -0.045942
+    "default_mode": "robust_sigma",
+    "by_mode": {
+      "robust_sigma": {
+        "clean_retention_min": 0.919857,
+        "clean_retention_mean": 0.919857,
+        "clean_retention_meets_target": true,
+        "clean_void_halo_frac_mean": 0.0,
+        "clean_void_detection_fired_windows": 0,
+        "delaminated_crack_halo_frac_mean": 0.016247,
+        "delaminated_void_halo_frac_mean": 0.016247,
+        "delaminated_void_halo_frac_max": 0.064986,
+        "delaminated_void_detection_fired_windows": 1,
+        "delaminated_minus_clean_void_halo_frac": 0.016247
+      },
+      "physical": {
+        "clean_retention_min": 0.619607,
+        "clean_retention_mean": 0.627482,
+        "clean_retention_meets_target": false,
+        "clean_void_halo_frac_mean": 0.319429,
+        "clean_void_detection_fired_windows": 2,
+        "delaminated_crack_halo_frac_mean": 0.239095,
+        "delaminated_void_halo_frac_mean": 0.239095,
+        "delaminated_void_halo_frac_max": 0.376698,
+        "delaminated_void_detection_fired_windows": 4,
+        "delaminated_minus_clean_void_halo_frac": -0.080334
+      },
+      "hybrid": {
+        "clean_retention_min": 0.619607,
+        "clean_retention_mean": 0.627482,
+        "clean_retention_meets_target": false,
+        "clean_void_halo_frac_mean": 0.319429,
+        "clean_void_detection_fired_windows": 2,
+        "delaminated_crack_halo_frac_mean": 0.239095,
+        "delaminated_void_halo_frac_mean": 0.239095,
+        "delaminated_void_halo_frac_max": 0.376698,
+        "delaminated_void_detection_fired_windows": 4,
+        "delaminated_minus_clean_void_halo_frac": -0.080334
+      }
+    },
+    "interpretation": [
+      "robust_sigma: clean retention min 0.920 (meets >= 0.85); void fired on 1/4 delaminated and 0/2 clean windows; delaminated minus clean void halo +0.016 (separates)",
+      "physical: clean retention min 0.620 (FAILS >= 0.85); void fired on 4/4 delaminated and 2/2 clean windows; delaminated minus clean void halo -0.080 (no usable separation)",
+      "hybrid: clean retention min 0.620 (FAILS >= 0.85); void fired on 4/4 delaminated and 2/2 clean windows; delaminated minus clean void halo -0.080 (no usable separation)"
+    ]
   }
 }

@@ -21,6 +21,8 @@ from scipy import ndimage as ndi
 
 DEFAULT_VOXEL_UM = 9.362
 FACES = ("asc", "desc")
+VOID_MODES = ("robust_sigma", "physical", "hybrid")
+DEFAULT_DARK_FRAC_OF_MEDIAN = 0.5
 
 
 @dataclass(frozen=True)
@@ -60,6 +62,26 @@ def _masked_smooth(img: np.ndarray, valid: np.ndarray, sigma: float) -> np.ndarr
     return np.where(den > 1e-6, num / np.maximum(den, 1e-6), 0.0).astype(np.float32)
 
 
+def void_threshold(
+    vals: np.ndarray,
+    *,
+    void_mode: str = "robust_sigma",
+    dark_sigma: float = 4.0,
+    abs_dark_floor: float | None = None,
+    dark_frac_of_median: float = DEFAULT_DARK_FRAC_OF_MEDIAN,
+) -> float:
+    """Automatic dark (void) threshold for valid CT values under ``void_mode`` (see the halo mask)."""
+    if void_mode not in VOID_MODES:
+        raise ValueError(f"void_mode must be one of {VOID_MODES}, got {void_mode!r}")
+    vals = np.asarray(vals, dtype=np.float32)
+    med = float(np.median(vals))
+    robust = med - dark_sigma * 1.4826 * float(np.median(np.abs(vals - med)))
+    if void_mode == "robust_sigma":
+        return robust
+    physical = float(abs_dark_floor) if abs_dark_floor is not None else float(dark_frac_of_median) * med
+    return physical if void_mode == "physical" else max(robust, physical)
+
+
 def build_crack_void_halo_mask(
     ct_mid: np.ndarray,
     valid_mask: np.ndarray,
@@ -72,6 +94,9 @@ def build_crack_void_halo_mask(
     min_void_px: int = 40,
     halo_radius: int = 8,
     border_halo_radius: int = 6,
+    void_mode: str = "robust_sigma",
+    abs_dark_floor: float | None = None,
+    dark_frac_of_median: float = DEFAULT_DARK_FRAC_OF_MEDIAN,
 ) -> np.ndarray:
     """Flag delamination cracks / air voids plus their wall halo and mesh-border erosion halo.
 
@@ -83,6 +108,29 @@ def build_crack_void_halo_mask(
     and the survivors are dilated by ``halo_radius``. Invalid (unrendered) pixels are
     never treated as voids, but valid pixels within ``border_halo_radius`` of them are
     flagged as erosion halo. Returns a boolean mask restricted to ``valid_mask``.
+
+    ``void_mode`` selects the automatic rule used when neither ``dark_threshold`` nor
+    ``dark_percentile`` is given (both explicit options still take precedence):
+
+    * ``"robust_sigma"`` (default, backward compatible): ``median - dark_sigma * robust_sigma``.
+      Contrast-adaptive, but on real CT papyrus the weave / fibre texture inflates the robust
+      sigma (``~27-37`` uint8 levels on PHerc0306B / PHerc0191 for a ``~100`` median), which
+      pushes the threshold to or below zero so true air cracks are never flagged.
+    * ``"physical"``: an absolute air/crack floor in CT intensity units, ``abs_dark_floor`` when
+      given, else ``dark_frac_of_median * median``. Calibration rationale: inside a masked CT
+      volume empty space reads near ``0`` and compact papyrus near the valid-area median, so
+      under linear partial-volume mixing a smoothed pixel below ``f * median`` is at least
+      ``(1 - f)`` air; the default ``f = 0.5`` flags pixels that are majority air. It ignores
+      weave contrast entirely, so it fires on real cracks but also on any low-density sheet
+      region (thin / worn papyrus, inter-sheet gaps the mesh grazes), trading clean-papyrus
+      retention for void recall. Fixed a priori; not tuned on benchmark strips. Real-CT receipt
+      (``evidence/fp_filter_real_ct_benchmark.json``): at ``f = 0.5`` it fires on every PHerc0191
+      w050/w030 window but also removes ~37% of intact PHerc0306B papyrus (whose dark inter-fibre
+      gaps put ~9-14% of pixels below half the median), so it is NOT a weave-vs-void discriminator
+      on its own; lower ``f`` (e.g. ``0.35``) or pair it with geometry/m7 evidence before use.
+    * ``"hybrid"``: ``max(robust_sigma, physical)``, i.e. the physical floor rescues the robust
+      rule when sigma collapses the threshold, and the robust rule takes over on unusually
+      low-contrast scans where it is the stricter (higher) bound.
     """
     valid = np.asarray(valid_mask, dtype=bool)
     if valid.shape != np.shape(ct_mid):
@@ -97,8 +145,13 @@ def build_crack_void_halo_mask(
     elif dark_percentile is not None:
         thr = float(np.percentile(vals, dark_percentile))
     else:
-        med = float(np.median(vals))
-        thr = med - dark_sigma * 1.4826 * float(np.median(np.abs(vals - med)))
+        thr = void_threshold(
+            vals,
+            void_mode=void_mode,
+            dark_sigma=dark_sigma,
+            abs_dark_floor=abs_dark_floor,
+            dark_frac_of_median=dark_frac_of_median,
+        )
     dark = (ct < thr) & valid
     if close_radius > 0:
         # OR keeps closing extensive at the image edge (scipy erodes with border_value=0).
