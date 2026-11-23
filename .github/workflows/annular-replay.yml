@@ -1,0 +1,29 @@
+name: Reproduce the public CT registration study
+on:
+  push:
+    branches:
+      - codex/annular-replay-20261121
+    paths:
+      - .github/workflows/annular-replay.yml
+permissions: {}
+jobs:
+  held-out-ct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Read the pinned public study
+        run: |
+          git init study
+          git -C study fetch --depth=1 https://github.com/JorisViaudQuantAI/Scrollprize.git f96d8cdd175de616754412b3c20fdede46d7064a
+          git -C study checkout --detach FETCH_HEAD
+          test "$(git -C study rev-parse HEAD)" = f96d8cdd175de616754412b3c20fdede46d7064a
+      - name: Score the frozen public CT planes
+        working-directory: study
+        run: |
+          node --version
+          node registration-checks/annular/height-transfer.cjs "$RUNNER_TEMP/annular"
+          cp "$RUNNER_TEMP/annular/height-transfer.json" "$RUNNER_TEMP/first-result.json"
+          node registration-checks/annular/height-transfer.cjs "$RUNNER_TEMP/annular" --offline
+          cmp "$RUNNER_TEMP/first-result.json" "$RUNNER_TEMP/annular/height-transfer.json"
+          sha256sum "$RUNNER_TEMP/annular/height-transfer.json"
+          cat "$RUNNER_TEMP/annular/height-transfer.json"
