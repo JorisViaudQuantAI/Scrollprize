@@ -1,0 +1,110 @@
+{
+  "schema": "scrollprize.surface-sampling.protocol.v1",
+  "date": "2026-11-23",
+  "purpose": "Original-triangle whole-footprint rendering; numerical integration on a modern physical NIST phantom, no ink efficacy claim",
+  "frozen_files": [
+    "protocol.json",
+    "nist_manifest.json",
+    "nist_source.py",
+    "surface.py",
+    "footprint.py",
+    "render.py",
+    "experiment.py",
+    "cli.py",
+    "test_surface.py",
+    "test_footprint.py",
+    "test_render.py",
+    "test_cli.py",
+    "test_nist_source.py",
+    "README.md",
+    "../metric_flatten/topology.py"
+  ],
+  "source_manifest_sha256": "c0e8f053f55f5220d370f3a1f31f0a522ed5b9469e3313adc0dccfa5302bf1ad",
+  "budgets": {
+    "wall_seconds": 1200,
+    "peak_rss_bytes": 2147483648,
+    "charged_http_body_bytes": 100663296,
+    "charged_http_requests": 300,
+    "new_instrumented_requests": 259,
+    "numeric_threads": 1,
+    "CNN_forwards": 0,
+    "training_updates": 0
+  },
+  "geometry_replay": {
+    "already_examined": true,
+    "sha256": {
+      "replay_geometry.npz": "502f645521cb60a14b837ccd467584b39c7ce5e2e6b358db6c5c605c44f4d048",
+      "C_rasterization.npz": "c6e019b74515f75864ac523a8c995fa5872c74727b3aca833b657228b85ace67"
+    },
+    "parity_max_xyz_error_voxels": 1e-06,
+    "patches": [
+      {
+        "origin_uv": [
+          140,
+          80
+        ],
+        "shape_yx": [
+          32,
+          32
+        ]
+      },
+      {
+        "origin_uv": [
+          260,
+          140
+        ],
+        "shape_yx": [
+          32,
+          32
+        ]
+      }
+    ],
+    "old_99pct_retention_gate": "FAIL; unchanged"
+  },
+  "numerical_rendering": {
+    "fixtures": [
+      "affine_oblique",
+      "curved"
+    ],
+    "phase_offsets": [
+      0.0,
+      0.25,
+      0.5,
+      0.75
+    ],
+    "output_shape_yx": [
+      64,
+      64
+    ],
+    "depths_voxels": [
+      -2,
+      0,
+      2
+    ],
+    "samples_per_axis": [
+      1,
+      4,
+      8
+    ],
+    "min_common_fraction": 0.99,
+    "max_rmse_ratio_4_vs_point": 0.5,
+    "reference16_fixed_pixels": {
+      "rows": [
+        28,
+        36
+      ],
+      "cols": [
+        28,
+        36
+      ]
+    },
+    "reference16_method": "8x8 quadrature on half-step cells, average each 2x2 cell group with equal UV area",
+    "reference16_gate": "strict RMSE_8 < RMSE_4 < RMSE_1 in each fixed center subset; nonzero RMSE_1 required",
+    "fixture_selection": "Dimension-only formulas in frozen experiment.fixture; no intensity selection, annotations, replacement or adaptive phase",
+    "reference16_rounding": "Same renderer; four half-cell means individually cast to float32 before float64 average and final float32 cast. Not independent implementation or exact once-rounded sum."
+  },
+  "decision": "All geometry identity, support, per-case RMSE ratio and reference-convergence gates required. This is only a numerical engineering gate, never an ink-detection or reading gate.",
+  "failure_policy": "Preserve failed run and source receipt, no automatic retry or retuning after CT pixels",
+  "source_scope": "NIST modern lead-containing-ink physical phantom at nominal130um, not Herculaneum carbon ink; released slices [246,374)",
+  "statistics": "Deterministic numerical errors on common masks; no inferential p-values or spatial false-positive claim"
+}
