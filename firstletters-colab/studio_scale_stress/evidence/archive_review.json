@@ -1,0 +1,171 @@
+{
+  "status": "pass",
+  "archive_sha256": "04b107ef27c8a17cec25fbc90939d4ccb1b36190240a74f238fa75cf5a860e08",
+  "archive_bytes": 1118947,
+  "protocol_sha256": "47bb7e5b6556fb7d6aba6702011d7088957c6f3dbe5e9b2cc6c98f41e747f99d",
+  "scalar_checks": 2985,
+  "maximum_metric_absolute_error": 3.3306690738754696e-16,
+  "mean5_maximum_absolute_error": 0.0,
+  "mean5_bitwise_equal": true,
+  "known_pixels": 45349,
+  "physical_core_pixels": 54272,
+  "mixed_cores": 23,
+  "pooled": {
+    "identity": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 10718,
+      "false_positive_at_0_5": 5765,
+      "recall_at_0_5": 0.678741055031347,
+      "false_positive_rate_at_0_5": 0.19504025982813453,
+      "ap": 0.7536042209041288,
+      "auc": 0.8250587479974145
+    },
+    "x_half": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 9228,
+      "false_positive_at_0_5": 6252,
+      "recall_at_0_5": 0.5843835095940726,
+      "false_positive_rate_at_0_5": 0.21151634075377224,
+      "ap": 0.6936951159128646,
+      "auc": 0.7867950767894183
+    },
+    "x_double": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 8662,
+      "false_positive_at_0_5": 3642,
+      "recall_at_0_5": 0.5485403077702489,
+      "false_positive_rate_at_0_5": 0.12321537316462548,
+      "ap": 0.7376824809729656,
+      "auc": 0.8083912992567518
+    },
+    "y_half": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 6625,
+      "false_positive_at_0_5": 5086,
+      "recall_at_0_5": 0.41954277753150526,
+      "false_positive_rate_at_0_5": 0.17206847553961702,
+      "ap": 0.612890037912195,
+      "auc": 0.6911103990578878
+    },
+    "y_double": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 8286,
+      "false_positive_at_0_5": 2272,
+      "recall_at_0_5": 0.5247292761699702,
+      "false_positive_rate_at_0_5": 0.07686582312741051,
+      "ap": 0.7533626514742611,
+      "auc": 0.7986388893722547
+    },
+    "uniform_mean5": {
+      "ink_pixels": 15791,
+      "background_pixels": 29558,
+      "unknown_pixels": 8923,
+      "true_positive_at_0_5": 8224,
+      "false_positive_at_0_5": 4367,
+      "recall_at_0_5": 0.5208029890443924,
+      "false_positive_rate_at_0_5": 0.14774341971716626,
+      "ap": 0.736428052553934,
+      "auc": 0.8144506526784215
+    }
+  },
+  "comparisons": {
+    "x_half": {
+      "delta_AP": -0.05990910499126423,
+      "delta_AUC": -0.03826367120799623,
+      "delta_recall_at_0_5": -0.09435754543727437,
+      "delta_FPR_at_0_5": 0.01647608092563771,
+      "mixed_core_count": 23,
+      "median_mixed_core_AP_delta": -2.2158337144514983e-05,
+      "mixed_cores_losing_more_than_0_10_AP": 3,
+      "fraction_mixed_cores_losing_more_than_0_10_AP": 0.13043478260869565,
+      "mixed_core_AP_delta_range": [
+        -0.7986888492770845,
+        0.6104788193938256
+      ],
+      "materially_harmful_AP_loss": true
+    },
+    "x_double": {
+      "delta_AP": -0.015921739931163192,
+      "delta_AUC": -0.016667448740662727,
+      "delta_recall_at_0_5": -0.1302007472610981,
+      "delta_FPR_at_0_5": -0.07182488666350904,
+      "mixed_core_count": 23,
+      "median_mixed_core_AP_delta": -0.003498736798429436,
+      "mixed_cores_losing_more_than_0_10_AP": 2,
+      "fraction_mixed_cores_losing_more_than_0_10_AP": 0.08695652173913043,
+      "mixed_core_AP_delta_range": [
+        -0.889531047672239,
+        0.7478982812168935
+      ],
+      "materially_harmful_AP_loss": false
+    },
+    "y_half": {
+      "delta_AP": -0.14071418299193383,
+      "delta_AUC": -0.13394834893952667,
+      "delta_recall_at_0_5": -0.2591982774998417,
+      "delta_FPR_at_0_5": -0.02297178428851751,
+      "mixed_core_count": 23,
+      "median_mixed_core_AP_delta": -0.02952028345683766,
+      "mixed_cores_losing_more_than_0_10_AP": 4,
+      "fraction_mixed_cores_losing_more_than_0_10_AP": 0.17391304347826086,
+      "mixed_core_AP_delta_range": [
+        -0.7648319516740568,
+        0.2125319107867979
+      ],
+      "materially_harmful_AP_loss": true
+    },
+    "y_double": {
+      "delta_AP": -0.00024156942986774954,
+      "delta_AUC": -0.02641985862515983,
+      "delta_recall_at_0_5": -0.15401177886137674,
+      "delta_FPR_at_0_5": -0.11817443670072401,
+      "mixed_core_count": 23,
+      "median_mixed_core_AP_delta": 0.0007235653378696444,
+      "mixed_cores_losing_more_than_0_10_AP": 3,
+      "fraction_mixed_cores_losing_more_than_0_10_AP": 0.13043478260869565,
+      "mixed_core_AP_delta_range": [
+        -0.46712037918555305,
+        0.32612749304553357
+      ],
+      "materially_harmful_AP_loss": false
+    },
+    "uniform_mean5": {
+      "delta_AP": -0.017176168350194865,
+      "delta_AUC": -0.010608095318992983,
+      "delta_recall_at_0_5": -0.1579380659869546,
+      "delta_FPR_at_0_5": -0.04729684011096827,
+      "mixed_core_count": 23,
+      "median_mixed_core_AP_delta": -0.0013555096185410287,
+      "mixed_cores_losing_more_than_0_10_AP": 2,
+      "fraction_mixed_cores_losing_more_than_0_10_AP": 0.08695652173913043,
+      "mixed_core_AP_delta_range": [
+        -0.5601633457486048,
+        0.08932119499597846
+      ],
+      "materially_harmful_AP_loss": false,
+      "advance_gate_components": {
+        "pooled_AP_gain": false,
+        "median_mixed_core_AP_delta": false,
+        "FPR_increase": true,
+        "mixed_core_harm": true
+      },
+      "advance_to_independent_control": false
+    }
+  },
+  "checker_sha256": "ffc8a9df0ab18f6804128db155e973fc509b48d4d604753766f342c74094a57f",
+  "independent_metric_helper_sha256": "4816042f6279e1e45e7df9effa4236f163124d9d882468a0198de0eb1e3acf08",
+  "numpy": "2.3.5",
+  "sklearn": "1.8.0",
+  "seconds": 0.3922070070002519,
+  "limitation": "This small archive verifies scoring and frozen gates only; it cannot certify original CT, CNN inference, readback geometry or independent-scroll generalization."
+}

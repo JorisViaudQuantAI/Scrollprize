@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "04b107ef27c8a17cec25fbc90939d4ccb1b36190240a74f238fa75cf5a860e08",
+  "archive_bytes": 1118947,
+  "purpose": "Small scored physical cores for independent AP/AUC recomputation without1GB download or265 model forwards",
+  "protocol_sha256": "47bb7e5b6556fb7d6aba6702011d7088957c6f3dbe5e9b2cc6c98f41e747f99d",
+  "condition_names": [
+    "identity",
+    "x_half",
+    "x_double",
+    "y_half",
+    "y_double",
+    "uniform_mean5"
+  ],
+  "probabilities": {
+    "shape": [
+      6,
+      53,
+      32,
+      32
+    ],
+    "dtype": "float32",
+    "source_npy_sha256": "66c4035e86366a548d030de32d9bd23f817b41c9e1a750352696a573262a1045"
+  },
+  "states": {
+    "shape": [
+      53,
+      32,
+      32
+    ],
+    "dtype": "uint8",
+    "source_npy_sha256": "4d030a7d0a2ef7644b0ff119ba5918ca37b9bb10b8870cdc6777bb15023314fe"
+  },
+  "coordinates": "Native prepared-array Y,X origin of the32x32 core; public annotated control only",
+  "limitation": "Archive contains scored probabilities, not full128 model fields or raw CT; full-output identity is in inference_receipt"
+}
