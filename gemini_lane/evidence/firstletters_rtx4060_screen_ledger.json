@@ -29,8 +29,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 57.3539,
-    "meshes_screened": 10,
+    "total_unique_valid_ct_cm2": 64.899,
+    "meshes_screened": 12,
     "two_family_followups": 5,
     "candidates_found": 0
   },
@@ -573,6 +573,88 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Single bilateral overlap blob plus tear/mottle specks; zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z10544_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9752,
+      "on_sheet_after_snap": 0.995,
+      "f_parallel": 0.9787,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1286.86,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.897,
+          "p995": 0.91114,
+          "max": 0.95694,
+          "frac_gt_05": 0.110576,
+          "frac_gt_07": 0.061381
+        },
+        "studio_asc": {
+          "p99": 0.85227,
+          "p995": 0.88537,
+          "max": 0.93169,
+          "frac_gt_05": 0.0919,
+          "frac_gt_07": 0.035997
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.7123,
+        "bilateral_overlap_frac": 0.019421,
+        "strokeness_weighted_mean": 2.0886,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Diffuse patchy blobs across intact papyrus with low face asymmetry (1.71x); zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.5699,
+      "on_sheet_after_snap": 0.9466,
+      "f_parallel": 0.9775,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1011.72,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.88385,
+          "p995": 0.90277,
+          "max": 0.93308,
+          "frac_gt_05": 0.090885,
+          "frac_gt_07": 0.051272
+        },
+        "studio_asc": {
+          "p99": 0.84137,
+          "p995": 0.87937,
+          "max": 0.95194,
+          "frac_gt_05": 0.098484,
+          "frac_gt_07": 0.037412
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.3596,
+        "bilateral_overlap_frac": 0.010866,
+        "strokeness_weighted_mean": 2.2982,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Diffuse blobs along cracks and voids with low face asymmetry (1.36x); zero connected letter strokes."
     }
   ]
 }
