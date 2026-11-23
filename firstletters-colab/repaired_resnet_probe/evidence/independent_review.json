@@ -1,0 +1,159 @@
+{
+  "CT_requests": 0,
+  "all_four_model_source_assets_verified": true,
+  "complete_probability_maps_verified": 4,
+  "fields": [
+    {
+      "independent_exact_box_input_reconstruction_equal": true,
+      "ink_prevalence_among_known": 0.6298828125,
+      "label_counts": {
+        "0": 0,
+        "1": 379,
+        "2": 645
+      },
+      "orders": {
+        "reverse": {
+          "complete_probability_map_hash_verified": true,
+          "full_map_max": 0.134744793176651,
+          "full_map_min": 0.021431630477309227,
+          "metrics": {
+            "ap": 0.7360082261965917,
+            "auc": 0.5405575668323414,
+            "background": 379,
+            "background_exceedance": 0.047493403693931395,
+            "ink": 645,
+            "known": 1024,
+            "recall_at_background_5pct": 0.2496124031007752,
+            "selected_background": 18,
+            "selected_ink": 161,
+            "status": "mixed",
+            "threshold_strict_greater": 0.039595142006874084,
+            "unknown": 0
+          },
+          "normalized_input_hash_verified": true
+        },
+        "source": {
+          "complete_probability_map_hash_verified": true,
+          "full_map_max": 0.06340643018484116,
+          "full_map_min": 0.026459742337465286,
+          "metrics": {
+            "ap": 0.6951270820977562,
+            "auc": 0.5256918451248696,
+            "background": 379,
+            "background_exceedance": 0.047493403693931395,
+            "ink": 645,
+            "known": 1024,
+            "recall_at_background_5pct": 0.13333333333333333,
+            "selected_background": 18,
+            "selected_ink": 86,
+            "status": "mixed",
+            "threshold_strict_greater": 0.04297076538205147,
+            "unknown": 0
+          },
+          "normalized_input_hash_verified": true
+        }
+      },
+      "scroll": "PHerc0841"
+    },
+    {
+      "independent_exact_box_input_reconstruction_equal": true,
+      "ink_prevalence_among_known": 0.748046875,
+      "label_counts": {
+        "0": 0,
+        "1": 258,
+        "2": 766
+      },
+      "orders": {
+        "reverse": {
+          "complete_probability_map_hash_verified": true,
+          "full_map_max": 0.09360962361097336,
+          "full_map_min": 0.023563655093312263,
+          "metrics": {
+            "ap": 0.9182043683031664,
+            "auc": 0.7875604671402838,
+            "background": 258,
+            "background_exceedance": 0.046511627906976744,
+            "ink": 766,
+            "known": 1024,
+            "recall_at_background_5pct": 0.370757180156658,
+            "selected_background": 12,
+            "selected_ink": 284,
+            "status": "mixed",
+            "threshold_strict_greater": 0.04337899759411812,
+            "unknown": 0
+          },
+          "normalized_input_hash_verified": true
+        },
+        "source": {
+          "complete_probability_map_hash_verified": true,
+          "full_map_max": 0.12174912542104721,
+          "full_map_min": 0.023857932537794113,
+          "metrics": {
+            "ap": 0.8995371252603592,
+            "auc": 0.7215829740724998,
+            "background": 258,
+            "background_exceedance": 0.046511627906976744,
+            "ink": 766,
+            "known": 1024,
+            "recall_at_background_5pct": 0.381201044386423,
+            "selected_background": 12,
+            "selected_ink": 292,
+            "status": "mixed",
+            "threshold_strict_greater": 0.040047433227300644,
+            "unknown": 0
+          },
+          "normalized_input_hash_verified": true
+        }
+      },
+      "scroll": "PHerc0814"
+    }
+  ],
+  "forward_count": 4,
+  "freeze_reference": "a0690c8c7641f4fe592cb26c2d5fff04221adba6",
+  "full_input_reconstructions_exactly_equal": 2,
+  "inference_seconds": 4.947656805998122,
+  "limitations": [
+    "Scores were checked from retained maps; no independent inference was performed.",
+    "Buffer invariance is reported by the frozen runner and guarded in its source; no model or buffer snapshots were reloaded by this checker.",
+    "Reported AP depends on the high ink prevalence; both orientations are retained without an oracle selection.",
+    "These fixed central cores differ in support and sampling from the Hecate fields; no direct cross-grid comparison is made.",
+    "Model-assisted labels, inherited checkpoint exposure, recentered depth and fine-derived scanner appearance prevent an unseen-scroll or reading claim."
+  ],
+  "maximum_absolute_metric_difference": 1.1102230246251565e-16,
+  "metric_comparisons": 48,
+  "model_asset_pins": {
+    "common.py": {
+      "bytes": 14191,
+      "sha256": "559e422b62cf2ef8373da87a11d10b95e20dcc9034f50aea13920e7fdf96685d"
+    },
+    "config.json": {
+      "bytes": 414,
+      "sha256": "ae7ddb52ed4f457b028c802516441284e65492278ee5ef87f2f6c6728141b737"
+    },
+    "model.safetensors": {
+      "bytes": 342867696,
+      "sha256": "6133ef74905d32a40d0e053d9378bf76207c29614cb77210218f1df898b8d3cf"
+    },
+    "resnetall.py": {
+      "bytes": 8094,
+      "sha256": "3e1b2b9a042721c3a1f4390a6c7190fb46cf0d829b8550bb90acce4ad8aa276a"
+    }
+  },
+  "network_requests": 6,
+  "new_application_body_bytes": 342876204,
+  "normalized_order_specific_hashes_verified": 4,
+  "original_fine_and_label_identities_verified": true,
+  "reported_evaluation_buffers_unchanged": true,
+  "result_sha256": "1c98ca1010474b21fc9f683c67cb87931444dc35fa14d796fbd6f5febe83e99f",
+  "review_network_requests": 0,
+  "review_new_forwards": 0,
+  "review_script_sha256": "e4e919c1ccbb692616ec74ba0918c6d3e7e35509d19f9b96974afaca06ca3043",
+  "review_seconds": 1.6262269869985175,
+  "schema": "scrollprize.repaired-resnet-independent-review.v1",
+  "source_sha256": {
+    "protocol.json": "0becf8922048588a834462094fec9f68448ddfbdb2146df9c9e61ca8ef326f2e",
+    "run.py": "9e548c2d15b2825e29bbe9dcce6d3f14be9ac2765e1bd4f7c5a9eadc21208133"
+  },
+  "status": "pass",
+  "wall_seconds": 40.98956960599753
+}

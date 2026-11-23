@@ -1,0 +1,145 @@
+{
+  "CT_requests": 0,
+  "completed_forwards": 4,
+  "cumulative_inference_seconds": 4.947656805998122,
+  "fields": [
+    {
+      "input_sha256": "ae6799cfb7813506a02ddf4f625fe3f246271db526fb5f4893db9ee71eeadf87",
+      "input_zero_depth_column_count": 0,
+      "label_counts": {
+        "0": 0,
+        "1": 379,
+        "2": 645
+      },
+      "labels_core_sha256": "419aa523b3668c3733916f0c149139cb483cf4d251f5eb7bfdbd49672e1f7ed8",
+      "orders": {
+        "reverse": {
+          "forward_seconds": 1.2276077159986016,
+          "metrics": {
+            "ap": 0.7360082261965917,
+            "auc": 0.5405575668323414,
+            "background": 379,
+            "background_exceedance": 0.047493403693931395,
+            "ink": 645,
+            "known": 1024,
+            "recall_at_background_5pct": 0.2496124031007752,
+            "selected_background": 18,
+            "selected_ink": 161,
+            "status": "mixed",
+            "threshold_strict_greater": 0.039595142006874084,
+            "unknown": 0
+          },
+          "normalized_input_sha256": "d95c1169d23c7ef3ae409a545bbd3f67b1823020926327cd71ac855560dbc769",
+          "probabilities_sha256": "e557b4a3c80b3af92931aa44997b30c4b926eb7cbb8b1769822dd80e1bc08cd9"
+        },
+        "source": {
+          "forward_seconds": 1.469414216997393,
+          "metrics": {
+            "ap": 0.6951270820977561,
+            "auc": 0.5256918451248697,
+            "background": 379,
+            "background_exceedance": 0.047493403693931395,
+            "ink": 645,
+            "known": 1024,
+            "recall_at_background_5pct": 0.13333333333333333,
+            "selected_background": 18,
+            "selected_ink": 86,
+            "status": "mixed",
+            "threshold_strict_greater": 0.04297076538205147,
+            "unknown": 0
+          },
+          "normalized_input_sha256": "17779dcb5c9fc14be2f3c7c129e2f1348f86c92f5e267c48cdfd724e5abcdc65",
+          "probabilities_sha256": "50614118129925b38be807344d40cfe75119147e3a0ec33ae17d29855b53527d"
+        }
+      },
+      "original_label_sha256": "54b254d887625050e63596e8016ade073f085d38555935ddfc8c8298acdfe81b",
+      "panel_sha256": "ba4f96f07476b5562c830cdb2b4c7a181336280955bbeffbc5508b0c7f7bfde3",
+      "scroll": "PHerc0841",
+      "source_fine_context_sha256": "cd3f15527da7601ce069bb62929757849e3760cff20d0a399f1876996b1a5982"
+    },
+    {
+      "input_sha256": "82873a36bc380639cb033cea47a1f40d73ebe9fbbfeb32addfd558c9f4bc988c",
+      "input_zero_depth_column_count": 0,
+      "label_counts": {
+        "0": 0,
+        "1": 258,
+        "2": 766
+      },
+      "labels_core_sha256": "04be24a4da2393588cc3ae379ad560835e4c2c4c65a4426ab3cc3d3f42aabdb5",
+      "orders": {
+        "reverse": {
+          "forward_seconds": 1.1113317560011637,
+          "metrics": {
+            "ap": 0.9182043683031664,
+            "auc": 0.7875604671402837,
+            "background": 258,
+            "background_exceedance": 0.046511627906976744,
+            "ink": 766,
+            "known": 1024,
+            "recall_at_background_5pct": 0.370757180156658,
+            "selected_background": 12,
+            "selected_ink": 284,
+            "status": "mixed",
+            "threshold_strict_greater": 0.04337899759411812,
+            "unknown": 0
+          },
+          "normalized_input_sha256": "e734d26089a15f8c450996b8e52ee654817a1eb7b025c20fd395da03054aadff",
+          "probabilities_sha256": "f0934533074eebdd9a1775cfb19ad5f64cf17178764e305b5e2a982372aec2ad"
+        },
+        "source": {
+          "forward_seconds": 1.1393031170009635,
+          "metrics": {
+            "ap": 0.8995371252603592,
+            "auc": 0.7215829740724998,
+            "background": 258,
+            "background_exceedance": 0.046511627906976744,
+            "ink": 766,
+            "known": 1024,
+            "recall_at_background_5pct": 0.381201044386423,
+            "selected_background": 12,
+            "selected_ink": 292,
+            "status": "mixed",
+            "threshold_strict_greater": 0.040047433227300644,
+            "unknown": 0
+          },
+          "normalized_input_sha256": "d3b2b4ab85dd153a8eb14d1c237c02e16ece674edbc15d638de19f45cbcdbc9f",
+          "probabilities_sha256": "4717695709f253ff54d4a056ac235550982a512708d183026b2ca3e0a86edcf4"
+        }
+      },
+      "original_label_sha256": "a5b080bf2a090f46a10bca780b2e19586fadf56f8da93e71f06cb9999c2ad986",
+      "panel_sha256": "975f8c0178d2056708ffd7c0a1d8fa4100532c4fad8056b4c1a320d99de0e65f",
+      "scroll": "PHerc0814",
+      "source_fine_context_sha256": "34508c1cf6b3f0d04b8d413a6badbc52e58f04e71ed5f5c8b0e83e25dd9c00cf"
+    }
+  ],
+  "forwards_attempted": 4,
+  "freeze_reference": "a0690c8c7641f4fe592cb26c2d5fff04221adba6",
+  "interpretation": [
+    "No training on these donors occurs in this experiment. Inherited backbone/checkpoint data exposure remains subject to audit; do not claim a proven unseen-donor evaluation.",
+    "The public labels are model assisted, not independent transcription.",
+    "Fine-derived7.9um tensors do not replicate native7.9um scanner appearance.",
+    "Small fixed cores may contain no class contrast or no complete letter.",
+    "Results do not rescue or change the separate Hecate native-resolution gates.",
+    "No promotion rule or target acquisition is built in."
+  ],
+  "model_parameter_count": 85651636,
+  "new_application_body_bytes": 342876204,
+  "process_peak_rss_kib": 943564,
+  "promotion_rule_present": false,
+  "protocol_sha256": "0becf8922048588a834462094fec9f68448ddfbdb2146df9c9e61ca8ef326f2e",
+  "reading_claim": false,
+  "requests_including_redirects": 6,
+  "runner_sha256": "9e548c2d15b2825e29bbe9dcce6d3f14be9ac2765e1bd4f7c5a9eadc21208133",
+  "running_normalization_buffers_unchanged": true,
+  "schema": "scrollprize.repaired-resnet-central-probe.v1",
+  "started_utc": "2026-11-22T22:37:16.899385+00:00",
+  "status": "complete",
+  "training_steps": 0,
+  "unread_acquisition": false,
+  "versions": {
+    "numpy": "2.5.5",
+    "safetensors": "0.8.0",
+    "torch": "2.6.0+cpu"
+  },
+  "wall_seconds": 40.98956960599753
+}

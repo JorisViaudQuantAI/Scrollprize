@@ -1,0 +1,115 @@
+{
+  "schema": "scrollprize.hecate-blending-protocol.v1",
+  "date": "2026-11-23",
+  "status": "prospective new comparison on previously seen public development fields; publish exact files before CT acquisition or detector forwards",
+  "question": "Does released full-patch Hann assembly improve labelled seam-crossing stroke pairs, not just smooth tile seams, relative to central-crop assembly of identical predictions?",
+  "sampling": {
+    "fields": "Exactly two choices in pinned native_resolution/selection.json; no reselection",
+    "source_reconstruction": "Unchanged pinned native helper box integration and label mapping",
+    "nominal_fine_pitch_um": 2.4,
+    "common_pitch_um": 9.6,
+    "depth": 64,
+    "context_fine_yx": [
+      1152,
+      1152
+    ],
+    "core_fine_yx": [
+      1024,
+      1024
+    ],
+    "core_common_yx": [
+      256,
+      256
+    ],
+    "patch_zyx": [
+      64,
+      256,
+      256
+    ],
+    "origins": "Row-major (128*y,128*x), y,x=0..7",
+    "order": "reverse; inherited old calibration, no new pilot",
+    "dtype": "CPU fp32 only",
+    "threads": 4,
+    "input_scale": "Released uint8 divided by200; no clipping"
+  },
+  "assemblies": {
+    "primary": "central versus hann",
+    "central": "Each patch central [64:192,64:192]; concatenate 8x8",
+    "hann": "Released torch.float32 hann_window(256,periodic=False) outer product, normalize maximum, floor .001; float32 numerator/denominator in row-major order; take complete [64:1088] core",
+    "uniform": "Same full patches with unit weights, diagnostic only; cannot substitute for primary",
+    "mask": "All arms multiply full patch probabilities by identical raw.any(Z) before assembly",
+    "export": "At fine grid np.rint(prob.clip(0,1)*255).astype(uint8); average each4x4uint8block in float64 then divide255 andcastfloat32 so equalintegersumsretainties; never quantize only after common reduction"
+  },
+  "evaluation": {
+    "labels": "Known development labels from immutable donor manifest; model-assisted and possible training exposure; no new independent pixel annotation",
+    "support": "All16fine columns within each common4x4cell nonzero; shared across arms; retain any-supported historical unmasked baseline separately",
+    "threshold": "One cutoff per field/arm/representation: descending supported background score at floor(.05*Nbg), strict greater. No per-quadrant refitting. Within-label descriptive operating point, not transferred or search-wideFPR",
+    "primary_endpoint": "Fraction of4-connected adjacent label=ink pairs crossing old32common-pixel seams with BOTHscores above whole-field threshold",
+    "negative_endpoint": "Same joint exceedance for background-background seam pairs",
+    "nonseam_endpoint": "Same recall for ink-ink adjacency wholly within old tessellation cells",
+    "retain": [
+      "AP",
+      "AUC",
+      "wholefield recall",
+      "actual background counts/FPR",
+      "all pairpool counts/rates",
+      "all3 completefixedscale maps",
+      "all128fullpatch probability arrays",
+      "all128actualfullpatchlogits via unchangedforwardhook for independent released-predictor replay without second real inference"
+    ],
+    "pair_dependence": "Pairs are spatially dependent; no binomial confidence interval or independentpair significance claim"
+  },
+  "gate": {
+    "require_both_fields": true,
+    "require_float_and_export": true,
+    "seam_ink_pair_absolute_gain_minimum": 0.05,
+    "field_AP_maximum_loss": 0.01,
+    "field_recall_maximum_loss": 0.01,
+    "within_ink_pair_maximum_loss": 0.01,
+    "seam_background_pair_maximum_increase": 0.01,
+    "minimum_relevant_pair_pool": 20,
+    "missing_classes_or_pools": "No promotion; retain reason",
+    "scope": "Larger independently selected publishedknown-glyph replication only after completefixedscale visual review; never unreadextension",
+    "old_native_resolution_gate": "Remains failed regardless of new outcomes"
+  },
+  "limits": {
+    "new_body_bytes": 900000000,
+    "requests_including_redirects": 512,
+    "maximum_forwards": 128,
+    "whole_run_wall_seconds": 4500,
+    "peak_rss_soft_kib": 6815744,
+    "retries": 0,
+    "paid_compute": false,
+    "new_unread_CT_requests": 0,
+    "training_steps": 0,
+    "semantics": "Application response reads, redirects counted; dependency wheels separately; whole run acquisition/load/inference; between-forwardsoftRSS; native operation can defer Unix alarm"
+  },
+  "fine_checkpoint": {
+    "url": "https://huggingface.co/scrollprize/hecate/resolve/9cb86e500e944b11a06a7020403cde5dffb5bcb2/hecate_2.4um.pth",
+    "bytes": 522656918,
+    "sha256": "fa2de3827ebd247ff2d33df1b6f899ea79d5269036cf16765997c62f0e9988c7"
+  },
+  "pins": {
+    "prior_receipt_sha256": []
+  },
+  "dependency_sha256": {
+    "firstletters-colab/native_resolution/run.py": "f5d1fd5ab2bd781f4f524c6b375ac0e7469bdb2825a68784c2fa29496dca7377",
+    "firstletters-colab/native_resolution/selection.json": "c3bdeb1e37b506f596af1bafab9fbd0c1bfc0271b8eed2e2ef644db8ce47b294",
+    "firstletters-colab/transversal_lab/hecate_probe.py": "41560c98001b4185b2860cf12591aa0a6f35d417ff52f5aa8681f4e957e7f702",
+    "firstletters-colab/transversal_lab/hecate_donor_manifest.json": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+    "firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "firstletters-colab/native_resolution/evidence/result.json": "754603f2409f21b843cc161f75602a9d4c402c02f1cd008fca1fb4c08a4ff303"
+  },
+  "historical_field_identity": {
+    "PHerc0841": {
+      "fine_context_sha256": "cd3f15527da7601ce069bb62929757849e3760cff20d0a399f1876996b1a5982",
+      "labels_sha256": "b5c533a1d20c42b95b3cbb605223d73b58cafa9ead571e436d278ceb7b100a03"
+    },
+    "PHerc0814": {
+      "fine_context_sha256": "34508c1cf6b3f0d04b8d413a6badbc52e58f04e71ed5f5c8b0e83e25dd9c00cf",
+      "labels_sha256": "e0344b4d5c82f991b3e1ebdf93506e3ff45cd8d398331c8795933d66f3be0723"
+    }
+  },
+  "cold_start": "No prior cache/receipt is supplied. Fresh complete source acquisition; historical full input and label file hashes must match before firstmodel forward. Never relax frozen historical CLI or invent receipts.",
+  "public_output": "Reviewed aggregate metrics/sourcepins only. FullCT,labels,maps,predictions stayoutsideGit; no unread access,candidate,prizeclaim."
+}

@@ -1,0 +1,37 @@
+name: Public known-control coalesced CT range check
+on:
+  push:
+    branches: [claude/firstletters-colab]
+    paths:
+      - firstletters-colab/range_transport/coalesced_transport_trigger.txt
+permissions:
+  contents: read
+jobs:
+  public-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU-only array dependency
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4'
+      - name: Verify deterministic accounting and error behavior
+        run: python -m unittest discover -s firstletters-colab/range_transport -p test_coalesced_control.py -v
+      - name: Execute frozen real HTTP experiment on published public control
+        run: |
+          python firstletters-colab/range_transport/coalesced_control.py \
+            --freeze-commit 6bf5791c49d317d450a10e695376902817099196 \
+            --output /tmp/scrollprize-coalesced-result.json
+      - name: Preserve success or failure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-control-range-receipt
+          path: /tmp/scrollprize-coalesced-result.json
+          if-no-files-found: warn
+          retention-days: 30

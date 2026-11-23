@@ -1,0 +1,60 @@
+{
+  "schema": "scrollprize.context-consensus-protocol.v1",
+  "date": "2026-11-23",
+  "status": "Separate pre-outcome secondary; freeze before anyone inspects new primary probability maps or metric results",
+  "question": "Does agreement across overlapping inference contexts reduce transferred false background connections without materially losing labelled ink?",
+  "primary_freeze_reference": "7bb9cd9d02cef0ed2c95fc694da90a5a2c09481c",
+  "fields": ["PHerc0841", "PHerc0814"],
+  "sampling": "Exactly both complete128-forward primary fields, regardless of primarygate; no source/model calls, no field selection, no replacements",
+  "baseline": "Actual saved primary FP32Hann fine map and actual saved fineuint8 export, with identical common reduction and support",
+  "candidate": {
+    "name": "hann_weighted_geometric_context_consensus",
+    "formula": "exp(sum_i(w_i*log(max(p_i,float32epsilon)))/sum_i(w_i))",
+    "window": "Exact released FP32 nonperiodic Hann outerproduct, normalizedmax andfloored.001, bytehash identical to primary",
+    "arithmetic_diagnostic": "Reconstruct weighted arithmeticmean with FP64 accumulators alongside FP64 logmean, but retain actualsaved FP32Hann as operationalbaseline",
+    "precision": "FP64 accumulated arithmetic and lognumerators/denominator, candidatefine outputcastFP32 beforeexport/reduction",
+    "support": "Same exactraw.any(Z) mask applied to fineoutput; score only common4x4cells whose16finecolumns areallsupported",
+    "export": "Nearest-even uint8 rounding atfinegrid first; exactintegerblockmeans beforedivision255/castFP32",
+    "parameters_fit": 0,
+    "other_aggregators_or_thresholds": "None; no minimum/quantile/variance-coefficient hunt"
+  },
+  "arithmetic_reconstruction_maximum_difference": 0.000001,
+  "evaluation": {
+    "calibration_pairs": [["PHerc0841", "PHerc0814"], ["PHerc0814", "PHerc0841"]],
+    "cutoff": "For each source donor, arm and representation separately, descendingknownbackground[floor(Nbackground/20)], strictgreater, whole ties excluded. Apply unchanged to the otherdonor. No evaluation-labelrefit.",
+    "representations": ["float", "uint8"],
+    "seams": "All4-neighbour edges crossingcommonx/y32,64,...224; both endpoints knownandsupported",
+    "retain": ["source cutoffs/budget/ties", "target backgroundpixelFPR", "target backgroundpairjointpositive rate/count", "target inkrecall", "target inkpairrecall", "target AP/AUC", "within-cell ink/backgroundpair counts", "all4direction/representation gates", "FP64arithmetic reproduction error"],
+    "no_fit_test_overlap_scope": "New thresholdcalibration and evaluation donors are distinct ineachdirection. Fixed model's priortrainingexposure and model-assistedlabel limitations remain. Reversed directions form one coupled developmentexperiment, not independentreplications.",
+    "interpretation": "Labelled background adjacency only; not proof of a full glyphfalseconnection or truephysicalink. Overlapping predictions/pairs are dependent; no pvalue or independent-pixel claim."
+  },
+  "gate": {
+    "require_both_directions_and_representations": true,
+    "relative_false_background_pair_reduction_minimum": 0.20,
+    "absolute_false_background_pair_reduction_minimum": 0.01,
+    "ink_recall_maximum_loss": 0.05,
+    "ink_pair_recall_maximum_loss": 0.05,
+    "AP_maximum_loss": 0.01,
+    "whole_background_FPR_maximum_increase": 0.01,
+    "minimum_eligible_pair_pool": 20,
+    "minimum_baseline_false_background_pairs": 20,
+    "reduction_arithmetic": "Subtract integer false-pair counts first; divide by the shared eligible-pair count for absolute reduction and by baseline false-pair count for relative reduction. Never subtract rounded rates.",
+    "ceiling_missing_class_or_pool": "Unassessable/no promotion; do notrelax to rescue a lowfalsepositive baseline",
+    "scope": "Method-selectionfor separate independentknown-glyph replication only; never candidateautogate, unreadextension, or change to primary/oldnativegate"
+  },
+  "limits": {
+    "wall_seconds": 180,
+    "peak_rss_soft_kib": 1572864,
+    "new_detector_forwards": 0,
+    "new_CT_requests": 0,
+    "new_network_requests": 0,
+    "training_steps": 0,
+    "retries": 0
+  },
+  "dependency_sha256": {
+    "firstletters-colab/hecate_blending/metrics.py": "40d4480d31a439a4958e44328701f8b13d201080c4bc5ecff0169094d0c16e39",
+    "firstletters-colab/hecate_blending/run.py": "0b27a0430958964b60f54947e71cdf48d8e1feb183a86bf9ab854c7892720218",
+    "firstletters-colab/hecate_blending/protocol.json": "7d526dde69ce4da4f7cbde9787ddd89efaf0b9a7053242599bb51227a5044dd9"
+  },
+  "public_reporting": "Only reviewedaggregate publiccontrol results. Fullprobability/CT/label arrays stayoutsideGit. No unread region accessed, candidate location, qualifyingreading or prizeclaim."
+}
