@@ -122,7 +122,7 @@ def synthetic(legacy):
         if name=="sampled_missing":M[20,::4,::4]=0
         if name=="missing_support":obs[:,:7]=False
         if name=="nondivisible_mask":
-            R[:]=0;R[:,::4,::4]=150;M[20]=0;M[20,::4,::4]=255
+            R[:]=0;R[:,0,0]=150;R[:,4,4]=150;M[20]=0;M[20,0,0]=255
         r=compare(R,M,obs,100.,legacy);r["kind"]=name;fixtures.append(r)
     f={r["kind"]:r for r in fixtures}
     gates={
