@@ -1,0 +1,44 @@
+{
+  "status": "execution_interrupted_before_final_receipt",
+  "cause": "Unknown; execution session and process no longer available",
+  "last_completed_stage": {
+    "stage": "original_triangle_rasterized",
+    "wall_seconds": 94.40405525999995,
+    "peak_rss_bytes": 363372544
+  },
+  "protocol_commit": "22c31018be255874601b5944459757a43ff36a09",
+  "network_this_run": {
+    "requests": 17,
+    "body_bytes": 14205351
+  },
+  "retained_gates": {
+    "replay": {
+      "pass": true,
+      "support_mismatch_nodes": 0,
+      "max_absolute_xyz_error_voxels": 0.0,
+      "max_absolute_xyz_error_um": 0.0,
+      "exact_float32_values_on_common_support": true
+    },
+    "retention": {
+      "pass": false,
+      "baseline_support_retained": {
+        "whole": 0.973904738845621,
+        "published_claim": 1.0
+      },
+      "B_valid_nodes": 74343,
+      "C_valid_nodes": 72403,
+      "B_only_nodes": 1940,
+      "C_only_nodes": 0,
+      "claim_B_valid_nodes": 20172,
+      "claim_C_valid_nodes": 20172
+    },
+    "provenance": {
+      "pass": true,
+      "accepted_queries": 72403,
+      "max_absolute_xyz_reconstruction_error_voxels": 3.637978807091713e-12,
+      "scope": "Float64 accepted integer target samples before TIFF rounding; not a global continuous injectivity proof"
+    }
+  },
+  "recorded_utc": "2026-11-23T18:24:08.217336+00:00",
+  "next_action": "Unchanged frozen replay using verified cache, fresh output, no additional download"
+}

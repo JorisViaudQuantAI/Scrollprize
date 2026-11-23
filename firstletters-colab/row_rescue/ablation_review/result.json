@@ -1,0 +1,207 @@
+{
+  "CNN_forwards": 0,
+  "all_five_lists_identical_for_both_simpler_rules": true,
+  "cases": [
+    {
+      "archived_total_proposal_count": 88,
+      "baseline_indices_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "both_simpler_lists_identical_to_published_rule": true,
+      "eligible_indices_zero_based": [
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "id": "pherc306b_context_raw",
+      "original_fourth_distance_from_top_three_centre_mm": 8.628965021588977,
+      "original_fourth_length_mm": 8.54870391309231,
+      "pool_count": 10,
+      "published_replacement_length_mm": 18.239719016763534,
+      "published_replacement_self_vote_fraction": 0.690858601634118,
+      "reason": "Published condition triggered; compare fixed objectives",
+      "selected_indices_zero_based": {
+        "highest_score_eligible": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "longest_eligible": [
+          0,
+          1,
+          2,
+          7
+        ],
+        "published_rule": [
+          0,
+          1,
+          2,
+          7
+        ],
+        "score_times_length_eligible": [
+          0,
+          1,
+          2,
+          7
+        ]
+      },
+      "top_three_y_span_mm": 1.0928972512242865
+    },
+    {
+      "archived_total_proposal_count": 0,
+      "baseline_indices_zero_based": [],
+      "both_simpler_lists_identical_to_published_rule": true,
+      "id": "pherc306b_blank_raw",
+      "pool_count": 0,
+      "reason": "At most three proposals; all are retained",
+      "selected_indices_zero_based": {
+        "highest_score_eligible": [],
+        "longest_eligible": [],
+        "published_rule": [],
+        "score_times_length_eligible": []
+      }
+    },
+    {
+      "archived_total_proposal_count": 0,
+      "baseline_indices_zero_based": [],
+      "both_simpler_lists_identical_to_published_rule": true,
+      "id": "pherc306b_shuffle_raw",
+      "pool_count": 0,
+      "reason": "At most three proposals; all are retained",
+      "selected_indices_zero_based": {
+        "highest_score_eligible": [],
+        "longest_eligible": [],
+        "published_rule": [],
+        "score_times_length_eligible": []
+      }
+    },
+    {
+      "archived_total_proposal_count": 47,
+      "baseline_indices_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "both_simpler_lists_identical_to_published_rule": true,
+      "eligible_indices_zero_based": [
+        5,
+        6
+      ],
+      "id": "pherc306b_context_matched_raw",
+      "original_fourth_distance_from_top_three_centre_mm": 1.3398820926914574,
+      "original_fourth_length_mm": 10.727253908248308,
+      "pool_count": 10,
+      "published_replacement_length_mm": 34.93861750291716,
+      "published_replacement_self_vote_fraction": 0.7727329566071558,
+      "reason": "Published condition triggered; compare fixed objectives",
+      "selected_indices_zero_based": {
+        "highest_score_eligible": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "longest_eligible": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "published_rule": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "score_times_length_eligible": [
+          0,
+          1,
+          2,
+          5
+        ]
+      },
+      "top_three_y_span_mm": 2.5462287418321594
+    },
+    {
+      "archived_total_proposal_count": 63,
+      "baseline_indices_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "both_simpler_lists_identical_to_published_rule": true,
+      "id": "pherc343_context_display",
+      "pool_count": 10,
+      "reason": "Published diversity condition is not triggered",
+      "selected_indices_zero_based": {
+        "highest_score_eligible": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "longest_eligible": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "published_rule": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "score_times_length_eligible": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "top_three_y_span_mm": 7.785769640981291
+    }
+  ],
+  "coverage_recomputed": false,
+  "dependencies": {
+    "python": "3.12.14",
+    "third_party_packages": []
+  },
+  "interpretation": "Identical selected lists imply identical coverage and area for any fixed mask; no such metrics were newly computed. These cases do not demonstrate an advantage from the Gaussian neighborhood vote.",
+  "limitations": [
+    "Two306B cases share one previously seen field",
+    "343 is a no-op and both negative controls have no proposals",
+    "No independent positive/ordinary-blank validation or review-time measurement",
+    "This does not invalidate the original reported recovery or its development gate"
+  ],
+  "native_masks_read": 0,
+  "network_requests": 0,
+  "new_thresholds_chosen": false,
+  "old_gate_changed": false,
+  "peak_rss_kib": 11008,
+  "schema": "scrollprize.row-rescue.retrospective-ablation.v1",
+  "scope": "Retrospective arithmetic ablation of known published proposal lists; no new method or gate",
+  "score_maps_read": 0,
+  "script_sha256": "637272460ca8168982319d2416746497c392aa1d926e3f3987409db4505f1520",
+  "source_git_blob_sha1": {
+    "protocol": "a36c130e8d2d00c660ff2e5d6fbd8449d970645a",
+    "results": "a614144401fefec6ca49fd124de2a28b2a28dc07"
+  },
+  "source_sha256": {
+    "line_evaluation/protocol.v2.json": "6fe100af0579e4b1837cfdafe3cb04ebd6a31d62ad8533358821eacc4c9153f7",
+    "line_evaluation/results.v2.json": "7e23de62873471d4f7070a9eda4717595ccf6cb50c23e2058e9af0007e9687ef",
+    "row_rescue/compare.py": "db0c1d4f98bfb74ebfe00a5fe3c17e812ca4dc732ab0bd5d3df2f8e03322790c",
+    "row_rescue/freeze.json": "8644bcc46e88a5a55ef83d39c34c303be95454d139b509b7eb8f5ac8a635a1fe"
+  },
+  "status": "complete",
+  "unread_data_used": false,
+  "wall_seconds": 0.0019619340000645025
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "scrollprize.metric-flatten.cli-smoke.v1",
+  "source": "Generated planar 11x11 grid; not manuscript data",
+  "status": "pass",
+  "valid_nodes": 121,
+  "float32_metadata_scale_accepted": true,
+  "serialized_XYZ_exactly_matches_input": true,
+  "maximum_barycentric_error_voxels": 2.7853275241795927e-12,
+  "wall_seconds": 0.54118213799984,
+  "network_requests": 0,
+  "CT_requests": 0,
+  "CNN_forwards": 0,
+  "scientific_gate_changed": false,
+  "code_sha256": {
+    "flatten.py": "5c0f753bf77ec1104027d21e1648a529bb01f24875d58fe6f86d796f6d84c8d7",
+    "reference.py": "8c00e9185d139d3ba347c40d36a9357ebea9f2212dd150e1a5abd5ecbfc5c7e7",
+    "topology.py": "44cf19623e874a6e86ff1cebb8da37da5eab77d8ab1d73a23fd5e1304a05afe6"
+  }
+}
