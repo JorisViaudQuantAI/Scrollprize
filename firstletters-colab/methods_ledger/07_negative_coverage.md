@@ -50,6 +50,7 @@ Areas in cm². "rv3" = reader-v3. "−3/+3" = two depth shifts, both maps and th
 | all 7 atlas scrolls | 250 atlas windings, label-free feature (L4) | 1,395.8 | 1,309.4 | — | one CT feature | uninformative for every scroll; **not coverage** |
 
 Notes on the table.
+- **Added 2026-11-23.** The atlas rows cover one winding in 20 of each fitted z-window (S2, hindsight test on PHerc. 0211). They are a sparse sample of those scrolls, not coverage of the regions they span.
 - Own-window rows give the areas of the **screened** windows only; 39 windows in all, 22 screened (288 chart, 280 valid, 151 on-sheet, 98 in cores), 17 uninformative. These rows replace the interim per-scroll counts of `collab/claude-011`.
 - The on-sheet figures for PHerc. 0813 and 0800 are 407.3 × 0.778 and 476.8 × 0.771; `collab/claude-010` gives them as "about 78 %" and "77 %".
 - The nine earlier windows are 3 × 5.60 + 6 × 6.58 = 56.3 cm² of chart; one private report says "about 54".

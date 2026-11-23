@@ -137,6 +137,13 @@ The tranche did not reach its target of 250–300 cm² of on-sheet surface.
 
 **Not done.** The other order with reader-v3. The production path on the PHerc. 0211 atlas windings as a hindsight test. A paired raw-against-snapped ink comparison at common sites (prepared, cancelled).
 
+**Added 2026-11-23 (hindsight test, after PHerc. 0211 was won).**
+- The atlas publishes every 20th winding of each fitted z-window (w020, w040, w060, w080, w100), about 5 % of the windings in those windows, and leaves some z-windows out.
+- The awarded PHerc. 0211 letters lie on a sheet between two atlas windings. No vertex of the 90 atlas meshes of that scroll comes closer than 46 voxels to the winner's published surface. This screen could not have found them.
+- On the winner's published mesh, the unchanged production path (reader-v3 in the rule order, the line finder, the montage review) ranks the letter row first of 28 places, also when the surface is displaced by 3–9 voxels. So the miss is one of sampling, not of detection.
+- Read every atlas row of this ledger as "windings w020 … w100 of each fitted window show nothing"; it says nothing about the other 19 windings in 20. Areas in cm² overstate the coverage of a scroll region by about 20 times.
+- The other order with reader-v3 has now been run on a sample of 10 windings (49.9 cm²): nothing.
+
 **Where the code is.** Not included; the face rule is the winners' public code, and the per-winding loop is plain I/O.
 
 ---
