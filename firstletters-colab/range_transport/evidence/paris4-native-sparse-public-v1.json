@@ -1,0 +1,47 @@
+{
+  "schema": "scrollprize.paris4-native-sparse-evidence.v1",
+  "date_utc": "2026-11-23",
+  "source": "one already-public PHercParis4 old known-ink segment CT chunk; no unread data",
+  "pre_http_freeze_commit": "886be9fc8a13a90714143afeb3139efdcb8cea29",
+  "trigger_commit": "290cbac6c4c9f8d1a633acffa1de3d3deff2381b",
+  "github_action_url": "https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45148553606",
+  "job_id": 137603808210,
+  "prior_complete_reference_action_url": "https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45148129539",
+  "prior_selected_sha256": "447aa8788b156bc65a9c4f288af79c467e609a9e7865a12784a509c31712f557",
+  "runner_result": {
+    "body_bytes": 1064960,
+    "etag_strong": true,
+    "fraction_vs_full_get_application_body": 0.5963302752293578,
+    "observations": [
+      {
+        "bytes": 0,
+        "elapsed_s": 0.210126,
+        "method": "HEAD",
+        "status": 200
+      },
+      {
+        "bytes": 1064960,
+        "elapsed_s": 0.436135,
+        "method": "GET",
+        "status": 206
+      }
+    ],
+    "passed": true,
+    "pinned_reference_match": true,
+    "requests": 2,
+    "schema": "scrollprize.paris4-native-sparse-result.v1",
+    "selected_sha256": "447aa8788b156bc65a9c4f288af79c467e609a9e7865a12784a509c31712f557",
+    "whole_get_requests": 0
+  },
+  "offline_postrun_cross_checks": {
+    "passed": true,
+    "check_count": 6,
+    "scope": "HEAD/206 status, cap accounting, prior-run payload SHA256 and deterministic 65/109 ratio. No independent second downloader; SHA cross-run check uses this new real response."
+  },
+  "limitations": [
+    "One known chunk, no complete-volume 289-object retrieval, not a direct title scan.",
+    "S3 HEAD plus conditional Range validates a strong ETag but a general new chunk needs independent source identity or content hash.",
+    "HEAD has no application body; headers/TLS/socket byte counts are not included. Time readings are not a speed benchmark.",
+    "No ink inference, reading, source-image review, candidate or prize asserted."
+  ]
+}
