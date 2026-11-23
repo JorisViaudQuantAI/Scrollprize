@@ -1,0 +1,14 @@
+{
+  "schema": "public-line-row-rescue-v1-freeze",
+  "date_utc": "2026-11-23",
+  "status": "fixed-before-live-CPU-mask-comparison",
+  "results_git_blob_sha1": "a614144401fefec6ca49fd124de2a28b2a28dc07",
+  "protocol_git_blob_sha1": "a36c130e8d2d00c660ff2e5d6fbd8449d970645a",
+  "inputs": "Immutable archived 306B/343 public line proposal lists, original verified support masks; no unread material",
+  "method": "Preserve the original top three. If their band centres fit within 3mm, replace only slot four with the highest score-length-neighbor-vote candidate at least 3mm from their weighted centroid. Pool top10, neighbor Gaussian sigma 1.25mm. Otherwise preserve fourth.",
+  "comparison": "Exact mask-supported published-target centreline and box coverage at fixed four-proposal budget; retain all original outcomes and show area selected",
+  "advance_condition": "On both 306B claim variants second published row centerline coverage increases, first row does not decrease, PHerc343 18-box >=50% count not reduced, and no proposals are fabricated on blank/shuffle. If any criterion fails, retain original ranking and document failure.",
+  "next_gate": "Independent uninspected public positive/blank source or prospectively fixed private lane required before replacing production review order; existing full-map inspection remains mandatory.",
+  "resource_cap": "GitHub Actions CPU-only Ubuntu, 15 minutes; ~180MB of pre-hashed public source downloads; no CUDA or model forwards",
+  "limitations": "Retrospective method design after original source outcomes were known, not an unbiased held-out experiment; 306B variants share the same text, 343 is a display image"
+}
