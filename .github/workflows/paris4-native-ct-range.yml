@@ -1,0 +1,41 @@
+name: Published Paris 4 native S3 Range control
+on:
+  push:
+    branches: [claude/firstletters-colab]
+    paths:
+      - "firstletters-colab/range_transport/paris4-native-trigger.txt"
+permissions:
+  contents: read
+jobs:
+  public-range-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify immutable protocol/code freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          freeze="$(cat firstletters-colab/range_transport/paris4-native-trigger.txt)"
+          [[ "$freeze" =~ ^[0-9a-f]{40}$ ]]
+          git cat-file -e "${freeze}^{commit}"
+          git merge-base --is-ancestor "$freeze" HEAD
+          git diff --exit-code "$freeze" HEAD -- \
+            firstletters-colab/range_transport/paris4_native_range.py \
+            firstletters-colab/range_transport/paris4_native_range_protocol.json \
+            .github/workflows/paris4-native-ct-range.yml
+      - name: Run frozen offline tests
+        run: python firstletters-colab/range_transport/paris4_native_range.py --self-test
+      - name: Execute at most three direct public-S3 GETs
+        run: |
+          python firstletters-colab/range_transport/paris4_native_range.py \
+            --output "${RUNNER_TEMP}/paris4_range_result.json"
+      - name: Save measured success or failure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paris4-public-native-range-receipt
+          path: ${{ runner.temp }}/paris4_range_result.json
+          if-no-files-found: warn
