@@ -1,0 +1,123 @@
+{
+  "schema": "seismic_rgt_crushed_preflight/v1",
+  "experiment": "Exp T9-Unwrap (Q46): seismic RGT / Wheeler multi-sheet unwrapper vs single-sheet grower",
+  "method": "structure-tensor dip + autocorrelation wrap spacing + sparse dip-guided RGT (CG) with monotonic projection + Wheeler peak picking + ridge-refined ordered sheets + in-RAM render (9 slices) + onsheet_score tile 32; baseline = grow_m7_patch.extract_height_field",
+  "cpu_only": true,
+  "cuda_visible_devices": "-1",
+  "torch_imported": false,
+  "http": {
+    "budget_bytes": 83886080,
+    "http_bytes": 12239830,
+    "http_mib": 11.673,
+    "requests": 24,
+    "persistent_ct_on_disk": false
+  },
+  "boxes": [
+    {
+      "role": "public_control",
+      "scroll": "PHerc0306B",
+      "ct_dataset": "20250521133212-8.640um-1.2m-116keV-masked.zarr",
+      "mesh_tag": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+      "box_rule": "64x96x96 CT level-0 box centred on the w074 vertex nearest the mesh median",
+      "baseline_binary": "band-passed CT ridge threshold proxy (no m7)",
+      "metrics": {
+        "box_shape_zyx": [
+          64,
+          96,
+          96
+        ],
+        "voxel_um": 8.64,
+        "normal_axis": "y",
+        "sheet_count_rgt": 4,
+        "sheet_count_single_baseline": 1,
+        "crossing_fraction_rgt": 0.0,
+        "usable_cm2_rgt_total": 0.01191,
+        "usable_cm2_best_sheet_rgt": 0.00332,
+        "usable_cm2_single_sheet_baseline": 0.002166,
+        "area_gain_ratio_vs_baseline": 5.499828,
+        "largest_connected_sheet_frac_rgt": 0.718587,
+        "median_f_parallel_rgt": 0.202,
+        "per_sheet_f_parallel_rgt": [
+          0.25,
+          0.2222,
+          0.1538,
+          0.1818
+        ],
+        "baseline_f_parallel": null,
+        "baseline_patch_columns": 3380,
+        "mean_wrap_spacing_vx": 15.539004,
+        "median_wrap_spacing_vx": 16.023987,
+        "planarity_median": 0.797755,
+        "wheeler_peak_contrast": 0.098879,
+        "wheeler_slice_variance_ratio": 0.961769,
+        "cartesian_slice_variance_ratio": 0.998406,
+        "cg_iterations": 250,
+        "cg_converged": false,
+        "phase_normal_coherence": 0.97824,
+        "monotonic_projection_fraction": 0.001517,
+        "runtime_seconds": 12.96,
+        "ct_nonzero_fraction": 1.0,
+        "http_bytes": 5339019,
+        "http_mib": 5.091685
+      }
+    },
+    {
+      "role": "crushed_eligible_unread",
+      "scroll": "PHerc1545",
+      "ct_dataset": "20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "m7_dataset": "20250821151648-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "box_rule": "deterministic interior m7-L0 box with the most m7 runs per column (tightest wraps) among density-ranked radial candidates on the m7 overview mid-slab, 10-60% active voxels",
+      "probe_count": 16,
+      "baseline_binary": "m7 >= 128",
+      "metrics": {
+        "box_shape_zyx": [
+          64,
+          96,
+          96
+        ],
+        "voxel_um": 9.362,
+        "normal_axis": "x",
+        "sheet_count_rgt": 5,
+        "sheet_count_single_baseline": 1,
+        "crossing_fraction_rgt": 0.0,
+        "usable_cm2_rgt_total": 0.016228,
+        "usable_cm2_best_sheet_rgt": 0.00381,
+        "usable_cm2_single_sheet_baseline": 0.001091,
+        "area_gain_ratio_vs_baseline": 14.871486,
+        "largest_connected_sheet_frac_rgt": 0.691895,
+        "median_f_parallel_rgt": 0.4167,
+        "per_sheet_f_parallel_rgt": [
+          0.4667,
+          0.4167,
+          0.5,
+          0.1875,
+          0.1429
+        ],
+        "baseline_f_parallel": 0.2857,
+        "baseline_patch_columns": 2345,
+        "mean_wrap_spacing_vx": 14.847192,
+        "median_wrap_spacing_vx": 15.006357,
+        "planarity_median": 0.795498,
+        "wheeler_peak_contrast": 0.053725,
+        "wheeler_slice_variance_ratio": 0.973501,
+        "cartesian_slice_variance_ratio": 0.988648,
+        "cg_iterations": 250,
+        "cg_converged": false,
+        "phase_normal_coherence": 0.981336,
+        "monotonic_projection_fraction": 0.001831,
+        "runtime_seconds": 18.4,
+        "active_fraction_m7": 0.337596,
+        "ct_nonzero_fraction": 0.99971,
+        "http_bytes": 6900811,
+        "http_mib": 6.581126
+      }
+    }
+  ],
+  "runtime_seconds": 31.4,
+  "caveats": [
+    "Box areas are tiny (one 64x96x96 box); usable_cm2 counts rendered pixels with full in-box support on all 9 planes.",
+    "f_parallel is an upper bound on the on-sheet share; tiles without CT structure count as parallel.",
+    "crossing_fraction_rgt == 0 follows from strict phase monotonicity plus order-preserving refinement; it does not prove each sheet is one physical wrap.",
+    "No ink detector run; nothing here claims ink or text."
+  ]
+}

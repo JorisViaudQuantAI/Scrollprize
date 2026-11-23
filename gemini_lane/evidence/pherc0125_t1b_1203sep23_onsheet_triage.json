@@ -1,0 +1,320 @@
+{
+  "schema_version": "1.0.0",
+  "renderer_commit": "acd66d4",
+  "renderer_semantics": {
+    "source_support_patch": "chatgpt-018 ported in stream_snap_render.py (3aef0ab, HEAD acd66d4)",
+    "full_source_support_all_planes": true,
+    "require_nonzero_intensity": true,
+    "missing_chunk_and_fill_excluded_from_support": true,
+    "no_oob_m7_snap_clipping": true,
+    "float32_candidate_snap_validation": true,
+    "no_ink_detector_run": true
+  },
+  "voxel_um": 9.362,
+  "num_slices": 5,
+  "snap_passes": 2,
+  "method": "CPU-only m7 2x snap + onsheet_score under patched source-support renderer semantics (acd66d4); no ink detector run",
+  "public_sources": {
+    "PHerc0125": {
+      "ct_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0125/volumes/20250821151825-9.362um-1.2m-113keV-masked.zarr",
+      "m7_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0125/representations/predictions/surfaces/20250821151825-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "mesh_source": "pscamillo/vesuvius-eligible-meshes",
+      "mesh_revision": "66000516c97e043b696ce874f145e29638109c91",
+      "meshes_prefix": "https://raw.githubusercontent.com/pscamillo/vesuvius-eligible-meshes/66000516c97e043b696ce874f145e29638109c91/meshes/PHerc0125/",
+      "dedup_note": "Next 6 highest-on_sheet_2snaps NEW untouched windings (tiebreak at 0.858 favoring z9344_w015 over z14144_w025 by higher on_sheet_raw 0.450 vs 0.341 and untouched z9344 window); excludes Tier-1 (z14144_w035, z10544_w035, z8736_w035, z15936_w030, z6944_w030), Codex z14144_w045, old Atlas wraps (w020, w040, w060, w080, w100), z17136, and w080-w100"
+    },
+    "PHerc1203": {
+      "ct_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr",
+      "m7_zarr_v2": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/representations/predictions/surfaces/20250820131727-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "segments_prefix": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/segments/raw/",
+      "dedup_note": "7th clean PHerc1203 Sep-23 S3 sheet (auto_grown_20250923163217042) with 0.0% overlap vs Codex A/B/C, Claude N6, and top-9 S3 sheets per pherc1203_s3_dedup_manifest.md"
+    }
+  },
+  "total_valid_ct_cm2": 26.846,
+  "cohort_totals_valid_ct_cm2": {
+    "PHerc0125_tier1b": 23.0579,
+    "PHerc1203_sep23_clean": 3.7881
+  },
+  "targets": [
+    {
+      "rank": 1,
+      "target_id": "PHerc0125/z9936_w035",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z9936_w035",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.6945364238410596,
+      "valid_vertex_count": 11746,
+      "total_vertex_count": 16912,
+      "on_sheet_raw": 0.3931551166354504,
+      "on_sheet_after_snap": 0.9920824110335433,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.0147468979702143,
+      "p90_disp_vx": 6.954132901418497,
+      "center_vs_outer_disp_diff": 0.062480717618452974,
+      "onsheet_score": {
+        "tiles": 194,
+        "f_parallel": 0.9845,
+        "f_drift": 0.0103,
+        "f_still": 0.0052,
+        "response_median": -0.009,
+        "shift_median_confident": 1.58,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 3.9944
+    },
+    {
+      "rank": 2,
+      "target_id": "PHerc0125/z9344_w015",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z9344_w015",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.6893656716417911,
+      "valid_vertex_count": 5173,
+      "total_vertex_count": 7504,
+      "on_sheet_raw": 0.4788323989947806,
+      "on_sheet_after_snap": 0.9926541658612024,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 2.483183533088815,
+      "p90_disp_vx": 6.0881717291258335,
+      "center_vs_outer_disp_diff": 0.016864662511232087,
+      "onsheet_score": {
+        "tiles": 81,
+        "f_parallel": 0.9753,
+        "f_drift": 0.0123,
+        "f_still": 0.0123,
+        "response_median": -0.012,
+        "shift_median_confident": 4.03,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 1.7503
+    },
+    {
+      "rank": 3,
+      "target_id": "PHerc0125/z11136_w035",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z11136_w035",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7046082949308756,
+      "valid_vertex_count": 12232,
+      "total_vertex_count": 17360,
+      "on_sheet_raw": 0.5085840418574231,
+      "on_sheet_after_snap": 0.9905166775670373,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 2.11176268931856,
+      "p90_disp_vx": 6.2508334454666885,
+      "center_vs_outer_disp_diff": -0.07763577246822839,
+      "onsheet_score": {
+        "tiles": 211,
+        "f_parallel": 0.9668,
+        "f_drift": 0.0142,
+        "f_still": 0.019,
+        "response_median": -0.007,
+        "shift_median_confident": 0.65,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 4.1597
+    },
+    {
+      "rank": 4,
+      "target_id": "PHerc0125/z15936_w035",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z15936_w035",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7303338001867413,
+      "valid_vertex_count": 12515,
+      "total_vertex_count": 17136,
+      "on_sheet_raw": 0.33743507790651217,
+      "on_sheet_after_snap": 0.9785856971634039,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.230914231642811,
+      "p90_disp_vx": 7.873029385685635,
+      "center_vs_outer_disp_diff": -0.3590086395627994,
+      "onsheet_score": {
+        "tiles": 219,
+        "f_parallel": 0.9498,
+        "f_drift": 0.0411,
+        "f_still": 0.0091,
+        "response_median": 0.001,
+        "shift_median_confident": 3.68,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 4.2579
+    },
+    {
+      "rank": 5,
+      "target_id": "PHerc1203/auto_grown_20250923163217042",
+      "scroll": "PHerc1203",
+      "cohort": "PHerc1203_sep23_clean",
+      "mesh_id": "auto_grown_20250923163217042",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.48043628808864264,
+      "valid_vertex_count": 11100,
+      "total_vertex_count": 23104,
+      "on_sheet_raw": 0.4507207207207207,
+      "on_sheet_after_snap": 0.9533333333333334,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 2.8627507943789334,
+      "p90_disp_vx": 8.793339383816777,
+      "center_vs_outer_disp_diff": 0.38685443239338646,
+      "onsheet_score": {
+        "tiles": 210,
+        "f_parallel": 0.9286,
+        "f_drift": 0.0667,
+        "f_still": 0.0048,
+        "response_median": 0.016,
+        "shift_median_confident": 3.55,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 3.7881
+    },
+    {
+      "rank": 6,
+      "target_id": "PHerc0125/z8144_w030",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z8144_w030",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.6815544838191095,
+      "valid_vertex_count": 9751,
+      "total_vertex_count": 14307,
+      "on_sheet_raw": 0.29412367962260283,
+      "on_sheet_after_snap": 0.9583632447954056,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 3.9383386596781427,
+      "p90_disp_vx": 9.449943334924258,
+      "center_vs_outer_disp_diff": -0.6266063109834255,
+      "onsheet_score": {
+        "tiles": 157,
+        "f_parallel": 0.9108,
+        "f_drift": 0.0255,
+        "f_still": 0.0637,
+        "response_median": 0.019,
+        "shift_median_confident": 1.06,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 3.3149
+    },
+    {
+      "rank": 7,
+      "target_id": "PHerc0125/z14144_w050",
+      "scroll": "PHerc0125",
+      "cohort": "PHerc0125_tier1b",
+      "mesh_id": "z14144_w050",
+      "uv_crop": null,
+      "valid_vertex_fraction": 0.7296490915568222,
+      "valid_vertex_count": 16385,
+      "total_vertex_count": 22456,
+      "on_sheet_raw": 0.5593530668294171,
+      "on_sheet_after_snap": 0.9918828196521209,
+      "m7_source_available_fraction_raw": 1.0,
+      "m7_source_available_fraction_after_snap": 1.0,
+      "median_disp_vx": 1.8521947143527462,
+      "p90_disp_vx": 6.263429927878778,
+      "center_vs_outer_disp_diff": 0.265910190454691,
+      "onsheet_score": {
+        "tiles": 284,
+        "f_parallel": 0.8944,
+        "f_drift": 0.0423,
+        "f_still": 0.0634,
+        "response_median": 0.0,
+        "shift_median_confident": 1.16,
+        "layers": 5,
+        "mid": 2,
+        "dk": 2
+      },
+      "valid_ct_cm2": 5.5807
+    }
+  ],
+  "rankings": {
+    "combined": {
+      "by_onsheet_f_parallel": [
+        "PHerc0125/z9936_w035",
+        "PHerc0125/z9344_w015",
+        "PHerc0125/z11136_w035",
+        "PHerc0125/z15936_w035",
+        "PHerc1203/auto_grown_20250923163217042",
+        "PHerc0125/z8144_w030",
+        "PHerc0125/z14144_w050"
+      ],
+      "by_on_sheet_after_snap": [
+        "PHerc0125/z9344_w015",
+        "PHerc0125/z9936_w035",
+        "PHerc0125/z14144_w050",
+        "PHerc0125/z11136_w035",
+        "PHerc0125/z15936_w035",
+        "PHerc0125/z8144_w030",
+        "PHerc1203/auto_grown_20250923163217042"
+      ],
+      "by_valid_ct_cm2": [
+        "PHerc0125/z14144_w050",
+        "PHerc0125/z15936_w035",
+        "PHerc0125/z11136_w035",
+        "PHerc0125/z9936_w035",
+        "PHerc1203/auto_grown_20250923163217042",
+        "PHerc0125/z8144_w030",
+        "PHerc0125/z9344_w015"
+      ]
+    },
+    "by_cohort": {
+      "PHerc0125_tier1b": {
+        "by_onsheet_f_parallel": [
+          "PHerc0125/z9936_w035",
+          "PHerc0125/z9344_w015",
+          "PHerc0125/z11136_w035",
+          "PHerc0125/z15936_w035",
+          "PHerc0125/z8144_w030",
+          "PHerc0125/z14144_w050"
+        ],
+        "by_on_sheet_after_snap": [
+          "PHerc0125/z9344_w015",
+          "PHerc0125/z9936_w035",
+          "PHerc0125/z14144_w050",
+          "PHerc0125/z11136_w035",
+          "PHerc0125/z15936_w035",
+          "PHerc0125/z8144_w030"
+        ],
+        "by_valid_ct_cm2": [
+          "PHerc0125/z14144_w050",
+          "PHerc0125/z15936_w035",
+          "PHerc0125/z11136_w035",
+          "PHerc0125/z9936_w035",
+          "PHerc0125/z8144_w030",
+          "PHerc0125/z9344_w015"
+        ]
+      },
+      "PHerc1203_sep23_clean": {
+        "by_onsheet_f_parallel": [
+          "PHerc1203/auto_grown_20250923163217042"
+        ],
+        "by_on_sheet_after_snap": [
+          "PHerc1203/auto_grown_20250923163217042"
+        ],
+        "by_valid_ct_cm2": [
+          "PHerc1203/auto_grown_20250923163217042"
+        ]
+      }
+    }
+  }
+}

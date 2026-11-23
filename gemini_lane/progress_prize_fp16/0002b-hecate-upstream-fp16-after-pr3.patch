@@ -1,0 +1,55 @@
+Same change as 0002, rebased for use after discussion #3 (--resample) is merged.
+Upstream: huggingface.co/scrollprize/hecate
+Base: refs/pr/3 (--resample) @ f4386b19e0639f1c3da79572309ecc3f4cec760e
+Apply from the repository root: git apply 0002b-hecate-upstream-fp16-after-pr3.patch
+Licence: MIT, as the upstream code.
+
+diff --git a/README.md b/README.md
+index 94f0407..20b6d66 100644
+--- a/README.md
++++ b/README.md
+@@ -115,7 +115,7 @@ Inputs must be **unnormalized uint8 arrays in Z, Y, X order**, stored as a local
+ 
+ The script selects the central input depth, slides over XY with half-patch overlap, and blends probabilities using a floored Hann window. Small XY inputs are zero-padded. Empty CT columns receive zero output. It saves a losslessly compressed PNG with **pixel value = round(255 × probability)**, plus a small JSON describing the inference settings. There is no per-image min–max scaling. Output XY dimensions match the input.
+ 
+-The default is float32 with batch size one. On compatible NVIDIA GPUs, `--precision bf16` enables the mixed precision used for production inference; increase `--batch-size` if memory permits. `--device cpu` also works, but this remains a large 3D network. Temporary disk-backed accumulators use approximately nine bytes per output pixel; set `TMPDIR` to a disk with enough free space for large surfaces.
++The default is float32 with batch size one. On compatible NVIDIA GPUs, `--precision bf16` enables the mixed precision used for production inference; on GPUs without native bf16 (compute capability below 8.0, e.g. the T4), use `--precision fp16`. Increase `--batch-size` if memory permits. `--device cpu` also works, but this remains a large 3D network. Temporary disk-backed accumulators use approximately nine bytes per output pixel; set `TMPDIR` to a disk with enough free space for large surfaces.
+ 
+ ### Saving a 3D probability volume
+ 
+diff --git a/hecate.py b/hecate.py
+index 8c94db5..f58c06a 100644
+--- a/hecate.py
++++ b/hecate.py
+@@ -319,8 +319,10 @@ def predict(model, volume, output, reverse=False, stride=None, batch_size=1, pre
+     if three_d:
+         output[:] = 0
+     device = next(model.parameters()).device
+-    if precision not in ('fp32', 'bf16') or (precision == 'bf16' and device.type != 'cuda'):
+-        raise ValueError('bf16 requires CUDA; otherwise use fp32')
++    if precision not in ('fp32', 'bf16', 'fp16') or (precision != 'fp32' and device.type != 'cuda'):
++        raise ValueError('bf16 and fp16 require CUDA; otherwise use fp32')
++    # fp16 autocast for GPUs without fast bf16 (pre-Ampere, e.g. the T4 of free Colab sessions)
++    amp_dtype = torch.float16 if precision == 'fp16' else torch.bfloat16
+     z0 = depth//2-d//2
+     zs = slice(depth-z0-d, depth-z0) if reverse else slice(z0, z0+d)
+     win = torch.hann_window(p, periodic=False)
+@@ -353,7 +355,7 @@ def predict(model, volume, output, reverse=False, stride=None, batch_size=1, pre
+                 normalized /= model.divisor  # Match original CPU division; no clipping.
+                 image = torch.from_numpy(normalized[:,None]).to(device)
+                 valid = support[:,None,None].expand(-1,1,d,-1,-1)
+-                with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=precision=='bf16'):
++                with torch.autocast(device_type=device.type, dtype=amp_dtype, enabled=precision!='fp32'):
+                     logits = model.forward_3d(image) if three_d else model(image, valid)
+                     probability = logits.float().sigmoid()[:,0]
+                 if three_d:
+@@ -410,7 +412,8 @@ def main():
+     parser.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu')
+     parser.add_argument('--batch-size', type=int, default=1)
+     parser.add_argument('--stride', type=int, help='XY stride; default half the trained patch width')
+-    parser.add_argument('--precision', choices=('fp32','bf16'), default='fp32')
++    parser.add_argument('--precision', choices=('fp32','bf16','fp16'), default='fp32',
++                        help='CUDA autocast: bf16 on Ampere or newer; fp16 on older GPUs such as the T4')
+     parser.add_argument('--resample', action='store_true',
+         help='Rescale the render from --spacing-um to the model spacing before inference (linear), and map the 2D '
+              'prediction back to the input YX grid. Not supported with --output-3d.')

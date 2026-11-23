@@ -1,0 +1,1949 @@
+{
+  "schema_version": "q22_radiometric_shift_audit_v1",
+  "experiment": "Exp T4 (Q22): Multi-Scroll CT Radiometric Shift Audit & Nyul-Udupa Standardizer",
+  "generated_utc": "2026-11-23T18:44:05Z",
+  "execution_mode": "cpu_only_in_ram_streaming",
+  "methodology_caveat": "Interior level-0 Zarr chunk non-zero CT (> 0) is a bounded radiometric proxy for on-sheet 16-plane surface-volume stacks, because full-volume interior chunks mix inter-wrap air pores and papyrus walls. Upper-half (> p50) and upper-tercile (> p66.7) papyrus-wall core distributions are reported alongside full non-zero CT so air-pore vs papyrus-wall modes remain distinct.",
+  "studio_training_envelope": {
+    "clip_u8_threshold": 200,
+    "divide_by": 255.0,
+    "gain_bounds": [
+      0.8,
+      1.2
+    ],
+    "bias_abs_max": 15.0,
+    "clip_200_frac_flag_threshold": 0.05,
+    "affine_fit_percentiles": [
+      10,
+      25,
+      50,
+      75,
+      90
+    ]
+  },
+  "reference_control_baseline": {
+    "reference_scrolls": [
+      "PHerc0841",
+      "PHerc0343",
+      "PHerc0306B"
+    ],
+    "pooled_median_nonzero_ct_landmarks": {
+      "p01": 23.0,
+      "p05": 33.0,
+      "p10": 39.0,
+      "p25": 56.0,
+      "p50": 100.0,
+      "p75": 127.0,
+      "p90": 146.0,
+      "p95": 157.0,
+      "p99": 182.0
+    },
+    "nyul_udupa_default_percentiles": [
+      1,
+      10,
+      25,
+      50,
+      75,
+      90,
+      99
+    ],
+    "nyul_udupa_ref_landmarks": [
+      23.0,
+      39.0,
+      56.0,
+      100.0,
+      127.0,
+      146.0,
+      182.0
+    ],
+    "pooled_median_papyrus_wall_core_gt_p50_landmarks": {
+      "p01": 101.0,
+      "p05": 103.0,
+      "p10": 106.0,
+      "p25": 114.0,
+      "p50": 128.0,
+      "p75": 143.0,
+      "p90": 158.0,
+      "p95": 168.0,
+      "p99": 189.0
+    }
+  },
+  "summary": {
+    "total_scrolls_audited": 13,
+    "control_count": 4,
+    "eligible_unread_count": 9,
+    "flagged_scroll_count": 9,
+    "flagged_scrolls": [
+      "PHerc0343",
+      "PHerc0211",
+      "PHerc0125",
+      "PHerc1203",
+      "PHerc0191",
+      "PHerc0826",
+      "PHerc0846A",
+      "PHerc1218",
+      "PHerc1545"
+    ],
+    "flagged_eligible_unread_count": 7,
+    "flagged_eligible_unread": [
+      "PHerc0125",
+      "PHerc1203",
+      "PHerc0191",
+      "PHerc0826",
+      "PHerc0846A",
+      "PHerc1218",
+      "PHerc1545"
+    ],
+    "all_scrolls_unflagged_after_nyul": true
+  },
+  "budget": {
+    "global_bytes": 54635953,
+    "global_mib": 52.1049,
+    "global_limit_bytes": 104857600,
+    "global_limit_mib": 100.0,
+    "per_scroll_limit_bytes": 6291456,
+    "per_scroll_limit_mib": 6.0,
+    "within_limits": true,
+    "per_scroll": {
+      "PHerc0125": {
+        "bytes": 4203155,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0175A": {
+        "bytes": 4202128,
+        "mib": 4.0075,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0191": {
+        "bytes": 4203064,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0211": {
+        "bytes": 4203097,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0306B": {
+        "bytes": 4202150,
+        "mib": 4.0075,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0343": {
+        "bytes": 4202152,
+        "mib": 4.0075,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0358": {
+        "bytes": 4203094,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0826": {
+        "bytes": 4203073,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0841": {
+        "bytes": 4203092,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc0846A": {
+        "bytes": 4202683,
+        "mib": 4.008,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc1203": {
+        "bytes": 4203074,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc1218": {
+        "bytes": 4202117,
+        "mib": 4.0075,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      },
+      "PHerc1545": {
+        "bytes": 4203074,
+        "mib": 4.0084,
+        "requests": 4,
+        "within_per_scroll_limit": true
+      }
+    }
+  },
+  "scrolls": [
+    {
+      "scroll_id": "PHerc0841",
+      "role": "control",
+      "is_reference_control": true,
+      "voxel_um": 9.366,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0841/volumes/20250821151531-9.366um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          19400,
+          7703,
+          7703
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203092,
+        "mib_streamed": 4.0084,
+        "control_chunk_indices": [
+          [
+            75,
+            30,
+            30
+          ],
+          [
+            53,
+            30,
+            30
+          ]
+        ]
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4192136,
+      "nonzero_fraction": 0.999483,
+      "nonzero_ct": {
+        "count": 4192136,
+        "p01": 18.0,
+        "p05": 30.0,
+        "p10": 38.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "p95": 157.0,
+        "p99": 182.0,
+        "mean": 94.9388,
+        "std": 41.6515,
+        "mad": 33.0,
+        "robust_sigma": 48.9258,
+        "skewness": 0.015,
+        "frac_ge_200": 0.004109,
+        "frac_ge_220": 0.001891
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2066259,
+        "p01": 101.0,
+        "p05": 103.0,
+        "p10": 106.0,
+        "p25": 114.0,
+        "p50": 127.0,
+        "p75": 143.0,
+        "p90": 158.0,
+        "p95": 168.0,
+        "p99": 196.0,
+        "mean": 130.4682,
+        "std": 21.1738,
+        "mad": 14.0,
+        "robust_sigma": 20.7564,
+        "skewness": 1.2376,
+        "frac_ge_200": 0.008336,
+        "frac_ge_220": 0.003837,
+        "threshold_p50": 100.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1381746,
+        "p01": 119.0,
+        "p05": 120.0,
+        "p10": 122.0,
+        "p25": 127.0,
+        "p50": 137.0,
+        "p75": 150.0,
+        "p90": 163.0,
+        "p95": 174.0,
+        "p99": 205.0,
+        "mean": 140.7261,
+        "std": 18.4286,
+        "mad": 11.0,
+        "robust_sigma": 16.3086,
+        "skewness": 1.799,
+        "frac_ge_200": 0.012465,
+        "frac_ge_220": 0.005738,
+        "threshold_p66_7": 118.0
+      },
+      "affine_to_ref_control": {
+        "gain": 0.99341,
+        "bias": 0.8155,
+        "r2": 0.999948,
+        "rmse": 0.2949,
+        "max_abs_err": 0.4465
+      },
+      "studio_envelope_check": {
+        "flagged": false,
+        "flag_gain": false,
+        "flag_bias": false,
+        "flag_clip_200": false,
+        "flag_reasons": []
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.004109,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0343",
+      "role": "control",
+      "is_reference_control": true,
+      "voxel_um": 8.64,
+      "energy_kev": 116,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0343/volumes/20250521140437-8.640um-1.2m-116keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          17998,
+          8595,
+          8595
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4202152,
+        "mib_streamed": 4.0075,
+        "control_chunk_indices": [
+          [
+            70,
+            33,
+            33
+          ],
+          [
+            49,
+            33,
+            33
+          ]
+        ]
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194304,
+      "nonzero_fraction": 1.0,
+      "nonzero_ct": {
+        "count": 4194304,
+        "p01": 30.0,
+        "p05": 44.0,
+        "p10": 62.0,
+        "p25": 92.0,
+        "p50": 114.0,
+        "p75": 129.0,
+        "p90": 141.0,
+        "p95": 148.0,
+        "p99": 168.0,
+        "mean": 108.1922,
+        "std": 31.3062,
+        "mad": 18.0,
+        "robust_sigma": 26.6868,
+        "skewness": -0.3824,
+        "frac_ge_200": 0.003592,
+        "frac_ge_220": 0.002887
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2038132,
+        "p01": 115.0,
+        "p05": 116.0,
+        "p10": 118.0,
+        "p25": 122.0,
+        "p50": 130.0,
+        "p75": 139.0,
+        "p90": 149.0,
+        "p95": 156.0,
+        "p99": 184.0,
+        "mean": 132.4408,
+        "std": 15.6752,
+        "mad": 8.0,
+        "robust_sigma": 11.8608,
+        "skewness": 3.1914,
+        "frac_ge_200": 0.007393,
+        "frac_ge_220": 0.005941,
+        "threshold_p50": 114.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1358254,
+        "p01": 125.0,
+        "p05": 125.0,
+        "p10": 126.0,
+        "p25": 130.0,
+        "p50": 135.0,
+        "p75": 143.0,
+        "p90": 153.0,
+        "p95": 161.0,
+        "p99": 208.0,
+        "mean": 138.8945,
+        "std": 15.4837,
+        "mad": 6.0,
+        "robust_sigma": 8.8956,
+        "skewness": 3.9776,
+        "frac_ge_200": 0.011093,
+        "frac_ge_220": 0.008914,
+        "threshold_p66_7": 124.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.41781,
+        "bias": -58.9563,
+        "r2": 0.953876,
+        "rmse": 8.7488,
+        "max_abs_err": 15.4822
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": true,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "gain_outside_0.8_1.2",
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.005182,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0306B",
+      "role": "control",
+      "is_reference_control": true,
+      "voxel_um": 8.64,
+      "energy_kev": 116,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0306B/volumes/20250521133212-8.640um-1.2m-116keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          15898,
+          8849,
+          8849
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4202150,
+        "mib_streamed": 4.0075,
+        "control_chunk_indices": [
+          [
+            62,
+            34,
+            34
+          ],
+          [
+            43,
+            34,
+            34
+          ]
+        ]
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194278,
+      "nonzero_fraction": 0.999994,
+      "nonzero_ct": {
+        "count": 4194278,
+        "p01": 23.0,
+        "p05": 33.0,
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 96.0,
+        "p75": 127.0,
+        "p90": 151.0,
+        "p95": 163.0,
+        "p99": 183.0,
+        "mean": 94.6025,
+        "std": 42.0374,
+        "mad": 35.0,
+        "robust_sigma": 51.891,
+        "skewness": 0.1308,
+        "frac_ge_200": 0.001292,
+        "frac_ge_220": 0.000405
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2070217,
+        "p01": 97.0,
+        "p05": 100.0,
+        "p10": 103.0,
+        "p25": 112.0,
+        "p50": 128.0,
+        "p75": 146.0,
+        "p90": 163.0,
+        "p95": 173.0,
+        "p99": 189.0,
+        "mean": 130.8672,
+        "std": 22.9086,
+        "mad": 17.0,
+        "robust_sigma": 25.2042,
+        "skewness": 0.6475,
+        "frac_ge_200": 0.002617,
+        "frac_ge_220": 0.00082,
+        "threshold_p50": 96.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1374705,
+        "p01": 118.0,
+        "p05": 120.0,
+        "p10": 122.0,
+        "p25": 128.0,
+        "p50": 139.0,
+        "p75": 155.0,
+        "p90": 169.0,
+        "p95": 178.0,
+        "p99": 192.0,
+        "mean": 142.8791,
+        "std": 18.5054,
+        "mad": 13.0,
+        "robust_sigma": 19.2738,
+        "skewness": 0.9049,
+        "frac_ge_200": 0.003941,
+        "frac_ge_220": 0.001234,
+        "threshold_p66_7": 117.0
+      },
+      "affine_to_ref_control": {
+        "gain": 0.968539,
+        "bias": 2.7511,
+        "r2": 0.996134,
+        "rmse": 2.5329,
+        "max_abs_err": 4.2692
+      },
+      "studio_envelope_check": {
+        "flagged": false,
+        "flag_gain": false,
+        "flag_bias": false,
+        "flag_clip_200": false,
+        "flag_reasons": []
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.001462,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0211",
+      "role": "control",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0211/volumes/20250821151803-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          19416,
+          7948,
+          7948
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203097,
+        "mib_streamed": 4.0084,
+        "control_chunk_indices": [
+          [
+            75,
+            31,
+            31
+          ],
+          [
+            53,
+            31,
+            31
+          ]
+        ]
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194206,
+      "nonzero_fraction": 0.999977,
+      "nonzero_ct": {
+        "count": 4194206,
+        "p01": 30.0,
+        "p05": 45.0,
+        "p10": 56.0,
+        "p25": 92.0,
+        "p50": 118.0,
+        "p75": 136.0,
+        "p90": 150.0,
+        "p95": 158.0,
+        "p99": 176.0,
+        "mean": 111.6503,
+        "std": 34.4289,
+        "mad": 21.0,
+        "robust_sigma": 31.1346,
+        "skewness": -0.5134,
+        "frac_ge_200": 0.002102,
+        "frac_ge_220": 0.001089
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2070540,
+        "p01": 119.0,
+        "p05": 120.0,
+        "p10": 122.0,
+        "p25": 127.0,
+        "p50": 136.0,
+        "p75": 147.0,
+        "p90": 158.0,
+        "p95": 166.0,
+        "p99": 185.0,
+        "mean": 138.8402,
+        "std": 15.1833,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 1.5928,
+        "frac_ge_200": 0.004259,
+        "frac_ge_220": 0.002207,
+        "threshold_p50": 118.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1369308,
+        "p01": 131.0,
+        "p05": 132.0,
+        "p10": 133.0,
+        "p25": 136.0,
+        "p50": 143.0,
+        "p75": 152.0,
+        "p90": 162.0,
+        "p95": 170.0,
+        "p99": 191.0,
+        "mean": 146.1487,
+        "std": 13.5947,
+        "mad": 8.0,
+        "robust_sigma": 11.8608,
+        "skewness": 2.283,
+        "frac_ge_200": 0.00644,
+        "frac_ge_220": 0.003337,
+        "threshold_p66_7": 130.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.190278,
+        "bias": -37.8067,
+        "r2": 0.952659,
+        "rmse": 8.8634,
+        "max_abs_err": 15.6989
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.0039,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0125",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0125/volumes/20250821151825-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          20840,
+          8387,
+          8387
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203155,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194149,
+      "nonzero_fraction": 0.999963,
+      "nonzero_ct": {
+        "count": 4194149,
+        "p01": 33.0,
+        "p05": 50.0,
+        "p10": 64.0,
+        "p25": 86.0,
+        "p50": 109.0,
+        "p75": 129.0,
+        "p90": 146.0,
+        "p95": 156.0,
+        "p99": 180.0,
+        "mean": 107.0263,
+        "std": 32.0586,
+        "mad": 21.0,
+        "robust_sigma": 31.1346,
+        "skewness": -0.0449,
+        "frac_ge_200": 0.003287,
+        "frac_ge_220": 0.001447
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2047132,
+        "p01": 110.0,
+        "p05": 111.0,
+        "p10": 113.0,
+        "p25": 119.0,
+        "p50": 129.0,
+        "p75": 143.0,
+        "p90": 157.0,
+        "p95": 167.0,
+        "p99": 192.0,
+        "mean": 132.9908,
+        "std": 18.4561,
+        "mad": 11.0,
+        "robust_sigma": 16.3086,
+        "skewness": 1.5429,
+        "frac_ge_200": 0.006735,
+        "frac_ge_220": 0.002965,
+        "threshold_p50": 109.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1356319,
+        "p01": 123.0,
+        "p05": 124.0,
+        "p10": 125.0,
+        "p25": 129.0,
+        "p50": 138.0,
+        "p75": 149.0,
+        "p90": 163.0,
+        "p95": 173.0,
+        "p99": 200.0,
+        "mean": 141.6691,
+        "std": 16.8479,
+        "mad": 9.0,
+        "robust_sigma": 13.3434,
+        "skewness": 1.9819,
+        "frac_ge_200": 0.010165,
+        "frac_ge_220": 0.004475,
+        "threshold_p66_7": 122.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.379129,
+        "bias": -53.691,
+        "r2": 0.985429,
+        "rmse": 4.9172,
+        "max_abs_err": 8.9141
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": true,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "gain_outside_0.8_1.2",
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.003849,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc1203",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          18977,
+          6844,
+          6844
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203074,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194297,
+      "nonzero_fraction": 0.999998,
+      "nonzero_ct": {
+        "count": 4194297,
+        "p01": 30.0,
+        "p05": 43.0,
+        "p10": 54.0,
+        "p25": 88.0,
+        "p50": 116.0,
+        "p75": 136.0,
+        "p90": 150.0,
+        "p95": 158.0,
+        "p99": 174.0,
+        "mean": 109.9524,
+        "std": 35.1911,
+        "mad": 23.0,
+        "robust_sigma": 34.0998,
+        "skewness": -0.4625,
+        "frac_ge_200": 0.001089,
+        "frac_ge_220": 0.000434
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2079539,
+        "p01": 117.0,
+        "p05": 119.0,
+        "p10": 121.0,
+        "p25": 126.0,
+        "p50": 136.0,
+        "p75": 148.0,
+        "p90": 159.0,
+        "p95": 166.0,
+        "p99": 181.0,
+        "mean": 138.3432,
+        "std": 15.1512,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 1.0556,
+        "frac_ge_200": 0.002197,
+        "frac_ge_220": 0.000875,
+        "threshold_p50": 116.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1395329,
+        "p01": 130.0,
+        "p05": 131.0,
+        "p10": 132.0,
+        "p25": 136.0,
+        "p50": 143.0,
+        "p75": 153.0,
+        "p90": 163.0,
+        "p95": 169.0,
+        "p99": 185.0,
+        "mean": 145.8112,
+        "std": 12.8761,
+        "mad": 8.0,
+        "robust_sigma": 11.8608,
+        "skewness": 1.5859,
+        "frac_ge_200": 0.003274,
+        "frac_ge_220": 0.001304,
+        "threshold_p66_7": 129.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.162503,
+        "bias": -32.8804,
+        "r2": 0.965007,
+        "rmse": 7.6203,
+        "max_abs_err": 13.4199
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.003244,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0191",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          18977,
+          8387,
+          8387
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203064,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194285,
+      "nonzero_fraction": 0.999995,
+      "nonzero_ct": {
+        "count": 4194285,
+        "p01": 33.0,
+        "p05": 46.0,
+        "p10": 52.0,
+        "p25": 78.0,
+        "p50": 114.0,
+        "p75": 132.0,
+        "p90": 146.0,
+        "p95": 154.0,
+        "p99": 170.0,
+        "mean": 105.7057,
+        "std": 35.4802,
+        "mad": 23.0,
+        "robust_sigma": 34.0998,
+        "skewness": -0.3526,
+        "frac_ge_200": 0.001472,
+        "frac_ge_220": 0.000837
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2059787,
+        "p01": 115.0,
+        "p05": 116.0,
+        "p10": 118.0,
+        "p25": 124.0,
+        "p50": 133.0,
+        "p75": 143.0,
+        "p90": 154.0,
+        "p95": 161.0,
+        "p99": 179.0,
+        "mean": 134.9178,
+        "std": 14.842,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 1.5481,
+        "frac_ge_200": 0.002997,
+        "frac_ge_220": 0.001704,
+        "threshold_p50": 114.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1382603,
+        "p01": 127.0,
+        "p05": 128.0,
+        "p10": 129.0,
+        "p25": 132.0,
+        "p50": 139.0,
+        "p75": 148.0,
+        "p90": 158.0,
+        "p95": 165.0,
+        "p99": 185.0,
+        "mean": 141.9065,
+        "std": 13.1849,
+        "mad": 7.0,
+        "robust_sigma": 10.3782,
+        "skewness": 2.2799,
+        "frac_ge_200": 0.004465,
+        "frac_ge_220": 0.002538,
+        "threshold_p66_7": 126.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.164189,
+        "bias": -27.9413,
+        "r2": 0.984535,
+        "rmse": 5.0659,
+        "max_abs_err": 6.8654
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.004051,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0826",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0826/volumes/20250821151701-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          16920,
+          8169,
+          8169
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203073,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194211,
+      "nonzero_fraction": 0.999978,
+      "nonzero_ct": {
+        "count": 4194211,
+        "p01": 32.0,
+        "p05": 47.0,
+        "p10": 58.0,
+        "p25": 95.0,
+        "p50": 122.0,
+        "p75": 141.0,
+        "p90": 156.0,
+        "p95": 164.0,
+        "p99": 181.0,
+        "mean": 115.5415,
+        "std": 35.7532,
+        "mad": 22.0,
+        "robust_sigma": 32.6172,
+        "skewness": -0.4991,
+        "frac_ge_200": 0.002494,
+        "frac_ge_220": 0.001156
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2068599,
+        "p01": 123.0,
+        "p05": 124.0,
+        "p10": 126.0,
+        "p25": 132.0,
+        "p50": 141.0,
+        "p75": 153.0,
+        "p90": 164.0,
+        "p95": 172.0,
+        "p99": 189.0,
+        "mean": 144.0264,
+        "std": 15.6609,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 1.3508,
+        "frac_ge_200": 0.005057,
+        "frac_ge_220": 0.002343,
+        "threshold_p50": 122.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1354956,
+        "p01": 136.0,
+        "p05": 137.0,
+        "p10": 138.0,
+        "p25": 142.0,
+        "p50": 149.0,
+        "p75": 159.0,
+        "p90": 169.0,
+        "p95": 176.0,
+        "p99": 195.0,
+        "mean": 151.9022,
+        "std": 13.6868,
+        "mad": 8.0,
+        "robust_sigma": 11.8608,
+        "skewness": 1.9877,
+        "frac_ge_200": 0.00772,
+        "frac_ge_220": 0.003577,
+        "threshold_p66_7": 135.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.144155,
+        "bias": -37.2914,
+        "r2": 0.955044,
+        "rmse": 8.6372,
+        "max_abs_err": 15.4034
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.003564,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0846A",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0846A/volumes/20250728152254-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          14019,
+          7726,
+          7726
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4202683,
+        "mib_streamed": 4.008
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4193667,
+      "nonzero_fraction": 0.999848,
+      "nonzero_ct": {
+        "count": 4193667,
+        "p01": 24.0,
+        "p05": 40.0,
+        "p10": 52.0,
+        "p25": 86.0,
+        "p50": 117.0,
+        "p75": 141.0,
+        "p90": 159.0,
+        "p95": 170.0,
+        "p99": 191.0,
+        "mean": 112.3602,
+        "std": 39.8799,
+        "mad": 27.0,
+        "robust_sigma": 40.0302,
+        "skewness": -0.2443,
+        "frac_ge_200": 0.006389,
+        "frac_ge_220": 0.003608
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2088196,
+        "p01": 118.0,
+        "p05": 120.0,
+        "p10": 122.0,
+        "p25": 129.0,
+        "p50": 141.0,
+        "p75": 156.0,
+        "p90": 170.0,
+        "p95": 179.0,
+        "p99": 206.0,
+        "mean": 144.4777,
+        "std": 19.9306,
+        "mad": 13.0,
+        "robust_sigma": 19.2738,
+        "skewness": 1.455,
+        "frac_ge_200": 0.012831,
+        "frac_ge_220": 0.007246,
+        "threshold_p50": 117.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1380065,
+        "p01": 134.0,
+        "p05": 135.0,
+        "p10": 137.0,
+        "p25": 141.0,
+        "p50": 150.0,
+        "p75": 162.0,
+        "p90": 175.0,
+        "p95": 184.0,
+        "p99": 224.0,
+        "mean": 154.1727,
+        "std": 17.6937,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 2.074,
+        "frac_ge_200": 0.019415,
+        "frac_ge_220": 0.010965,
+        "threshold_p66_7": 133.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.050504,
+        "bias": -23.0059,
+        "r2": 0.977045,
+        "rmse": 6.1719,
+        "max_abs_err": 11.3374
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.004943,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0175A",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 8.64,
+      "energy_kev": 116,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0175A/volumes/20250521115057-8.640um-1.2m-116keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          12748,
+          9363,
+          9363
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4202128,
+        "mib_streamed": 4.0075
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194303,
+      "nonzero_fraction": 1.0,
+      "nonzero_ct": {
+        "count": 4194303,
+        "p01": 36.0,
+        "p05": 44.0,
+        "p10": 49.0,
+        "p25": 60.0,
+        "p50": 102.0,
+        "p75": 128.0,
+        "p90": 144.0,
+        "p95": 153.0,
+        "p99": 170.0,
+        "mean": 97.8603,
+        "std": 36.9334,
+        "mad": 32.0,
+        "robust_sigma": 47.4432,
+        "skewness": 0.0185,
+        "frac_ge_200": 0.001288,
+        "frac_ge_220": 0.000576
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2096218,
+        "p01": 103.0,
+        "p05": 106.0,
+        "p10": 108.0,
+        "p25": 116.0,
+        "p50": 128.0,
+        "p75": 141.0,
+        "p90": 153.0,
+        "p95": 160.0,
+        "p99": 179.0,
+        "mean": 129.8249,
+        "std": 17.6518,
+        "mad": 12.0,
+        "robust_sigma": 17.7912,
+        "skewness": 0.9336,
+        "frac_ge_200": 0.002577,
+        "frac_ge_220": 0.001153,
+        "threshold_p50": 102.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1381798,
+        "p01": 121.0,
+        "p05": 122.0,
+        "p10": 124.0,
+        "p25": 128.0,
+        "p50": 136.0,
+        "p75": 147.0,
+        "p90": 157.0,
+        "p95": 164.0,
+        "p99": 185.0,
+        "mean": 139.0962,
+        "std": 14.3783,
+        "mad": 9.0,
+        "robust_sigma": 13.3434,
+        "skewness": 1.6715,
+        "frac_ge_200": 0.00391,
+        "frac_ge_220": 0.001749,
+        "threshold_p66_7": 120.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.098293,
+        "bias": -12.4951,
+        "r2": 0.998355,
+        "rmse": 1.6524,
+        "max_abs_err": 2.5975
+      },
+      "studio_envelope_check": {
+        "flagged": false,
+        "flag_gain": false,
+        "flag_bias": false,
+        "flag_clip_200": false,
+        "flag_reasons": []
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.003801,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc0358",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/volumes/20250821151737-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          14744,
+          7783,
+          7783
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203094,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4192997,
+      "nonzero_fraction": 0.999688,
+      "nonzero_ct": {
+        "count": 4192997,
+        "p01": 19.0,
+        "p05": 34.0,
+        "p10": 46.0,
+        "p25": 87.0,
+        "p50": 126.0,
+        "p75": 151.0,
+        "p90": 170.0,
+        "p95": 181.0,
+        "p99": 201.0,
+        "mean": 117.7346,
+        "std": 45.4899,
+        "mad": 30.0,
+        "robust_sigma": 44.478,
+        "skewness": -0.4138,
+        "frac_ge_200": 0.011594,
+        "frac_ge_220": 0.002808
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2083219,
+        "p01": 127.0,
+        "p05": 129.0,
+        "p10": 132.0,
+        "p25": 139.0,
+        "p50": 152.0,
+        "p75": 167.0,
+        "p90": 181.0,
+        "p95": 190.0,
+        "p99": 210.0,
+        "mean": 154.6283,
+        "std": 19.6473,
+        "mad": 13.0,
+        "robust_sigma": 19.2738,
+        "skewness": 0.9906,
+        "frac_ge_200": 0.023336,
+        "frac_ge_220": 0.005651,
+        "threshold_p50": 126.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1378617,
+        "p01": 144.0,
+        "p05": 145.0,
+        "p10": 147.0,
+        "p25": 152.0,
+        "p50": 161.0,
+        "p75": 174.0,
+        "p90": 187.0,
+        "p95": 195.0,
+        "p99": 217.0,
+        "mean": 164.576,
+        "std": 16.6907,
+        "mad": 10.0,
+        "robust_sigma": 14.826,
+        "skewness": 1.4055,
+        "frac_ge_200": 0.035262,
+        "frac_ge_220": 0.00854,
+        "threshold_p66_7": 143.0
+      },
+      "affine_to_ref_control": {
+        "gain": 0.899118,
+        "bias": -10.6977,
+        "r2": 0.972568,
+        "rmse": 6.747,
+        "max_abs_err": 11.5256
+      },
+      "studio_envelope_check": {
+        "flagged": false,
+        "flag_gain": false,
+        "flag_bias": false,
+        "flag_clip_200": false,
+        "flag_reasons": []
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.003317,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc1218",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 8.64,
+      "energy_kev": 116,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1218/volumes/20250521120456-8.640um-1.2m-116keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          23247,
+          7593,
+          7593
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4202117,
+        "mib_streamed": 4.0075
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194304,
+      "nonzero_fraction": 1.0,
+      "nonzero_ct": {
+        "count": 4194304,
+        "p01": 33.0,
+        "p05": 47.0,
+        "p10": 62.0,
+        "p25": 91.0,
+        "p50": 113.0,
+        "p75": 129.0,
+        "p90": 141.0,
+        "p95": 149.0,
+        "p99": 163.0,
+        "mean": 107.8211,
+        "std": 30.0907,
+        "mad": 18.0,
+        "robust_sigma": 26.6868,
+        "skewness": -0.558,
+        "frac_ge_200": 0.00115,
+        "frac_ge_220": 0.000725
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2058509,
+        "p01": 114.0,
+        "p05": 115.0,
+        "p10": 117.0,
+        "p25": 121.0,
+        "p50": 129.0,
+        "p75": 139.0,
+        "p90": 149.0,
+        "p95": 155.0,
+        "p99": 169.0,
+        "mean": 131.516,
+        "std": 13.4174,
+        "mad": 9.0,
+        "robust_sigma": 13.3434,
+        "skewness": 1.6766,
+        "frac_ge_200": 0.002343,
+        "frac_ge_220": 0.001477,
+        "threshold_p50": 113.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1332679,
+        "p01": 125.0,
+        "p05": 126.0,
+        "p10": 127.0,
+        "p25": 130.0,
+        "p50": 136.0,
+        "p75": 144.0,
+        "p90": 153.0,
+        "p95": 159.0,
+        "p99": 174.0,
+        "mean": 138.314,
+        "std": 11.9002,
+        "mad": 7.0,
+        "robust_sigma": 10.3782,
+        "skewness": 2.5602,
+        "frac_ge_200": 0.00362,
+        "frac_ge_220": 0.002281,
+        "threshold_p66_7": 124.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.418672,
+        "bias": -58.4816,
+        "r2": 0.95979,
+        "rmse": 8.1686,
+        "max_abs_err": 14.6175
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": true,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "gain_outside_0.8_1.2",
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.0033,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    },
+    {
+      "scroll_id": "PHerc1545",
+      "role": "eligible_unread",
+      "is_reference_control": false,
+      "voxel_um": 9.362,
+      "energy_kev": 113,
+      "volume_source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1545/volumes/20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "zarray": {
+        "shape": [
+          20961,
+          7506,
+          7506
+        ],
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "dtype": "uint8",
+        "order": "C",
+        "dimension_separator": "/",
+        "compressor_id": null,
+        "uncompressed_chunk_mib": 2.0,
+        "window_f32": [
+          -0.03,
+          0.145
+        ]
+      },
+      "sampling": {
+        "chunks_accepted": 2,
+        "chunks_probed": 2,
+        "chunks_skipped_sparse_or_missing": 0,
+        "min_nonzero_frac_threshold": 0.1,
+        "stopped_by_per_scroll_budget": true,
+        "bytes_streamed": 4203074,
+        "mib_streamed": 4.0084
+      },
+      "total_voxels_sampled": 4194304,
+      "nonzero_voxel_count": 4194105,
+      "nonzero_fraction": 0.999953,
+      "nonzero_ct": {
+        "count": 4194105,
+        "p01": 23.0,
+        "p05": 39.0,
+        "p10": 53.0,
+        "p25": 90.0,
+        "p50": 119.0,
+        "p75": 140.0,
+        "p90": 156.0,
+        "p95": 165.0,
+        "p99": 182.0,
+        "mean": 112.5225,
+        "std": 37.884,
+        "mad": 24.0,
+        "robust_sigma": 35.5824,
+        "skewness": -0.5193,
+        "frac_ge_200": 0.002021,
+        "frac_ge_220": 0.000748
+      },
+      "papyrus_wall_core_gt_p50": {
+        "count": 2076358,
+        "p01": 120.0,
+        "p05": 122.0,
+        "p10": 124.0,
+        "p25": 130.0,
+        "p50": 140.0,
+        "p75": 153.0,
+        "p90": 165.0,
+        "p95": 172.0,
+        "p99": 189.0,
+        "mean": 142.7583,
+        "std": 16.3841,
+        "mad": 11.0,
+        "robust_sigma": 16.3086,
+        "skewness": 1.0666,
+        "frac_ge_200": 0.004083,
+        "frac_ge_220": 0.00151,
+        "threshold_p50": 119.0
+      },
+      "papyrus_wall_upper_tercile_gt_p66_7": {
+        "count": 1373215,
+        "p01": 134.0,
+        "p05": 135.0,
+        "p10": 136.0,
+        "p25": 140.0,
+        "p50": 148.0,
+        "p75": 159.0,
+        "p90": 169.0,
+        "p95": 177.0,
+        "p99": 193.0,
+        "mean": 151.0402,
+        "std": 13.9676,
+        "mad": 9.0,
+        "robust_sigma": 13.3434,
+        "skewness": 1.5582,
+        "frac_ge_200": 0.006174,
+        "frac_ge_220": 0.002284,
+        "threshold_p66_7": 133.0
+      },
+      "affine_to_ref_control": {
+        "gain": 1.089259,
+        "bias": -27.9613,
+        "r2": 0.962836,
+        "rmse": 7.8531,
+        "max_abs_err": 14.072
+      },
+      "studio_envelope_check": {
+        "flagged": true,
+        "flag_gain": false,
+        "flag_bias": true,
+        "flag_clip_200": false,
+        "flag_reasons": [
+          "abs_bias_gt_15"
+        ]
+      },
+      "post_nyul_udupa_validation": {
+        "p10": 39.0,
+        "p25": 56.0,
+        "p50": 100.0,
+        "p75": 127.0,
+        "p90": 146.0,
+        "frac_ge_200": 0.002972,
+        "affine_to_ref_after": {
+          "gain": 1.0,
+          "bias": 0.0,
+          "r2": 1.0,
+          "rmse": 0.0,
+          "max_abs_err": 0.0
+        },
+        "flagged_after_nyul": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,834 @@
+{
+  "schema_version": "1.0.0",
+  "hardware_profile": {
+    "gpu": "RTX 4060 Laptop 8 GiB",
+    "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
+    "observed_temp_c_range": [
+      62,
+      66
+    ],
+    "hardware_or_oom_incidents": 0
+  },
+  "positive_control": {
+    "scroll": "PHerc0306B",
+    "mesh_id": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+    "clean_for_studio": true,
+    "valid_ct_cm2": 0.4228,
+    "f_parallel": 0.9375,
+    "studio_asc": {
+      "p995": 0.93303,
+      "max": 0.95549,
+      "frac_gt_07": 0.1581
+    },
+    "studio_desc": {
+      "frac_gt_07": 0.0365
+    },
+    "peak_allocated_mib": 1608,
+    "post_run_temp_c": 65,
+    "verdict": "POSITIVE_GATE_PASS",
+    "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
+  },
+  "untouched_screening_summary": {
+    "total_unique_valid_ct_cm2": 75.9988,
+    "meshes_screened": 15,
+    "two_family_followups": 6,
+    "candidates_found": 0
+  },
+  "meshes": [
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.0123,
+      "on_sheet_after_snap": 0.988,
+      "f_parallel": 0.9949,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1292.77,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.85773,
+          "p995": 0.88772,
+          "max": 0.9408,
+          "frac_gt_05": 0.090842,
+          "frac_gt_07": 0.039608
+        },
+        "studio_asc": {
+          "p99": 0.8085,
+          "p995": 0.85373,
+          "max": 0.93535,
+          "frac_gt_05": 0.077015,
+          "frac_gt_07": 0.025912
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.882,
+        "on_sheet_after_snap": 0.9775,
+        "f_parallel": 0.975,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1847.59,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 62,
+        "studio_desc": {
+          "p99": 0.89188,
+          "p995": 0.90898,
+          "max": 0.93055,
+          "frac_gt_05": 0.087758,
+          "frac_gt_07": 0.050448
+        },
+        "studio_asc": {
+          "p99": 0.81113,
+          "p995": 0.86083,
+          "max": 0.91204,
+          "frac_gt_05": 0.115897,
+          "frac_gt_07": 0.039921
+        },
+        "ahn_s0_asc": {
+          "p99": 0.80926,
+          "p995": 0.82947,
+          "max": 0.87028,
+          "frac_gt_05": 0.122975,
+          "frac_gt_07": 0.031802
+        },
+        "ahn_s0_desc": {
+          "p99": 0.75484,
+          "p995": 0.80314,
+          "max": 0.85954,
+          "frac_gt_05": 0.056018,
+          "frac_gt_07": 0.01739
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Isolated single-face Studio desc row uncorroborated by Studio asc or A-hn; both Studio and A-hn exhibit ~2x face asymmetry with non-matching peaks."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005230118636",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.3613,
+      "on_sheet_after_snap": 0.96,
+      "f_parallel": 0.8927,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2235.9,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.68296,
+          "p995": 0.77387,
+          "max": 0.92585,
+          "frac_gt_05": 0.031282,
+          "frac_gt_07": 0.008855
+        },
+        "studio_asc": {
+          "p99": 0.78911,
+          "p995": 0.84779,
+          "max": 0.94445,
+          "frac_gt_05": 0.045264,
+          "frac_gt_07": 0.017377
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.7387,
+        "on_sheet_after_snap": 0.9873,
+        "f_parallel": 0.9,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1336.08,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.72804,
+          "p995": 0.7846,
+          "max": 0.88606,
+          "frac_gt_05": 0.048185,
+          "frac_gt_07": 0.013631
+        },
+        "studio_asc": {
+          "p99": 0.85675,
+          "p995": 0.8855,
+          "max": 0.94016,
+          "frac_gt_05": 0.063064,
+          "frac_gt_07": 0.030102
+        },
+        "ahn_s0_asc": {
+          "p99": 0.70056,
+          "p995": 0.74377,
+          "max": 0.83371,
+          "frac_gt_05": 0.05012,
+          "frac_gt_07": 0.010073
+        },
+        "ahn_s0_desc": {
+          "p99": 0.60067,
+          "p995": 0.70024,
+          "max": 0.8376,
+          "frac_gt_05": 0.022601,
+          "frac_gt_07": 0.005022
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Studio asc peaks align with fiber flaps/cracks and are uncorroborated by A-hn."
+    },
+    {
+      "scroll": "PHerc0191",
+      "mesh_id": "w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.1151,
+      "on_sheet_after_snap": 0.9377,
+      "f_parallel": 0.8152,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 796.65,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.39968,
+          "p995": 0.44461,
+          "max": 0.74757,
+          "frac_gt_05": 0.001987,
+          "frac_gt_07": 0.00014
+        },
+        "studio_asc": {
+          "p99": 0.57161,
+          "p995": 0.75613,
+          "max": 0.90512,
+          "frac_gt_05": 0.013498,
+          "frac_gt_07": 0.006372
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Delaminated papyrus with only sparse crack-edge specks; no two-family follow-up warranted."
+    },
+    {
+      "scroll": "PHerc0191",
+      "mesh_id": "w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.4534,
+      "on_sheet_after_snap": 0.9119,
+      "f_parallel": 0.8039,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1398.68,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 66,
+        "studio_desc": {
+          "p99": 0.56967,
+          "p995": 0.70554,
+          "max": 0.92777,
+          "frac_gt_05": 0.013634,
+          "frac_gt_07": 0.005144
+        },
+        "studio_asc": {
+          "p99": 0.53453,
+          "p995": 0.64165,
+          "max": 0.86389,
+          "frac_gt_05": 0.012337,
+          "frac_gt_07": 0.003177
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Heavy papyrus delamination cracks with only sparse crack-edge specks; no two-family follow-up warranted."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005231446963",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.5848,
+      "on_sheet_after_snap": 0.9546,
+      "f_parallel": 0.9045,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1050.32,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.54595,
+          "p995": 0.64875,
+          "max": 0.90904,
+          "frac_gt_05": 0.013296,
+          "frac_gt_07": 0.003237
+        },
+        "studio_asc": {
+          "p99": 0.71076,
+          "p995": 0.7991,
+          "max": 0.94837,
+          "frac_gt_05": 0.029839,
+          "frac_gt_07": 0.01079
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Sparse isolated 128px border and fiber-flap blobs only; zero connected strokes on flat papyrus."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20250930000321811",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.7506,
+      "on_sheet_after_snap": 0.8964,
+      "f_parallel": 0.8775,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2208.41,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.85402,
+          "p995": 0.88058,
+          "max": 0.93488,
+          "frac_gt_05": 0.095416,
+          "frac_gt_07": 0.043654
+        },
+        "studio_asc": {
+          "p99": 0.86061,
+          "p995": 0.88385,
+          "max": 0.93098,
+          "frac_gt_05": 0.101462,
+          "frac_gt_07": 0.048983
+        }
+      },
+      "two_family_followup": {
+        "roi_count": 2,
+        "total_roi_valid_ct_cm2": 1.3326,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "rois": [
+          {
+            "roi_index": 1,
+            "roi_valid_ct_cm2": 0.6994,
+            "on_sheet_after_snap": 0.9401,
+            "f_parallel": 0.9697,
+            "total_seconds": 1378.42,
+            "studio_desc": {
+              "p99": 0.76254,
+              "p995": 0.81751,
+              "max": 0.87127,
+              "frac_gt_05": 0.058558,
+              "frac_gt_07": 0.01764
+            },
+            "studio_asc": {
+              "p99": 0.86226,
+              "p995": 0.87861,
+              "max": 0.91842,
+              "frac_gt_05": 0.178743,
+              "frac_gt_07": 0.084065
+            },
+            "ahn_s0_asc": {
+              "p99": 0.73497,
+              "p995": 0.78187,
+              "max": 0.85939,
+              "frac_gt_05": 0.048371,
+              "frac_gt_07": 0.013684
+            },
+            "ahn_s0_desc": {
+              "p99": 0.58224,
+              "p995": 0.66188,
+              "max": 0.79874,
+              "frac_gt_05": 0.018042,
+              "frac_gt_07": 0.003073
+            }
+          },
+          {
+            "roi_index": 2,
+            "roi_valid_ct_cm2": 0.6332,
+            "on_sheet_after_snap": 0.9854,
+            "f_parallel": 1.0,
+            "total_seconds": 1224.65,
+            "studio_desc": {
+              "p99": 0.86901,
+              "p995": 0.88404,
+              "max": 0.91553,
+              "frac_gt_05": 0.228861,
+              "frac_gt_07": 0.129701
+            },
+            "studio_asc": {
+              "p99": 0.88347,
+              "p995": 0.90055,
+              "max": 0.93845,
+              "frac_gt_05": 0.17045,
+              "frac_gt_07": 0.092274
+            },
+            "ahn_s0_asc": {
+              "p99": 0.76422,
+              "p995": 0.78728,
+              "max": 0.83883,
+              "frac_gt_05": 0.089313,
+              "frac_gt_07": 0.027726
+            },
+            "ahn_s0_desc": {
+              "p99": 0.77479,
+              "p995": 0.8136,
+              "max": 0.862,
+              "frac_gt_05": 0.090771,
+              "frac_gt_07": 0.02151
+            }
+          }
+        ]
+      },
+      "verdict": "NEGATIVE",
+      "note": "Bilateral diffuse 2-4 mm papyrus-mottle clouds (ROI 2 elevated across all 4 passes with studio_desc > studio_asc; ROI 1 A-hn 6.1x below Studio asc); zero crisp connected letter strokes in either family."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005231446965",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 11.3987,
+      "on_sheet_after_snap": 0.9159,
+      "f_parallel": 0.8009,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 3368.73,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.66468,
+          "p995": 0.75652,
+          "max": 0.9347,
+          "frac_gt_05": 0.023306,
+          "frac_gt_07": 0.007908
+        },
+        "studio_asc": {
+          "p99": 0.75509,
+          "p995": 0.82465,
+          "max": 0.94863,
+          "frac_gt_05": 0.036898,
+          "frac_gt_07": 0.014372
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Isolated coarse delamination-seam, fiber-tear, and border-fold blobs only; zero connected strokes on flat papyrus."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20250929222256117",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.0882,
+      "on_sheet_after_snap": 0.9379,
+      "f_parallel": 0.8776,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2447.01,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.87856,
+          "p995": 0.89299,
+          "max": 0.93589,
+          "frac_gt_05": 0.193064,
+          "frac_gt_07": 0.098673
+        },
+        "studio_asc": {
+          "p99": 0.87377,
+          "p995": 0.89116,
+          "max": 0.93495,
+          "frac_gt_05": 0.117778,
+          "frac_gt_07": 0.055721
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.5897,
+        "on_sheet_after_snap": 0.9977,
+        "f_parallel": 1.0,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1197.1,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "studio_desc": {
+          "p99": 0.88685,
+          "p995": 0.89741,
+          "max": 0.92768,
+          "frac_gt_05": 0.582124,
+          "frac_gt_07": 0.282924
+        },
+        "studio_asc": {
+          "p99": 0.8728,
+          "p995": 0.89593,
+          "max": 0.92944,
+          "frac_gt_05": 0.268518,
+          "frac_gt_07": 0.121134
+        },
+        "ahn_s0_asc": {
+          "p99": 0.83437,
+          "p995": 0.84534,
+          "max": 0.8733,
+          "frac_gt_05": 0.316785,
+          "frac_gt_07": 0.10472
+        },
+        "ahn_s0_desc": {
+          "p99": 0.84397,
+          "p995": 0.8512,
+          "max": 0.87544,
+          "frac_gt_05": 0.384086,
+          "frac_gt_07": 0.158244
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Bilateral diffuse 2-4 mm clouds across all 4 two-family passes (desc > asc in both Studio and A-hn on adjacent wrap to auto_grown_20250930000321811); zero crisp separated letter strokes."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20250930104534929",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.8014,
+      "on_sheet_after_snap": 0.9433,
+      "f_parallel": 0.7677,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2294.39,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.90045,
+          "p995": 0.91281,
+          "max": 0.95086,
+          "frac_gt_05": 0.165613,
+          "frac_gt_07": 0.09167
+        },
+        "studio_asc": {
+          "p99": 0.86805,
+          "p995": 0.89082,
+          "max": 0.93893,
+          "frac_gt_05": 0.104337,
+          "frac_gt_07": 0.049042
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Bilateral clouds aligned along horizontal delamination cracks/seams; zero letter strokes."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20250923163217042",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.7881,
+      "on_sheet_after_snap": 0.9533,
+      "f_parallel": 0.9286,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1191.19,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.85,
+          "p995": 0.88071,
+          "max": 0.93408,
+          "frac_gt_05": 0.083558,
+          "frac_gt_07": 0.036249
+        },
+        "studio_asc": {
+          "p99": 0.82948,
+          "p995": 0.87313,
+          "max": 0.93104,
+          "frac_gt_05": 0.068063,
+          "frac_gt_07": 0.031082
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Single bilateral overlap blob plus tear/mottle specks; zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z10544_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9752,
+      "on_sheet_after_snap": 0.995,
+      "f_parallel": 0.9787,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1286.86,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.897,
+          "p995": 0.91114,
+          "max": 0.95694,
+          "frac_gt_05": 0.110576,
+          "frac_gt_07": 0.061381
+        },
+        "studio_asc": {
+          "p99": 0.85227,
+          "p995": 0.88537,
+          "max": 0.93169,
+          "frac_gt_05": 0.0919,
+          "frac_gt_07": 0.035997
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.7123,
+        "bilateral_overlap_frac": 0.019421,
+        "strokeness_weighted_mean": 2.0886,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Diffuse patchy blobs across intact papyrus with low face asymmetry (1.71x); zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.5699,
+      "on_sheet_after_snap": 0.9466,
+      "f_parallel": 0.9775,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1011.72,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.88385,
+          "p995": 0.90277,
+          "max": 0.93308,
+          "frac_gt_05": 0.090885,
+          "frac_gt_07": 0.051272
+        },
+        "studio_asc": {
+          "p99": 0.84137,
+          "p995": 0.87937,
+          "max": 0.95194,
+          "frac_gt_05": 0.098484,
+          "frac_gt_07": 0.037412
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.3596,
+        "bilateral_overlap_frac": 0.010866,
+        "strokeness_weighted_mean": 2.2982,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Diffuse blobs along cracks and voids with low face asymmetry (1.36x); zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z6944_w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.1967,
+      "on_sheet_after_snap": 0.9487,
+      "f_parallel": 0.8727,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1090.38,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.86268,
+          "p995": 0.88241,
+          "max": 0.94251,
+          "frac_gt_05": 0.099435,
+          "frac_gt_07": 0.050045
+        },
+        "studio_asc": {
+          "p99": 0.74199,
+          "p995": 0.80923,
+          "max": 0.91085,
+          "frac_gt_05": 0.03522,
+          "frac_gt_07": 0.012733
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 3.9149,
+        "bilateral_overlap_frac": 0.036488,
+        "strokeness_weighted_mean": 2.3653,
+        "ink_like_candidate": true
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Coarse blocky 128px tile-grid mottle blobs across papyrus despite 3.91x face asymmetry; visual inspection confirms zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z9936_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9944,
+      "on_sheet_after_snap": 0.9921,
+      "f_parallel": 0.9845,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1314.78,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.7595,
+          "p995": 0.83496,
+          "max": 0.92311,
+          "frac_gt_05": 0.033629,
+          "frac_gt_07": 0.013514
+        },
+        "studio_asc": {
+          "p99": 0.80698,
+          "p995": 0.8444,
+          "max": 0.91811,
+          "frac_gt_05": 0.065684,
+          "frac_gt_07": 0.025233
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.8672,
+        "bilateral_overlap_frac": 0.002879,
+        "strokeness_weighted_mean": 1.156,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Scattered 128px tile-grid mottle with low face asymmetry (1.87x) and low strokeness (1.16); visual inspection confirms zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z8736_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9087,
+      "on_sheet_after_snap": 0.975,
+      "f_parallel": 0.9588,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1147.55,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.89018,
+          "p995": 0.90764,
+          "max": 0.94624,
+          "frac_gt_05": 0.098059,
+          "frac_gt_07": 0.055067
+        },
+        "studio_asc": {
+          "p99": 0.73619,
+          "p995": 0.79236,
+          "max": 0.90484,
+          "frac_gt_05": 0.043774,
+          "frac_gt_07": 0.014011
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.9009,
+        "on_sheet_after_snap": 0.9996,
+        "f_parallel": 0.975,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 2044.14,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 58,
+        "studio_desc": {
+          "p99": 0.91728,
+          "p995": 0.92417,
+          "max": 0.94869,
+          "frac_gt_05": 0.202722,
+          "frac_gt_07": 0.126999
+        },
+        "studio_asc": {
+          "p99": 0.60933,
+          "p995": 0.69051,
+          "max": 0.86111,
+          "frac_gt_05": 0.023928,
+          "frac_gt_07": 0.00469
+        },
+        "ahn_s0_asc": {
+          "p99": 0.66265,
+          "p995": 0.72401,
+          "max": 0.8491,
+          "frac_gt_05": 0.032645,
+          "frac_gt_07": 0.007018
+        },
+        "ahn_s0_desc": {
+          "p99": 0.8335,
+          "p995": 0.84801,
+          "max": 0.88865,
+          "frac_gt_05": 0.092973,
+          "frac_gt_07": 0.036868
+        },
+        "adversarial_depth_and_orientation_check": {
+          "variants_tested": 9,
+          "depth_shifts_vx": [
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "spatial_modes": [
+            "orig",
+            "flip_lr",
+            "flip_ud",
+            "rot180"
+          ],
+          "max_q34_score": 0.007359,
+          "passes_q34_bar_count": 0,
+          "verdict": "ARTIFACT_OR_WIDE_BLOB_CONFIRMED"
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Row of 1.5-2.5 mm rounded blobs hugging the lower valid-mesh step edge and a vertical papyrus seam; 9-variant adversarial depth sweep (dz in -6..+6) and mirror/rot180 check + Q34 Stroke-Bounded TFCE (max q34_score=0.0074, 0/9 passing Q34 bar) confirm boundary/seam artifact with zero Greek letter strokes."
+    }
+  ]
+}
