@@ -1,0 +1,42 @@
+name: Public PHerc1218 geometric atlas source objects
+on:
+  push:
+    branches: [codex/dls-public-depth-fixture]
+    paths: [.github/workflows/pherc1218-public-sources.yml]
+permissions:
+  contents: read
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip -q install numpy==2.2.6 tifffile==2025.5.10 requests==2.32.5
+      - run: npm install --prefix "$RUNNER_TEMP/artifact-client" --no-audit --no-fund @actions/artifact@2.2.2
+      - run: python public-controls/pherc1218-sources/stage.py prepare
+      - name: Deliver original, encrypted public source objects
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const path = require('path');
+            const fs = require('fs');
+            const cp = require('child_process');
+            const { DefaultArtifactClient } = require(path.join(process.env.RUNNER_TEMP, 'artifact-client/node_modules/@actions/artifact'));
+            const client = new DefaultArtifactClient();
+            const dir = path.join(process.env.RUNNER_TEMP, 'public-1218-native/send');
+            for (let i = 0; i < 25; i++) {
+              cp.execFileSync('python', ['public-controls/pherc1218-sources/stage.py', String(i), 'public-controls/dls-depth/recipient.pem'], {stdio:'inherit'});
+              const receipt = JSON.parse(fs.readFileSync(path.join(dir, 'receipt.json'), 'utf8'));
+              for (let j = 0; j < receipt.parts.length; j++) {
+                const filename = receipt.parts[j].file;
+                const artifact = 'public-native-1218-'+receipt.public_id.split('-')[1]+'-p'+String(j).padStart(2,'0');
+                await client.uploadArtifact(artifact, [path.join(dir,filename),path.join(dir,'receipt.json')], dir, {retentionDays:1,compressionLevel:0});
+              }
+            }
