@@ -1,0 +1,73 @@
+{
+  "scroll": "PHerc0306B",
+  "mesh_tag": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+  "mesh_commit": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+  "renderer_commit": "3aef0ab",
+  "uv_crop": [95, 120, 190, 250],
+  "voxel_um": 8.64,
+  "num_slices": 31,
+  "snap_passes": 0,
+  "onsheet_coherence": {
+    "tiles": 16,
+    "tile": 256,
+    "step": 128,
+    "r_t": 0.1,
+    "s_t": 1.5,
+    "hp_sigma": 6.0,
+    "min_valid": 0.9,
+    "f_parallel": 0.9375,
+    "f_drift": 0.0625,
+    "f_still": 0.0,
+    "response_median": -0.035,
+    "shift_median_confident": 18.03,
+    "layers": 31,
+    "mid": 15,
+    "dk": 2
+  },
+  "render_seconds": 72.79,
+  "ct_chunks_fetched": 151,
+  "ct_mib_fetched": 302.0,
+  "valid_ct_pixels": 566400,
+  "valid_ct_cm2": 0.4228,
+  "detectors": {
+    "studio_desc": {
+      "valid_pixels": 566400,
+      "valid_cm2": 0.4228,
+      "mean": 0.27806,
+      "std": 0.15807,
+      "p95": 0.64864,
+      "p99": 0.85005,
+      "p995": 0.87105,
+      "max": 0.90254,
+      "frac_gt_05": 0.106236,
+      "frac_gt_07": 0.036471,
+      "seconds": 137.27,
+      "peak_allocated_mib": 1608,
+      "peak_reserved_mib": 1740
+    },
+    "studio_asc": {
+      "valid_pixels": 566400,
+      "valid_cm2": 0.4228,
+      "mean": 0.35736,
+      "std": 0.25315,
+      "p95": 0.90747,
+      "p99": 0.92887,
+      "p995": 0.93303,
+      "max": 0.95549,
+      "frac_gt_05": 0.238921,
+      "frac_gt_07": 0.158072,
+      "seconds": 136.38,
+      "peak_allocated_mib": 1608,
+      "peak_reserved_mib": 1740
+    }
+  },
+  "safety_profile": {
+    "vram_fraction": 0.35,
+    "studio_batch": 1,
+    "batch_pause_ms": 350,
+    "max_gpu_temp_c": 74,
+    "post_run_temp_c": 65,
+    "total_seconds": 353.19
+  },
+  "visual_inspection": "PASS — crisp high-probability Greek letter strokes visible on studio_asc reading face"
+}
