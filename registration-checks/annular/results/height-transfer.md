@@ -15,3 +15,14 @@ Running the first command repeats the table calculation from the pinned site dat
 node registration-checks/annular/height-transfer.cjs
 node registration-checks/annular/height-transfer.cjs ./annular-cache
 ```
+
+## Direct image check at the withheld heights
+
+A standard GitHub runner downloaded the public voxels from S3. For each site it applied the translation predicted from the two other heights, then evaluated both original scans on the two reserved axial planes. A second run using only the cache produced byte-identical output. [Execution log](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/44902739781) · [All 41 paired site results](height-transfer.json)
+
+| Scroll | Uncorrected → corrected median band-pass correlation | Sites improved | Uncorrected → corrected median raw intensity correlation | Sites improved |
+| --- | ---: | ---: | ---: | ---: |
+| PHerc. 1203 | 0.875 → 0.929 | 16 / 17 | 0.856 → 0.913 | 16 / 17 |
+| PHerc. 0846A | 0.790 → 0.932 | 18 / 24 | 0.782 → 0.916 | 19 / 24 |
+
+All remaining paired correlations decreased. The median of the paired gains in band-pass correlation was +0.069 on 1203 and +0.139 on 0846A. The SHA-256 of the archived site data is `638948570f691c9c78389d3537ac3415a5ce0be93034aedec1564e06f6dccd6e`. These are measurements of tissue alignment in held-out images. Implementations that transfer a particle or mesh vertex still need to check which sheet and side the vertex lands on.
