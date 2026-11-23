@@ -1,0 +1,462 @@
+{
+  "method": "Native voxel-centre bounds and non-fill checks on both complete public mesh parameterizations.",
+  "provenance": {
+    "source_commit": "9c00aa37c19e2155a058b319016ba197a6dafc64",
+    "workflow": "https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/44903999302",
+    "csv": "coverage-78-rle.csv",
+    "mesh_dls": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHercParis4/segments/20231016151002/mesh/20231016151002-on-20230205180739-7.91um.tifxyz/",
+    "mesh_78": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHercParis4/segments/20231016151002/mesh/20231016151002-on-20260411134726-2.4um.tifxyz/",
+    "transform_137": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHercParis4/transforms/20260323153942-to-20230205180739-r1/fit/transform.json",
+    "transform_78": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHercParis4/transforms/20260411134726-to-20230205180739-r1/fit/transform.json"
+  },
+  "interpretation": "Grid rates count sampled UV vertices. Coarse non-fill checks use nearest level-4 centres (38.4 micrometres) at the mesh location. A native point outside that level's sampled centres is unresolved. A nonzero value records scanner support and does not identify a tissue or writing feature.",
+  "DLS": "20230205180739",
+  "coarse_joint_verification": {
+    "DLS_grid": {
+      "both_evaluable": 680,
+      "both_nonfill": 475,
+      "both_nonfill_percent_among_evaluable": 69.852941,
+      "joint_bounds_nodes_sampled": 681,
+      "nonfill_137": 475,
+      "nonfill_78": 681,
+      "unknown_137": 1,
+      "unknown_78": 0
+    },
+    "direct_78_grid": {
+      "both_evaluable": 7080,
+      "both_nonfill": 4991,
+      "both_nonfill_percent_among_evaluable": 70.49435,
+      "joint_bounds_nodes_sampled": 7093,
+      "nonfill_137": 4991,
+      "nonfill_78": 7093,
+      "unknown_137": 13,
+      "unknown_78": 0
+    },
+    "level": 4,
+    "unique_chunks_by_energy": {
+      "78": 8,
+      "137": 10
+    },
+    "unresolved_access": {},
+    "uv_stride": 4
+  },
+  "grid_stride_in_published_mesh_nodes": 1,
+  "independent_official_mesh_78": {
+    "pointwise_check": "different official UV raster dimensions",
+    "sha256_xyz": [
+      "b5b68944e85dfdcbd89ca7fd365b5aea7c1043583fb80946ed8dd537d17589dd",
+      "e416c947e0d29aa50466ce5044965a01cace31749dceb3a7885bb45a03073d90",
+      "f36ec5ad3418b13a0e4354ac4fac76ecfdc8cf84862d18be071ab3fbde9ee736"
+    ],
+    "shape_vu": [
+      1598,
+      2598
+    ]
+  },
+  "joint_inside": 10912,
+  "joint_inside_uv_sectors": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1006,
+      1520,
+      2224,
+      2211,
+      2107,
+      1844
+    ]
+  ],
+  "mesh_sha256_xyz": [
+    "ce832c2e630d5ff5d13b9657f671f47fe82ebfe4fd601a2fa34f19ec8757fec8",
+    "2ee2f784d8d718f405507ad631524ea82931980196203ea51bc4713b0ad09b4d",
+    "93cd0c7590d97ac14a14bffb2e053f3c8581c7ecc5467a6f62172c864b5d5218"
+  ],
+  "mesh_shape_vu": [
+    490,
+    798
+  ],
+  "native_78_mesh_full_grid": {
+    "categories": {
+      "B": 4991,
+      "F": 2089,
+      "G": 13,
+      "N": 40926,
+      "O": 211981
+    },
+    "full_shape_vu": [
+      1598,
+      2598
+    ],
+    "inside_137": 7093,
+    "inside_78": 219074,
+    "joint": 7093,
+    "joint_percent_all_valid": 3.237719,
+    "joint_uv_sectors": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        654,
+        1003,
+        1429,
+        1449,
+        1375,
+        1183
+      ]
+    ],
+    "rle_csv_sha256": "f0c941b12affbe2ec7e56f8151ac2f2cf4b47e51d17ab6d2683618aade13780c",
+    "rle_schema": {
+      "B": "inside both boxes and non-fill verified in both at level 4",
+      "F": "inside both boxes; fill verified for at least one scanner at level 4",
+      "G": "inside both boxes; common non-fill not verified",
+      "N": "no valid public mesh vertex",
+      "O": "outside at least one scanner bounding box",
+      "runs": "row starts at original U=0; each unit advances 4 stored mesh columns",
+      "v_mesh": "original 78-keV TIFXYZ vertex row, sampled at 0,4,8,..."
+    },
+    "sampled_shape_vu": [
+      400,
+      650
+    ],
+    "sampling_origin_vu": [
+      0,
+      0
+    ],
+    "stride_vu": [
+      4,
+      4
+    ],
+    "valid": 219074,
+    "valid_uv_sectors": [
+      [
+        2095,
+        6139,
+        6168,
+        6100,
+        6089,
+        5238
+      ],
+      [
+        3010,
+        7303,
+        7236,
+        7236,
+        7236,
+        4481
+      ],
+      [
+        4555,
+        7303,
+        7236,
+        7236,
+        7236,
+        4343
+      ],
+      [
+        5860,
+        7303,
+        7236,
+        7236,
+        7236,
+        4633
+      ],
+      [
+        5462,
+        7194,
+        7128,
+        7128,
+        7128,
+        5498
+      ],
+      [
+        5542,
+        6057,
+        5956,
+        6037,
+        6082,
+        4118
+      ]
+    ]
+  },
+  "scans": {
+    "78": {
+      "id": "20260411134726",
+      "inside": 331691,
+      "inside_dilated_32": 331691,
+      "inside_eroded_32": 331691,
+      "inside_uv_sectors": [
+        [
+          3228,
+          9327,
+          9433,
+          9338,
+          9320,
+          8086
+        ],
+        [
+          4538,
+          10906,
+          10906,
+          10906,
+          10906,
+          6825
+        ],
+        [
+          6883,
+          10906,
+          10906,
+          10906,
+          10906,
+          6624
+        ],
+        [
+          8813,
+          10906,
+          10906,
+          10906,
+          10906,
+          7049
+        ],
+        [
+          8245,
+          10773,
+          10773,
+          10773,
+          10773,
+          8382
+        ],
+        [
+          8480,
+          9163,
+          9103,
+          9228,
+          9299,
+          6363
+        ]
+      ],
+      "percent": 100,
+      "registration": {
+        "affine_linear_singular_values": [
+          0.307278,
+          0.30714,
+          0.306603
+        ],
+        "forward_rms_DLS_voxels": 2.4540901305866134,
+        "inverse_residual_p50_p95_max_native_voxels": [
+          4.878,
+          17.889,
+          20.978
+        ],
+        "landmarks": 24
+      },
+      "shape_zyx": [
+        75784,
+        32693,
+        32693
+      ]
+    },
+    "137": {
+      "id": "20260323153942",
+      "inside": 10912,
+      "inside_dilated_32": 11296,
+      "inside_eroded_32": 10541,
+      "inside_uv_sectors": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1006,
+          1520,
+          2224,
+          2211,
+          2107,
+          1844
+        ]
+      ],
+      "percent": 3.28981,
+      "registration": {
+        "affine_linear_singular_values": [
+          0.307556,
+          0.30729,
+          0.306556
+        ],
+        "forward_rms_DLS_voxels": 0.7603808939770457,
+        "inverse_residual_p50_p95_max_native_voxels": [
+          2.236,
+          3.592,
+          3.627
+        ],
+        "landmarks": 13
+      },
+      "shape_zyx": [
+        6625,
+        8431,
+        8431
+      ]
+    }
+  },
+  "segment": "20231016151002",
+  "valid_nodes_per_6x6_uv_sector": [
+    [
+      3228,
+      9327,
+      9433,
+      9338,
+      9320,
+      8086
+    ],
+    [
+      4538,
+      10906,
+      10906,
+      10906,
+      10906,
+      6825
+    ],
+    [
+      6883,
+      10906,
+      10906,
+      10906,
+      10906,
+      6624
+    ],
+    [
+      8813,
+      10906,
+      10906,
+      10906,
+      10906,
+      7049
+    ],
+    [
+      8245,
+      10773,
+      10773,
+      10773,
+      10773,
+      8382
+    ],
+    [
+      8480,
+      9163,
+      9103,
+      9228,
+      9299,
+      6363
+    ]
+  ],
+  "valid_points": 331691
+}
