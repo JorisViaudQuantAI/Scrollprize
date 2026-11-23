@@ -1,0 +1,285 @@
+{
+  "schema": "adaptive.chart_normals.v1",
+  "unit_checks": 4,
+  "script_sha256": "b38606478f8569e8b52908bfb3419126ab0cdb30f0e3b8c6d815471a889a3c4c",
+  "protocol_sha256": "d903ecd1d65f3e1b10047673181957630dd71a2407458836f3bbe9234a42e2c3",
+  "cases": [
+    {
+      "kind": "primary",
+      "index": 0,
+      "calibration_excluded": false,
+      "yx": [
+        1774,
+        2773
+      ],
+      "B_P": {
+        "mae": 5.802678098184212,
+        "rmse": 8.318282604524898,
+        "r": 0.9728152542415743
+      },
+      "B_S": {
+        "mae": 5.593579037910483,
+        "rmse": 7.719512780819357,
+        "r": 0.9765900393203509
+      },
+      "P_S": {
+        "mae": 1.2045329230604693,
+        "rmse": 2.3125869868545927,
+        "r": 0.9978976447555247
+      },
+      "geometry_exact": true,
+      "supported_pixels": 4096
+    },
+    {
+      "kind": "primary",
+      "index": 1,
+      "calibration_excluded": false,
+      "yx": [
+        2173,
+        4558
+      ],
+      "B_P": {
+        "mae": 5.395782311956282,
+        "rmse": 7.130468707131953,
+        "r": 0.9743673134978208
+      },
+      "B_S": {
+        "mae": 5.3030976296868175,
+        "rmse": 6.931309676704583,
+        "r": 0.9757839987608341
+      },
+      "P_S": {
+        "mae": 0.6965609348699218,
+        "rmse": 1.248369655329702,
+        "r": 0.9992138805068626
+      },
+      "geometry_exact": true,
+      "supported_pixels": 4096
+    },
+    {
+      "kind": "primary",
+      "index": 2,
+      "calibration_excluded": true,
+      "yx": [
+        2320,
+        6364
+      ],
+      "B_P": {
+        "mae": 4.251297266532977,
+        "rmse": 5.90703386746735,
+        "r": 0.9859037025352678
+      },
+      "B_S": {
+        "mae": 4.206074606433201,
+        "rmse": 5.8260931282458195,
+        "r": 0.986299580036047
+      },
+      "P_S": {
+        "mae": 0.4256929707092543,
+        "rmse": 0.7335260631081629,
+        "r": 0.9997808751563019
+      },
+      "geometry_exact": true,
+      "supported_pixels": 4096
+    },
+    {
+      "kind": "primary",
+      "index": 3,
+      "calibration_excluded": false,
+      "yx": [
+        2761,
+        6763
+      ],
+      "B_P": {
+        "mae": 4.829553721860672,
+        "rmse": 6.350053863060245,
+        "r": 0.9743156250345315
+      },
+      "B_S": {
+        "mae": 4.78401446971111,
+        "rmse": 6.25807328114889,
+        "r": 0.9750618967209966
+      },
+      "P_S": {
+        "mae": 0.26948390070659417,
+        "rmse": 0.467177209845656,
+        "r": 0.9998609010902731
+      },
+      "geometry_exact": true,
+      "supported_pixels": 4096
+    },
+    {
+      "kind": "fallback",
+      "same_support": true,
+      "valid_pixels": 480,
+      "P_S": {
+        "mae": 1.7938907192813025,
+        "rmse": 3.8049517183594492,
+        "r": 0.9920174137246998
+      }
+    }
+  ],
+  "pass": false,
+  "CNN_forwards": 0,
+  "detector_040_calibration": {
+    "plus": {
+      "mae": 4.251297266532977,
+      "rmse": 5.90703386746735,
+      "r": 0.9859037025352678
+    },
+    "minus": {
+      "mae": 45.660131833399646,
+      "rmse": 54.61098339479069,
+      "r": -0.2054466047083864
+    },
+    "chosen_sign": 1,
+    "relative_mae_advantage": 0.9068925757366468,
+    "pass": true
+  },
+  "detector_040_result_sha256": "15ca8ec556cd2214f193e72ee0cc279f7bc26388e45bc2da156f06e9efffdcca",
+  "edge_metrics": {
+    "primary": {
+      "faces": 145388,
+      "original_edges": 219365,
+      "boundary_edges": 2566,
+      "nonmanifold_edges": 0,
+      "two_face_edges": 216799,
+      "eligible_smooth_edges": 202935,
+      "safe_fan_smooth_edges": 201589,
+      "safe_edge_fraction": 0.9933673343681474,
+      "fan_groups": 91557,
+      "unsafe_fan_groups": 311,
+      "max_corner_deviation_deg": 29.932589530084524,
+      "median_old_edge_jump_deg": 2.281011739397623,
+      "median_new_endpoint_jump_deg": 0,
+      "median_reduction_fraction": 1,
+      "max_new_endpoint_jump_deg": 29.99775688985521,
+      "no_cross_vertex_fans": true
+    },
+    "fallback": {
+      "faces": 7836,
+      "original_edges": 12616,
+      "boundary_edges": 1724,
+      "nonmanifold_edges": 0,
+      "two_face_edges": 10892,
+      "eligible_smooth_edges": 7249,
+      "safe_fan_smooth_edges": 7031,
+      "safe_edge_fraction": 0.9699268864670989,
+      "fan_groups": 10227,
+      "unsafe_fan_groups": 51,
+      "max_corner_deviation_deg": 29.891306890347355,
+      "median_old_edge_jump_deg": 4.792308309285652,
+      "median_new_endpoint_jump_deg": 0,
+      "median_reduction_fraction": 1,
+      "max_new_endpoint_jump_deg": 29.94255759854277,
+      "no_cross_vertex_fans": true
+    }
+  },
+  "mean_CT_MAE": {
+    "piecewise": 5.342671377333723,
+    "smooth": 5.22689704576947,
+    "relative_reduction": 0.021669745973039833
+  },
+  "sample_normals": {
+    "primary": {
+      "max_deviation_deg": 3.4589435429626367,
+      "max_unit_error": 2.220446049250313e-16,
+      "rejected": 0
+    },
+    "fallback": {
+      "max_deviation_deg": 6.727294202241733,
+      "max_unit_error": 2.220446049250313e-16,
+      "rejected": 0
+    }
+  },
+  "gates": {
+    "all_geometry_exact": true,
+    "all_normal_contracts": true,
+    "safe_edges_ge_95pct": true,
+    "median_edge_jump_reduction_ge90pct": true,
+    "real_CT_MAE_reduction_ge10pct": false,
+    "no_individual_CT_MAE_worse_than5pct": true
+  },
+  "native_CT": {
+    "charged_body_bytes": 67109103,
+    "requests": 33,
+    "cap_bytes": 83886080
+  },
+  "released_CT": {
+    "body_bytes": 9403226,
+    "chunks": [
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/13/21",
+        "sha256": "0e6a1914b0a80a4ef888da009125c151bb9b79d6e68dc04e4bdc2da7e2ad0ebf",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/13/22",
+        "sha256": "9d8eb6b46fc09b059b1e6c17b8d93a6f656ba0a889c2300d5409410f4b337a36",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/14/21",
+        "sha256": "fc42d95264570769ee696c9ba91bdbc06cd597bebf51e2d643efdc12dccfd8ac",
+        "bytes": 670682
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/14/22",
+        "sha256": "848deb44ae4a10489eed3f89e8a15cb4c4f09b26c11041bc62199c2263068a1c",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/16/35",
+        "sha256": "4b3f4dadf8b9a01c57eb21b0651ce856d0dc6856c961bcd9513bb015ac1d531e",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/16/36",
+        "sha256": "6304f3992273f898c1ff74c8bc4fc3540d0bacbaabf55d3bda5210ffccc7f342",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/17/35",
+        "sha256": "273ba795de53887c7517671b7f24843413f514eb418e7c8b06f5a0031dba0e17",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/17/36",
+        "sha256": "aa479af7980d6c7f9442d1124e67468ee80f05ade7cf65e5712da548b9c46063",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/18/49",
+        "sha256": "1678a4f6f3864176de3da301d2d985174d48f1c2e01729852d60e630cc6c3d52",
+        "bytes": 671747
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/18/50",
+        "sha256": "bf1c2e708abdcab81bfa016c80a558abb2fa730eae7ebe62177304e842cf0853",
+        "bytes": 671437
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/21/52",
+        "sha256": "e6787b25e26e6542e3fe0467afcd44d64ddc94a4cd20113cfbb8fbff2f5f35eb",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/21/53",
+        "sha256": "3bf700dda6f416ee724e9ac20b7e9002c22d13f6210eb3951cf0bc3177e8339a",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/22/52",
+        "sha256": "2abd658f81718a35ed5a798de16f783ff9627d5fab00aa29f4c6cb0e6311bb5b",
+        "bytes": 671760
+      },
+      {
+        "chunk": "results/claim_surface_render_41layers.zarr/0/0/22/53",
+        "sha256": "a0177f20007c87da979729e6d2a279e5172c6894a41def8770a0d952b394ec3a",
+        "bytes": 671760
+      }
+    ]
+  },
+  "wall_seconds": 31.07535638099999,
+  "peak_rss_bytes": 306843648
+}
