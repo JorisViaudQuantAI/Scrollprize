@@ -1,0 +1,18 @@
+name: Verify fixed-frame displacement predictions
+on:
+  push:
+    branches: [codex/registration-predictor]
+    paths:
+      - '.github/workflows/registration-predictor.yml'
+      - 'registration-checks/annular/**'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node --test registration-checks/annular/predict.test.cjs

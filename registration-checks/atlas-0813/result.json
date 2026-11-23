@@ -1,0 +1,66 @@
+{
+  "winding": "z11296_w020",
+  "atlas_commit": "66000516c97e043b696ce874f145e29638109c91",
+  "upstream_snap_commit": "e8370f1f88a211166056df62ea6fcfffe4a1063e",
+  "protocol_sha256": "0504c3e44cce218249e096735b3691ce60cbdccf2b1c3fc41abcef4d50463300",
+  "pitch_um": 9.362,
+  "n_valid_vertices": 5110,
+  "n_mesh_normals": 5108,
+  "minimum_evaluation_distance_vox": 245.42560844049189,
+  "m7": {
+    "planned": 95,
+    "stored": 95,
+    "confirmed_absent": 0,
+    "bytes": 33764859
+  },
+  "upstream_report": "winding\tn_valid\tfrac_with_sheet\tfrac_snapped\tmedian_abs_off\tp90_abs_off\tfrac_rejected\tfrac_already_on\nz11296_w020\t5110\t0.946\t1.000\t4.02\t9.81\t0.161\t0.193\n",
+  "source_mesh_and_code_sha256": {
+    "x.tif": "672c6eaeb0e4f4de5b897ed9c2ca2f09c348d23debccc1227b33c798cafce75e",
+    "y.tif": "0c444ebe9a1d7556e09800c9d29c0968d19b375f8e74a7abb6d62f0b1ea2b1f1",
+    "z.tif": "6a9cd84208207b3ccc38ea0802bbe603452e2c25d92c34d3186fb46ae16079d5",
+    "meta.json": "39fe809524ba4efc002f5f7a0f1456f9fb47b71b0f7a6de7f41772c3d164182a",
+    "snap_meshes.py": "253e48b31072be8c95b890715b80e90e4efbb34b5b0687a63b7d4a0a7a87857d"
+  },
+  "snapped_sha256": {
+    "x": "0b00b825fead86badea0e28f1a509ee4fb4fed54fbe2c9f895da194a5f05a24b",
+    "y": "b8b520913a1c467f1f39b3a089de31940f0d721d260fb1aa2557dfd08053f3df",
+    "z": "d58358ce69c82aa1db01effe24904a5f4dfa528c57f2f6149f166b8513e102d3"
+  },
+  "metrics": {
+    "n_sampled": 24,
+    "n_material_supported": 24,
+    "n_peaks_and_material": 24,
+    "primary_distance_to_original_peak": {
+      "n": 23,
+      "median_before_vox": 4.0,
+      "median_after_vox": 6.131082462888269,
+      "median_paired_gain_vox": -1.7750915328929873,
+      "closer_over_quarter": 9,
+      "further_over_quarter": 13,
+      "within_quarter": 1,
+      "within_two_before": 6,
+      "within_two_after": 4
+    },
+    "distance_to_any_peak": {
+      "n": 24,
+      "median_before_vox": 4.0,
+      "median_after_vox": 2.6222488384273483,
+      "median_paired_gain_vox": 1.4935191059146362,
+      "closer_over_quarter": 17,
+      "further_over_quarter": 6,
+      "within_quarter": 1,
+      "within_two_before": 6,
+      "within_two_after": 11
+    },
+    "unique_nearest_both": 23,
+    "changed_nearest_peak": 9,
+    "median_absolute_snap_vox": 4.8271634721487295,
+    "max_absolute_snap_vox": 12.523809217700201,
+    "max_tangential_roundoff_vox": 0.0004934256040681418,
+    "native_ct": {
+      "ranges": 48,
+      "bytes": 10747904,
+      "sampled_trilinear_points": 11640
+    }
+  }
+}
