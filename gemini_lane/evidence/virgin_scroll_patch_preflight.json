@@ -1,0 +1,421 @@
+{
+  "schema": "virgin_scroll_patch_preflight/1.0.0",
+  "method": "CPU-only m7 single-sheet height-field extraction + m7 snap + onsheet_score; no ink detector run",
+  "cuda_visible_devices": "",
+  "scroll": "PHerc0846A",
+  "m7_dataset": "20260319102732-surface-20260413222639-surface-m7-L2-th0.2.zarr",
+  "ct_dataset": "20260319102732-2.403um-0.2m-77keV-masked.zarr",
+  "frame": {
+    "name": "m7 level 0",
+    "voxel_um": 9.612,
+    "ct_pyramid_level": 2
+  },
+  "levels": {
+    "extract_m7": 1,
+    "extract_voxel_um": 19.224,
+    "snap_m7": 0,
+    "snap_voxel_um": 9.612,
+    "snap_level_note": "preferred level",
+    "render_ct": 3,
+    "render_ct_voxel_um": 19.224,
+    "render_pixel_um": 9.612
+  },
+  "seed": {
+    "mode": "explicit",
+    "box_size_target_vx": [
+      1536,
+      256,
+      1536
+    ],
+    "extract_kw": {
+      "depth_margin": 6,
+      "lateral_margin": 6,
+      "close_lateral": 1
+    }
+  },
+  "metrics": {
+    "height_axis": "y",
+    "seeds_tried": 24,
+    "single_run_column_fraction": 0.00013,
+    "tracked_columns": 295915,
+    "smooth_column_fraction": 0.99044,
+    "patch_columns": 278378,
+    "patch_column_fraction": 0.471968,
+    "max_abs_height_step_vx": 3.0,
+    "median_abs_slope": 0.559017,
+    "p95_abs_slope": 1.457738,
+    "extract_seconds": 26.91,
+    "grid_shape": [
+      77,
+      77
+    ],
+    "extracted_valid_vertex_count": 1063,
+    "valid_vertex_fraction": 0.179288,
+    "connected_components_in_grid": 1,
+    "extracted_mesh_area_cm2": 0.282585,
+    "valid_vertex_count": 1063,
+    "on_sheet_raw": 0.996237,
+    "on_sheet_after_snap": 0.999059,
+    "m7_source_available_fraction_raw": 1.0,
+    "m7_source_available_fraction_after_snap": 1.0,
+    "median_disp_vx": 0.294932,
+    "p90_disp_vx": 0.605321,
+    "center_vs_outer_disp_diff": 0.054853,
+    "passes": 2,
+    "search_radius": 12.0,
+    "onsheet_step": 128,
+    "threshold": 128.0,
+    "mesh_area_cm2": 0.282529,
+    "ct_chunks_estimated": 16,
+    "render_seconds": 11.41,
+    "render_px": [
+      1521,
+      1521
+    ],
+    "num_slices": 15,
+    "slice_step": 1.0,
+    "valid_ct_px": 283197,
+    "valid_ct_cm2": 0.261647,
+    "tiles": 0,
+    "dk": 2,
+    "backend": "onsheet_score",
+    "f_parallel": 0.0,
+    "step": 1.0
+  },
+  "gates": {
+    "f_parallel_min": 0.7,
+    "valid_ct_cm2_min": 1.0,
+    "f_parallel_ok": false,
+    "valid_ct_cm2_ok": false,
+    "passed": false
+  },
+  "stream": {
+    "m7_extract_bytes": 11817238,
+    "m7_extract_chunks": 16,
+    "m7_snap_bytes": 14230685,
+    "m7_snap_chunks": 34,
+    "ct_bytes": 33554432,
+    "ct_chunks": 16,
+    "ct_chunks_estimated": 16,
+    "total_bytes": 59609945,
+    "budget_bytes": 100000000,
+    "requests": 88,
+    "persistent_ct_on_disk": false
+  },
+  "private_patch": {
+    "written": true,
+    "location": "private, outside git",
+    "sha256": {
+      "x.tif": "d52cb56189b6f5d25e7ff0d7e397896af4abbcde59303496947a4b9f5f968e64",
+      "y.tif": "7918927431e35debd92299541360b9407ab2c613581f04fe2e51d06c543f0d57",
+      "z.tif": "2bb7c0b17aa35c0b8c8616d41a519698aaf7c2168dbec2d845d9aceda9c0fd39",
+      "meta.json": "4034e95fd37e4d8d7b9313cd5f9a24f7e5bfd4fd56d6b2e56ee2adad782359e4"
+    }
+  },
+  "s3_metadata_inspection": {
+    "PHerc0846A": {
+      "scroll": "PHerc0846A",
+      "ct_level0_um": 2.403,
+      "m7_frame_ct_level": 2,
+      "m7_dataset": "20260319102732-surface-20260413222639-surface-m7-L2-th0.2.zarr",
+      "ct_dataset": "20260319102732-2.403um-0.2m-77keV-masked.zarr",
+      "m7_levels": {
+        "0": {
+          "shape": [
+            3785,
+            7397,
+            7397
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "1": {
+          "shape": [
+            1893,
+            3699,
+            3699
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "2": {
+          "shape": [
+            947,
+            1850,
+            1850
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "3": {
+          "shape": [
+            474,
+            925,
+            925
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        }
+      },
+      "ct_levels": {
+        "0": {
+          "shape": [
+            15137,
+            29587,
+            29587
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "1": {
+          "shape": [
+            7569,
+            14794,
+            14794
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "2": {
+          "shape": [
+            3785,
+            7397,
+            7397
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "3": {
+          "shape": [
+            1893,
+            3699,
+            3699
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        }
+      },
+      "normal_grids": {
+        "grid-step": 64,
+        "input-level": 0,
+        "spiral-step": 20.0,
+        "sparse-volume": 1
+      }
+    },
+    "PHerc1545": {
+      "scroll": "PHerc1545",
+      "ct_level0_um": 9.362,
+      "m7_frame_ct_level": 0,
+      "m7_dataset": "20250821151648-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "ct_dataset": "20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "m7_levels": {
+        "0": {
+          "shape": [
+            20961,
+            7506,
+            7506
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "1": {
+          "shape": [
+            10481,
+            3753,
+            3753
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "2": {
+          "shape": [
+            5241,
+            1877,
+            1877
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        },
+        "3": {
+          "shape": [
+            2621,
+            939,
+            939
+          ],
+          "chunks": [
+            192,
+            192,
+            192
+          ],
+          "dtype": "|u1",
+          "compressor": "zstd"
+        }
+      },
+      "ct_levels": {
+        "0": {
+          "shape": [
+            20961,
+            7506,
+            7506
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "1": {
+          "shape": [
+            10481,
+            3753,
+            3753
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "2": {
+          "shape": [
+            5241,
+            1877,
+            1877
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        },
+        "3": {
+          "shape": [
+            2621,
+            939,
+            939
+          ],
+          "chunks": [
+            128,
+            128,
+            128
+          ],
+          "dtype": "|u1",
+          "compressor": null
+        }
+      },
+      "normal_grids": {
+        "grid-step": 64,
+        "input-level": 0,
+        "spiral-step": 20.0,
+        "sparse-volume": 1
+      },
+      "lasagna": {
+        "dataset": "20250821151648-lasagna-20260419180421",
+        "version": 2,
+        "base_shape_zyx": [
+          20961,
+          7506,
+          7506
+        ],
+        "groups": {
+          "cos": {
+            "scaledown": 1,
+            "channels": [
+              "cos"
+            ]
+          },
+          "grad_mag": {
+            "scaledown": 2,
+            "channels": [
+              "grad_mag"
+            ]
+          },
+          "nx": {
+            "scaledown": 2,
+            "channels": [
+              "nx"
+            ]
+          },
+          "ny": {
+            "scaledown": 2,
+            "channels": [
+              "ny"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "seconds": 49.1,
+  "caveats": [
+    "CT is rendered from a coarser pyramid level than the frame and resampled at frame pitch.",
+    "valid_ct_cm2 counts frame-pitch pixels with full source support on every rendered plane.",
+    "f_parallel is an upper bound on the on-sheet share; tiles without CT structure count as parallel.",
+    "No ink detector run; nothing here claims ink or text."
+  ],
+  "receipt_corrections": [
+    "metrics.step=128 in the raw run output was onsheet_score's tile step overwriting the m7 snap step (key collision, fixed in code after the run). Renamed post-run to metrics.onsheet_step; metrics.step restored to the snap step 1.0 (CLI default, unchanged). No other value edited."
+  ],
+  "result_summary": "Gate NOT passed. One slit-free single-sheet patch (0.28 cm2 mesh, 0.26 cm2 valid CT) was tracked through a dense, touching-wrap m7 region; 2x m7 snap at 9.612 um converged (on_sheet 0.996 -> 0.999, median disp 0.29 vx). The patch is too fragmented for any 256 px onsheet tile at min_valid 0.9 (tiles=0), so f_parallel is unmeasured, and valid_ct_cm2 < 1.0. Next: larger or cleaner seed box, or tracking at m7 level 0, which needs a larger byte budget."
+}

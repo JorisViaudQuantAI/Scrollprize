@@ -137,7 +137,31 @@ python -m unittest discover -s gemini_lane -p "test_*.py" -v
 
 ---
 
-## 7. Attribution & Licences
+## 7. Zero-mesh m7 patch grower (`PHerc0846A`, `PHerc1545`)
+
+[`grow_m7_patch.py`](grow_m7_patch.py) grows one single-sheet `tifxyz` patch from public S3 `m7` predictions, CPU-only, on top of `stream_snap_render.py` (source-support version):
+
+1. Stream one interior `m7` box (`BudgetedRemoteZarrV2`, hard `ByteBudget` cap on every byte, metadata included).
+2. Track one sheet column-by-column (`track_sheet`): the unambiguous nearest `m7` run within `max_step`, runs at most `max_run` long, no hops between wraps. Seams are cut (`cut_seams`). The grid drops nodes whose edges cross a slit, keeps one connected component, writes `-1.0` on all three channels for invalid vertices, and uses `scale=[0.05, 0.05]`.
+3. Apply a 2x `snap_tifxyz_to_m7`, render CT through `ScaledReader` (exact positive-weight-corner chunk fetches, so no neighbour 2 MiB CT chunks), and score `onsheet_score`.
+4. Gates: `f_parallel >= 0.70` (needs at least one scored tile) and `valid_ct_cm2 >= 1.0`.
+
+The tifxyz goes only to a private directory outside every Git worktree. The public receipt keeps whitelisted scalars only: no coordinates, bbox, images, ink or local paths.
+
+[`evidence/virgin_scroll_patch_preflight.json`](evidence/virgin_scroll_patch_preflight.json) records the first live run on `PHerc0846A`:
+- Frame: `m7-L2` level 0 (9.612 µm). Extraction at `m7-L2` level 1, snap at level 0, CT from the 2.403 µm scan's pyramid level 3. Streamed 59.6 MB.
+- Result: **gate not passed**. Mesh area 0.28 cm², valid CT 0.26 cm². The snap converged (on-sheet 0.999). No 256 px tile reached 90 % valid, so `f_parallel` was not measured.
+- The receipt also holds the public `m7` / CT / `normal-grids` / `lasagna` metadata summary for both scrolls.
+
+```bash
+CUDA_VISIBLE_DEVICES="" python gemini_lane/grow_m7_patch.py --scroll PHerc0846A --budget-mb 100   --extract-level 1 --snap-level 0 --box-target Z0 Y0 X0 Z1 Y1 X1 --height-axis y --num-slices 15   --private-out <private dir outside repo> --evidence-out gemini_lane/evidence/virgin_scroll_patch_preflight.json
+```
+
+Needs `numcodecs` for the blosc-zstd `m7` arrays. The offline tests (`test_grow_m7_patch.py`) use uncompressed synthetic Zarr stores and do not need it.
+
+---
+
+## 8. Attribution & Licences
 
 * Scripts & tests in `gemini_lane/`: MIT License (`../LICENSE`).
 * Studio soft-loss weights & `model.py`: Priyank Aranke and contributors (`vesuvius-studio-multiscroll-cpt`, code MIT, weights CC BY-NC 4.0).
