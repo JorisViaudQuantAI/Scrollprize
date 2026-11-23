@@ -1,0 +1,165 @@
+name: Encrypted original public anatomical atlas
+on:
+  push:
+    branches: [codex/pherc0125-original-atlas-transport]
+    paths: [.github/workflows/pherc0125-original-atlas-transport.yml]
+permissions: {}
+jobs:
+  original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read the published geometry and public CT code at the branch commit
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc0125-atlas-centres"
+          for file in atlas125.py stage125.py full_atlas125.py recipient.pem transport_public.py; do
+            curl --silent --show-error --fail --location --retry 3 --max-time 45 "$base/$file" --output "$file"
+          done
+          python -m venv .venv
+          .venv/bin/pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile
+      - name: Render the complete original public comparison winding
+        run: .venv/bin/python -u transport_public.py z11136_w035
+      - name: Return encrypted band-00
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-00
+          path: delivery/band-00/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-01
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-01
+          path: delivery/band-01/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-02
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-02
+          path: delivery/band-02/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-03
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-03
+          path: delivery/band-03/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-04
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-04
+          path: delivery/band-04/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-05
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-05
+          path: delivery/band-05/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-06
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-06
+          path: delivery/band-06/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-07
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-07
+          path: delivery/band-07/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-08
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-08
+          path: delivery/band-08/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-09
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-09
+          path: delivery/band-09/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-10
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-10
+          path: delivery/band-10/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-11
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-11
+          path: delivery/band-11/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-12
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-12
+          path: delivery/band-12/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-13
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-13
+          path: delivery/band-13/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-14
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-14
+          path: delivery/band-14/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted band-15
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-band-15
+          path: delivery/band-15/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Return encrypted verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-original-0125-w035-verification
+          path: delivery/verification/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
