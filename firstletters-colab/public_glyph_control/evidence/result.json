@@ -1,0 +1,247 @@
+{
+  "additional_depth_archive_bytes": 1032192768,
+  "all_source_hashes_reverified": true,
+  "automatic_order_selection": false,
+  "both_orders_retained": true,
+  "completed_fixture_forwards": 450,
+  "completed_forwards": 454,
+  "file_sha256": {
+    "README.md": "dd3d488c793682b102892d25a577ca96def478a69a86800ce6c85989b8aec86f",
+    "protocol.json": "00a46e858b009858fa5c17c42d5fec9f3d1e25451d28f4af81d74e51a01e3e01",
+    "run.py": "cc3fb7ae83ee891c7d749ff3ad4603bac8ea2e7e5d7adc12c4aad7a9039dd113",
+    "selection.json": "d69fc05cde575d147fcca23645ca80db84eb86eb93ab4eee3a7dc1cf1921899e",
+    "test_geometry.py": "1b9b7c46500114a799d3de488aac24a724eb16b6575387cd5fecd9980294d8b2"
+  },
+  "fixed_geometry": {
+    "context": {
+      "halo_pixels_each_side": 64,
+      "millimetres_yx": [
+        4.9152,
+        4.9152
+      ],
+      "shape_yx": [
+        2048,
+        2048
+      ]
+    },
+    "core": {
+      "millimetres_yx": [
+        4.608,
+        4.608
+      ],
+      "shape_yx": [
+        1920,
+        1920
+      ]
+    }
+  },
+  "forward_attempts": 454,
+  "freeze_reference": "cada2a5497a47868d8dfde68f04e1a333a7723fb",
+  "independent_review_sha256": "9663eb7595f1f21282e2ab42c230747be4bff36551113b3f73fd392a2cca128a",
+  "model_buffers_unchanged": true,
+  "new_application_body_bytes": 516115991,
+  "new_checkpoint_downloads": 0,
+  "new_reading_claim": false,
+  "orders": [
+    {
+      "actual_forward_precision": "fp32",
+      "depth_archive": {
+        "arrays": {
+          "attention_scores": {
+            "bytes": 228556928,
+            "file": "source_attention_scores.npy",
+            "sha256": "daed96f47ddc5213e35eacb6dd8f925607c8dd0b07f4c6e370cc35d821bba890"
+          },
+          "patch_probability": {
+            "bytes": 58982528,
+            "file": "source_patch_probability.npy",
+            "sha256": "8989fd3dba7bd5e220936f309c04d92f2219c2ad44407749c09402a3d6c4aafa"
+          },
+          "pre_collapse_logits": {
+            "bytes": 228556928,
+            "file": "source_pre_collapse_logits.npy",
+            "sha256": "ab5ac2574b93c0d7ec2da9added90880719aa578db8e955e46c5957f7ed30746"
+          }
+        },
+        "originating_dtypes": {
+          "attention_scores": "torch.float32",
+          "final_model_logits": "torch.float32",
+          "patch_probability": "float32",
+          "pre_collapse_logits": "torch.float32"
+        },
+        "patch_count": 225,
+        "storage_order": "row-major XY tiles; depth follows each model input order",
+        "stored_dtype": "float32",
+        "two_dimensional_reconstruction_review": "pending; archived values must not select this run's output"
+      },
+      "forwards": 225,
+      "is_pure_reversal_of_same_physical_slab": false,
+      "official_predict_precision_argument": "fp32",
+      "order": "source",
+      "output_sha256": {
+        "source_context.png": "30a6701b4db8876c18565ececa00e8ce0df0028415dc1d9a29ba161ae79a13c0",
+        "source_context_uint8.npy": "57f11f7b3723a0cceac2332aea485cbdaba24cb598464a74a858f22d8c92f4d4",
+        "source_core.png": "39b4d316910c2e3ce0095ef6ba4ec0e6058c06e5ca8d8a62c876e57fc119ead9",
+        "source_core_uint8.npy": "ae1d2f6471523d7b1c801389b80f6b9ba96fad6d03a95329934c5094b0ef4a4c"
+      },
+      "source_z_halfopen": [
+        22,
+        86
+      ]
+    },
+    {
+      "actual_forward_precision": "fp32",
+      "depth_archive": {
+        "arrays": {
+          "attention_scores": {
+            "bytes": 228556928,
+            "file": "reverse_attention_scores.npy",
+            "sha256": "0dc616f6605211ffe4dba1b6c10397ed67539a5ba86149c28fe64656888b4c85"
+          },
+          "patch_probability": {
+            "bytes": 58982528,
+            "file": "reverse_patch_probability.npy",
+            "sha256": "edb617c9a03c535a88222627bc6f86870a256c380b76da8690a433a380342cf0"
+          },
+          "pre_collapse_logits": {
+            "bytes": 228556928,
+            "file": "reverse_pre_collapse_logits.npy",
+            "sha256": "57dd39904df4e206c82b144270ed2ea2165f2b14eb78dc9200cf7e42d2e5869a"
+          }
+        },
+        "originating_dtypes": {
+          "attention_scores": "torch.float32",
+          "final_model_logits": "torch.float32",
+          "patch_probability": "float32",
+          "pre_collapse_logits": "torch.float32"
+        },
+        "patch_count": 225,
+        "storage_order": "row-major XY tiles; depth follows each model input order",
+        "stored_dtype": "float32",
+        "two_dimensional_reconstruction_review": "pending; archived values must not select this run's output"
+      },
+      "forwards": 225,
+      "is_pure_reversal_of_same_physical_slab": false,
+      "official_predict_precision_argument": "fp32",
+      "order": "reverse",
+      "output_sha256": {
+        "reverse_context.png": "6a3d2bf4b7a78adc3f3d67b45129f8155c23e0a21eb8350464984f5290f70ed8",
+        "reverse_context_uint8.npy": "0a26c169f644ec57696851ad80fafb343fe5ed04c16cd18fd166111fff4063c0",
+        "reverse_core.png": "60bd70919df26910017d92c56a0703f124eeaf36c8a4c0ce30bcc41dc8881a48",
+        "reverse_core_uint8.npy": "945c442b2bad7cd1906e2f5c18b32d00513ac1385345ab5e5a45e35a04ff1843"
+      },
+      "source_z_halfopen": [
+        23,
+        87
+      ]
+    }
+  ],
+  "original_producer_review_fields_unchanged": true,
+  "original_result_sha256": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+  "original_source_receipt_sha256": "0792908247c6a372ef5ff8ab7f6fa964330e5a91c3db2f4585c87c70a337bed2",
+  "peak_rss_kib": 2465212,
+  "precision_pilot": {
+    "bf16_accepted": false,
+    "by_donor": {
+      "PHerc0814": {
+        "max_full_score_abs_error": 0.08822867274284363,
+        "mean_full_score_abs_error": 0.0008416698984951908,
+        "numerical_pass": false
+      },
+      "PHerc0841": {
+        "max_full_score_abs_error": 0.008088231086730957,
+        "mean_full_score_abs_error": 0.00030006813599259274,
+        "numerical_pass": false
+      }
+    },
+    "first_unwarmed_forward": "PHerc0841 bf16; no claim of a stable speed benchmark",
+    "fixed_order_results": [
+      {
+        "forward_seconds": 14.767310507000275,
+        "full_score_file": "pilot_PHerc0841_bf16.npy",
+        "full_score_file_sha256": "d02d2ff2de33a678e720e669d3f5fbcd15933cb8204426c15b5ac2e80887859d",
+        "index": 0,
+        "precision": "bf16",
+        "scroll": "PHerc0841"
+      },
+      {
+        "forward_seconds": 8.182396832999984,
+        "full_score_file": "pilot_PHerc0841_fp32.npy",
+        "full_score_file_sha256": "d374d3eab9fab910e0dde92099ca0086965773d39e1b8ababb0271f5703c4a6c",
+        "index": 1,
+        "precision": "fp32",
+        "scroll": "PHerc0841"
+      },
+      {
+        "forward_seconds": 9.257404399999814,
+        "full_score_file": "pilot_PHerc0814_fp32.npy",
+        "full_score_file_sha256": "5938dadac7182d54f76b4896e543cf5bad826d1f066418b9c9a9801261cb2ea2",
+        "index": 2,
+        "precision": "fp32",
+        "scroll": "PHerc0814"
+      },
+      {
+        "forward_seconds": 14.671745821000059,
+        "full_score_file": "pilot_PHerc0814_bf16.npy",
+        "full_score_file_sha256": "5ea4c5f58fc7f40a4aca1bd131b86d65fe3138a3b1483104e5d71edd1ac0f2bf",
+        "index": 3,
+        "precision": "bf16",
+        "scroll": "PHerc0814"
+      }
+    ],
+    "fp32_worst_pilot_seconds": 9.257404399999814,
+    "mean_seconds": {
+      "bf16": 14.719528164000167,
+      "fp32": 8.7199006164999
+    },
+    "not_an_independent_speed_benchmark": true,
+    "selected_precision": "fp32",
+    "timing_pass": false,
+    "warmup_forwards": 0
+  },
+  "public_known_control": "Published Paris4 Nu; reference-informed training-exposed pipeline check",
+  "raw_source_locations_omitted_from_this_aggregate": true,
+  "requests_including_redirects": 291,
+  "runtime": {
+    "cpu_affinity_count": 9,
+    "device": "cpu",
+    "inter_op_threads": 1,
+    "machine": "x86_64",
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "seed": 0,
+    "threads": 4,
+    "torch": "2.6.0+cpu"
+  },
+  "schema": "scrollprize.public-glyph-control.public-aggregate.v1",
+  "source_support": {
+    "acquisition_support_complete": true,
+    "counts": {
+      "reverse": {
+        "context_nonempty_columns": 4194304,
+        "context_total_columns": 4194304,
+        "core_nonempty_columns": 3686400,
+        "core_total_columns": 3686400
+      },
+      "source": {
+        "context_nonempty_columns": 4194304,
+        "context_total_columns": 4194304,
+        "core_nonempty_columns": 3686400,
+        "core_total_columns": 3686400
+      }
+    },
+    "file_sha256": {
+      "reverse": "7e6b2a715f2d6cd833f3d27c2bd6c3446454be93091d736871f6f339fdce5e2e",
+      "source": "7e6b2a715f2d6cd833f3d27c2bd6c3446454be93091d736871f6f339fdce5e2e"
+    },
+    "meaning": "any nonzero native CT in the selected slab; not tissue, ink or sheet correctness"
+  },
+  "source_union_file_sha256": "ae8efde2dcf41629b682b04a2539d0d705a0c862e6bb5a9793ed393f13c5a46f",
+  "status": "complete",
+  "training_steps": 0,
+  "unread_CT_requests": 0,
+  "unread_promotion": false,
+  "visual_review_sha256": "3b5199d62a7ce08a68b5e0277a3d7ce8559206d9c6f8d71190105b3fbdaafbd6",
+  "wall_seconds": 5981.135612859,
+  "wire_bytes_measured": false
+}

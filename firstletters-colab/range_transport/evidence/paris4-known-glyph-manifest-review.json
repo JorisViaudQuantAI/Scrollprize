@@ -1,0 +1,63 @@
+{
+  "atomic_remote_snapshot_established": false,
+  "exporter_sha256": "2df6161dfe35981cc70125abc955fb4314e824d0d332a900d159e5d3843d432e",
+  "frozen_protocols_changed": false,
+  "full_native_chunk_bytes_verified": 516112384,
+  "full_native_chunks_verified": 289,
+  "future_geometry_projection": {
+    "chunk_HEAD_requests": 0,
+    "chunk_range_GET_requests": 289,
+    "metadata_GET_requests": 2,
+    "metadata_application_body_bytes": 3607,
+    "new_network_reader_implemented": false,
+    "requires_separate_future_protocol": true,
+    "selected_chunk_application_body_bytes": 307773440,
+    "status": "Future geometry-derived feasibility only; not measured transfer",
+    "total_application_body_bytes": 307777047,
+    "total_requests": 291,
+    "unchanged_original_request_cap": 400
+  },
+  "generated_rejection_checks": {
+    "missing_rejected": true,
+    "same_size_corrupt_rejected": true,
+    "truncated_rejected": true,
+    "valid_fixture_accepted": true
+  },
+  "historical_whole_acquisition_body_bytes": 516115991,
+  "images_opened": 0,
+  "input_sha256": {
+    "completed_public_control/acquisition_plan.json": "5e724a4305ac670372b3013f086f51eded57da91b8b0447614ed21233acb6f8d",
+    "completed_public_control/result.json": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+    "completed_public_control/source_receipt.json": "0792908247c6a372ef5ff8ab7f6fa964330e5a91c3db2f4585c87c70a337bed2",
+    "public_glyph_control/protocol.json": "00a46e858b009858fa5c17c42d5fec9f3d1e25451d28f4af81d74e51a01e3e01",
+    "public_glyph_control/run.py": "cc3fb7ae83ee891c7d749ff3ad4603bac8ea2e7e5d7adc12c4aad7a9039dd113",
+    "public_glyph_control/selection.json": "d69fc05cde575d147fcca23645ca80db84eb86eb93ab4eee3a7dc1cf1921899e",
+    "range_transport/evidence/paris4-native-public-v1.json": "0225396698b090eb7af2c0e093e115e7651f68c3083a9114c092a43d522c7039",
+    "range_transport/evidence/paris4-native-sparse-public-v1.json": "7f5aef753be780a7b0903ce055d77c81a23b5f9164cd602bd163afc1507e8711",
+    "range_transport/paris4_native_range_protocol.json": "8b1e46a611aaf77241f408b0dc7733f27d7d79b170f823328d256ada8df79674",
+    "range_transport/paris4_native_sparse_protocol.json": "5d527c924872c68ad147f8416f746bcaa006a56b96972e6b3fd1f3aedd9094b7"
+  },
+  "manifest_sha256": "7c56ebb5623b7313439efd35b4fce147d9c838840ffa22aebdd596f4d171843d",
+  "metadata_objects_verified": 2,
+  "mismatch_count": 0,
+  "native_union_coverage_complete": true,
+  "native_union_raw_sha256": "d84cc50d84fc9d361636dee36a2404cf95ee969060d59ad32aa205762b31d51d",
+  "new_detector_forwards": 0,
+  "new_downloaded_body_bytes": 0,
+  "new_network_requests": 0,
+  "original_native_union_bytes_compared": 272629760,
+  "peak_rss_kib": 578548,
+  "prior_one_chunk_range_comparison": {
+    "both_prior_receipts_match": true,
+    "full_sha256": "0fa1ee3f7d45748a1d2aa962db8062c9547bd21d9e76770314f93dfe356f820f",
+    "relative_source_path": "0/0/79/106",
+    "selected_sha256": "447aa8788b156bc65a9c4f288af79c467e609a9e7865a12784a509c31712f557"
+  },
+  "retained_native_union_npy_sha256": "ae8efde2dcf41629b682b04a2539d0d705a0c862e6bb5a9793ed393f13c5a46f",
+  "schema": "scrollprize.paris4-known-glyph-manifest-review.v1",
+  "scope": "Measured offline source validation and provenance transform; not an independent reviewer of this exporter",
+  "selected_interval_bytes_hashed": 307773440,
+  "selected_intervals_hashed": 289,
+  "status": "complete",
+  "wall_seconds_through_validation": 3.627420417000394
+}

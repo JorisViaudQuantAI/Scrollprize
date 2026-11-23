@@ -1,0 +1,153 @@
+{
+  "CNN_forwards_by_reviewer": 0,
+  "Hann_window_array_sha256": "c2eb63de5c188403e6cf843dd75932a06621227cb9e7598e28226cf4bf1d7619",
+  "PNG_files_verified": 4,
+  "acquisition_support_sha256": "7e6b2a715f2d6cd833f3d27c2bd6c3446454be93091d736871f6f339fdce5e2e",
+  "additional_depth_archive_bytes_verified": 1032192768,
+  "all_projection_reconstructions_bitwise_exact": true,
+  "checkpoint_identity_verified_without_loading_weights": true,
+  "depth_archive_contract_sha256": "cd55ef900c60974529371d190e5e6c8a38d927caef547baca000fccd1bc567ee",
+  "fixture_forward_count_verified": 450,
+  "freeze_reference": "cada2a5497a47868d8dfde68f04e1a333a7723fb",
+  "frozen_files_verified": 5,
+  "historical_pilot_inputs_verified": 2,
+  "image_interpretation_performed": false,
+  "limitations": [
+    "CNN feature computation and pilot timings are not independently rerun; the reviewer validates retained data, reported timings and the explicit post-CNN projection.",
+    "Archived tile indexing and the logged coordinate scale rely on the frozen instrumenter; all reconstructed probabilities and exports expose any detected inconsistency.",
+    "Source chunks are individually hash-verified and their exact native voxel union is checked; this is not an authenticated atomic snapshot of a mutable remote bucket.",
+    "The two odd-depth selections differ by one physical source plane and are not pure reversals of the same slab.",
+    "A complete archive and numerical reconstruction do not establish legibility, independent glyph truth or unread-scroll generalisation."
+  ],
+  "maximum_projection_probability_absolute_error": 0.0,
+  "mean_projection_probability_absolute_error": 0.0,
+  "native_CT_chunks_verified": 289,
+  "native_union_complete_and_exact": true,
+  "native_union_voxels_compared_bytewise": 272629760,
+  "network_requests_by_reviewer": 0,
+  "new_reading_or_prize_claim": false,
+  "orders": [
+    {
+      "actual_archived_probability_Hann_export_bitwise_exact": true,
+      "archive_bytes_verified": 516096384,
+      "archive_files_verified": 3,
+      "decoded_PNGs_equal_retained_uint8_arrays": true,
+      "fixture_patch_count_verified": 225,
+      "independent_actual_Hann_context_array_sha256": "eb4f05d50d3f1e22e52aaba3f6a2d8449b609313bf3096dee799eaa6fcfbfb3b",
+      "order": "source",
+      "originating_dtypes": {
+        "attention_scores": "torch.float32",
+        "final_model_logits": "torch.float32",
+        "patch_probability": "float32",
+        "pre_collapse_logits": "torch.float32"
+      },
+      "output_files_verified": 4,
+      "projection_reconstruction": {
+        "arrays_checked": 225,
+        "arrays_with_byte_differences": 0,
+        "bitwise_exact": true,
+        "maximum_ULP_difference": 0,
+        "maximum_absolute_error": 0.0,
+        "mean_absolute_error": 0.0,
+        "values_checked": 14745600,
+        "values_with_byte_differences": 0,
+        "within_1e_minus_6_absolute_error_diagnostic": true,
+        "worst_patch_index": null
+      },
+      "raw_CT_support_counts": {
+        "context_nonempty_columns": 4194304,
+        "context_total_columns": 4194304,
+        "core_nonempty_columns": 3686400,
+        "core_total_columns": 3686400
+      },
+      "reconstructed_Hann_context_uint8_different_pixels": 0,
+      "reconstructed_Hann_context_uint8_maximum_byte_error": 0,
+      "reconstructed_Hann_core_uint8_different_pixels": 0,
+      "reconstructed_probability_Hann_float_maximum_absolute_error": 0.0,
+      "reconstructed_probability_Hann_float_mean_absolute_error": 0.0,
+      "tile_XY_support_bytes_sha256": "f7caeb3c75620f025a7bcda785394e05880a4bdb509e4947db5fe54229289dda"
+    },
+    {
+      "actual_archived_probability_Hann_export_bitwise_exact": true,
+      "archive_bytes_verified": 516096384,
+      "archive_files_verified": 3,
+      "decoded_PNGs_equal_retained_uint8_arrays": true,
+      "fixture_patch_count_verified": 225,
+      "independent_actual_Hann_context_array_sha256": "97a8cf056adc212181e72e06d7816bd34f429ab00a3562579405e99194f9dfb8",
+      "order": "reverse",
+      "originating_dtypes": {
+        "attention_scores": "torch.float32",
+        "final_model_logits": "torch.float32",
+        "patch_probability": "float32",
+        "pre_collapse_logits": "torch.float32"
+      },
+      "output_files_verified": 4,
+      "projection_reconstruction": {
+        "arrays_checked": 225,
+        "arrays_with_byte_differences": 0,
+        "bitwise_exact": true,
+        "maximum_ULP_difference": 0,
+        "maximum_absolute_error": 0.0,
+        "mean_absolute_error": 0.0,
+        "values_checked": 14745600,
+        "values_with_byte_differences": 0,
+        "within_1e_minus_6_absolute_error_diagnostic": true,
+        "worst_patch_index": null
+      },
+      "raw_CT_support_counts": {
+        "context_nonempty_columns": 4194304,
+        "context_total_columns": 4194304,
+        "core_nonempty_columns": 3686400,
+        "core_total_columns": 3686400
+      },
+      "reconstructed_Hann_context_uint8_different_pixels": 0,
+      "reconstructed_Hann_context_uint8_maximum_byte_error": 0,
+      "reconstructed_Hann_core_uint8_different_pixels": 0,
+      "reconstructed_probability_Hann_float_maximum_absolute_error": 0.0,
+      "reconstructed_probability_Hann_float_mean_absolute_error": 0.0,
+      "tile_XY_support_bytes_sha256": "f7caeb3c75620f025a7bcda785394e05880a4bdb509e4947db5fe54229289dda"
+    }
+  ],
+  "pinned_dependencies_verified": 2,
+  "pre_collapse_logit_values_verified": 114278400,
+  "precision_pilot": {
+    "bf16_accepted": false,
+    "by_donor": {
+      "PHerc0814": {
+        "max_full_score_abs_error": 0.08822867274284363,
+        "mean_full_score_abs_error": 0.0008416698984951908,
+        "numerical_pass": false
+      },
+      "PHerc0841": {
+        "max_full_score_abs_error": 0.008088231086730957,
+        "mean_full_score_abs_error": 0.00030006813599259274,
+        "numerical_pass": false
+      }
+    },
+    "mean_seconds": {
+      "bf16": 14.719528164000167,
+      "fp32": 8.7199006164999
+    },
+    "pilot_receipt_sha256": "0a7dce807c130b94768712c12fc473cfe26da75ad1653b012d5053b25e39bd1c",
+    "pilot_scores_verified": 4,
+    "selected_precision": "fp32",
+    "timing_pass": false,
+    "timing_source": "Saved producing-run measurements, not independently re-timed"
+  },
+  "projected_2D_probability_values_compared": 29491200,
+  "protocol_sha256": "00a46e858b009858fa5c17c42d5fec9f3d1e25451d28f4af81d74e51a01e3e01",
+  "raw_attention_values_verified": 114278400,
+  "retained_npy_arrays_verified": 18,
+  "retained_source_assets_verified": 291,
+  "review_wall_seconds": 19.5242674229994,
+  "reviewer_sha256": "c6b8ddb272e833fe29bc1f292a3b31a8d406e7d8b7174cfb3c7b99ea4c6cf89b",
+  "run_result_sha256": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+  "schema": "scrollprize.public-glyph-control.independent-review.v1",
+  "source_body_bytes": 516115991,
+  "source_receipt_sha256": "0792908247c6a372ef5ff8ab7f6fa964330e5a91c3db2f4585c87c70a337bed2",
+  "source_requests_including_redirects": 291,
+  "status": "pass",
+  "total_producing_forward_count_verified": 454,
+  "trained_checkpoint_loaded_by_reviewer": false,
+  "training_steps_by_reviewer": 0
+}

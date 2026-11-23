@@ -1,0 +1,72 @@
+{
+  "CNN_forwards": 0,
+  "all_retained_values_and_exports_exact": true,
+  "checkpoint_loads": 0,
+  "dependency_pins_verified": 3,
+  "effectiveness_claim": false,
+  "freeze_reference": "5cdfe2de2deee727808d9258edb20875185ba8ca",
+  "frozen_files_verified": 4,
+  "image_interpretation_performed": false,
+  "label_inputs_used": 0,
+  "network_requests": 0,
+  "new_CT_arrays_read": 0,
+  "old_gates_changed": false,
+  "orders": [
+    {
+      "archived_patches_used": 225,
+      "core_Q16_pixels_exact": 3686400,
+      "core_fixed_display_float_and_PNG_pixels_exact": 3686400,
+      "core_float_pixels_exact": 3686400,
+      "decoded_PNGs_exact": 3,
+      "different_Q8_Q16_or_display_pixels": 0,
+      "effectiveness_or_legibility_assessed": false,
+      "maximum_core_float_absolute_error": 0.0,
+      "order": "source",
+      "output_file_hashes_checked": 7,
+      "physical_source_z_halfopen": [
+        22,
+        86
+      ],
+      "source_Q8_copies_exact": true,
+      "source_artifact_hashes_checked": 4,
+      "whole_context_Q8_pixels_exact": 4194304
+    },
+    {
+      "archived_patches_used": 225,
+      "core_Q16_pixels_exact": 3686400,
+      "core_fixed_display_float_and_PNG_pixels_exact": 3686400,
+      "core_float_pixels_exact": 3686400,
+      "decoded_PNGs_exact": 3,
+      "different_Q8_Q16_or_display_pixels": 0,
+      "effectiveness_or_legibility_assessed": false,
+      "maximum_core_float_absolute_error": 0.0,
+      "order": "reverse",
+      "output_file_hashes_checked": 7,
+      "physical_source_z_halfopen": [
+        23,
+        87
+      ],
+      "source_Q8_copies_exact": true,
+      "source_artifact_hashes_checked": 4,
+      "whole_context_Q8_pixels_exact": 4194304
+    }
+  ],
+  "original_independent_review_sha256": "9663eb7595f1f21282e2ab42c230747be4bff36551113b3f73fd392a2cca128a",
+  "original_result_sha256": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+  "output_assets_verified": 14,
+  "peak_rss_kib": 560956,
+  "reviewed_result_sha256": "b4c19038f98057d177ce394e15443290f93b5b9fb89942937a615e2a80991a7f",
+  "reviewer_sha256": "c841f1224207c6ec9e2c152da8ee33270cd7ba34f80426c5fea936679ac863d1",
+  "runtime": {
+    "numpy": "2.3.5",
+    "torch": "2.6.0+cpu"
+  },
+  "schema": "scrollprize.prediction-precision-glyph-independent-review.v1",
+  "scope": "Independent archive assembly, serialization, fixed-display and integrity audit only. Original post-CNN projection/source acquisition was verified separately. No glyph or ink truth, accuracy, physical-face identity, global generalization or prize claim.",
+  "source_artifacts_verified": 8,
+  "source_freeze_reference": "cada2a5497a47868d8dfde68f04e1a333a7723fb",
+  "source_output_and_pins_unchanged_after_review": true,
+  "status": "pass",
+  "training_steps": 0,
+  "wall_seconds": 4.557080227999904
+}

@@ -1,0 +1,37 @@
+{
+  "automatic_reading_prohibited": true,
+  "expected_character_and_method_labels_withheld": true,
+  "fresh_context": true,
+  "mapping": {
+    "A": "source_zero_bias",
+    "B": "reverse_baseline",
+    "C": "source_baseline",
+    "D": "reverse_zero_bias"
+  },
+  "mapping_fixed_before_current_outputs_reviewed": true,
+  "review_is_not_ground_truth_or_efficacy_gate": true,
+  "review_sha256": "45e52b6e8505adf3a0f14b22dcaff2527ba0f6794d724f241ce146aaff99b62f",
+  "schema": "scrollprize.public-control.secondary-visual-review.provenance.v1",
+  "views": {
+    "A": {
+      "bytes": 882498,
+      "filename": "view_A.png",
+      "sha256": "2cdb877740cba6e26c48da6ca94148974bcd106f22e1bdc2094fc588663dadf6"
+    },
+    "B": {
+      "bytes": 687445,
+      "filename": "view_B.png",
+      "sha256": "d9d3534fb7ee64e4f887f4780897004ee1616ff546c1f82fcc71da0fa3f0faa9"
+    },
+    "C": {
+      "bytes": 882371,
+      "filename": "view_C.png",
+      "sha256": "50c0eff1b3f99f180187927879dedf541eaf32736abc044138c6779291421a85"
+    },
+    "D": {
+      "bytes": 688696,
+      "filename": "view_D.png",
+      "sha256": "822b2823a5ff04e98ab42859d59bd30c12262b7a1344a6ce73e8985c3a6117e6"
+    }
+  }
+}

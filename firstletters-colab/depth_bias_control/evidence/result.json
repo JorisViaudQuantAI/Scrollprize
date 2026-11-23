@@ -1,0 +1,423 @@
+{
+  "CNN_forwards": 0,
+  "actual_alpha_read_after_freeze": 0.09391672164201736,
+  "all_baselines_exact_before_counterfactual": true,
+  "baseline_orders": [
+    {
+      "attention": {
+        "not_ink_localization_truth": true,
+        "population": "Supported internal positions in all225 fixed tiles; physical positions overlap",
+        "quantiles": [
+          0.05,
+          0.5,
+          0.95
+        ],
+        "values": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4505831615352272,
+              5.034672607307593,
+              12.584098091095605
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              0.37196565594871817,
+              1.616348500681538,
+              2.532433960630637
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -16.849467209541835,
+              10.212834699723512,
+              37.81408747133107
+            ]
+          }
+        }
+      },
+      "canonical_Q8_context_exact": true,
+      "order": "source",
+      "output_sha256": {
+        "source_baseline_context_float.npy": "d92282110ac3b0a3460f176c17b984bacdfeceb9292359487e00407fb653decc",
+        "source_baseline_core_Q8.npy": "ae1d2f6471523d7b1c801389b80f6b9ba96fad6d03a95329934c5094b0ef4a4c",
+        "source_baseline_core_Q8.png": "64f17161d9df37472c6f84093272995ea303ccb61853c61285907045dece9b5c",
+        "source_baseline_core_float.npy": "8387b277adff30d25fcb5cef6dd132f8d22ec7b763db0b00694c606cd94fcbe3",
+        "source_baseline_fixed_logit_display.npy": "efb823d3e73d8105de241b1a6a0354dbecebf32b8f5ac1949962bf432802fbe8",
+        "source_baseline_fixed_logit_display.png": "50c0eff1b3f99f180187927879dedf541eaf32736abc044138c6779291421a85"
+      },
+      "patch_probabilities_bitwise_exact": 225
+    },
+    {
+      "attention": {
+        "not_ink_localization_truth": true,
+        "population": "Supported internal positions in all225 fixed tiles; physical positions overlap",
+        "quantiles": [
+          0.05,
+          0.5,
+          0.95
+        ],
+        "values": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              4.073493693897706,
+              10.260049794922885,
+              19.98327470824297
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4045010326877443,
+              2.328257693037144,
+              2.994895659099408
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -53.8854670683212,
+              -32.89027598353619,
+              25.792067896266214
+            ]
+          }
+        }
+      },
+      "canonical_Q8_context_exact": true,
+      "order": "reverse",
+      "output_sha256": {
+        "reverse_baseline_context_float.npy": "65d93f7b4fee93259252e17ac1cf34a79630e1ad62b10f8c9cc51c055e6ca242",
+        "reverse_baseline_core_Q8.npy": "945c442b2bad7cd1906e2f5c18b32d00513ac1385345ab5e5a45e35a04ff1843",
+        "reverse_baseline_core_Q8.png": "19069d6716cb6818df41d45591d33a8992269a0c167d09d46319c226a2aa3611",
+        "reverse_baseline_core_float.npy": "729e9d98d9915284615a090a286d41aa5600cf98bdaed8847fa6c57952fe9467",
+        "reverse_baseline_fixed_logit_display.npy": "126f75cce748871463659a1bd4cb0f8c305c9edb994ecbd6c0a6019e09ee9e9d",
+        "reverse_baseline_fixed_logit_display.png": "d9d3534fb7ee64e4f887f4780897004ee1616ff546c1f82fcc71da0fa3f0faa9"
+      },
+      "patch_probabilities_bitwise_exact": 225
+    }
+  ],
+  "both_orders_retained": true,
+  "checkpoint_loads": 0,
+  "consumed_source_artifact_count": 14,
+  "depth_mapping": {
+    "reverse": [
+      85,
+      84,
+      83,
+      82,
+      81,
+      80,
+      79,
+      78,
+      77,
+      76,
+      75,
+      74,
+      73,
+      72,
+      71,
+      70,
+      69,
+      68,
+      67,
+      66,
+      65,
+      64,
+      63,
+      62,
+      61,
+      60,
+      59,
+      58,
+      57,
+      56,
+      55,
+      54,
+      53,
+      52,
+      51,
+      50,
+      49,
+      48,
+      47,
+      46,
+      45,
+      44,
+      43,
+      42,
+      41,
+      40,
+      39,
+      38,
+      37,
+      36,
+      35,
+      34,
+      33,
+      32,
+      31,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24
+    ],
+    "source": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ]
+  },
+  "freeze_reference": "5b48d79fde5a41f8239b8548f1609d4349de70ff",
+  "network_requests": 0,
+  "new_CT_requests": 0,
+  "old_gates_changed": false,
+  "orders": [
+    {
+      "actual_forward_precision": "fp32",
+      "attention": {
+        "not_ink_localization_truth": true,
+        "population": "Supported internal positions in all225 fixed tiles; physical positions overlap",
+        "quantiles": [
+          0.05,
+          0.5,
+          0.95
+        ],
+        "values": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4509798853295297,
+              5.037207330282275,
+              12.580238070924063
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              0.37223911117984565,
+              1.616851827377714,
+              2.532127175649982
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -16.872572309809062,
+              10.151945093096991,
+              37.71935164699523
+            ]
+          }
+        }
+      },
+      "counterfactual_alpha": 0.0,
+      "legibility": "unassessed; no automatic preferred order or projection",
+      "order": "source",
+      "originating_archive_dtypes": {
+        "attention_scores": "torch.float32",
+        "final_model_logits": "torch.float32",
+        "patch_probability": "float32",
+        "pre_collapse_logits": "torch.float32"
+      },
+      "output_sha256": {
+        "source_zero_bias_context_float.npy": "d40544546c564ac4b6d327796355cab5daf1b18c5f032dfdb2678c33ea6cb335",
+        "source_zero_bias_core_Q8.npy": "601f63051d1c5e32e9c7c4d87fa624b6b7c16b09fb926971ed3c2581100d75ef",
+        "source_zero_bias_core_Q8.png": "56bb5cc39ca6b5ba347f8f9afc324a63236b65c34e61a3a7f8f39ab88e62a0a0",
+        "source_zero_bias_core_float.npy": "f4ea76f827cc5ff10c0f74234cfaa8d8b48329e5aac811abb3c92ee7ff548580",
+        "source_zero_bias_fixed_logit_display.npy": "cf57c8c9eb09f0b2d38b19c4403539801c3e7a7500f0ee08e9b3b16fdc4171e6",
+        "source_zero_bias_fixed_logit_display.png": "2cdb877740cba6e26c48da6ca94148974bcd106f22e1bdc2094fc588663dadf6"
+      },
+      "probability_changes": {
+        "all_core": {
+          "changed_Q8_fraction": 0.01829345703125,
+          "changed_Q8_pixels": 67437,
+          "downward_0_5_crossings": 192,
+          "maximum_absolute_probability_change": 0.009710147976875305,
+          "mean_absolute_probability_change": 7.132755550385284e-05,
+          "mean_signed_probability_change": -1.96654918799667e-05,
+          "pixels": 3686400,
+          "upward_0_5_crossings": 87
+        },
+        "nonempty_CT_columns": {
+          "changed_Q8_fraction": 0.01829345703125,
+          "changed_Q8_pixels": 67437,
+          "downward_0_5_crossings": 192,
+          "maximum_absolute_probability_change": 0.009710147976875305,
+          "mean_absolute_probability_change": 7.132755550385284e-05,
+          "mean_signed_probability_change": -1.96654918799667e-05,
+          "pixels": 3686400,
+          "upward_0_5_crossings": 87
+        },
+        "threshold_meaning": "Strict P>0.5 is descriptive only, not an ink/background label"
+      },
+      "source_z_halfopen": [
+        22,
+        86
+      ]
+    },
+    {
+      "actual_forward_precision": "fp32",
+      "attention": {
+        "not_ink_localization_truth": true,
+        "population": "Supported internal positions in all225 fixed tiles; physical positions overlap",
+        "quantiles": [
+          0.05,
+          0.5,
+          0.95
+        ],
+        "values": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              4.081040351091041,
+              10.302853907009464,
+              20.047702114403048
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.406351943923158,
+              2.332420935206792,
+              2.99811453942351
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -53.63813900649953,
+              -32.18434401531234,
+              27.185937802116722
+            ]
+          }
+        }
+      },
+      "counterfactual_alpha": 0.0,
+      "legibility": "unassessed; no automatic preferred order or projection",
+      "order": "reverse",
+      "originating_archive_dtypes": {
+        "attention_scores": "torch.float32",
+        "final_model_logits": "torch.float32",
+        "patch_probability": "float32",
+        "pre_collapse_logits": "torch.float32"
+      },
+      "output_sha256": {
+        "reverse_zero_bias_context_float.npy": "84b8e724e503c3dd27ad24dab963189867b8c02e19feebc2f2b424fea90f46c7",
+        "reverse_zero_bias_core_Q8.npy": "aefe0afcadf19a8d2666bd42ccaebb0197637e5432eb85bfd13de1c12349fa31",
+        "reverse_zero_bias_core_Q8.png": "15214040e7fb86ada7fabc410ed6341258f995fe3d86c97ad9e9f6d1a6158df9",
+        "reverse_zero_bias_core_float.npy": "f028a2dfe09ffb99cfdf0b2adc0c603d3898e00075632c3a9f84d1ad460ffcc6",
+        "reverse_zero_bias_fixed_logit_display.npy": "eac875692178ae9afe3a579a68b7e2c7d455b78320f4eee266d761ae86c2a2b4",
+        "reverse_zero_bias_fixed_logit_display.png": "822b2823a5ff04e98ab42859d59bd30c12262b7a1344a6ce73e8985c3a6117e6"
+      },
+      "probability_changes": {
+        "all_core": {
+          "changed_Q8_fraction": 0.04220377604166667,
+          "changed_Q8_pixels": 155580,
+          "downward_0_5_crossings": 159,
+          "maximum_absolute_probability_change": 0.01779085397720337,
+          "mean_absolute_probability_change": 0.00017458781358178812,
+          "mean_signed_probability_change": 3.771384874142932e-05,
+          "pixels": 3686400,
+          "upward_0_5_crossings": 117
+        },
+        "nonempty_CT_columns": {
+          "changed_Q8_fraction": 0.04220377604166667,
+          "changed_Q8_pixels": 155580,
+          "downward_0_5_crossings": 159,
+          "maximum_absolute_probability_change": 0.01779085397720337,
+          "mean_absolute_probability_change": 0.00017458781358178812,
+          "mean_signed_probability_change": 3.771384874142932e-05,
+          "pixels": 3686400,
+          "upward_0_5_crossings": 117
+        },
+        "threshold_meaning": "Strict P>0.5 is descriptive only, not an ink/background label"
+      },
+      "source_z_halfopen": [
+        23,
+        87
+      ]
+    }
+  ],
+  "peak_rss_kib": 1005480,
+  "projection_replays": 900,
+  "protocol_sha256": "611d8b6bba4a8e7c525295189d384029168fcd66b47d701b6b4b480cf5ae2b02",
+  "runner_sha256": "02c69107bb0655183771bf3f7f39a76851adeebac99b229d74cb36b3babf1562",
+  "runtime": {
+    "CPU_threads": 4,
+    "numpy": "2.3.5",
+    "torch": "2.6.0+cpu"
+  },
+  "schema": "scrollprize.depth-bias-control.v1",
+  "source_artifacts_unchanged": true,
+  "source_result_sha256": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+  "status": "complete",
+  "training_steps": 0,
+  "unread_promotion": false,
+  "wall_seconds": 34.64349960000072,
+  "zero_bias_is_parameter_noop": false
+}

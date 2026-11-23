@@ -1,0 +1,397 @@
+{
+  "CNN_forwards": 0,
+  "actual_alpha": 0.09391672164201736,
+  "baseline_patch_probabilities_bitwise_exact": 450,
+  "both_baselines_completed_before_review_counterfactual": true,
+  "checked_scalar_count": 84,
+  "checker_sha256": "cf26298a7fcd6ab300b421783fb7e3fbb65935bd2e3b79794beb4010becd2d6e",
+  "checkpoint_loads": 0,
+  "depth_mapping": {
+    "reverse": [
+      85,
+      84,
+      83,
+      82,
+      81,
+      80,
+      79,
+      78,
+      77,
+      76,
+      75,
+      74,
+      73,
+      72,
+      71,
+      70,
+      69,
+      68,
+      67,
+      66,
+      65,
+      64,
+      63,
+      62,
+      61,
+      60,
+      59,
+      58,
+      57,
+      56,
+      55,
+      54,
+      53,
+      52,
+      51,
+      50,
+      49,
+      48,
+      47,
+      46,
+      45,
+      44,
+      43,
+      42,
+      41,
+      40,
+      39,
+      38,
+      37,
+      36,
+      35,
+      34,
+      33,
+      32,
+      31,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24
+    ],
+    "source": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ]
+  },
+  "efficacy_gate_created": false,
+  "freeze_reference": "5b48d79fde5a41f8239b8548f1609d4349de70ff",
+  "image_interpretation": false,
+  "limits": {
+    "peak_rss_soft_kib": 1572864,
+    "projection_replays": 900,
+    "wall_seconds": 300
+  },
+  "maximum_summary_absolute_difference": 0.0,
+  "network_requests": 0,
+  "new_CT_requests": 0,
+  "orders": {
+    "reverse": {
+      "baseline": {
+        "all_context_and_core_exports_exact": true,
+        "attention": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              4.073493693897706,
+              10.260049794922885,
+              19.98327470824297
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4045010326877443,
+              2.328257693037144,
+              2.994895659099408
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -53.8854670683212,
+              -32.89027598353619,
+              25.792067896266214
+            ]
+          }
+        },
+        "projection_replays": 225
+      },
+      "zero_bias": {
+        "all_context_and_core_exports_exact": true,
+        "attention": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              4.081040351091041,
+              10.302853907009464,
+              20.047702114403048
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.406351943923158,
+              2.332420935206792,
+              2.99811453942351
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -53.63813900649953,
+              -32.18434401531234,
+              27.185937802116722
+            ]
+          }
+        },
+        "probability_changes": {
+          "all_core": {
+            "changed_Q8_fraction": 0.04220377604166667,
+            "changed_Q8_pixels": 155580,
+            "downward_0_5_crossings": 159,
+            "maximum_absolute_probability_change": 0.01779085397720337,
+            "mean_absolute_probability_change": 0.00017458781358178812,
+            "mean_signed_probability_change": 3.771384874142932e-05,
+            "pixels": 3686400,
+            "upward_0_5_crossings": 117
+          },
+          "nonempty_CT_columns": {
+            "changed_Q8_fraction": 0.04220377604166667,
+            "changed_Q8_pixels": 155580,
+            "downward_0_5_crossings": 159,
+            "maximum_absolute_probability_change": 0.01779085397720337,
+            "mean_absolute_probability_change": 0.00017458781358178812,
+            "mean_signed_probability_change": 3.771384874142932e-05,
+            "pixels": 3686400,
+            "upward_0_5_crossings": 117
+          }
+        },
+        "projection_replays": 225
+      }
+    },
+    "source": {
+      "baseline": {
+        "all_context_and_core_exports_exact": true,
+        "attention": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4505831615352272,
+              5.034672607307593,
+              12.584098091095605
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              0.37196565594871817,
+              1.616348500681538,
+              2.532433960630637
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -16.849467209541835,
+              10.212834699723512,
+              37.81408747133107
+            ]
+          }
+        },
+        "projection_replays": 225
+      },
+      "zero_bias": {
+        "all_context_and_core_exports_exact": true,
+        "attention": {
+          "effective_plane_count": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              1.4509798853295297,
+              5.037207330282275,
+              12.580238070924063
+            ]
+          },
+          "entropy_nats": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              0.37223911117984565,
+              1.616851827377714,
+              2.532127175649982
+            ]
+          },
+          "mean_depth_relative_to_plane54_um": {
+            "count": 921600,
+            "percentiles_5_50_95": [
+              -16.872572309809062,
+              10.151945093096991,
+              37.71935164699523
+            ]
+          }
+        },
+        "probability_changes": {
+          "all_core": {
+            "changed_Q8_fraction": 0.01829345703125,
+            "changed_Q8_pixels": 67437,
+            "downward_0_5_crossings": 192,
+            "maximum_absolute_probability_change": 0.009710147976875305,
+            "mean_absolute_probability_change": 7.132755550385284e-05,
+            "mean_signed_probability_change": -1.96654918799667e-05,
+            "pixels": 3686400,
+            "upward_0_5_crossings": 87
+          },
+          "nonempty_CT_columns": {
+            "changed_Q8_fraction": 0.01829345703125,
+            "changed_Q8_pixels": 67437,
+            "downward_0_5_crossings": 192,
+            "maximum_absolute_probability_change": 0.009710147976875305,
+            "mean_absolute_probability_change": 7.132755550385284e-05,
+            "mean_signed_probability_change": -1.96654918799667e-05,
+            "pixels": 3686400,
+            "upward_0_5_crossings": 87
+          }
+        },
+        "projection_replays": 225
+      }
+    }
+  },
+  "peak_rss_kib": 955376,
+  "pngs_compared_as_pixels_without_interpretation": 8,
+  "producer_helpers_imported": false,
+  "producer_status": "complete",
+  "producer_timing_source": "Saved producing-run receipt; not independently re-timed or system-traced",
+  "projection_replays": 900,
+  "released_projection_augmented_return_ast_sha256": "d641a5babbb6b1bd5573d4c362c9eaa327cce2b62fd2133c314e45e44a1d6ee7",
+  "runtime": {
+    "CPU_threads": 4,
+    "interop_threads": 1,
+    "numpy": "2.3.5",
+    "torch": "2.6.0+cpu"
+  },
+  "saved_output_artifacts_verified": 24,
+  "schema": "scrollprize.depth-bias-independent-review.v1",
+  "scope_limits": [
+    "Release-source projection is reused with archived head outputs; no CNN or checkpoint is evaluated.",
+    "Patch and exported-map bits require exact equality. Float64 descriptive summaries use absolute tolerance 1e-10 for independent reduction order.",
+    "Source support is recomputed from the saved union; raw CT chunks, acquisition and training provenance are not re-audited here.",
+    "Physical depth is relative to source plane54, not an independently established writing surface.",
+    "All supported internal positions are included; overlapping patches are not independent physical samples.",
+    "No image interpretation, efficacy threshold, preferred order, reading or unread promotion is made."
+  ],
+  "status": "passed",
+  "training_steps": 0,
+  "verified_file_count": 46,
+  "verified_sha256": {
+    "code/firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "code/firstletters-colab/prediction_precision/run.py": "4e8b3d89132d2a74b4f1b1b63780b69e1a824389d80e27daf6c327d4e4d578ac",
+    "code/firstletters-colab/public_glyph_control/run.py": "cc3fb7ae83ee891c7d749ff3ad4603bac8ea2e7e5d7adc12c4aad7a9039dd113",
+    "code/protocol.json": "611d8b6bba4a8e7c525295189d384029168fcd66b47d701b6b4b480cf5ae2b02",
+    "code/run.py": "02c69107bb0655183771bf3f7f39a76851adeebac99b229d74cb36b3babf1562",
+    "diagnostic/baseline_replay.json": "f61c19678d1b7e0fd3898b364de4513dac87abfb4747053190e390dbf8a53191",
+    "diagnostic/result.json": "e8b28904d5a5b2379d880bb17c6f9296eaff4dc01452c04fa9cc9976763997df",
+    "diagnostic/reverse_baseline_context_float.npy": "65d93f7b4fee93259252e17ac1cf34a79630e1ad62b10f8c9cc51c055e6ca242",
+    "diagnostic/reverse_baseline_core_Q8.npy": "945c442b2bad7cd1906e2f5c18b32d00513ac1385345ab5e5a45e35a04ff1843",
+    "diagnostic/reverse_baseline_core_Q8.png": "19069d6716cb6818df41d45591d33a8992269a0c167d09d46319c226a2aa3611",
+    "diagnostic/reverse_baseline_core_float.npy": "729e9d98d9915284615a090a286d41aa5600cf98bdaed8847fa6c57952fe9467",
+    "diagnostic/reverse_baseline_fixed_logit_display.npy": "126f75cce748871463659a1bd4cb0f8c305c9edb994ecbd6c0a6019e09ee9e9d",
+    "diagnostic/reverse_baseline_fixed_logit_display.png": "d9d3534fb7ee64e4f887f4780897004ee1616ff546c1f82fcc71da0fa3f0faa9",
+    "diagnostic/reverse_zero_bias_context_float.npy": "84b8e724e503c3dd27ad24dab963189867b8c02e19feebc2f2b424fea90f46c7",
+    "diagnostic/reverse_zero_bias_core_Q8.npy": "aefe0afcadf19a8d2666bd42ccaebb0197637e5432eb85bfd13de1c12349fa31",
+    "diagnostic/reverse_zero_bias_core_Q8.png": "15214040e7fb86ada7fabc410ed6341258f995fe3d86c97ad9e9f6d1a6158df9",
+    "diagnostic/reverse_zero_bias_core_float.npy": "f028a2dfe09ffb99cfdf0b2adc0c603d3898e00075632c3a9f84d1ad460ffcc6",
+    "diagnostic/reverse_zero_bias_fixed_logit_display.npy": "eac875692178ae9afe3a579a68b7e2c7d455b78320f4eee266d761ae86c2a2b4",
+    "diagnostic/reverse_zero_bias_fixed_logit_display.png": "822b2823a5ff04e98ab42859d59bd30c12262b7a1344a6ce73e8985c3a6117e6",
+    "diagnostic/source_baseline_context_float.npy": "d92282110ac3b0a3460f176c17b984bacdfeceb9292359487e00407fb653decc",
+    "diagnostic/source_baseline_core_Q8.npy": "ae1d2f6471523d7b1c801389b80f6b9ba96fad6d03a95329934c5094b0ef4a4c",
+    "diagnostic/source_baseline_core_Q8.png": "64f17161d9df37472c6f84093272995ea303ccb61853c61285907045dece9b5c",
+    "diagnostic/source_baseline_core_float.npy": "8387b277adff30d25fcb5cef6dd132f8d22ec7b763db0b00694c606cd94fcbe3",
+    "diagnostic/source_baseline_fixed_logit_display.npy": "efb823d3e73d8105de241b1a6a0354dbecebf32b8f5ac1949962bf432802fbe8",
+    "diagnostic/source_baseline_fixed_logit_display.png": "50c0eff1b3f99f180187927879dedf541eaf32736abc044138c6779291421a85",
+    "diagnostic/source_zero_bias_context_float.npy": "d40544546c564ac4b6d327796355cab5daf1b18c5f032dfdb2678c33ea6cb335",
+    "diagnostic/source_zero_bias_core_Q8.npy": "601f63051d1c5e32e9c7c4d87fa624b6b7c16b09fb926971ed3c2581100d75ef",
+    "diagnostic/source_zero_bias_core_Q8.png": "56bb5cc39ca6b5ba347f8f9afc324a63236b65c34e61a3a7f8f39ab88e62a0a0",
+    "diagnostic/source_zero_bias_core_float.npy": "f4ea76f827cc5ff10c0f74234cfaa8d8b48329e5aac811abb3c92ee7ff548580",
+    "diagnostic/source_zero_bias_fixed_logit_display.npy": "cf57c8c9eb09f0b2d38b19c4403539801c3e7a7500f0ee08e9b3b16fdc4171e6",
+    "diagnostic/source_zero_bias_fixed_logit_display.png": "2cdb877740cba6e26c48da6ca94148974bcd106f22e1bdc2094fc588663dadf6",
+    "glyph/ct_nonempty_support_reverse.npy": "7e6b2a715f2d6cd833f3d27c2bd6c3446454be93091d736871f6f339fdce5e2e",
+    "glyph/ct_nonempty_support_source.npy": "7e6b2a715f2d6cd833f3d27c2bd6c3446454be93091d736871f6f339fdce5e2e",
+    "glyph/depth_archive_contract.json": "cd55ef900c60974529371d190e5e6c8a38d927caef547baca000fccd1bc567ee",
+    "glyph/result.json": "4785d83c49d5c0a1e0309b40dc5226154c3a2619120e85e4d51d528fc25efbee",
+    "glyph/reverse_attention_scores.npy": "0dc616f6605211ffe4dba1b6c10397ed67539a5ba86149c28fe64656888b4c85",
+    "glyph/reverse_context_uint8.npy": "0a26c169f644ec57696851ad80fafb343fe5ed04c16cd18fd166111fff4063c0",
+    "glyph/reverse_core_uint8.npy": "945c442b2bad7cd1906e2f5c18b32d00513ac1385345ab5e5a45e35a04ff1843",
+    "glyph/reverse_patch_probability.npy": "edb617c9a03c535a88222627bc6f86870a256c380b76da8690a433a380342cf0",
+    "glyph/reverse_pre_collapse_logits.npy": "57dd39904df4e206c82b144270ed2ea2165f2b14eb78dc9200cf7e42d2e5869a",
+    "glyph/source_attention_scores.npy": "daed96f47ddc5213e35eacb6dd8f925607c8dd0b07f4c6e370cc35d821bba890",
+    "glyph/source_context_uint8.npy": "57f11f7b3723a0cceac2332aea485cbdaba24cb598464a74a858f22d8c92f4d4",
+    "glyph/source_core_uint8.npy": "ae1d2f6471523d7b1c801389b80f6b9ba96fad6d03a95329934c5094b0ef4a4c",
+    "glyph/source_patch_probability.npy": "8989fd3dba7bd5e220936f309c04d92f2219c2ad44407749c09402a3d6c4aafa",
+    "glyph/source_pre_collapse_logits.npy": "ab5ac2574b93c0d7ec2da9added90880719aa578db8e955e46c5957f7ed30746",
+    "glyph/source_union65_uint8.npy": "ae8efde2dcf41629b682b04a2539d0d705a0c862e6bb5a9793ed393f13c5a46f"
+  },
+  "wall_seconds": 36.10535387100026,
+  "zero_bias_is_parameter_noop": false,
+  "zero_bias_projection_replays": 450
+}
