@@ -1,0 +1,387 @@
+name: 65 native planes along the complete public winding
+on:
+  push:
+    branches: [codex/pherc0125-atlas-centres]
+    paths: [.github/workflows/pherc0125-native-winding65.yml]
+permissions: {}
+jobs:
+  public-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve public winding geometry code
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc0125-atlas-centres"
+          for file in atlas125.py stage125.py full_atlas125.py atlas_65_entier.py recipient.pem; do
+            curl --silent --show-error --location --fail --retry 3 --max-time 50 "$base/$file" --output "$file"
+          done
+          python -m pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile 'zarr==2.18.7' 'numcodecs==0.15.1'
+      - name: Render the complete public atlas uniformly at 65 native depths
+        run: python -u atlas_65_entier.py recipient.pem
+      - name: Return encrypted public native tile r00c00
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c00
+          path: delivery/r00c00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c01
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c01
+          path: delivery/r00c01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c02
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c02
+          path: delivery/r00c02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c03
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c03
+          path: delivery/r00c03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c04
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c04
+          path: delivery/r00c04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c05
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c05
+          path: delivery/r00c05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c06
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c06
+          path: delivery/r00c06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c07
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c07
+          path: delivery/r00c07/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c08
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c08
+          path: delivery/r00c08/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c09
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c09
+          path: delivery/r00c09/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c10
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c10
+          path: delivery/r00c10/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c11
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c11
+          path: delivery/r00c11/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c12
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c12
+          path: delivery/r00c12/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c13
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c13
+          path: delivery/r00c13/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r00c14
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r00c14
+          path: delivery/r00c14/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c00
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c00
+          path: delivery/r01c00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c01
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c01
+          path: delivery/r01c01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c02
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c02
+          path: delivery/r01c02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c03
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c03
+          path: delivery/r01c03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c04
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c04
+          path: delivery/r01c04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c05
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c05
+          path: delivery/r01c05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c06
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c06
+          path: delivery/r01c06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c07
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c07
+          path: delivery/r01c07/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c08
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c08
+          path: delivery/r01c08/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c09
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c09
+          path: delivery/r01c09/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c10
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c10
+          path: delivery/r01c10/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c11
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c11
+          path: delivery/r01c11/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c12
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c12
+          path: delivery/r01c12/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c13
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c13
+          path: delivery/r01c13/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r01c14
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r01c14
+          path: delivery/r01c14/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c00
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c00
+          path: delivery/r02c00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c01
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c01
+          path: delivery/r02c01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c02
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c02
+          path: delivery/r02c02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c03
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c03
+          path: delivery/r02c03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c04
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c04
+          path: delivery/r02c04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c05
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c05
+          path: delivery/r02c05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c06
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c06
+          path: delivery/r02c06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c07
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c07
+          path: delivery/r02c07/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c08
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c08
+          path: delivery/r02c08/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c09
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c09
+          path: delivery/r02c09/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c10
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c10
+          path: delivery/r02c10/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c11
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c11
+          path: delivery/r02c11/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c12
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c12
+          path: delivery/r02c12/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c13
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c13
+          path: delivery/r02c13/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public native tile r02c14
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-native65-r02c14
+          path: delivery/r02c14/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0

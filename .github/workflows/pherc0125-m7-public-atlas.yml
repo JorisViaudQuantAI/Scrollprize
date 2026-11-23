@@ -1,0 +1,83 @@
+name: Public M7 geometry for a complete published winding
+on:
+  push:
+    branches: [codex/pherc0125-atlas-centres]
+    paths: [.github/workflows/pherc0125-m7-public-atlas.yml]
+permissions: {}
+jobs:
+  public-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve public winding geometry code
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc0125-atlas-centres"
+          for file in atlas125.py stage125.py m7_atlas_entier.py recipient.pem; do
+            curl --silent --show-error --location --fail --retry 3 --max-time 50 "$base/$file" --output "$file"
+          done
+          python -m pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile
+      - name: Archive the complete public M7 geometry within its published byte bound
+        run: python -u m7_atlas_entier.py recipient.pem
+      - name: Return encrypted public geometry group 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-00
+          path: delivery/group-00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-01
+          path: delivery/group-01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-02
+          path: delivery/group-02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-03
+          path: delivery/group-03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-04
+          path: delivery/group-04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-05
+          path: delivery/group-05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted public geometry group 06
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-w045-geometry-06
+          path: delivery/group-06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0

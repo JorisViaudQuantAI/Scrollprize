@@ -1,0 +1,118 @@
+name: Full public PHerc0125 anatomical atlas
+on:
+  push:
+    branches: [codex/pherc0125-atlas-centres]
+    paths: [.github/workflows/pherc0125-atlas-extension.yml]
+permissions: {}
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      BLOSC_NTHREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch auditable public scanner geometry code
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc0125-atlas-centres"
+          for file in atlas125.py stage125.py full_atlas125.py recipient.pem; do
+            curl --silent --show-error --location --fail --retry 3 --max-time 50 "$base/$file" --output "$file"
+          done
+          python -m venv .venv
+          .venv/bin/pip --quiet install 'numpy<2.4' 'scipy<1.18' requests tifffile 'zarr==2.18.7' 'numcodecs==0.15.1'
+      - name: Render the public native CT atlas under a two-GiB budget
+        run: .venv/bin/python -u full_atlas125.py recipient.pem
+      - name: Return encrypted native scanner strip 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-00
+          path: delivery/strip-00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-01
+          path: delivery/strip-01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-02
+          path: delivery/strip-02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-03
+          path: delivery/strip-03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-04
+          path: delivery/strip-04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-05
+          path: delivery/strip-05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 06
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-06
+          path: delivery/strip-06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 07
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-07
+          path: delivery/strip-07/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 08
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-08
+          path: delivery/strip-08/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 09
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-09
+          path: delivery/strip-09/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Return encrypted native scanner strip 10
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-0125-atlas-strip-10
+          path: delivery/strip-10/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
