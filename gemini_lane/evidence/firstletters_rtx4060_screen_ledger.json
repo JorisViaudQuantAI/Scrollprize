@@ -29,9 +29,9 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 20.5269,
-    "meshes_screened": 5,
-    "two_family_followups": 2,
+    "total_unique_valid_ct_cm2": 27.2775,
+    "meshes_screened": 6,
+    "two_family_followups": 4,
     "candidates_found": 0
   },
   "meshes": [
@@ -285,6 +285,120 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Sparse isolated 128px border and fiber-flap blobs only; zero connected strokes on flat papyrus."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20250930000321811",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.7506,
+      "on_sheet_after_snap": 0.8964,
+      "f_parallel": 0.8775,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2208.41,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.85402,
+          "p995": 0.88058,
+          "max": 0.93488,
+          "frac_gt_05": 0.095416,
+          "frac_gt_07": 0.043654
+        },
+        "studio_asc": {
+          "p99": 0.86061,
+          "p995": 0.88385,
+          "max": 0.93098,
+          "frac_gt_05": 0.101462,
+          "frac_gt_07": 0.048983
+        }
+      },
+      "two_family_followup": {
+        "roi_count": 2,
+        "total_roi_valid_ct_cm2": 1.3326,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "rois": [
+          {
+            "roi_index": 1,
+            "roi_valid_ct_cm2": 0.6994,
+            "on_sheet_after_snap": 0.9401,
+            "f_parallel": 0.9697,
+            "total_seconds": 1378.42,
+            "studio_desc": {
+              "p99": 0.76254,
+              "p995": 0.81751,
+              "max": 0.87127,
+              "frac_gt_05": 0.058558,
+              "frac_gt_07": 0.01764
+            },
+            "studio_asc": {
+              "p99": 0.86226,
+              "p995": 0.87861,
+              "max": 0.91842,
+              "frac_gt_05": 0.178743,
+              "frac_gt_07": 0.084065
+            },
+            "ahn_s0_asc": {
+              "p99": 0.73497,
+              "p995": 0.78187,
+              "max": 0.85939,
+              "frac_gt_05": 0.048371,
+              "frac_gt_07": 0.013684
+            },
+            "ahn_s0_desc": {
+              "p99": 0.58224,
+              "p995": 0.66188,
+              "max": 0.79874,
+              "frac_gt_05": 0.018042,
+              "frac_gt_07": 0.003073
+            }
+          },
+          {
+            "roi_index": 2,
+            "roi_valid_ct_cm2": 0.6332,
+            "on_sheet_after_snap": 0.9854,
+            "f_parallel": 1.0,
+            "total_seconds": 1224.65,
+            "studio_desc": {
+              "p99": 0.86901,
+              "p995": 0.88404,
+              "max": 0.91553,
+              "frac_gt_05": 0.228861,
+              "frac_gt_07": 0.129701
+            },
+            "studio_asc": {
+              "p99": 0.88347,
+              "p995": 0.90055,
+              "max": 0.93845,
+              "frac_gt_05": 0.17045,
+              "frac_gt_07": 0.092274
+            },
+            "ahn_s0_asc": {
+              "p99": 0.76422,
+              "p995": 0.78728,
+              "max": 0.83883,
+              "frac_gt_05": 0.089313,
+              "frac_gt_07": 0.027726
+            },
+            "ahn_s0_desc": {
+              "p99": 0.77479,
+              "p995": 0.8136,
+              "max": 0.862,
+              "frac_gt_05": 0.090771,
+              "frac_gt_07": 0.02151
+            }
+          }
+        ]
+      },
+      "verdict": "NEGATIVE",
+      "note": "Bilateral diffuse 2-4 mm papyrus-mottle clouds (ROI 2 elevated across all 4 passes with studio_desc > studio_asc; ROI 1 A-hn 6.1x below Studio asc); zero crisp connected letter strokes in either family."
     }
   ]
 }
