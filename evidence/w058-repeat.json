@@ -1,0 +1,149 @@
+{
+  "plan": {
+    "roi_yx": [
+      3072,
+      3200,
+      1920,
+      2048
+    ],
+    "source": "PHerc.1447 W058, 21 native layers, local Zarr",
+    "order": [
+      [
+        "baseline",
+        "patched"
+      ],
+      [
+        "patched",
+        "baseline"
+      ],
+      [
+        "baseline",
+        "patched"
+      ],
+      [
+        "patched",
+        "baseline"
+      ]
+    ],
+    "weight_sha256": "ea405417450abd8ace1b8ff79ebce3adb646c5e48ab95da46844d77efe984d8a",
+    "scope": "Fresh complete command, shared OS cache, one math thread, CPU",
+    "inference": {
+      "batch": 1,
+      "workers": 0,
+      "tile_overlap": 0.5,
+      "blend": "hann",
+      "direction": "reverse"
+    }
+  },
+  "decoded_sha256": "5cbbc7ab10aa110d8a30a8fd516fa70218b021fc51d6b3011ac2749b700b70fd",
+  "same_pixels": 16384,
+  "repeats_per_version": 4,
+  "versions": {
+    "baseline": {
+      "wall_s": 21.21534535849969,
+      "cpu_s": 23.912806500000002,
+      "peak_rss_mib": 2049.62890625
+    },
+    "patched": {
+      "wall_s": 17.287646086999302,
+      "cpu_s": 17.344984,
+      "peak_rss_mib": 1187.283203125
+    }
+  },
+  "paired_gains": [
+    {
+      "wall_s": 7.462017788999219,
+      "cpu_s": 11.331597,
+      "peak_rss_mib": 881.31640625
+    },
+    {
+      "wall_s": 4.565332297999703,
+      "cpu_s": 6.4160330000000005,
+      "peak_rss_mib": 815.61328125
+    },
+    {
+      "wall_s": -0.02939238699764246,
+      "cpu_s": 2.2077890000000018,
+      "peak_rss_mib": 901.921875
+    },
+    {
+      "wall_s": 2.732080527996004,
+      "cpu_s": 5.012428,
+      "peak_rss_mib": 843.79296875
+    }
+  ],
+  "trials": [
+    {
+      "pair": 1,
+      "version": "baseline",
+      "wall_s": 22.73131222899974,
+      "cpu_s": 26.636996,
+      "peak_rss_mib": 2049.8359375
+    },
+    {
+      "pair": 1,
+      "version": "patched",
+      "wall_s": 15.269294440000522,
+      "cpu_s": 15.305399,
+      "peak_rss_mib": 1168.51953125
+    },
+    {
+      "pair": 2,
+      "version": "patched",
+      "wall_s": 15.134046189999935,
+      "cpu_s": 15.157765,
+      "peak_rss_mib": 1233.80859375
+    },
+    {
+      "pair": 2,
+      "version": "baseline",
+      "wall_s": 19.69937848799964,
+      "cpu_s": 21.573798,
+      "peak_rss_mib": 2049.421875
+    },
+    {
+      "pair": 3,
+      "version": "baseline",
+      "wall_s": 19.27660534700044,
+      "cpu_s": 21.592358,
+      "peak_rss_mib": 2049.19140625
+    },
+    {
+      "pair": 3,
+      "version": "patched",
+      "wall_s": 19.305997733998083,
+      "cpu_s": 19.384569,
+      "peak_rss_mib": 1147.26953125
+    },
+    {
+      "pair": 4,
+      "version": "patched",
+      "wall_s": 21.101288601003034,
+      "cpu_s": 21.220827,
+      "peak_rss_mib": 1206.046875
+    },
+    {
+      "pair": 4,
+      "version": "baseline",
+      "wall_s": 23.83336912899904,
+      "cpu_s": 26.233255,
+      "peak_rss_mib": 2049.83984375
+    }
+  ],
+  "all_16_full_sidecars_equal": true,
+  "all_16_decoded_outputs_equal": true,
+  "comparison_fields": [
+    "blend_mode",
+    "direction",
+    "input",
+    "input_resolution",
+    "layer_indices",
+    "parent_grid_retained",
+    "parent_shape_yx",
+    "patch_size",
+    "roi_row_start_stop_col_start_stop",
+    "stride"
+  ],
+  "host": "Intel Xeon Platinum 8573C, shared cloud CPU, Linux",
+  "script_blob": "11f06071b3be00e3d62be65f1b1d3d3f0bf13a59"
+}
