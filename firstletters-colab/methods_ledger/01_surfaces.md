@@ -410,6 +410,19 @@ Decision taken: the atlas was inked unsnapped at two depth shifts; the spiral fi
 
 **Not done.** Re-rendering PHerc. 0175A isometrically. Measuring the spacing of the PHerc. 0343 windings. A stretch test on a positive.
 
+**Added 2026-11-23 (stretch of the windings that were read, and two stretch tests by another agent).**
+- All 53 PHerc. 0175A windings that were read, snapped meshes, spacing between neighbouring vertices divided by the 20 voxels the renderer assumed; median over windings of each winding's percentiles, with the range over windings in brackets.
+
+| direction | 5th | 50th | 95th | share of cells off by more than 1.5× |
+|---|---|---|---|---|
+| along the turn | 0.61 (0.55–0.76) | 1.04 (0.87–1.07) | 2.12 (1.60–2.24) | 0.26 (0.17–0.38) |
+| along the scroll axis | 0.88 (0.85–0.90) | 1.15 (1.09–1.17) | 1.82 (1.42–1.99) | 0.14 (0.03–0.17) |
+
+- A ratio above 1 means the papyrus was compressed in the render by that factor, below 1 that it was enlarged. Pooled over the fit, half of the cells along the turn are off by more than 1.25×.
+- True area over nominal area: 1.29 (1.03–1.44). The 520 cm² quoted for this screen are about 670 cm² of surface.
+- Two tests on known ink now exist (`studio_scale_stress/RESULTS.md`, `collab/chatgpt-adaptive-046.md`). Studio on PHerc. 0841: 2× compression costs 6 AP points along one image axis and 14 along the other, with recall at 0.5 falling from 0.68 to 0.58 and 0.42. A-hn on PHerc. 0306B: 2× enlargement along the line drops recall at 0.5 from 0.33 to 0.07; 0.6× raised it, with more flags on untraced papyrus.
+- Reading: on about a quarter of the PHerc. 0175A surface the detectors worked at a scale where they lose a substantial part of known ink. That screen is a weak negative on that quarter, independent of the on-sheet question.
+
 **Where the code is.** `code/isometric_resample.py`.
 
 ---

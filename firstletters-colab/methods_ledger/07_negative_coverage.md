@@ -50,6 +50,7 @@ Areas in cm². "rv3" = reader-v3. "−3/+3" = two depth shifts, both maps and th
 | all 7 atlas scrolls | 250 atlas windings, label-free feature (L4) | 1,395.8 | 1,309.4 | — | one CT feature | uninformative for every scroll; **not coverage** |
 
 Notes on the table.
+- **Added 2026-11-23.** The PHerc. 0175A fitted-winding row was read without scale correction: about a quarter of its cells are off by more than 1.5× along the turn, and its true area is about 670 cm² (S8). The 17 fitted PHerc. 1203 windings at 2.4 µm are complete: 102.1 cm² valid, both 2.4 µm models in one order (three windings in both), isometric resampling with 17–27 % of each winding still off by more than 1.5×, stride 192 on 16 of them: screened — no qualifying reading identified, weak.
 - **Added 2026-11-23.** The atlas rows cover one winding in 20 of each fitted z-window (S2, hindsight test on PHerc. 0211). They are a sparse sample of those scrolls, not coverage of the regions they span.
 - Own-window rows give the areas of the **screened** windows only; 39 windows in all, 22 screened (288 chart, 280 valid, 151 on-sheet, 98 in cores), 17 uninformative. These rows replace the interim per-scroll counts of `collab/claude-011`.
 - The on-sheet figures for PHerc. 0813 and 0800 are 407.3 × 0.778 and 476.8 × 0.771; `collab/claude-010` gives them as "about 78 %" and "77 %".
