@@ -1,0 +1,42 @@
+name: Published Paris 4 sparse version-pinned HEAD Range
+on:
+  push:
+    branches: [claude/firstletters-colab]
+    paths:
+      - "firstletters-colab/range_transport/paris4-native-sparse-trigger.txt"
+permissions:
+  contents: read
+jobs:
+  pinned-sparse-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Pre-outcome lease on protocol, source and workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          freeze="$(cat firstletters-colab/range_transport/paris4-native-sparse-trigger.txt)"
+          [[ "$freeze" =~ ^[0-9a-f]{40}$ ]]
+          git cat-file -e "${freeze}^{commit}"
+          git merge-base --is-ancestor "$freeze" HEAD
+          git diff --exit-code "$freeze" HEAD -- \
+            firstletters-colab/range_transport/paris4_native_sparse.py \
+            firstletters-colab/range_transport/paris4_native_sparse_protocol.json \
+            .github/workflows/paris4-native-sparse.yml
+      - name: Offline deterministic positive and negative controls
+        run: python firstletters-colab/range_transport/paris4_native_sparse.py --self-test
+      - name: Compare one live conditional 206 against an earlier frozen SHA
+        run: |
+          python firstletters-colab/range_transport/paris4_native_sparse.py \
+            --output "${RUNNER_TEMP}/paris4_native_sparse.json"
+      - name: Preserve all completed results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paris4-public-native-sparse-receipt
+          path: ${{ runner.temp }}/paris4_native_sparse.json
+          if-no-files-found: warn
