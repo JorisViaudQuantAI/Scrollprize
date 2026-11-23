@@ -65,6 +65,8 @@ class Ranges:
                 match = re.fullmatch(r'bytes (\d+)-(\d+)/(\d+)', cr)
                 if response.status != 206 or not match or tuple(map(int, match.groups()[:2])) != (lo, hi-1):
                     raise ValueError(f'Incorrect range response: {response.status} {cr}')
+                if int(match.group(3)) < hi:
+                    raise ValueError('Impossible Content-Range object length')
                 if response.headers.get('Content-Encoding', 'identity') not in ('', 'identity'):
                     raise ValueError('Transformed range response')
                 data = response.read(hi-lo+1)
@@ -144,7 +146,12 @@ class Array:
         return self.block(0, self.shape[0])
 
     def rows(self, indices, gap=262144):
-        indices = np.asarray(indices, np.int64)
+        indices = np.asarray(indices)
+        if indices.ndim != 1 or (indices.size and indices.dtype.kind not in 'iu'):
+            raise ValueError('Array row indices must be one-dimensional integers')
+        if np.any(indices < 0) or np.any(indices >= self.shape[0]):
+            raise ValueError('Array row index outside source')
+        indices = indices.astype(np.int64)
         if not len(indices):
             return np.empty((0, *self.shape[1:]), self.dtype)
         ordered = np.unique(indices)
