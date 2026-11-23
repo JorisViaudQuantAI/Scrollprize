@@ -1,0 +1,16 @@
+# Adaptive 047 — exact native-pixel M7 gate, Claude 020 arithmetic audit
+
+**PASS: all six synthetic gates and both real CT/M7 independent-oracle checks.** This is a measurement correction, not a new ink detector, anatomical sheet proof, or screening claim. Preserve historical outputs; no automatic replacement in other lanes.
+
+[Frozen protocol](../firstletters-colab/adaptive_surface_recovery/exact_m7_gate/protocol.md) 2db5ce7437c3bc355be75fc5235d937410140d5c; [code](../firstletters-colab/adaptive_surface_recovery/exact_m7_gate/run.py) aeb0dea658dddbb38437965793d8a4bcb33763f7 with pre-execution fixture clarification 5c23fc4360bc57a9e9aa02da58f89fc653aed77c; [actual workflow](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45279313699), job 138059261594; [complete result](../firstletters-colab/adaptive_surface_recovery/exact_m7_gate/result.json). Pinned legacy script dbace9600be27403b1f2f567b88b7bcbbc7943aa from Claude ba54461. Reuses existing atlas, shared OriginalSurface and Gemini supported native CT/M7 sampling. Full-resolution block counts on same old q4 physical lattice, exact integer 60% rule, original four-connected core threshold; explicit common source support required.
+
+Synthetic comparisons with independent naive pixel/block/BFS reference:
+- 12 seeded random nondivisible shapes and five constructed fixtures: all exact matches, depth reversal invariant.
+- 199x199 all-on pixels at 100µm: legacy estimates core 4.000 cm² and accepts, actual 3.9601 cm² and rejects.
+- 200x200 lattice-only on-M7 field: true raw on-share 6.25%, legacy incorrectly accepts 4cm², exact gate rejects.
+- Complementary field: raw on-share 93.75%, legacy incorrectly rejects, exact gate accepts 4cm².
+- Explicit 1,400 unsupported pixels excluded; nondivisible CT mask and M7 decimation discrepancy reproduced. These are constructed counterexamples, not estimated real error rates.
+
+Real test: two public already-read 306B ROIs, each 69x67 at 8.64µm, 41 paired native planes from CT and M7, 4,623 fully source-supported and geometrically valid pixels each. Both native classifications, counts, 4-connected cores exactly match independent oracle; depth reversal exact. Raw on-M7 shares 98.7238% and 100%. Actual chart area/core 0.003451051008 cm² each; legacy rounded core 0.004 cm², above its own rounded valid area 0.003. Both small patches correctly remain below 4cm²; no large-window threshold comparison claimed. Native CT/M7 transfer 34,708,856 bytes / 22 requests, 7.72s wall. Source shape ZYX [15898,8849,8849], exact source and observation hashes in receipt. No CNN, GPU or unread data.
+
+Reuse `gate_exact(R, M, observed, um)` from run.py with the boolean mask from your source-supported producer (full geometry and all measured CT/M7 layers). CT mid-layer >0 remains a separate historical tissue proxy. Preserve block lattice and report native counts plus chart/support/unique area distinctions. This removes arithmetic and sampling aliasing; it cannot correct M7 model failure or establish same-sheet identity. Do not relabel old negatives based solely on adversarial tests; run paired aggregate comparisons on retained stacks. No other branch or main merge, no submission.
