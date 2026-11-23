@@ -1,0 +1,2150 @@
+{
+  "protocol_sha256": "47bb7e5b6556fb7d6aba6702011d7088957c6f3dbe5e9b2cc6c98f41e747f99d",
+  "code_hashes": {
+    "studio_scale_stress/run.py": "5e03b265523385f96cdd8184e05062feb19d612827da257b048e123ba7b5f602",
+    "studio_scale_stress/sampling.py": "6c8c45ec7a3f574fd4f2edd56feb8326cfea6d2fe473972c4d8e7bebc874bc10",
+    "studio_scale_stress/test_sampling.py": "8f89db5ce15a10a95f38608a42c85618345a2cb7d3459e23e58b6c74378c2165",
+    "studio_control/run_public_control.py": "ccf05aa940a6cd0469247699df2bedfd75151ca42bafaa7890bb8cbf9a401536"
+  },
+  "source_commit": "bf66f753176792a966bca17822629fb8821f20c8",
+  "checkpoint_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "wall_seconds": 638.1804929279988,
+  "summed_forward_seconds": 1264.9865604779661,
+  "forwards": [
+    {
+      "arm": "identity",
+      "patch": 0,
+      "author_index": 249,
+      "seconds": 4.935395906999474,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 1,
+      "author_index": 250,
+      "seconds": 4.852209073000267,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 2,
+      "author_index": 251,
+      "seconds": 4.732389558999785,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 3,
+      "author_index": 252,
+      "seconds": 5.086378886999228,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 4,
+      "author_index": 284,
+      "seconds": 4.4108838890006155,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 5,
+      "author_index": 285,
+      "seconds": 4.831191024999498,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 6,
+      "author_index": 286,
+      "seconds": 4.651348941000833,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 7,
+      "author_index": 287,
+      "seconds": 4.651395679999041,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 8,
+      "author_index": 288,
+      "seconds": 4.210988925000493,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 9,
+      "author_index": 289,
+      "seconds": 4.8241556029988715,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 10,
+      "author_index": 320,
+      "seconds": 5.0276210909996735,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 11,
+      "author_index": 321,
+      "seconds": 4.962950049999563,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 12,
+      "author_index": 322,
+      "seconds": 4.214231810999991,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 13,
+      "author_index": 323,
+      "seconds": 4.068298008000056,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 14,
+      "author_index": 324,
+      "seconds": 4.234025423998901,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 15,
+      "author_index": 325,
+      "seconds": 4.634005980000438,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 16,
+      "author_index": 326,
+      "seconds": 4.451732522000384,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 17,
+      "author_index": 327,
+      "seconds": 4.936603131998709,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 18,
+      "author_index": 356,
+      "seconds": 4.149211555000875,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 19,
+      "author_index": 357,
+      "seconds": 4.368646949000322,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 20,
+      "author_index": 358,
+      "seconds": 4.442020538999714,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 21,
+      "author_index": 359,
+      "seconds": 4.852550679999695,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 22,
+      "author_index": 360,
+      "seconds": 3.998364249999213,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 23,
+      "author_index": 361,
+      "seconds": 5.172891739000988,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 24,
+      "author_index": 362,
+      "seconds": 4.748693665000246,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 25,
+      "author_index": 363,
+      "seconds": 4.8975601800011646,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 26,
+      "author_index": 364,
+      "seconds": 4.225451475998852,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 28,
+      "author_index": 393,
+      "seconds": 5.0025599420005165,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 27,
+      "author_index": 392,
+      "seconds": 5.1625196789991605,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 30,
+      "author_index": 395,
+      "seconds": 4.6498318429985375,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 29,
+      "author_index": 394,
+      "seconds": 4.702633987999434,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 32,
+      "author_index": 397,
+      "seconds": 5.208624367000084,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 31,
+      "author_index": 396,
+      "seconds": 5.496391251001114,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 33,
+      "author_index": 398,
+      "seconds": 5.066222552000909,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 34,
+      "author_index": 399,
+      "seconds": 5.398483087999921,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 35,
+      "author_index": 400,
+      "seconds": 4.661338301999422,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 36,
+      "author_index": 430,
+      "seconds": 4.706011663000027,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 37,
+      "author_index": 431,
+      "seconds": 5.258388057000047,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 38,
+      "author_index": 432,
+      "seconds": 4.965237222999349,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 39,
+      "author_index": 433,
+      "seconds": 4.814709246998973,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 40,
+      "author_index": 434,
+      "seconds": 5.352152823999859,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 41,
+      "author_index": 435,
+      "seconds": 4.980339342000661,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 42,
+      "author_index": 436,
+      "seconds": 5.258260414999313,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 43,
+      "author_index": 468,
+      "seconds": 5.039350446999379,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 44,
+      "author_index": 469,
+      "seconds": 5.133665146999192,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 45,
+      "author_index": 470,
+      "seconds": 4.570060628000647,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 46,
+      "author_index": 471,
+      "seconds": 4.3844712099999015,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 47,
+      "author_index": 472,
+      "seconds": 4.323875319001672,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 48,
+      "author_index": 473,
+      "seconds": 4.373128319999523,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 49,
+      "author_index": 506,
+      "seconds": 3.924290867000309,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 50,
+      "author_index": 507,
+      "seconds": 4.393633917999978,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "identity",
+      "patch": 51,
+      "author_index": 508,
+      "seconds": 3.756958236999708,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "identity",
+      "patch": 52,
+      "author_index": 509,
+      "seconds": 4.081598890999885,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 0,
+      "author_index": 249,
+      "seconds": 4.365748055999575,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 0,
+      "author_index": 249,
+      "seconds": 4.805000746000587,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 0,
+      "author_index": 249,
+      "seconds": 3.8808824160005315,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 0,
+      "author_index": 249,
+      "seconds": 4.358578457000476,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 1,
+      "author_index": 250,
+      "seconds": 4.258579945000747,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 1,
+      "author_index": 250,
+      "seconds": 4.619741410000643,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 1,
+      "author_index": 250,
+      "seconds": 4.623434256998735,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 1,
+      "author_index": 250,
+      "seconds": 4.7340778409998165,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 2,
+      "author_index": 251,
+      "seconds": 4.388326079999388,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 2,
+      "author_index": 251,
+      "seconds": 4.5916909179995855,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 2,
+      "author_index": 251,
+      "seconds": 4.554036912999436,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 2,
+      "author_index": 251,
+      "seconds": 4.224794305000614,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 3,
+      "author_index": 252,
+      "seconds": 3.7016612560000794,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 3,
+      "author_index": 252,
+      "seconds": 4.178285884001525,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 3,
+      "author_index": 252,
+      "seconds": 4.650306131001344,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 3,
+      "author_index": 252,
+      "seconds": 4.585926677998941,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 4,
+      "author_index": 284,
+      "seconds": 4.205181221999737,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 4,
+      "author_index": 284,
+      "seconds": 4.4744264430009935,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 4,
+      "author_index": 284,
+      "seconds": 5.080728805000035,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 4,
+      "author_index": 284,
+      "seconds": 5.530478767999739,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 5,
+      "author_index": 285,
+      "seconds": 4.621124295999834,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 5,
+      "author_index": 285,
+      "seconds": 4.8447997759994905,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 5,
+      "author_index": 285,
+      "seconds": 4.206669969000359,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 5,
+      "author_index": 285,
+      "seconds": 4.919503726001494,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 6,
+      "author_index": 286,
+      "seconds": 4.292826295999475,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 6,
+      "author_index": 286,
+      "seconds": 5.287228279999908,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 6,
+      "author_index": 286,
+      "seconds": 5.111164367999663,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 6,
+      "author_index": 286,
+      "seconds": 5.020150599999397,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 7,
+      "author_index": 287,
+      "seconds": 4.449594714000341,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 7,
+      "author_index": 287,
+      "seconds": 4.943499433000397,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 7,
+      "author_index": 287,
+      "seconds": 5.396850881999853,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 7,
+      "author_index": 287,
+      "seconds": 4.3525105160006206,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 8,
+      "author_index": 288,
+      "seconds": 4.576017481998861,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 8,
+      "author_index": 288,
+      "seconds": 4.120515536000312,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 8,
+      "author_index": 288,
+      "seconds": 4.812477770999976,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 8,
+      "author_index": 288,
+      "seconds": 4.906362157998956,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 9,
+      "author_index": 289,
+      "seconds": 4.895295682999858,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 9,
+      "author_index": 289,
+      "seconds": 4.384434732000955,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 9,
+      "author_index": 289,
+      "seconds": 4.841355766000561,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 9,
+      "author_index": 289,
+      "seconds": 4.653326308000032,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 10,
+      "author_index": 320,
+      "seconds": 4.659431436000887,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 10,
+      "author_index": 320,
+      "seconds": 4.3885508439998375,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 10,
+      "author_index": 320,
+      "seconds": 5.024582957999883,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 10,
+      "author_index": 320,
+      "seconds": 4.329439447999903,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 11,
+      "author_index": 321,
+      "seconds": 4.691744957999617,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 11,
+      "author_index": 321,
+      "seconds": 4.352312733999497,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 11,
+      "author_index": 321,
+      "seconds": 5.753668284000014,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 11,
+      "author_index": 321,
+      "seconds": 4.593343889000607,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 12,
+      "author_index": 322,
+      "seconds": 5.13218440700075,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 12,
+      "author_index": 322,
+      "seconds": 4.643024720999165,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 12,
+      "author_index": 322,
+      "seconds": 4.646144512998944,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 12,
+      "author_index": 322,
+      "seconds": 4.767593977998331,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 13,
+      "author_index": 323,
+      "seconds": 5.077225614999406,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 13,
+      "author_index": 323,
+      "seconds": 5.488882718000241,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 13,
+      "author_index": 323,
+      "seconds": 4.577093533998777,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 13,
+      "author_index": 323,
+      "seconds": 4.7375303150001855,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 14,
+      "author_index": 324,
+      "seconds": 4.563880481999149,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 14,
+      "author_index": 324,
+      "seconds": 4.674940772998525,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 14,
+      "author_index": 324,
+      "seconds": 3.8838208170000144,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 14,
+      "author_index": 324,
+      "seconds": 4.463950850000401,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 15,
+      "author_index": 325,
+      "seconds": 4.411585830001059,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 15,
+      "author_index": 325,
+      "seconds": 4.5977256419992045,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 15,
+      "author_index": 325,
+      "seconds": 5.333323921000556,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 15,
+      "author_index": 325,
+      "seconds": 5.881070710000131,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 16,
+      "author_index": 326,
+      "seconds": 5.117643500998383,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 16,
+      "author_index": 326,
+      "seconds": 5.002170345000195,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 16,
+      "author_index": 326,
+      "seconds": 4.496707726999375,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 16,
+      "author_index": 326,
+      "seconds": 4.4294400260005204,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 17,
+      "author_index": 327,
+      "seconds": 5.1101356629988,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 17,
+      "author_index": 327,
+      "seconds": 5.185501510000904,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 17,
+      "author_index": 327,
+      "seconds": 4.590379503999429,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 17,
+      "author_index": 327,
+      "seconds": 4.645812974000364,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 18,
+      "author_index": 356,
+      "seconds": 4.3615958120008145,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 18,
+      "author_index": 356,
+      "seconds": 4.768294789999345,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 18,
+      "author_index": 356,
+      "seconds": 4.294504847999633,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 18,
+      "author_index": 356,
+      "seconds": 5.312510322999515,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 19,
+      "author_index": 357,
+      "seconds": 5.122285167000882,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 19,
+      "author_index": 357,
+      "seconds": 5.936333541998465,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 19,
+      "author_index": 357,
+      "seconds": 5.648743071000354,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 19,
+      "author_index": 357,
+      "seconds": 5.721504418999757,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 20,
+      "author_index": 358,
+      "seconds": 5.583957351000208,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 20,
+      "author_index": 358,
+      "seconds": 6.100986441999339,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 20,
+      "author_index": 358,
+      "seconds": 5.610613812999873,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 20,
+      "author_index": 358,
+      "seconds": 5.436071396999978,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 21,
+      "author_index": 359,
+      "seconds": 4.800782647000233,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 21,
+      "author_index": 359,
+      "seconds": 4.885120840999662,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 21,
+      "author_index": 359,
+      "seconds": 4.71255826900051,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 22,
+      "author_index": 360,
+      "seconds": 4.506386862998625,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 21,
+      "author_index": 359,
+      "seconds": 5.020745046998854,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 22,
+      "author_index": 360,
+      "seconds": 4.4262095899994165,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 22,
+      "author_index": 360,
+      "seconds": 4.9506482199994934,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 22,
+      "author_index": 360,
+      "seconds": 4.18113290600013,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 23,
+      "author_index": 361,
+      "seconds": 4.821646068001428,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 23,
+      "author_index": 361,
+      "seconds": 4.099543686001198,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 23,
+      "author_index": 361,
+      "seconds": 4.272798725998655,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 23,
+      "author_index": 361,
+      "seconds": 3.702246130000276,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 24,
+      "author_index": 362,
+      "seconds": 5.299355510000169,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 24,
+      "author_index": 362,
+      "seconds": 4.9179202129998885,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 24,
+      "author_index": 362,
+      "seconds": 4.860347109000941,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 24,
+      "author_index": 362,
+      "seconds": 4.837871448999067,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 25,
+      "author_index": 363,
+      "seconds": 4.704925146999813,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 25,
+      "author_index": 363,
+      "seconds": 4.522994519000349,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 25,
+      "author_index": 363,
+      "seconds": 4.416499287999613,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 25,
+      "author_index": 363,
+      "seconds": 4.7100297399993,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 26,
+      "author_index": 364,
+      "seconds": 4.828855428999304,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 26,
+      "author_index": 364,
+      "seconds": 4.132908853000117,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 26,
+      "author_index": 364,
+      "seconds": 5.069678702000601,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 26,
+      "author_index": 364,
+      "seconds": 4.809882692999963,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 27,
+      "author_index": 392,
+      "seconds": 4.855629742000019,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 27,
+      "author_index": 392,
+      "seconds": 4.883985620999738,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 27,
+      "author_index": 392,
+      "seconds": 4.412375092999355,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 27,
+      "author_index": 392,
+      "seconds": 4.190053271999204,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 28,
+      "author_index": 393,
+      "seconds": 4.101932571000361,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 28,
+      "author_index": 393,
+      "seconds": 4.677510077999614,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 28,
+      "author_index": 393,
+      "seconds": 4.641872453999895,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 28,
+      "author_index": 393,
+      "seconds": 5.261402398000428,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 29,
+      "author_index": 394,
+      "seconds": 4.1403950929998246,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 29,
+      "author_index": 394,
+      "seconds": 4.2823212900002545,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 29,
+      "author_index": 394,
+      "seconds": 4.370330345000184,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 29,
+      "author_index": 394,
+      "seconds": 4.551798559999952,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 30,
+      "author_index": 395,
+      "seconds": 4.852738972000225,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 30,
+      "author_index": 395,
+      "seconds": 4.660888962000172,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 30,
+      "author_index": 395,
+      "seconds": 4.697759220998705,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 30,
+      "author_index": 395,
+      "seconds": 5.836224642998786,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 31,
+      "author_index": 396,
+      "seconds": 5.099482038000133,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 31,
+      "author_index": 396,
+      "seconds": 5.454938430999391,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 31,
+      "author_index": 396,
+      "seconds": 4.945643146000293,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 31,
+      "author_index": 396,
+      "seconds": 6.024093310999888,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 32,
+      "author_index": 397,
+      "seconds": 5.563995495000199,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 32,
+      "author_index": 397,
+      "seconds": 5.37884881699938,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 32,
+      "author_index": 397,
+      "seconds": 5.56995038200148,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 32,
+      "author_index": 397,
+      "seconds": 5.2963466069995775,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 33,
+      "author_index": 398,
+      "seconds": 4.628798879999522,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 33,
+      "author_index": 398,
+      "seconds": 4.813913738000338,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 33,
+      "author_index": 398,
+      "seconds": 4.684038635999968,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 33,
+      "author_index": 398,
+      "seconds": 4.9938547869987815,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 34,
+      "author_index": 399,
+      "seconds": 4.698812988999634,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 34,
+      "author_index": 399,
+      "seconds": 5.064308166000046,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 34,
+      "author_index": 399,
+      "seconds": 4.764347451999129,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 34,
+      "author_index": 399,
+      "seconds": 5.088742593999996,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 35,
+      "author_index": 400,
+      "seconds": 4.771557731000939,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 35,
+      "author_index": 400,
+      "seconds": 5.437015113999223,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 35,
+      "author_index": 400,
+      "seconds": 5.407944364000286,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 35,
+      "author_index": 400,
+      "seconds": 5.158754861000489,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 36,
+      "author_index": 430,
+      "seconds": 4.800070997998773,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 36,
+      "author_index": 430,
+      "seconds": 4.8875742929994885,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 36,
+      "author_index": 430,
+      "seconds": 5.278568972998983,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 36,
+      "author_index": 430,
+      "seconds": 4.7059580349996395,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 37,
+      "author_index": 431,
+      "seconds": 4.972935944999335,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 37,
+      "author_index": 431,
+      "seconds": 4.94703938100065,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 37,
+      "author_index": 431,
+      "seconds": 5.052174611000737,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 37,
+      "author_index": 431,
+      "seconds": 4.610176281999884,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 38,
+      "author_index": 432,
+      "seconds": 5.015869852000833,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 38,
+      "author_index": 432,
+      "seconds": 5.129252061000443,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 38,
+      "author_index": 432,
+      "seconds": 5.122753939000177,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 38,
+      "author_index": 432,
+      "seconds": 4.663886144999196,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 39,
+      "author_index": 433,
+      "seconds": 4.848925352000151,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 39,
+      "author_index": 433,
+      "seconds": 4.2249854109995795,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 39,
+      "author_index": 433,
+      "seconds": 4.602355400000306,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 39,
+      "author_index": 433,
+      "seconds": 4.6762162359991635,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 40,
+      "author_index": 434,
+      "seconds": 4.877594286001113,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 40,
+      "author_index": 434,
+      "seconds": 4.213576304999151,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 40,
+      "author_index": 434,
+      "seconds": 5.179930932999923,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 40,
+      "author_index": 434,
+      "seconds": 4.868477987998631,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 41,
+      "author_index": 435,
+      "seconds": 4.869094773999677,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 41,
+      "author_index": 435,
+      "seconds": 4.8998880090002785,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 41,
+      "author_index": 435,
+      "seconds": 5.129855434999627,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 41,
+      "author_index": 435,
+      "seconds": 4.8854621419995965,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 42,
+      "author_index": 436,
+      "seconds": 5.362238625999453,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 42,
+      "author_index": 436,
+      "seconds": 4.744244208999589,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 42,
+      "author_index": 436,
+      "seconds": 4.9438374289984495,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 42,
+      "author_index": 436,
+      "seconds": 4.35578221600008,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 43,
+      "author_index": 468,
+      "seconds": 5.431164839999838,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 43,
+      "author_index": 468,
+      "seconds": 5.324507445000563,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 43,
+      "author_index": 468,
+      "seconds": 5.721547334000206,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 43,
+      "author_index": 468,
+      "seconds": 5.446674845999951,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 44,
+      "author_index": 469,
+      "seconds": 4.511766601001,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 44,
+      "author_index": 469,
+      "seconds": 5.401614072001394,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 44,
+      "author_index": 469,
+      "seconds": 4.481806554000286,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 44,
+      "author_index": 469,
+      "seconds": 5.001917331999721,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 45,
+      "author_index": 470,
+      "seconds": 4.055482276999101,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 45,
+      "author_index": 470,
+      "seconds": 4.264322060000268,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 45,
+      "author_index": 470,
+      "seconds": 4.50610429399967,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 45,
+      "author_index": 470,
+      "seconds": 5.062872458000129,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 46,
+      "author_index": 471,
+      "seconds": 5.144678360000398,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 46,
+      "author_index": 471,
+      "seconds": 5.316658182999163,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 46,
+      "author_index": 471,
+      "seconds": 4.420322920999752,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 46,
+      "author_index": 471,
+      "seconds": 5.107540549999612,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 47,
+      "author_index": 472,
+      "seconds": 4.596386511000674,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 47,
+      "author_index": 472,
+      "seconds": 4.581830694000018,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 47,
+      "author_index": 472,
+      "seconds": 4.075727915000243,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 47,
+      "author_index": 472,
+      "seconds": 4.465186187999279,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 48,
+      "author_index": 473,
+      "seconds": 4.157719380998969,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 48,
+      "author_index": 473,
+      "seconds": 4.552139237999654,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_half",
+      "patch": 48,
+      "author_index": 473,
+      "seconds": 4.30767671600006,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_double",
+      "patch": 48,
+      "author_index": 473,
+      "seconds": 5.013577069999883,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_half",
+      "patch": 49,
+      "author_index": 506,
+      "seconds": 4.574244972000088,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 49,
+      "author_index": 506,
+      "seconds": 3.831057895000413,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_double",
+      "patch": 49,
+      "author_index": 506,
+      "seconds": 4.393324419999772,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 49,
+      "author_index": 506,
+      "seconds": 5.325235184000121,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 50,
+      "author_index": 507,
+      "seconds": 5.603840501000377,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 50,
+      "author_index": 507,
+      "seconds": 4.457448332999775,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 50,
+      "author_index": 507,
+      "seconds": 4.846891274999507,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 50,
+      "author_index": 507,
+      "seconds": 4.7220745389986405,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 51,
+      "author_index": 508,
+      "seconds": 4.554193406000195,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 51,
+      "author_index": 508,
+      "seconds": 4.591805885998838,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 51,
+      "author_index": 508,
+      "seconds": 4.772440721999374,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 51,
+      "author_index": 508,
+      "seconds": 4.483861213999262,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "x_half",
+      "patch": 52,
+      "author_index": 509,
+      "seconds": 5.076990861998638,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "x_double",
+      "patch": 52,
+      "author_index": 509,
+      "seconds": 4.602669889998651,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    },
+    {
+      "arm": "y_half",
+      "patch": 52,
+      "author_index": 509,
+      "seconds": 4.876234404999195,
+      "worker_peak_rss_kib": 1964704,
+      "pid": 16
+    },
+    {
+      "arm": "y_double",
+      "patch": 52,
+      "author_index": 509,
+      "seconds": 3.870830636999017,
+      "worker_peak_rss_kib": 1964980,
+      "pid": 19
+    }
+  ],
+  "full_probabilities_sha256": "530b4934377ea15e4ffecb493b65508161b750fb2eed0865e4827be1880671e5",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "torch": "2.13.0+cpu",
+  "scipy": "1.17.0",
+  "cpu_count": 9,
+  "runtime": {
+    "workers": 2,
+    "threads_per_worker": 4,
+    "interop_threads": 1
+  },
+  "peak_worker_rss_kib": {
+    "16": 1964704,
+    "19": 1964980
+  }
+}

@@ -167,7 +167,9 @@ Rule adopted: stride 96 answers "is there a row here"; shapes and line-finder sc
 - Studio produces fine curved marks on clean woven papyrus. The size of those marks (1.0–1.2 mm) equals its 128 px window at these voxel sizes; whether they are per-window responses joined by blending was not tested.
 - Its depth tolerance was measured on a training donor only.
 
-**Not done.** Studio at stride 48 over whole windings. Studio over the PHerc. 0813 and 0800 atlas (one order at stride 96 would be about 4.5 T4-hours for 880 cm²). A test at a changed input scale.
+**Not done.** Studio at stride 48 over whole windings. Studio over the PHerc. 0813 and 0800 atlas (one order at stride 96 would be about 4.5 T4-hours for 880 cm²). Changed-input-scale validation on an independent positive through the production renderer/tiling path.
+
+**Scale update (2026-11-23).** [Q10 CPU stress](../studio_scale_stress/RESULTS.md) runs the released model on all53 fixed PHerc0841 author-holdout cores,265 forwards, with probabilities returned to identical physical labels. Identity AP0.753604 reproduces the earlier replay exactly. X/Y compression by0.5 gives AP0.693695/0.612890; both exceed the prospectively specified0.05 AP-loss flag. X/Y enlargement by2 gives0.737682/0.753363, but both lower recall at the unchanged0.5 threshold. A prospectively frozen mean of all five scales fails its advancement gate (AP0.736428). This closes the absence of an actual scale-sensitivity measurement on this exposed control; it does not establish new-scroll accuracy, writing-axis tolerance, glyph readability, or safety of stretched unread renders. Source-supported resampling, all scores and a small independently auditable probability archive are provided.
 
 **Where the code is.** `firstletters-colab/studio_t4/` (already public, with tests).
 
