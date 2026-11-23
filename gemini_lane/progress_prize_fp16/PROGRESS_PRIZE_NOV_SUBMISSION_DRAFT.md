@@ -54,8 +54,9 @@ training bucket, so they cannot show accuracy for these models.
 `gemini_lane/progress_prize_fp16/` in our repository: the three patches with their pinned bases, CPU-only tests
 (`python -m unittest discover -s gemini_lane -p "test_*.py" -v`; with `STUDIO_UPSTREAM_DIR` and
 `HECATE_UPSTREAM_DIR` set to upstream clones, the patches are also applied and their blob hashes checked),
-`verify_upstream_gpu_burst.py` for the remaining GPU checks below, and these drafts. Measurement receipts:
-`gemini_lane/evidence/studio_rtx4060_parity.json`, `firstletters-colab/studio_t4/`, `firstletters-colab/hecate_fp16/`.
+`prepare_hecate_parity_crops.py` + `verify_upstream_gpu_burst.py` for the remaining GPU checks below, and these
+drafts. Measurement receipts: `gemini_lane/evidence/studio_rtx4060_parity.json`, `firstletters-colab/studio_t4/`,
+`firstletters-colab/hecate_fp16/`.
 
 ## Licence
 
@@ -69,9 +70,21 @@ Code, runs and text produced with AI coding agents, directed and reviewed by the
 
 ## Remaining checks before submission
 
-All GPU checks below run in one burst of `verify_upstream_gpu_burst.py` (clones and patches the pinned upstream
-bases in a temporary directory, deletes it afterwards, writes a JSON receipt without local paths; defaults
-`--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`, safe on an 8 GB laptop and on a Colab T4).
+All GPU checks below run in one unattended 2-step Colab T4 pass (`prepare_hecate_parity_crops.py` streams two public
+uint8 `[64, 256, 256]` CT parity crops — `PHerc0306B` 8.640 µm control + `PHerc0846A` 2.403 µm public CT, `< 15 MB`
+total HTTP transfer — into a temporary directory strictly outside the git repository; `verify_upstream_gpu_burst.py`
+clones and patches the pinned upstream bases in a temporary directory, deletes it afterwards, and writes a JSON receipt
+without local paths; defaults `--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`, safe on an 8 GB laptop and on a
+Colab T4; delete `/tmp/hecate_parity_crops` once the receipt is saved):
+
+```bash
+python gemini_lane/progress_prize_fp16/prepare_hecate_parity_crops.py --out-dir /tmp/hecate_parity_crops
+python gemini_lane/progress_prize_fp16/verify_upstream_gpu_burst.py \
+  --stages studio,hecate --hecate-patch main \
+  --hecate-input-9p6 /tmp/hecate_parity_crops/hecate_9p6um_crop.npy \
+  --hecate-input-2p4 /tmp/hecate_parity_crops/hecate_2p4um_crop.npy \
+  --output /tmp/hecate_parity_crops/burst_receipt.json
+```
 
 - [ ] Hecate: patched `hecate.py`, fp16 vs fp32, on **both 2.4 µm and 9.6 µm** checkpoints, 2D and `--output-3d`,
       both depth orders (`--reverse`), on a T4; preferably on the PHerc. 0306B crop (`--stages hecate`).

@@ -65,13 +65,19 @@ MIT, as the repository.
 ## Pre-posting checklist (owner)
 
 - [ ] Run patched `hecate.py` fp16 vs fp32 with **both** checkpoints (`hecate_2.4um.pth` and `hecate_9.6um.pth`),
-      2D `--output` and `--output-3d`, with and without `--reverse`, on a T4; preferably on a PHerc. 0306B crop:
-      `python verify_upstream_gpu_burst.py --stages hecate --hecate-patch main --hecate-input-2p4 <crop_2.4um.npy>
-      --hecate-input-9p6 <crop_9.6um.npy> --output hecate_burst.json` (uint8 Z,Y,X inputs already rendered at each
-      spacing; central 512 × 512 crop by default; checkpoints hash-checked against their LFS pointers; gate max ≤ 3
-      and mean ≤ 0.25 uint8 levels, 2D and 3D; defaults `--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`).
-      fp32 memory at batch 1 is unmeasured; if a run stops on the cap on an 8 GB laptop GPU, use a T4. Add the
-      receipt's numbers above as a separate table (batch 1; the existing table is batch 32).
+      2D `--output` and `--output-3d`, with and without `--reverse`, on a Colab T4 in two unattended steps (crops are
+      written strictly outside the git repository into `/tmp/hecate_parity_crops` and deleted afterwards; public CT
+      structural crops for numerical parity only, not an accuracy claim):
+      1. Stream both uint8 `[64, 256, 256]` parity crops (`PHerc0306B` 8.640 µm positive control + `PHerc0846A`
+         2.403 µm public CT, `< 15 MB` total HTTP transfer):
+         `python gemini_lane/progress_prize_fp16/prepare_hecate_parity_crops.py --out-dir /tmp/hecate_parity_crops`
+      2. Run the burst (use `--stages studio,hecate` to verify both PRs in one pass, or `--stages hecate` for Hecate
+         only; checkpoints hash-checked against their LFS pointers; gate max ≤ 3 and mean ≤ 0.25 uint8 levels, 2D and
+         3D; defaults `--vram-fraction 0.35 --batch 1 --max-gpu-temp-c 68`):
+         `python gemini_lane/progress_prize_fp16/verify_upstream_gpu_burst.py --stages studio,hecate --hecate-patch main --hecate-input-9p6 /tmp/hecate_parity_crops/hecate_9p6um_crop.npy --hecate-input-2p4 /tmp/hecate_parity_crops/hecate_2p4um_crop.npy --output /tmp/hecate_parity_crops/burst_receipt.json`
+      Copy the sanitized JSON receipt, remove `/tmp/hecate_parity_crops`, and add the receipt's numbers above as a
+      separate table (batch 1; the existing table is batch 32). fp32 memory at batch 1 is unmeasured; if a run stops on
+      the cap on an 8 GB laptop GPU, use a T4.
 - [ ] Check the state of discussion #3 and pick `0002` or `0002b` (`--hecate-patch pr3`); re-run
       `git apply --check` on the chosen base.
 - [ ] Optionally mention the overlap in a short comment on #3.
