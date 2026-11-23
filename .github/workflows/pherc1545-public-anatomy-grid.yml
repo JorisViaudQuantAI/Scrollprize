@@ -1,0 +1,84 @@
+name: Public anatomy at uniformly spaced heights
+on:
+  push:
+    branches: [codex/pherc1545-public-anatomy-grid]
+    paths: [.github/workflows/pherc1545-public-anatomy-grid.yml]
+permissions: {}
+jobs:
+  public-grid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      matrix:
+        slot: [0, 1, 2]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read the public native grid with matching calibration
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/codex/pherc1545-public-anatomy-grid"
+          curl -fsSL --retry 3 "$base/echantillon_public.py" -o echantillon_public.py
+          curl -fsSL --retry 3 "$base/recipient.pem" -o recipient.pem
+          python -m pip install --quiet 'numpy<2.4' 'numcodecs==0.15.1' requests
+          python echantillon_public.py ${{ matrix.slot }} recipient.pem
+      - name: Encrypted grid package m7 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-m7-00
+          path: delivery/m7-00/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-00
+          path: delivery/ct-00/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-01
+          path: delivery/ct-01/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-02
+          path: delivery/ct-02/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-03
+          path: delivery/ct-03/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-04
+          path: delivery/ct-04/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+      - name: Encrypted grid package ct 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-grid-${{ matrix.slot }}-ct-05
+          path: delivery/ct-05/
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
