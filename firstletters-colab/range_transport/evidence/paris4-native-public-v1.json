@@ -1,0 +1,61 @@
+{
+  "schema": "scrollprize.paris4-native-range-evidence.v1",
+  "date_utc": "2026-11-23",
+  "source": "Public, already-published PHercParis4 2.4um surface control; no new glyph output",
+  "pre_http_freeze_commit": "989730831a6773e97ac3b996bbeda8009488bd91",
+  "trigger_commit": "edd6828cede609124bdfc697baab9282b06f3a82",
+  "github_action_url": "https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45148129539",
+  "github_job_id": 137602404289,
+  "evidence_description": "Original runner fields from successful CI log, numerically cross-checked against protocol arithmetic post-run; no independent second HTTP acquisition",
+  "result": {
+    "application_body_fraction_partial_to_whole": 0.5963302752293578,
+    "body_bytes": 2851024,
+    "etag_strong": true,
+    "full_chunk_bytes": 1785856,
+    "full_sha256": "0fa1ee3f7d45748a1d2aa962db8062c9547bd21d9e76770314f93dfe356f820f",
+    "mismatch_count": 0,
+    "observations": [
+      {
+        "bytes": 208,
+        "elapsed_s": 0.183679,
+        "label": "metadata",
+        "status": 200
+      },
+      {
+        "bytes": 1785856,
+        "elapsed_s": 0.468647,
+        "label": "whole",
+        "status": 200
+      },
+      {
+        "bytes": 1064960,
+        "elapsed_s": 0.409408,
+        "label": "partial",
+        "status": 206
+      }
+    ],
+    "passed": true,
+    "projection_only": {
+      "extra_request_count_over_whole_chunk": 0,
+      "full_chunk_count": 289,
+      "one_range_per_chunk_body_bytes": 307773440,
+      "potential_body_bytes_avoided": 208338944,
+      "whole_chunk_body_bytes": 516112384
+    },
+    "requests": 3,
+    "schema": "scrollprize.paris4-native-range-result.v1",
+    "selected_bytes": 1064960,
+    "selected_sha256": "447aa8788b156bc65a9c4f288af79c467e609a9e7865a12784a509c31712f557"
+  },
+  "independent_postrun_arithmetic": {
+    "checks": 10,
+    "failed": 0,
+    "scope": "response statuses/counts, exact range length, fixed chunk geometry and projected bytes; not a separate byte-level source verification"
+  },
+  "limitations": [
+    "one fixed public native S3 chunk; full GET provides this run's ETag",
+    "no evidence that 289 range reads will succeed or that metadata/object versions remain stable across them",
+    "all body bytes include reference full download; projected production savings require a separately authenticated object version",
+    "single fixed-order latency is not a speed benchmark"
+  ]
+}
