@@ -161,7 +161,29 @@ Needs `numcodecs` for the blosc-zstd `m7` arrays. The offline tests (`test_grow_
 
 ---
 
-## 8. Attribution & Licences
+## 8. Screening false-positive diagnostic filter (`screening_fp_filter.py`)
+
+[`screening_fp_filter.py`](screening_fp_filter.py) is a CPU-only (NumPy + SciPy, no torch) post-hoc filter for the `asc` / `desc` probability maps written by `screen_scroll_rtx4060.py`. The screener itself is unchanged.
+
+* `build_crack_void_halo_mask(ct_mid, valid_mask, ...)` flags dark delamination cracks and air voids on the CT mid-slice, plus a dilation halo around them and around the eroded mesh border. Pixels count as dark below a robust `median - 4·1.4826·MAD` threshold, or below an explicit `dark_threshold` / `dark_percentile`. The mask is closed morphologically, small components are dropped, and the result is restricted to `valid_mask`. This targets the crack-edge `Studio > 0.7` specks seen on `PHerc0191`.
+* `score_probability_map_diagnostics(prob_asc, prob_desc, valid_mask, crack_halo_mask=None, ahn_asc=None, ahn_desc=None, voxel_um=9.362)` reports:
+  * clean-papyrus vs crack-halo hit shares (`> 0.7` / `> 0.5`);
+  * the dominant face and its `dominant / opposite` asymmetry;
+  * bilateral overlap (`asc > 0.7 & desc > 0.7`);
+  * the `skeleton_length / equiv_diameter` strokeness of the top components;
+  * Studio vs A-hn IoU and face agreement, when A-hn maps are supplied.
+
+  It returns boolean `flags` and an `ink_like_candidate` verdict. The thresholds are in `FPThresholds`.
+
+`test_screening_fp_filter.py` runs four deterministic synthetic cases and a benchmark:
+1. Thin one-sided strokes on intact woven CT: kept as ink-like.
+2. Crack-wall and border specks: rejected through the halo.
+3. Bilateral `2-4 mm` mottle: flagged by overlap and strokeness.
+4. Single-face `1 mm` dot rows: flagged by strokeness and A-hn disagreement.
+
+---
+
+## 9. Attribution & Licences
 
 * Scripts & tests in `gemini_lane/`: MIT License (`../LICENSE`).
 * Studio soft-loss weights & `model.py`: Priyank Aranke and contributors (`vesuvius-studio-multiscroll-cpt`, code MIT, weights CC BY-NC 4.0).
