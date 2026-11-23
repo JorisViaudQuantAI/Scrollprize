@@ -29,8 +29,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 64.899,
-    "meshes_screened": 12,
+    "total_unique_valid_ct_cm2": 72.0901,
+    "meshes_screened": 14,
     "two_family_followups": 5,
     "candidates_found": 0
   },
@@ -655,6 +655,88 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Diffuse blobs along cracks and voids with low face asymmetry (1.36x); zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z6944_w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.1967,
+      "on_sheet_after_snap": 0.9487,
+      "f_parallel": 0.8727,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1090.38,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.86268,
+          "p995": 0.88241,
+          "max": 0.94251,
+          "frac_gt_05": 0.099435,
+          "frac_gt_07": 0.050045
+        },
+        "studio_asc": {
+          "p99": 0.74199,
+          "p995": 0.80923,
+          "max": 0.91085,
+          "frac_gt_05": 0.03522,
+          "frac_gt_07": 0.012733
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 3.9149,
+        "bilateral_overlap_frac": 0.036488,
+        "strokeness_weighted_mean": 2.3653,
+        "ink_like_candidate": true
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Coarse blocky 128px tile-grid mottle blobs across papyrus despite 3.91x face asymmetry; visual inspection confirms zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z9936_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9944,
+      "on_sheet_after_snap": 0.9921,
+      "f_parallel": 0.9845,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1314.78,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.7595,
+          "p995": 0.83496,
+          "max": 0.92311,
+          "frac_gt_05": 0.033629,
+          "frac_gt_07": 0.013514
+        },
+        "studio_asc": {
+          "p99": 0.80698,
+          "p995": 0.8444,
+          "max": 0.91811,
+          "frac_gt_05": 0.065684,
+          "frac_gt_07": 0.025233
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.8672,
+        "bilateral_overlap_frac": 0.002879,
+        "strokeness_weighted_mean": 1.156,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Scattered 128px tile-grid mottle with low face asymmetry (1.87x) and low strokeness (1.16); visual inspection confirms zero letter strokes."
     }
   ]
 }
