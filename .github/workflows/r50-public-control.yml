@@ -1,0 +1,40 @@
+name: Verify public R50 control and local mosaics
+on:
+  push:
+    branches: [codex/r50-public-control]
+    paths:
+      - .github/workflows/r50-public-control.yml
+      - public-controls/r50_*.py
+      - public-controls/check_r50_stack.py
+permissions: {}
+jobs:
+  cpu-control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    env:
+      PYTHONUNBUFFERED: "1"
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - name: Read the public script at the triggering commit
+        run: |
+          git init study
+          git -C study fetch --depth=1 https://github.com/JorisViaudQuantAI/Scrollprize.git "$GITHUB_SHA"
+          git -C study checkout --detach FETCH_HEAD
+          test "$(git -C study rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Install the CPU runtime
+        run: |
+          python3 -m venv "$RUNNER_TEMP/r50-venv"
+          "$RUNNER_TEMP/r50-venv/bin/python" -m pip install -q --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu 'torch==2.8.0'
+          "$RUNNER_TEMP/r50-venv/bin/python" -m pip install -q --disable-pip-version-check 'transformers==4.57.6' 'safetensors==0.6.2' 'numpy==2.2.6' 'zarr==3.1.3' 'fsspec==2025.9.0' 'aiohttp>=3.10,<4' 'requests>=2.32,<3'
+      - name: Capture the earlier immutable public control output
+        working-directory: study
+        run: |
+          git fetch --depth=1 https://github.com/JorisViaudQuantAI/Scrollprize.git 8aad6c48becbc3760e96aacd793c8d9164ef7c84
+          git show 8aad6c48becbc3760e96aacd793c8d9164ef7c84:public-controls/r50_tile.py > "$RUNNER_TEMP/original-r50.py"
+          "$RUNNER_TEMP/r50-venv/bin/python" public-controls/check_r50_stack.py --capture-original "$RUNNER_TEMP/original-r50.py" --work "$RUNNER_TEMP/r50-public" --cache "$RUNNER_TEMP/r50-weights"
+      - name: Compare local predictions and all overlap and border pixels
+        working-directory: study
+        run: |
+          "$RUNNER_TEMP/r50-venv/bin/python" public-controls/check_r50_stack.py --work "$RUNNER_TEMP/r50-public" --cache "$RUNNER_TEMP/r50-weights"
