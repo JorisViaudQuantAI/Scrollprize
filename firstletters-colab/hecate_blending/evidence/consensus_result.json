@@ -1,0 +1,1035 @@
+{
+  "candidate_autogate": false,
+  "fields": [
+    {
+      "diagnostics": {
+        "core_mean_arithmetic_minus_geometric_supported": 0.011492485497629951,
+        "floored_supported_prediction_count": 0,
+        "log_floor": 1.1920928955078125e-07,
+        "maximum_FP64_arithmetic_vs_saved_FP32_Hann_difference": 2.384185791015625e-07,
+        "maximum_geometric_minus_arithmetic_supported": 4.163336342344337e-17
+      },
+      "output_sha256": {
+        "consensus_fine.npy": "b2004760e2e60b538be0e5baecb57e36e13eb4ec85305f4c915196aa579280ab",
+        "consensus_float_common.npy": "6e253dc12cd8020b366c9dd367c51886f0b442d4d7d6d90eac787f0e417d808a",
+        "consensus_uint8.npy": "1dde992e528cc6ddd37494b63f9be86ea4d6e128720086492ca3f36613d7eb32",
+        "consensus_uint8_common.npy": "8d79b500af517c48411e14efd7586cf67751be6ba8d3231bc08fd5e6b38c4a93",
+        "hann_float_common.npy": "b26f4f13fa10223c840a0fad28b18c3d93918d11b0c25064f0dfa811bb14c2bb",
+        "hann_uint8_common.npy": "b804f62c393e70a21842a06ff4a7be7bc179cdaab33094bd91684a2bd226a5d8"
+      },
+      "scroll": "PHerc0841"
+    },
+    {
+      "diagnostics": {
+        "core_mean_arithmetic_minus_geometric_supported": 0.023418000532099657,
+        "floored_supported_prediction_count": 0,
+        "log_floor": 1.1920928955078125e-07,
+        "maximum_FP64_arithmetic_vs_saved_FP32_Hann_difference": 2.980232238769531e-07,
+        "maximum_geometric_minus_arithmetic_supported": 1.1102230246251565e-16
+      },
+      "output_sha256": {
+        "consensus_fine.npy": "3aed606d285dfaa634a9e14cd87b73cdef1ce9e1c7fe4ad44ea47213ef720b39",
+        "consensus_float_common.npy": "d69e78294cb120193f2c8164404a10b8891e4cdfe5150ecae3e3f9ff4e7034d5",
+        "consensus_uint8.npy": "011e393cd598f2d681edd05f713691b0323d6d5d52b275fd3bedc96129cb629c",
+        "consensus_uint8_common.npy": "5d54a68304c3b604323686729360ea08e476f9cdb0c03061179c1d04239b9d8d",
+        "hann_float_common.npy": "0296ff6700736662907b5dc5d9d720c6c75d5a6829fc6bd04057244ca39729d0",
+        "hann_uint8_common.npy": "a06c3194f0d178c2757440ce0e36e29053a9cd83e03d1f3610d51dc0b7572de0"
+      },
+      "scroll": "PHerc0814"
+    }
+  ],
+  "freeze_reference": "30edb8a1e5c325278bf9e885177fe126ab621489",
+  "new_CT_requests": 0,
+  "new_detector_forwards": 0,
+  "new_network_requests": 0,
+  "numeric_gate_pass": false,
+  "old_or_primary_gate_changed": false,
+  "peak_rss_kib": 465660,
+  "primary_result_sha256": "c3757843f13d7dc93f0e10b8600abd9905772ef45d61785db524b6d313a0ced1",
+  "protocol_sha256": "2b339dbb76c9c81d5fcd75ba29b9174e639ef321bce92f6c45ec4b84f4e79dbf",
+  "runner_sha256": "2b93e5b9db4771cb179a5d81a3138944d9d6b2614d276dd508669d0dc6e0df6b",
+  "schema": "scrollprize.context-consensus.v1",
+  "source_artifacts_unchanged": true,
+  "status": "complete",
+  "training_steps": 0,
+  "transfers": [
+    {
+      "calibration": {
+        "consensus": {
+          "allowed_background_count": 1678,
+          "background": 33575,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 1,
+          "threshold_strict_greater": 0.6808870434761047,
+          "unused_background_budget_due_to_ties": 0
+        },
+        "hann": {
+          "allowed_background_count": 1678,
+          "background": 33575,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 1,
+          "threshold_strict_greater": 0.7052721381187439,
+          "unused_background_budget_due_to_ties": 0
+        }
+      },
+      "calibration_scroll": "PHerc0841",
+      "evaluation": {
+        "consensus": {
+          "ap": 0.7916719383991623,
+          "auc": 0.8529023749375432,
+          "background": 38818,
+          "background_exceedance": 0.11252511721366376,
+          "background_positive_count": 4368,
+          "ink": 23898,
+          "ink_positive_count": 16910,
+          "known": 62716,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1840,
+              "both_positive_fraction": 0.09762020398251578,
+              "both_positive_pairs": 201,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 92,
+                  "eligible_pairs": 1026,
+                  "exactly_one_positive_pairs": 7
+                },
+                "vertical": {
+                  "both_negative_pairs": 913,
+                  "both_positive_pairs": 109,
+                  "eligible_pairs": 1033,
+                  "exactly_one_positive_pairs": 11
+                }
+              },
+              "eligible_pairs": 2059,
+              "exactly_one_positive_fraction": 0.008742107819329771,
+              "exactly_one_positive_pairs": 18
+            },
+            "seam_ink": {
+              "both_negative_pairs": 464,
+              "both_positive_fraction": 0.6622191011235955,
+              "both_positive_pairs": 943,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 219,
+                  "both_positive_pairs": 477,
+                  "eligible_pairs": 710,
+                  "exactly_one_positive_pairs": 14
+                },
+                "vertical": {
+                  "both_negative_pairs": 245,
+                  "both_positive_pairs": 466,
+                  "eligible_pairs": 714,
+                  "exactly_one_positive_pairs": 3
+                }
+              },
+              "eligible_pairs": 1424,
+              "exactly_one_positive_fraction": 0.011938202247191011,
+              "exactly_one_positive_pairs": 17
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 66192,
+              "both_positive_fraction": 0.10867121637896428,
+              "both_positive_pairs": 8121,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 33125,
+                  "both_positive_pairs": 4074,
+                  "eligible_pairs": 37377,
+                  "exactly_one_positive_pairs": 178
+                },
+                "vertical": {
+                  "both_negative_pairs": 33067,
+                  "both_positive_pairs": 4047,
+                  "eligible_pairs": 37353,
+                  "exactly_one_positive_pairs": 239
+                }
+              },
+              "eligible_pairs": 74730,
+              "exactly_one_positive_fraction": 0.005580088317944601,
+              "exactly_one_positive_pairs": 417
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 12890,
+              "both_positive_fraction": 0.7041120965808799,
+              "both_positive_pairs": 32311,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 6500,
+                  "both_positive_pairs": 16185,
+                  "eligible_pairs": 22985,
+                  "exactly_one_positive_pairs": 300
+                },
+                "vertical": {
+                  "both_negative_pairs": 6390,
+                  "both_positive_pairs": 16126,
+                  "eligible_pairs": 22904,
+                  "exactly_one_positive_pairs": 388
+                }
+              },
+              "eligible_pairs": 45889,
+              "exactly_one_positive_fraction": 0.014992699775545338,
+              "exactly_one_positive_pairs": 688
+            }
+          },
+          "recall": 0.7075905933550924,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.6808870434761047
+        },
+        "hann": {
+          "ap": 0.7962886493599767,
+          "auc": 0.8578052379481602,
+          "background": 38818,
+          "background_exceedance": 0.12066567056520171,
+          "background_positive_count": 4684,
+          "ink": 23898,
+          "ink_positive_count": 17930,
+          "known": 62716,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1828,
+              "both_positive_fraction": 0.10296260320543954,
+              "both_positive_pairs": 212,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 922,
+                  "both_positive_pairs": 96,
+                  "eligible_pairs": 1026,
+                  "exactly_one_positive_pairs": 8
+                },
+                "vertical": {
+                  "both_negative_pairs": 906,
+                  "both_positive_pairs": 116,
+                  "eligible_pairs": 1033,
+                  "exactly_one_positive_pairs": 11
+                }
+              },
+              "eligible_pairs": 2059,
+              "exactly_one_positive_fraction": 0.009227780475959204,
+              "exactly_one_positive_pairs": 19
+            },
+            "seam_ink": {
+              "both_negative_pairs": 419,
+              "both_positive_fraction": 0.6910112359550562,
+              "both_positive_pairs": 984,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 191,
+                  "both_positive_pairs": 506,
+                  "eligible_pairs": 710,
+                  "exactly_one_positive_pairs": 13
+                },
+                "vertical": {
+                  "both_negative_pairs": 228,
+                  "both_positive_pairs": 478,
+                  "eligible_pairs": 714,
+                  "exactly_one_positive_pairs": 8
+                }
+              },
+              "eligible_pairs": 1424,
+              "exactly_one_positive_fraction": 0.014747191011235955,
+              "exactly_one_positive_pairs": 21
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 65555,
+              "both_positive_fraction": 0.11617824167001205,
+              "both_positive_pairs": 8682,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32802,
+                  "both_positive_pairs": 4352,
+                  "eligible_pairs": 37377,
+                  "exactly_one_positive_pairs": 223
+                },
+                "vertical": {
+                  "both_negative_pairs": 32753,
+                  "both_positive_pairs": 4330,
+                  "eligible_pairs": 37353,
+                  "exactly_one_positive_pairs": 270
+                }
+              },
+              "eligible_pairs": 74730,
+              "exactly_one_positive_fraction": 0.00659708283152683,
+              "exactly_one_positive_pairs": 493
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 10951,
+              "both_positive_fraction": 0.747913443308854,
+              "both_positive_pairs": 34321,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 5536,
+                  "both_positive_pairs": 17183,
+                  "eligible_pairs": 22985,
+                  "exactly_one_positive_pairs": 266
+                },
+                "vertical": {
+                  "both_negative_pairs": 5415,
+                  "both_positive_pairs": 17138,
+                  "eligible_pairs": 22904,
+                  "exactly_one_positive_pairs": 351
+                }
+              },
+              "eligible_pairs": 45889,
+              "exactly_one_positive_fraction": 0.013445488025452723,
+              "exactly_one_positive_pairs": 617
+            }
+          },
+          "recall": 0.7502719892878065,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.7052721381187439
+        }
+      },
+      "evaluation_scroll": "PHerc0814",
+      "gate": {
+        "AP_change": -0.004616710960814396,
+        "absolute_false_background_pair_reduction": 0.005342399222923749,
+        "assessable": true,
+        "baseline_false_background_pairs": 212,
+        "checks": {
+          "AP_preserved": true,
+          "absolute_false_background_pair_reduction": false,
+          "ink_pair_recall_preserved": true,
+          "ink_recall_preserved": true,
+          "relative_false_background_pair_reduction": false,
+          "whole_background_pixel_limit": true
+        },
+        "ink_pair_recall_change": -0.028792134831460703,
+        "ink_recall_change": -0.04268139593271403,
+        "pass": false,
+        "reason": "secondary_condition_failed",
+        "relative_false_background_pair_reduction": 0.05188679245283019,
+        "whole_background_FPR_change": -0.008140553351537946
+      },
+      "representation": "float"
+    },
+    {
+      "calibration": {
+        "consensus": {
+          "allowed_background_count": 1678,
+          "background": 33575,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 1,
+          "threshold_strict_greater": 0.6808823347091675,
+          "unused_background_budget_due_to_ties": 0
+        },
+        "hann": {
+          "allowed_background_count": 1678,
+          "background": 33575,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 3,
+          "threshold_strict_greater": 0.7053921818733215,
+          "unused_background_budget_due_to_ties": 0
+        }
+      },
+      "calibration_scroll": "PHerc0841",
+      "evaluation": {
+        "consensus": {
+          "ap": 0.7423968947561401,
+          "auc": 0.8485569165760086,
+          "background": 38818,
+          "background_exceedance": 0.1125508784584471,
+          "background_positive_count": 4369,
+          "ink": 23898,
+          "ink_positive_count": 16908,
+          "known": 62716,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1840,
+              "both_positive_fraction": 0.09762020398251578,
+              "both_positive_pairs": 201,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 92,
+                  "eligible_pairs": 1026,
+                  "exactly_one_positive_pairs": 7
+                },
+                "vertical": {
+                  "both_negative_pairs": 913,
+                  "both_positive_pairs": 109,
+                  "eligible_pairs": 1033,
+                  "exactly_one_positive_pairs": 11
+                }
+              },
+              "eligible_pairs": 2059,
+              "exactly_one_positive_fraction": 0.008742107819329771,
+              "exactly_one_positive_pairs": 18
+            },
+            "seam_ink": {
+              "both_negative_pairs": 464,
+              "both_positive_fraction": 0.6622191011235955,
+              "both_positive_pairs": 943,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 219,
+                  "both_positive_pairs": 477,
+                  "eligible_pairs": 710,
+                  "exactly_one_positive_pairs": 14
+                },
+                "vertical": {
+                  "both_negative_pairs": 245,
+                  "both_positive_pairs": 466,
+                  "eligible_pairs": 714,
+                  "exactly_one_positive_pairs": 3
+                }
+              },
+              "eligible_pairs": 1424,
+              "exactly_one_positive_fraction": 0.011938202247191011,
+              "exactly_one_positive_pairs": 17
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 66190,
+              "both_positive_fraction": 0.10869797939247959,
+              "both_positive_pairs": 8123,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 33124,
+                  "both_positive_pairs": 4075,
+                  "eligible_pairs": 37377,
+                  "exactly_one_positive_pairs": 178
+                },
+                "vertical": {
+                  "both_negative_pairs": 33066,
+                  "both_positive_pairs": 4048,
+                  "eligible_pairs": 37353,
+                  "exactly_one_positive_pairs": 239
+                }
+              },
+              "eligible_pairs": 74730,
+              "exactly_one_positive_fraction": 0.005580088317944601,
+              "exactly_one_positive_pairs": 417
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 12894,
+              "both_positive_fraction": 0.7040249297217198,
+              "both_positive_pairs": 32307,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 6502,
+                  "both_positive_pairs": 16183,
+                  "eligible_pairs": 22985,
+                  "exactly_one_positive_pairs": 300
+                },
+                "vertical": {
+                  "both_negative_pairs": 6392,
+                  "both_positive_pairs": 16124,
+                  "eligible_pairs": 22904,
+                  "exactly_one_positive_pairs": 388
+                }
+              },
+              "eligible_pairs": 45889,
+              "exactly_one_positive_fraction": 0.014992699775545338,
+              "exactly_one_positive_pairs": 688
+            }
+          },
+          "recall": 0.7075069043434598,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.6808823347091675
+        },
+        "hann": {
+          "ap": 0.7579982281043406,
+          "auc": 0.8619420440249217,
+          "background": 38818,
+          "background_exceedance": 0.12066567056520171,
+          "background_positive_count": 4684,
+          "ink": 23898,
+          "ink_positive_count": 17928,
+          "known": 62716,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1828,
+              "both_positive_fraction": 0.10296260320543954,
+              "both_positive_pairs": 212,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 922,
+                  "both_positive_pairs": 96,
+                  "eligible_pairs": 1026,
+                  "exactly_one_positive_pairs": 8
+                },
+                "vertical": {
+                  "both_negative_pairs": 906,
+                  "both_positive_pairs": 116,
+                  "eligible_pairs": 1033,
+                  "exactly_one_positive_pairs": 11
+                }
+              },
+              "eligible_pairs": 2059,
+              "exactly_one_positive_fraction": 0.009227780475959204,
+              "exactly_one_positive_pairs": 19
+            },
+            "seam_ink": {
+              "both_negative_pairs": 419,
+              "both_positive_fraction": 0.6910112359550562,
+              "both_positive_pairs": 984,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 191,
+                  "both_positive_pairs": 506,
+                  "eligible_pairs": 710,
+                  "exactly_one_positive_pairs": 13
+                },
+                "vertical": {
+                  "both_negative_pairs": 228,
+                  "both_positive_pairs": 478,
+                  "eligible_pairs": 714,
+                  "exactly_one_positive_pairs": 8
+                }
+              },
+              "eligible_pairs": 1424,
+              "exactly_one_positive_fraction": 0.014747191011235955,
+              "exactly_one_positive_pairs": 21
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 65555,
+              "both_positive_fraction": 0.11617824167001205,
+              "both_positive_pairs": 8682,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32802,
+                  "both_positive_pairs": 4352,
+                  "eligible_pairs": 37377,
+                  "exactly_one_positive_pairs": 223
+                },
+                "vertical": {
+                  "both_negative_pairs": 32753,
+                  "both_positive_pairs": 4330,
+                  "eligible_pairs": 37353,
+                  "exactly_one_positive_pairs": 270
+                }
+              },
+              "eligible_pairs": 74730,
+              "exactly_one_positive_fraction": 0.00659708283152683,
+              "exactly_one_positive_pairs": 493
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 10955,
+              "both_positive_fraction": 0.7478262764496938,
+              "both_positive_pairs": 34317,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 5538,
+                  "both_positive_pairs": 17181,
+                  "eligible_pairs": 22985,
+                  "exactly_one_positive_pairs": 266
+                },
+                "vertical": {
+                  "both_negative_pairs": 5417,
+                  "both_positive_pairs": 17136,
+                  "eligible_pairs": 22904,
+                  "exactly_one_positive_pairs": 351
+                }
+              },
+              "eligible_pairs": 45889,
+              "exactly_one_positive_fraction": 0.013445488025452723,
+              "exactly_one_positive_pairs": 617
+            }
+          },
+          "recall": 0.7501883002761738,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.7053921818733215
+        }
+      },
+      "evaluation_scroll": "PHerc0814",
+      "gate": {
+        "AP_change": -0.015601333348200463,
+        "absolute_false_background_pair_reduction": 0.005342399222923749,
+        "assessable": true,
+        "baseline_false_background_pairs": 212,
+        "checks": {
+          "AP_preserved": false,
+          "absolute_false_background_pair_reduction": false,
+          "ink_pair_recall_preserved": true,
+          "ink_recall_preserved": true,
+          "relative_false_background_pair_reduction": false,
+          "whole_background_pixel_limit": true
+        },
+        "ink_pair_recall_change": -0.028792134831460703,
+        "ink_recall_change": -0.04268139593271403,
+        "pass": false,
+        "reason": "secondary_condition_failed",
+        "relative_false_background_pair_reduction": 0.05188679245283019,
+        "whole_background_FPR_change": -0.0081147921067546
+      },
+      "representation": "uint8"
+    },
+    {
+      "calibration": {
+        "consensus": {
+          "allowed_background_count": 1940,
+          "background": 38818,
+          "background_positive_count": 1940,
+          "background_tied_at_threshold_count": 1,
+          "threshold_strict_greater": 0.9997133016586304,
+          "unused_background_budget_due_to_ties": 0
+        },
+        "hann": {
+          "allowed_background_count": 1940,
+          "background": 38818,
+          "background_positive_count": 1940,
+          "background_tied_at_threshold_count": 1,
+          "threshold_strict_greater": 0.9997147917747498,
+          "unused_background_budget_due_to_ties": 0
+        }
+      },
+      "calibration_scroll": "PHerc0814",
+      "evaluation": {
+        "consensus": {
+          "ap": 0.9380790650072427,
+          "auc": 0.9495724804705338,
+          "background": 33575,
+          "background_exceedance": 0.0,
+          "background_positive_count": 0,
+          "ink": 30442,
+          "ink_positive_count": 102,
+          "known": 64017,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1709,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 838,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 838,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1709,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "seam_ink": {
+              "both_negative_pairs": 1786,
+              "both_positive_fraction": 0.0033370411568409346,
+              "both_positive_pairs": 6,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 859,
+                  "both_positive_pairs": 6,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 6
+                },
+                "vertical": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 927,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1798,
+              "exactly_one_positive_fraction": 0.0033370411568409346,
+              "exactly_one_positive_pairs": 6
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 64598,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32233,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32233,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 32365,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32365,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 64598,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 58256,
+              "both_positive_fraction": 0.0027185528408022294,
+              "both_positive_pairs": 159,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 29128,
+                  "both_positive_pairs": 79,
+                  "eligible_pairs": 29235,
+                  "exactly_one_positive_pairs": 28
+                },
+                "vertical": {
+                  "both_negative_pairs": 29128,
+                  "both_positive_pairs": 80,
+                  "eligible_pairs": 29252,
+                  "exactly_one_positive_pairs": 44
+                }
+              },
+              "eligible_pairs": 58487,
+              "exactly_one_positive_fraction": 0.0012310427958349718,
+              "exactly_one_positive_pairs": 72
+            }
+          },
+          "recall": 0.0033506339925103473,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.9997133016586304
+        },
+        "hann": {
+          "ap": 0.9361467260998665,
+          "auc": 0.9480108212568137,
+          "background": 33575,
+          "background_exceedance": 0.0,
+          "background_positive_count": 0,
+          "ink": 30442,
+          "ink_positive_count": 101,
+          "known": 64017,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1709,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 838,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 838,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1709,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "seam_ink": {
+              "both_negative_pairs": 1786,
+              "both_positive_fraction": 0.0033370411568409346,
+              "both_positive_pairs": 6,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 859,
+                  "both_positive_pairs": 6,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 6
+                },
+                "vertical": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 927,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1798,
+              "exactly_one_positive_fraction": 0.0033370411568409346,
+              "exactly_one_positive_pairs": 6
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 64598,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32233,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32233,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 32365,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32365,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 64598,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 58259,
+              "both_positive_fraction": 0.0027014550241934105,
+              "both_positive_pairs": 158,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 29129,
+                  "both_positive_pairs": 78,
+                  "eligible_pairs": 29235,
+                  "exactly_one_positive_pairs": 28
+                },
+                "vertical": {
+                  "both_negative_pairs": 29130,
+                  "both_positive_pairs": 80,
+                  "eligible_pairs": 29252,
+                  "exactly_one_positive_pairs": 42
+                }
+              },
+              "eligible_pairs": 58487,
+              "exactly_one_positive_fraction": 0.0011968471626173337,
+              "exactly_one_positive_pairs": 70
+            }
+          },
+          "recall": 0.003317784639642599,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 0.9997147917747498
+        }
+      },
+      "evaluation_scroll": "PHerc0841",
+      "gate": {
+        "assessable": false,
+        "baseline_false_background_pairs": 0,
+        "pass": false,
+        "reason": "insufficient_pair_pool_or_baseline_false_connections"
+      },
+      "representation": "float"
+    },
+    {
+      "calibration": {
+        "consensus": {
+          "allowed_background_count": 1940,
+          "background": 38818,
+          "background_positive_count": 0,
+          "background_tied_at_threshold_count": 2585,
+          "threshold_strict_greater": 1.0,
+          "unused_background_budget_due_to_ties": 1940
+        },
+        "hann": {
+          "allowed_background_count": 1940,
+          "background": 38818,
+          "background_positive_count": 0,
+          "background_tied_at_threshold_count": 2603,
+          "threshold_strict_greater": 1.0,
+          "unused_background_budget_due_to_ties": 1940
+        }
+      },
+      "calibration_scroll": "PHerc0814",
+      "evaluation": {
+        "consensus": {
+          "ap": 0.9378340196976751,
+          "auc": 0.9494606708615675,
+          "background": 33575,
+          "background_exceedance": 0.0,
+          "background_positive_count": 0,
+          "ink": 30442,
+          "ink_positive_count": 0,
+          "known": 64017,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1709,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 838,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 838,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1709,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "seam_ink": {
+              "both_negative_pairs": 1798,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 927,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1798,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 64598,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32233,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32233,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 32365,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32365,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 64598,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 58487,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 29235,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 29235,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 29252,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 29252,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 58487,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            }
+          },
+          "recall": 0.0,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 1.0
+        },
+        "hann": {
+          "ap": 0.9360094991357368,
+          "auc": 0.9479467726012231,
+          "background": 33575,
+          "background_exceedance": 0.0,
+          "background_positive_count": 0,
+          "ink": 30442,
+          "ink_positive_count": 0,
+          "known": 64017,
+          "pairs": {
+            "seam_background": {
+              "both_negative_pairs": 1709,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 838,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 838,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1709,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "seam_ink": {
+              "both_negative_pairs": 1798,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 871,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 871,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 927,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 927,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 1798,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_background": {
+              "both_negative_pairs": 64598,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 32233,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32233,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 32365,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 32365,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 64598,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            },
+            "within_cell_ink": {
+              "both_negative_pairs": 58487,
+              "both_positive_fraction": 0.0,
+              "both_positive_pairs": 0,
+              "by_axis": {
+                "horizontal": {
+                  "both_negative_pairs": 29235,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 29235,
+                  "exactly_one_positive_pairs": 0
+                },
+                "vertical": {
+                  "both_negative_pairs": 29252,
+                  "both_positive_pairs": 0,
+                  "eligible_pairs": 29252,
+                  "exactly_one_positive_pairs": 0
+                }
+              },
+              "eligible_pairs": 58487,
+              "exactly_one_positive_fraction": 0.0,
+              "exactly_one_positive_pairs": 0
+            }
+          },
+          "recall": 0.0,
+          "threshold_refit_on_evaluation_donor": false,
+          "threshold_strict_greater": 1.0
+        }
+      },
+      "evaluation_scroll": "PHerc0841",
+      "gate": {
+        "assessable": false,
+        "baseline_false_background_pairs": 0,
+        "pass": false,
+        "reason": "insufficient_pair_pool_or_baseline_false_connections"
+      },
+      "representation": "uint8"
+    }
+  ],
+  "verified_source_artifact_count": 16,
+  "wall_seconds": 4.384909226999753
+}

@@ -1,0 +1,149 @@
+{
+  "cached_official_predictor_calls": 128,
+  "checkpoint_loaded_for_review": false,
+  "exact_two_control_acquisition_scope_verified": true,
+  "fields": [
+    {
+      "actual_logits_sigmoid_match_cached_probabilities": true,
+      "all_replayed_XY_support_sha256": "5d2bafc266e711ed1e303de871e5b281fea2083d96e579dd504798bba5a34b42",
+      "all_replayed_normalized_inputs_sha256": "9e78c53a5b79253b454e0143377d879c03ca2f94a8303ee0bd4e108d2de58dfa",
+      "fully_supported_common_cells": 65536,
+      "historical_direct_forward_support_dtype": "torch.bool; identical 0/1 values, converted to float inside Hecate",
+      "historical_unmasked_central_metric_deltas": {
+        "ap": -1.1102230246251565e-16,
+        "auc": -4.891935745376941e-10,
+        "recall_at_background_5pct": 0.0
+      },
+      "new_method_gate_pass": true,
+      "official_Hann_core_array_sha256": "0e47685f94e51a01f390000bdcb507f20319ff8c40f8bd583c87b5faa252fae4",
+      "official_Hann_uint8_core_bytewise_equal": true,
+      "official_predictor_cached_logit_calls": 64,
+      "official_predictor_support_dtypes": [
+        "torch.uint8"
+      ],
+      "representations": {
+        "float": {
+          "checks": {
+            "ap_noninferiority": true,
+            "field_recall_noninferiority": true,
+            "seam_background_pair_limit": true,
+            "seam_ink_gain": true,
+            "within_cell_ink_noninferiority": true
+          },
+          "hann_minus_central": {
+            "ap": 0.0033033822992062367,
+            "recall_at_background_5pct": 0.006044280927665735,
+            "seam_background": 0.008191925102399064,
+            "seam_ink": 0.06229143492769751,
+            "within_cell_ink": 0.005009660266384053
+          },
+          "pass": true
+        },
+        "uint8": {
+          "checks": {
+            "ap_noninferiority": true,
+            "field_recall_noninferiority": true,
+            "seam_background_pair_limit": true,
+            "seam_ink_gain": true,
+            "within_cell_ink_noninferiority": true
+          },
+          "hann_minus_central": {
+            "ap": 0.0037322253607169342,
+            "recall_at_background_5pct": 0.006307075750607627,
+            "seam_background": 0.008191925102399064,
+            "seam_ink": 0.06229143492769751,
+            "within_cell_ink": 0.0053687144151691735
+          },
+          "pass": true
+        }
+      },
+      "retained_arrays_verified": 18,
+      "reverse_normalized_input_and_support_checks": 64,
+      "scroll": "PHerc0841"
+    },
+    {
+      "actual_logits_sigmoid_match_cached_probabilities": true,
+      "all_replayed_XY_support_sha256": "5d2bafc266e711ed1e303de871e5b281fea2083d96e579dd504798bba5a34b42",
+      "all_replayed_normalized_inputs_sha256": "09895dbeacfea1b71bf40e0c134f31140fb35867eb468b332d90f6c586b4b892",
+      "fully_supported_common_cells": 65536,
+      "historical_direct_forward_support_dtype": "torch.bool; identical 0/1 values, converted to float inside Hecate",
+      "historical_unmasked_central_metric_deltas": {
+        "ap": 0.0,
+        "auc": 0.0,
+        "recall_at_background_5pct": 0.0
+      },
+      "new_method_gate_pass": false,
+      "official_Hann_core_array_sha256": "d3837115adfc846eb88592e41c833fb8ebb8f481bd18563b57ad418f965846c7",
+      "official_Hann_uint8_core_bytewise_equal": true,
+      "official_predictor_cached_logit_calls": 64,
+      "official_predictor_support_dtypes": [
+        "torch.uint8"
+      ],
+      "representations": {
+        "float": {
+          "checks": {
+            "ap_noninferiority": true,
+            "field_recall_noninferiority": true,
+            "seam_background_pair_limit": false,
+            "seam_ink_gain": true,
+            "within_cell_ink_noninferiority": true
+          },
+          "hann_minus_central": {
+            "ap": 0.002515305570313431,
+            "recall_at_background_5pct": 0.011841995146037343,
+            "seam_background": 0.011170471102476931,
+            "seam_ink": 0.0547752808988764,
+            "within_cell_ink": 0.01667066181437815
+          },
+          "pass": false
+        },
+        "uint8": {
+          "checks": {
+            "ap_noninferiority": true,
+            "field_recall_noninferiority": true,
+            "seam_background_pair_limit": true,
+            "seam_ink_gain": false,
+            "within_cell_ink_noninferiority": true
+          },
+          "hann_minus_central": {
+            "ap": 0.014538901174354857,
+            "recall_at_background_5pct": 0.0,
+            "seam_background": 0.0,
+            "seam_ink": 0.0,
+            "within_cell_ink": 0.0
+          },
+          "pass": false
+        }
+      },
+      "retained_arrays_verified": 18,
+      "reverse_normalized_input_and_support_checks": 64,
+      "scroll": "PHerc0814"
+    }
+  ],
+  "freeze_reference": "7bb9cd9d02cef0ed2c95fc694da90a5a2c09481c",
+  "frozen_experiment_files_verified": 6,
+  "limitations": [
+    "Cached actual logits are checked against saved probabilities, but the trained network is not independently rerun.",
+    "Historical complete input hashes bind CT reconstruction; this checker does not independently repeat CT regridding.",
+    "Source hashes verify retained acquisition objects, not an immutable atomic snapshot of the mutable bucket.",
+    "Thresholds and dependent pixel pairs are descriptive development metrics; no new letters, independent glyph truth or unread-scroll generalisation follows.",
+    "The old native-detail advancement decision remains failed; this review cannot authorize unread-region work."
+  ],
+  "maximum_scalar_float_difference": 3.3306690738754696e-16,
+  "metrics_module_imported": false,
+  "network_requests_by_reviewer": 0,
+  "new_method_gate_pass": false,
+  "numeric_and_exact_scalar_comparisons": 1035,
+  "old_native_resolution_gate_changed": false,
+  "pinned_dependencies_verified": 6,
+  "protocol_sha256": "7d526dde69ce4da4f7cbde9787ddd89efaf0b9a7053242599bb51227a5044dd9",
+  "real_model_forwards_by_reviewer": 0,
+  "retained_application_body_bytes": 729502573,
+  "retained_arrays_verified": 36,
+  "retained_assets_verified": 207,
+  "review_wall_seconds": 9.585443763000058,
+  "reviewer_sha256": "577f79af2936f9dd357234a3451f4d07cbff69b4a27ab6ee7db5cbd7c4a0efc6",
+  "run_result_sha256": "c3757843f13d7dc93f0e10b8600abd9905772ef45d61785db524b6d313a0ced1",
+  "schema": "scrollprize.hecate-blending.independent-review.v1",
+  "status": "pass"
+}
