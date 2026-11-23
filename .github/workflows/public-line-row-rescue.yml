@@ -1,0 +1,39 @@
+name: Published-line fourth-slot row-rescue comparison
+on:
+  push:
+    branches: [claude/firstletters-colab]
+    paths:
+      - firstletters-colab/row_rescue/trigger.txt
+permissions:
+  contents: read
+jobs:
+  public-cpu-mask-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU-only dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84' 'Pillow==11.1.0'
+      - name: Test deterministic row selector before any public data
+        run: python firstletters-colab/row_rescue/test_compare.py -v
+      - name: Acquire the original verified public control corpus outside Git
+        run: python firstletters-colab/line_controls/prepare.py --output-dir /tmp/public-row-rescue-controls
+      - name: Compare exact masked published-row coverage at four-band budget
+        run: |
+          python firstletters-colab/row_rescue/compare.py \
+            --data /tmp/public-row-rescue-controls \
+            --output /tmp/row-rescue-result.json
+      - name: Preserve receipt even if later steps fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: row-rescue-public-cpu-receipt
+          path: /tmp/row-rescue-result.json
+          if-no-files-found: warn
+          retention-days: 30
