@@ -29,9 +29,9 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 72.0901,
-    "meshes_screened": 14,
-    "two_family_followups": 5,
+    "total_unique_valid_ct_cm2": 75.9988,
+    "meshes_screened": 15,
+    "two_family_followups": 6,
     "candidates_found": 0
   },
   "meshes": [
@@ -737,6 +737,98 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Scattered 128px tile-grid mottle with low face asymmetry (1.87x) and low strokeness (1.16); visual inspection confirms zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z8736_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9087,
+      "on_sheet_after_snap": 0.975,
+      "f_parallel": 0.9588,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1147.55,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.89018,
+          "p995": 0.90764,
+          "max": 0.94624,
+          "frac_gt_05": 0.098059,
+          "frac_gt_07": 0.055067
+        },
+        "studio_asc": {
+          "p99": 0.73619,
+          "p995": 0.79236,
+          "max": 0.90484,
+          "frac_gt_05": 0.043774,
+          "frac_gt_07": 0.014011
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.9009,
+        "on_sheet_after_snap": 0.9996,
+        "f_parallel": 0.975,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 2044.14,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 58,
+        "studio_desc": {
+          "p99": 0.91728,
+          "p995": 0.92417,
+          "max": 0.94869,
+          "frac_gt_05": 0.202722,
+          "frac_gt_07": 0.126999
+        },
+        "studio_asc": {
+          "p99": 0.60933,
+          "p995": 0.69051,
+          "max": 0.86111,
+          "frac_gt_05": 0.023928,
+          "frac_gt_07": 0.00469
+        },
+        "ahn_s0_asc": {
+          "p99": 0.66265,
+          "p995": 0.72401,
+          "max": 0.8491,
+          "frac_gt_05": 0.032645,
+          "frac_gt_07": 0.007018
+        },
+        "ahn_s0_desc": {
+          "p99": 0.8335,
+          "p995": 0.84801,
+          "max": 0.88865,
+          "frac_gt_05": 0.092973,
+          "frac_gt_07": 0.036868
+        },
+        "adversarial_depth_and_orientation_check": {
+          "variants_tested": 9,
+          "depth_shifts_vx": [
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "spatial_modes": [
+            "orig",
+            "flip_lr",
+            "flip_ud",
+            "rot180"
+          ],
+          "max_q34_score": 0.007359,
+          "passes_q34_bar_count": 0,
+          "verdict": "ARTIFACT_OR_WIDE_BLOB_CONFIRMED"
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Row of 1.5-2.5 mm rounded blobs hugging the lower valid-mesh step edge and a vertical papyrus seam; 9-variant adversarial depth sweep (dz in -6..+6) and mirror/rot180 check + Q34 Stroke-Bounded TFCE (max q34_score=0.0074, 0/9 passing Q34 bar) confirm boundary/seam artifact with zero Greek letter strokes."
     }
   ]
 }
