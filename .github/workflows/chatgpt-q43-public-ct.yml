@@ -1,0 +1,32 @@
+name: Q43 public native CT digital injection
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-q43-public-ct.yml
+permissions:
+  contents: read
+jobs:
+  q43-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded CPU dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'scipy==1.12.0'
+      - name: Test Q43 implementation
+        run: python firstletters-colab/adaptive_surface_recovery/highz_injection/run.py --self-test
+      - name: Fetch hash-pinned native public W00 data
+        run: python firstletters-colab/depth_recentering/fetch_native.py --output /tmp/q43-public-ct
+      - name: Execute frozen digital injection
+        run: python firstletters-colab/adaptive_surface_recovery/highz_injection/run.py --data /tmp/q43-public-ct/pherc0841_native.npy --output /tmp/q43-receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q43-public-ct-receipt
+          path: /tmp/q43-receipt.json
+          retention-days: 30
