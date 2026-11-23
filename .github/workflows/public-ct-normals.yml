@@ -1,0 +1,29 @@
+name: Public CT normal and tangential displacement
+on:
+  push:
+    branches:
+      - codex/registration-normals
+    paths:
+      - .github/workflows/public-ct-normals.yml
+permissions: {}
+jobs:
+  local-orientations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Fetch the frozen public analysis
+        run: |
+          git init study
+          git -C study fetch --depth=1 https://github.com/JorisViaudQuantAI/Scrollprize.git 13612ab4266527e5de5b376b2e469fd921201dce
+          git -C study checkout --detach FETCH_HEAD
+          test "$(git -C study rev-parse HEAD)" = 13612ab4266527e5de5b376b2e469fd921201dce
+      - name: Validate the synthetic geometry
+        working-directory: study
+        run: |
+          node --version
+          node registration-checks/local-normals/synthetic.cjs
+      - name: Measure anatomical directions and projection magnitudes
+        working-directory: study
+        run: |
+          node registration-checks/local-normals/run.cjs "$RUNNER_TEMP/annular-normals"
+          sha256sum "$RUNNER_TEMP/annular-normals/local-normals/summary.json" "$RUNNER_TEMP/annular-normals/local-normals/sites.json"
