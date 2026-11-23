@@ -1,0 +1,32 @@
+{
+  "schema": "scrollprize.coalesced-public-control-protocol.v1",
+  "status": "frozen before any new HTTP request or outcome",
+  "date": "2026-11-23",
+  "hypothesis": "A gap-coalesced complete Hecate 9.6um input-sized CT box requires fewer partial-object requests than row-wise retrieval while preserving every requested voxel. This is transport validation, not an ink assay.",
+  "selection": "Reuse the earlier SHA-pinned public PHerc0841 chunk without viewing CT. Choose the interior 16x64x64 box solely by chunk layout; all three policies on the identical box. Existing full-chunk result is old evidence; this coalesced experiment has no observed new responses at freeze.",
+  "shape_zyx": [65, 128, 128],
+  "box_zyx": [20, 20, 20, 36, 84, 84],
+  "expected_roi_rows": 1024,
+  "expected_roi_bytes": 65536,
+  "source": {
+    "url": "https://huggingface.co/buckets/scrollprize/datasets/resolve/ink/841/auto_grown_20260220144552896/auto_grown_20260220144552896.zarr/0/0.17.75",
+    "bytes": 1064960,
+    "sha256": "94a67b09ecb71d4fbfe05cfba14bdd8156748cc0eade2e3a74321db2bb71911b"
+  },
+  "fixed_order": ["whole_reference", "within_plane", "across_planes"],
+  "policies": [
+    {"name": "within_plane", "max_gap_bytes": 64, "expected_requests": 16, "expected_body_bytes": 130048},
+    {"name": "across_planes", "max_gap_bytes": 8256, "expected_requests": 1, "expected_body_bytes": 253888}
+  ],
+  "offline_only_unrun_policy": {"name": "literal_rows", "max_gap_bytes": 0, "expected_requests": 1024, "expected_body_bytes": 65536, "reason": "Unacceptably many HTTP calls; geometry prediction only"},
+  "decision": "Both partial policies must yield all 65,536 ROI voxels exactly equal to independently hashed full source; all expected 206 and ETag guards must pass; preserve any failure and do not fall back or retry.",
+  "limits": {
+    "max_application_body_bytes": 1500000,
+    "max_requests_including_redirects": 24,
+    "soft_wall_seconds": 360,
+    "request_timeout_seconds_in_reused_client": 25,
+    "retries": 0,
+    "maximum_redirects_per_request_in_reused_client": 3
+  },
+  "reporting": "Only aggregate timings, application-read bytes, request statuses, hashes and failure types. Never publish CT arrays, source byte slices, output coordinates outside this known public object, signed redirects, unread images or manuscript candidates. Do not claim a time advantage from one fixed sequence."
+}
