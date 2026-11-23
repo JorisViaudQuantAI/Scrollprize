@@ -1,0 +1,190 @@
+{
+  "CNN_forwards": 0,
+  "CT_arrays_opened": 0,
+  "all_original_background_cells_and_positives_retained": true,
+  "compared_scalar_count": 1103,
+  "consumed_assets_receipt_sha256": "5164ff0e9e899b3fd20fff2e20d79decaae348d23919132989c1215bc503cf1e",
+  "diagnostic_result_sha256": "06234c7b7a0255a0f17b421644c73a632b8a1b1d3473c9008857a771fa9ee493",
+  "fields": [
+    {
+      "all_background_positive_counts": {
+        "cross_float": 0,
+        "cross_q8": 0,
+        "float_ge_0_99": 0,
+        "own_float": 1678,
+        "own_q8": 1678,
+        "q8_equal_one": 0
+      },
+      "all_fixed_radius_bins_recomputed": true,
+      "all_geometry_and_partition_checks_match": true,
+      "all_original_totals_retained": true,
+      "counts": {
+        "background": 33575,
+        "ink": 30442,
+        "known": 64017
+      },
+      "independent_method": {
+        "all_possible_tested_radius_centres_inside_frozen_halo": true,
+        "enumerated_offsets_per_axis": [
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "integer_coordinate_unit_um": 0.02,
+        "omitted_nearest_possible_axis_distance_um": 88.92,
+        "source_centres_considered_per_query": 361
+      },
+      "scroll": "PHerc0841",
+      "uncensored_far_from_all_observed_boundaries": {
+        "background_denominator": 23321,
+        "category": "beyond_76.8um_from_all_observed_boundaries_uncensored",
+        "endpoints": {
+          "cross_float": {
+            "positive_count": 0,
+            "positive_rate": 0.0,
+            "share_of_all_endpoint_positives": null
+          },
+          "cross_q8": {
+            "positive_count": 0,
+            "positive_rate": 0.0,
+            "share_of_all_endpoint_positives": null
+          },
+          "float_ge_0_99": {
+            "positive_count": 0,
+            "positive_rate": 0.0,
+            "share_of_all_endpoint_positives": null
+          },
+          "own_float": {
+            "positive_count": 483,
+            "positive_rate": 0.020710947214956477,
+            "share_of_all_endpoint_positives": 0.28784266984505363
+          },
+          "own_q8": {
+            "positive_count": 483,
+            "positive_rate": 0.020710947214956477,
+            "share_of_all_endpoint_positives": 0.28784266984505363
+          },
+          "q8_equal_one": {
+            "positive_count": 0,
+            "positive_rate": 0.0,
+            "share_of_all_endpoint_positives": null
+          }
+        }
+      }
+    },
+    {
+      "all_background_positive_counts": {
+        "cross_float": 4684,
+        "cross_q8": 4684,
+        "float_ge_0_99": 3334,
+        "own_float": 1940,
+        "own_q8": 0,
+        "q8_equal_one": 2603
+      },
+      "all_fixed_radius_bins_recomputed": true,
+      "all_geometry_and_partition_checks_match": true,
+      "all_original_totals_retained": true,
+      "counts": {
+        "background": 38818,
+        "ink": 23898,
+        "known": 62716
+      },
+      "independent_method": {
+        "all_possible_tested_radius_centres_inside_frozen_halo": true,
+        "enumerated_offsets_per_axis": [
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "integer_coordinate_unit_um": 0.02,
+        "omitted_nearest_possible_axis_distance_um": 88.92,
+        "source_centres_considered_per_query": 361
+      },
+      "scroll": "PHerc0814",
+      "uncensored_far_from_all_observed_boundaries": {
+        "background_denominator": 27979,
+        "category": "beyond_76.8um_from_all_observed_boundaries_uncensored",
+        "endpoints": {
+          "cross_float": {
+            "positive_count": 2203,
+            "positive_rate": 0.07873762464705672,
+            "share_of_all_endpoint_positives": 0.47032450896669514
+          },
+          "cross_q8": {
+            "positive_count": 2203,
+            "positive_rate": 0.07873762464705672,
+            "share_of_all_endpoint_positives": 0.47032450896669514
+          },
+          "float_ge_0_99": {
+            "positive_count": 1399,
+            "positive_rate": 0.05000178705457665,
+            "share_of_all_endpoint_positives": 0.4196160767846431
+          },
+          "own_float": {
+            "positive_count": 733,
+            "positive_rate": 0.026198220093641658,
+            "share_of_all_endpoint_positives": 0.37783505154639174
+          },
+          "own_q8": {
+            "positive_count": 0,
+            "positive_rate": 0.0,
+            "share_of_all_endpoint_positives": null
+          },
+          "q8_equal_one": {
+            "positive_count": 1016,
+            "positive_rate": 0.03631294899746238,
+            "share_of_all_endpoint_positives": 0.39031886285055706
+          }
+        }
+      }
+    }
+  ],
+  "glyph_arrays_images_or_actual_alpha_opened": false,
+  "inherited_gates_unchanged": true,
+  "maximum_float_difference": 0.0,
+  "method": "Exhaustive original-label cell offsets; Fraction-derived physical centres in1/50um units; exact squared comparisons; independent complete count partitions",
+  "nearest_neighbour_tree_used": false,
+  "new_network_requests": 0,
+  "peak_rss_kib": 151304,
+  "production_runner_or_helpers_imported": false,
+  "reviewer_sha256": "49899dd40015ca660f50e865771af15260f845eee8c9b5f9dfc4326448b2e0a4",
+  "schema": "scrollprize.background-distance-independent-review.v1",
+  "source_files_verified_unchanged": 17,
+  "source_freeze_reference": "5b48d79fde5a41f8239b8548f1609d4349de70ff",
+  "status": "verified",
+  "threads": 1,
+  "true_ink_adjudication": false,
+  "wall_seconds": 0.8225803550003548
+}
