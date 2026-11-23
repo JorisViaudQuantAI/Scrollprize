@@ -87,6 +87,15 @@ class NotebookSchemaTests(unittest.TestCase):
         self.assertIn("PHERC1203_CLEAN", p1203)
         self.assertIn("snap_passes=2", p1203)
         self.assertIn("require_gate(GATE_REVIEWED)", p1203)
+        p0191 = _source(_cells(nb, "pherc0191"))
+        self.assertIn("PHERC0191_WINDINGS", p0191)
+        self.assertIn("PHERC0191_BASE", p0191)
+        self.assertIn("snap_passes=2", p0191)
+        self.assertIn("require_gate(GATE_REVIEWED)", p0191)
+        ids = [c["id"] for c in nb["cells"]]
+        self.assertEqual(ids.index("pherc0191"), ids.index("pherc0191-md") + 1)
+        self.assertLess(ids.index("pherc1203"), ids.index("pherc0191"))
+        self.assertLess(ids.index("pherc0191"), ids.index("burst"))
         burst = _source(_cells(nb, "burst"))
         self.assertIn("run_burst()", burst)
         self.assertIn("verify_upstream_gpu_burst.py", _source(_cells(nb, "helpers")))
@@ -119,6 +128,32 @@ class HelperTests(unittest.TestCase):
         self.assertEqual(args.out_private_dir, Path("/content/scrollprize_private"))
         self.assertLessEqual(args.vram_fraction, 0.9)
         self.assertFalse(args.uv_crop)
+
+    def test_pherc0191_command_parses_with_real_screener_cli(self):
+        ns = self.ns
+        meshes = [f"{ns['PHERC0191_BASE']}/{m}" for m in ns["PHERC0191_WINDINGS"]]
+        cmd = ns["build_screen_cmd"]("PHerc0191", meshes, snap_passes=2)
+        args = S.build_arg_parser().parse_args(cmd[2:])
+        self.assertEqual(args.scroll, "PHerc0191")
+        self.assertEqual(args.snap_passes, 2)
+        self.assertEqual(args.mesh, meshes)
+        self.assertEqual(args.voxel_um, 9.362)
+        self.assertIn("/PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr", args.ct_zarr)
+        self.assertIn("/PHerc0191/representations/predictions/surfaces/", args.m7_zarr)
+        self.assertTrue(args.m7_zarr.endswith("surface-m7-L0-th0.2.zarr"))
+        self.assertEqual(args.out_private_dir, Path("/content/scrollprize_private"))
+        self.assertFalse(args.uv_crop)
+
+    def test_pherc0191_windings_and_pinned_hf_mesh_source(self):
+        ns = self.ns
+        self.assertEqual(ns["PHERC0191_WINDINGS"], ("w020", "w030", "w040", "w050"))
+        self.assertRegex(ns["HF_SPIRAL_REVISION"], r"^[0-9a-f]{40}$")
+        base = ns["PHERC0191_BASE"]
+        self.assertTrue(base.startswith("https://huggingface.co/datasets/rodriguescarson/eligible-scroll-spiral-fits/resolve/"))
+        self.assertIn(ns["HF_SPIRAL_REVISION"], base)
+        self.assertIn("2026-09-15_PHerc0191_slice-11600-12400_0-patch_w90/meshes/fitted", base)
+        self.assertNotIn("/main/", base)
+        self.assertEqual(ns["SCROLLS"]["PHerc0191"]["voxel_um"], 9.362)
 
     def test_burst_command_parses_with_real_burst_cli(self):
         ns = self.ns

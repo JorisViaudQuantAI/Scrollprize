@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "method": "CPU-only m7 2x snap + onsheet_score (5 slices); no ink detector run, no ink prediction read",
+  "scrolls": [
+    {
+      "scroll": "PHerc0125",
+      "voxel_um": 9.362,
+      "num_slices": 5,
+      "snap_passes": 2,
+      "method": "CPU-only m7 snap + onsheet_score; no ink detector run",
+      "total_valid_ct_cm2": 18.6628,
+      "sheets": [
+        {
+          "rank": 1,
+          "mesh_id": "z14144_w035",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7215631115459883,
+          "valid_vertex_count": 11799,
+          "total_vertex_count": 16352,
+          "on_sheet_raw": 0.4843630816170862,
+          "on_sheet_after_snap": 0.9908466819221968,
+          "median_disp_vx": 2.159033816554667,
+          "p90_disp_vx": 7.5344146042927775,
+          "center_vs_outer_disp_diff": -0.47265607426074174,
+          "onsheet_score": {
+            "tiles": 195,
+            "f_parallel": 0.9846,
+            "f_drift": 0.0,
+            "f_still": 0.0154,
+            "response_median": -0.029,
+            "shift_median_confident": 1.1,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 4.0123
+        },
+        {
+          "rank": 2,
+          "mesh_id": "z10544_w035",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.6722413793103448,
+          "valid_vertex_count": 11697,
+          "total_vertex_count": 17400,
+          "on_sheet_raw": 0.29084380610412924,
+          "on_sheet_after_snap": 0.9957253996751304,
+          "median_disp_vx": 3.923316006923349,
+          "p90_disp_vx": 7.598457682487631,
+          "center_vs_outer_disp_diff": 1.5555542695328217,
+          "onsheet_score": {
+            "tiles": 188,
+            "f_parallel": 0.984,
+            "f_drift": 0.0106,
+            "f_still": 0.0053,
+            "response_median": -0.01,
+            "shift_median_confident": 2.59,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 3.9752
+        },
+        {
+          "rank": 3,
+          "mesh_id": "z8736_w035",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.6542577413479053,
+          "valid_vertex_count": 11494,
+          "total_vertex_count": 17568,
+          "on_sheet_raw": 0.2690969201322429,
+          "on_sheet_after_snap": 0.9831216286758309,
+          "median_disp_vx": 4.319629513485252,
+          "p90_disp_vx": 9.948358649553029,
+          "center_vs_outer_disp_diff": 1.092340144771185,
+          "onsheet_score": {
+            "tiles": 194,
+            "f_parallel": 0.9536,
+            "f_drift": 0.0258,
+            "f_still": 0.0206,
+            "response_median": 0.009,
+            "shift_median_confident": 1.51,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 3.9087
+        },
+        {
+          "rank": 4,
+          "mesh_id": "z15936_w030",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7212912087912088,
+          "valid_vertex_count": 10502,
+          "total_vertex_count": 14560,
+          "on_sheet_raw": 0.49352504284898113,
+          "on_sheet_after_snap": 0.9552466196914874,
+          "median_disp_vx": 1.9654719877689577,
+          "p90_disp_vx": 7.96155550804915,
+          "center_vs_outer_disp_diff": -0.044537160762458505,
+          "onsheet_score": {
+            "tiles": 178,
+            "f_parallel": 0.9494,
+            "f_drift": 0.0449,
+            "f_still": 0.0056,
+            "response_median": 0.001,
+            "shift_median_confident": 4.08,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 3.5699
+        },
+        {
+          "rank": 5,
+          "mesh_id": "z6944_w030",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.6885245901639344,
+          "valid_vertex_count": 9408,
+          "total_vertex_count": 13664,
+          "on_sheet_raw": 0.4326105442176871,
+          "on_sheet_after_snap": 0.9580144557823129,
+          "median_disp_vx": 2.4911500251197767,
+          "p90_disp_vx": 8.849287603081558,
+          "center_vs_outer_disp_diff": 0.7858595163115791,
+          "onsheet_score": {
+            "tiles": 165,
+            "f_parallel": 0.8848,
+            "f_drift": 0.0485,
+            "f_still": 0.0667,
+            "response_median": 0.014,
+            "shift_median_confident": 1.06,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 3.1967
+        }
+      ],
+      "rankings": {
+        "by_onsheet_f_parallel": [
+          "z14144_w035",
+          "z10544_w035",
+          "z8736_w035",
+          "z15936_w030",
+          "z6944_w030"
+        ],
+        "by_on_sheet_after_snap": [
+          "z10544_w035",
+          "z14144_w035",
+          "z8736_w035",
+          "z6944_w030",
+          "z15936_w030"
+        ],
+        "by_valid_ct_cm2": [
+          "z14144_w035",
+          "z10544_w035",
+          "z8736_w035",
+          "z15936_w030",
+          "z6944_w030"
+        ]
+      },
+      "source": {
+        "mesh_source": "pscamillo/vesuvius-eligible-meshes",
+        "mesh_revision": "66000516c97e043b696ce874f145e29638109c91",
+        "mesh_selection": "Tier-1 untouched windings; z14144_w045 skipped (already screened)",
+        "mesh_license_note": null
+      }
+    },
+    {
+      "scroll": "PHerc0191",
+      "voxel_um": 9.362,
+      "num_slices": 5,
+      "snap_passes": 2,
+      "method": "CPU-only m7 snap + onsheet_score; no ink detector run",
+      "total_valid_ct_cm2": 9.8004,
+      "sheets": [
+        {
+          "rank": 1,
+          "mesh_id": "w030",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7514478764478765,
+          "valid_vertex_count": 6228,
+          "total_vertex_count": 8288,
+          "on_sheet_raw": 0.390815671162492,
+          "on_sheet_after_snap": 0.9450867052023122,
+          "median_disp_vx": 3.6223119521411835,
+          "p90_disp_vx": 9.487769164806984,
+          "center_vs_outer_disp_diff": -0.5562697116282616,
+          "onsheet_score": {
+            "tiles": 92,
+            "f_parallel": 0.8152,
+            "f_drift": 0.1848,
+            "f_still": 0.0,
+            "response_median": 0.028,
+            "shift_median_confident": 3.48,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 2.1151
+        },
+        {
+          "rank": 2,
+          "mesh_id": "w020",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7567857142857143,
+          "valid_vertex_count": 4238,
+          "total_vertex_count": 5600,
+          "on_sheet_raw": 0.3050967437470505,
+          "on_sheet_after_snap": 0.899952807928268,
+          "median_disp_vx": 3.9102764404379635,
+          "p90_disp_vx": 10.198362495332569,
+          "center_vs_outer_disp_diff": -0.8571026956885892,
+          "onsheet_score": {
+            "tiles": 64,
+            "f_parallel": 0.8125,
+            "f_drift": 0.1562,
+            "f_still": 0.0312,
+            "response_median": 0.023,
+            "shift_median_confident": 2.96,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 1.4355
+        },
+        {
+          "rank": 3,
+          "mesh_id": "w050",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7393586005830903,
+          "valid_vertex_count": 10144,
+          "total_vertex_count": 13720,
+          "on_sheet_raw": 0.4004337539432177,
+          "on_sheet_after_snap": 0.9226143533123028,
+          "median_disp_vx": 3.4683454647419985,
+          "p90_disp_vx": 10.309820888055782,
+          "center_vs_outer_disp_diff": -0.1113358605334942,
+          "onsheet_score": {
+            "tiles": 153,
+            "f_parallel": 0.8105,
+            "f_drift": 0.1634,
+            "f_still": 0.0261,
+            "response_median": 0.038,
+            "shift_median_confident": 3.23,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 3.4534
+        },
+        {
+          "rank": 4,
+          "mesh_id": "w040",
+          "uv_crop": null,
+          "valid_vertex_fraction": 0.7447425670775925,
+          "valid_vertex_count": 8216,
+          "total_vertex_count": 11032,
+          "on_sheet_raw": 0.36830574488802337,
+          "on_sheet_after_snap": 0.9150438169425511,
+          "median_disp_vx": 3.801768144239815,
+          "p90_disp_vx": 10.020162970700726,
+          "center_vs_outer_disp_diff": 0.09711143048613735,
+          "onsheet_score": {
+            "tiles": 126,
+            "f_parallel": 0.754,
+            "f_drift": 0.2063,
+            "f_still": 0.0397,
+            "response_median": 0.031,
+            "shift_median_confident": 3.02,
+            "layers": 5,
+            "mid": 2,
+            "dk": 2
+          },
+          "valid_ct_cm2": 2.7964
+        }
+      ],
+      "rankings": {
+        "by_onsheet_f_parallel": [
+          "w030",
+          "w020",
+          "w050",
+          "w040"
+        ],
+        "by_on_sheet_after_snap": [
+          "w030",
+          "w050",
+          "w040",
+          "w020"
+        ],
+        "by_valid_ct_cm2": [
+          "w050",
+          "w040",
+          "w030",
+          "w020"
+        ]
+      },
+      "source": {
+        "mesh_source": "rodriguescarson/eligible-scroll-spiral-fits",
+        "mesh_revision": "63c641ba1dc794073208c24f7f88fa59c4f77621",
+        "mesh_selection": "run 2026-09-15 slice-11600-12400 (w90), fitted windings w020/w030/w040/w050",
+        "mesh_license_note": "CC BY-NC 4.0 (Carson Rodrigues); author publishes these meshes as unvalidated geometry"
+      }
+    }
+  ]
+}
