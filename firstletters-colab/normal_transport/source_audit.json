@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "review_kind": "pinned-source-only geometry audit; no real transform parameters or manuscript arrays inspected",
+  "revision": "8f5a55d030497f834c0a8e2737444c06a4c97d44",
+  "sources": [
+    {
+      "path": "gemini_lane/paris4_crust_1129.py",
+      "bytes": 62477,
+      "sha256": "d3319bf746acbfcf6381fe6c4d62314750161eec81c35f0c6abea4685b89440c",
+      "url": "https://github.com/JorisViaudQuantAI/Scrollprize/blob/8f5a55d030497f834c0a8e2737444c06a4c97d44/gemini_lane/paris4_crust_1129.py",
+      "relevant_function_lines": {
+        "evaluate_1129_crust_tile": [
+          579,
+          791
+        ]
+      }
+    },
+    {
+      "path": "gemini_lane/paris4_dual_energy.py",
+      "bytes": 148911,
+      "sha256": "04e517facf9e52d660d80a5abb4612376be1704509788a4919e67b7d260a9027",
+      "url": "https://github.com/JorisViaudQuantAI/Scrollprize/blob/8f5a55d030497f834c0a8e2737444c06a4c97d44/gemini_lane/paris4_dual_energy.py",
+      "relevant_function_lines": {
+        "apply_affine_vectors": [
+          275,
+          284
+        ],
+        "eval_tps_displacement": [
+          320,
+          357
+        ],
+        "map_points_affine_and_tps": [
+          360,
+          370
+        ]
+      }
+    },
+    {
+      "path": "gemini_lane/test_paris4_crust_1129.py",
+      "bytes": 17162,
+      "sha256": "a899ed746383ef61de48b597a875b545102ed822e4ae895d9bc012d24ae66b99",
+      "url": "https://github.com/JorisViaudQuantAI/Scrollprize/blob/8f5a55d030497f834c0a8e2737444c06a4c97d44/gemini_lane/test_paris4_crust_1129.py",
+      "relevant_function_lines": {}
+    }
+  ],
+  "actual_point_map": "F(x) = A x + b + d_TPS(x); TPS displacement is evaluated on the input x and added in the output frame.",
+  "not_the_same_map": "A (x + d_TPS(x)) + b is different in general and is not what the inspected function implements.",
+  "actual_normal_expression": "normalize(A n), implemented by apply_affine_vectors(..., normalize=True)",
+  "actual_use": "e_n_tgt is passed as the slab sampling direction. Integration must first choose whether to preserve a transported source ray or construct a perpendicular target sheet normal.",
+  "geometric_sheet_normal": "normalize(J_F(x)^(-T) n); equivalently normalize(cofactor(J_F(x)) n) when det(J_F)>0.",
+  "transported_ray_or_tangent": "J_F(x) v, followed by normalization only when a unit direction is desired; this is not a target sheet normal in general.",
+  "positive_similarity_caveat": "For a positive similarity without a varying nonlinear residual, A n has the same direction as the geometric inverse-transpose result. No anisotropic/sheared actual affine or nonzero actual angular error was established.",
+  "derivative_omission": "The inspected normal/ray code does not differentiate the TPS displacement. Whether its derivative is materially nonzero at any actual sampled location was not measured.",
+  "unit_contract": "The new helper requires consistently handed orthonormal Cartesian physical frames in micrometres for input and output. An anisotropic voxel point map requires explicit source and destination physical-scale wrappers and physical-coordinate source normals.",
+  "scope_limits": [
+    "The new helper is standalone; Gemini code and existing frozen files are unchanged.",
+    "Generated geometry accuracy does not establish manuscript registration accuracy, correct sheet identity or ink improvement.",
+    "A fitted map can contain noise; differentiating that fit correctly does not make it a correct physical deformation.",
+    "Positive local determinants and step checks do not certify global injectivity or absence of unsampled folds."
+  ],
+  "new_ct_bytes": 0,
+  "model_forwards": 0,
+  "actual_transform_parameters_loaded": false
+}

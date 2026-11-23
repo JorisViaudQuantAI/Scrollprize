@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "passed_generated_geometry_only",
+  "scope": "Geometric target sheet normals; not a transported-ray implementation, manuscript validation or ink improvement.",
+  "seed": 20261123,
+  "test_count": 15,
+  "test_failures": 0,
+  "test_errors": 0,
+  "python_version": "3.12.14",
+  "numpy_version": "2.3.5",
+  "elapsed_check_seconds": 0.15151150000019697,
+  "peak_rss_kib_linux": 31376,
+  "cases": [
+    {
+      "case": "positive_similarity",
+      "points": 24,
+      "corrected_max_angular_error_degrees": 2.3205908701874777e-09,
+      "old_affine_vector_max_angular_error_degrees": 2.3133885854932617e-09,
+      "old_affine_vector_median_angular_error_degrees": 6.260122321434759e-10,
+      "minimum_jacobian_determinant": 4.9129999999949305,
+      "maximum_jacobian_condition": 1.0000000000009905,
+      "maximum_normal_step_change_degrees": 3.026619686905627e-11,
+      "mapped_point_evaluations": 456
+    },
+    {
+      "case": "anisotropic_scale_and_shear",
+      "points": 24,
+      "corrected_max_angular_error_degrees": 0.0,
+      "old_affine_vector_max_angular_error_degrees": 63.43494882292201,
+      "old_affine_vector_median_angular_error_degrees": 63.43494882292201,
+      "minimum_jacobian_determinant": 0.9999999999992255,
+      "maximum_jacobian_condition": 5.21076977274933,
+      "maximum_normal_step_change_degrees": 0.0,
+      "mapped_point_evaluations": 456
+    },
+    {
+      "case": "affine_plus_generated_smooth_displacement",
+      "points": 24,
+      "corrected_max_angular_error_degrees": 1.1743108462731259e-07,
+      "old_affine_vector_max_angular_error_degrees": 24.906999467529488,
+      "old_affine_vector_median_angular_error_degrees": 11.050475749687745,
+      "minimum_jacobian_determinant": 1.1505011763259565,
+      "maximum_jacobian_condition": 1.6181974302333662,
+      "maximum_normal_step_change_degrees": 3.516122996023825e-07,
+      "mapped_point_evaluations": 456
+    }
+  ],
+  "package_file_sha256": {
+    "README.md": "30359b6a16bab59822cafe42d5dff897558f56e86f0bc8a8094694dd8f82f376",
+    "__init__.py": "1ec98527f04b002b8d55d17182771053994030a1477d4381527bece81c76ce2c",
+    "generated_review.py": "c42f57855db41dbeed6f9a41b5a2dde30f1afd8d06f6cf76d7ce4692b30c1acf",
+    "source_audit.json": "2a6a5ddc0ed3762b50b8f7e98201ad0ab685567b73d67037f8bc3292f5402efa",
+    "test_transport.py": "6de84f57887ce0ae4bd51cbf314060b3de59103a9739a8ee683c283c5a364bb0",
+    "transport.py": "4b2a45792dd73e1b7f7342c4e0e44023fd14f6aaa033033530e52472a5ca8ef6"
+  },
+  "ct_payload_bytes": 0,
+  "model_forwards": 0,
+  "network_requests": 0,
+  "real_transform_parameters_loaded": false
+}

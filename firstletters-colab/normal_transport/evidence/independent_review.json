@@ -1,0 +1,74 @@
+{
+  "schema": "scrollprize.normal-transport-independent-review.v1",
+  "status": "pass_after_stencil_guard",
+  "scope": "Generated identity and analytic nonlinear maps only; no manuscript transform, CT, model or glyph output used.",
+  "initial_failure": {
+    "point_um": [
+      [
+        1572864.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "source_normal": [
+      [
+        1.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "point_map": "F(x)=x",
+    "step_um": 1.1641532182693481e-09,
+    "observed_accepted": true,
+    "observed_jacobian": [
+      [
+        [
+          0.8,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    ],
+    "normal_error_degrees": 6.340191745909906,
+    "jacobian_coarse_change": 0.19999999999999996,
+    "jacobian_fine_change": 0.0,
+    "cause": "Nominal h/2 and h/4 have equal fractional rounding along the large coordinate; using nominal denominators can produce stable but wrong Jacobians."
+  },
+  "initial_analytic_case": {
+    "map": "F(x,y,z)=(2x+0.5y,y,z+0.1x^2)",
+    "maximum_normal_absolute_error": 3.2834845953289005e-14,
+    "mapped_point_evaluations": 57
+  },
+  "source_before_fix_sha256": "4a0d899ed654d5e68b3e58289ec70e464b3bec37f363d1f31c516c9c6c2b9352",
+  "source_after_fix_sha256": "4b2a45792dd73e1b7f7342c4e0e44023fd14f6aaa033033530e52472a5ca8ef6",
+  "corrected_identity_case": {
+    "rejected": true,
+    "reason": "actual finite-difference spacing differs from nominal step; sample indices [0]",
+    "stencil_relative_tolerance": 1e-08
+  },
+  "corrected_analytic_case": {
+    "maximum_normal_absolute_error": 3.2834845953289005e-14,
+    "acceptance_absolute_tolerance": 1e-10,
+    "map_calls": 19,
+    "mapped_point_evaluations": 57,
+    "determinants": [
+      1.999999999999872,
+      2.000000000000272,
+      2.0000000000000497
+    ]
+  },
+  "new_independent_checks": 2,
+  "source_unchanged_during_review": true,
+  "wall_seconds": 0.013987794000058784,
+  "scope_limit": "Numerical local differentiation/normal-transport checks on two generated maps only. No guarantee of true manuscript registration, global injectivity or physical face identification. Caller must choose usable physical finite-difference steps."
+}

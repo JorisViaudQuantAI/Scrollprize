@@ -1,0 +1,88 @@
+{
+  "schema": "scrollprize.profilometry-metadata-preflight.v1",
+  "inspection_date_utc": "2026-11-23",
+  "scope": "Public repository metadata, text configurations and HTTP HEAD only; no image, label or height-data body downloaded",
+  "dataset": "scrollprize/profilometer",
+  "revision": "a806bead2f3b9100c20e19de37814fb285cfeefd",
+  "repository_url": "https://huggingface.co/datasets/scrollprize/profilometer/tree/a806bead2f3b9100c20e19de37814fb285cfeefd",
+  "tree_url": "https://huggingface.co/api/datasets/scrollprize/profilometer/tree/a806bead2f3b9100c20e19de37814fb285cfeefd?recursive=true&limit=1000",
+  "public": true,
+  "gated": false,
+  "stated_dataset_license": "CC BY-NC 4.0",
+  "tree_file_count": 74,
+  "tree_advertised_bytes": 4460520403,
+  "groups": {
+    "normalized_height_tiff": {"file_count": 14, "advertised_bytes": 642189298},
+    "ink_label_png": {"file_count": 14, "advertised_bytes": 1464771},
+    "normalized_height_and_label": {"file_count": 28, "advertised_bytes": 643654069},
+    "calibrated_height_txt": {"file_count": 14, "advertised_bytes": 2853542350}
+  },
+  "sampling": {
+    "release_reported_lateral_um_per_pixel": 0.68793625,
+    "paper_reported_lateral_um_per_pixel": 0.34,
+    "discrepancy_notice_date": "2026-09-03",
+    "discrepancy_resolved_in_inspected_card": false,
+    "physically_correct_pitch_determined_by_this_review": false
+  },
+  "inventory": {
+    "separate_raw_validity_mask_found": false,
+    "standalone_training_code_found": false,
+    "model_checkpoint_found": false,
+    "claim_scope": "Inspected pinned file tree only; not proof that no release exists elsewhere"
+  },
+  "metadata_body_sha256": {
+    "manifest.csv": "cfdadaca5e34f310f3c758dfbec6ac460179af6604888e08ff97f64ed41445af",
+    "configs/sampling.json": "3ebc6c41dd7bfa38f885543c46674ebfdc1e4ba350993c3b4d1722c56549efd3",
+    "configs/experiment.json": "3c75128564e676981eb490df155c112d537984480cd5065f48854d034d6f76b7",
+    "folds/splits_final.json": "fa82a0e845139ca27b941551f37e3984d626905cc160fdedadf858cb4fc038e5"
+  },
+  "head_checked_sample": {
+    "papyrus": "PHerc. 250",
+    "sample": "κ",
+    "manifest_reported_shape_yx": [5354, 5361],
+    "resolve_base_url": "https://huggingface.co/datasets/scrollprize/profilometer/resolve/a806bead2f3b9100c20e19de37814fb285cfeefd/",
+    "files": [
+      {
+        "path": "data/pherc0250/κ.txt",
+        "advertised_bytes": 244686183,
+        "advertised_lfs_sha256": "eba73fe88cfd918bb582da838859f961b86ffe848924c5309f21092f9536c983",
+        "head_http_status": 200,
+        "head_content_length": 244686183,
+        "body_bytes_read": 0,
+        "body_sha256_independently_verified": false
+      },
+      {
+        "path": "data/pherc0250/κ_z.tif",
+        "advertised_bytes": 57408414,
+        "advertised_lfs_sha256": "fff7ca866e76ad2d8dd748a60ae6cdcee951913f760d8f477816db928f4c2814",
+        "head_http_status": 200,
+        "head_content_length": 57408414,
+        "body_bytes_read": 0,
+        "body_sha256_independently_verified": false
+      },
+      {
+        "path": "data/pherc0250/κ_stack.tif",
+        "advertised_bytes": 86110344,
+        "advertised_lfs_sha256": "ed325c602631cf1f0effdc5bf37c9a21f0ae3f0f235ee7cd8928cb4d51328701",
+        "head_http_status": 200,
+        "head_content_length": 86110344,
+        "body_bytes_read": 0,
+        "body_sha256_independently_verified": false
+      },
+      {
+        "path": "data/pherc0250/κ_label.png",
+        "advertised_bytes": 134672,
+        "advertised_lfs_sha256": "ddc49413077e9464d3c08ca172d9a20e13874a673aeb9428a4a563f5df75188d",
+        "head_http_status": 200,
+        "head_content_length": 134672,
+        "body_bytes_read": 0,
+        "body_sha256_independently_verified": false
+      }
+    ]
+  },
+  "dataset_body_bytes_downloaded": 0,
+  "new_detector_forwards": 0,
+  "training_steps": 0,
+  "normalized_only_experiment_executed": false,
+  "decision": "Defer normalized-only inverse-roughness association until source validity can be accounted for; retain pixel units while lateral pitch remains unresolved"
+}
