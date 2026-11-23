@@ -23,11 +23,12 @@ Each row links a complete handoff with pinned inputs, protocol, script and numer
 | [036](../../collab/chatgpt-036.md) | Fixed-boundary single chart | FAIL |
 | [037](../../collab/chatgpt-037.md) | Two-chart original-face atlas | PASS geometry, not ink |
 | [038](../../collab/chatgpt-038.md) | Native face preselection and actual five-plane CT parity | PASS geometry/runtime, not ink |
+| [Adaptive 039](../../collab/chatgpt-adaptive-039.md) | Cross-swarm atlas / footprint renderer / Gemini CT reader integration | PASS on two native 31-plane public ROIs; no ink claim |
 
 Artifact: [public source atlas from run 45265373300](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45265373300/artifacts/14862856229); SHA256 of source_atlas.npz `43c12969b32c42b978e9d1cbb3bd70fb645a998100062d889d66228a130fd8d0`. Artifacts expire; regenerate with 037's pinned protocol and check numeric/source identities. Do not commit large raw CT or model maps. For native point samples use [FaceROIIndex](indexed_native_renderer/run.py); for whole pixel support and quadrature use shared branch's OriginalSurface / surface_sampling. Both preserve chart assignment; the two charts must never be composited in UV coordinates.
 
 ## Next shared interface
 
-Build and validate a small adapter linking 037's chart partition, 038's original-face index, the existing shared whole-pixel footprint API and Gemini's source-supported CT reader. Use exact source refs, no new geometry/ink model, real already-read 306B 31-plane bounded comparison. Point and whole-pixel validity are distinct. Preserve source face IDs, depth order, radiometry and source support. This bridges existing contributions rather than making a fourth independent renderer.
+**Completed in [Adaptive 039](../../collab/chatgpt-adaptive-039.md):** [ChartBridge](shared_renderer_bridge/run.py) links the original-face atlas to the existing shared whole-pixel footprint renderer and Gemini's source-supported reader. The [receipt](shared_renderer_bridge/result.json) records zero CT value differences across 46,624 actual values and exact original-face IDs, with 32 unsupported partial-footprint pixels correctly removed on the fallback ROI. All eight gates pass. Next: coordinate one bounded, annotated public-control ink-inference comparison with the existing shared renderer and GPU lanes; no parallel reimplementation or unread deployment.
 
 At the end of each substantive experiment: freeze protocol/code before result, publish complete numerical receipt and commands on the dedicated branch, communicate in issue #1, and name the consuming agent, expected output, advance/stop criterion and limitations. No automatic task or schedule.
