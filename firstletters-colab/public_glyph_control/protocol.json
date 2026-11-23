@@ -1,0 +1,232 @@
+{
+  "schema": "scrollprize.public-glyph-control.v1",
+  "purpose": "A separately frozen native2.4um complete-published-glyph development control, independent of the stitch-comparison decision. No unread inference, adaptation, automatic reading or promotion.",
+  "pins": {
+    "prior_receipt_sha256": [],
+    "selection_sha256": "d69fc05cde575d147fcca23645ca80db84eb86eb93ab4eee3a7dc1cf1921899e"
+  },
+  "dependency_sha256": {
+    "firstletters-colab/native_resolution/run.py": "f5d1fd5ab2bd781f4f524c6b375ac0e7469bdb2825a68784c2fa29496dca7377",
+    "firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59"
+  },
+  "checkpoint": {
+    "required_local_file": true,
+    "new_download_allowed": false,
+    "bytes": 522656918,
+    "sha256": "fa2de3827ebd247ff2d33df1b6f899ea79d5269036cf16765997c62f0e9988c7",
+    "provenance_url": "https://huggingface.co/scrollprize/hecate/resolve/9cb86e500e944b11a06a7020403cde5dffb5bcb2/hecate_2.4um.pth"
+  },
+  "source": {
+    "shape_zyx": [
+      109,
+      51000,
+      39980
+    ],
+    "chunks_zyx": [
+      109,
+      128,
+      128
+    ],
+    "dtype": "|u1",
+    "order": "C",
+    "compressor": null,
+    "filters": null,
+    "fill_value": 0,
+    "dimension_separator": "/",
+    "spacing_um_zyx": [
+      2.4,
+      2.4,
+      2.4
+    ],
+    "metadata": [
+      {
+        "suffix": "0/.zarray",
+        "bytes": 208,
+        "sha256": "4f072b6aafa70c17d218c471821bf3f464eef53b590aa2137b4b342b54f086c9"
+      },
+      {
+        "suffix": ".zattrs",
+        "bytes": 3399,
+        "sha256": "cf95285c9f7a7ff4752abf533647d5fca0145daed9e7e0db1d4e6c0ca2da8576"
+      }
+    ],
+    "chunk_array_path": "0",
+    "all_chunks_mandatory": true,
+    "complete_chunk_bytes": 1785856,
+    "complete_chunk_count": 289,
+    "complete_chunk_body_bytes": 516112384,
+    "metadata_and_chunk_body_bytes": 516115991,
+    "retained_source_z_halfopen": [
+      22,
+      87
+    ],
+    "retained_shape_zyx": [
+      65,
+      2048,
+      2048
+    ],
+    "missing_chunk_policy": "abort; never fill or skip",
+    "resampling": "none; native L0 uint8 integer samples"
+  },
+  "inference": {
+    "tile_zyx": [
+      64,
+      256,
+      256
+    ],
+    "stride_yx": [
+      128,
+      128
+    ],
+    "batch_size": 1,
+    "cpu_threads": 4,
+    "inter_op_threads": 1,
+    "orders": [
+      "source",
+      "reverse"
+    ],
+    "forwards_per_order": 225,
+    "fixture_forwards": 450,
+    "official_predict_precision_argument": "fp32",
+    "assembly": "unchanged pinned hecate.predict: nonperiodic separable normalized Hann floored0.001, source support mask, float-logit sigmoid, uint8 rounding after assembly",
+    "normalization": "divide by200, no clipping, no per-image contrast normalization",
+    "output_quantization": "round(clip(probability,0,1)*255), unchanged official predictor",
+    "source_z_halfopen_by_order": {
+      "source": [
+        22,
+        86
+      ],
+      "reverse": [
+        23,
+        87
+      ]
+    },
+    "retained_z_halfopen_by_order": {
+      "source": [
+        0,
+        64
+      ],
+      "reverse": [
+        1,
+        65
+      ]
+    },
+    "reverse_full_depth_before_central_selection": true,
+    "source_order_is_not_recto_claim": true
+  },
+  "precision_pilot": {
+    "enabled": true,
+    "development_check_only": true,
+    "warmup_forwards": 0,
+    "fixed_order": [
+      {
+        "scroll": "PHerc0841",
+        "precision": "bf16"
+      },
+      {
+        "scroll": "PHerc0841",
+        "precision": "fp32"
+      },
+      {
+        "scroll": "PHerc0814",
+        "precision": "fp32"
+      },
+      {
+        "scroll": "PHerc0814",
+        "precision": "bf16"
+      }
+    ],
+    "first_unwarmed_forward": "PHerc0841 bf16; no claim of a stable speed benchmark",
+    "input_shape_zyx": [
+      64,
+      1152,
+      1152
+    ],
+    "tile_yx_halfopen": [
+      0,
+      256,
+      0,
+      256
+    ],
+    "order": "reverse",
+    "pilot_forwards": 4,
+    "full_score_max_abs_error_inclusive": 0.005,
+    "full_score_mean_abs_error_inclusive": 0.0005,
+    "timing_rule": "meanBF16seconds < meanFP32seconds",
+    "requires_both_donors_numerical_pass": true,
+    "fallback": "fp32; do not change gates or repeat pilots",
+    "exceptions": "A pilot execution failure aborts; a completed numerical or timing gate failure falls back to fp32.",
+    "score_contract": "sigmoid(logits.float()) before support masking, matching released predict",
+    "fp32_projection": "elapsed plus450times worst observedFP32 pilot forward; descriptive only, fixed7200s cap remains",
+    "inputs": {
+      "PHerc0841": {
+        "fine_context_sha256": "cd3f15527da7601ce069bb62929757849e3760cff20d0a399f1876996b1a5982"
+      },
+      "PHerc0814": {
+        "fine_context_sha256": "34508c1cf6b3f0d04b8d413a6badbc52e58f04e71ed5f5c8b0e83e25dd9c00cf"
+      }
+    },
+    "adapter": "A small nn.Module wraps the unchanged frozen model in CPU autocast(bfloat16) only when the gate passes; official predict and its fp32 argument stay unchanged."
+  },
+  "limits": {
+    "new_body_bytes": 550000000,
+    "requests_including_redirects": 400,
+    "maximum_forwards": 454,
+    "peak_rss_soft_kib": 6815744,
+    "whole_run_wall_seconds": 7200,
+    "download_workers": 4,
+    "network_retries": 0
+  },
+  "evaluation": {
+    "primary": "Visual complete-glyph recovery against the already-published human reading, assessed after both images exist; allow unreadable/ambiguous and no automatic order choice.",
+    "known_training_exposure": true,
+    "expected_complete_glyph": "Ν",
+    "column": -8,
+    "line": 5,
+    "claimed_new_reading": false,
+    "pixel_auc": false,
+    "unread_promotion": false,
+    "training_steps": 0,
+    "expected_text_used_as_model_input": false,
+    "neither_order_may_be_discarded": true
+  },
+  "runtime_estimate": {
+    "fp32_seconds_per_forward_reference": 10.5,
+    "fixture_fp32_seconds_reference": 4725,
+    "pilot_fp32_equivalent_seconds_reference": 42,
+    "interpretation": "Approximately79min fixture inference, typically85–100min total if acquisition is normal; no guarantee and no GPU timing claim."
+  },
+  "archive": {
+    "enabled": true,
+    "same_fixture_forwards_only": true,
+    "model_features_archived": false,
+    "pre_collapse_logits_per_order_shape": [
+      225,
+      62,
+      64,
+      64
+    ],
+    "raw_attention_scores_per_order_shape": [
+      225,
+      62,
+      64,
+      64
+    ],
+    "actual_2d_probability_per_order_shape": [
+      225,
+      256,
+      256
+    ],
+    "array_dtype": "float32",
+    "raw_array_bytes_both_orders": 1032192000,
+    "maximum_additional_disk_bytes": 2000000000,
+    "minimum_free_disk_bytes": 3000000000,
+    "metadata": [
+      "depth_coordinate_scale",
+      "model_input_order_to_source_depth_mapping",
+      "fixed_rowmajorXYtile_grid"
+    ],
+    "instrumentation": "A features_logits wrapper returns the identical tuple after copying emitted logits; a nonmutating attn_conv hook copies rawscores before coordinatebias; top-levelhook copies actualfloat-logit sigmoid. No new model forward, architecture, weights or featuretensor archive.",
+    "evaluation": "No depth alternative or outcome is selected in this run. Independently reconstruct the actual2Dscore from archived logits, attention, depthcoordinate and input-derivedsupport before later analyses."
+  }
+}

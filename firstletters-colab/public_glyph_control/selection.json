@@ -1,0 +1,107 @@
+{
+  "schema": "scrollprize.public-glyph-selection.v1",
+  "scroll": "PHercParis4",
+  "segment": "20231210121321",
+  "source_base": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHercParis4/segments/20231210121321/surface-volumes/2.4um-0.22m-78keV-volume-20260411134726.zarr",
+  "core": {
+    "origin_yx": [
+      10240,
+      13696
+    ],
+    "shape_yx": [
+      1920,
+      1920
+    ],
+    "end_yx_exclusive": [
+      12160,
+      15616
+    ],
+    "millimetres_yx": [
+      4.608,
+      4.608
+    ]
+  },
+  "context": {
+    "origin_yx": [
+      10176,
+      13632
+    ],
+    "shape_yx": [
+      2048,
+      2048
+    ],
+    "end_yx_exclusive": [
+      12224,
+      15680
+    ],
+    "millimetres_yx": [
+      4.9152,
+      4.9152
+    ],
+    "halo_pixels_each_side": 64
+  },
+  "human_reference": {
+    "article": "Nicolardi et al., The final columns of PHerc.Paris.4 revealed through virtual unwrapping, Cronache Ercolanesi54(2024),9-27",
+    "primary_record_url": "https://www.iris.unina.it/handle/11588/985203",
+    "accessible_author_copy": "https://www.academia.edu/125007883/THE_FINAL_COLUMNS_OF_PHERC_PARIS_4_REVEALED_THROUGH_VIRTUAL_UNWRAPPING",
+    "column": -8,
+    "line": 5,
+    "published_word": "γείνεϲθαι",
+    "expected_complete_glyph": "Ν",
+    "letter_index_one_based_in_published_word": 4,
+    "reading_certainty_in_edition": "Word printed without underdots or restoration brackets; exact edition line5 also identified in introductory orthography discussion.",
+    "mapping_status": "Our visual collation of multiple surrounding words and the specific printed word identifies column−8,line5; no publisher-provided per-letter bounding box exists in sources inspected."
+  },
+  "expected_complete_glyph_count": 1,
+  "selection_basis": "Published official gallery and its canonical public S3 detector image, matched to already-published human transcription. No new CT or model results used.",
+  "canonical_published_image": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHercParis4/segments/20231210121321/ink-detection/downsampled/PHercParis4-20231210121321-2.4um-0.22m-78keV-volume-20260411134726-20260417190342-new_canon_autoresearch_recipe-tile256-stride128-ds8.jpg",
+  "canonical_image_sha256": "8fdf696eb72be2bbb5c54d49014613c9f6a8727d8203ea375ece0f83c204208c",
+  "canonical_image_width_height": [
+    4998,
+    6375
+  ],
+  "official_gallery_image": "https://raw.githubusercontent.com/ScrollPrize/villa/main/scrollprize.org/static/img/data_browser/readings/paris4_ink.jpg",
+  "official_gallery_sha256": "4f1500e3c682e6a5415f8bf2f54ee29c7a6182c6afc4ff2834304d7be3bbe387",
+  "official_gallery_width_height": [
+    1800,
+    2296
+  ],
+  "canonical_ds8_core_xyxy": [
+    1712,
+    1280,
+    1952,
+    1520
+  ],
+  "canonical_ds8_context_xyxy": [
+    1704,
+    1272,
+    1960,
+    1528
+  ],
+  "gallery_mapping": {
+    "orientation": "identity",
+    "bicubic_resize_interior_pearson": 0.9996624642838134,
+    "bicubic_resize_interior_mae_8bit": 1.2231850624084473,
+    "comparison_box_gallery_xyxy": [
+      400,
+      120,
+      1600,
+      2200
+    ],
+    "best_reflected_pearson": 0.16795703945371282,
+    "source_to_thumbnail": "Nominal factor8, supported by ds8 filename and ceiling-divided dimensions; exact thumbnail pixel-center convention not recovered."
+  },
+  "limitations": [
+    "Human transcription is based on historical machine-produced renders and scholarly review, not physical optical access.",
+    "Hecate has Paris4 teacher/training exposure; no generalization or independentheldout claim.",
+    "Public metadata and matching filenames do not recover the exact historical rendering command or certify sheet/normal correctness.",
+    "Old7.91um mask canvas12489x15839 is not converted to the newfineUV by a proven simple spacingratio."
+  ],
+  "not_final_column": true,
+  "review": {
+    "automatic_reading_or_order_selection": false,
+    "required": "Review both fixed-scale full-glyph images, permit abstention, and distinguish visibly supported strokes from known expected text.",
+    "no_pixel_auc_against_published_detector": true,
+    "no_glyph_redrawing_or_expected_text_prior": true
+  }
+}
