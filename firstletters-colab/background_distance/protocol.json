@@ -1,0 +1,260 @@
+{
+  "schema": "scrollprize.background-distance-protocol.v1",
+  "status": "Freeze exact four files publicly before opening retained predictions for this diagnostic",
+  "date": "2026-11-23",
+  "question": "Where do existing background-labelled positive and saturated Hann scores lie relative to original annotation boundaries?",
+  "interpretation": "Exploratory disagreement diagnosis on two already observed development fields; no true-ink adjudication, independent generalisation, label repair, method selection or promotion gate",
+  "sampling": "Both complete unchanged fields from native_resolution/selection.json; no field or pixel replacement",
+  "inputs": {
+    "primary_freeze_reference": "7bb9cd9d02cef0ed2c95fc694da90a5a2c09481c",
+    "primary_result_sha256": "c3757843f13d7dc93f0e10b8600abd9905772ef45d61785db524b6d313a0ced1",
+    "primary_source_receipt_sha256": "ada22b0579058804ee8bfd551b397b4c48cda8562e28936c4f41841b5cfa1815",
+    "secondary_freeze_reference": "30edb8a1e5c325278bf9e885177fe126ab621489",
+    "secondary_result_sha256": "f5b00e3510704c4e8c7da6fe691afde4971e87dfd3c3f575a6539ead73c509c3",
+    "secondary_use": "Only already frozen cross-donor thresholds and aggregate counts; no secondary score arrays",
+    "source_label_cache": "Existing primary source_cache objects indexed by SHA256 of canonical label URL; no downloads"
+  },
+  "dependency_sha256": {
+    "firstletters-colab/transversal_lab/hecate_donor_manifest.json": "6cad423f3ac34f02d47b20fe3ca6959b98b7adc32007d49873e124f5090fab23",
+    "firstletters-colab/native_resolution/selection.json": "c3bdeb1e37b506f596af1bafab9fbd0c1bfc0271b8eed2e2ef644db8ce47b294",
+    "firstletters-colab/native_resolution/run.py": "f5d1fd5ab2bd781f4f524c6b375ac0e7469bdb2825a68784c2fa29496dca7377",
+    "firstletters-colab/hecate_blending/protocol.json": "7d526dde69ce4da4f7cbde9787ddd89efaf0b9a7053242599bb51227a5044dd9"
+  },
+  "geometry": {
+    "core_shape_yx": [
+      256,
+      256
+    ],
+    "common_pitch_um": 9.6,
+    "original_label_pitch_um": 9.36,
+    "integer_coordinate_unit_um": 0.04,
+    "common_pitch_units": 240,
+    "label_pitch_units": 234,
+    "common_centre_formula_units": "(2*(core_origin_target_axis + local_index)+1)*120",
+    "original_label_centre_formula_units": "(2*source_label_index+1)*117",
+    "categorical_mapping": "floor(common_centre_units/234), exactly floor((2*global_common_index+1)*20/39)",
+    "distance": "Euclidean distance between scoring-cell centres and original source-label centres, separately for labels 2 and 0; squared distances computed as integer coordinate differences after exact nearest-centre query",
+    "band_edges_um": [
+      9.6,
+      19.2,
+      38.4,
+      76.8
+    ],
+    "band_edges_units": [
+      240,
+      480,
+      960,
+      1920
+    ],
+    "band_names": [
+      "at_most_9.6um",
+      "over_9.6_to_19.2um",
+      "over_19.2_to_38.4um",
+      "over_38.4_to_76.8um",
+      "beyond_76.8um"
+    ],
+    "band_membership": "Upper edge inclusive; distance exactly at an edge stays in the lower band; zero distance permitted by generic geometry but cannot join distinct source categories",
+    "halo_expansion_units": 2154,
+    "halo_expansion_explanation": "76.8um radius plus one9.36um source-label-pixel guard, around the common-core outer cell boundaries; entire source-label rectangle mandatory",
+    "halo_policy": "Abort if any required original label halo is outside the pinned canvas or unavailable; never fill or erase labels",
+    "probabilities_used_to_select_geometry": false
+  },
+  "support": {
+    "eligible_background": "Exactly primary common_support AND categorical label1; all such cells enter every denominator partition and original total",
+    "meaning": "Saved common_support is the inherited all16-nonzero-fine-columns mask, not independent acquisition or physical-sheet validation",
+    "hole_distance": "Euclidean distance to unsupported common-grid cell centres inside the original256x256 scoring core, using the same five physical bands",
+    "outside_core": "Support outside the saved core mask is unobserved in this diagnostic; no CT is reread",
+    "censorship": "Flag a cell if its centre lies at most76.8um from the outer continuous boundary of the scoring core; this affects interpretation only and excludes no cell",
+    "annotation_censorship": "Both complete original-label halos are mandatory; known/unknown label distances within76.8um are not censored by the scoring crop",
+    "acquisition_provenance": "Preserve primary complete-acquisition source receipt and input identities; do not recast nonzero-column masks as acquisition support"
+  },
+  "endpoints": {
+    "own_float": "Saved float_common Hann score > unchanged own-field float cutoff",
+    "own_q8": "Saved actual fine-export-derived uint8_common Hann score > unchanged own-field Q8 cutoff",
+    "cross_float": "Saved float_common Hann score > unchanged other-donor float cutoff",
+    "cross_q8": "Saved actual fine-export-derived uint8_common Hann score > unchanged other-donor Q8 cutoff",
+    "float_ge_0_99": "Saved float_common Hann score >=0.99, compared in float64",
+    "q8_equal_one": "Saved actual uint8_common Hann score ==1.0; no new quantisation"
+  },
+  "reporting": {
+    "partitions": [
+      "distance_to_known_ink_label",
+      "distance_to_unknown_label",
+      "observed_support_hole_distance",
+      "support_distance_censorship",
+      "robust_interior_status"
+    ],
+    "robust_interior": "Distances to ink, unknown labels and observed support holes all >76.8um AND support distance not boundary-censored; other cells remain in censored or remaining categories",
+    "every_bin": [
+      "eligible background denominator",
+      "each endpoint positive count",
+      "positive count/denominator, null if denominator0",
+      "share of all endpoint positives, null if endpoint total0"
+    ],
+    "totals": "All background-labelled positives, all supported ink positives at unchanged own/cross cutoffs, and old gate objects retained; bins must sum exactly to the same original background and positive totals",
+    "forbidden": [
+      "threshold refit",
+      "label shifts or alignment optimisation",
+      "erosion-derived AP or recall",
+      "relabelling",
+      "excluded-boundary improved endpoint",
+      "alternative assembly comparison",
+      "new model selection or promotion gate",
+      "binomial significance test"
+    ],
+    "limits": "A near-boundary concentration does not distinguish annotation error from model bleeding; far-interior disagreement does not adjudicate omitted ink, large geometry errors, wrong-sheet response or model artefact",
+    "model_exposure": "Model-assisted public labels and previously used development donors; exact Hecate training/teacher exposure for these fields remains unresolved"
+  },
+  "limits": {
+    "whole_run_wall_seconds": 60,
+    "peak_rss_soft_kib": 1048576,
+    "new_network_requests": 0,
+    "new_CT_requests": 0,
+    "new_detector_forwards": 0,
+    "training_steps": 0,
+    "retries": 0,
+    "semantics": "Whole run including imports/checks; SIGALRM plus checks, with native-call cleanup potentially delaying process exit; RSS is checked between bounded stages"
+  },
+  "fields": [
+    {
+      "scroll": "PHerc0841",
+      "core_origin_target_yx": [
+        160,
+        928
+      ],
+      "original_label": {
+        "label_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-841-grow-a-approved-r000001/refined_state.png",
+        "label_sha256": "54b254d887625050e63596e8016ade073f085d38555935ddfc8c8298acdfe81b",
+        "label_size_bytes": 30940,
+        "label_format": "png",
+        "label_shape_yx": [
+          2661,
+          2136
+        ],
+        "label_pitch_um": 9.36,
+        "metadata_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-841-grow-a-approved-r000001/label.json",
+        "metadata_sha256": "5bd9e1a83bfec6ff5792d64292a6d28aeb7f4e53a56ccd54e33172b6557f53d5"
+      },
+      "label_halo_yx_halfopen": [
+        [
+          154,
+          436
+        ],
+        [
+          942,
+          1224
+        ]
+      ],
+      "label_only_preflight": "Existing categorical PNG hash/shape/encoding and whole-core mapping verified before prediction access; full282x282 source-label halo confirmed in bounds",
+      "primary_array_sha256": {
+        "labels.npy": "b5c533a1d20c42b95b3cbb605223d73b58cafa9ead571e436d278ceb7b100a03",
+        "common_support.npy": "72bf42bd9c376d68820d774b6ce353f9fd4f71523379d25ad5aca0af4510e04e",
+        "hann_float_common.npy": "b26f4f13fa10223c840a0fad28b18c3d93918d11b0c25064f0dfa811bb14c2bb",
+        "hann_uint8_common.npy": "b804f62c393e70a21842a06ff4a7be7bc179cdaab33094bd91684a2bd226a5d8"
+      },
+      "expected_counts": {
+        "known": 64017,
+        "ink": 30442,
+        "background": 33575
+      },
+      "own_cutoffs": {
+        "float": {
+          "threshold_strict_greater": 0.7052721381187439,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 1,
+          "ink_positive_count": 19004
+        },
+        "q8": {
+          "threshold_strict_greater": 0.7053921818733215,
+          "background_positive_count": 1678,
+          "background_tied_at_threshold_count": 3,
+          "ink_positive_count": 19004
+        }
+      },
+      "cross_cutoffs": {
+        "float": {
+          "threshold_strict_greater": 0.9997147917747498,
+          "background_positive_count": 0,
+          "ink_positive_count": 101,
+          "calibration_scroll": "PHerc0814"
+        },
+        "q8": {
+          "threshold_strict_greater": 1.0,
+          "background_positive_count": 0,
+          "ink_positive_count": 0,
+          "calibration_scroll": "PHerc0814"
+        }
+      }
+    },
+    {
+      "scroll": "PHerc0814",
+      "core_origin_target_yx": [
+        960,
+        992
+      ],
+      "original_label": {
+        "label_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/refined_state.png",
+        "label_sha256": "a5b080bf2a090f46a10bca780b2e19586fadf56f8da93e71f06cb9999c2ad986",
+        "label_size_bytes": 27957,
+        "label_format": "png",
+        "label_shape_yx": [
+          2628,
+          3378
+        ],
+        "label_pitch_um": 9.36,
+        "metadata_url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/a63c3796ebd13e1c70282433cdeb5c34aaa45c07/donor-continued-training-20260910/labels/source-814-approved-r000001/label.json",
+        "metadata_sha256": "1ffe5c5c2901e6bb3fc0b4cbc8a3eb1a880469b61955bcef053b3723488846db"
+      },
+      "label_halo_yx_halfopen": [
+        [
+          975,
+          1257
+        ],
+        [
+          1008,
+          1290
+        ]
+      ],
+      "label_only_preflight": "Existing categorical PNG hash/shape/encoding and whole-core mapping verified before prediction access; full282x282 source-label halo confirmed in bounds",
+      "primary_array_sha256": {
+        "labels.npy": "e0344b4d5c82f991b3e1ebdf93506e3ff45cd8d398331c8795933d66f3be0723",
+        "common_support.npy": "72bf42bd9c376d68820d774b6ce353f9fd4f71523379d25ad5aca0af4510e04e",
+        "hann_float_common.npy": "0296ff6700736662907b5dc5d9d720c6c75d5a6829fc6bd04057244ca39729d0",
+        "hann_uint8_common.npy": "a06c3194f0d178c2757440ce0e36e29053a9cd83e03d1f3610d51dc0b7572de0"
+      },
+      "expected_counts": {
+        "known": 62716,
+        "ink": 23898,
+        "background": 38818
+      },
+      "own_cutoffs": {
+        "float": {
+          "threshold_strict_greater": 0.9997147917747498,
+          "background_positive_count": 1940,
+          "background_tied_at_threshold_count": 1,
+          "ink_positive_count": 11018
+        },
+        "q8": {
+          "threshold_strict_greater": 1.0,
+          "background_positive_count": 0,
+          "background_tied_at_threshold_count": 2603,
+          "ink_positive_count": 0
+        }
+      },
+      "cross_cutoffs": {
+        "float": {
+          "threshold_strict_greater": 0.7052721381187439,
+          "background_positive_count": 4684,
+          "ink_positive_count": 17930,
+          "calibration_scroll": "PHerc0841"
+        },
+        "q8": {
+          "threshold_strict_greater": 0.7053921818733215,
+          "background_positive_count": 4684,
+          "ink_positive_count": 17928,
+          "calibration_scroll": "PHerc0841"
+        }
+      }
+    }
+  ]
+}

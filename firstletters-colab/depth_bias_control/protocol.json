@@ -1,0 +1,66 @@
+{
+  "schema": "scrollprize.depth-bias-control-protocol.v1",
+  "date": "2026-11-23",
+  "status": "Freeze before inspecting either current glyph image, any current archive array, or the checkpoint's recorded scalar value",
+  "question": "Does removing only the explicit positional depth bias change the already-published glyph projection when all input-dependent scores and3D logits remain fixed?",
+  "source_freeze": "cada2a5497a47868d8dfde68f04e1a333a7723fb",
+  "display_freeze": "5cdfe2de2deee727808d9258edb20875185ba8ca",
+  "orders": ["source", "reverse"],
+  "same_field": "Exactly the complete published Paris4 Nu fixture; both orders and all225 patches per order retained",
+  "projection": {
+    "baseline": "Actual archived checkpoint scalar alpha, read only after this freeze",
+    "counterfactual": "alpha=0 only; no temperature, uniform attention, maximum, depth selection, sign flip, fitted scalar, or additional order",
+    "unchanged": ["raw attention scores", "3D logits", "source-derived support", "depth range", "precision and operation order", "XY grid", "Hann assembly"],
+    "operation_order": "FP32 scores+alpha*((arange62-31)/31); mask−1e4; depthsoftmax; multiply support; divide supported weight sum clamped1e−8; weightedlogit sum; sigmoid; bilinear256x256 align_cornersFalse; clampFP32eps; logit; finalfloat32sigmoid",
+    "support": "From actual source union selected planes: source[0:64], reverse[1:65]. raw.any(Z) columns converted to uint8, expanded to64planes, margin1:63, max_pool3d(1,4,4).bool(); preserve original finecolumnmask in finalassembly",
+    "baseline_requirement": "All450 reconstructed actual patch probabilities must match storedfloat32 bits exactly, and both completecanonicalQ8contexts must match bytewise BEFORE any counterfactual is calculated. A nonexact baseline stops as unassessable; no tolerance relaxation.",
+    "coefficient_identity": "Require finite recorded alpha, originating dtype torch.float32, and exact scalar-byte SHA256 agreement with archive contract",
+    "precision": "No autocast in post-CNN replay. Original Torch runtime;4CPUthreads and1interopthread. Retain originating archive dtypes and actual source inference precision."
+  },
+  "depth_geometry": {
+    "source_union_original_planes_halfopen": [22,87],
+    "source_model_planes_halfopen": [22,86],
+    "reverse_model_planes_halfopen": [23,87],
+    "source_feature_planes": "23,24,...,84",
+    "reverse_feature_planes": "85,84,...,24",
+    "native_spacing_um": 2.4,
+    "diagnostic_depth_origin_source_plane": 54,
+    "mean_depth_definition": "sum(w_normalized_float64*(source_plane_index-54)*2.4) in micrometres; the published stack midpoint is not independently established as the papyrus surface",
+    "order_limit": "The two inputs have different physical slab centres by one source plane; this is not a pure reversal experiment"
+  },
+  "diagnostics": {
+    "core": "Fixed1920x1920 fine core from context[64:1984,64:1984]",
+    "probability": ["mean signed change", "mean absolute change", "maximum absolute change", "changed Q8 pixel count and fraction"],
+    "threshold": "Fixed descriptive P>0.5 only: upward means original<=0.5 and counterfactual>0.5; downward means original>0.5 and counterfactual<=0.5. Not an ink or background classification.",
+    "probability_populations": ["all core pixels", "nonempty CT columns in core, not tissue or ink truth"],
+    "attention": ["entropy in nats", "exp(entropy) effective plane count", "weighted mean physical depth relative to source plane54"],
+    "attention_arithmetic": "For diagnostics only, normalize the emitted FP32 weights in float64 over depth, then compute entropy/mean depth; diagnostic normalization never feeds the prediction",
+    "attention_population": "All supported64x64 internal positions in all225 fixed tiles for each order; overlapping tiles repeat physical positions and are not independent samples",
+    "attention_summary": "Count and fixed5th,50th,95th percentiles; no selection by predicted ink or label",
+    "meaning": "Model-weighting and output-sensitivity diagnostics only, not true ink localization, accuracy, significance or a qualifying reading"
+  },
+  "display": {
+    "dependency": "Use unchanged prediction_precision.run.fixed_display from its earlier freeze",
+    "formula": "logit clip atfloat32eps, then grey=clip((logit+8)/24,0,1); identical for both baseline/counterfactual maps and bothorders",
+    "retain": "Original Q8 source files unchanged; save separate baseline and counterfactual floatcores, Q8copies and fixeddisplay images",
+    "no_fit": "No contrast fitting, glyph score, crop selection, smoothing, morphology, redraw, or automatically preferred order"
+  },
+  "limits": {
+    "wall_seconds": 300,
+    "peak_rss_soft_kib": 1572864,
+    "network_requests": 0,
+    "new_CT_requests": 0,
+    "CNN_forwards": 0,
+    "checkpoint_loads": 0,
+    "training_steps": 0,
+    "maximum_projection_replays": 900,
+    "retries": 0
+  },
+  "dependency_sha256": {
+    "firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "firstletters-colab/public_glyph_control/run.py": "cc3fb7ae83ee891c7d749ff3ad4603bac8ea2e7e5d7adc12c4aad7a9039dd113",
+    "firstletters-colab/prediction_precision/run.py": "4e8b3d89132d2a74b4f1b1b63780b69e1a824389d80e27daf6c327d4e4d578ac"
+  },
+  "decision": "No efficacy or unread gate. Preserve a null/no-op, worsened or ambiguous outcome. Exact replay failure stops the diagnostic. All earlier source and experiment gates remain unchanged.",
+  "public_reporting": "Reviewed aggregate public-control findings only. Arrays and images remain outsideGit. No unread source, new candidate location, submission or prize claim."
+}
