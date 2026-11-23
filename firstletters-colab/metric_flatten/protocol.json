@@ -1,0 +1,46 @@
+{
+  "schema": "scrollprize.metric-flatten.protocol.v1",
+  "question": "Can a portable replay of the public 306B ARAP correction reduce the known carrier distortion while query points interpolate only through original source triangles?",
+  "design": "Retrospective engineering control. Published before/after summaries and the right-group defect were known before this protocol. No independent discovery or ink-efficacy test.",
+  "frozen_files": ["protocol.json", "source_manifest.json", "reference.py", "topology.py", "test_topology.py", "flatten.py", "experiment.py", "README.md", "LICENSE.upstream"],
+  "source_manifest_sha256": "087464bd4c3163ce7314779aa05d917dcacac5791a00280b6bc57073473f1ba2",
+  "arms": {
+    "A": "Published touch-up reconstructed before ARAP, including float32 roundtrip",
+    "B": "Unchanged published ARAP settings, rigid alignment and LinearNDInterpolator",
+    "C": "Same saved ARAP UV solution as B, inverse rasterization through original triangles only"
+  },
+  "geometry": {
+    "source_voxel_um": 8.64,
+    "spacing_voxels": 20,
+    "carrier_origin_mm": [-36, -21],
+    "region_mm": [-31, 31, -21, 16],
+    "anchor_mm": [-10, 8, -2.5, 2.5],
+    "iterations": 60,
+    "fold_weight": 0.02,
+    "fold_threshold": 1.25,
+    "fixed_vertex": "argmin(abs(U_selected)+abs(V_selected)), as published",
+    "source_components_required": 1,
+    "isolated_vertices_permitted": 0,
+    "degenerate_3d_triangles_permitted": 0,
+    "source_triangle_area_grid_units_min_exclusive": 1e-12,
+    "claim_crop_rows_half_open": [69, 151],
+    "claim_crop_columns_half_open": [109, 355]
+  },
+  "gates": {
+    "replay": {"equal_support_required": true, "max_absolute_xyz_error_voxels": 0.01, "on_failure": "Stop before C; retain A, B, target and receipt; no tolerance or parameter revision in this experiment"},
+    "retention": {"whole_baseline_support_fraction_min": 0.99, "published_claim_support_fraction_min": 0.995},
+    "right_group": {"bounds_mm": [15.5, 23.5, -2.7, 1.6], "minimum_common_four_corner_cells": 20, "median_absolute_v_stretch_error_ratio_max": 0.5, "either_axis_outside_5pct_fraction_max": 0.05, "p95_absolute_shear_degrees_max": 5},
+    "provenance": {"accepted_query_xyz_error_voxels_max": 1e-6, "arithmetic_scope": "Float64 in-memory samples before TIFF serialization; report float32 rounding separately", "accepted_negative_or_degenerate_uv_faces_max": 0, "accepted_rejection_bits_max": 0, "barycentric_sum_absolute_tolerance": 1e-9},
+    "identity": {"support_equals_vertices_incident_to_original_triangles": true, "max_absolute_xyz_error_voxels": 1e-6},
+    "support_perturbation": {"remove_source_square_side_vertices": 7, "center": "published fixed vertex in original carrier row/column", "hole_queries": "Full C valid queries whose source triangle has all three vertices removed and all barycentric weights exceed 1e-6", "minimum_hole_queries": 4, "delaunay_must_fill_all_tested_hole_queries": true, "C_must_fill_zero_tested_hole_queries": true, "interpretation": "Designed removal of support on a real public mesh, not observed manuscript damage"}
+  },
+  "metrics": {
+    "primary": "A/B/C four-corner common cells in the fixed published right group; same target-grid positions, not exact material correspondence",
+    "secondary": "Original publisher three-corner summaries in four fixed regions; full original-triangle singular values and area before/after UV on identical triangles; all flips, degeneracies, losses and per-component counts retained",
+    "diagnostic_regions_mm": {"region": [-30.5, 30.5, -20.5, 15.5], "right_group": [15.5, 23.5, -2.7, 1.6], "line_band": [-15, 12, -2.5, 2.5], "rect": [-12.2, 23.54, -6.47, 2.53]},
+    "B_C_difference": "Decoded float32 XYZ differences in common support, in source voxels and micrometres; different triangulations are not evidence of improved truth"
+  },
+  "budgets": {"wall_seconds_soft": 900, "peak_rss_bytes_soft_at_stage_boundaries": 2147483648, "cpu_threads": 4, "source_vertices_max": 100000, "source_triangles_max": 200000, "network_requests_max": 20, "response_body_bytes_max": 16000000, "retries": 0, "CNN_forwards": 0, "CT_requests": 0},
+  "decision": "All gates passing permits one bounded, matched public-known-text CT/ink comparison. Any failure retains the failed gate and blocks unattended adoption. Geometry success never establishes ink improvement, a new reading, a physical sheet face, global injectivity or prize qualification.",
+  "source_links": ["https://github.com/JorisViaudQuantAI/Scrollprize/blob/97b202d7826470624daa946c8ed948767e99cc7c/collab/claude-017.md", "https://github.com/SirProdigle/pherc0306b-first-letters/tree/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface", "https://scrollprize.org/prizes"]
+}

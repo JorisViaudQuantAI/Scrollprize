@@ -1,0 +1,195 @@
+{
+  "schema": "scrollprize.metric-flatten.sources.v1",
+  "status": "pinned public control inputs; acquire only after the runner freezes the protocol",
+  "repository": "SirProdigle/pherc0306b-first-letters",
+  "revision": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+  "license": {
+    "code": "MIT; preserve license and attribution",
+    "data": "CC BY-NC 4.0"
+  },
+  "files": [
+    {
+      "path": "submission/code/surface/inputs/carrier.npz",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/inputs/carrier.npz",
+      "bytes": 6991690,
+      "git_blob_sha1": "d3459dd9d88a735e18f2b026ee513ffe50e0ee43",
+      "sha256": "dd22701e391e8aff6a632c6b569be8a3de1059eb84ec10c44bfb4daeb2120d1f"
+    },
+    {
+      "path": "submission/code/surface/inputs/track.npz",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/inputs/track.npz",
+      "bytes": 2616982,
+      "git_blob_sha1": "fbe731a3006a0abf36b32738e6f4db1df9140ebe",
+      "sha256": "c1eba9110dbcf9508855e2e65c65bcc08c16de352c804600c38d09145644165c"
+    },
+    {
+      "path": "submission/code/surface/inputs/track_m7.npz",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/inputs/track_m7.npz",
+      "bytes": 2612101,
+      "git_blob_sha1": "24e7897136b948ba14464a31d8182f4d380e6bb9",
+      "sha256": "b727c45a44f381fbce71b8f29a1b546562d91e4aecd26d6016e98700f9607429"
+    },
+    {
+      "path": "submission/code/surface/inputs/x_z99_w074.npy",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/inputs/x_z99_w074.npy",
+      "bytes": 762568,
+      "git_blob_sha1": "14a66fc7ba4163c86cd3be1f2f2a666193ca652c",
+      "sha256": "fadf182717574128359ca2f1fdf6198268d6f098b7b1576a7ce2c874d650dddc"
+    },
+    {
+      "path": "submission/code/surface/reflatten.py",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/reflatten.py",
+      "bytes": 9170,
+      "git_blob_sha1": "21d7ca6b9a85ed1aa9e744ff06d1713dcb469723",
+      "sha256": "7d6ea7bfb7eef563c8f608f42cd65e452b54fed8f556c62f258bcb2d2281010c"
+    },
+    {
+      "path": "submission/code/surface/metric.py",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/metric.py",
+      "bytes": 3034,
+      "git_blob_sha1": "537015364fe83af62788275082e28c54c77227e4",
+      "sha256": "a0ee5421445655aadecebe007921d7811a53e54201ed5cd7bb6cca797fa1ac3b"
+    },
+    {
+      "path": "submission/code/surface/touchup.py",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/touchup.py",
+      "bytes": 5178,
+      "git_blob_sha1": "e6c1485c6deec9aef611e894fc5c9b1a17db5f4c",
+      "sha256": "33a5923e724b92b7b72f83057e61223811b16733c99803075330f27d48cd809f"
+    },
+    {
+      "path": "submission/code/surface/p1geom.py",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/p1geom.py",
+      "bytes": 11372,
+      "git_blob_sha1": "fdd9b06dbfeb1a8ecc794fc13c294cc05aa75b73",
+      "sha256": "28bc0c8595f3256757ad47d8355be8f63d352da22246243248ac10cdce41b4c4"
+    },
+    {
+      "path": "submission/code/surface/build_surface.sh",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/build_surface.sh",
+      "bytes": 3901,
+      "git_blob_sha1": "3222946ea06698f81e30a31e6933cff360c5a15f",
+      "sha256": "12f5b182a65a2eaad8d8c76b92d172294aba18e7c452c1f158364e992a426f46"
+    },
+    {
+      "path": "submission/code/surface/DECISION_touchup.json",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/code/surface/DECISION_touchup.json",
+      "bytes": 7173,
+      "git_blob_sha1": "4458e4ad25321deae9a4cfcb358a7df05f194d71",
+      "sha256": "de2955374a53be82014422d098f63f9a5088ec01954b4e0f96d5272ee3ed3112"
+    },
+    {
+      "path": "submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/x.tif",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/x.tif",
+      "bytes": 381492,
+      "git_blob_sha1": "f5931c9452a8bc994901cae2b7f23ced1de83a21",
+      "sha256": "e6f14ec22d3c5cf2b37836cbb9141bae08c55b5bc1f89f4e07c202d424d64c29"
+    },
+    {
+      "path": "submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/y.tif",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/y.tif",
+      "bytes": 381492,
+      "git_blob_sha1": "1ddbf2727dcd6c40ea70f137cd2e4f25d5273927",
+      "sha256": "60d0807ee8574cdc39f9710b9866f1c3a3e6f611357cd611e17f8deb39fd1c42"
+    },
+    {
+      "path": "submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/z.tif",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/z.tif",
+      "bytes": 381492,
+      "git_blob_sha1": "8527d1e215bd18505550df2b74b1d3dab39dc302",
+      "sha256": "243d236048a9bb04293bae77473740d479824cc551ed67a355b21199f9bd0596"
+    },
+    {
+      "path": "submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/meta.json",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/meta.json",
+      "bytes": 1606,
+      "git_blob_sha1": "042189c07920a03d7efd031f4c4c877cf71355f3",
+      "sha256": "6fbf2200e1ac55a6cef7232ee4d9098919dc8185b9204e9ea08017e58f0c1ac1"
+    },
+    {
+      "path": "submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/distortion.json",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/mesh/PHerc0306B_20250521133212_w074own_touchup_V5Rc/distortion.json",
+      "bytes": 508,
+      "git_blob_sha1": "9322113cd2fc60f3290d8c813b97ab1aa5d7fc12",
+      "sha256": "ad3e59cd6818d563715dae8b68535cf271ca9d92f2ca51e93ca72ca08464d0f2"
+    },
+    {
+      "path": "submission/SHA256SUMS",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/SHA256SUMS",
+      "bytes": 34506,
+      "git_blob_sha1": "0010525b5ac008eb1a29d42237cad5e06e0e9a81"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/LICENSE",
+      "bytes": 1086,
+      "git_blob_sha1": "d255bb76f4490383ff74c55c2addcb2fd12e2c34"
+    }
+  ],
+  "total_advertised_bytes": 14205351,
+  "input_array_bytes": 12983341,
+  "full_target_mesh_channel_bytes": 1144476,
+  "frame": {
+    "coordinate_order": "xyz",
+    "source_voxel_um": 8.64,
+    "carrier_step_voxels": 20,
+    "carrier_step_mm": 0.1728,
+    "carrier_origin_uv_mm": [
+      -36,
+      -21
+    ],
+    "published_reflatten_region_uv_mm": [
+      -31,
+      31,
+      -21,
+      16
+    ],
+    "published_anchor_uv_mm": [
+      -10,
+      8,
+      -2.5,
+      2.5
+    ],
+    "published_iterations": 60,
+    "published_fold_weight": 0.02,
+    "published_fold_threshold": 1.25
+  },
+  "input_keys": {
+    "carrier": [
+      "P",
+      "n",
+      "ok",
+      "u",
+      "v",
+      "CELL",
+      "x_z84_w074",
+      "x_z84o_w074"
+    ],
+    "track": [
+      "V0_orig"
+    ],
+    "track_m7": [
+      "V2_trackP"
+    ],
+    "x_z99": "array; cached crossing prevents private-surface fallback"
+  },
+  "upstream_entrypoints": {
+    "touchup": "touchup.py INPUTS INPUTS V5R_rightend 12,30,-4,4 OUT",
+    "reflatten": "reflatten.py OUT/V5R_rightend OUT/V5Rf_ctx --region=-31,31,-21,16 --anchor=-10,8,-2.5,2.5 --iters 60 --fold-weight 0.02 --fold-thr 1.25"
+  },
+  "portability_obstacles": [
+    "touchup.py reads originalA meta.json through p1geom.SURF; this private historical path is absent. Supply source-compatible neutral metadata without changing numerical arrays, and disclose serialization adaptation.",
+    "p1geom contains historical paths; only its load function/constants are needed for reflatten. Do not copy those private historical paths into public output.",
+    "Original reflatten LinearNDInterpolator constructs a new Delaunay tessellation; it does not restrict interpolation to original valid grid triangles.",
+    "Single fixed vertex only removes translation for one connected component; detached/isolated valid nodes can make the solve singular. Explicit component policy required.",
+    "No explicit signed UV triangle area, global overlap or source-support reject exists in original reflatten."
+  ],
+  "original_expected_metrics_source": "submission/code/surface/DECISION_touchup.json",
+  "no_ink_gain_claim": true,
+  "acquisition_limits": {
+    "max_total_body_bytes": 16000000,
+    "max_requests": 20,
+    "retries": 0,
+    "redirects": false
+  }
+}
