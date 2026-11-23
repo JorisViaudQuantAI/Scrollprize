@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "scope": "Public PHerc0139 already-read control only; model reference is a prediction proxy, not optical truth.",
+  "upstream_commit": "62b2c02c6b43675131afdf642fcf5ba6221f0970",
+  "upstream_source_paths": [
+    "gemini_lane/transverse_wavelet_oct_physics.py",
+    "gemini_lane/pherc0139_transverse_physics.py",
+    "gemini_lane/evidence/transverse_wavelet_oct_ablation.json"
+  ],
+  "source_basis": "URLs, ROI, nominal voxel size, and reference dimensions are taken from the pinned Gemini source and receipt. Zarr metadata and HTTP headers below were independently observed; no reference pixels or CT chunks were read at this preparation stage.",
+  "nominal_voxel_um": 2.399,
+  "known_gemini_roi_y0_y1_x0_x1": [
+    4224,
+    4736,
+    13312,
+    13952
+  ],
+  "zarr": {
+    "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0139/segments/20260422000000-title_2026042222_zmid_flatboi/surface-volumes/2.399um-0.22m-78keV-volume-20260102150214.zarr",
+    "array_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0139/segments/20260422000000-title_2026042222_zmid_flatboi/surface-volumes/2.399um-0.22m-78keV-volume-20260102150214.zarr/0",
+    "metadata_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0139/segments/20260422000000-title_2026042222_zmid_flatboi/surface-volumes/2.399um-0.22m-78keV-volume-20260102150214.zarr/0/.zarray",
+    "content_length": 207,
+    "etag": "\"145ce20561936c84652cf7079d165221\"",
+    "sha256": "a79f2aeb9d6af3bf5fc100202c604b4e1e177a0a7fdcb34acdaa579e72f0e083",
+    "last_modified": "Wed, 24 Jun 2026 23:25:38 GMT",
+    "metadata": {
+      "zarr_format": 2,
+      "shape": [
+        109,
+        6960,
+        20880
+      ],
+      "chunks": [
+        109,
+        128,
+        128
+      ],
+      "dtype": "|u1",
+      "compressor": null,
+      "fill_value": 0,
+      "order": "C",
+      "filters": null,
+      "dimension_separator": "/"
+    },
+    "full_chunk_bytes": 1785856,
+    "chunk_key_template": "0/{chunk_y}/{chunk_x}",
+    "chunk_identity": "No chunks fetched during preparation. Acquisition receipts record SHA-256, exact length, and returned ETag of every whole requested chunk; missing chunks cause failure, never implicit fill.",
+    "version_id_observed": "null"
+  },
+  "reference": {
+    "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0139/segments/20260422000000-title_2026042222_zmid_flatboi/ink-detection/PHerc0139-20260422000000-2.399um-0.22m-78keV-volume-20260102150214-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+    "content_length": 12608469,
+    "etag": "\"c14f3295e4348c8ee247c854baba4839-2\"",
+    "last_modified": "Thu, 25 Jun 2026 07:34:31 GMT",
+    "expected_shape_yx": [
+      6960,
+      20880
+    ],
+    "expected_pillow_mode": "L",
+    "expected_frames": 1,
+    "sha256": null,
+    "identity": "ETag and length pinned by HEAD only. Multipart ETag is an object identity token, not an asserted content digest. Whole-file SHA-256 must be recorded after authorized acquisition.",
+    "limitation": "This model-generated map supplies proxy labels only. Dimensions are checked at decode. Shared image coordinates are an upstream claim; this reader does not independently establish physical registration or optical ground truth.",
+    "version_id_observed": "null"
+  },
+  "metadata_preflight": {
+    "started_utc": "2026-11-23T19:08:32.739875+00:00",
+    "requests": 2,
+    "response_body_bytes": 207,
+    "response_body_cap_bytes": 32768,
+    "operations": [
+      {
+        "asset": "zarr_metadata",
+        "method": "GET",
+        "status": 200,
+        "body_bytes": 207
+      },
+      {
+        "asset": "reference",
+        "method": "HEAD",
+        "status": 200,
+        "body_bytes": 0
+      }
+    ],
+    "redirects": 0,
+    "retries": 0,
+    "arrays_read": false
+  },
+  "acquisition_limits": {
+    "total_response_body_bytes_including_preflight": 184549376,
+    "total_requests_including_preflight": 100,
+    "redirects": 0,
+    "retries": 0,
+    "regions": 4,
+    "region_shape_yx": [
+      512,
+      640
+    ],
+    "regions_chunk_aligned": true,
+    "maximum_unique_chunks": 80,
+    "planned_body_bytes_for_80_chunks_reference_and_metadata_plus_preflight": 155477363,
+    "planned_requests_including_preflight": 84,
+    "private_cache": "Required outside every Git working tree; cache paths are excluded from public receipts."
+  }
+}

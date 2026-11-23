@@ -1,0 +1,113 @@
+{
+  "schema": "t5-spatial-replication.protocol.v1",
+  "date": "2026-11-23",
+  "scope": "Public, previously published PHerc0139 control only; no unread-scroll location, candidate, scan, or training.",
+  "endpoint": "Agreement with the published model-made reference map; not independent ink truth, recognition, reading, or prize evidence.",
+  "question": "Do two features selected on Gemini's original development field improve fixed-polarity agreement over raw surface intensity on three previously unexamined, spatially separate label-eligible fields?",
+  "prior_information": {
+    "upstream_commit": "62b2c02c6b43675131afdf642fcf5ba6221f0970",
+    "receipt": "https://github.com/JorisViaudQuantAI/Scrollprize/blob/62b2c02c6b43675131afdf642fcf5ba6221f0970/gemini_lane/evidence/transverse_wavelet_oct_ablation.json",
+    "selected_features": "Two exploratory successes chosen from 21 upstream features, on one field. Feature polarity was originally selected using that same reference. These choices are now fixed.",
+    "known_warning": "Upstream wavelet observed AUC 0.79674 is below its shifted-label null maximum 0.81802. Its pass compared to the null mean, not a familywise error bound.",
+    "arrays_read_before_freeze": false,
+    "metadata_only_preflight": "One 207-byte Zarr metadata GET and one reference HEAD, recorded in source_manifest.json. No reference pixels or CT chunks."
+  },
+  "selection": {
+    "count": 3,
+    "alignment": 128,
+    "shape": [
+      512,
+      640
+    ],
+    "min_class_fraction": 0.2,
+    "min_nonzero_fraction": 0.9,
+    "min_gap_px": 1024,
+    "border_guard_px": 64
+  },
+  "selection_definition": "Enumerate every fully contained 128-aligned 512x640 field. Require >=20% high (179..255), >=20% low (1..64), and >=90% nonzero reference separately on the full field and the 64px-guarded core. Greedily maximize minimum squared Euclidean rectangle-gap distance from the fixed development field and previously selected fields; require gap >=1024px; ties increasing y0 then x0. Select exactly three once, before any CT or feature evaluation. No fallback, replacement, or threshold relaxation.",
+  "feature_polarities": {
+    "raw_ct_surface": 1,
+    "oct_hilbert_env_peak": 1,
+    "wst_s1_scale_slope": -1
+  },
+  "feature_definition": "Exact selected native2.399um upstream arithmetic, ported and checked against pinned original Git functions on generated arrays. 109 planes; depth sigma1; median-profile centre and +/-24 peak search; parabolic peak; unsmoothed peak+/-1 surface average; float32 peak-aligned31-point +/-15 depth waveform; Hilbert central envelope; fixed 3-scale6-orientation wavelet slope. No fitting, label normalization, additional feature search, or polarity change.",
+  "support_definition": "Require full source chunks without missing-fill. All features share legacy sheet support intersected with full +/-15 depth-profile bounds and finite feature values, then the fixed lateral guard. Zero source columns are invalid; individual zero CT voxels are not treated as missing data. No adaptive region replacement.",
+  "support_gates": {
+    "minimum_guarded_common_valid_fraction": 0.9,
+    "minimum_whole_common_valid_fraction_of_legacy_sheet": 0.9,
+    "minimum_high_count_after_guard_and_support": 10000,
+    "minimum_low_count_after_guard_and_support": 10000,
+    "failure": "Stop at first failing heldout region, save the failure and acquired data, do not replace or acquire remaining fields."
+  },
+  "replay": {
+    "bounds_y0_y1_x0_x1": [
+      4224,
+      4736,
+      13312,
+      13952
+    ],
+    "border_guard_px": 32,
+    "expected_class_counts": [
+      115503,
+      119915
+    ],
+    "expected_auc": {
+      "raw_ct_surface": 0.71484,
+      "oct_hilbert_env_peak": 0.77962,
+      "wst_s1_scale_slope": 0.79674
+    },
+    "auc_tolerance": 5e-05,
+    "require_all_columns_supported": true,
+    "failure": "Stop before any heldout CT acquisition if support, exact class counts or published rounded AUC parity fails."
+  },
+  "statistics": {
+    "seed": 20261123,
+    "null_replicates": 199,
+    "bootstrap_replicates": 199,
+    "block_size": 128
+  },
+  "statistics_definition": {
+    "auc": "Fixed-polarity exact-tie Mann-Whitney AUC on the common mask; reference0 and65..178 excluded. Three equally weighted fields, not pooled pixels.",
+    "spatial_null": "199 independent uniform unique nonzero toroidal reference translations per field; no near-identity exclusion. The same translations are used across features. For each replicate take the maximum of the two feature macro AUCs. Rank=(1+number null maxima >= observed feature macro AUC)/200. Keep geometry fixed and shift the entire reference, including excluded values.",
+    "spatial_null_interpretation": "Misalignment diagnostic only. Conditional region selection, model-made reference and nonstationarity prevent a formal FWER or significance claim.",
+    "bootstrap": "199 paired replicates; independently resample20 nonoverlapping128x128 blocks with replacement in each field, apply identical weights to all features, take equal-field macro feature-minus-raw AUC differences. Linear2.5th/97.5th percentiles. Descriptive within-field uncertainty, not donor-level generalization.",
+    "missing_class": "No dropped or redrawn observed/null/bootstrap samples. Any empty class makes the statistical assessment unassessable and every gate false. Save all draws and failures."
+  },
+  "replication_gates_per_feature": {
+    "every_heldout_field_auc_at_least": 0.7,
+    "macro_auc_improvement_over_raw_at_least": 0.05,
+    "paired_block_lower_interval_strictly_above": 0,
+    "family_max_spatial_rank_at_most": 0.05,
+    "also_require": "All three fields, development replay, support gates and every statistical replicate assessable. A pass authorizes only planning a distinct public-control validation; it does not authorize a broad unread scan or establish prize evidence."
+  },
+  "limits": {
+    "regions_including_replay": 4,
+    "maximum_unique_CT_chunks": 80,
+    "total_response_body_bytes_including_preflight": 184549376,
+    "total_requests_including_preflight": 100,
+    "planned_response_body_bytes_including_preflight": 155477363,
+    "planned_requests_including_preflight": 84,
+    "wall_seconds": 1200,
+    "peak_rss_bytes": 2147483648,
+    "rss_enforcement": "Measured at stage boundaries; stop and retain a failure if the recorded peak exceeds the limit. Not a kernel-enforced instantaneous memory bound.",
+    "numeric_threads": 1,
+    "redirects": 0,
+    "retries": 0,
+    "GPU_forwards": 0,
+    "training_updates": 0
+  },
+  "outputs": "Save complete receipts, selection including all label-eligible candidates, original feature maps, reference crops, pre-border/common/guarded masks, exact source identities and all null/bootstrap draws outside Git. Public results may include summary receipts and known-control coordinates only. No unread data is acquired.",
+  "freeze_rule": "Publish this protocol and every hashed file on the shared branch before reading reference pixels or CT chunks. Runner verifies their local bytes against both these hashes and the supplied Git freeze commit. Initial run requires new empty cache/output directories. Failures remain failures; any subsequent experiment needs its own prospectively frozen protocol.",
+  "frozen_files_sha256": {
+    "README.md": "a642b8faf23bf66c6b8077efee29cdb7ee22c1b0ea47001877dfdcda6a5cebd0",
+    "experiment.py": "7160534c88c86b0feea29554c79aee9dd6bdb15713d9059b25c0e3b2281adeb7",
+    "features.py": "7b75469067d509b471fb7a6830da8a10cfe36ed8521e62c406354ccda5fd572c",
+    "selector.py": "d6f04b47bcced9219e748a6e119f54cbc5a03987da2f8ea7a8e8763787598af8",
+    "source.py": "237ee37120b6e485cb6b2d163a06a5f9b21a225d95f6266af1b561d4197b2de5",
+    "source_manifest.json": "c2472685b164269ceee9bc4c1db7112ab020cc5cc407a00f1fe7485bb56f5a83",
+    "statistics.py": "a93c7d9ff4d967d932133964e40abe2abcf851c11d3480611f16b2ddc8f02781",
+    "test_features.py": "a1bff9eb436dc50ac56435648919c61983032f8d7957904e2c2f563af1b089b6",
+    "test_selector.py": "23e1f17384cc8fa2fffe36e2f67a40c77ea70c8b5aa6b7bfb5516588ea7c958c",
+    "test_statistics.py": "9df7eab10dd24dfe7b14385f202fc7437589d23878e4e8d943a15e9a929fe09f"
+  }
+}
