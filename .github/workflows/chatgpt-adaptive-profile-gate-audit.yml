@@ -1,0 +1,58 @@
+name: Adaptive 048 spiral profile audit
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-adaptive-profile-gate-audit.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pinned CPU dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'scipy==1.12.0' 'pillow==11.3.0' 'numcodecs==0.15.1' 'requests==2.32.5'
+      - uses: actions/download-artifact@v4
+        with:
+          name: q10-multichart-public-receipt
+          run-id: 45265373300
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/adaptive-atlas
+      - name: Retrieve exact shared and Gemini code
+        run: |
+          mkdir -p /tmp/adaptive-shared/surface_sampling /tmp/adaptive-shared/metric_flatten /tmp/adaptive-gemini
+          git fetch --no-tags --depth=1 origin f7fc619ec11f9dc95caa0c90fb2148cbf7c86ebd
+          for file in surface.py footprint.py render.py; do git show FETCH_HEAD:firstletters-colab/surface_sampling/$file > /tmp/adaptive-shared/surface_sampling/$file; done
+          git show FETCH_HEAD:firstletters-colab/metric_flatten/topology.py > /tmp/adaptive-shared/metric_flatten/topology.py
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/surface.py)" = 2f46e226afb5984d07de6bde1ef201ddc6285c07
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/footprint.py)" = 14353783aa887310e60743db523c5e2938c46a96
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/render.py)" = 18f3b5afba108d3fa65224fbac65ccc41a6d23b4
+          test "$(git hash-object /tmp/adaptive-shared/metric_flatten/topology.py)" = 03d6ee7435835643fd3b3563f08525e5d7187242
+          git fetch --no-tags --depth=1 origin 0b92a3e06d686562f0f8bfb7baa264c3e98a9ca6
+          git show FETCH_HEAD:gemini_lane/stream_snap_render.py > /tmp/adaptive-gemini/stream_snap_render.py
+          git show FETCH_HEAD:gemini_lane/grow_m7_patch.py > /tmp/adaptive-gemini/grow_m7_patch.py
+          test "$(git hash-object /tmp/adaptive-gemini/stream_snap_render.py)" = 042fee4984205615b39d669c6f01500ecdff74a3
+          test "$(git hash-object /tmp/adaptive-gemini/grow_m7_patch.py)" = 51c549f55437f57103a7e3f62483e194e3750125
+      - name: Acquire pinned legacy profile arithmetic
+        run: |
+          git fetch --no-tags --depth=1 origin ba54461e3b5075462863d21d49b0780fe3d1d66c
+          git show FETCH_HEAD:firstletters-colab/methods_ledger/code/spiral_oncheck.py > /tmp/legacy-gate.py
+          test "$(git hash-object /tmp/legacy-gate.py)" = 0462c7df258ab85a408e3e429082c3a84ba30023
+      - name: Execute frozen profile support and reversal audit
+        run: |
+          atlas="$(find /tmp/adaptive-atlas -name source_atlas.npz -type f)"
+          test -f "$atlas"
+          python firstletters-colab/adaptive_surface_recovery/profile_gate_audit/run.py --atlas "$atlas" --shared /tmp/adaptive-shared/surface_sampling --gemini /tmp/adaptive-gemini --legacy /tmp/legacy-gate.py --output /tmp/adaptive-048.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-048-profile-gate-receipt
+          path: /tmp/adaptive-048.json
+          retention-days: 30
