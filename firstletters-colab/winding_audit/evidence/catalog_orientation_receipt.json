@@ -1,0 +1,145 @@
+{
+  "url": "https://vesuvius-challenge-open-data.s3.amazonaws.com/metadata.json",
+  "retrieved_utc": "2026-11-23T20:44:06.026361+00:00",
+  "headers": {
+    "Content-Length": "9383336",
+    "Content-Type": "application/json",
+    "Content-Encoding": "gzip",
+    "ETag": "\"f6f6ca1b1c8fca9e9480a2844f537c38\"",
+    "Last-Modified": "Thu, 19 Nov 2026 15:24:05 GMT"
+  },
+  "body_bytes": 9383336,
+  "body_sha256": "585cb00d4d1226ccd9650d18e86c64bd27718f19323f39f81480bd214c22d3d1",
+  "decoded_bytes": 38721752,
+  "decoded_sha256": "31eef2b3c3623e6c3117ea671e5036e5aec6ec1cbab56c13fdb2a3c08fffd608",
+  "selected_volume_properties": {
+    "PHerc0175A": {
+      "20250521115057": {
+        "pixel_size_um": 8.64,
+        "shape": [
+          12748,
+          9363,
+          9363
+        ],
+        "z_direction_is_top_to_bottom": true,
+        "left_handed_coordinates": false,
+        "derived_sense": "ACW"
+      }
+    },
+    "PHerc0306B": {
+      "20250521133212": {
+        "pixel_size_um": 8.64,
+        "shape": [
+          15898,
+          8849,
+          8849
+        ],
+        "z_direction_is_top_to_bottom": true,
+        "left_handed_coordinates": false,
+        "derived_sense": "ACW"
+      }
+    },
+    "PHerc0343": {
+      "20250521140437": {
+        "pixel_size_um": 8.64,
+        "shape": [
+          17998,
+          8595,
+          8595
+        ],
+        "z_direction_is_top_to_bottom": false,
+        "left_handed_coordinates": false,
+        "derived_sense": "CW"
+      }
+    },
+    "PHerc0211": {
+      "20250821151803": {
+        "pixel_size_um": 9.362,
+        "shape": [
+          19416,
+          7948,
+          7948
+        ],
+        "z_direction_is_top_to_bottom": true,
+        "left_handed_coordinates": false,
+        "derived_sense": "ACW"
+      }
+    },
+    "PHerc0358": {
+      "20250821151737": {
+        "pixel_size_um": 9.362,
+        "shape": [
+          14744,
+          7783,
+          7783
+        ],
+        "z_direction_is_top_to_bottom": true,
+        "left_handed_coordinates": false,
+        "derived_sense": "ACW"
+      }
+    },
+    "PHerc0125": {
+      "20250821151825": {
+        "pixel_size_um": 9.362,
+        "shape": [
+          20840,
+          8387,
+          8387
+        ],
+        "z_direction_is_top_to_bottom": null,
+        "left_handed_coordinates": false,
+        "derived_sense": null
+      }
+    },
+    "PHerc1203": {
+      "20260319130212": {
+        "pixel_size_um": 2.403,
+        "shape": [
+          15137,
+          26493,
+          26493
+        ],
+        "z_direction_is_top_to_bottom": null,
+        "left_handed_coordinates": false,
+        "derived_sense": null
+      },
+      "20250820131727": {
+        "pixel_size_um": 9.362,
+        "shape": [
+          18977,
+          6844,
+          6844
+        ],
+        "z_direction_is_top_to_bottom": null,
+        "left_handed_coordinates": false,
+        "derived_sense": null
+      }
+    },
+    "PHerc0846A": {
+      "20260319102732": {
+        "pixel_size_um": 2.403,
+        "shape": [
+          15137,
+          29587,
+          29587
+        ],
+        "z_direction_is_top_to_bottom": null,
+        "left_handed_coordinates": false,
+        "derived_sense": null
+      },
+      "20250728152254": {
+        "pixel_size_um": 9.362,
+        "shape": [
+          14019,
+          7726,
+          7726
+        ],
+        "z_direction_is_top_to_bottom": null,
+        "left_handed_coordinates": false,
+        "derived_sense": null
+      }
+    }
+  },
+  "derivation": "ACW if z_direction_is_top_to_bottom != left_handed_coordinates else CW, only when both are boolean",
+  "limitation": "Catalogue convention; not an independent anatomical measurement of winding sense."
+}

@@ -1,0 +1,66 @@
+{
+  "status": "pass",
+  "schema": "q12-independent-graph-transform-review-v1",
+  "selection": "32 evenly spaced sorted H IDs and 32 evenly spaced sorted acquired family-1 IDs; no traversal run",
+  "selected_ids_sha256": "50fbe09a8590bacd12f865446fcaebacc5e5f7c9688b7fe7a35e7417c1763c8f",
+  "runner_sha256": "5d80ad3dd5da3bb1254f9c573126478aa791518dcfc562550a182d3d62c1d5ea",
+  "protocol_sha256": "54c2443a858f13b5041b574b36a5f6fff0bd60bfb6b848ef7dcfc3b989b45ae7",
+  "checker_sha256": "27d7a54e0c98d7adea2e75a6885ce608bb2e21407a81e45529d172bd217a2f30",
+  "source_file_sha256": {
+    "transverse_ids": "9fb0e694c59e654a53c5c3d730552192503ceb49f4d4fbc5485ba24857f18f20",
+    "coordinates": "ca160a673af116f24d85ad27a1b635b4cfbc0112c5844605e36bef3613807c01",
+    "coordinate_offsets": "6e77acc98b468aff2016f42a3b0a9495b605fcf2b28c76289bae6f698f845c0b",
+    "family": "791c982a79d9e617ade16e76d33d3e353c543b152cf71e91c86ba5b14942aa4a",
+    "lengths": "d962a0fbffee20770a38e8f3480b73a1c9d820694acf4a91250c4b798b97479a",
+    "node_ids": "bf107278f4d1a67d80c3110bb2b682955e858caab219d8e0611a10971fcc5f7e",
+    "cross_offsets": "f176fcd819b2dcd4df31c2d8238b9407c2f83f02c0612f8dd1266b9830838104",
+    "partners": "28ab8ef31de06df515aed5a212eb77680b247cf648696df4da5f8fe5507a2ca6",
+    "self_local": "2e3bd41f09d6aae6907032955ecc8aff5bcf32d2145ef4ecfdf53af40eca7ce7",
+    "partner_local": "0a6c2c4be0da2c42a41a654bb41dee3ff63013d17303f3b515a63bd68e9bdbad"
+  },
+  "source_files_unchanged": true,
+  "by_condition": {
+    "original": {
+      "nodes": 64,
+      "adjacency_rows": 1116,
+      "coordinate_rows": 2604,
+      "available_reciprocal_edges": 382,
+      "endpoints_with_xyz_checked": 382,
+      "counterpart_adjacency_not_retained": 734
+    },
+    "reverse_transverse": {
+      "nodes": 64,
+      "adjacency_rows": 1116,
+      "coordinate_rows": 2604,
+      "available_reciprocal_edges": 382,
+      "endpoints_with_xyz_checked": 382,
+      "counterpart_adjacency_not_retained": 734
+    },
+    "reverse_all": {
+      "nodes": 64,
+      "adjacency_rows": 1116,
+      "coordinate_rows": 2604,
+      "available_reciprocal_edges": 382,
+      "endpoints_with_xyz_checked": 382,
+      "counterpart_adjacency_not_retained": 734
+    },
+    "random_half": {
+      "nodes": 64,
+      "adjacency_rows": 1116,
+      "coordinate_rows": 2604,
+      "available_reciprocal_edges": 382,
+      "endpoints_with_xyz_checked": 382,
+      "counterpart_adjacency_not_retained": 734
+    },
+    "reverse_crossing_rows": {
+      "nodes": 64,
+      "adjacency_rows": 1116,
+      "coordinate_rows": 2604,
+      "available_reciprocal_edges": 382,
+      "endpoints_with_xyz_checked": 382,
+      "counterpart_adjacency_not_retained": 734
+    }
+  },
+  "seconds": 0.9279714060012338,
+  "limits": "Samples 64 nodes. Verifies physical XYZ identity only where transverse coordinates were acquired; longitudinal endpoints are checked through original index identities and reciprocal records. No claim of anatomical sheet identity, all-edge validation or physical winding sense."
+}

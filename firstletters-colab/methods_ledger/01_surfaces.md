@@ -267,6 +267,16 @@ About half the windings of PHerc. 0175A and a quarter of those of PHerc. 1203 fo
 <a id="s5"></a>
 ## S5 — Winding sense from chains of tracks
 
+**2026-11-23 follow-up, Q12.** The historical results below are preserved, but the
+original diagnostic was found to depend on point-storage and crossing-row order.
+A real public PHerc0175A replay reproduced the defect; corrected-v2 passed four
+frozen storage-invariance checks. An independent tapered-spiral counterexample
+also shows that mirrored drift signs can agree on the wrong physical sense when
+the chain changes z. The old sign counts below need replay before use as sense
+evidence. The current official catalog derives ACW for PHerc0175A, which supports
+its existing setting independently of this chain test. See
+[the executed audit](../winding_audit/RESULTS.md) for code, measurements and limits.
+
 **Question.** Viewed from low z with x right and y down, does the radius grow clockwise (`CW` in the fitter) or anticlockwise (`ACW`)?
 
 **What was done.**

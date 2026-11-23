@@ -1,0 +1,12 @@
+{
+  "repository": "ScrollPrize/villa",
+  "revision": "e5707e413e61fc3e67af6b98ea5bd713fe0110d1",
+  "path": "spiral-fitting/surface_orientation.py",
+  "source_url": "https://raw.githubusercontent.com/ScrollPrize/villa/e5707e413e61fc3e67af6b98ea5bd713fe0110d1/spiral-fitting/surface_orientation.py",
+  "code_sha256": "fafb3e93869168892fc12a0287c949639e4260cf5e85f90e326fd767f454894f",
+  "function": "spiral_outward_sense_for",
+  "expression": "\"ACW\" if z_direction_is_top_to_bottom != left_handed_coordinates else \"CW\"",
+  "retrieved_utc": "2026-11-23T20:44:22.446853+00:00",
+  "comment": "Catalog convention, not independent physical measurement. Returned input was saved as received through GitHub connector.",
+  "code_bytes": 3504
+}

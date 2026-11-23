@@ -61,6 +61,12 @@ Where a test needs the location of a closed place, the repository owner holds it
 **Q12 — Three inputs of the PHerc. 0175A fit are unverified.** [S4, S5]
 - Weak point: the winding sense is an assumption copied from another team's comment; the umbilicus is ours and sits 80–160 voxels off the visual centre on three slices; the normals are synthetic.
 - Test: run `code/sense_chain.py` on the published tracks and crossings of this scroll (about one CPU-hour). If it says `CW`, the fit and the 520 cm² screen rest on a mirrored spiral.
+- Follow-up (2026-11-23): [Q12 audit](../winding_audit/RESULTS.md) fixes a reproduced
+  storage-order defect and establishes that a chain's raw drift sign cannot by
+  itself decide whether the fit is mirrored. The full official catalog currently
+  derives **ACW**, matching the existing setting. The frozen public graph replay
+  validates representation invariance, not anatomical winding sense; center,
+  same-sheet continuity and axial closure remain separate questions.
 
 **Q13 — Fits on our own tracks.** [S6]
 - Weak point: our vertical tracks are shorter than the organisers'. PHerc. 1203, fitted on our tracks, passed 17 of 65 windings; PHerc. 0175A, on published tracks, 53 of 119. We cannot separate scroll from tracks.

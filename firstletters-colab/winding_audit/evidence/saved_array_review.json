@@ -1,0 +1,353 @@
+{
+  "schema": "q12_saved_array_numerical_review_v1",
+  "status": "PASS",
+  "review_method": "Separate saved-array arithmetic using statistics.median and explicit counts; no experiment module imported or executed.",
+  "reviewer_scope_disclosure": "Reviewer authored corrected sense_chain.py; this is a separate numerical recomputation, not an independent review of its implementation.",
+  "analysis_forwards": 0,
+  "model_forwards": 0,
+  "new_source_requests": 0,
+  "result_sha256": "b0dcefc7cd984f0f9b0c6757deef79f98cd615f405479a5ed27519de874af5da",
+  "protocol_sha256": "54c2443a858f13b5041b574b36a5f6fff0bd60bfb6b848ef7dcfc3b989b45ae7",
+  "review_script_sha256": "fdea144ec889fcdca70144fc8930609017d4e23071ee4b4fa473a2dab3225286",
+  "implementation_sha256_verified": {
+    "sense_chain.py": "963e1c383785a06f89cf41e9bd21a0a330c74798af4c509368d135e4eea6c0d2",
+    "legacy_adapter.py": "4e47b2b5a7c98fa70f68803daaa75a71c2ed489b2cbfca7227e344850adc7bc0",
+    "legacy_snapshot.py": "65fa04d337067e8ee1e1fee2c768c167c29e7d84e954b93d6a1bff22bc42caf4"
+  },
+  "frozen_commit_checked": "4923329a46f987b3083de6f75a740afc908d3287",
+  "check_counts": {
+    "provenance": 18,
+    "source_artifacts": 20,
+    "source_ranges": 176,
+    "source_structure": 7,
+    "output_artifacts": 96,
+    "completed_statistics": 132,
+    "accounting": 18,
+    "interpretation": 7,
+    "invariance": 10
+  },
+  "check_count_total": 484,
+  "failures": [],
+  "source_verification": {
+    "decoded_files": 10,
+    "decoded_bytes_verified": 299921030,
+    "cached_range_bodies": 42,
+    "cached_range_body_bytes_verified": 992092463,
+    "unique_objects_with_consistent_etag_and_size": 7
+  },
+  "output_artifacts_verified": 24,
+  "output_artifact_bytes_verified": 4896,
+  "recomputed_completed_chain_statistics": {
+    "legacy": {
+      "original": {
+        "chains_full_turn": 6,
+        "dr_positive": 2,
+        "dr_negative": 4,
+        "median_dr": -359.930413626723,
+        "median_abs_dr": 480.7109062132573,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 36.0,
+        "median_hops": 26.5,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_positive": 0,
+          "dr_negative": 0,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": null
+        },
+        "nonzero_dz_closures": 6
+      },
+      "reverse_transverse": {
+        "chains_full_turn": 4,
+        "dr_positive": 2,
+        "dr_negative": 2,
+        "median_dr": -185.02407218963873,
+        "median_abs_dr": 678.1175628354206,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 8.0,
+        "median_hops": 23.5,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": -1411.966487309131
+        },
+        "nonzero_dz_closures": 3
+      },
+      "reverse_all": {
+        "chains_full_turn": 4,
+        "dr_positive": 2,
+        "dr_negative": 2,
+        "median_dr": -185.02407218963873,
+        "median_abs_dr": 678.1175628354206,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 8.0,
+        "median_hops": 23.5,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": -1411.966487309131
+        },
+        "nonzero_dz_closures": 3
+      },
+      "random_half": {
+        "chains_full_turn": 12,
+        "dr_positive": 4,
+        "dr_negative": 8,
+        "median_dr": -78.67961692125937,
+        "median_abs_dr": 238.78481352874985,
+        "n_abs_dr_5_60_pos": 1,
+        "n_abs_dr_5_60_neg": 1,
+        "median_abs_dz": 20.0,
+        "median_hops": 21.5,
+        "exact_same_z": {
+          "chains_full_turn": 2,
+          "dr_positive": 1,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": -379.42543497234306
+        },
+        "nonzero_dz_closures": 10
+      },
+      "reverse_crossing_rows": {
+        "chains_full_turn": 6,
+        "dr_positive": 4,
+        "dr_negative": 2,
+        "median_dr": 101.21421777208121,
+        "median_abs_dr": 511.54824897998526,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 28.0,
+        "median_hops": 24.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 1,
+          "dr_negative": 0,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": 852.6283561025921
+        },
+        "nonzero_dz_closures": 5
+      },
+      "mirror_x": {
+        "chains_full_turn": 4,
+        "dr_positive": 3,
+        "dr_negative": 1,
+        "median_dr": 735.5325033654497,
+        "median_abs_dr": 735.5325033654497,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 16.0,
+        "median_hops": 13.5,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 1,
+          "dr_negative": 0,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": 1305.0457775879422
+        },
+        "nonzero_dz_closures": 3
+      }
+    },
+    "corrected_v2": {
+      "original": {
+        "chains_full_turn": 4,
+        "dr_positive": 0,
+        "dr_negative": 4,
+        "median_dr": -66.98861366792949,
+        "median_abs_dr": 66.98861366792949,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 2,
+        "median_abs_dz": 8.0,
+        "median_hops": 4.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 1,
+          "median_dr": -44.1031906186613
+        },
+        "nonzero_dz_closures": 3
+      },
+      "reverse_transverse": {
+        "chains_full_turn": 4,
+        "dr_positive": 0,
+        "dr_negative": 4,
+        "median_dr": -66.98861366792949,
+        "median_abs_dr": 66.98861366792949,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 2,
+        "median_abs_dz": 8.0,
+        "median_hops": 4.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 1,
+          "median_dr": -44.1031906186613
+        },
+        "nonzero_dz_closures": 3
+      },
+      "reverse_all": {
+        "chains_full_turn": 4,
+        "dr_positive": 0,
+        "dr_negative": 4,
+        "median_dr": -66.98861366792949,
+        "median_abs_dr": 66.98861366792949,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 2,
+        "median_abs_dz": 8.0,
+        "median_hops": 4.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 1,
+          "median_dr": -44.1031906186613
+        },
+        "nonzero_dz_closures": 3
+      },
+      "random_half": {
+        "chains_full_turn": 4,
+        "dr_positive": 0,
+        "dr_negative": 4,
+        "median_dr": -66.98861366792949,
+        "median_abs_dr": 66.98861366792949,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 2,
+        "median_abs_dz": 8.0,
+        "median_hops": 4.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 1,
+          "median_dr": -44.1031906186613
+        },
+        "nonzero_dz_closures": 3
+      },
+      "reverse_crossing_rows": {
+        "chains_full_turn": 4,
+        "dr_positive": 0,
+        "dr_negative": 4,
+        "median_dr": -66.98861366792949,
+        "median_abs_dr": 66.98861366792949,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 2,
+        "median_abs_dz": 8.0,
+        "median_hops": 4.0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_positive": 0,
+          "dr_negative": 1,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 1,
+          "median_dr": -44.1031906186613
+        },
+        "nonzero_dz_closures": 3
+      },
+      "mirror_x": {
+        "chains_full_turn": 1,
+        "dr_positive": 0,
+        "dr_negative": 1,
+        "median_dr": -1408.9432954095205,
+        "median_abs_dr": 1408.9432954095205,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 8.0,
+        "median_hops": 2.0,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_positive": 0,
+          "dr_negative": 0,
+          "n_abs_dr_5_60_pos": 0,
+          "n_abs_dr_5_60_neg": 0,
+          "median_dr": null
+        },
+        "nonzero_dz_closures": 1
+      }
+    }
+  },
+  "representation_invariance": {
+    "legacy": {
+      "reverse_transverse": {
+        "complete_summary_equal": false,
+        "ordered_rows_bitwise_equal": false,
+        "completed_start_ids_equal": false
+      },
+      "reverse_all": {
+        "complete_summary_equal": false,
+        "ordered_rows_bitwise_equal": false,
+        "completed_start_ids_equal": false
+      },
+      "random_half": {
+        "complete_summary_equal": false,
+        "ordered_rows_bitwise_equal": false,
+        "completed_start_ids_equal": false
+      },
+      "reverse_crossing_rows": {
+        "complete_summary_equal": false,
+        "ordered_rows_bitwise_equal": false,
+        "completed_start_ids_equal": true
+      }
+    },
+    "corrected_v2": {
+      "reverse_transverse": {
+        "complete_summary_equal": true,
+        "ordered_rows_bitwise_equal": true,
+        "completed_start_ids_equal": true
+      },
+      "reverse_all": {
+        "complete_summary_equal": true,
+        "ordered_rows_bitwise_equal": true,
+        "completed_start_ids_equal": true
+      },
+      "random_half": {
+        "complete_summary_equal": true,
+        "ordered_rows_bitwise_equal": true,
+        "completed_start_ids_equal": true
+      },
+      "reverse_crossing_rows": {
+        "complete_summary_equal": true,
+        "ordered_rows_bitwise_equal": true,
+        "completed_start_ids_equal": true
+      }
+    }
+  },
+  "fixed_storage_invariance_pass": true,
+  "legacy_storage_defect_reproduced": true,
+  "legacy_unaccounted_terminal_counts": {
+    "original": 2,
+    "reverse_transverse": 0,
+    "reverse_all": 0,
+    "random_half": 6,
+    "reverse_crossing_rows": 1,
+    "mirror_x": 9
+  },
+  "interpretation_notes": [
+    "The corrected storage-only conditions have identical completed arrays, ordered IDs, normalized summaries and reported per-start terminal digest. This demonstrates the tested representation invariance, not anatomical correctness.",
+    "Failure per-start records were not saved. Their digest equality is verified as recorded, but the digest and failure-angle medians cannot be independently reconstructed from the saved completion arrays.",
+    "Legacy completed plus broken totals omit hop-limit terminations; the listed count gaps are retained as baseline behavior, not repaired in the comparison.",
+    "Four corrected original completions include only two in the declared pitch band, and only one exact-same-z completion. Those are dependent graph outcomes around an unvalidated geometric origin, not independent anatomical votes.",
+    "The corrected mirrored run has one negative drift of about -1408.94 voxels, outside the pitch band. Greedy mirrored paths are not paired physical paths; no physical-sense claim follows.",
+    "The corrected version also changes deterministic tie handling, forward-index filtering, canonical unwrapping and failure accounting. A real-data aggregate difference cannot be assigned only to the double-sign fix.",
+    "All recorded decoded-source and range-cache file hashes were checked. This does not reconstruct every packed-source extraction, independently revalidate all source-ID alignment, verify whole-ZIP CRC, or re-establish scientific source geometry.",
+    "No ink detector, manuscript reading, new surface sweep, hidden-field selection or prize qualification was evaluated."
+  ],
+  "seconds": 1.6498898949994327
+}

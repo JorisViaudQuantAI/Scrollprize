@@ -1,0 +1,2199 @@
+{
+  "schema": "winding-taper-oracle-v1",
+  "synthetic_analytic_control": true,
+  "purpose": "Separate arithmetic traversal correctness from winding-sense identifiability under z drift",
+  "true_winding_convention": "Image x right/y down: positive fixed-z radial pitch is CW",
+  "algorithm_pins": {
+    "legacy": "65fa04d337067e8ee1e1fee2c768c167c29e7d84e954b93d6a1bff22bc42caf4",
+    "corrected_v2": "963e1c383785a06f89cf41e9bd21a0a330c74798af4c509368d135e4eea6c0d2"
+  },
+  "oracle_script_sha256": "3eb7305a0b13fd6c96004addb1f1d3a26c170fbfb3de5d521ea17ccb12f7b296",
+  "records": [
+    {
+      "algorithm": "legacy",
+      "case": "untapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "88219e4873283e301c9d39bae4a8efa5014ce66078bb55c41a3e1690fd4d5584"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.009615322385798,
+      "chain_rows_dr_dz_hops": [
+        [
+          20.009615322385798,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 1,
+        "dr_negative": 0,
+        "median_dr": 20.009615322385798,
+        "median_abs_dr": 20.009615322385798,
+        "n_abs_dr_5_60_pos": 1,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 32.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.72660117406507,
+        "broken_max_acc_deg": 137.45320234813013
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "untapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "88219e4873283e301c9d39bae4a8efa5014ce66078bb55c41a3e1690fd4d5584"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.61823874335217
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "d022d07dff9b38326d8257fc0f1366f527e0baf530f126822b53ff31b1f00caf"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": -12,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.01024582634767,
+      "chain_rows_dr_dz_hops": [
+        [
+          -11.98975417365233,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 0,
+        "dr_negative": 1,
+        "median_dr": -11.98975417365233,
+        "median_abs_dr": 11.98975417365233,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 1,
+        "median_abs_dz": 32.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.77464196609789,
+        "broken_max_acc_deg": 137.54928393219578
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "d022d07dff9b38326d8257fc0f1366f527e0baf530f126822b53ff31b1f00caf"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": 12,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.53242313338299
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_same_z_closure",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "51068ef30bcb1d361f8d6b1ee424290bb9ad66cfba8b204b3d6b3d6958fde968"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.009615322385798,
+      "chain_rows_dr_dz_hops": [
+        [
+          20.009615322385798,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 1,
+        "dr_negative": 0,
+        "median_dr": 20.009615322385798,
+        "median_abs_dr": 20.009615322385798,
+        "n_abs_dr_5_60_pos": 1,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 0.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.75730307958561,
+        "broken_max_acc_deg": 137.51460615917122
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_same_z_closure",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "51068ef30bcb1d361f8d6b1ee424290bb9ad66cfba8b204b3d6b3d6958fde968"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.56710090640753
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "untapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "711db7174de110ca4a27f7c192d68d3bdafbdc77459bfa0050e42f0b3842d4e4"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.989583412452703,
+      "chain_rows_dr_dz_hops": [
+        [
+          -19.989583412452703,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 0,
+        "dr_negative": 1,
+        "median_dr": -19.989583412452703,
+        "median_abs_dr": 19.989583412452703,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 1,
+        "median_abs_dz": 32.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.7924514473526,
+        "broken_max_acc_deg": 137.5849028947052
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "untapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "711db7174de110ca4a27f7c192d68d3bdafbdc77459bfa0050e42f0b3842d4e4"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.6568090534111
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "7b7a46667f5081b6fb4c5fc7f882bc70c15747422b6ccc8736f34f3b3babb960"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": 12,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.990234440192353,
+      "chain_rows_dr_dz_hops": [
+        [
+          12.009765559807647,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 1,
+        "dr_negative": 0,
+        "median_dr": 12.009765559807647,
+        "median_abs_dr": 12.009765559807647,
+        "n_abs_dr_5_60_pos": 1,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": 32.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.76122168854991,
+        "broken_max_acc_deg": 137.52244337709982
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "7b7a46667f5081b6fb4c5fc7f882bc70c15747422b6ccc8736f34f3b3babb960"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": -12,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.59153739229029
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_same_z_closure",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "a382e80e5a9a83dbf04c12a6b111d1a802682316a5d62d7de9febb2ad08a3314"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.989583412452703,
+      "chain_rows_dr_dz_hops": [
+        [
+          -19.989583412452703,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 1,
+        "dr_positive": 0,
+        "dr_negative": 1,
+        "median_dr": -19.989583412452703,
+        "median_abs_dr": 19.989583412452703,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 1,
+        "median_abs_dz": 0.0,
+        "median_hops": 2.0,
+        "broken": 2,
+        "broken_median_acc_deg": 68.76133561613895,
+        "broken_max_acc_deg": 137.5226712322779
+      }
+    },
+    {
+      "algorithm": "legacy",
+      "case": "tapered_same_z_closure",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "a382e80e5a9a83dbf04c12a6b111d1a802682316a5d62d7de9febb2ad08a3314"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": false,
+      "raw_sign_is_wrong_physical_sense": null,
+      "observed_dr_in_historical_pitch_band": null,
+      "dr_after_known_taper_correction": null,
+      "chain_rows_dr_dz_hops": [],
+      "algorithm_summary": {
+        "z0": 16,
+        "DZ": 40,
+        "transverse_tracks_in_slab": 3,
+        "chains_started": 3,
+        "chains_full_turn": 0,
+        "dr_positive": 0,
+        "dr_negative": 0,
+        "median_dr": null,
+        "median_abs_dr": null,
+        "n_abs_dr_5_60_pos": 0,
+        "n_abs_dr_5_60_neg": 0,
+        "median_abs_dz": null,
+        "median_hops": null,
+        "broken": 3,
+        "broken_median_acc_deg": 0.0,
+        "broken_max_acc_deg": 114.59130953711221
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "untapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "88219e4873283e301c9d39bae4a8efa5014ce66078bb55c41a3e1690fd4d5584"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.009615322385798,
+      "chain_rows_dr_dz_hops": [
+        [
+          20.009615322385798,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.45320234813013,
+        "broken_median_acc_deg": 68.72660117406507,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 20.009615322385798,
+        "median_abs_dz": 32.0,
+        "median_dr": 20.009615322385798,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "b53915f0d31dc1bc2099054f36616545f1cee66e0a55043a2ba0b8e2435ea82f",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "untapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "88219e4873283e301c9d39bae4a8efa5014ce66078bb55c41a3e1690fd4d5584"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -20.599590077747507,
+      "chain_rows_dr_dz_hops": [
+        [
+          -20.599590077747507,
+          -32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.51372237284463,
+        "broken_median_acc_deg": 68.75686118642231,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 20.599590077747507,
+        "median_abs_dz": 32.0,
+        "median_dr": -20.599590077747507,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "248a1e1ae1b401b40f456b73951220e568a0a0f73a71eb78f1a1b0998513f148",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "d022d07dff9b38326d8257fc0f1366f527e0baf530f126822b53ff31b1f00caf"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": -12,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.01024582634767,
+      "chain_rows_dr_dz_hops": [
+        [
+          -11.98975417365233,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.54928393219578,
+        "broken_median_acc_deg": 68.77464196609789,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 11.98975417365233,
+        "median_abs_dz": 32.0,
+        "median_dr": -11.98975417365233,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "9a03e2e10b650281a7a5f724b6305edeb515dd1ab2de9eb5f5ae339c75f879b4",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "d022d07dff9b38326d8257fc0f1366f527e0baf530f126822b53ff31b1f00caf"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": 12,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -20.35433089370099,
+      "chain_rows_dr_dz_hops": [
+        [
+          11.64566910629901,
+          -32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.53474481698845,
+        "broken_median_acc_deg": 68.76737240849423,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 11.64566910629901,
+        "median_abs_dz": 32.0,
+        "median_dr": 11.64566910629901,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "b0fa8b7c6450a982f72ffe03fba04f1e2960d005b360bfbd063b3ca805d27e8d",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_same_z_closure",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "51068ef30bcb1d361f8d6b1ee424290bb9ad66cfba8b204b3d6b3d6958fde968"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 20.009615322385798,
+      "chain_rows_dr_dz_hops": [
+        [
+          20.009615322385798,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.51460615917122,
+        "broken_median_acc_deg": 68.75730307958561,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_negative": 0,
+          "dr_positive": 1,
+          "median_dr": 20.009615322385798,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 1
+        },
+        "median_abs_dr": 20.009615322385798,
+        "median_abs_dz": 0.0,
+        "median_dr": 20.009615322385798,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 0,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "569eaaf0a37881b29a90b216c6bb3c40a0885b0146666442fe61535c8ba5acfa",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_same_z_closure",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": 20,
+        "taper_voxels_per_slice": -1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          -16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "51068ef30bcb1d361f8d6b1ee424290bb9ad66cfba8b204b3d6b3d6958fde968"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -20.599590077747507,
+      "chain_rows_dr_dz_hops": [
+        [
+          -20.599590077747507,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.53474481698845,
+        "broken_median_acc_deg": 68.76737240849423,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_negative": 1,
+          "dr_positive": 0,
+          "median_dr": -20.599590077747507,
+          "n_abs_dr_5_60_neg": 1,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 20.599590077747507,
+        "median_abs_dz": 0.0,
+        "median_dr": -20.599590077747507,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 0,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "dbea6a7aeabd8e6f6449420a8990a8ed740b408329f6522b288d44b07640d600",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "untapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "711db7174de110ca4a27f7c192d68d3bdafbdc77459bfa0050e42f0b3842d4e4"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.989583412452703,
+      "chain_rows_dr_dz_hops": [
+        [
+          -19.989583412452703,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.5849028947052,
+        "broken_median_acc_deg": 68.7924514473526,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 19.989583412452703,
+        "median_abs_dz": 32.0,
+        "median_dr": -19.989583412452703,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "61015cac44bb26bee8153049f3500233ef9915987df7a801a6e95202bd9f5a75",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "untapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 0,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          0,
+          0
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "711db7174de110ca4a27f7c192d68d3bdafbdc77459bfa0050e42f0b3842d4e4"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 19.72991989643566,
+      "chain_rows_dr_dz_hops": [
+        [
+          19.72991989643566,
+          -32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.59733320846672,
+        "broken_median_acc_deg": 68.79866660423336,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 19.72991989643566,
+        "median_abs_dz": 32.0,
+        "median_dr": 19.72991989643566,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "c554d6a2632650b10b0091368d4d2a21be892d2bd53cf3b7ea6e8caf9c7d7177",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_drifting_z",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "7b7a46667f5081b6fb4c5fc7f882bc70c15747422b6ccc8736f34f3b3babb960"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": 12,
+      "analytic_expected_delta_z": 32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.990234440192353,
+      "chain_rows_dr_dz_hops": [
+        [
+          12.009765559807647,
+          32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.52244337709982,
+        "broken_median_acc_deg": 68.76122168854991,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 12.009765559807647,
+        "median_abs_dz": 32.0,
+        "median_dr": 12.009765559807647,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "fdff4daf23544aa0ad551c684ea626407eb7c6fd8936379775ab3372e1327b2a",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_drifting_z",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          32
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          16
+        ],
+        "bridge_slice_changes": [
+          16,
+          16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "7b7a46667f5081b6fb4c5fc7f882bc70c15747422b6ccc8736f34f3b3babb960"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": -12,
+      "analytic_expected_delta_z": -32,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": true,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 19.47813461704186,
+      "chain_rows_dr_dz_hops": [
+        [
+          -12.52186538295814,
+          -32.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.57376052012626,
+        "broken_median_acc_deg": 68.78688026006313,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 0,
+          "dr_negative": 0,
+          "dr_positive": 0,
+          "median_dr": null,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 12.52186538295814,
+        "median_abs_dz": 32.0,
+        "median_dr": -12.52186538295814,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 1,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "084d148b468719e7dbabdc4a8f037fc5d60b8d126c3cb7c052e55bd79e8be47b",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_same_z_closure",
+      "mirror": 1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "a382e80e5a9a83dbf04c12a6b111d1a802682316a5d62d7de9febb2ad08a3314"
+      },
+      "true_physical_pitch_in_test_frame": -20,
+      "analytic_expected_dr": -20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": -19.989583412452703,
+      "chain_rows_dr_dz_hops": [
+        [
+          -19.989583412452703,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.5226712322779,
+        "broken_median_acc_deg": 68.76133561613895,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          0
+        ],
+        "dr_negative": 1,
+        "dr_positive": 0,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_negative": 1,
+          "dr_positive": 0,
+          "median_dr": -19.989583412452703,
+          "n_abs_dr_5_60_neg": 1,
+          "n_abs_dr_5_60_pos": 0
+        },
+        "median_abs_dr": 19.989583412452703,
+        "median_abs_dz": 0.0,
+        "median_dr": -19.989583412452703,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 1,
+        "n_abs_dr_5_60_pos": 0,
+        "nonzero_dz_closures": 0,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "68788dd4beaa22293e4e848cb123f4e19b0b502502ff350f65f98124f863e9fa",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    },
+    {
+      "algorithm": "corrected_v2",
+      "case": "tapered_same_z_closure",
+      "mirror": -1,
+      "fixture": {
+        "surface_equation": "r(theta,z)=500+pitch*theta/(2*pi)+taper*z",
+        "pitch_voxels_per_turn": -20,
+        "taper_voxels_per_slice": 1,
+        "z_path": [
+          0,
+          16,
+          0
+        ],
+        "transverse_lengths": [
+          202,
+          203,
+          202
+        ],
+        "transverse_theta_intervals": [
+          [
+            0.0,
+            2.4
+          ],
+          [
+            2.0,
+            4.6
+          ],
+          [
+            4.2,
+            6.8
+          ]
+        ],
+        "crossing_angles": [
+          2.2,
+          4.4
+        ],
+        "exact_reciprocal_crossings": true,
+        "directed_crossing_count": 8,
+        "bridge_radial_changes_voxels": [
+          16,
+          -16
+        ],
+        "bridge_slice_changes": [
+          16,
+          -16
+        ],
+        "integer_coordinate_rounding": "nearest-even per XYZ coordinate",
+        "coordinate_sha256": "a382e80e5a9a83dbf04c12a6b111d1a802682316a5d62d7de9febb2ad08a3314"
+      },
+      "true_physical_pitch_in_test_frame": 20,
+      "analytic_expected_dr": 20,
+      "analytic_expected_delta_z": 0,
+      "oracle_tolerance_voxels": 2.0,
+      "traversal_matches_analytic_surface": true,
+      "raw_sign_is_wrong_physical_sense": false,
+      "observed_dr_in_historical_pitch_band": true,
+      "dr_after_known_taper_correction": 19.72991989643566,
+      "chain_rows_dr_dz_hops": [
+        [
+          19.72991989643566,
+          0.0,
+          2.0
+        ]
+      ],
+      "algorithm_summary": {
+        "DZ": 40.0,
+        "algorithm": "increasing-image-angle-v2",
+        "broken": 2,
+        "broken_max_acc_deg": 137.57376052012626,
+        "broken_median_acc_deg": 68.78688026006313,
+        "broken_reasons": {
+          "no_continuation": 2
+        },
+        "chains_full_turn": 1,
+        "chains_started": 3,
+        "completed_start_ids": [
+          2
+        ],
+        "dr_negative": 0,
+        "dr_positive": 1,
+        "exact_same_z": {
+          "chains_full_turn": 1,
+          "dr_negative": 0,
+          "dr_positive": 1,
+          "median_dr": 19.72991989643566,
+          "n_abs_dr_5_60_neg": 0,
+          "n_abs_dr_5_60_pos": 1
+        },
+        "median_abs_dr": 19.72991989643566,
+        "median_abs_dz": 0.0,
+        "median_dr": 19.72991989643566,
+        "median_hops": 2.0,
+        "n_abs_dr_5_60_neg": 0,
+        "n_abs_dr_5_60_pos": 1,
+        "nonzero_dz_closures": 0,
+        "per_start_outcome_schema": "sense-chain-terminal-outcomes-v1",
+        "per_start_outcome_sha256": "4a70bc3a759cd41098b42e309bb836ed090eaf3effa54b6a98d0586819135780",
+        "transverse_tracks_in_slab": 3,
+        "winding_sense_verdict": null,
+        "z0": 16
+      }
+    }
+  ],
+  "interpretation": "Even exact crossings and mirror sign reversal cannot determine fixed-z winding sense from dr alone when end_z differs from start_z and radial taper is unbounded. The taper correction here is oracle-known; it is not estimated from the observations.",
+  "limits": "Synthetic geometry and integer rounding; demonstrates an identifiability counterexample, not taper or wrong sense on any real scroll."
+}

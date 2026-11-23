@@ -1,0 +1,87 @@
+{
+  "status": "complete",
+  "protocol_sha256": "54c2443a858f13b5041b574b36a5f6fff0bd60bfb6b848ef7dcfc3b989b45ae7",
+  "store_metadata": {
+    "point_count": 706784236,
+    "source_db_signature": [
+      [
+        "PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm",
+        8793350144,
+        1785290254682115010
+      ]
+    ],
+    "track_count": 11098366,
+    "version": 1
+  },
+  "crossing_metadata": {
+    "angle_degrees": 30.0,
+    "cluster_local_index_radius": 4,
+    "db_signature": [
+      [
+        "PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm",
+        8793350144,
+        1785290254682115010
+      ]
+    ],
+    "tangent_radius_voxels": 12.0,
+    "version": 1,
+    "z_range": [
+      4500,
+      12747
+    ]
+  },
+  "transverse_tracks": 35309,
+  "transverse_points": 5685158,
+  "linked_longitudinal_tracks": 124729,
+  "source_id_alignment_verified": 160038,
+  "retained_crossing_rows": 5361958,
+  "files": {
+    "coordinate_offsets.npy": {
+      "bytes": 282608,
+      "sha256": "6e77acc98b468aff2016f42a3b0a9495b605fcf2b28c76289bae6f698f845c0b"
+    },
+    "coordinates.npy": {
+      "bytes": 68222024,
+      "sha256": "ca160a673af116f24d85ad27a1b635b4cfbc0112c5844605e36bef3613807c01"
+    },
+    "cross_offsets.npy": {
+      "bytes": 1280440,
+      "sha256": "f176fcd819b2dcd4df31c2d8238b9407c2f83f02c0612f8dd1266b9830838104"
+    },
+    "family.npy": {
+      "bytes": 11098494,
+      "sha256": "791c982a79d9e617ade16e76d33d3e353c543b152cf71e91c86ba5b14942aa4a"
+    },
+    "lengths.npy": {
+      "bytes": 88787056,
+      "sha256": "d962a0fbffee20770a38e8f3480b73a1c9d820694acf4a91250c4b798b97479a"
+    },
+    "node_ids.npy": {
+      "bytes": 1280432,
+      "sha256": "bf107278f4d1a67d80c3110bb2b682955e858caab219d8e0611a10971fcc5f7e"
+    },
+    "partner_local.npy": {
+      "bytes": 42895792,
+      "sha256": "0a6c2c4be0da2c42a41a654bb41dee3ff63013d17303f3b515a63bd68e9bdbad"
+    },
+    "partners.npy": {
+      "bytes": 42895792,
+      "sha256": "28ab8ef31de06df515aed5a212eb77680b247cf648696df4da5f8fe5507a2ca6"
+    },
+    "self_local.npy": {
+      "bytes": 42895792,
+      "sha256": "2e3bd41f09d6aae6907032955ecc8aff5bcf32d2145ef4ecfdf53af40eca7ce7"
+    },
+    "transverse_ids.npy": {
+      "bytes": 282600,
+      "sha256": "9fb0e694c59e654a53c5c3d730552192503ceb49f4d4fbc5485ba24857f18f20"
+    }
+  },
+  "constant_z_verified": true,
+  "original_graph_indices_preserved": true,
+  "source_body_bytes": 992092463,
+  "request_count": 42,
+  "seconds": 153.31179274100032,
+  "acquisition_code_commit": "2656adb1f47b2c9e2bf4f6fce201c7c6916ee49c",
+  "source_artifact_receipt_sha256": "821fd75212a8c11a91b212c77efccc2713758463a90551f1f75328504bdd8d1c"
+}
