@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "constants": {
+    "step": 0.5,
+    "lo": -40,
+    "hi": 40,
+    "T": 41,
+    "maxJump": 2,
+    "penalty": 0.15,
+    "minScore": 0.35,
+    "minMargin": 1,
+    "excludeRadius": 2,
+    "seed": 20261123
+  },
+  "synthetic_tests": 3,
+  "source_public_sites": 24,
+  "synthetic_eligible_sites": 19,
+  "simulation": {
+    "competing_crest": {
+      "cases": 19,
+      "greedy": {
+        "n": 760,
+        "accepted": 760,
+        "within_one": 421,
+        "unsafe_over_two": 339,
+        "abs_error_sum": 5081,
+        "coverage": 1,
+        "conditional_within_one": 0.5539473684210526,
+        "conditional_mae": 6.685526315789474
+      },
+      "anchored": {
+        "n": 760,
+        "accepted": 719,
+        "within_one": 719,
+        "unsafe_over_two": 0,
+        "abs_error_sum": 0,
+        "coverage": 0.9460526315789474,
+        "conditional_within_one": 1,
+        "conditional_mae": 0
+      },
+      "gate": true
+    },
+    "target_outage": {
+      "cases": 19,
+      "greedy": {
+        "n": 760,
+        "accepted": 760,
+        "within_one": 410,
+        "unsafe_over_two": 350,
+        "abs_error_sum": 5157,
+        "coverage": 1,
+        "conditional_within_one": 0.5394736842105263,
+        "conditional_mae": 6.785526315789474
+      },
+      "anchored": {
+        "n": 760,
+        "accepted": 515,
+        "within_one": 500,
+        "unsafe_over_two": 15,
+        "abs_error_sum": 78.5,
+        "coverage": 0.6776315789473685,
+        "conditional_within_one": 0.970873786407767,
+        "conditional_mae": 0.1524271844660194
+      },
+      "gate": false
+    },
+    "approaching_crest": {
+      "cases": 19,
+      "greedy": {
+        "n": 760,
+        "accepted": 760,
+        "within_one": 421,
+        "unsafe_over_two": 335,
+        "abs_error_sum": 4806,
+        "coverage": 1,
+        "conditional_within_one": 0.5539473684210526,
+        "conditional_mae": 6.323684210526316
+      },
+      "anchored": {
+        "n": 760,
+        "accepted": 591,
+        "within_one": 568,
+        "unsafe_over_two": 2,
+        "abs_error_sum": 46,
+        "coverage": 0.7776315789473685,
+        "conditional_within_one": 0.961082910321489,
+        "conditional_mae": 0.077834179357022
+      },
+      "gate": false
+    }
+  },
+  "simulation_gate": false,
+  "real_paired_geometry": {
+    "excluded_ambiguous_or_missing": 6,
+    "methods": {
+      "all": {
+        "n": 18,
+        "accepted": 18,
+        "mismatched": 9,
+        "landmark_distance_over_two": 1
+      },
+      "global_cap": {
+        "n": 18,
+        "accepted": 7,
+        "mismatched": 0,
+        "landmark_distance_over_two": 0
+      },
+      "local_guard": {
+        "n": 18,
+        "accepted": 4,
+        "mismatched": 0,
+        "landmark_distance_over_two": 0
+      }
+    },
+    "gate": false
+  },
+  "limitations": [
+    "The first experiment simulates spatial strips and m7-like scores using only real published raw crest locations. It is not real CT tracking or an ink test.",
+    "The second experiment is retrospective on previously published disjoint public rays; its endpoint is tilted-ray crest correspondence, not anatomical truth.",
+    "A globally optimal path can switch sheets; min-marginal support is not a proof of identity. No private or unread candidate data, CNN forwards or new scan acquisition."
+  ],
+  "source_git_blob_sha1": "3e6d227294ad5d8020554a959e1a1494a427c95e",
+  "freeze_commit": "03752bdb1f2acc1b4a0d30178f994cdda819c798",
+  "execution_runtime": "V8 JavaScript isolate; identical evaluate() function serialized in run.mjs; Node CLI wrapper not exercised here",
+  "elapsed_ms": 990
+}
