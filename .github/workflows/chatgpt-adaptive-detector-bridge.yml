@@ -1,0 +1,59 @@
+name: Adaptive 040 public trace detector bridge
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-adaptive-detector-bridge.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pinned CPU dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'scipy==1.12.0' 'pillow==11.3.0' 'numcodecs==0.15.1' 'requests==2.32.5'
+      - uses: actions/download-artifact@v4
+        with:
+          name: q10-multichart-public-receipt
+          run-id: 45265373300
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/adaptive-atlas
+      - name: Retrieve exact shared and Gemini code
+        run: |
+          mkdir -p /tmp/adaptive-shared/surface_sampling /tmp/adaptive-shared/metric_flatten /tmp/adaptive-gemini
+          git fetch --no-tags --depth=1 origin f7fc619ec11f9dc95caa0c90fb2148cbf7c86ebd
+          for file in surface.py footprint.py render.py; do git show FETCH_HEAD:firstletters-colab/surface_sampling/$file > /tmp/adaptive-shared/surface_sampling/$file; done
+          git show FETCH_HEAD:firstletters-colab/metric_flatten/topology.py > /tmp/adaptive-shared/metric_flatten/topology.py
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/surface.py)" = 2f46e226afb5984d07de6bde1ef201ddc6285c07
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/footprint.py)" = 14353783aa887310e60743db523c5e2938c46a96
+          test "$(git hash-object /tmp/adaptive-shared/surface_sampling/render.py)" = 18f3b5afba108d3fa65224fbac65ccc41a6d23b4
+          test "$(git hash-object /tmp/adaptive-shared/metric_flatten/topology.py)" = 03d6ee7435835643fd3b3563f08525e5d7187242
+          git fetch --no-tags --depth=1 origin 0b92a3e06d686562f0f8bfb7baa264c3e98a9ca6
+          git show FETCH_HEAD:gemini_lane/stream_snap_render.py > /tmp/adaptive-gemini/stream_snap_render.py
+          git show FETCH_HEAD:gemini_lane/grow_m7_patch.py > /tmp/adaptive-gemini/grow_m7_patch.py
+          test "$(git hash-object /tmp/adaptive-gemini/stream_snap_render.py)" = 042fee4984205615b39d669c6f01500ecdff74a3
+          test "$(git hash-object /tmp/adaptive-gemini/grow_m7_patch.py)" = 51c549f55437f57103a7e3f62483e194e3750125
+      - name: Install CPU detector dependencies
+        run: |
+          python -m pip install --disable-pip-version-check torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check 'safetensors==0.5.3' 'huggingface_hub==0.30.2'
+      - name: Generated detector checks
+        run: python firstletters-colab/adaptive_surface_recovery/detector_bridge/run.py --self-test
+      - name: Execute frozen public detector comparison
+        run: |
+          atlas="$(find /tmp/adaptive-atlas -name source_atlas.npz -type f)"
+          test -f "$atlas"
+          python firstletters-colab/adaptive_surface_recovery/detector_bridge/run.py --atlas "$atlas" --shared /tmp/adaptive-shared/surface_sampling --gemini /tmp/adaptive-gemini --cache /tmp/adaptive-detector-input --output /tmp/adaptive-detector-040.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-040-detector-receipt
+          path: /tmp/adaptive-detector-040.json
+          retention-days: 30
