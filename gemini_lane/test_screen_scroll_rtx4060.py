@@ -192,11 +192,34 @@ class TestScreenScrollSafety(unittest.TestCase):
             self.assertIn("f_parallel", summary["onsheet_coherence"])
             self.assertIn("studio_desc", summary["detectors"])
             self.assertIn("ahn_s0_asc", summary["detectors"])
+            fp = summary["fp_diagnostics"]
+            self.assertIsInstance(fp, dict)
+            self.assertIn(fp["dominant_face"], ("asc", "desc"))
+            self.assertIsNotNone(fp["two_family"])
+            self.assertIn("ink_like_candidate", fp)
+            self.assertAlmostEqual(fp["clean_papyrus_area_frac"] + fp["crack_halo_area_frac"], 1.0, places=5)
             mesh_out = out_dir / "TEST_mesh_dir"
             self.assertTrue((mesh_out / "montage.png").is_file())
             self.assertTrue((mesh_out / "hotspots.png").is_file())
             self.assertTrue((mesh_out / "summary.json").is_file())
+            on_disk = json.loads((mesh_out / "summary.json").read_text(encoding="utf-8"))
+            self.assertEqual(on_disk["fp_diagnostics"], fp)
             self.assertEqual(list(work_root.iterdir()), [])
+
+    def test_compute_fp_diagnostics_studio_only_flags_crack_halo(self) -> None:
+        rng = np.random.default_rng(0)
+        ct = (0.6 + 0.02 * rng.standard_normal((200, 200))).astype(np.float32)
+        ct[90:110, 20:180] = 0.1  # delamination crack
+        valid = np.ones((200, 200), dtype=bool)
+        prob = np.full((200, 200), 0.05, dtype=np.float32)
+        prob[85:115, 30:170] = 0.9  # crack-wall speck band, both depth orders
+        studio = {o: {"prob": prob, "valid": valid} for o in ("asc", "desc")}
+        fp = S.compute_fp_diagnostics(ct, valid, studio, None, 9.362)
+        self.assertIsNone(fp["two_family"])
+        self.assertGreater(fp["crack_halo_area_frac"], 0.0)
+        self.assertTrue(fp["flags"]["crack_halo_dominated"] or fp["flags"]["no_hits"])
+        self.assertFalse(fp["ink_like_candidate"])
+        json.dumps(fp)
 
     def test_query_gpu_telemetry_raises_on_lost_gpu(self) -> None:
         fake_proc = mock.Mock(
@@ -341,6 +364,7 @@ class TestScreenScrollSafety(unittest.TestCase):
 
             self.assertEqual(summary["uv_crop"], [0, 15, 0, 15])
             self.assertEqual(summary["detectors"], {})
+            self.assertIsNone(summary["fp_diagnostics"])
             crop_out = out_dir / "TEST_mesh_dir_r0-15_c0-15"
             self.assertTrue((crop_out / "summary.json").is_file())
             self.assertTrue((crop_out / "montage.png").is_file())

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "method": "CPU-only stream-render of the mid CT slice + build_crack_void_halo_mask (default parameters); no ink detector run, no ink prediction read, zero persistent CT on disk",
+  "filter_parameters": "screening_fp_filter.build_crack_void_halo_mask defaults (untuned on these strips)",
+  "mib_budget": 80.0,
+  "chunks_per_strip": 16,
+  "render_tile": 32,
+  "total_streamed_mib": 64.47,
+  "within_budget": true,
+  "strips": [
+    {
+      "name": "PHerc0306B_w074_positive_control",
+      "role": "intact_clean_papyrus",
+      "scroll": "PHerc0306B",
+      "ct_volume": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0306B/volumes/20250521133212-8.640um-1.2m-116keV-masked.zarr",
+      "mesh_source": "SirProdigle/pherc0306b-first-letters",
+      "mesh_revision": "feabff6c54f95bd8e52a90e0a7a76881ee67d4cc",
+      "mesh_id": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+      "outer_window_rule": "published positive-control window r=95:120, c=190:250",
+      "snap_passes": 0,
+      "num_slices": 5,
+      "voxel_um": 8.64,
+      "subwindow": {
+        "factor_of_outer": 0.4,
+        "grid_shape": [
+          10,
+          24
+        ],
+        "dry_run_ct_chunks": 15,
+        "window": [
+          99,
+          109,
+          190,
+          214
+        ]
+      },
+      "m7_snap": null,
+      "streamed_mib": {
+        "ct": 30.0,
+        "m7": 0.0,
+        "mesh_geometry": 1.09,
+        "total": 31.09
+      },
+      "ct_chunks_fetched": 15,
+      "seconds": 8.18,
+      "halo": {
+        "valid_px": 82800,
+        "valid_cm2": 0.06181,
+        "valid_frame_frac": 0.992318,
+        "ct_median": 97.0,
+        "ct_robust_sigma": 37.065,
+        "ct_p01": 28.0,
+        "raw_dark_threshold_est": -51.26,
+        "clean_papyrus_retention_frac": 0.954058,
+        "crack_halo_frac": 0.045942,
+        "void_halo_frac": 0.0,
+        "border_halo_only_frac": 0.045942,
+        "void_detection_fired": false,
+        "retention_by_dark_sigma": {
+          "3": 0.954058,
+          "4": 0.954058,
+          "5": 0.954058
+        }
+      }
+    },
+    {
+      "name": "PHerc0191_w050_delaminated",
+      "role": "delaminated_crack_void",
+      "scroll": "PHerc0191",
+      "ct_volume": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr",
+      "mesh_source": "rodriguescarson/eligible-scroll-spiral-fits",
+      "mesh_revision": "63c641ba1dc794073208c24f7f88fa59c4f77621",
+      "mesh_id": "w050",
+      "outer_window_rule": "centred 50x50 mesh-grid window",
+      "snap_passes": 2,
+      "num_slices": 5,
+      "voxel_um": 9.362,
+      "subwindow": {
+        "factor_of_outer": 0.3,
+        "grid_shape": [
+          15,
+          15
+        ],
+        "dry_run_ct_chunks": 12,
+        "window": null
+      },
+      "m7_snap": {
+        "on_sheet_raw": 0.3956,
+        "on_sheet_after_snap": 0.8844,
+        "median_disp_vx": 3.3346
+      },
+      "streamed_mib": {
+        "ct": 28.0,
+        "m7": 5.22,
+        "mesh_geometry": 0.16,
+        "total": 33.38
+      },
+      "ct_chunks_fetched": 14,
+      "seconds": 8.01,
+      "halo": {
+        "valid_px": 78961,
+        "valid_cm2": 0.069207,
+        "valid_frame_frac": 1.0,
+        "ct_median": 112.0,
+        "ct_robust_sigma": 26.687,
+        "ct_p01": 33.0,
+        "raw_dark_threshold_est": 5.253,
+        "clean_papyrus_retention_frac": 1.0,
+        "crack_halo_frac": 0.0,
+        "void_halo_frac": 0.0,
+        "border_halo_only_frac": 0.0,
+        "void_detection_fired": false,
+        "retention_by_dark_sigma": {
+          "3": 0.919492,
+          "4": 1.0,
+          "5": 1.0
+        }
+      }
+    }
+  ],
+  "caveats": [
+    "Streaming budget limits each strip to a ~0.06-0.07 cm2 sub-window; fewest-chunk selection favours flat geometry and can under-sample delamination.",
+    "clean_papyrus_retention_frac counts BOTH void halo and mesh-border erosion halo; void_detection_fired separates them.",
+    "raw_dark_threshold_est (median - 4 * robust sigma, unsmoothed) below the CT floor means the default robust rule cannot flag voids on that strip; retention there is not evidence of weave-vs-void discrimination.",
+    "Parameters are the library defaults; the dark_sigma sweep is reported, never used to tune."
+  ],
+  "verdict": {
+    "clean_retention_target": 0.85,
+    "clean_retention_observed": 0.954058,
+    "clean_retention_meets_target": true,
+    "delaminated_crack_halo_frac": 0.0,
+    "delaminated_void_detection_fired": false,
+    "clean_void_detection_fired": false,
+    "delaminated_minus_clean_halo_frac": -0.045942
+  }
+}

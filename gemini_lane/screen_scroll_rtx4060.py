@@ -44,6 +44,7 @@ for _p in (str(GEMINI_DIR), str(STUDIO_T4_DIR), str(ONSHEET_DIR)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
+import screening_fp_filter as FPF  # noqa: E402
 import stream_snap_render as SSR  # noqa: E402
 
 # Pinned model sources (identical to parity scripts)
@@ -464,6 +465,31 @@ def summarize_map(prob: np.ndarray, valid: np.ndarray, voxel_um: float) -> dict:
     }
 
 
+def compute_fp_diagnostics(
+    ct_mid: np.ndarray,
+    valid_ct: np.ndarray,
+    studio: dict[str, dict],
+    ahn: dict[str, dict] | None,
+    voxel_um: float,
+) -> dict:
+    """CPU-only crack/void-halo + probability-map FP diagnostics for a Studio ``asc``/``desc`` pair.
+
+    ``studio`` / ``ahn`` map depth order -> ``{"prob", "valid"}``; A-hn adds two-family agreement.
+    """
+    valid = np.asarray(valid_ct, dtype=bool) & studio["asc"]["valid"] & studio["desc"]["valid"]
+    halo = FPF.build_crack_void_halo_mask(ct_mid, valid)
+    ahn_maps = {o: ahn[o]["prob"] for o in ("asc", "desc")} if ahn else {"asc": None, "desc": None}
+    return FPF.score_probability_map_diagnostics(
+        studio["asc"]["prob"],
+        studio["desc"]["prob"],
+        valid,
+        halo,
+        ahn_maps["asc"],
+        ahn_maps["desc"],
+        voxel_um,
+    )
+
+
 def find_top_hotspots(
     prob: np.ndarray,
     valid: np.ndarray,
@@ -604,6 +630,75 @@ def _mesh_dir_tag(mesh_source: str) -> str:
     return (clean[:72] or "mesh")
 
 
+def render_mesh_ct_stack(
+    mesh_source: str,
+    work_dir: Path,
+    *,
+    ct_zarr_url: str,
+    m7_zarr_url: str | None,
+    snap_passes: int,
+    num_slices: int,
+    uv_crop: tuple[int, int, int, int] | None,
+    cache_mb: int,
+    tile_size: int = 256,
+    ct_reader_cls=SSR.RemoteZarrV2,
+) -> dict:
+    """Fetch a tifxyz mesh into ``work_dir``, optionally ``m7``-snap it, and stream-render its CT stack into RAM.
+
+    ``ct_reader_cls`` builds the CT reader (e.g. a byte-capped ``RemoteZarrV2`` subclass). Returns
+    ``stack_lhw``, ``valid_ct``, ``geom_metrics`` and the ``m7`` / CT fetch counters.
+    """
+    fetch_mesh_dir(mesh_source, work_dir / "mesh")
+    x, y, z, valid, meta = SSR.read_tifxyz(work_dir / "mesh")
+    if uv_crop is not None:
+        r0, r1, c0, c1 = uv_crop
+        x = x[r0:r1, c0:c1]
+        y = y[r0:r1, c0:c1]
+        z = z[r0:r1, c0:c1]
+        valid = valid[r0:r1, c0:c1]
+
+    scale = meta.get("scale", [0.05, 0.05])
+    geom_metrics = None
+    m7_bytes = 0
+    m7_chunks = 0
+    if snap_passes > 0:
+        if not m7_zarr_url:
+            raise ValueError("--m7-zarr is required when --snap-passes > 0")
+        m7_reader = SSR.RemoteZarrV2(
+            m7_zarr_url, cache_mb=max(128, cache_mb // 2), workers=8
+        )
+        try:
+            x, y, z, geom_metrics = SSR.snap_tifxyz_to_m7(
+                x, y, z, m7_reader, passes=snap_passes
+            )
+            m7_bytes = int(m7_reader.bytes_fetched)
+            m7_chunks = int(m7_reader.chunks_fetched)
+        finally:
+            m7_reader.close()
+
+    ct_reader = ct_reader_cls(ct_zarr_url, cache_mb=cache_mb, workers=8)
+    t_render = time.perf_counter()
+    try:
+        stack_lhw, valid_ct = SSR.render_surface_stack(
+            x, y, z, ct_reader, num_slices=num_slices, scale=scale, tile_size=tile_size
+        )
+        ct_bytes = int(ct_reader.bytes_fetched)
+        ct_chunks = int(ct_reader.chunks_fetched)
+    finally:
+        ct_reader.close()
+    render_sec = round(time.perf_counter() - t_render, 2)
+    return {
+        "stack_lhw": stack_lhw,
+        "valid_ct": valid_ct,
+        "geom_metrics": geom_metrics,
+        "m7_bytes": m7_bytes,
+        "m7_chunks": m7_chunks,
+        "ct_bytes": ct_bytes,
+        "ct_chunks": ct_chunks,
+        "render_sec": render_sec,
+    }
+
+
 def screen_one_mesh(
     *,
     scroll: str,
@@ -640,46 +735,20 @@ def screen_one_mesh(
     with tempfile.TemporaryDirectory(
         prefix="mesh-", dir=str(work_root), ignore_cleanup_errors=True
     ) as mtmp:
-        mdir = Path(mtmp)
-        fetch_mesh_dir(mesh_source, mdir / "mesh")
-        x, y, z, valid, meta = SSR.read_tifxyz(mdir / "mesh")
-        if uv_crop is not None:
-            r0, r1, c0, c1 = uv_crop
-            x = x[r0:r1, c0:c1]
-            y = y[r0:r1, c0:c1]
-            z = z[r0:r1, c0:c1]
-            valid = valid[r0:r1, c0:c1]
-
-        scale = meta.get("scale", [0.05, 0.05])
-        geom_metrics = None
-        m7_bytes = 0
-        m7_chunks = 0
-        if snap_passes > 0:
-            if not m7_zarr_url:
-                raise ValueError("--m7-zarr is required when --snap-passes > 0")
-            m7_reader = SSR.RemoteZarrV2(
-                m7_zarr_url, cache_mb=max(128, cache_mb // 2), workers=8
-            )
-            try:
-                x, y, z, geom_metrics = SSR.snap_tifxyz_to_m7(
-                    x, y, z, m7_reader, passes=snap_passes
-                )
-                m7_bytes = int(m7_reader.bytes_fetched)
-                m7_chunks = int(m7_reader.chunks_fetched)
-            finally:
-                m7_reader.close()
-
-        ct_reader = SSR.RemoteZarrV2(ct_zarr_url, cache_mb=cache_mb, workers=8)
-        t_render = time.perf_counter()
-        try:
-            stack_lhw, valid_ct = SSR.render_surface_stack(
-                x, y, z, ct_reader, num_slices=num_slices, scale=scale
-            )
-            ct_bytes = int(ct_reader.bytes_fetched)
-            ct_chunks = int(ct_reader.chunks_fetched)
-        finally:
-            ct_reader.close()
-        render_sec = round(time.perf_counter() - t_render, 2)
+        rendered = render_mesh_ct_stack(
+            mesh_source,
+            Path(mtmp),
+            ct_zarr_url=ct_zarr_url,
+            m7_zarr_url=m7_zarr_url,
+            snap_passes=snap_passes,
+            num_slices=num_slices,
+            uv_crop=uv_crop,
+            cache_mb=cache_mb,
+        )
+        stack_lhw, valid_ct = rendered.pop("stack_lhw"), rendered.pop("valid_ct")
+        geom_metrics, render_sec = rendered["geom_metrics"], rendered["render_sec"]
+        m7_bytes, m7_chunks = rendered["m7_bytes"], rendered["m7_chunks"]
+        ct_bytes, ct_chunks = rendered["ct_bytes"], rendered["ct_chunks"]
 
         mesh_idx = (num_slices - 1) // 2
         try:
@@ -703,6 +772,8 @@ def screen_one_mesh(
         panels: list[tuple[str, np.ndarray, np.ndarray]] = []
         primary_map = None
         primary_valid = None
+        st_res = None
+        ahn_res = None
 
         if "studio" in detectors and int(valid_ct.sum()) >= 10000:
             st_res = run_studio_both_orders(
@@ -753,6 +824,11 @@ def screen_one_mesh(
                 primary_map = ahn_res[best_ah_ord]["prob"]
                 primary_valid = ahn_res[best_ah_ord]["valid"]
 
+        fp_diagnostics = (
+            compute_fp_diagnostics(stack_lhw[mesh_idx], valid_ct, st_res, ahn_res, voxel_um)
+            if st_res is not None
+            else None
+        )
         hotspots = (
             find_top_hotspots(primary_map, primary_valid)
             if primary_map is not None and primary_valid is not None
@@ -788,6 +864,7 @@ def screen_one_mesh(
         "valid_ct_pixels": int(valid_ct.sum()),
         "valid_ct_cm2": round(float(int(valid_ct.sum()) * ((voxel_um / 10000.0) ** 2)), 4),
         "detectors": detector_stats,
+        "fp_diagnostics": fp_diagnostics,
         "top_hotspots": hotspots,
         "artifacts": {"montage": montage_file, "hotspots": hotspot_file},
         "total_seconds": round(time.perf_counter() - t_total, 2),

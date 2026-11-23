@@ -282,5 +282,99 @@ class BenchmarkTests(unittest.TestCase):
         self.assertFalse(any(bench[k]["ink_like_candidate"] for k in ("crack_specks", "bilateral_mottle", "dot_rows")))
 
 
+class RealCTBenchmarkTests(unittest.TestCase):
+    """Offline checks of ``benchmark_fp_filter_real_ct`` helpers and its committed public receipt."""
+
+    RECEIPT = HERE / "evidence" / "fp_filter_real_ct_benchmark.json"
+
+    @classmethod
+    def setUpClass(cls):
+        import benchmark_fp_filter_real_ct as B
+
+        cls.B = B
+
+    def test_receipt_schema_and_budget(self):
+        data = json.loads(self.RECEIPT.read_text(encoding="utf-8"))
+        self.assertEqual(data["schema_version"], self.B.SCHEMA_VERSION)
+        self.assertEqual({s["role"] for s in data["strips"]}, {"intact_clean_papyrus", "delaminated_crack_void"})
+        total = round(sum(s["streamed_mib"]["total"] for s in data["strips"]), 2)
+        self.assertEqual(total, data["total_streamed_mib"])
+        self.assertLess(total, self.B.MIB_BUDGET)
+        self.assertTrue(data["within_budget"])
+        for s in data["strips"]:
+            h = s["halo"]
+            self.assertLessEqual(s["subwindow"]["dry_run_ct_chunks"], self.B.CHUNKS_PER_STRIP)
+            self.assertLessEqual(s["streamed_mib"]["ct"], self.B.CT_MIB_CAP_PER_STRIP)
+            self.assertAlmostEqual(h["clean_papyrus_retention_frac"] + h["crack_halo_frac"], 1.0, places=5)
+            self.assertAlmostEqual(h["void_halo_frac"] + h["border_halo_only_frac"], h["crack_halo_frac"], places=5)
+            self.assertEqual(h["void_detection_fired"], h["void_halo_frac"] > 0)
+        v = data["verdict"]
+        clean = next(s for s in data["strips"] if s["role"] == "intact_clean_papyrus")["halo"]
+        self.assertEqual(v["clean_retention_observed"], clean["clean_papyrus_retention_frac"])
+        self.assertEqual(v["clean_retention_meets_target"], clean["clean_papyrus_retention_frac"] >= v["clean_retention_target"])
+
+    def test_receipt_privacy(self):
+        raw = self.RECEIPT.read_text(encoding="utf-8")
+        for forbidden in ("C:\\\\", "C:/", "/Users/", "/home/", "Scrollprize_private", ".png", "top_hotspots",
+                          "prob", "studio", "ahn", "detectors", "fp_diagnostics"):
+            self.assertNotIn(forbidden, raw)
+        data = json.loads(raw)
+        unread = next(s for s in data["strips"] if s["role"] == "delaminated_crack_void")
+        self.assertIsNone(unread["subwindow"]["window"])
+        self.assertTrue(all(s["ct_volume"].startswith("https://") for s in data["strips"]))
+
+    def test_centered_crop_and_subwindow_selection(self):
+        self.assertEqual(self.B.centered_crop((56, 245)), (3, 53, 97, 147))
+        with self.assertRaises(ValueError):
+            self.B.centered_crop((40, 245))
+        grid = np.zeros((40, 40), dtype=np.float32)
+        valid = np.ones((40, 40), dtype=bool)
+        # Footprint grows with area: only windows of <= 120 vertices fit the per-strip chunk budget.
+        footprint = lambda x, y, z: int(np.ceil(x.size / 120 * self.B.CHUNKS_PER_STRIP))  # noqa: E731
+        window, factor, n = self.B.select_subwindow(grid, grid, grid, valid, (0, 20, 0, 20), footprint)
+        self.assertEqual(factor, 0.5)
+        self.assertEqual((window[1] - window[0], window[3] - window[2]), (10, 10))
+        self.assertLessEqual(n, self.B.CHUNKS_PER_STRIP)
+        with self.assertRaises(RuntimeError):
+            self.B.select_subwindow(grid, grid, grid, valid, (0, 20, 0, 20), lambda *_: 10 ** 6)
+
+    def test_summarize_halo_and_receipt_on_synthetic_ct(self):
+        rng = np.random.default_rng(7)
+        woven = _woven_ct((240, 240), rng)
+        cracked = woven.copy()
+        cracked[110:130, 20:220] = 0.05
+        valid = np.ones((240, 240), dtype=bool)
+        clean_stats = self.B.summarize_halo(woven, valid, VOXEL_UM)
+        crack_stats = self.B.summarize_halo(cracked, valid, VOXEL_UM)
+        self.assertFalse(clean_stats["void_detection_fired"])
+        self.assertTrue(crack_stats["void_detection_fired"])
+        self.assertGreater(crack_stats["crack_halo_frac"], clean_stats["crack_halo_frac"])
+        mk = lambda role, h: {"role": role, "halo": h, "streamed_mib": {"total": 1.0}}  # noqa: E731
+        receipt = self.B.build_receipt([mk("intact_clean_papyrus", clean_stats), mk("delaminated_crack_void", crack_stats)])
+        self.assertTrue(receipt["verdict"]["clean_retention_meets_target"])
+        self.assertGreater(receipt["verdict"]["delaminated_minus_clean_halo_frac"], 0)
+        with self.assertRaises(ValueError):
+            self.B.summarize_halo(woven, np.zeros_like(valid), VOXEL_UM)
+
+    def test_budgeted_reader_refuses_fetch_past_cap(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory(prefix="fpbench-zarr-test-") as tmp:
+            level = Path(tmp) / "0"
+            level.mkdir()
+            meta = {"zarr_format": 2, "shape": [8, 8, 16], "chunks": [8, 8, 8], "dtype": "|u1",
+                    "compressor": None, "fill_value": 0, "order": "C", "dimension_separator": "."}
+            (level / ".zarray").write_text(json.dumps(meta), encoding="utf-8")
+            for cx in (0, 1):
+                (level / f"0.0.{cx}").write_bytes(np.full(512, 100 + cx, dtype=np.uint8).tobytes())
+            cap_mib = 512 * 1.5 / 1024 ** 2
+            reader = self.B.BudgetedZarrV2(tmp, cache_mb=1, workers=1, max_mib=cap_mib)
+            block, _ = reader.read_box((0, 0, 0), (8, 8, 8))
+            self.assertEqual(int(block[0, 0, 0]), 100)
+            with self.assertRaises(self.B.BudgetExceeded):
+                reader.read_box((0, 0, 8), (8, 8, 16))
+            self.assertEqual(reader.chunks_fetched, 1)
+
+
 if __name__ == "__main__":
     unittest.main()
