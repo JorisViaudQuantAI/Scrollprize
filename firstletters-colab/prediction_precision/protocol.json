@@ -1,0 +1,57 @@
+{
+  "schema": "scrollprize.prediction-precision-protocol.v1",
+  "date": "2026-11-23",
+  "status": "Prospective Q16 and fixed-display comparison after observed Q8 saturation; exploratory on two already-seen controls. Freeze before new Q16 calculation and before inspecting either forthcoming whole-glyph image.",
+  "question": "Does uint16 serialization preserve the retained float prediction's discrimination, and does one globally fixed logit display expose probability differences hidden by Q8 saturation?",
+  "control_source_freeze": "7bb9cd9d02cef0ed2c95fc694da90a5a2c09481c",
+  "glyph_source_freeze": "cada2a5497a47868d8dfde68f04e1a333a7723fb",
+  "controls": {
+    "fields": ["PHerc0841", "PHerc0814"],
+    "primary_assembly": "hann",
+    "diagnostic_assemblies": ["central", "uniform"],
+    "source": "Actual completed primary-run fine float maps, Q8 exports, common grids, categorical labels and shared all16-supported-cell mask. Verify every consumed artifact against the retained receipt.",
+    "quantizer": "Q16 = np.rint(clip(P_fine,0,1).astype(float64)*65535).astype(uint16). Nearest-even rounding at the fine grid, never after common reduction. The product is exact for retained float32 inputs.",
+    "common_reduction": "Sum each exact4x4 integer block in uint64; divide once by16*65535 in float64; cast to float32. ActualQ8 uses the analogous denominator16*255 and must match the saved primary common map. Float reduction is unchanged.",
+    "operating_point": "Same one whole-field strict5% known-background cutoff per representation: descendingbackground[floor(Nbackground/20)], strictgreater, no tie-breaking. Label-informed descriptive operating points, not deployment thresholds or matched realised FPR when ties differ.",
+    "retain": ["AP", "AUC", "ink recall", "actual background counts and rate", "cutoff and ties", "fine maximum-code counts", "supported background and ink common cells at code maximum", "all three assemblies and representations"],
+    "restoration": {
+      "require_both_Hann_fields": true,
+      "absolute_recall_difference_from_float_maximum": 0.01,
+      "absolute_AP_difference_from_float_maximum": 0.005,
+      "diagnostics_cannot_replace_Hann": true,
+      "scope": "Serialization fidelity only. No detector, calibration, historical gate, unread deployment, legibility or prize claim."
+    }
+  },
+  "display": {
+    "formula": "L=log(clip(P,float32eps,1-float32eps))-log1p(-clip(P,float32eps,1-float32eps)); grey=clip((L+8)/24,0,1)",
+    "arithmetic": "Float64 logit and display arithmetic from retained float32 probabilities; retained display array castfloat32; PNG is nearest-even round(255*grey) to uint8.",
+    "fitted_parameters": 0,
+    "spatial_processing": "None: no smoothing, morphology, crop search, sharpening, inferred strokes or expected-letter input.",
+    "scope": "Apply identically to each entire fixed core. Display values never enter probability metrics or cutoff calibration.",
+    "BF16_limit": "A small absolute probability error near0 or1 need not imply a small logit error. If a source selectedBF16, display precision is not certified by a probability-only parity test. Always retain the actual source precision."
+  },
+  "glyph": {
+    "orders": ["source", "reverse"],
+    "require_both_orders_complete": true,
+    "same_source_control": "The already-published Paris4 complete-Nu fixture; no additional region or field selection.",
+    "reconstruction": "Use every actual saved full-patch probability and exact saved nonempty-column support. Reconstruct canonical Hann in FP32 with the released nonperiodic/floored window, row-major origins and accumulation order. No model call, architecture import, or checkpoint load.",
+    "verification": "The reconstructed complete2048x2048 context must reproduce every saved canonicalQ8 pixel exactly before any derived display is accepted. Its1920x1920 core must match the saved core. Verify and recheck all consumed artifact hashes.",
+    "outputs": ["canonical Hann float core", "Q16 fine-grid core and16-bitPNG", "unchanged originalQ8 core copy", "fixed logit display for each entire core"],
+    "evaluation": "No pixel AUC or automatic letter decision. Both orders retained irrespective of appearance. Their physical depth slabs differ as disclosed by the original fixture."
+  },
+  "limits": {
+    "wall_seconds": 60,
+    "peak_rss_soft_kib": 1048576,
+    "network_requests": 0,
+    "new_CT_requests": 0,
+    "detector_forwards": 0,
+    "training_steps": 0,
+    "retries": 0
+  },
+  "dependency_sha256": {
+    "firstletters-colab/hecate_blending/metrics.py": "40d4480d31a439a4958e44328701f8b13d201080c4bc5ecff0169094d0c16e39",
+    "firstletters-colab/ink/third_party/hecate/hecate.py": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59",
+    "firstletters-colab/public_glyph_control/run.py": "cc3fb7ae83ee891c7d749ff3ad4603bac8ea2e7e5d7adc12c4aad7a9039dd113"
+  },
+  "public_reporting": "Reviewed aggregate results and code only. All arrays and images remain outsideGit. Existing source files are never overwritten. No unread source or new location is examined."
+}
