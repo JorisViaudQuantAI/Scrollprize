@@ -346,6 +346,30 @@ class TestScreenScrollSafety(unittest.TestCase):
             self.assertTrue((crop_out / "montage.png").is_file())
             self.assertEqual(list(work_root.iterdir()), [])
 
+    def test_rtx4060_screen_ledger_sanitized(self) -> None:
+        ledger_path = Path(__file__).resolve().parent / "evidence" / "firstletters_rtx4060_screen_ledger.json"
+        raw_text = ledger_path.read_text(encoding="utf-8")
+        forbidden_substrings = (
+            "top_hotspots",
+            "uv_crop",
+            "C:\\Users",
+            "C:/Users",
+            "Scrollprize_private",
+            "montage.png",
+            "hotspots.png",
+            "r0-56",
+            "r12-56",
+        )
+        for forbidden in forbidden_substrings:
+            self.assertNotIn(forbidden, raw_text)
+
+        data = json.loads(raw_text)
+        total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
+        self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
+        self.assertEqual(total_cm2, 16.9421)
+        self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
+        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0.0",
+  "hardware_profile": {
+    "gpu": "RTX 4060 Laptop 8 GiB",
+    "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
+    "observed_temp_c_range": [
+      62,
+      66
+    ],
+    "hardware_or_oom_incidents": 0
+  },
+  "positive_control": {
+    "scroll": "PHerc0306B",
+    "mesh_id": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+    "clean_for_studio": true,
+    "valid_ct_cm2": 0.4228,
+    "f_parallel": 0.9375,
+    "studio_asc": {
+      "p995": 0.93303,
+      "max": 0.95549,
+      "frac_gt_07": 0.1581
+    },
+    "studio_desc": {
+      "frac_gt_07": 0.0365
+    },
+    "peak_allocated_mib": 1608,
+    "post_run_temp_c": 65,
+    "verdict": "POSITIVE_GATE_PASS",
+    "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
+  },
+  "untouched_screening_summary": {
+    "total_unique_valid_ct_cm2": 16.9421,
+    "meshes_screened": 4,
+    "two_family_followups": 2,
+    "candidates_found": 0
+  },
+  "meshes": [
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.0123,
+      "on_sheet_after_snap": 0.988,
+      "f_parallel": 0.9949,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1292.77,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.85773,
+          "p995": 0.88772,
+          "max": 0.9408,
+          "frac_gt_05": 0.090842,
+          "frac_gt_07": 0.039608
+        },
+        "studio_asc": {
+          "p99": 0.8085,
+          "p995": 0.85373,
+          "max": 0.93535,
+          "frac_gt_05": 0.077015,
+          "frac_gt_07": 0.025912
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.882,
+        "on_sheet_after_snap": 0.9775,
+        "f_parallel": 0.975,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1847.59,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 62,
+        "studio_desc": {
+          "p99": 0.89188,
+          "p995": 0.90898,
+          "max": 0.93055,
+          "frac_gt_05": 0.087758,
+          "frac_gt_07": 0.050448
+        },
+        "studio_asc": {
+          "p99": 0.81113,
+          "p995": 0.86083,
+          "max": 0.91204,
+          "frac_gt_05": 0.115897,
+          "frac_gt_07": 0.039921
+        },
+        "ahn_s0_asc": {
+          "p99": 0.80926,
+          "p995": 0.82947,
+          "max": 0.87028,
+          "frac_gt_05": 0.122975,
+          "frac_gt_07": 0.031802
+        },
+        "ahn_s0_desc": {
+          "p99": 0.75484,
+          "p995": 0.80314,
+          "max": 0.85954,
+          "frac_gt_05": 0.056018,
+          "frac_gt_07": 0.01739
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Isolated single-face Studio desc row uncorroborated by Studio asc or A-hn; both Studio and A-hn exhibit ~2x face asymmetry with non-matching peaks."
+    },
+    {
+      "scroll": "PHerc1203",
+      "mesh_id": "auto_grown_20251005230118636",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.3613,
+      "on_sheet_after_snap": 0.96,
+      "f_parallel": 0.8927,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2235.9,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.68296,
+          "p995": 0.77387,
+          "max": 0.92585,
+          "frac_gt_05": 0.031282,
+          "frac_gt_07": 0.008855
+        },
+        "studio_asc": {
+          "p99": 0.78911,
+          "p995": 0.84779,
+          "max": 0.94445,
+          "frac_gt_05": 0.045264,
+          "frac_gt_07": 0.017377
+        }
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.7387,
+        "on_sheet_after_snap": 0.9873,
+        "f_parallel": 0.9,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1336.08,
+        "peak_allocated_mib_studio": 1608,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 63,
+        "studio_desc": {
+          "p99": 0.72804,
+          "p995": 0.7846,
+          "max": 0.88606,
+          "frac_gt_05": 0.048185,
+          "frac_gt_07": 0.013631
+        },
+        "studio_asc": {
+          "p99": 0.85675,
+          "p995": 0.8855,
+          "max": 0.94016,
+          "frac_gt_05": 0.063064,
+          "frac_gt_07": 0.030102
+        },
+        "ahn_s0_asc": {
+          "p99": 0.70056,
+          "p995": 0.74377,
+          "max": 0.83371,
+          "frac_gt_05": 0.05012,
+          "frac_gt_07": 0.010073
+        },
+        "ahn_s0_desc": {
+          "p99": 0.60067,
+          "p995": 0.70024,
+          "max": 0.8376,
+          "frac_gt_05": 0.022601,
+          "frac_gt_07": 0.005022
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "Studio asc peaks align with fiber flaps/cracks and are uncorroborated by A-hn."
+    },
+    {
+      "scroll": "PHerc0191",
+      "mesh_id": "w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.1151,
+      "on_sheet_after_snap": 0.9377,
+      "f_parallel": 0.8152,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 796.65,
+        "peak_allocated_mib": 1608,
+        "studio_desc": {
+          "p99": 0.39968,
+          "p995": 0.44461,
+          "max": 0.74757,
+          "frac_gt_05": 0.001987,
+          "frac_gt_07": 0.00014
+        },
+        "studio_asc": {
+          "p99": 0.57161,
+          "p995": 0.75613,
+          "max": 0.90512,
+          "frac_gt_05": 0.013498,
+          "frac_gt_07": 0.006372
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Delaminated papyrus with only sparse crack-edge specks; no two-family follow-up warranted."
+    },
+    {
+      "scroll": "PHerc0191",
+      "mesh_id": "w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.4534,
+      "on_sheet_after_snap": 0.9119,
+      "f_parallel": 0.8039,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1398.68,
+        "peak_allocated_mib": 1608,
+        "post_run_temp_c": 66,
+        "studio_desc": {
+          "p99": 0.56967,
+          "p995": 0.70554,
+          "max": 0.92777,
+          "frac_gt_05": 0.013634,
+          "frac_gt_07": 0.005144
+        },
+        "studio_asc": {
+          "p99": 0.53453,
+          "p995": 0.64165,
+          "max": 0.86389,
+          "frac_gt_05": 0.012337,
+          "frac_gt_07": 0.003177
+        }
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Heavy papyrus delamination cracks with only sparse crack-edge specks; no two-family follow-up warranted."
+    }
+  ]
+}
