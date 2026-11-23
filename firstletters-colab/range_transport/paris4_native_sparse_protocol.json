@@ -1,0 +1,18 @@
+{
+  "schema": "scrollprize.paris4-native-sparse-protocol.v1",
+  "question": "Can a previously hash-pinned public Paris 4 L0 chunk yield the exact 65 depth planes with one HEAD and one conditional Range, without downloading the full chunk?",
+  "prior_provenance": "https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45148129539",
+  "source": "published PHercParis4 old known-ink segment, not unread or title region",
+  "chunk_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHercParis4/segments/20231210121321/surface-volumes/2.4um-0.22m-78keV-volume-20260411134726.zarr/0/0/79/106",
+  "full_chunk_bytes": 1785856,
+  "range_inclusive": [360448, 1425407],
+  "selected_bytes": 1064960,
+  "pinned_selected_sha256": "447aa8788b156bc65a9c4f288af79c467e609a9e7865a12784a509c31712f557",
+  "order": ["HEAD to require strong ETag and exact expected whole-byte length", "one If-Match 206 Range to fixed interval", "verify requested response headers and prior pinned selected SHA256"],
+  "max_requests": 2,
+  "max_body_bytes": 1100000,
+  "timeout_seconds": 40,
+  "no_retries": true,
+  "fail_on": ["redirect", "response mutation", "ignored Range", "body mismatch", "different pinned SHA256", "resource cap"],
+  "allowed_claim": "one S3 object delivered byte-identical selected interval without a whole GET; this is not a complete 289-chunk context or a transfer-speed benchmark"
+}
