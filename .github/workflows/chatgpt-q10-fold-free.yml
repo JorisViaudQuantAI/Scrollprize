@@ -1,0 +1,32 @@
+name: Q10 public fold-free metric flattening
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-q10-fold-free.yml
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned CPU dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'scipy==1.12.0' 'pillow==11.3.0'
+      - name: Unit checks
+        run: python firstletters-colab/adaptive_surface_recovery/fold_free_flatten/run.py --self-test
+      - name: Execute frozen public geometry replay
+        run: python firstletters-colab/adaptive_surface_recovery/fold_free_flatten/run.py --cache /tmp/q10-pinned-source --output /tmp/q10-fold-free.json --mesh-out /tmp/q10-fold-free-mesh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q10-fold-free-public-receipt
+          path: |
+            /tmp/q10-fold-free.json
+            /tmp/q10-fold-free-mesh
+          retention-days: 30
