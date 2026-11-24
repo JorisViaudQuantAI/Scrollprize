@@ -1,0 +1,35 @@
+{
+ "scroll": "PHerc0211",
+ "volume": "20250821151803 (9.362 um)",
+ "band_z": [
+  7650,
+  9150
+ ],
+ "fit": "villa fit_spiral.py @0fb38c45, ACW, 30,000 steps, official tracks/Lasagna/umbilicus (report 35)",
+ "flatten": "VC3D AppImage e5707e4 flatboi, symmetric_dirichlet, 50 iters, keep 100%",
+ "render": "render_tifxyz.py, 41 layers, step 1 vox, mesh at layer 20, bicubic, renderer default flip-normals",
+ "detector": "Studio studio_t4.py release bf66f753, weights sha256 96b32628..., fp16",
+ "orders": {
+  "desc": "planes c+8 down to c-7 (c = 20): slices [28,27,...,13]",
+  "asc": "planes c-8 up to c+7: slices [12,13,...,27]",
+  "reading_order_on_these_windings": "desc (normals point away from the umbilicus side the winner's mesh uses)"
+ },
+ "stride96": "unblended 96-px tiles",
+ "stride48": "Hann-blended, only on the 40 judged windows (pw_* files)",
+ "px_per_mm": 20,
+ "code": "/home/user/vesuvius/wl/jobs/wl_ink_v3.tgz (private copy)",
+ "cost_L4_s": {
+  "s96_all_60_desc_plus_9_asc": 5801,
+  "s48_40_windows": 4400
+ },
+ "files": {
+  "raw20/fwNNN__s96desc.png": "Studio s96 probability*255, area-downscaled to 20 px/mm (reading order)",
+  "raw20/fwNNN__s96asc.png": "other order, 9 windings (rng 211)",
+  "raw20/fwNNN__stdesc_s0.png|stasc_s0": "Studio s48 full winding where run (fw033-036 and snapped/grid variants not included)",
+  "raw20/fwNNN_render_meta.json": "render geometry (canvas, tifxyz scale)",
+  "maps_s96/PHerc0211_fwNNN_st96desc_z20.png": "post display (z-scored) at 20 px/mm",
+  "maps_s96/fwNNN_valid_mask20.png / _parallel_mask20.png": "render validity / onsheet parallel-tile masks at 20 px/mm",
+  "maps_s96/red__PHerc0211_pw_<window>_stdesc_z20.png": "s48 z-scored map of the 40 judged windows",
+  "windows.json": "the 149 windows: winding, column range (render px), valid share, s96 line/row/hot/glyph, rank"
+ }
+}
