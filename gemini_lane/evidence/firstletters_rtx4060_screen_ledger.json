@@ -3,9 +3,10 @@
   "hardware_profile": {
     "gpu": "RTX 4060 Laptop 8 GiB",
     "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
+    "tier1b_flags": "--vram-fraction 0.50 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 320",
     "observed_temp_c_range": [
-      62,
-      66
+      57,
+      67
     ],
     "hardware_or_oom_incidents": 0
   },
@@ -29,8 +30,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 75.9988,
-    "meshes_screened": 15,
+    "total_unique_valid_ct_cm2": 90.9026,
+    "meshes_screened": 19,
     "two_family_followups": 6,
     "candidates_found": 0
   },
@@ -215,7 +216,7 @@
       },
       "two_family_followup": null,
       "verdict": "NEGATIVE",
-      "note": "Delaminated papyrus with only sparse crack-edge specks; no two-family follow-up warranted."
+      "note": "Low-sensitivity/weak grid per Exp T15 & claude-025 (unflattened HF spiral fit, 58.959% area >20 deg shear); delaminated papyrus with sparse crack-edge specks only; no two-family follow-up warranted."
     },
     {
       "scroll": "PHerc0191",
@@ -250,7 +251,7 @@
       },
       "two_family_followup": null,
       "verdict": "NEGATIVE",
-      "note": "Heavy papyrus delamination cracks with only sparse crack-edge specks; no two-family follow-up warranted."
+      "note": "Low-sensitivity/weak grid per Exp T15 & claude-025 (unflattened HF spiral fit, 58.959% area >20 deg shear); heavy papyrus delamination cracks with sparse crack-edge specks only; no two-family follow-up warranted."
     },
     {
       "scroll": "PHerc1203",
@@ -829,6 +830,170 @@
       },
       "verdict": "NEGATIVE",
       "note": "Row of 1.5-2.5 mm rounded blobs hugging the lower valid-mesh step edge and a vertical papyrus seam; 9-variant adversarial depth sweep (dz in -6..+6) and mirror/rot180 check + Q34 Stroke-Bounded TFCE (max q34_score=0.0074, 0/9 passing Q34 bar) confirm boundary/seam artifact with zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z9344_w015",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.7503,
+      "on_sheet_after_snap": 0.9927,
+      "f_parallel": 0.9753,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 373.07,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.72746,
+          "p995": 0.83465,
+          "max": 0.91682,
+          "frac_gt_05": 0.033822,
+          "frac_gt_07": 0.011565
+        },
+        "studio_asc": {
+          "p99": 0.67072,
+          "p995": 0.71633,
+          "max": 0.91693,
+          "frac_gt_05": 0.045259,
+          "frac_gt_07": 0.006564
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.762,
+        "bilateral_overlap_frac": 0.0,
+        "strokeness_weighted_mean": 1.2129,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Tier-1B zero-overlap winding; low face asymmetry (1.762x) and low strokeness (1.2129); visual inspection confirms sparse crack/edge speckles with zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.2579,
+      "on_sheet_after_snap": 0.9786,
+      "f_parallel": 0.9498,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1029.7,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.85152,
+          "p995": 0.88688,
+          "max": 0.94276,
+          "frac_gt_05": 0.071443,
+          "frac_gt_07": 0.033882
+        },
+        "studio_asc": {
+          "p99": 0.84493,
+          "p995": 0.86985,
+          "max": 0.92878,
+          "frac_gt_05": 0.112465,
+          "frac_gt_07": 0.041859
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.245,
+        "bilateral_overlap_frac": 0.021232,
+        "strokeness_weighted_mean": 1.9231,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Tier-1B zero-overlap winding; elevated bilateral Studio response (asymmetry 1.245x) restricted to delamination cracks and bottom rim on visual montage review; zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z8144_w030",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.3149,
+      "on_sheet_after_snap": 0.9584,
+      "f_parallel": 0.9108,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 821.88,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.75075,
+          "p995": 0.80694,
+          "max": 0.92947,
+          "frac_gt_05": 0.040947,
+          "frac_gt_07": 0.014948
+        },
+        "studio_asc": {
+          "p99": 0.71007,
+          "p995": 0.82566,
+          "max": 0.92017,
+          "frac_gt_05": 0.029467,
+          "frac_gt_07": 0.010668
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.3941,
+        "bilateral_overlap_frac": 0.007693,
+        "strokeness_weighted_mean": 0.7607,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Tier-1B zero-overlap winding; low face asymmetry (1.3941x) and low strokeness (0.7607); visual montage review confirms diffuse mottle/crack specks with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.5807,
+      "on_sheet_after_snap": 0.9919,
+      "f_parallel": 0.8944,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1421.34,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.60075,
+          "p995": 0.71691,
+          "max": 0.92706,
+          "frac_gt_05": 0.016135,
+          "frac_gt_07": 0.005748
+        },
+        "studio_asc": {
+          "p99": 0.64915,
+          "p995": 0.76131,
+          "max": 0.93332,
+          "frac_gt_05": 0.017582,
+          "frac_gt_07": 0.007754
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.3713,
+        "bilateral_overlap_frac": 0.035608,
+        "strokeness_weighted_mean": 1.1862,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "Tier-1B zero-overlap winding; quiet bilateral response (asymmetry 1.3713x, strokeness 1.1862); visual montage review confirms diffuse papyrus texture and rim specks with zero letter strokes."
     }
   ]
 }

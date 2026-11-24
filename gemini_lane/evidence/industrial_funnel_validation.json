@@ -1,0 +1,1877 @@
+{
+  "schema_version": "gemini.industrial_funnel_validation.v1",
+  "generated_utc_date": "2026-11-24",
+  "execution_mode": "cpu_only_windows_ntfs",
+  "cuda_visible_devices": "-1",
+  "torch_imported": false,
+  "persistent_ct_or_m7_on_disk": false,
+  "host_runtime": {
+    "os": "Windows",
+    "python": "3.14.3",
+    "sqlite": "3.50.4"
+  },
+  "pinned_inputs": {
+    "chatgpt_industrial_funnel_branch": "origin/chatgpt/industrial-search-funnel-rfc",
+    "chatgpt_industrial_funnel_commit": "eea64f4",
+    "claude_firstletters_branch": "origin/claude/firstletters-colab",
+    "claude_firstletters_commit": "67bd872",
+    "claude_s0_csv_git_blob_sha1": "333735fa42e032171d0fc8ebd3df4f4a0da9f1b2",
+    "chatgpt_adaptive_branch": "origin/chatgpt/adaptive-surface-recovery",
+    "chatgpt_adaptive_072_doc": "collab/chatgpt-adaptive-072.md"
+  },
+  "windows_compatibility_audit": {
+    "unmodified_replay": {
+      "tests_run": 48,
+      "passed_count": 9,
+      "error_count": 39,
+      "failure_count": 0,
+      "passing_suite": "SurveyTests (9/9)",
+      "failing_suites": "QueueTests (28/28 ERROR), FileTests (11/11 ERROR)",
+      "primary_error": "control_plane.py:60 -> ValueError: Private root must have mode 0700 (Windows NTFS stat().st_mode returns 0o40777)",
+      "review073_import_error": "review073.py:3 -> ModuleNotFoundError: No module named 'resource'"
+    },
+    "staged_failure_unmasking": [
+      {
+        "stage": "stage0_unmodified",
+        "passed": 9,
+        "errors": 39,
+        "dominant_blocker": "control_plane.py:60 st_mode & 0o077 rejects all Windows NTFS directories"
+      },
+      {
+        "stage": "stage1_after_private_root_posix_guard",
+        "passed": 39,
+        "errors": 9,
+        "dominant_blocker": "8/11 FileTests fail at file_receipts.py:66 os.open(dir, O_RDONLY) PermissionError [Errno 13]; 1/28 QueueTests fails at test_control_plane.py:229 symlink_to OSError [WinError 1314]"
+      },
+      {
+        "stage": "stage2_after_dir_fsync_and_resource_fix",
+        "passed": 47,
+        "errors": 1,
+        "dominant_blocker": "1/28 QueueTests test_store_path_traversal_and_symlink requires SeCreateSymbolicLinkPrivilege on Windows",
+        "review073_self_test_pass": true
+      },
+      {
+        "stage": "stage3_with_symlink_privilege_guard_in_test",
+        "passed": 48,
+        "errors": 0,
+        "dominant_blocker": null
+      }
+    ],
+    "patched_replay": {
+      "tests_run": 48,
+      "passed_count": 48,
+      "error_count": 0,
+      "failure_count": 0,
+      "skipped_count": 0,
+      "review073_self_test_5_of_5_pass": true
+    },
+    "structured_patch_proposals": [
+      {
+        "id": "WIN-B1",
+        "blocking_issue": "control_plane.py:60 POSIX mode-0700 check breaks 39/48 tests (100% of QueueTests & FileTests) on Windows NTFS.",
+        "evidence": "Reproduced on Windows Python 3.14.3 against eea64f4: mkdir(mode=0o700) succeeds but NTFS stat().st_mode returns 0o40777, so (p.stat().st_mode & 0o077) != 0 raises ValueError('Private root must have mode 0700') on every Coordinator and FileReceipts init.",
+        "proposed_change": "Guard the POSIX bitmask check with `if os.name == 'posix' and (p.stat().st_mode & 0o077): raise ValueError(...)` while preserving the `.git` worktree ancestry rejection and symlink check unconditionally on all OSes.",
+        "acceptance_test": "QueueTests (28/28) and FileTests (11/11) initialize private_root on both Linux (enforcing 0700 rejection if chmod 0755) and Windows NTFS without ValueError; inside-repo path still raises ValueError on both OSes.",
+        "owner": "ChatGPT lane (upstream industrial_funnel) / Gemini lane (implemented in industrial_funnel_adapter.py)"
+      },
+      {
+        "id": "WIN-B2",
+        "blocking_issue": "file_receipts.py:66-68 directory os.open(..., O_RDONLY) + os.fsync() raises PermissionError [Errno 13] on Windows.",
+        "evidence": "After fixing WIN-B1, 8/11 FileTests fail in FileReceipts.publish() at line 66 (`d = os.open(self.receipts, os.O_RDONLY)`) with `PermissionError: [Errno 13] Permission denied` because Win32 does not allow opening a directory with POSIX O_RDONLY/fsync.",
+        "proposed_change": "Guard directory fsync with `if os.name == 'posix':` (retaining file-level `os.fsync(f.fileno())` before `os.link` on all platforms), and add `O_CREAT | O_EXCL` fallback if `os.link` fails with ENOTSUP/EPERM on non-hardlink filesystems.",
+        "acceptance_test": "All 11/11 FileTests pass on Windows NTFS and Linux ext4, including restart/replay, conflict immutability, orphan `.partial-*` handling, and corruption detection.",
+        "owner": "ChatGPT lane / Gemini lane"
+      },
+      {
+        "id": "WIN-B3",
+        "blocking_issue": "review073.py:3 unconditionally imports Unix-only stdlib module `resource`, crashing on Windows at import time.",
+        "evidence": "`import review073` on Windows Python 3.14.3 fails immediately with `ModuleNotFoundError: No module named 'resource'`; `resource` is used only at line 164 for optional `peak_rss_bytes` telemetry.",
+        "proposed_change": "Wrap `import resource` in `try/except ImportError: resource = None` and fall back to `None` (or Windows `ctypes` GetProcessMemoryInfo) for `peak_rss_bytes`.",
+        "acceptance_test": "`review073.self_test()` (5/5 SAT gates), `review073.parse_s0()`, and `review073.costs()` execute cleanly on Windows and Linux.",
+        "owner": "ChatGPT lane"
+      },
+      {
+        "id": "WIN-B4",
+        "blocking_issue": "test_control_plane.py:229 calls `Path.symlink_to()` without handling unprivileged Windows `WinError 1314`.",
+        "evidence": "After fixing WIN-B1 and WIN-B2, 47/48 tests pass on Windows; only `test_store_path_traversal_and_symlink` errors with `OSError: [WinError 1314]` when the Windows user lacks `SeCreateSymbolicLinkPrivilege`.",
+        "proposed_change": "Catch `OSError` around `symlink_to` in `test_store_path_traversal_and_symlink` (and/or test `is_symlink` rejection via monkeypatch when OS symlink creation is denied), preserving the full path-traversal assertion unconditionally.",
+        "acceptance_test": "48/48 tests pass (`0` errors, `0` failures, `0` skips) on unprivileged Windows and Linux CI.",
+        "owner": "ChatGPT lane"
+      },
+      {
+        "id": "SCHEMA-B5",
+        "blocking_issue": "Schema contradiction between AMENDMENT-001 B8/S2 (authorizing experimental single-order + 15% opposite-order audit on COARSE) and file_receipts.py:33 / control_plane.py:300 (hard-requiring `orders == ['asc', 'desc']` and all 5 roles).",
+        "evidence": "AMENDMENT-001.md lines 16 & 22 specify experimental single-order coarse + 15% audit, but file_receipts.py:33 rejects any COMPLETE inference receipt with `orders != ['asc', 'desc']`.",
+        "proposed_change": "Add explicit `order_mode` (`paired_both_orders` default vs `single_order_audit_15pct` on COARSE only) plus `audit_policy` (`audit_rate >= 0.15`, `audit_selected`, `normal_orientation_ambiguous`, `paired_calibration_key`), strictly forcing both orders on DEEP, ambiguous normals, and 15%-audit draws.",
+        "acceptance_test": "Unit tests in `gemini_lane/test_industrial_funnel_adapter.py::CrossPlatformFileReceiptsTests::test_dual_order_and_a01_single_order_15pct_audit_modes` pass on Windows and Linux.",
+        "owner": "Gemini lane (implemented in industrial_funnel_adapter.py) / ChatGPT lane (upstream adoption)"
+      }
+    ]
+  },
+  "pherc0211_snap2_normal_dedup_stress_test": {
+    "source_branch": "origin/claude/firstletters-colab",
+    "source_commit": "67bd872",
+    "dataset": "firstletters-colab/pherc0211_fit_windings/{fitted,snap,flat}/{w033,w034,w035,w036} (public awarded PHerc. 0211)",
+    "criteria": {
+      "cell_side_vox": 64,
+      "normal_correspondence_max_abs_dn_vox": 3.0,
+      "normal_correspondence_max_lateral_vox": 4.0,
+      "normal_correspondence_min_abs_cos": 0.7,
+      "target_surface_bilinear_upsample_factor": 4
+    },
+    "reference_review073_64vx_failure": {
+      "far_ge6_vertices": 19952,
+      "far_ge6_same_64vx_cell": 19093,
+      "far_ge6_false_overlap_frac": 0.9569
+    },
+    "winner_distance_shift_by_state": {
+      "w033": {
+        "fitted": {
+          "le2": 0.117,
+          "le4": 0.4391,
+          "median_vox": 5.03
+        },
+        "snap": {
+          "le2": 0.1543,
+          "le4": 0.505,
+          "median_vox": 3.92
+        },
+        "flat": {
+          "le2": 0.1063,
+          "le4": 0.4001,
+          "median_vox": 6.79
+        }
+      },
+      "w034": {
+        "fitted": {
+          "le2": 0.0224,
+          "le4": 0.1269,
+          "median_vox": 7.67
+        },
+        "snap": {
+          "le2": 0.125,
+          "le4": 0.5446,
+          "median_vox": 3.68
+        },
+        "flat": {
+          "le2": 0.0256,
+          "le4": 0.1406,
+          "median_vox": 7.83
+        }
+      },
+      "w035": {
+        "fitted": {
+          "le2": 0.1572,
+          "le4": 0.6183,
+          "median_vox": 3.25
+        },
+        "snap": {
+          "le2": 0.1646,
+          "le4": 0.6323,
+          "median_vox": 3.19
+        },
+        "flat": {
+          "le2": 0.1473,
+          "le4": 0.5607,
+          "median_vox": 3.5
+        }
+      },
+      "w036": {
+        "fitted": {
+          "le2": 0.0221,
+          "le4": 0.155,
+          "median_vox": 7.24
+        },
+        "snap": {
+          "le2": 0.0804,
+          "le4": 0.3292,
+          "median_vox": 8.75
+        },
+        "flat": {
+          "le2": 0.0252,
+          "le4": 0.1655,
+          "median_vox": 7.36
+        }
+      }
+    },
+    "states": {
+      "fitted": {
+        "self_check_w033": {
+          "cell_64vx_same_vert_frac": 1.0,
+          "normal_correspondence_frac": 0.9848,
+          "surface_dist_median_vox": 0.0
+        },
+        "adjacent_pairs_mean_6_directed": {
+          "cell_64vx_same_vert_frac": 0.9754,
+          "cell_64vx_jaccard": 0.826,
+          "surface_dist_median_vox": 8.389,
+          "euclid_le3_frac": 0.0084,
+          "normal_correspondence_le3_frac": 0.0235,
+          "cell64_and_normal_le3_frac": 0.0235
+        },
+        "step2_pairs_mean": {
+          "cell_64vx_same_vert_frac": 0.9157,
+          "normal_correspondence_le3_frac": 0.0026
+        },
+        "step3_pair_w033_to_w036": {
+          "cell_64vx_same_vert_frac": 0.8199,
+          "normal_correspondence_le3_frac": 0.0005,
+          "surface_dist_median_vox": 23.891
+        },
+        "key_forward_pairs": {
+          "w033_to_w034": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12083,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9809,
+            "cell_64vx_jaccard": 0.8149,
+            "surface_dist_median_vox": 9.449,
+            "surface_dist_p10_vox": 6.032,
+            "euclid_le_threshold_frac": 0.0044,
+            "normal_correspondence_frac": 0.0111,
+            "cell64_and_normal_correspondence_frac": 0.0111,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w035": {
+            "n_vertices_a": 12083,
+            "n_vertices_b": 12360,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9782,
+            "cell_64vx_jaccard": 0.824,
+            "surface_dist_median_vox": 7.896,
+            "surface_dist_p10_vox": 4.868,
+            "euclid_le_threshold_frac": 0.0116,
+            "normal_correspondence_frac": 0.0297,
+            "cell64_and_normal_correspondence_frac": 0.0297,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w035_to_w036": {
+            "n_vertices_a": 12360,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9794,
+            "cell_64vx_jaccard": 0.839,
+            "surface_dist_median_vox": 7.659,
+            "surface_dist_p10_vox": 4.904,
+            "euclid_le_threshold_frac": 0.0109,
+            "normal_correspondence_frac": 0.0304,
+            "cell64_and_normal_correspondence_frac": 0.0304,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w035": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12360,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9122,
+            "cell_64vx_jaccard": 0.6685,
+            "surface_dist_median_vox": 16.759,
+            "surface_dist_p10_vox": 10.674,
+            "euclid_le_threshold_frac": 0.0009,
+            "normal_correspondence_frac": 0.002,
+            "cell64_and_normal_correspondence_frac": 0.002,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w036": {
+            "n_vertices_a": 12083,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9191,
+            "cell_64vx_jaccard": 0.6898,
+            "surface_dist_median_vox": 14.903,
+            "surface_dist_p10_vox": 9.5,
+            "euclid_le_threshold_frac": 0.0017,
+            "normal_correspondence_frac": 0.0032,
+            "cell64_and_normal_correspondence_frac": 0.0032,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w036": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.8199,
+            "cell_64vx_jaccard": 0.5553,
+            "surface_dist_median_vox": 23.891,
+            "surface_dist_p10_vox": 15.955,
+            "euclid_le_threshold_frac": 0.0002,
+            "normal_correspondence_frac": 0.0005,
+            "cell64_and_normal_correspondence_frac": 0.0005,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          }
+        }
+      },
+      "snap": {
+        "self_check_w033": {
+          "cell_64vx_same_vert_frac": 0.9999,
+          "normal_correspondence_frac": 0.9849,
+          "surface_dist_median_vox": 0.0
+        },
+        "adjacent_pairs_mean_6_directed": {
+          "cell_64vx_same_vert_frac": 0.9634,
+          "cell_64vx_jaccard": 0.8267,
+          "surface_dist_median_vox": 7.848,
+          "euclid_le3_frac": 0.2677,
+          "normal_correspondence_le3_frac": 0.3574,
+          "cell64_and_normal_le3_frac": 0.3572
+        },
+        "step2_pairs_mean": {
+          "cell_64vx_same_vert_frac": 0.9281,
+          "normal_correspondence_le3_frac": 0.1338
+        },
+        "step3_pair_w033_to_w036": {
+          "cell_64vx_same_vert_frac": 0.8374,
+          "normal_correspondence_le3_frac": 0.0011,
+          "surface_dist_median_vox": 22.479
+        },
+        "key_forward_pairs": {
+          "w033_to_w034": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12083,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9473,
+            "cell_64vx_jaccard": 0.7341,
+            "surface_dist_median_vox": 13.992,
+            "surface_dist_p10_vox": 4.298,
+            "euclid_le_threshold_frac": 0.0596,
+            "normal_correspondence_frac": 0.0886,
+            "cell64_and_normal_correspondence_frac": 0.0886,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w035": {
+            "n_vertices_a": 12083,
+            "n_vertices_b": 12360,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9806,
+            "cell_64vx_jaccard": 0.8878,
+            "surface_dist_median_vox": 3.237,
+            "surface_dist_p10_vox": 1.457,
+            "euclid_le_threshold_frac": 0.4567,
+            "normal_correspondence_frac": 0.5901,
+            "cell64_and_normal_correspondence_frac": 0.5898,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w035_to_w036": {
+            "n_vertices_a": 12360,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9807,
+            "cell_64vx_jaccard": 0.8581,
+            "surface_dist_median_vox": 5.968,
+            "surface_dist_p10_vox": 1.793,
+            "euclid_le_threshold_frac": 0.2952,
+            "normal_correspondence_frac": 0.4014,
+            "cell64_and_normal_correspondence_frac": 0.4011,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w035": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12360,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9106,
+            "cell_64vx_jaccard": 0.6563,
+            "surface_dist_median_vox": 16.545,
+            "surface_dist_p10_vox": 12.026,
+            "euclid_le_threshold_frac": 0.0009,
+            "normal_correspondence_frac": 0.0017,
+            "cell64_and_normal_correspondence_frac": 0.0017,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w036": {
+            "n_vertices_a": 12083,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9455,
+            "cell_64vx_jaccard": 0.7706,
+            "surface_dist_median_vox": 11.576,
+            "surface_dist_p10_vox": 2.218,
+            "euclid_le_threshold_frac": 0.1879,
+            "normal_correspondence_frac": 0.2659,
+            "cell64_and_normal_correspondence_frac": 0.2658,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w036": {
+            "n_vertices_a": 11735,
+            "n_vertices_b": 12731,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.8374,
+            "cell_64vx_jaccard": 0.565,
+            "surface_dist_median_vox": 22.479,
+            "surface_dist_p10_vox": 12.802,
+            "euclid_le_threshold_frac": 0.0007,
+            "normal_correspondence_frac": 0.0011,
+            "cell64_and_normal_correspondence_frac": 0.0011,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          }
+        }
+      },
+      "flat": {
+        "self_check_w033": {
+          "cell_64vx_same_vert_frac": 0.9998,
+          "normal_correspondence_frac": 0.9783,
+          "surface_dist_median_vox": 0.0
+        },
+        "adjacent_pairs_mean_6_directed": {
+          "cell_64vx_same_vert_frac": 0.9744,
+          "cell_64vx_jaccard": 0.8187,
+          "surface_dist_median_vox": 8.032,
+          "euclid_le3_frac": 0.0247,
+          "normal_correspondence_le3_frac": 0.0439,
+          "cell64_and_normal_le3_frac": 0.0438
+        },
+        "step2_pairs_mean": {
+          "cell_64vx_same_vert_frac": 0.9199,
+          "normal_correspondence_le3_frac": 0.0047
+        },
+        "step3_pair_w033_to_w036": {
+          "cell_64vx_same_vert_frac": 0.8288,
+          "normal_correspondence_le3_frac": 0.0009,
+          "surface_dist_median_vox": 23.342
+        },
+        "key_forward_pairs": {
+          "w033_to_w034": {
+            "n_vertices_a": 16051,
+            "n_vertices_b": 16607,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9799,
+            "cell_64vx_jaccard": 0.8062,
+            "surface_dist_median_vox": 9.084,
+            "surface_dist_p10_vox": 5.466,
+            "euclid_le_threshold_frac": 0.017,
+            "normal_correspondence_frac": 0.0283,
+            "cell64_and_normal_correspondence_frac": 0.0283,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w035": {
+            "n_vertices_a": 16607,
+            "n_vertices_b": 16853,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9788,
+            "cell_64vx_jaccard": 0.8148,
+            "surface_dist_median_vox": 7.547,
+            "surface_dist_p10_vox": 4.281,
+            "euclid_le_threshold_frac": 0.0298,
+            "normal_correspondence_frac": 0.0523,
+            "cell64_and_normal_correspondence_frac": 0.0523,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w035_to_w036": {
+            "n_vertices_a": 16853,
+            "n_vertices_b": 17262,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9815,
+            "cell_64vx_jaccard": 0.8351,
+            "surface_dist_median_vox": 7.293,
+            "surface_dist_p10_vox": 4.319,
+            "euclid_le_threshold_frac": 0.0293,
+            "normal_correspondence_frac": 0.0527,
+            "cell64_and_normal_correspondence_frac": 0.0526,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w035": {
+            "n_vertices_a": 16051,
+            "n_vertices_b": 16853,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9154,
+            "cell_64vx_jaccard": 0.6575,
+            "surface_dist_median_vox": 16.34,
+            "surface_dist_p10_vox": 10.046,
+            "euclid_le_threshold_frac": 0.0014,
+            "normal_correspondence_frac": 0.0024,
+            "cell64_and_normal_correspondence_frac": 0.0024,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w034_to_w036": {
+            "n_vertices_a": 16607,
+            "n_vertices_b": 17262,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.9244,
+            "cell_64vx_jaccard": 0.6839,
+            "surface_dist_median_vox": 14.481,
+            "surface_dist_p10_vox": 8.566,
+            "euclid_le_threshold_frac": 0.004,
+            "normal_correspondence_frac": 0.007,
+            "cell64_and_normal_correspondence_frac": 0.007,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          },
+          "w033_to_w036": {
+            "n_vertices_a": 16051,
+            "n_vertices_b": 17262,
+            "cell_side_vox": 64,
+            "cell_64vx_same_vert_frac": 0.8288,
+            "cell_64vx_jaccard": 0.5483,
+            "surface_dist_median_vox": 23.342,
+            "surface_dist_p10_vox": 14.809,
+            "euclid_le_threshold_frac": 0.0005,
+            "normal_correspondence_frac": 0.0009,
+            "cell64_and_normal_correspondence_frac": 0.0009,
+            "thresholds": {
+              "max_normal_vox": 3.0,
+              "max_lateral_vox": 4.0,
+              "min_abs_cos": 0.7,
+              "upsample_factor": 4
+            }
+          }
+        }
+      }
+    },
+    "key_findings": {
+      "cell_64vx_adjacent_false_overlap_fitted": 0.9754,
+      "cell_64vx_adjacent_false_overlap_flat": 0.9744,
+      "normal_le3_adjacent_overlap_fitted": 0.0235,
+      "normal_le3_adjacent_overlap_flat": 0.0439,
+      "normal_le3_adjacent_overlap_snap": 0.3574,
+      "snap_collapse_multiplier_vs_fitted": 15.21,
+      "snap_collapse_multiplier_vs_flat": 8.14,
+      "worst_snap_collapse_pair": {
+        "pair": "w034_to_w035",
+        "fitted_normal_le3_frac": 0.0297,
+        "flat_normal_le3_frac": 0.0523,
+        "snap_normal_le3_frac": 0.5901,
+        "snap_median_dist_vox": 3.237,
+        "step2_w034_to_w036_snap_normal_le3_frac": 0.2659
+      },
+      "verdict": "Claude's <=3-vx normal correspondence cleanly separates adjacent windings on fitted (2.35% vs 97.54% in 64-vx cells) and flat (4.39% vs 97.44%) meshes. However, m7 snapping collapses distinct adjacent windings onto the same m7 ridge: mean adjacent <=3-vx overlap jumps 15.2x vs fitted (to 35.74%; w034->w035 hits 59.01%, median 3.24 vx; even step-2 w034->w036 jumps from 0.32% to 26.59%). Implication: (1) post-snap <=3-vx dedup genuinely prevents redundant ink inference on collapsed patches, (2) m7 snap MUST NEVER be used for physical coverage accounting or sheet identity because it silently skips the original sheet (w034 leaves its own sheet and jumps onto w035/winner)."
+    }
+  },
+  "s0_19scroll_inventory": {
+    "schema": "gemini.s0_19scroll_inventory.v1",
+    "s0_source": {
+      "rows": 194,
+      "git_blob_sha1": "333735fa42e032171d0fc8ebd3df4f4a0da9f1b2",
+      "sha256": "f69e1f2be941d04cf459a6d4880d88b2a481942d168110edc909f32ed50288e6",
+      "scrolls_total": 26
+    },
+    "scope_note": "Sanitized scroll-level aggregates only (zero unread coordinates, zero crop bounds, zero selected axial band indices). S0 clean_fraction orders bands WITHIN a scroll only; it is not a cross-scroll ink probability.",
+    "summary": {
+      "eligible_scrolls": 19,
+      "read_controls": 7,
+      "geometry_first_scrolls": [
+        "PHerc0268",
+        "PHerc0490B"
+      ],
+      "shear_quarantined_scrolls": [
+        "PHerc0191",
+        "PHerc0826"
+      ],
+      "q22_flagged_eligible_scrolls": [
+        "PHerc0125",
+        "PHerc0191",
+        "PHerc0826",
+        "PHerc0846A",
+        "PHerc1203",
+        "PHerc1218",
+        "PHerc1545"
+      ],
+      "zero_public_mesh_scrolls": [
+        "PHerc0175A",
+        "PHerc0175B",
+        "PHerc0483A",
+        "PHerc0483B",
+        "PHerc0490A",
+        "PHerc0490B",
+        "PHerc0846A",
+        "PHerc0846B",
+        "PHerc1545"
+      ],
+      "total_rtx4060_screened_cm2": 90.9026,
+      "next_stage_counts": {
+        "S0_GEOMETRY_FIRST_REPAIR": 2,
+        "S1_CPU_GROWPATCH_WINDOWS": 8,
+        "S2_2D_FLATTEN_BEFORE_SCREEN": 2,
+        "S2_COARSE_SCREEN_EXISTING_CHARTS": 7
+      }
+    },
+    "eligible_scrolls": [
+      {
+        "scroll": "PHerc0125",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 340,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P0-G2",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 31,
+          "clean_slabs": 7,
+          "clean_fraction": 0.2258,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 20.65,
+          "median_merged_frac": 0.1875,
+          "median_coherence": 0.45,
+          "median_air_frac": 0.215,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 1,
+          "max_shear_1cell_abs_p95_deg": 5.339,
+          "max_pct_area_gt_20deg": 0.198,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "gain_outside_0.8_1.2",
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.3791,
+          "affine_bias_vs_ref": -53.69,
+          "nonzero_ct_p50": 109.0,
+          "clip_200_frac": 0.00329,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": {
+          "triaged_targets": 11,
+          "median_f_parallel": 0.9536,
+          "median_on_sheet_after_snap": 0.9905,
+          "triaged_valid_ct_cm2": 41.7207
+        },
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 10,
+          "valid_ct_cm2": 37.561,
+          "two_family_followups": 2,
+          "coarse_seconds": 10790.05
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc0175A",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-claude-owned",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 28,
+          "clean_slabs": 15,
+          "clean_fraction": 0.5357,
+          "zero_clean_levels": 2,
+          "median_edge_rise_um_q75": 19.25,
+          "median_merged_frac": 0.0535,
+          "median_coherence": 0.65,
+          "median_air_frac": 0.34,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": false,
+          "flag_reasons": [],
+          "affine_gain_vs_ref": 1.0983,
+          "affine_bias_vs_ref": -12.5,
+          "nonzero_ct_p50": 102.0,
+          "clip_200_frac": 0.00129,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0175B",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G4",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 32,
+          "clean_slabs": 4,
+          "clean_fraction": 0.125,
+          "zero_clean_levels": 5,
+          "median_edge_rise_um_q75": 26.3,
+          "median_merged_frac": 0.3155,
+          "median_coherence": 0.49,
+          "median_air_frac": 0.235,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0191",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 1,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G1",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 28,
+          "clean_slabs": 5,
+          "clean_fraction": 0.1786,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 22.0,
+          "median_merged_frac": 0.351,
+          "median_coherence": 0.52,
+          "median_air_frac": 0.2,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 1,
+          "max_shear_1cell_abs_p95_deg": 49.358,
+          "max_pct_area_gt_20deg": 53.829,
+          "shear_quarantined": true
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.1642,
+          "affine_bias_vs_ref": -27.94,
+          "nonzero_ct_p50": 114.0,
+          "clip_200_frac": 0.00147,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": {
+          "triaged_targets": 4,
+          "median_f_parallel": 0.8115,
+          "median_on_sheet_after_snap": 0.9188,
+          "triaged_valid_ct_cm2": 9.8004
+        },
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 2,
+          "valid_ct_cm2": 5.5685,
+          "two_family_followups": 0,
+          "coarse_seconds": 2195.33
+        },
+        "recommended_next_stage": "S2_2D_FLATTEN_BEFORE_SCREEN"
+      },
+      {
+        "scroll": "PHerc0257",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 6,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-deferred",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 27,
+          "clean_slabs": 4,
+          "clean_fraction": 0.1481,
+          "zero_clean_levels": 4,
+          "median_edge_rise_um_q75": 22.1,
+          "median_merged_frac": 0.19,
+          "median_coherence": 0.43,
+          "median_air_frac": 0.23,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc0268",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 6,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P2-unscreened-effectively",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 26,
+          "clean_slabs": 0,
+          "clean_fraction": 0.0,
+          "zero_clean_levels": 7,
+          "median_edge_rise_um_q75": 31.4,
+          "median_merged_frac": 0.345,
+          "median_coherence": 0.32,
+          "median_air_frac": 0.19,
+          "route": "GEOMETRY_FIRST",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S0_GEOMETRY_FIRST_REPAIR"
+      },
+      {
+        "scroll": "PHerc0358",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 3,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-deferred",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 27,
+          "clean_slabs": 11,
+          "clean_fraction": 0.4074,
+          "zero_clean_levels": 1,
+          "median_edge_rise_um_q75": 22.4,
+          "median_merged_frac": 0.095,
+          "median_coherence": 0.65,
+          "median_air_frac": 0.32,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": false,
+          "flag_reasons": [],
+          "affine_gain_vs_ref": 0.8991,
+          "affine_bias_vs_ref": -10.7,
+          "nonzero_ct_p50": 126.0,
+          "clip_200_frac": 0.01159,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc0483A",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G4",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 29,
+          "clean_slabs": 7,
+          "clean_fraction": 0.2414,
+          "zero_clean_levels": 5,
+          "median_edge_rise_um_q75": 22.45,
+          "median_merged_frac": 0.225,
+          "median_coherence": 0.43,
+          "median_air_frac": 0.23,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0483B",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-claude-owned",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 28,
+          "clean_slabs": 8,
+          "clean_fraction": 0.2857,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 19.2,
+          "median_merged_frac": 0.099,
+          "median_coherence": 0.5,
+          "median_air_frac": 0.33,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0490A",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-claude-owned",
+        "s0_anatomy": {
+          "sampled_levels": 6,
+          "missing_levels": 2,
+          "slabs": 22,
+          "clean_slabs": 4,
+          "clean_fraction": 0.1818,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 23.05,
+          "median_merged_frac": 0.295,
+          "median_coherence": 0.42,
+          "median_air_frac": 0.25,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0490B",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G4",
+        "s0_anatomy": {
+          "sampled_levels": 6,
+          "missing_levels": 2,
+          "slabs": 24,
+          "clean_slabs": 0,
+          "clean_fraction": 0.0,
+          "zero_clean_levels": 6,
+          "median_edge_rise_um_q75": 25.05,
+          "median_merged_frac": 0.332,
+          "median_coherence": 0.385,
+          "median_air_frac": 0.215,
+          "route": "GEOMETRY_FIRST",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S0_GEOMETRY_FIRST_REPAIR"
+      },
+      {
+        "scroll": "PHerc0800",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 6,
+          "pscamillo_meshes": 95,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P4-exclude",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 30,
+          "clean_slabs": 6,
+          "clean_fraction": 0.2,
+          "zero_clean_levels": 6,
+          "median_edge_rise_um_q75": 25.3,
+          "median_merged_frac": 0.326,
+          "median_coherence": 0.435,
+          "median_air_frac": 0.2,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc0813",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 75,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P4-low",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 28,
+          "clean_slabs": 16,
+          "clean_fraction": 0.5714,
+          "zero_clean_levels": 0,
+          "median_edge_rise_um_q75": 19.7,
+          "median_merged_frac": 0.187,
+          "median_coherence": 0.62,
+          "median_air_frac": 0.34,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc0826",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 3,
+          "hf_spiral_fit_runs": 3,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G1",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 27,
+          "clean_slabs": 17,
+          "clean_fraction": 0.6296,
+          "zero_clean_levels": 0,
+          "median_edge_rise_um_q75": 16.9,
+          "median_merged_frac": 0.021,
+          "median_coherence": 0.63,
+          "median_air_frac": 0.42,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 3,
+          "max_shear_1cell_abs_p95_deg": 70.096,
+          "max_pct_area_gt_20deg": 70.802,
+          "shear_quarantined": true
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.1442,
+          "affine_bias_vs_ref": -37.29,
+          "nonzero_ct_p50": 122.0,
+          "clip_200_frac": 0.00249,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": {
+          "triaged_targets": 4,
+          "median_f_parallel": 0.8379,
+          "median_on_sheet_after_snap": 0.8791,
+          "triaged_valid_ct_cm2": 9.1116
+        },
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_2D_FLATTEN_BEFORE_SCREEN"
+      },
+      {
+        "scroll": "PHerc0846A",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": true,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P1-G4-rescan",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 27,
+          "clean_slabs": 3,
+          "clean_fraction": 0.1111,
+          "zero_clean_levels": 5,
+          "median_edge_rise_um_q75": 20.6,
+          "median_merged_frac": 0.422,
+          "median_coherence": 0.33,
+          "median_air_frac": 0.15,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.0505,
+          "affine_bias_vs_ref": -23.01,
+          "nonzero_ct_p50": 117.0,
+          "clip_200_frac": 0.00639,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc0846B",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P3-claude-owned",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 30,
+          "clean_slabs": 4,
+          "clean_fraction": 0.1333,
+          "zero_clean_levels": 5,
+          "median_edge_rise_um_q75": 21.7,
+          "median_merged_frac": 0.189,
+          "median_coherence": 0.415,
+          "median_air_frac": 0.215,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": null,
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      },
+      {
+        "scroll": "PHerc1203",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": true,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 22,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P0-G3",
+        "s0_anatomy": {
+          "sampled_levels": 7,
+          "missing_levels": 1,
+          "slabs": 27,
+          "clean_slabs": 6,
+          "clean_fraction": 0.2222,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 22.4,
+          "median_merged_frac": 0.194,
+          "median_coherence": 0.53,
+          "median_air_frac": 0.27,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": true
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.1625,
+          "affine_bias_vs_ref": -32.88,
+          "nonzero_ct_p50": 116.0,
+          "clip_200_frac": 0.00109,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": {
+          "triaged_targets": 4,
+          "median_f_parallel": 0.9365,
+          "median_on_sheet_after_snap": 0.9419,
+          "triaged_valid_ct_cm2": 10.6042
+        },
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 7,
+          "valid_ct_cm2": 47.7731,
+          "two_family_followups": 3,
+          "coarse_seconds": 14795.95
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc1218",
+        "voxel_um": 8.64,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": true,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 25
+        },
+        "gemini_priority": "P1-G3",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 29,
+          "clean_slabs": 9,
+          "clean_fraction": 0.3103,
+          "zero_clean_levels": 3,
+          "median_edge_rise_um_q75": 21.3,
+          "median_merged_frac": 0.2655,
+          "median_coherence": 0.535,
+          "median_air_frac": 0.275,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "gain_outside_0.8_1.2",
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.4187,
+          "affine_bias_vs_ref": -58.48,
+          "nonzero_ct_p50": 113.0,
+          "clip_200_frac": 0.00115,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
+      },
+      {
+        "scroll": "PHerc1545",
+        "voxel_um": 9.362,
+        "has_2_4um_rescan": false,
+        "has_s3_m7": true,
+        "has_public_meshes": false,
+        "public_mesh_counts": {
+          "s3_segments": 0,
+          "pscamillo_meshes": 0,
+          "hf_spiral_fit_runs": 0,
+          "iyandopico_patches": 0
+        },
+        "gemini_priority": "P2-G4-secondary",
+        "s0_anatomy": {
+          "sampled_levels": 8,
+          "missing_levels": 0,
+          "slabs": 29,
+          "clean_slabs": 10,
+          "clean_fraction": 0.3448,
+          "zero_clean_levels": 2,
+          "median_edge_rise_um_q75": 18.8,
+          "median_merged_frac": 0.1305,
+          "median_coherence": 0.475,
+          "median_air_frac": 0.285,
+          "route": "PRIORITIZE_WITHIN_SCROLL",
+          "unsampled_band_survey_required": false
+        },
+        "geometry_audit_t15": {
+          "audited_sets": 0,
+          "max_shear_1cell_abs_p95_deg": null,
+          "max_pct_area_gt_20deg": null,
+          "shear_quarantined": false
+        },
+        "radiometry_q22": {
+          "flagged_outside_studio_envelope": true,
+          "flag_reasons": [
+            "abs_bias_gt_15"
+          ],
+          "affine_gain_vs_ref": 1.0893,
+          "affine_bias_vs_ref": -27.96,
+          "nonzero_ct_p50": 119.0,
+          "clip_200_frac": 0.00202,
+          "flagged_after_nyul_udupa": false
+        },
+        "cpu_triage_aggregate": null,
+        "rtx4060_ledger_aggregate": {
+          "meshes_screened": 0,
+          "valid_ct_cm2": 0.0,
+          "two_family_followups": 0,
+          "coarse_seconds": 0.0
+        },
+        "recommended_next_stage": "S1_CPU_GROWPATCH_WINDOWS"
+      }
+    ],
+    "read_controls": [
+      {
+        "scroll": "PHerc0139",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 28,
+        "clean_slabs": 27,
+        "clean_fraction": 0.9643,
+        "radiometry_q22_flagged": null
+      },
+      {
+        "scroll": "PHerc0211",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 28,
+        "clean_slabs": 7,
+        "clean_fraction": 0.25,
+        "radiometry_q22_flagged": true
+      },
+      {
+        "scroll": "PHerc0306B",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 28,
+        "clean_slabs": 11,
+        "clean_fraction": 0.3929,
+        "radiometry_q22_flagged": false
+      },
+      {
+        "scroll": "PHerc0343",
+        "status": "read (control)",
+        "sampled_levels": 7,
+        "slabs": 28,
+        "clean_slabs": 8,
+        "clean_fraction": 0.2857,
+        "radiometry_q22_flagged": true
+      },
+      {
+        "scroll": "PHerc0814",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 30,
+        "clean_slabs": 15,
+        "clean_fraction": 0.5,
+        "radiometry_q22_flagged": null
+      },
+      {
+        "scroll": "PHerc0841",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 31,
+        "clean_slabs": 20,
+        "clean_fraction": 0.6452,
+        "radiometry_q22_flagged": false
+      },
+      {
+        "scroll": "PHerc1447",
+        "status": "read (control)",
+        "sampled_levels": 8,
+        "slabs": 28,
+        "clean_slabs": 11,
+        "clean_fraction": 0.3929,
+        "radiometry_q22_flagged": null
+      }
+    ]
+  },
+  "economics_rtx4060_vs_l4": {
+    "rtx4060_measured_ledger_batch1_pause350ms": {
+      "source": "gemini_lane/evidence/firstletters_rtx4060_screen_ledger.json",
+      "hardware_profile": {
+        "gpu": "RTX 4060 Laptop 8 GiB",
+        "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
+        "observed_temp_c_range": [
+          62,
+          66
+        ],
+        "hardware_or_oom_incidents": 0
+      },
+      "coarse_meshes": 15,
+      "coarse_valid_ct_cm2": 75.9988,
+      "coarse_total_seconds": 24135.34,
+      "coarse_total_hours": 6.7,
+      "coarse_e2e_s_per_cm2": 317.58,
+      "coarse_e2e_s_per_cm2_min_median_max": [
+        283.4,
+        322.2,
+        405.0
+      ],
+      "deep_two_family_rois": 6,
+      "deep_two_family_cm2": 4.4439,
+      "deep_two_family_total_seconds": 9027.98,
+      "deep_two_family_s_per_cm2": 2031.54
+    },
+    "rtx4060_measured_t17_batch2_pause300ms_pherc0211_snap2": {
+      "source": "gemini_lane/evidence/gpu_0211_and_0306b_calibration_matrix.json",
+      "valid_ct_cm2": 0.6421,
+      "render_s_per_cm2": 77.98,
+      "studio_s96_both_orders_s_per_cm2": 77.68,
+      "studio_s96_one_order_s_per_cm2": 38.84,
+      "studio_s48_both_orders_s_per_cm2": 337.1,
+      "ahn_s0_both_orders_s_per_cm2": 661.58,
+      "ct_stream_mib_per_cm2": 529.5,
+      "m7_stream_mib_per_cm2": 248.4,
+      "zero_persistent_ct_on_disk": true,
+      "post_run_temp_c": 57,
+      "peak_allocated_mib_studio": 1905,
+      "peak_allocated_mib_ahn": 1716
+    },
+    "claude_l4_measured_reference_review001": {
+      "source": "origin/claude/firstletters-colab:firstletters-colab/industrial_funnel/REVIEW-001-claude.md",
+      "band_area_cm2": 1000.0,
+      "estimated_total_bands_19_scrolls": 190,
+      "dense_fit_l4_hours_per_band": [
+        5.6,
+        8.0
+      ],
+      "studio_s96_one_order_s_per_cm2": 13.0,
+      "studio_s48_one_order_s_per_cm2": 52.0,
+      "coarse_one_order_l4_hours_per_band": 3.6,
+      "coarse_both_orders_l4_hours_per_band": 7.2,
+      "deep_top12pct_both_orders_l4_hours_per_band": 3.5,
+      "remaining_l4_budget_hours_unverified": 140.0,
+      "all_190_bands_fit_plus_1ord_l4_hours": [
+        1748.0,
+        2204.0
+      ],
+      "all_190_bands_fit_plus_both_l4_hours": [
+        2432.0,
+        2888.0
+      ],
+      "bands_affordable_in_140h_1ord": [
+        12,
+        15
+      ],
+      "bands_affordable_in_140h_both_orders": [
+        9,
+        10
+      ]
+    },
+    "rtx4060_per_band_and_s1_projections": {
+      "rtx4060_vs_l4_s96_speed_ratio": 2.99,
+      "rtx4060_vs_l4_s48_speed_ratio": 3.24,
+      "per_1000cm2_band_rtx4060_wall_hours": {
+        "batch1_pause350ms_coarse_both_e2e_h": 88.22,
+        "batch2_pause300ms_coarse_both_infer_only_h": 21.58,
+        "batch2_pause300ms_coarse_both_e2e_h": 43.24,
+        "batch2_pause300ms_coarse_1ord_plus_15pct_e2e_h": 34.07,
+        "batch2_deep_top12pct_studio_s48_both_h": 11.24,
+        "batch2_deep_top12pct_two_family_studio_plus_ahn_h": 33.29,
+        "streamed_ct_gib_per_1000cm2_band": 517.1,
+        "streamed_m7_gib_per_1000cm2_band": 242.6
+      },
+      "s1_19_scroll_tranche_120cm2_per_scroll_2280cm2_total": {
+        "total_area_cm2": 2280.0,
+        "rtx4060_batch2_s2_both_orders_e2e_wall_hours": 98.59,
+        "rtx4060_batch2_s2_1ord_plus_15pct_e2e_wall_hours": 77.68,
+        "l4_s2_both_orders_infer_hours": 16.47,
+        "l4_s2_1ord_plus_15pct_infer_hours": 9.47,
+        "marginal_cloud_cost_rtx4060_usd": 0.0
+      }
+    },
+    "prize_track_evaluation": {
+      "first_letters_50k_prize": {
+        "leverage_verdict": "HIGH_LEVERAGE_WHEN_AMENDED_S0_S1_FIRST",
+        "rationale": "Full dense-fit across 190 bands requires 1,748-2,888 L4-h vs ~140 L4-h remaining (12.5-20.6x over budget). A01 S0+S1 cuts initial 19-scroll screening area from ~190,000 cm^2 to ~2,280 cm^2 (83x reduction), costing ~16.5 L4-h (both orders) or ~9.5 L4-h (1-order+15% audit) on L4, or 0 cloud L4-h on local RTX 4060 (~77-99 wall hours at safe laptop thermal profile). Crucial synergy: offload S2/S4 inference on pre-existing clean meshes (PHerc0125 pscamillo, PHerc1203 S3, flattened PHerc0826/0191) to local RTX 4060 ($0 cloud budget) so the entire ~140 L4-h Colab budget is conserved strictly for S5 dense fits where S0+S1 justify them (~17-25 dense fits instead of 9-15)."
+      },
+      "nov_30_progress_prize_6_days_remaining": {
+        "deadline": "2026-11-30",
+        "days_remaining_from_2026_11_24": 6,
+        "leverage_verdict": "LOW_ROI_FOR_NEW_INFRASTRUCTURE_HIGH_ROI_FOR_LIGHTWEIGHT_ADAPTER_AND_DEDUP_EVIDENCE",
+        "rationale": "With 6 days until Nov 30, deploying a multi-host SQLite coordinator or waiting on R2 120-map statistical benchmarks yields ZERO Nov 30 Progress Prize value and diverts GPU/engineering time from finalizing/submitting the already-verified 18-receipt FP16 + source-support + Exp T1-T17 dossier. Conversely, our lightweight cross-platform R1 FileReceipts adapter, Windows compatibility patches, S0 19-scroll joined table, and the PHerc. 0211 snap2 winding-collapse dedup measurement take <1 CPU day, risk zero GPU downtime, and directly strengthen engineering rigor for both tracks."
+      }
+    },
+    "rtx4060_measured_ledger_tier1b_batch2_pause350ms": {
+      "source": "gemini_lane/evidence/firstletters_rtx4060_screen_ledger.json",
+      "flags": "--vram-fraction 0.50 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 320",
+      "observed_temp_c_range": [
+        57,
+        67
+      ],
+      "hardware_or_oom_incidents": 0,
+      "coarse_meshes": 4,
+      "coarse_valid_ct_cm2": 14.9038,
+      "coarse_total_seconds": 3645.99,
+      "coarse_e2e_s_per_cm2": 244.63,
+      "speedup_vs_batch1_pct": 23.0,
+      "combined_ledger_meshes": 19,
+      "combined_ledger_valid_ct_cm2": 90.9026,
+      "combined_ledger_coarse_total_seconds": 27781.33,
+      "combined_ledger_coarse_e2e_s_per_cm2": 305.62
+    }
+  },
+  "component_scorecard": [
+    {
+      "component": "S0 (No-Surface CT Anatomy Priors + 19-Scroll Join)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "GO",
+      "evidence": "194 rows across 19 eligible + 7 control scrolls already computed in CPU minutes (67bd872); cleanly isolates PHerc0268 & PHerc0490B as GEOMETRY_FIRST (0 clean slabs) and orders z-bands within every scroll. Joined with Exp T15 shear + Q22 radiometry + coverage matrix.",
+      "guardrail": "Within-scroll ordering ONLY; never interpret clean_fraction as cross-scroll ink probability; survey the 13 missing eligible levels and zero-clean levels."
+    },
+    {
+      "component": "S1 (CPU GrowPatch Windows Before Dense Fit)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "NO-GO (post-Nov-30)",
+      "evidence": "Saves 5.6-8 L4-h/band by replacing blind 190-band dense fits with CPU-only GrowPatch windows (~11 min growth + 5 min render each) in top-2 S0 bands + probability sample.",
+      "guardrail": "Must pass blind PHerc. 0211 S0->S1 acceptance test (Claude B1) and record failed growth / crushed-zone attrition explicitly; never treat crushed-zone failure as blank."
+    },
+    {
+      "component": "S2 (Coarse Studio s96 + Matched Control + Optional 1-Order+15% Audit)",
+      "decision": "CONDITIONAL-GO",
+      "first_letters_50k": "CONDITIONAL-GO",
+      "nov30_progress_prize": "GO (existing RTX 4060 paired s96)",
+      "evidence": "Exp T17-GPU validates Studio s96 + snap2 on PHerc. 0211 (87.0% ret@0.7, 6.85x ratio, 3 rows recovered) and 0306B (91.2% ret@0.7). RTX 4060 runs paired s96 at $0 cloud cost (77.7 s/cm^2 infer @ batch=2).",
+      "guardrail": "Paired both-order s96 is GO immediately on low-shear / 2D-flattened meshes; single-order+15% audit is CONDITIONAL-GO pending frozen paired normal-rule calibration and MUST force both orders on ambiguous normals, 15% audit draws, and all S4 deep runs. High-shear fits (>30 deg p95 / >20% >20 deg) must be 2D-flattened first."
+    },
+    {
+      "component": "S3 (Multi-Cue Portfolio Ranking + Dual-Mirror Visual Review)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "CONDITIONAL-GO",
+      "evidence": "Claude 026 shows line_finder ranks 0211 fit-quality letter windings 1st & 4th of 120 while row score fails (94th/120). Exp T17-GPU proves Q34 TFCE asymmetry has a 2-3x neural bleed-through floor on real text.",
+      "guardrail": "Keep line_finder + hot share + FP diagnostics + Q34 strictly as non-gating rankers; open maps in both mirror states; drop row score; never hard-discard low ranks without survey."
+    },
+    {
+      "component": "S4 (Deep Studio s48 Both Orders + Independent A-hn + Regrowth)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "GO",
+      "evidence": "Exp T17-GPU confirms A-hn hn4_s0 agrees on reading face with Studio on both PHerc. 0211 (desc, IoU 0.539) and PHerc. 0306B (asc, IoU 0.522, r=0.775); Claude 026 shows local GrowPatch + flatboi + Studio s48 yields clearest letters (8.65).",
+      "guardrail": "Always run BOTH orders on BOTH detector families (never single-order) plus exact signed slice-list attestation and local regrowth."
+    },
+    {
+      "component": "S5 (Dense Spiral Fit of Full Band)",
+      "decision": "CONDITIONAL-GO",
+      "first_letters_50k": "CONDITIONAL-GO",
+      "nov30_progress_prize": "NO-GO (post-Nov-30)",
+      "evidence": "5.6-8 L4-h/band means only 9-15 bands fit in 140 L4-h if combined with L4 coarse/deep, or ~17-25 bands if coarse/deep is offloaded to RTX 4060.",
+      "guardrail": "Gate strictly behind owner-approved tranche justified by S0-S4 evidence or reserved geometry exploration; always run 2D flatboi + Exp T15 quality audit before screening."
+    },
+    {
+      "component": "R1 FileReceipts (Flat Atomic Immutable Receipts + CAS)",
+      "decision": "CONDITIONAL-GO",
+      "first_letters_50k": "GO (after Windows + A01 schema patch)",
+      "nov30_progress_prize": "GO (via gemini_lane/industrial_funnel_adapter.py)",
+      "evidence": "Unmodified file_receipts.py fails 11/11 tests on Windows (control_plane.py:60 mode 0700 + file_receipts.py:66 dir os.open/fsync) and contradicts A01 B8 single-order-15%-audit. After minimal 2-file cross-platform patch, 48/48 tests pass on Windows; Gemini's CrossPlatformFileReceipts solves both Windows and A01 schema cleanly.",
+      "guardrail": "Apply the 3 cross-platform patches upstream in chatgpt/industrial-search-funnel-rfc and add single_order_audit_15pct schema support before cross-agent R1 freeze."
+    },
+    {
+      "component": "SQLite Coordinator (control_plane.py Leases/Service)",
+      "decision": "NO-GO (R1) / DEFER",
+      "first_letters_50k": "NO-GO for R1 (defer until >1 concurrent live worker shares one queue)",
+      "nov30_progress_prize": "NO-GO",
+      "evidence": "Claude B6 verified 0/9 real failures came from lease races (all 9 were account limits, restarts, session deaths, GPU unavailability). Unmodified control_plane.py fails 28/28 tests on Windows NTFS due to st_mode & 0o077.",
+      "guardrail": "Keep as tested optional reference only (after applying Windows private_root fix); do not deploy a lease service in R1."
+    },
+    {
+      "component": "survey.py (Frozen Stratified Exploration + Exact Zero-Event Bounds)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "CONDITIONAL-GO (reference only)",
+      "evidence": "9/9 SurveyTests pass unmodified on Windows AND Linux (pure stdlib math, exact hypergeometric zero-event bound verified against combinatorial oracle, strict no-substitution Horvitz-Thompson).",
+      "guardrail": "Freeze physical population hash before observing fine outcomes; never substitute infeasible/expensive draws; never compute upper bounds if any sampled unit is UNRESOLVED."
+    },
+    {
+      "component": "64-vx Cell Occupancy + <=3-vx Normal Correspondence Dedup",
+      "decision": "CONDITIONAL-GO",
+      "first_letters_50k": "CONDITIONAL-GO",
+      "nov30_progress_prize": "GO (as validated scientific finding)",
+      "evidence": "On public PHerc. 0211 w033-w036: 64-vx cell-only fails catastrophically (97.5% adjacent false overlap; 95.69% far-vertex overlap in review073.py). Adding Claude's <=3-vx normal correspondence cleanly separates fitted (2.35%) and flat (4.39%) adjacent windings \u2014 BUT m7 snapping collapses adjacent windings to 35.74% mean overlap (59.01% on w034->w035; 26.59% step-2 w034->w036).",
+      "guardrail": "GO as two-stage (64-vx broadphase -> <=3-vx normal correspondence) inference-dedup filter; STRICT NO-GO as physical coverage/identity certificate on m7-snapped meshes unless paired with pre-snap lineage and displacement/collapse telemetry."
+    },
+    {
+      "component": "Windows RTX 4060 Adapter (gemini_lane/industrial_funnel_adapter.py)",
+      "decision": "GO",
+      "first_letters_50k": "GO",
+      "nov30_progress_prize": "GO",
+      "evidence": "Zero-torch, zero-leak, Windows+POSIX adapter bridging screen_scroll_rtx4060.py / stream_snap_render.py into funnel.file_receipt.v1 with 2D shear quarantine, exact pixel-center & signed slice-list validation, non-padded support verification, non-gating Q34, Q33 recall field, thermal/VRAM telemetry, and S0 19-scroll joiner.",
+      "guardrail": "Keep strictly CPU-only for validation/receipt emission; enforce ensure_outside_git_repo and leak_guard before every public export."
+    }
+  ]
+}
