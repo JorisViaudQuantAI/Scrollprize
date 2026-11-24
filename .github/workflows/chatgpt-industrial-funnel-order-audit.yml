@@ -1,0 +1,32 @@
+name: RFC amendment 074 experimental order audit
+on:
+  push:
+    branches: [chatgpt/industrial-search-funnel-rfc]
+    paths:
+      - .github/workflows/chatgpt-industrial-funnel-order-audit.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve immutable measured public timing receipt
+        run: |
+          git fetch --no-tags --depth=1 origin 74c55996176970025a41992bce22bdf893289910
+          git show FETCH_HEAD:gemini_lane/evidence/gpu_0211_and_0306b_calibration_matrix.json > /tmp/t17-074.json
+          test "$(git hash-object /tmp/t17-074.json)" = 610e115ac1c6775aebc92e435b0c53264ca97aad
+      - name: Run synthetic contracts and timing-based counterfactual
+        run: python firstletters-colab/industrial_funnel/verify074.py --source /tmp/t17-074.json --output /tmp/amendment074-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: amendment074-verification
+          path: /tmp/amendment074-result.json
+          retention-days: 30
