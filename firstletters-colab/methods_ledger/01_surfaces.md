@@ -425,14 +425,14 @@ Decision taken: the atlas was inked unsnapped at two depth shifts; the spiral fi
 
 **Added 2026-11-24 (shear and roughness of the fit grid against a winning surface).** `code/grid_quality.py`, same 20-voxel grid scale for all sets. Shear = angle between the two grid axes minus 90°, signed, measured over 8 cells (about 1.5 mm). Roughness = angle between a cell's normal and the mean normal of its 9 × 9 neighbourhood.
 
-| mesh set | shear, 5th / 95th percentile | roughness, median / 95th | cells rougher than 20° |
-|---|---|---|---|
-| PHerc. 0211 winner mesh (public) | −1.6° / +1.7° | 5° / 18–20° | 4 % |
-| our PHerc. 0175A windings, snapped (120) | about −29° / +28° | 11° / 33° | 18 % |
-| our PHerc. 1203 windings, snapped (120) | about −34° / +26° | 13° / 43° | 25 % |
-| our PHerc. 1203 windings, unsnapped (120) | same | 13° / 43° | 23 % |
+| mesh set | shear, 5th / 95th percentile | area sheared by more than 10° / 20° | roughness, median / 95th | cells rougher than 20° |
+|---|---|---|---|---|
+| PHerc. 0211 winner mesh (public) | −1.7° / +1.8° | 0.8 % / 0 % | 5° / 18–20° | 4 % |
+| our PHerc. 0175A windings, snapped (120) | −31° / +29° | 63 % / 31 % | 11° / 33° | 18 % |
+| our PHerc. 1203 windings, snapped (120) | −28° / +28° | 46 % / 21 % | 13° / 43° | 25 % |
+| our PHerc. 1203 windings, unsnapped (120) | −28° / +28° | 46 % / 21 % | 13° / 43° | 23 % |
 
-- The shear figures for our sets come from three windings; the roughness figures from all 120. The median shear is near 0: it is local shear of both signs at letter scale, not a global tilt.
+- All figures are pooled over every winding of the set (the winner row: the published mesh and two displaced copies). The median shear is near 0: it is local shear of both signs at letter scale, not a global tilt.
 - Snapped and unsnapped fits are alike, so this comes from the fit grid, not from the snap.
 - A render that maps the fit grid to a rectangle shows letters slanted by up to about 30° in either direction, on top of the stretch above. The common-map resampling does not remove shear. The winning surface has neither defect.
 - Reading: the PHerc. 0175A and PHerc. 1203 screens of fitted windings tested surfaces well below winning quality in their flattening, whatever their on-sheet fraction. A per-surface flattening (villa `flatten_spiral_checkpoint.py`, flatboi) is required before such a screen says much. No detector test of shear tolerance exists yet.
