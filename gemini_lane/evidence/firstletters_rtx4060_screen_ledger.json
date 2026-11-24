@@ -37,8 +37,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 144.4282,
-    "meshes_screened": 30,
+    "total_unique_valid_ct_cm2": 162.5247,
+    "meshes_screened": 34,
     "two_family_followups": 7,
     "candidates_found": 0
   },
@@ -1538,6 +1538,196 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; diffuse triangular fissure clouds on cavities (strokeness 1.386) and zero letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w025",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.7147,
+      "on_sheet_after_snap": 0.8514,
+      "f_parallel": 0.939,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 577.18,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.45441,
+          "p995": 0.62502,
+          "max": 0.91799,
+          "frac_gt_05": 0.008319,
+          "frac_gt_07": 0.003198
+        },
+        "studio_asc": {
+          "p99": 0.44841,
+          "p995": 0.49433,
+          "max": 0.75316,
+          "frac_gt_05": 0.004611,
+          "frac_gt_07": 0.000241
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 12.6123,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 5163.0,
+        "strokeness_weighted_mean": 0.3259,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.37828,
+        "asc_top_score": 2.40559
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; isolated void-border cloud (strokeness 0.3259) with zero letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w035",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.6653,
+      "on_sheet_after_snap": 0.8685,
+      "f_parallel": 0.9086,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1263.63,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.61977,
+          "p995": 0.6875,
+          "max": 0.86706,
+          "frac_gt_05": 0.02535,
+          "frac_gt_07": 0.004085
+        },
+        "studio_asc": {
+          "p99": 0.81661,
+          "p995": 0.85543,
+          "max": 0.93848,
+          "frac_gt_05": 0.080743,
+          "frac_gt_07": 0.029591
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 7.2427,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 26947.0,
+        "strokeness_weighted_mean": 1.4012,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 1.9467,
+        "asc_top_score": 2.19727
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; diffuse asc clouds over diagonal dark fissures (line_rank 2.197, strokeness 1.4012) and zero pen strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w045",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.7655,
+      "on_sheet_after_snap": 0.93,
+      "f_parallel": 0.9679,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2040.52,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.65492,
+          "p995": 0.75057,
+          "max": 0.93567,
+          "frac_gt_05": 0.021799,
+          "frac_gt_07": 0.007368
+        },
+        "studio_asc": {
+          "p99": 0.7551,
+          "p995": 0.80888,
+          "max": 0.93168,
+          "frac_gt_05": 0.043802,
+          "frac_gt_07": 0.015595
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 2.1042,
+        "bilateral_overlap_frac": 0.012815,
+        "max_regional_asymmetry": 23008.0,
+        "strokeness_weighted_mean": 3.2868,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.54991,
+        "asc_top_score": 3.02607
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; regional rescue + fissure seam ribbon (strokeness 3.2868) flagged ink_like_candidate=true, but full-res visual review confirms 100-250 px diffuse blobs on zigzag CT cracks and delamination swirls with zero connected strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w055",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.951,
+      "on_sheet_after_snap": 0.898,
+      "f_parallel": 0.9208,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2642.42,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.77298,
+          "p995": 0.84093,
+          "max": 0.94195,
+          "frac_gt_05": 0.030869,
+          "frac_gt_07": 0.015859
+        },
+        "studio_asc": {
+          "p99": 0.65062,
+          "p995": 0.74512,
+          "max": 0.9224,
+          "frac_gt_05": 0.021464,
+          "frac_gt_07": 0.007323
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 2.1538,
+        "bilateral_overlap_frac": 0.002046,
+        "max_regional_asymmetry": 17308.0,
+        "strokeness_weighted_mean": 1.5134,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.8938,
+        "asc_top_score": 3.13383
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; borderline 1.5134 strokeness + regional rescue set ink_like_candidate=true, but full-res visual review shows blurry blobs tracking diagonal CT cavities and horizontal crack edge with zero Greek strokes."
     }
   ]
 }
