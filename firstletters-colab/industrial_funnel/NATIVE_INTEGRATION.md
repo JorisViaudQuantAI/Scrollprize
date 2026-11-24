@@ -47,7 +47,13 @@ Outputs are created without overwriting existing receipts. These exported descri
 
 ## Actual integration result
 
-The combined local suite passes **98/98 tests, with no failures, errors or skips**: the existing 48 reference/file/survey tests, 35 native-array tests, and 15 importer/accounting regressions. The [test receipt](native_tests.json) pins the executed code. The public numerical verifier separately checks 53 content files in the 54-file, 9,137,736-byte visual package and recalculates its declared measurements. Test counts describe software checks, not additional experimental specimens.
+The initial combined local suite passes **98/98 tests, with no failures, errors or skips**: the existing 48 reference/file/survey tests, 35 native-array tests, and 15 importer/accounting regressions. The [original test receipt at its executed revision](https://github.com/JorisViaudQuantAI/Scrollprize/blob/cf5a620c9b419b61c3e6df0827327b0143067404/firstletters-colab/industrial_funnel/native_tests.json) pins that code. The public numerical verifier separately checks 53 content files in the 54-file, 9,137,736-byte visual package and recalculates its declared measurements. Test counts describe software checks, not additional experimental specimens.
+
+### Compatibility with the concurrent A02 amendment
+
+After initial publication, the industrial branch added [A02](AMENDMENT-002.md) and an experimental single-order cohort with an opposite-order audit. This contribution incorporates upstream revision `e1da697f9f56891dec215f56f83c8f106341a08e` without conflicts. The combined suite then passes **116/116 tests**: the original 98 plus eighteen upstream order-audit regressions. [New compatibility receipt](native_tests_a02.json). The original receipt is retained, rather than silently replacing its source fingerprints.
+
+A02 explicitly quarantines the experimental cohort from ordinary downstream promotion. The native evidence API continues to report no production/scientific admission. Its exact-reversal test is useful for a declared pair; it does not assert that every future experimental single-order job must have a reverse map. The five unpaired historical observations still do not retrospectively acquire A02's frozen population, sample assignment, matched control or execution evidence. No prior scientific outcome changes, and this compatibility check adds no model forward.
 
 The importer read **20 job declarations and thirteen distinct completed maps**. The seven repeated declarations refer to already recorded work; they are not seven measured saved runs. The historical computation consists of **1,078 prediction windows plus thirteen identity sentinels = 1,091 forwards**. This integration adds zero model forwards.
 

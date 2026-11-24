@@ -15,6 +15,7 @@ import secrets
 import sqlite3
 import tempfile
 import time
+from order_audit import MODE, assignment, is_experiment, validate_outputs
 
 LANES = ("exploit", "repair", "explore")
 RESOURCES = ("cpu_ms", "gpu_ms", "human_ms", "io_bytes")
@@ -95,12 +96,17 @@ def hashes(obj):
 
 def validate_spec(s):
     keys={"scroll","unit","frame","stage","recipe","inputs","deps","calibration"}
-    if not isinstance(s,dict) or set(s)!=keys:raise ValueError("Job spec schema mismatch")
+    if not isinstance(s,dict) or set(s) not in (keys,keys|{"order_policy"}):raise ValueError("Job spec schema mismatch")
     if not isinstance(s["scroll"],str) or not SCROLL.fullmatch(s["scroll"]):raise ValueError("Invalid scroll code")
     if not isinstance(s["unit"],str) or not s["unit"] or len(s["unit"])>128:raise ValueError("Invalid private unit")
     require_sha(s["frame"]);require_sha(s["recipe"])
     if s["stage"] not in PREDECESSOR:raise ValueError("Invalid stage")
     hashes(s["inputs"])
+    if "order_policy" in s:
+        if s["order_policy"]!=MODE or s["stage"]!="COARSE" or "order_audit_plan" not in s["inputs"] or "geometry" not in s["inputs"]:
+            raise ValueError("Invalid experimental order policy")
+    elif "order_audit_plan" in s["inputs"]:
+        raise ValueError("Audit input requires explicit experimental policy")
     if not isinstance(s["deps"],list) or len(s["deps"])!=len(set(s["deps"])):raise ValueError("Invalid dependencies")
     for h in s["deps"]:require_sha(h)
     if s["stage"] in INFERENCE|{"CONTROL"}:require_sha(s["calibration"])
@@ -167,6 +173,7 @@ class Coordinator:
         c.execute("INSERT INTO events(at,job,kind,details) VALUES(?,?,?,?)",(now,j,kind,canonical(details or {})))
     def enqueue(self,spec,lane,priority,grant,now=None):
         s=validate_spec(spec);j=digest(s);g=vector(grant);now=self.clock(now)
+        if is_experiment(s):assignment(s,self.store)
         if lane not in LANES or type(priority)!=int or priority<0 or not any(g.values()):
             raise ValueError("Invalid scheduling policy")
         if s["stage"]!="CONTROL" and s["scroll"] not in self.policy["eligible"]:
@@ -182,6 +189,7 @@ class Coordinator:
                 p=c.execute("SELECT spec FROM jobs WHERE id=?",(dep,)).fetchone()
                 if not p:raise ValueError("Unknown parent; register parent first")
                 ps=json.loads(p["spec"]);parents.append(ps)
+                if is_experiment(ps):raise ValueError("Experimental coarse result cannot unlock standard stage")
                 if ps["stage"]!="CONTROL" and any(ps[k]!=s[k] for k in ("scroll","frame","unit")):
                     raise ValueError("Cross-unit lineage without registered transform")
             stages=[p["stage"] for p in parents]
@@ -232,6 +240,7 @@ class Coordinator:
                 self.event(c,now,row["id"],"BLOCKED",{"reason":"CONTROL_STALE_OR_INVALID"});return False
         try:
             for h in inputs:self.store.verify(h)
+            if is_experiment(s):assignment(s,self.store)
         except ValueError:
             c.execute("UPDATE jobs SET state='BLOCKED',reason='INPUT_MISSING_OR_CORRUPT' WHERE id=?",(row["id"],))
             self.event(c,now,row["id"],"BLOCKED",{"reason":"INPUT_MISSING_OR_CORRUPT"});return False
@@ -297,8 +306,7 @@ class Coordinator:
                         raise ValueError("Control needs a future validity limit")
                     if not r["control_pass"]:reason="BAD_CONTROL"
                 if s["stage"] in INFERENCE:
-                    if not {"asc_map","desc_map","asc_support","desc_support","metadata"}<=set(outputs) or r.get("orders")!=["asc","desc"]:
-                        raise ValueError("Incomplete paired inference evidence")
+                    validate_outputs(s,r,self.store)
                     for dep in s["deps"]:
                         ps=json.loads(c.execute("SELECT spec FROM jobs WHERE id=?",(dep,)).fetchone()[0])
                         if ps["stage"]=="CONTROL":

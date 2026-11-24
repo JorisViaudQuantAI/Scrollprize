@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import tempfile
+from order_audit import is_experiment, validate_outputs
 from control_plane import canonical,digest,hashes,private_root,require_sha,validate_spec,vector,within,Store,INFERENCE,FAILURES,REVIEW
 
 def job_key(spec):
@@ -30,8 +31,7 @@ def validate(spec,attempt,receipt,store):
         if not out or receipt["failure"] is not None:raise ValueError("Incomplete completed receipt")
         for h in s["inputs"].values():store.verify(h)
         if s["stage"] in INFERENCE:
-            if receipt["orders"]!=["asc","desc"] or not {"asc_map","desc_map","asc_support","desc_support","metadata"}<=set(out):
-                raise ValueError("Both-order manifest incomplete")
+            validate_outputs(s,receipt,store)
         if s["stage"]=="CONTROL":
             if receipt["calibration"]!=s["calibration"] or type(receipt["control_pass"])!=bool or type(receipt["valid_until"])!=int:
                 raise ValueError("Control key or evidence invalid")
@@ -96,4 +96,5 @@ class FileReceipts:
             good.append(q)
         if len(good)>1:raise ValueError("Multiple complete attempts need explicit operator reconciliation")
         return {"attempts":len(rows),"completed":len(good)==1,"receipt":good[0] if good else None,
+                "experiment_only":is_experiment(spec),"eligible_for_standard_chain":len(good)==1 and not is_experiment(spec),
                 "next_attempt":max([q["receipt"]["attempt"] for q in rows],default=0)+1}
