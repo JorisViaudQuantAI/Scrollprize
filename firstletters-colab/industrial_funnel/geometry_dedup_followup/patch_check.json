@@ -1,0 +1,169 @@
+{
+  "schema": "native.geometry_patch_review.v1",
+  "producer_commit": "da94312727c7e95f7f7fdc2d7481d502265434c5",
+  "producer_sha256_before": "7a43443989eaaa08d0c9bf1f8f9b98fac95bf768fbaa48ccebd3772589c57bec",
+  "producer_sha256_after": "9ba8f7c6533690e1842bf7df8039c8e2b66cfa7855a40300ad600b765d30a231",
+  "patch_sha256": "d1554e1faf06d6be3d91ec28b6658606130d4d65f04511dbe189b43c0925a43e",
+  "git_apply_check_exit": 0,
+  "git_apply_exit": 0,
+  "real_public_geometry": true,
+  "new_model_forwards": 0,
+  "new_letters": 0,
+  "self_pairs": [
+    {
+      "state": "fitted",
+      "winding": "w033",
+      "n_vertices": 11735,
+      "original_fraction": 0.9848,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "fitted",
+      "winding": "w034",
+      "n_vertices": 12083,
+      "original_fraction": 0.9847,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "fitted",
+      "winding": "w035",
+      "n_vertices": 12360,
+      "original_fraction": 0.9843,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "fitted",
+      "winding": "w036",
+      "n_vertices": 12731,
+      "original_fraction": 0.9848,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "snap",
+      "winding": "w033",
+      "n_vertices": 11735,
+      "original_fraction": 0.9849,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "snap",
+      "winding": "w034",
+      "n_vertices": 12083,
+      "original_fraction": 0.9848,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "snap",
+      "winding": "w035",
+      "n_vertices": 12360,
+      "original_fraction": 0.9844,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "snap",
+      "winding": "w036",
+      "n_vertices": 12731,
+      "original_fraction": 0.9848,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "flat",
+      "winding": "w033",
+      "n_vertices": 16051,
+      "original_fraction": 0.9783,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "flat",
+      "winding": "w034",
+      "n_vertices": 16607,
+      "original_fraction": 0.9786,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "flat",
+      "winding": "w035",
+      "n_vertices": 16853,
+      "original_fraction": 0.9783,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    },
+    {
+      "state": "flat",
+      "winding": "w036",
+      "n_vertices": 17262,
+      "original_fraction": 0.9787,
+      "patched_fraction": 1.0,
+      "expected_preserved_fraction": 1.0,
+      "patched_median_distance": 0.0,
+      "matches_reference": true
+    }
+  ],
+  "nonself_removed_cases": [
+    {
+      "state": "flat",
+      "source": "w035",
+      "target": "w036",
+      "n_vertices": 16853,
+      "original_upstream_fraction": 0.0527,
+      "patched_upstream_fraction": 0.0526,
+      "reference_preserved_fraction": 0.05263157894736842,
+      "rounding_matches": true,
+      "reference_original_accepted": 888,
+      "reference_preserved_accepted": 887,
+      "recomputed_original_accepted": 888,
+      "recomputed_preserved_accepted": 887,
+      "removed": 1,
+      "added": 0,
+      "removed_point_diagnostics": [
+        {
+          "source_point_index_in_usable_array": 10,
+          "original_distance": 4.5283522864934955,
+          "patched_distance": 4.006377842688876,
+          "original_abs_normal_distance": 2.807881906136476,
+          "patched_abs_normal_distance": 3.2195187136675516,
+          "original_lateral": 3.55271355892679,
+          "patched_lateral": 2.384483732536837,
+          "abs_cos": 0.8346814849614158,
+          "target_nearest_changed": true,
+          "reason": "Nearest Euclidean candidate changed; decomposed normal distance may increase despite lower Euclidean distance."
+        }
+      ]
+    }
+  ],
+  "all_twelve_self_pairs_exactly_one": true,
+  "scientific_pruning_admission": "NOT_ESTABLISHED",
+  "scope": "Patch application and real public mesh identity/regression check only; not same-sheet proof or ink discovery."
+}

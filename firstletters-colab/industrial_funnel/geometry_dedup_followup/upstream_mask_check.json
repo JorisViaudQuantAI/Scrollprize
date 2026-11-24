@@ -1,0 +1,543 @@
+{
+  "schema": "native.geometry_upstream_mask_check.v1",
+  "pass": true,
+  "checker_sha256": "f5a6800c2a5805e793bdc24f8c323e84dc3f293b538ea6c6fe136912ef92e309",
+  "experiment_script_sha256": "3004aac571b82ba53ed102a9baf86104b28fa2e185e6f97e447edd9e07417613",
+  "experiment_result_sha256": "7508630308b284ffa41d73665b0063132cdaec09a84c05853bdc6cefacdee38c",
+  "protocol_sha256": "e1475156642c1afaf65f91c8c0d85e67dec8e4d3b4674c7582de20cf06295a02",
+  "maps_sha256": "f1d402d150940bea01da3c4a4c84a67b7b78853d3dacc0a7e45f243e6c601abe",
+  "map_array_count": 432,
+  "derived_mesh_area_comparison": {
+    "atol_vox2": 1e-07,
+    "rtol": 1e-14,
+    "coordinate_hashes_and_other_receipt_fields": "exact"
+  },
+  "pins": {
+    "gemini": {
+      "commit": "da94312727c7e95f7f7fdc2d7481d502265434c5",
+      "path": "gemini_lane/industrial_funnel_adapter.py",
+      "sha256": "7a43443989eaaa08d0c9bf1f8f9b98fac95bf768fbaa48ccebd3772589c57bec"
+    },
+    "atlas": {
+      "commit": "2cba2f7a8a316ac9e1d42ed939d226ec255e5d22",
+      "path": "firstletters-colab/adaptive_surface_recovery/claude_carrier_atlas/run.py",
+      "sha256": "1130ba0bb36a6b877dd6e4f410c12367b247c6633ecea014c0750b9ce2676962"
+    },
+    "labels": {
+      "commit": "2cba2f7a8a316ac9e1d42ed939d226ec255e5d22",
+      "path": "firstletters-colab/adaptive_surface_recovery/claude_carrier_atlas/result.json",
+      "sha256": "ca9dd1691afe97014344301d4d2ef9f9243cd8730d5b7a10e96d64f6274389b4"
+    }
+  },
+  "instrumentation": "Only three fields appended to the hash-pinned helper's final dictionary return; original computations unchanged.",
+  "stored_masks_pointwise_equal_to_upstream": true,
+  "reconstructed_nearest_indices_equal_to_upstream": true,
+  "checked_pairs": 48,
+  "checked_source_vertex_occurrences": 658364,
+  "pairs": [
+    {
+      "state": "fitted",
+      "source": "w033",
+      "target": "w033",
+      "source_vertices": 11735,
+      "accepted": 11557,
+      "mask_sha256": "ecb8edd97324c5e0c2be08edc6bf8e6b514742fda92512852a16da0a523ef0cb",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w033",
+      "target": "w034",
+      "source_vertices": 11735,
+      "accepted": 130,
+      "mask_sha256": "15042c04d4898cae3208b31030e180c8c8a26a9b96d40b3608056f6d953604dc",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w033",
+      "target": "w035",
+      "source_vertices": 11735,
+      "accepted": 23,
+      "mask_sha256": "f07ebb43c60da6379d23080d997ad1640d0d52366dd87fcd1a4262106adacda6",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w033",
+      "target": "w036",
+      "source_vertices": 11735,
+      "accepted": 6,
+      "mask_sha256": "35f55962943671f535857f21133e0d2837772e3d8d0af8914d1a6e604c1a85eb",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w034",
+      "target": "w033",
+      "source_vertices": 12083,
+      "accepted": 127,
+      "mask_sha256": "5f91f32eab99985869c1978027f17163d10c3b69404f678073668352d85cd1f4",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w034",
+      "target": "w034",
+      "source_vertices": 12083,
+      "accepted": 11898,
+      "mask_sha256": "0cc16491bd8e75985cc40b4f037cc06fd73ff5b5f94ad086398fbf938b738da6",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w034",
+      "target": "w035",
+      "source_vertices": 12083,
+      "accepted": 359,
+      "mask_sha256": "8a9c434af165aee85da648cdfe45bf29cbe71a338bf7e56e72b87b794c0228c4",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w034",
+      "target": "w036",
+      "source_vertices": 12083,
+      "accepted": 39,
+      "mask_sha256": "2dec360b829189b585efb42a4daf8ac5024a4fd7ecf108c619eda2c4c9ac53fe",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w035",
+      "target": "w033",
+      "source_vertices": 12360,
+      "accepted": 17,
+      "mask_sha256": "b3484e15bdb0c4bad8b303d553f68190fa521352ec8e7defb4095129e9d1cdc2",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w035",
+      "target": "w034",
+      "source_vertices": 12360,
+      "accepted": 337,
+      "mask_sha256": "da6457bdbf3665ecfbefe66d3c01becb314e8dc578d053182671408b45c09bfa",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w035",
+      "target": "w035",
+      "source_vertices": 12360,
+      "accepted": 12166,
+      "mask_sha256": "f6ae73d246ea32a6c7686340e4ccbb03ed7facfebd9e53463ca57312a90d1b9a",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w035",
+      "target": "w036",
+      "source_vertices": 12360,
+      "accepted": 376,
+      "mask_sha256": "410b823a6f01f0f310c636ea5afbc9165b8635ba028b1a1f6a4b9ced7f5c1f73",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w036",
+      "target": "w033",
+      "source_vertices": 12731,
+      "accepted": 4,
+      "mask_sha256": "97cdfa7c8ae30a36e0414394031a380d87ac207bf97c73e8a2a5cf5ba0ffb5d6",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w036",
+      "target": "w034",
+      "source_vertices": 12731,
+      "accepted": 32,
+      "mask_sha256": "0d3d61e306ca6bd6aa7cf869c50732a359a3ddbbf28d6b4df8108fd947e9ff9d",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w036",
+      "target": "w035",
+      "source_vertices": 12731,
+      "accepted": 410,
+      "mask_sha256": "0c75745d81116b2101e3070343c9b48fd180793af00626c98f43ba25e97720bb",
+      "all_checks_passed": true
+    },
+    {
+      "state": "fitted",
+      "source": "w036",
+      "target": "w036",
+      "source_vertices": 12731,
+      "accepted": 12538,
+      "mask_sha256": "0a3ab13d366c41d1f78c3dc368e2c74b6a18b5d8cae23613635d8520255f926e",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w033",
+      "target": "w033",
+      "source_vertices": 11735,
+      "accepted": 11558,
+      "mask_sha256": "e91ea9e42a529e78d8e8da5dc46d2a72de0e21188bb846c423f26466da713f37",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w033",
+      "target": "w034",
+      "source_vertices": 11735,
+      "accepted": 1040,
+      "mask_sha256": "f3b8a8854d525133d1b65d29c8ff98eaeb38d1d59f32f695bedf2cb6772bc4ed",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w033",
+      "target": "w035",
+      "source_vertices": 11735,
+      "accepted": 20,
+      "mask_sha256": "090dfa9986a961ff14a1dbdac0952a5cf2273f66862c39479c01ebdf960902ea",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w033",
+      "target": "w036",
+      "source_vertices": 11735,
+      "accepted": 13,
+      "mask_sha256": "46fe1f0e07af3392a075e182ea017de43de7f2d298f6156aeeb24743f305f396",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w034",
+      "target": "w033",
+      "source_vertices": 12083,
+      "accepted": 1094,
+      "mask_sha256": "ddc979b6e4c490bebda09b555f3bbd015f21c8448a505d862cc2371a083bb4a3",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w034",
+      "target": "w034",
+      "source_vertices": 12083,
+      "accepted": 11899,
+      "mask_sha256": "bbd810373c47575288e6177da27752b6358e02791fe5d554a48bd6d9da5fdb3f",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w034",
+      "target": "w035",
+      "source_vertices": 12083,
+      "accepted": 7130,
+      "mask_sha256": "22eeef15e8a8684512f578edf2165e5522bd3ee2b3c270c5837b6fe653d38c95",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w034",
+      "target": "w036",
+      "source_vertices": 12083,
+      "accepted": 3213,
+      "mask_sha256": "23f6225350d6a0a06e671e0c52c8fe42e44993ef1692b364f631b1e87ca30bf6",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w035",
+      "target": "w033",
+      "source_vertices": 12360,
+      "accepted": 16,
+      "mask_sha256": "bac9deb8fb841a2ca26e4e070b3a21fe37c92c2820b1d30cb42492cdbd8aeaf4",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w035",
+      "target": "w034",
+      "source_vertices": 12360,
+      "accepted": 7205,
+      "mask_sha256": "cc30f66ba24c43d75013de03c1bc6c331713714488558cd1f1dbefd234578c4a",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w035",
+      "target": "w035",
+      "source_vertices": 12360,
+      "accepted": 12167,
+      "mask_sha256": "58eae11cb3ca20672444aa242612ee460fb036af3bd90ad3e1948f8b4acd652b",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w035",
+      "target": "w036",
+      "source_vertices": 12360,
+      "accepted": 4961,
+      "mask_sha256": "0a0dcf5d10eb0f3d04bee8225ec8d9a24a851ba1f36db7b73b78637279a99d74",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w036",
+      "target": "w033",
+      "source_vertices": 12731,
+      "accepted": 15,
+      "mask_sha256": "678a07549e7e1a2c66f3c136bb1c4f72efc0a92f3ced8ef213ed613b3a947b09",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w036",
+      "target": "w034",
+      "source_vertices": 12731,
+      "accepted": 3289,
+      "mask_sha256": "7789a44842d37dbe0a1288114436c425baae409e627dd0bdc71fdc7232a5894d",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w036",
+      "target": "w035",
+      "source_vertices": 12731,
+      "accepted": 4975,
+      "mask_sha256": "2a1c752e5a3c3b00baa7e1b843fb922d33133a27badf95da38527e8f855b8607",
+      "all_checks_passed": true
+    },
+    {
+      "state": "snap",
+      "source": "w036",
+      "target": "w036",
+      "source_vertices": 12731,
+      "accepted": 12537,
+      "mask_sha256": "5ca9f8cb3be827056ed37ddc8133971134c11e1668ecb5dfc910b219b1b4e3e4",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w033",
+      "target": "w033",
+      "source_vertices": 16051,
+      "accepted": 15703,
+      "mask_sha256": "41f7662b88d4d39351769d08c674b3159252ac60b68e7b996b84464bbd09547d",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w033",
+      "target": "w034",
+      "source_vertices": 16051,
+      "accepted": 454,
+      "mask_sha256": "7a5cc810031c5d7d80255f905faaf4c226603abf56278d00c068e95e3e468d0b",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w033",
+      "target": "w035",
+      "source_vertices": 16051,
+      "accepted": 38,
+      "mask_sha256": "3a15dedd04d0d936801f1bb988c928c593e1b75601aa06a5babb0f852ee5584a",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w033",
+      "target": "w036",
+      "source_vertices": 16051,
+      "accepted": 15,
+      "mask_sha256": "b596feacb43e5253ed3bba394d4578ceebe4f5cac45bce12d0c18c7c7bfe9752",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w034",
+      "target": "w033",
+      "source_vertices": 16607,
+      "accepted": 408,
+      "mask_sha256": "180c38814be231e59dcdf419c3273f6f00a2848b58dc4da3cb22fe4780bf9329",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w034",
+      "target": "w034",
+      "source_vertices": 16607,
+      "accepted": 16251,
+      "mask_sha256": "57161c92c2d1e55a857a2f38cd080e742794877f62e6424f9797a52a3229ec39",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w034",
+      "target": "w035",
+      "source_vertices": 16607,
+      "accepted": 869,
+      "mask_sha256": "b69d9043b9485d9b4b57200da0964e9650ca2787eee7879be70ecd9cbe65f649",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w034",
+      "target": "w036",
+      "source_vertices": 16607,
+      "accepted": 116,
+      "mask_sha256": "f6cefa8e1764c9794d4ccaa208921d35dd337f880fbdb817c792780631169467",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w035",
+      "target": "w033",
+      "source_vertices": 16853,
+      "accepted": 33,
+      "mask_sha256": "6220debba5a81b037a2a575235618725f49dca5fadd4b904bfe07d58a7bd308e",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w035",
+      "target": "w034",
+      "source_vertices": 16853,
+      "accepted": 902,
+      "mask_sha256": "5b7f73677bef0ec4473e8dffbfc27bc9a47bc26d1de041bdff97edd73f08ef6a",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w035",
+      "target": "w035",
+      "source_vertices": 16853,
+      "accepted": 16488,
+      "mask_sha256": "d3bdddeaafa1a1d130b2590c874f008b5453982aafe5589fd1cb8796c16d1d53",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w035",
+      "target": "w036",
+      "source_vertices": 16853,
+      "accepted": 888,
+      "mask_sha256": "945b5ff8dfbb3583c7e5eb9961e9d841b0744e160912961fcef8d2c35fa3c094",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w036",
+      "target": "w033",
+      "source_vertices": 17262,
+      "accepted": 14,
+      "mask_sha256": "abf67c679419258e992baa1aaaae81c74a94941aeb7477ae2353bb2f2ab1ed58",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w036",
+      "target": "w034",
+      "source_vertices": 17262,
+      "accepted": 99,
+      "mask_sha256": "503f09216f5b6a0fd9fdd81554fd64585e915c78ad25fe37e2880fc95d7d0f5d",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w036",
+      "target": "w035",
+      "source_vertices": 17262,
+      "accepted": 893,
+      "mask_sha256": "6e2d08cc880f00221a39e5d6f3b3eee134546e95d9af403f50b13469f65bc494",
+      "all_checks_passed": true
+    },
+    {
+      "state": "flat",
+      "source": "w036",
+      "target": "w036",
+      "source_vertices": 17262,
+      "accepted": 16894,
+      "mask_sha256": "7cd7df39c830ed17b529776dc3ece6f38427fc1920819eaa8e94ae23413669c3",
+      "all_checks_passed": true
+    }
+  ],
+  "cache_key_diagnostic": {
+    "scope": "Accepted old-predicate correspondences; self and non-self sources together, counted separately for each fixed target mesh.",
+    "accepted_dense_points_with_multiple_normal_vertex_ids": 150,
+    "per_target": [
+      {
+        "state": "fitted",
+        "target": "w033",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 0
+      },
+      {
+        "state": "fitted",
+        "target": "w034",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 2
+      },
+      {
+        "state": "fitted",
+        "target": "w035",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 3
+      },
+      {
+        "state": "fitted",
+        "target": "w036",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 0
+      },
+      {
+        "state": "snap",
+        "target": "w033",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 0
+      },
+      {
+        "state": "snap",
+        "target": "w034",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 45
+      },
+      {
+        "state": "snap",
+        "target": "w035",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 49
+      },
+      {
+        "state": "snap",
+        "target": "w036",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 38
+      },
+      {
+        "state": "flat",
+        "target": "w033",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 0
+      },
+      {
+        "state": "flat",
+        "target": "w034",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 10
+      },
+      {
+        "state": "flat",
+        "target": "w035",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 3
+      },
+      {
+        "state": "flat",
+        "target": "w036",
+        "accepted_dense_points_with_multiple_normal_vertex_ids": 0
+      }
+    ],
+    "conclusion": "A target dense point alone does not identify the normal used by G4. The experiment keys target rays by (dense_id, normal_vertex_id)."
+  },
+  "geometry_only": true,
+  "new_ink_inferences": 0,
+  "new_discovered_letters": 0,
+  "scientific_pruning_admission": "NOT_ESTABLISHED",
+  "wall_seconds": 17.954801813999893
+}

@@ -1,0 +1,459 @@
+{
+  "alpha": "1/20",
+  "anti_pooling_counterexample": {
+    "actual_design": [
+      {
+        "N": 100,
+        "n": 1
+      },
+      {
+        "N": 20,
+        "n": 20
+      }
+    ],
+    "actual_probability_zero": "1/2",
+    "correct_joint_upper_count": 95,
+    "fixed_missed_allocation": [
+      50,
+      0
+    ],
+    "implication": "Pooling would exclude the true total 50 with probability 0.5, violating a 0.05 error level.",
+    "invalid_pooled_N120_n21_upper_count": 14
+  },
+  "baseline_amendment074_modified": false,
+  "cases": [
+    {
+      "current_sum_bonferroni_upper_count": 26,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 15,
+        "maximizing_allocation_at_first_excluded": [
+          8,
+          7
+        ],
+        "maximizing_allocation_at_upper": [
+          7,
+          7
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 40,
+        "probability_at_first_excluded": {
+          "decimal": 0.048414896891351186,
+          "exact": "1573/32490"
+        },
+        "probability_at_upper": {
+          "decimal": 0.06293936595875654,
+          "exact": "20449/324900"
+        },
+        "promotion_allowed": false,
+        "sample_units": 6,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 14
+      },
+      "name": "existing_A02_test_fixture_known_orders_only",
+      "source": "Existing test_order_audit.population() synthetic fixture; all-negative outcomes imposed for planning.",
+      "strata": [
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 2
+    },
+    {
+      "current_sum_bonferroni_upper_count": 17,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 18,
+        "maximizing_allocation_at_first_excluded": [
+          18
+        ],
+        "maximizing_allocation_at_upper": [
+          17
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 120,
+        "probability_at_first_excluded": {
+          "decimal": 0.04169390582384409,
+          "exact": "51076688548105/1225039668000954"
+        },
+        "probability_at_upper": {
+          "decimal": 0.05052320352771695,
+          "exact": "600902218213/11893589009718"
+        },
+        "promotion_allowed": false,
+        "sample_units": 18,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 17
+      },
+      "name": "hypothetical_120_units_one_stratum",
+      "source": "Synthetic design; assumes all sampled outcomes zero, no observed evidence.",
+      "strata": [
+        {
+          "N": 120,
+          "n": 18
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 0
+    },
+    {
+      "current_sum_bonferroni_upper_count": 36,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 18,
+        "maximizing_allocation_at_first_excluded": [
+          9,
+          9
+        ],
+        "maximizing_allocation_at_upper": [
+          9,
+          8
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 120,
+        "probability_at_first_excluded": {
+          "decimal": 0.042352013749727156,
+          "exact": "764930945038225/18061265033546436"
+        },
+        "probability_at_upper": {
+          "decimal": 0.05121638872060028,
+          "exact": "17789091745075/347332019875893"
+        },
+        "promotion_allowed": false,
+        "sample_units": 18,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 17
+      },
+      "name": "hypothetical_120_units_two_equal_strata",
+      "source": "Synthetic design; assumes all sampled outcomes zero, no observed evidence.",
+      "strata": [
+        {
+          "N": 60,
+          "n": 9
+        },
+        {
+          "N": 60,
+          "n": 9
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 0
+    },
+    {
+      "current_sum_bonferroni_upper_count": 90,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 18,
+        "maximizing_allocation_at_first_excluded": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "maximizing_allocation_at_upper": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          2
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 120,
+        "probability_at_first_excluded": {
+          "decimal": 0.045042695086880837,
+          "exact": "1544804416/34296447249"
+        },
+        "probability_at_upper": {
+          "decimal": 0.054051234104257,
+          "exact": "3089608832/57160745415"
+        },
+        "promotion_allowed": false,
+        "sample_units": 18,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 17
+      },
+      "name": "hypothetical_120_units_six_equal_strata",
+      "source": "Synthetic design; assumes all sampled outcomes zero, no observed evidence.",
+      "strata": [
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        },
+        {
+          "N": 20,
+          "n": 3
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 0
+    },
+    {
+      "current_sum_bonferroni_upper_count": 96,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 14,
+        "maximizing_allocation_at_first_excluded": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "maximizing_allocation_at_upper": [
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 120,
+        "probability_at_first_excluded": {
+          "decimal": 0.04157104148227161,
+          "exact": "822083584/19775390625"
+        },
+        "probability_at_upper": {
+          "decimal": 0.05344848190577778,
+          "exact": "117440512/2197265625"
+        },
+        "promotion_allowed": false,
+        "sample_units": 24,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 13
+      },
+      "name": "hypothetical_120_units_twelve_equal_strata_rounding",
+      "source": "Synthetic design; assumes all sampled outcomes zero, no observed evidence.",
+      "strata": [
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        },
+        {
+          "N": 10,
+          "n": 2
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 0
+    },
+    {
+      "current_sum_bonferroni_upper_count": 33,
+      "joint_total": {
+        "alpha": {
+          "decimal": 0.05,
+          "exact": "1/20"
+        },
+        "evidence_verified": false,
+        "first_excluded_count": 18,
+        "maximizing_allocation_at_first_excluded": [
+          15,
+          3
+        ],
+        "maximizing_allocation_at_upper": [
+          14,
+          3
+        ],
+        "method": "exact_stratified_zero_event_total_v1",
+        "population_units": 120,
+        "probability_at_first_excluded": {
+          "decimal": 0.04234490538320934,
+          "exact": "44698306663509/1055576963958286"
+        },
+        "probability_at_upper": {
+          "decimal": 0.05129101215430991,
+          "exact": "629553614979/12274150743701"
+        },
+        "promotion_allowed": false,
+        "sample_units": 18,
+        "scope": "Total count of fixed detectable unit outcomes; no simultaneous per-stratum bounds.",
+        "upper_count": 17
+      },
+      "name": "hypothetical_120_units_unequal_sizes_equal_fraction",
+      "source": "Synthetic design; assumes all sampled outcomes zero, no observed evidence.",
+      "strata": [
+        {
+          "N": 100,
+          "n": 15
+        },
+        {
+          "N": 20,
+          "n": 3
+        }
+      ],
+      "unknown_order_census_units_excluded_from_estimand": 0
+    }
+  ],
+  "gate_changes": false,
+  "inversion_convention": "Largest M whose exact worst-allocation zero-event probability is >= alpha; excludes strict < alpha.",
+  "new_model_inferences": 0,
+  "observed_scan_evidence": false,
+  "predeclared_sample_size_planning": [
+    {
+      "allocation_constraint": "Same integer n in every stratum, fixed before outcomes.",
+      "bonferroni_min_audits_per_stratum": 47,
+      "bonferroni_min_total_audits": 47,
+      "joint_min_audits_per_stratum": 47,
+      "joint_min_total_audits": 47,
+      "observed_evidence": false,
+      "population_per_stratum": 120,
+      "strata": 1,
+      "target": "If zero events, exclude total missed >= 6 among 120 known-order units at alpha=0.05."
+    },
+    {
+      "allocation_constraint": "Same integer n in every stratum, fixed before outcomes.",
+      "bonferroni_min_audits_per_stratum": 42,
+      "bonferroni_min_total_audits": 84,
+      "joint_min_audits_per_stratum": 24,
+      "joint_min_total_audits": 48,
+      "observed_evidence": false,
+      "population_per_stratum": 60,
+      "strata": 2,
+      "target": "If zero events, exclude total missed >= 6 among 120 known-order units at alpha=0.05."
+    },
+    {
+      "allocation_constraint": "Same integer n in every stratum, fixed before outcomes.",
+      "bonferroni_min_audits_per_stratum": 20,
+      "bonferroni_min_total_audits": 120,
+      "joint_min_audits_per_stratum": 8,
+      "joint_min_total_audits": 48,
+      "observed_evidence": false,
+      "population_per_stratum": 20,
+      "strata": 6,
+      "target": "If zero events, exclude total missed >= 6 among 120 known-order units at alpha=0.05."
+    },
+    {
+      "allocation_constraint": "Same integer n in every stratum, fixed before outcomes.",
+      "bonferroni_min_audits_per_stratum": 10,
+      "bonferroni_min_total_audits": 120,
+      "joint_min_audits_per_stratum": 4,
+      "joint_min_total_audits": 48,
+      "observed_evidence": false,
+      "population_per_stratum": 10,
+      "strata": 12,
+      "target": "If zero events, exclude total missed >= 6 among 120 known-order units at alpha=0.05."
+    }
+  ],
+  "promotion_allowed": false,
+  "review_context_public_ref": "52f90c8713d28d98be64262499deb67f10d062a6",
+  "schema": "funnel.optional_joint_zero_bound_comparison.v1",
+  "scope": "Synthetic design comparison; fixed disjoint unit populations, independent SRSWOR within strata, complete zero-event review.",
+  "source_file_sha256": {
+    "followup_a03/joint_zero_bound.py": "20e36deed3dd2c2c7eeaa71662f382a51691387614acdb138ae906237f31a3b6",
+    "followup_a03/run_comparison.py": "81580fb52409a26dd767c241ed4c9a565bfb5da2d2fb173c3644451d05a58ca2",
+    "followup_a03/test_joint_zero_bound.py": "1af100c6b9b54d1bb330e833a49ebeb1015e6b0227d1c56c36afdabda6729b52",
+    "order_audit.py": "2622e80aed33fc684e210c10484ea0d801216a7f32d4d35a76df5a38b65ef138",
+    "survey.py": "fb887e2a3497f67b51bdf4cc45a02a9e1a1fa5fb4532e45a5640c5d26cef2167",
+    "test_order_audit.py": "3e676e8206eea5ad2c9d069ba70c8aae78d57ada66219eb8dba2ccc09fc49cfc"
+  },
+  "verification": {
+    "additional_checks": [
+      "unconditional design noncoverage",
+      "sample-size and confidence monotonicity",
+      "n=0 and census",
+      "empty populations",
+      "unequal-design pooling counterexample"
+    ],
+    "errors": 0,
+    "exhaustive_ordered_plans": 5511,
+    "failures": 0,
+    "oracle": "All allocations evaluated with math.comb and Fraction; every probability threshold equality and midpoint tested.",
+    "python": "3.12.14",
+    "seconds": 2.262165216999847,
+    "skipped": 0,
+    "tests_run": 9
+  }
+}

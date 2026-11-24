@@ -33,6 +33,8 @@ jobs:
         run: python firstletters-colab/industrial_funnel/verify_native.py --output /tmp/native-tests.json
       - name: Recalculate the published numerical evidence
         run: python firstletters-colab/visual_discovery_20261124/verify_evidence.py > /tmp/visual-evidence-check.json
+      - name: Recalculate the geometry correspondence evidence
+        run: python firstletters-colab/industrial_funnel/geometry_dedup_followup/verify.py > /tmp/geometry-evidence-check.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -40,4 +42,5 @@ jobs:
           path: |
             /tmp/native-tests.json
             /tmp/visual-evidence-check.json
+            /tmp/geometry-evidence-check.json
           retention-days: 30

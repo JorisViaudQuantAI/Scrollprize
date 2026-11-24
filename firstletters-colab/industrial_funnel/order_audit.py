@@ -96,7 +96,9 @@ def validate_outputs(spec,receipt,store):
         raise ValueError("Unassigned order cannot masquerade as measured")
 
 def audit_summary(plan, adjudications, alpha=.05):
-    """Independent paired adjudication: miss / no miss / unresolved.
+    """Unchecked mathematical reducer: miss / no miss / unresolved.
+
+    Operational callers must use file_admission.evidence_bound_audit.
     
     No-hit estimates concern the frozen eligible cohort and reference recipe.
     We reuse survey.summarize, not IID inference on pixels or known letters.
@@ -134,6 +136,7 @@ def audit_summary(plan, adjudications, alpha=.05):
         for r in q["strata"].values():r.pop("zero_event_upper_count",None)
     q["unknown_order_paired_units"]=len(unknown);q["unknown_order_pair_adjudicated"]=unknown_reviewed
     q["scope"]="Only extra detectable-text misses under assigned normal rule in frozen known-order cohort. Unknown-order units paired by design. Adjudications are externally supplied, not independently authenticated by this helper. Not latent ink or population recall."
+    q["evidence_verified"]=False
     q["experiment_only"]=True
     q["promotion_allowed"]=False
     q["paired_investigation_required"]=any(v=="MISSED_DETECTABLE_TEXT" for v in adjudications.values()) or not q["complete"]
