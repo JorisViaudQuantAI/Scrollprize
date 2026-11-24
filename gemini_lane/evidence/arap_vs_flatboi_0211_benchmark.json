@@ -1,0 +1,694 @@
+{
+  "schema_version": "1.0.0",
+  "experiment": "ARAP-vs-Flatboi-PHerc0211-6Winding-CrossCheck",
+  "cpu_only": true,
+  "cuda_visible_devices": "-1",
+  "torch_imported": false,
+  "persistent_ct_on_disk": false,
+  "source_branch": "origin/claude/firstletters-colab",
+  "source_archives": [
+    "firstletters-colab/results/pherc0211_calibration/meshes/fitted_w010_w129_step30000.tgz",
+    "firstletters-colab/results/pherc0211_calibration/meshes/flatboi_w010_w069.tgz"
+  ],
+  "voxel_um": 9.362,
+  "spacing_vx": 20.0,
+  "arap_iters": 100,
+  "summary": {
+    "windings_evaluated": 6,
+    "mit_arap_gate_passed": 6,
+    "claude_flatboi_gate_passed": 6,
+    "mit_arap_median_sh8_deg": 6.03,
+    "claude_flatboi_median_sh8_deg": 6.796,
+    "mit_arap_median_area_inflation": 0.9889,
+    "claude_flatboi_median_area_inflation": 0.9812,
+    "median_cpu_seconds_per_winding": 6.65
+  },
+  "windings": [
+    {
+      "winding": "w015",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          73
+        ],
+        "cells": 5201,
+        "shear_8cell_abs_p95_deg": 29.406,
+        "shear_8cell_pct_area_gt_20deg": 15.566,
+        "shear_1cell_abs_p95_deg": 44.593,
+        "stretch_u_p05_p50_p95": [
+          0.6786,
+          1.1891,
+          2.8554
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.8005,
+          1.0915,
+          1.6359
+        ],
+        "area_inflation_true_over_nominal": 1.4634,
+        "roughness": {
+          "cells": 5072,
+          "window_cells": 9,
+          "median_deg": 10.356,
+          "p95_deg": 37.531,
+          "pct_flip_dot_lt_0": 0.0394,
+          "pct_gt_20deg": 19.933,
+          "pct_gt_45deg": 2.879
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          84,
+          110
+        ],
+        "cells": 7356,
+        "shear_8cell_abs_p95_deg": 10.397,
+        "shear_8cell_pct_area_gt_20deg": 0.241,
+        "shear_1cell_abs_p95_deg": 7.342,
+        "stretch_u_p05_p50_p95": [
+          0.9383,
+          0.9968,
+          1.0541
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.963,
+          0.9935,
+          1.0309
+        ],
+        "area_inflation_true_over_nominal": 0.9886,
+        "roughness": {
+          "cells": 7023,
+          "window_cells": 9,
+          "median_deg": 8.009,
+          "p95_deg": 29.448,
+          "pct_flip_dot_lt_0": 0.0142,
+          "pct_gt_20deg": 11.562,
+          "pct_gt_45deg": 1.481
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 2.155,
+        "source_valid_vertices": 5355,
+        "kept_vertices": 5354,
+        "dropped_vertices": 1,
+        "triangle_components": 1,
+        "total_triangles": 10384,
+        "flipped_triangles": 4,
+        "flipped_pct": 0.0385,
+        "output_valid_vertices": 7560
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          83,
+          110
+        ],
+        "cells": 7439,
+        "shear_8cell_abs_p95_deg": 10.126,
+        "shear_8cell_pct_area_gt_20deg": 0.388,
+        "shear_1cell_abs_p95_deg": 7.652,
+        "stretch_u_p05_p50_p95": [
+          0.9298,
+          0.9946,
+          1.0535
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.955,
+          0.9871,
+          1.0213
+        ],
+        "area_inflation_true_over_nominal": 0.9764,
+        "roughness": {
+          "cells": 7117,
+          "window_cells": 9,
+          "median_deg": 8.058,
+          "p95_deg": 29.405,
+          "pct_flip_dot_lt_0": 0.0141,
+          "pct_gt_20deg": 11.044,
+          "pct_gt_45deg": 1.335
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    },
+    {
+      "winding": "w025",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          120
+        ],
+        "cells": 8505,
+        "shear_8cell_abs_p95_deg": 32.878,
+        "shear_8cell_pct_area_gt_20deg": 20.516,
+        "shear_1cell_abs_p95_deg": 46.446,
+        "stretch_u_p05_p50_p95": [
+          0.5802,
+          1.1004,
+          2.4673
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.8063,
+          1.0747,
+          1.6292
+        ],
+        "area_inflation_true_over_nominal": 1.2786,
+        "roughness": {
+          "cells": 8286,
+          "window_cells": 9,
+          "median_deg": 8.312,
+          "p95_deg": 31.854,
+          "pct_flip_dot_lt_0": 0.0241,
+          "pct_gt_20deg": 12.575,
+          "pct_gt_45deg": 2.281
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          86,
+          157
+        ],
+        "cells": 10581,
+        "shear_8cell_abs_p95_deg": 6.207,
+        "shear_8cell_pct_area_gt_20deg": 0.265,
+        "shear_1cell_abs_p95_deg": 4.737,
+        "stretch_u_p05_p50_p95": [
+          0.9582,
+          0.9963,
+          1.0331
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9705,
+          0.9967,
+          1.016
+        ],
+        "area_inflation_true_over_nominal": 0.9898,
+        "roughness": {
+          "cells": 10180,
+          "window_cells": 9,
+          "median_deg": 6.216,
+          "p95_deg": 23.535,
+          "pct_flip_dot_lt_0": 0.0295,
+          "pct_gt_20deg": 6.611,
+          "pct_gt_45deg": 1.218
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 3.823,
+        "source_valid_vertices": 8712,
+        "kept_vertices": 8712,
+        "dropped_vertices": 0,
+        "triangle_components": 1,
+        "total_triangles": 16980,
+        "flipped_triangles": 0,
+        "flipped_pct": 0.0,
+        "output_valid_vertices": 10830
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          85,
+          155
+        ],
+        "cells": 10620,
+        "shear_8cell_abs_p95_deg": 6.624,
+        "shear_8cell_pct_area_gt_20deg": 0.129,
+        "shear_1cell_abs_p95_deg": 4.869,
+        "stretch_u_p05_p50_p95": [
+          0.9535,
+          0.996,
+          1.0332
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9687,
+          0.9948,
+          1.0108
+        ],
+        "area_inflation_true_over_nominal": 0.9851,
+        "roughness": {
+          "cells": 10221,
+          "window_cells": 9,
+          "median_deg": 6.177,
+          "p95_deg": 23.202,
+          "pct_flip_dot_lt_0": 0.0391,
+          "pct_gt_20deg": 6.8,
+          "pct_gt_45deg": 1.203
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    },
+    {
+      "winding": "w033",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          158
+        ],
+        "cells": 11493,
+        "shear_8cell_abs_p95_deg": 41.581,
+        "shear_8cell_pct_area_gt_20deg": 29.879,
+        "shear_1cell_abs_p95_deg": 54.911,
+        "stretch_u_p05_p50_p95": [
+          0.5706,
+          1.1014,
+          3.1338
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.7251,
+          1.0856,
+          1.8189
+        ],
+        "area_inflation_true_over_nominal": 1.3937,
+        "roughness": {
+          "cells": 11207,
+          "window_cells": 9,
+          "median_deg": 8.286,
+          "p95_deg": 30.86,
+          "pct_flip_dot_lt_0": 0.0714,
+          "pct_gt_20deg": 11.297,
+          "pct_gt_45deg": 2.258
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          89,
+          230
+        ],
+        "cells": 15542,
+        "shear_8cell_abs_p95_deg": 7.371,
+        "shear_8cell_pct_area_gt_20deg": 0.151,
+        "shear_1cell_abs_p95_deg": 7.436,
+        "stretch_u_p05_p50_p95": [
+          0.9445,
+          0.9965,
+          1.0493
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9627,
+          0.994,
+          1.0364
+        ],
+        "area_inflation_true_over_nominal": 0.9893,
+        "roughness": {
+          "cells": 15013,
+          "window_cells": 9,
+          "median_deg": 5.915,
+          "p95_deg": 20.532,
+          "pct_flip_dot_lt_0": 0.0266,
+          "pct_gt_20deg": 5.242,
+          "pct_gt_45deg": 0.839
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 5.552,
+        "source_valid_vertices": 11740,
+        "kept_vertices": 11735,
+        "dropped_vertices": 5,
+        "triangle_components": 1,
+        "total_triangles": 22956,
+        "flipped_triangles": 18,
+        "flipped_pct": 0.0784,
+        "output_valid_vertices": 15880
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          88,
+          228
+        ],
+        "cells": 15732,
+        "shear_8cell_abs_p95_deg": 8.674,
+        "shear_8cell_pct_area_gt_20deg": 0.523,
+        "shear_1cell_abs_p95_deg": 7.65,
+        "stretch_u_p05_p50_p95": [
+          0.9384,
+          0.9936,
+          1.0568
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9569,
+          0.9902,
+          1.0191
+        ],
+        "area_inflation_true_over_nominal": 0.9793,
+        "roughness": {
+          "cells": 15213,
+          "window_cells": 9,
+          "median_deg": 5.944,
+          "p95_deg": 20.252,
+          "pct_flip_dot_lt_0": 0.0263,
+          "pct_gt_20deg": 5.153,
+          "pct_gt_45deg": 0.736
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    },
+    {
+      "winding": "w045",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          214
+        ],
+        "cells": 15566,
+        "shear_8cell_abs_p95_deg": 37.212,
+        "shear_8cell_pct_area_gt_20deg": 28.222,
+        "shear_1cell_abs_p95_deg": 49.452,
+        "stretch_u_p05_p50_p95": [
+          0.6216,
+          1.0953,
+          3.0619
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.7924,
+          1.0819,
+          1.71
+        ],
+        "area_inflation_true_over_nominal": 1.4375,
+        "roughness": {
+          "cells": 15182,
+          "window_cells": 9,
+          "median_deg": 8.607,
+          "p95_deg": 25.37,
+          "pct_flip_dot_lt_0": 0.0263,
+          "pct_gt_20deg": 9.327,
+          "pct_gt_45deg": 1.311
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          94,
+          319
+        ],
+        "cells": 21820,
+        "shear_8cell_abs_p95_deg": 4.313,
+        "shear_8cell_pct_area_gt_20deg": 0.118,
+        "shear_1cell_abs_p95_deg": 4.059,
+        "stretch_u_p05_p50_p95": [
+          0.9712,
+          0.9983,
+          1.0201
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9708,
+          0.9953,
+          1.0161
+        ],
+        "area_inflation_true_over_nominal": 0.9929,
+        "roughness": {
+          "cells": 21116,
+          "window_cells": 9,
+          "median_deg": 6.281,
+          "p95_deg": 18.425,
+          "pct_flip_dot_lt_0": 0.0332,
+          "pct_gt_20deg": 4.059,
+          "pct_gt_45deg": 0.639
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 7.748,
+        "source_valid_vertices": 15867,
+        "kept_vertices": 15864,
+        "dropped_vertices": 3,
+        "triangle_components": 1,
+        "total_triangles": 31088,
+        "flipped_triangles": 15,
+        "flipped_pct": 0.0483,
+        "output_valid_vertices": 22246
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          99,
+          313
+        ],
+        "cells": 21967,
+        "shear_8cell_abs_p95_deg": 6.544,
+        "shear_8cell_pct_area_gt_20deg": 0.62,
+        "shear_1cell_abs_p95_deg": 5.362,
+        "stretch_u_p05_p50_p95": [
+          0.9583,
+          0.9984,
+          1.031
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9631,
+          0.9937,
+          1.0124
+        ],
+        "area_inflation_true_over_nominal": 0.9872,
+        "roughness": {
+          "cells": 21278,
+          "window_cells": 9,
+          "median_deg": 6.274,
+          "p95_deg": 18.182,
+          "pct_flip_dot_lt_0": 0.047,
+          "pct_gt_20deg": 4.028,
+          "pct_gt_45deg": 0.587
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    },
+    {
+      "winding": "w055",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          261
+        ],
+        "cells": 19093,
+        "shear_8cell_abs_p95_deg": 33.896,
+        "shear_8cell_pct_area_gt_20deg": 20.217,
+        "shear_1cell_abs_p95_deg": 49.781,
+        "stretch_u_p05_p50_p95": [
+          0.6001,
+          1.1102,
+          3.4912
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.7971,
+          1.1023,
+          1.7818
+        ],
+        "area_inflation_true_over_nominal": 1.5364,
+        "roughness": {
+          "cells": 18597,
+          "window_cells": 9,
+          "median_deg": 11.396,
+          "p95_deg": 34.368,
+          "pct_flip_dot_lt_0": 0.086,
+          "pct_gt_20deg": 19.949,
+          "pct_gt_45deg": 2.129
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          90,
+          411
+        ],
+        "cells": 28672,
+        "shear_8cell_abs_p95_deg": 5.827,
+        "shear_8cell_pct_area_gt_20deg": 0.229,
+        "shear_1cell_abs_p95_deg": 6.225,
+        "stretch_u_p05_p50_p95": [
+          0.9555,
+          0.9953,
+          1.0325
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9517,
+          0.9906,
+          1.0238
+        ],
+        "area_inflation_true_over_nominal": 0.9841,
+        "roughness": {
+          "cells": 27827,
+          "window_cells": 9,
+          "median_deg": 8.155,
+          "p95_deg": 23.693,
+          "pct_flip_dot_lt_0": 0.0144,
+          "pct_gt_20deg": 8.531,
+          "pct_gt_45deg": 0.561
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 10.136,
+        "source_valid_vertices": 19437,
+        "kept_vertices": 19437,
+        "dropped_vertices": 0,
+        "triangle_components": 1,
+        "total_triangles": 38164,
+        "flipped_triangles": 8,
+        "flipped_pct": 0.021,
+        "output_valid_vertices": 29192
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          104,
+          406
+        ],
+        "cells": 28728,
+        "shear_8cell_abs_p95_deg": 6.405,
+        "shear_8cell_pct_area_gt_20deg": 0.542,
+        "shear_1cell_abs_p95_deg": 6.43,
+        "stretch_u_p05_p50_p95": [
+          0.9511,
+          0.9941,
+          1.0394
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9514,
+          0.9925,
+          1.021
+        ],
+        "area_inflation_true_over_nominal": 0.9831,
+        "roughness": {
+          "cells": 27875,
+          "window_cells": 9,
+          "median_deg": 8.131,
+          "p95_deg": 23.992,
+          "pct_flip_dot_lt_0": 0.0072,
+          "pct_gt_20deg": 8.499,
+          "pct_gt_45deg": 0.603
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    },
+    {
+      "winding": "w065",
+      "raw_fitted_qa": {
+        "shape": [
+          91,
+          308
+        ],
+        "cells": 22522,
+        "shear_8cell_abs_p95_deg": 26.685,
+        "shear_8cell_pct_area_gt_20deg": 17.197,
+        "shear_1cell_abs_p95_deg": 46.667,
+        "stretch_u_p05_p50_p95": [
+          0.6177,
+          1.1769,
+          3.3288
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.8419,
+          1.1075,
+          1.7135
+        ],
+        "area_inflation_true_over_nominal": 1.5997,
+        "roughness": {
+          "cells": 21933,
+          "window_cells": 9,
+          "median_deg": 11.517,
+          "p95_deg": 36.478,
+          "pct_flip_dot_lt_0": 0.0821,
+          "pct_gt_20deg": 21.821,
+          "pct_gt_45deg": 2.485
+        }
+      },
+      "mit_arap_qa": {
+        "shape": [
+          91,
+          500
+        ],
+        "cells": 35070,
+        "shear_8cell_abs_p95_deg": 5.853,
+        "shear_8cell_pct_area_gt_20deg": 0.202,
+        "shear_1cell_abs_p95_deg": 6.019,
+        "stretch_u_p05_p50_p95": [
+          0.959,
+          0.9957,
+          1.0315
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9466,
+          0.9918,
+          1.0252
+        ],
+        "area_inflation_true_over_nominal": 0.9884,
+        "roughness": {
+          "cells": 34063,
+          "window_cells": 9,
+          "median_deg": 8.265,
+          "p95_deg": 25.035,
+          "pct_flip_dot_lt_0": 0.0206,
+          "pct_gt_20deg": 9.585,
+          "pct_gt_45deg": 0.614
+        }
+      },
+      "mit_arap_passes_gate": true,
+      "mit_arap_solver": {
+        "method": "mit_arap_2d",
+        "spacing_vx": 20.0,
+        "iters": 100,
+        "fold_weight": null,
+        "wall_seconds": 10.302,
+        "source_valid_vertices": 22917,
+        "kept_vertices": 22912,
+        "dropped_vertices": 5,
+        "triangle_components": 1,
+        "total_triangles": 45010,
+        "flipped_triangles": 28,
+        "flipped_pct": 0.0622,
+        "output_valid_vertices": 35685
+      },
+      "claude_flatboi_qa": {
+        "shape": [
+          108,
+          496
+        ],
+        "cells": 35530,
+        "shear_8cell_abs_p95_deg": 6.969,
+        "shear_8cell_pct_area_gt_20deg": 0.35,
+        "shear_1cell_abs_p95_deg": 6.95,
+        "stretch_u_p05_p50_p95": [
+          0.9429,
+          0.9928,
+          1.0496
+        ],
+        "stretch_v_p05_p50_p95": [
+          0.9372,
+          0.9878,
+          1.0187
+        ],
+        "area_inflation_true_over_nominal": 0.9762,
+        "roughness": {
+          "cells": 34521,
+          "window_cells": 9,
+          "median_deg": 8.173,
+          "p95_deg": 25.041,
+          "pct_flip_dot_lt_0": 0.0145,
+          "pct_gt_20deg": 9.47,
+          "pct_gt_45deg": 0.687
+        }
+      },
+      "claude_flatboi_passes_gate": true,
+      "claude_flatboi_failure_reasons": []
+    }
+  ]
+}
