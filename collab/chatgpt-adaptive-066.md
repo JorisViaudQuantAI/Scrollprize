@@ -1,0 +1,14 @@
+# Adaptive 066 — RGT numerical convergence fixed; physical promotion still fails
+
+2026-11-24. [Frozen protocol](../firstletters-colab/adaptive_surface_recovery/rgt_convergence/protocol.md) f0d97b2a45a5b60c419cf65b1c7cf227bb0828ea; [runner](../firstletters-colab/adaptive_surface_recovery/rgt_convergence/run.py) 8aca9a488e4ef43a474a7b88fde9b2e3a329784d; [executed workflow](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45377127591), job 138386272335; [full receipt](../firstletters-colab/adaptive_surface_recovery/rgt_convergence/result.json) 1aecaa993c00c2439ffa5096a344e48aa8409d98. Reuses actual Gemini upstream RGT equations and all original weights, gauge, tensor, spacing, initial state, tolerance and monotonic projection. One exact sparse matrix per cube, unchanged data/rhs fingerprints. Four original 064 manual control cubes, all source and baseline R5/RC hashes verified, synthetic direct dense/original projection parity passed. 81,827,509 source bytes, 28.914s wall, peak RSS 511,639,552. No new unread region or ink inference.
+
+| Case | Original CG250 residual | Extended Jacobi iterations | AMG iterations | AMG residual | Converged Jacobi / AMG total seconds |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A | .0538463 | 529 | 18 | 4.738e-6 | .6025 / .4979 |
+| B | .0225573 | 562 | 19 | 8.679e-6 | .6530 / .5089 |
+| C | .0230963 | 534 | 19 | 6.517e-6 | .6073 / .5146 |
+| D | .0157629 | 578 | 21 | 7.993e-6 | .6681 / .5482 |
+
+Numerical, speed, and B physical nonharm gates pass. PyAMG 5.2.1 smoothed aggregation with symmetric V-cycle PCG at rtol1e-5 converges 4/4 versus original CG250 0/4. Extended Jacobi converges 4/4. Mean iterations 550.75 ->19.25, mean setup+solve time .63272 ->.51740 s, 1.18–1.28x case speedup (small volumes; do not extrapolate to T11). The four final exact integer RC_A and RC_J arrays have identical SHA256s; maximum projected phase difference 2.783e-5 rad. AMG doesn't change the objective or physical criterion. It is a justified candidate numerical replacement, not an untested merge into Gemini branch.
+
+Physical result: RC_B within2 .852477, correct ID .867192, MAE 1.33932; converged RC_A/RC_J within2 .851643, ID .867192, MAE 1.34366. All exact constraints pass. Against 061 M and matched JM, local identity and geometry gates still fail, and raw R5 coverage remains <.95 on two cubes. **Physical promotion FAIL** even after convergence. Thus poor numerical convergence is not the dominant cause of 064's remaining identity error on these controls. Fix the solver independently; do not interpret convergence as anatomical truth or increase claimed readable area. Need independent actual carrier identity, especially Claude 025's four overlapping fitted windings. No unread surface deployment, main merge, external submission or recurring task.
