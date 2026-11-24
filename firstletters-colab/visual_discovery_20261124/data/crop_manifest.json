@@ -1,0 +1,331 @@
+{
+  "scope": "Exact float32/bool crops of existing inference arrays; no new inference",
+  "preview_quantizer": "numpy.rint(probability * 255).astype(uint8)",
+  "array_hash_definition": "SHA256 of C-order raw array bytes, shape and dtype recorded separately",
+  "selections": [
+    {
+      "key": "0125_raw_s96_probability",
+      "source_relative_path": "inference/0125_raw_same_band_reverse16_s96.prob.npy",
+      "source_sha256": "ddbaa8d9098ee93fcd9dd42ab85408baf5460d7fcc37ddba245addab1cceb5c2",
+      "source_shape": [
+        801,
+        1061
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        180,
+        580,
+        530,
+        840
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "2e50f5da3da83ded48da2b37f657bf73d1a39ad2978d896cbbb9a8caa4ec107a"
+    },
+    {
+      "key": "0125_raw_s96_context_valid",
+      "source_relative_path": "inference/0125_raw_same_band_reverse16_s96.context_valid.npy",
+      "source_sha256": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352",
+      "source_shape": [
+        801,
+        1061
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        180,
+        580,
+        530,
+        840
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "f4f2e8e8963b7daaf8b0b9562f3fd54367362b43795b3ef94b3e195650ff2971"
+    },
+    {
+      "key": "0125_snapped_s96_probability",
+      "source_relative_path": "inference/0125_snapped_same_band_reverse16_s96.prob.npy",
+      "source_sha256": "d110abc7fe0f3cb15bd5d88a5275e0720bc1a4596422c045244f1156015e23a1",
+      "source_shape": [
+        801,
+        1061
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        180,
+        580,
+        530,
+        840
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "f17483ee9b76f4cf60786b19684a2b7970c073a261dc81a084cfc91fbbb7d1e7"
+    },
+    {
+      "key": "0125_snapped_s96_context_valid",
+      "source_relative_path": "inference/0125_snapped_same_band_reverse16_s96.context_valid.npy",
+      "source_sha256": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352",
+      "source_shape": [
+        801,
+        1061
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        180,
+        580,
+        530,
+        840
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "f4f2e8e8963b7daaf8b0b9562f3fd54367362b43795b3ef94b3e195650ff2971"
+    },
+    {
+      "key": "0125_raw_s48_probability",
+      "source_relative_path": "inference/0125_raw_reverse_roi_s48.prob.npy",
+      "source_sha256": "060b0ba48a397e8ac63ac95685c60479716255607bffc2665db414d1bd197662",
+      "source_shape": [
+        608,
+        512
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        100,
+        500,
+        98,
+        408
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "15eca016fb024e77ae560cf0eddbe2e3cbff7244b3b44c7be31ee2a1a83edb32"
+    },
+    {
+      "key": "0125_raw_s48_context_valid",
+      "source_relative_path": "inference/0125_raw_reverse_roi_s48.context_valid.npy",
+      "source_sha256": "b5925cda70ae2891046676fba29a1b070d0fd014ba499276ea1c0199fd4e6ee1",
+      "source_shape": [
+        608,
+        512
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        100,
+        500,
+        98,
+        408
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "f4f2e8e8963b7daaf8b0b9562f3fd54367362b43795b3ef94b3e195650ff2971"
+    },
+    {
+      "key": "0125_snapped_s48_probability",
+      "source_relative_path": "inference/0125_snapped_reverse_roi_s48.prob.npy",
+      "source_sha256": "1fddc755dc1ce90ce036869803ba9e6973e45eef22550a885d05c1bf7bf6a97a",
+      "source_shape": [
+        608,
+        512
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        100,
+        500,
+        98,
+        408
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "1d95e64880bcecef65670f1f24ce1d20b4d58f825dd5c238ca8d52c0885a42ef"
+    },
+    {
+      "key": "0125_snapped_s48_context_valid",
+      "source_relative_path": "inference/0125_snapped_reverse_roi_s48.context_valid.npy",
+      "source_sha256": "b5925cda70ae2891046676fba29a1b070d0fd014ba499276ea1c0199fd4e6ee1",
+      "source_shape": [
+        608,
+        512
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        100,
+        500,
+        98,
+        408
+      ],
+      "global_xyxy": [
+        530,
+        180,
+        840,
+        580
+      ],
+      "published_shape": [
+        400,
+        310
+      ],
+      "published_array_sha256": "f4f2e8e8963b7daaf8b0b9562f3fd54367362b43795b3ef94b3e195650ff2971"
+    },
+    {
+      "key": "0800_old_probability",
+      "source_relative_path": "inference/0800_C_left512_k08_to_k23_s96.prob.npy",
+      "source_sha256": "6b715597706f74f4166ae72db8514f3308595e849f0565565370c591d4cd5ee8",
+      "source_shape": [
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        176,
+        416,
+        32,
+        336
+      ],
+      "global_xyxy": [
+        932,
+        826,
+        1236,
+        1066
+      ],
+      "published_shape": [
+        240,
+        304
+      ],
+      "published_array_sha256": "81fdc6d28fd582c65025a31702b3180e1d49e84e163b7194471d5f7ed5f7c233"
+    },
+    {
+      "key": "0800_old_context_valid",
+      "source_relative_path": "inference/0800_C_left512_k08_to_k23_s96.context_valid.npy",
+      "source_sha256": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088",
+      "source_shape": [
+        512,
+        512
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        176,
+        416,
+        32,
+        336
+      ],
+      "global_xyxy": [
+        932,
+        826,
+        1236,
+        1066
+      ],
+      "published_shape": [
+        240,
+        304
+      ],
+      "published_array_sha256": "5320bba86011af4f24447b40864ce1895ce18bcf478cf709233b375f8f6c17e7"
+    },
+    {
+      "key": "0800_new_probability",
+      "source_relative_path": "inference/0800_C_left_context96_k08_to_k23_s96.prob.npy",
+      "source_sha256": "2ad2ad3742c887f3f0a1d44945ebc21cfa634b8c9c8952ed1f07f9de50a87b13",
+      "source_shape": [
+        512,
+        608
+      ],
+      "dtype": "float32",
+      "slice_y0_y1_x0_x1": [
+        176,
+        416,
+        128,
+        432
+      ],
+      "global_xyxy": [
+        932,
+        826,
+        1236,
+        1066
+      ],
+      "published_shape": [
+        240,
+        304
+      ],
+      "published_array_sha256": "31ad589bb5bfac3e8547a4cf8734eb3fd266e8658a2c0715ae0e0b65fcb3227f"
+    },
+    {
+      "key": "0800_new_context_valid",
+      "source_relative_path": "inference/0800_C_left_context96_k08_to_k23_s96.context_valid.npy",
+      "source_sha256": "5abddf15f586ff6cb0e005f70af28425b14e00a3cc815bd0b7258ed67d0cf9d3",
+      "source_shape": [
+        512,
+        608
+      ],
+      "dtype": "bool",
+      "slice_y0_y1_x0_x1": [
+        176,
+        416,
+        128,
+        432
+      ],
+      "global_xyxy": [
+        932,
+        826,
+        1236,
+        1066
+      ],
+      "published_shape": [
+        240,
+        304
+      ],
+      "published_array_sha256": "5d61ad406177e2d3077b40db9d96e5d2d9af99809bc8e81996fbbcfd661c754f"
+    }
+  ]
+}

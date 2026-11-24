@@ -1,0 +1,45 @@
+{
+  "region_global_xyxy": [
+    530,
+    180,
+    840,
+    580
+  ],
+  "all124000pixels_common_strict_context": true,
+  "method": "Mean absolute adjacent-pixel differences on original global96grid vs remaining pairs, fixed uint8 probability previews; no inferential statistics",
+  "limitation": "Recrop changes input window phase as well as stride/blending; not an isolated causal Hann ablation",
+  "results": {
+    "raw": [
+      {
+        "condition": "initial_full_s96",
+        "at_original_grid_mean_abs_uint8_step": 34.03672790527344,
+        "elsewhere_mean_abs_uint8_step": 0.937167763710022,
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540
+      },
+      {
+        "condition": "recropped_s48_hann",
+        "at_original_grid_mean_abs_uint8_step": 1.0785454511642456,
+        "elsewhere_mean_abs_uint8_step": 1.1455999612808228,
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540
+      }
+    ],
+    "snapped": [
+      {
+        "condition": "initial_full_s96",
+        "at_original_grid_mean_abs_uint8_step": 33.818180084228516,
+        "elsewhere_mean_abs_uint8_step": 0.9335078001022339,
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540
+      },
+      {
+        "condition": "recropped_s48_hann",
+        "at_original_grid_mean_abs_uint8_step": 1.0116363763809204,
+        "elsewhere_mean_abs_uint8_step": 1.1249120235443115,
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540
+      }
+    ]
+  }
+}

@@ -1,0 +1,1330 @@
+{
+  "schema": "funnel.visual_campaign_audit.v1",
+  "status": "COMPUTATIONAL_EVIDENCE_VERIFIED",
+  "campaign_source_sha256": "ada17c7a0bf5d44b85ec22064bb0c0df49356342efb983c53c3e7424d73f617d",
+  "tool_sha256": "d0353395767896ac07a10da59f8affd87d66a2a151dd79a4398fb0be475bd8fd",
+  "native_validator_sha256": "fedd0b3ba1776a8ec3865a08d3fb568e3ce29d1dbc681328ee807c45e021764c",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "execution": {
+    "read_only": true,
+    "new_model_forwards": 0,
+    "new_gpu_work": false,
+    "audit_elapsed_seconds": 1.546948
+  },
+  "job_declarations": 20,
+  "unique_completed_maps": 13,
+  "repeated_declarations": 7,
+  "historical_prediction_windows": 1078,
+  "historical_identity_sentinels": 13,
+  "historical_model_forwards": 1091,
+  "sum_historical_map_elapsed_seconds": 5516.85,
+  "measured_cpu_ms": null,
+  "measured_gpu_savings": null,
+  "maps": [
+    {
+      "name": "0125_raw_desc16_s96",
+      "execution_key": "bb0dbba6524fe15168d20a7fdab374c1ff0412acbcce2fc98a24b2d6408032a1",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 108,
+          "unsafe_context_windows": 47,
+          "input_shape": [
+            16,
+            801,
+            1061
+          ],
+          "all_zero_input_pixels": 8780,
+          "covered_pixels": 849861,
+          "output_valid_pixels": 841081,
+          "source_valid_pixels": 841081,
+          "context_valid_pixels": 562176,
+          "manifest_sha256": "5081a475a9439f8cc1186b53cca8ad9eb1e6f54f962840d9d0ad800f943df57a",
+          "recipe_sha256": "472dea8e80c4fdf98f382124bbd84824b8d3786f99ca5cbbe436ce68b78ca14b",
+          "frame_sha256": "fe0165e725e5ef55b9d0ecf09ae86d9c2cf5186ea3ce0d49f9bdc4382181f8be",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 541.33,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 108,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "2a474a243841f168c3cfdd235c95534a8869c6259ca9fda6fdabf9d0412abf2e",
+        "source_depth": "9ef272a3f803ceed0bacf767aadf20ddf3f272aed5ca15f762caac5e53d3eb2f",
+        "probability": "af1a6adc4cb3fb4595f284246bd5f7ba67dd72e33b2469802175a60beafd9a0f",
+        "output_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "source_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "context_valid": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 541.33,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 108,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0125_raw_reverse_roi_s48",
+      "execution_key": "db0b6d387cda8932b78dffa1e00afd73e887e187f0b654d8af745f0da31e7ad5",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 168,
+          "unsafe_context_windows": 88,
+          "input_shape": [
+            16,
+            608,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 311296,
+          "output_valid_pixels": 311296,
+          "source_valid_pixels": 311296,
+          "context_valid_pixels": 133120,
+          "manifest_sha256": "3dfec0b11ab1cffba2b29a14be69e42cb21295f2791b03d60befd4b71d54d28f",
+          "recipe_sha256": "21167d6b0b768f497bef00d6f2fa80d97f9119323fa45ac6e8b90872f0c6fe9d",
+          "frame_sha256": "6590009c40dc54b002537e8d65b660f99dad3298debf373bad3b886488783672",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 891.11,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 168,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "5a68812f8af9adb840a8985759b0b2859473028c4e80bc37b6ab2be8e5246d98",
+        "source_depth": "566e12cdd74fea025e295266d7277556ee83631be51ab91cf3ca7757fca05be6",
+        "probability": "060b0ba48a397e8ac63ac95685c60479716255607bffc2665db414d1bd197662",
+        "output_valid": "34ca4cb89de266708dd1dfe8c474c842d89b295d2941ec958ddeee3eb3a85c59",
+        "source_valid": "34ca4cb89de266708dd1dfe8c474c842d89b295d2941ec958ddeee3eb3a85c59",
+        "context_valid": "b5925cda70ae2891046676fba29a1b070d0fd014ba499276ea1c0199fd4e6ee1"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 891.11,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 168,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0125_raw_same_band_reverse16_s96",
+      "execution_key": "86cabbfb89f25678548998bc2f03621515a0df083e7968f368fd0236042efb99",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 108,
+          "unsafe_context_windows": 47,
+          "input_shape": [
+            16,
+            801,
+            1061
+          ],
+          "all_zero_input_pixels": 8780,
+          "covered_pixels": 849861,
+          "output_valid_pixels": 841081,
+          "source_valid_pixels": 841081,
+          "context_valid_pixels": 562176,
+          "manifest_sha256": "569aeec19a9142f97f42f22aa2e32eb5f087a222f2f14654a3bb21d8b72aaa5b",
+          "recipe_sha256": "13425749ca5ec0f2252dff4b79bc6e5f716800d7593dbe98fa1de5604f06afc2",
+          "frame_sha256": "fe0165e725e5ef55b9d0ecf09ae86d9c2cf5186ea3ce0d49f9bdc4382181f8be",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 537.45,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 108,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "3c18864757c2816f77f1b3d85e0516ddacc04d1c92591e459c43d85b0435b44d",
+        "source_depth": "9ef272a3f803ceed0bacf767aadf20ddf3f272aed5ca15f762caac5e53d3eb2f",
+        "probability": "ddbaa8d9098ee93fcd9dd42ab85408baf5460d7fcc37ddba245addab1cceb5c2",
+        "output_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "source_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "context_valid": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 537.45,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 108,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0125_snapped_desc16_s96",
+      "execution_key": "a5ed808333fede0c905afb5165825f3af25c2a5d1a3d39e0603c9b0aa604a9cc",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 108,
+          "unsafe_context_windows": 47,
+          "input_shape": [
+            16,
+            801,
+            1061
+          ],
+          "all_zero_input_pixels": 8780,
+          "covered_pixels": 849861,
+          "output_valid_pixels": 841081,
+          "source_valid_pixels": 841081,
+          "context_valid_pixels": 562176,
+          "manifest_sha256": "e7f16fd77fa00af5881db11e3a34b5c82bda02d6ee5e0d742f1de98e41c6e463",
+          "recipe_sha256": "23f222f219f3cd4733dbb696ffa6092099d2dced447e27e0bfd0bbf012c19901",
+          "frame_sha256": "17eee1ebbedd6bba5e565236c6628dc42fe14f824be66e6b1d441e5297f0e345",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 539.34,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 108,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "9cff1f678a3ec2a8407ff1b62e6288db72f05a46b93d2c38a0adac7db2d0aea0",
+        "source_depth": "9ef272a3f803ceed0bacf767aadf20ddf3f272aed5ca15f762caac5e53d3eb2f",
+        "probability": "584637906a0855fdb179b79d6318fdcb25e8a393c2fe5030835fc6b7c3af655e",
+        "output_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "source_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "context_valid": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 539.34,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 108,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0125_snapped_reverse_roi_s48",
+      "execution_key": "a497de17e42e0761f7a8d36d58257e13bc5bed26aa4e132154d1058cba5521c2",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 168,
+          "unsafe_context_windows": 88,
+          "input_shape": [
+            16,
+            608,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 311296,
+          "output_valid_pixels": 311296,
+          "source_valid_pixels": 311296,
+          "context_valid_pixels": 133120,
+          "manifest_sha256": "e602bfa17bdbef38c40d0e88a360d29b1111c78af71b71455aa9c5eeb53de0d9",
+          "recipe_sha256": "21167d6b0b768f497bef00d6f2fa80d97f9119323fa45ac6e8b90872f0c6fe9d",
+          "frame_sha256": "60d1d91fc20d050f8bdb6b14e2663106dcda12d83cf7091db3227fa17c505402",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 883.67,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 168,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "c5981f16ea387e593f803a48c457c2c1b44505b5b1ba87ceb421957d6dfa837b",
+        "source_depth": "566e12cdd74fea025e295266d7277556ee83631be51ab91cf3ca7757fca05be6",
+        "probability": "1fddc755dc1ce90ce036869803ba9e6973e45eef22550a885d05c1bf7bf6a97a",
+        "output_valid": "34ca4cb89de266708dd1dfe8c474c842d89b295d2941ec958ddeee3eb3a85c59",
+        "source_valid": "34ca4cb89de266708dd1dfe8c474c842d89b295d2941ec958ddeee3eb3a85c59",
+        "context_valid": "b5925cda70ae2891046676fba29a1b070d0fd014ba499276ea1c0199fd4e6ee1"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 883.67,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 168,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0125_snapped_same_band_reverse16_s96",
+      "execution_key": "535ea0aa4b7a2d35fc95a9993dad1c99437aa7538523a3e28baa150db1ab1cc0",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 108,
+          "unsafe_context_windows": 47,
+          "input_shape": [
+            16,
+            801,
+            1061
+          ],
+          "all_zero_input_pixels": 8780,
+          "covered_pixels": 849861,
+          "output_valid_pixels": 841081,
+          "source_valid_pixels": 841081,
+          "context_valid_pixels": 562176,
+          "manifest_sha256": "f5c0c3cfd7eb16c724a1209b40d0bdd35fedd7f0afb9e22cb5b0faf828b662a1",
+          "recipe_sha256": "a408e0017abecab33bad864c4e81847433cceaec3c63a32106b3aa305a90225a",
+          "frame_sha256": "17eee1ebbedd6bba5e565236c6628dc42fe14f824be66e6b1d441e5297f0e345",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 539.53,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 108,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "59ffd198c911749d9f5006c8d73178a1c4aafcaf14e6ab5af41e688c27bd21c3",
+        "source_depth": "9ef272a3f803ceed0bacf767aadf20ddf3f272aed5ca15f762caac5e53d3eb2f",
+        "probability": "d110abc7fe0f3cb15bd5d88a5275e0720bc1a4596422c045244f1156015e23a1",
+        "output_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "source_valid": "c1725033f2c2db8024eaf691ab10c4c653a92229f4728402d710da67a9dcff3c",
+        "context_valid": "83ef7b751e2b936e807fa6a2ad0d25e1d53e0d31d867f63dcbea873d38215352"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 539.53,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 108,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0800_C_center512_k08_to_k23_s96",
+      "execution_key": "39886bbf9d8108efc0f2bbef7bae2d5e0ad0f9ac3dd4618e132e4f5e9de74ce3",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 36,
+          "unsafe_context_windows": 20,
+          "input_shape": [
+            16,
+            512,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 262144,
+          "output_valid_pixels": 262144,
+          "source_valid_pixels": 262144,
+          "context_valid_pixels": 147456,
+          "manifest_sha256": "1cde0a788a1de43f7ac1c9a7256a1735e9895427d96bd8a73714ffc5d23be319",
+          "recipe_sha256": "6b5f825bd369cdb2a04b5d16066afc253502d04897fdbf6b480735346326fb72",
+          "frame_sha256": "abc528c23b1716eac44bfd86bc193936a6c867f8c7150a582938865d7bc44fca",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 184.92,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 36,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "af21394a26eb3d1c4ca291f2e4c2a9501eb5f662e271ede1b045e758d7695950",
+        "source_depth": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac",
+        "probability": "fee18b98fe0296f5c782a2484b6789531c91a3d7ec00746c9c29818ff92d1065",
+        "output_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "source_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "context_valid": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 184.92,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 36,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0800_C_center512_k23_to_k08_s96",
+      "execution_key": "c1569592521a4ec61e411509e5fdcc159ad8bbbe44f6b14083b23f3ea34e6db2",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 36,
+          "unsafe_context_windows": 20,
+          "input_shape": [
+            16,
+            512,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 262144,
+          "output_valid_pixels": 262144,
+          "source_valid_pixels": 262144,
+          "context_valid_pixels": 147456,
+          "manifest_sha256": "ccfa577fa35db051f958db51efb9d0e78f6293035213dfa68ef78765422a67ae",
+          "recipe_sha256": "f47f3c4c9a762973b0515ab88e98c3aeecfe1b848c5f124ece950c233199ec44",
+          "frame_sha256": "abc528c23b1716eac44bfd86bc193936a6c867f8c7150a582938865d7bc44fca",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 188.29,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 36,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "164925900081f949bb3b97b8c10a88d593edf8a7351b588c080a2ba65da01e1b",
+        "source_depth": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac",
+        "probability": "0f75a964cc9ccbb4343dd001f482485ce9b0daa8857925b1dbaf5e682ad803e8",
+        "output_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "source_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "context_valid": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 188.29,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 36,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0800_C_left512_k08_to_k23_s96",
+      "execution_key": "2e881d5be2b47e9fc851abb4191b545769a330e61649e377cce3db717969a654",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 36,
+          "unsafe_context_windows": 20,
+          "input_shape": [
+            16,
+            512,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 262144,
+          "output_valid_pixels": 262144,
+          "source_valid_pixels": 262144,
+          "context_valid_pixels": 147456,
+          "manifest_sha256": "00d64d0d5366d39ea9a19de5ee4eaca41a408b40237bc7279658d18acd188a8a",
+          "recipe_sha256": "7397695beea2f043584ec5bae0a55bd12d10839093a96f6206f9115bcbf37d5a",
+          "frame_sha256": "eb743c677e2e0173163eaad17a7cd2a8c1186148f7cc71cfed906b9efbf56ed1",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 191.87,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 36,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "918a32d21c319b1484fe55e874f205ffe2fe27ba051341beba02102dd164b3d9",
+        "source_depth": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac",
+        "probability": "6b715597706f74f4166ae72db8514f3308595e849f0565565370c591d4cd5ee8",
+        "output_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "source_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "context_valid": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 191.87,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 36,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0800_C_left512_k23_to_k08_s96",
+      "execution_key": "c3fbd6681051601e00fbd9194ff2980c875c6f3184c70686971368a4af072635",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 36,
+          "unsafe_context_windows": 20,
+          "input_shape": [
+            16,
+            512,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 262144,
+          "output_valid_pixels": 262144,
+          "source_valid_pixels": 262144,
+          "context_valid_pixels": 147456,
+          "manifest_sha256": "e6aec9d8a483e729246e7b5a3e5802bd57ec4ea29c0e5bab3ef152b7f9c42ffd",
+          "recipe_sha256": "9896535806ae97ec3b63c970a79af46c92b6ce72e8ef998cddc8086426ec4ae3",
+          "frame_sha256": "eb743c677e2e0173163eaad17a7cd2a8c1186148f7cc71cfed906b9efbf56ed1",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 181.48,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 36,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "9ee3d703ec592f9044192edc5a447ea881e02c2b95223d19ec1fb2a4042e57a0",
+        "source_depth": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac",
+        "probability": "905ac5067803394657cfee801705708af28cd7e2108d1fc09d617163df47483d",
+        "output_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "source_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "context_valid": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 181.48,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 36,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "0800_C_left_context96_k08_to_k23_s96",
+      "execution_key": "eefac5d1a54f972b097f3c3146dd378e59668d6fb9874e94fb6f12d15d2953de",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 42,
+          "unsafe_context_windows": 22,
+          "input_shape": [
+            16,
+            512,
+            608
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 311296,
+          "output_valid_pixels": 311296,
+          "source_valid_pixels": 311296,
+          "context_valid_pixels": 184320,
+          "manifest_sha256": "4967c5166b7b251c331be1a52671d80ab56c404c820ba5230a1c4dfaa234d271",
+          "recipe_sha256": "35c66ab106de34dd27d29955594870344d320d9ef4a3c8d21ffed4734294aacf",
+          "frame_sha256": "84f09119fb1fdbe6c632845b246dc5c5181f5b9973274d9a13c61e47fa8fee52",
+          "depth_indices_known": true,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 219.33,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 42,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "85ccb77bbf73129460f25f06859c483144e029e76c58d88c29f9a50ef2f24942",
+        "source_depth": "15a0df93e67efc3528dbb0ff1548761e0757c8853010ab5791c8cbea3d90779d",
+        "probability": "2ad2ad3742c887f3f0a1d44945ebc21cfa634b8c9c8952ed1f07f9de50a87b13",
+        "output_valid": "a77da3835a71e3fa7c4241000f41e09f2b217e815c2e02543b5eae4ec41f9a88",
+        "source_valid": "a77da3835a71e3fa7c4241000f41e09f2b217e815c2e02543b5eae4ec41f9a88",
+        "context_valid": "5abddf15f586ff6cb0e005f70af28425b14e00a3cc815bd0b7258ed67d0cf9d3"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 219.33,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 42,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "author841_mosaic_positive_s96",
+      "execution_key": "23a471a77799b20628378b50502372d64c416a77d42c6f793aa91eee2b7ed2cc",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "UNKNOWN_DEPTHS",
+            "message": "unchanged author prepared16 order; no mesh-centre or normal-sign claim"
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 88,
+          "unsafe_context_windows": 34,
+          "input_shape": [
+            16,
+            768,
+            1024
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 786432,
+          "output_valid_pixels": 786432,
+          "source_valid_pixels": 786432,
+          "context_valid_pixels": 497664,
+          "manifest_sha256": "511cad420dca6f385815195c3d12897eff27e74ae716be45ec1161d131fd9381",
+          "recipe_sha256": "9fce4c86bd6812fc0ddeabd5152c6e5cb53c18275ae6c5142be65099511b0d48",
+          "frame_sha256": "7c2d346bc0596fa53cedb5318e901830c5d7e3000f53010bbdcd25d3ca18d285",
+          "depth_indices_known": false,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 455.07,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 88,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "EXPLICIT_PREPARED_MASK",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "55a06eed3d0c4a5cc6d31b92db1cf82a74a48f34461b1ffcdad22e8b2c371a58",
+        "source_depth": "e9341d893f0e8e6604b33a19515a3654f74557ed647097e04e19add7faa3314d",
+        "probability": "b4b34228778eb22d25518cc8f7305bf6efca428963462ec20a07586cebf1c81a",
+        "output_valid": "06cefbe7b60d61a170c2cd8ef60a91a9e8017e6147b17d09e2c4b5600426ff37",
+        "source_valid": "06cefbe7b60d61a170c2cd8ef60a91a9e8017e6147b17d09e2c4b5600426ff37",
+        "context_valid": "97305d3ca16d99480adb3f0dda4cb2e05ae0a2142aaee4e9b93ef1055322ed2b"
+      },
+      "support_basis": "EXPLICIT_PREPARED_MASK",
+      "cost": {
+        "map_elapsed_seconds": 455.07,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 88,
+        "sentinel_forwards": 1
+      }
+    },
+    {
+      "name": "author841_positive_s96",
+      "execution_key": "fd6a6a32cedf841ab7921d974eae2f4c2f964cebd5847fb6e7fe91e5300a893e",
+      "validation": {
+        "schema": "funnel.native_validation.v1",
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "NO_PRODUCTION_ADMISSION",
+            "message": "Historical import does not attest a newly authorized worker run or matched semantic calibration."
+          },
+          {
+            "code": "ASSUMED_PREPARED_SUPPORT",
+            "message": "All-true support reproduces the original prepared-input assumption; native CT acquisition support was not measured."
+          },
+          {
+            "code": "UNKNOWN_DEPTHS",
+            "message": "unchanged author stored order"
+          },
+          {
+            "code": "UNKNOWN_PHYSICAL_DEPTHS",
+            "message": "Source-plane indices are not independently verified signed physical depths."
+          },
+          {
+            "code": "PARTIAL_COST_ACCOUNTING",
+            "message": "Unmeasured costs remain null; elapsed time is not measured CPU consumption."
+          }
+        ],
+        "derived": {
+          "model_windows": 36,
+          "unsafe_context_windows": 20,
+          "input_shape": [
+            16,
+            512,
+            512
+          ],
+          "all_zero_input_pixels": 0,
+          "covered_pixels": 262144,
+          "output_valid_pixels": 262144,
+          "source_valid_pixels": 262144,
+          "context_valid_pixels": 147456,
+          "manifest_sha256": "5f48299fb7bb1467a2cd20b4bd48b01e572864976e96876a46ca63e3902372f2",
+          "recipe_sha256": "062bc20dab4bfa275644baae8752f300f129420f05488a0aab1bb1962ef36134",
+          "frame_sha256": "dab016d7290cbab3780acb420c4635fdf76b251610fb7615210f2a94a7a2bbc1",
+          "depth_indices_known": false,
+          "signed_physical_offsets_known": false,
+          "reported_cost": {
+            "map_elapsed_seconds": 163.46,
+            "cpu_ms": null,
+            "gpu_ms": 0,
+            "io_bytes": null,
+            "model_windows": 36,
+            "sentinel_forwards": 1
+          },
+          "resource_accounting_complete": false,
+          "identity_sentinel_pass": true,
+          "semantic_control_status": "NOT_MATCHED",
+          "support_basis": "IMPLICIT_PREPARED_PRESENCE",
+          "native_acquisition_verified": false
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "scope": "Consistency of existing native files and Studio input/output support only; not worker execution, same-sheet anatomy, calibrated search sensitivity, or confirmed text."
+      },
+      "array_hashes": {
+        "input": "d077d2c5aff4efbddc654c1ec91d9519e3be0cba5a73bc9e9ee338e56712aa5d",
+        "source_depth": null,
+        "probability": "18ce51407e94bfd6dd707a14af4a995ec37a385776807e7f513751070c2e34bb",
+        "output_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "source_valid": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed",
+        "context_valid": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+      },
+      "support_basis": "IMPLICIT_PREPARED_PRESENCE",
+      "cost": {
+        "map_elapsed_seconds": 163.46,
+        "cpu_ms": null,
+        "gpu_ms": 0,
+        "io_bytes": null,
+        "model_windows": 36,
+        "sentinel_forwards": 1
+      }
+    }
+  ],
+  "exact_reverse_pairs": [
+    {
+      "names": [
+        "0125_raw_desc16_s96",
+        "0125_raw_same_band_reverse16_s96"
+      ],
+      "result": {
+        "schema": "funnel.native_pair.v1",
+        "valid": true,
+        "errors": [],
+        "members_valid": [
+          true,
+          true
+        ],
+        "derived": {
+          "exact_indices_reversed": true,
+          "exact_input_reversed": true,
+          "exact_source_support_reversed": true,
+          "member_manifest_sha256": [
+            "5081a475a9439f8cc1186b53cca8ad9eb1e6f54f962840d9d0ad800f943df57a",
+            "569aeec19a9142f97f42f22aa2e32eb5f087a222f2f14654a3bb21d8b72aaa5b"
+          ],
+          "context_valid_pixels": 562176
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "independent_replication": false,
+        "scope": "Exact same-input depth reversal only; not recto/verso identity, independent coverage, or search sensitivity."
+      }
+    },
+    {
+      "names": [
+        "0125_snapped_desc16_s96",
+        "0125_snapped_same_band_reverse16_s96"
+      ],
+      "result": {
+        "schema": "funnel.native_pair.v1",
+        "valid": true,
+        "errors": [],
+        "members_valid": [
+          true,
+          true
+        ],
+        "derived": {
+          "exact_indices_reversed": true,
+          "exact_input_reversed": true,
+          "exact_source_support_reversed": true,
+          "member_manifest_sha256": [
+            "e7f16fd77fa00af5881db11e3a34b5c82bda02d6ee5e0d742f1de98e41c6e463",
+            "f5c0c3cfd7eb16c724a1209b40d0bdd35fedd7f0afb9e22cb5b0faf828b662a1"
+          ],
+          "context_valid_pixels": 562176
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "independent_replication": false,
+        "scope": "Exact same-input depth reversal only; not recto/verso identity, independent coverage, or search sensitivity."
+      }
+    },
+    {
+      "names": [
+        "0800_C_center512_k23_to_k08_s96",
+        "0800_C_center512_k08_to_k23_s96"
+      ],
+      "result": {
+        "schema": "funnel.native_pair.v1",
+        "valid": true,
+        "errors": [],
+        "members_valid": [
+          true,
+          true
+        ],
+        "derived": {
+          "exact_indices_reversed": true,
+          "exact_input_reversed": true,
+          "exact_source_support_reversed": true,
+          "member_manifest_sha256": [
+            "ccfa577fa35db051f958db51efb9d0e78f6293035213dfa68ef78765422a67ae",
+            "1cde0a788a1de43f7ac1c9a7256a1735e9895427d96bd8a73714ffc5d23be319"
+          ],
+          "context_valid_pixels": 147456
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "independent_replication": false,
+        "scope": "Exact same-input depth reversal only; not recto/verso identity, independent coverage, or search sensitivity."
+      }
+    },
+    {
+      "names": [
+        "0800_C_left512_k23_to_k08_s96",
+        "0800_C_left512_k08_to_k23_s96"
+      ],
+      "result": {
+        "schema": "funnel.native_pair.v1",
+        "valid": true,
+        "errors": [],
+        "members_valid": [
+          true,
+          true
+        ],
+        "derived": {
+          "exact_indices_reversed": true,
+          "exact_input_reversed": true,
+          "exact_source_support_reversed": true,
+          "member_manifest_sha256": [
+            "e6aec9d8a483e729246e7b5a3e5802bd57ec4ea29c0e5bab3ef152b7f9c42ffd",
+            "00d64d0d5366d39ea9a19de5ee4eaca41a408b40237bc7279658d18acd188a8a"
+          ],
+          "context_valid_pixels": 147456
+        },
+        "scientific_admission": "NOT_ESTABLISHED",
+        "production_complete": false,
+        "independent_replication": false,
+        "scope": "Exact same-input depth reversal only; not recto/verso identity, independent coverage, or search sensitivity."
+      }
+    }
+  ],
+  "maps_without_exact_same_configuration_reverse": [
+    "0125_raw_reverse_roi_s48",
+    "0125_snapped_reverse_roi_s48",
+    "0800_C_left_context96_k08_to_k23_s96",
+    "author841_mosaic_positive_s96",
+    "author841_positive_s96"
+  ],
+  "registered_chart_pixel_accounting": [
+    {
+      "scroll": "PHerc0125",
+      "chart_id": "z14144_w025/prepared-08ca83ed61fcab93a2ad841f900e0ca3e31c671b80226e9909e3a2ff0e5269f8/snapped",
+      "source_volume": "20250821151825-9.362um-1.2m-113keV-masked",
+      "maps": 3,
+      "distinct_input_recipes": 3,
+      "physical_area_cm2": null,
+      "physical_sheet_identity": "NOT_ESTABLISHED",
+      "source_valid": {
+        "gross_map_pixels": 1993458,
+        "union_chart_pixels": 841081,
+        "repeated_chart_pixels": 1152377
+      },
+      "output_valid": {
+        "gross_map_pixels": 1993458,
+        "union_chart_pixels": 841081,
+        "repeated_chart_pixels": 1152377
+      },
+      "context_valid": {
+        "gross_map_pixels": 1257472,
+        "union_chart_pixels": 562176,
+        "repeated_chart_pixels": 695296
+      }
+    },
+    {
+      "scroll": "PHerc0125",
+      "chart_id": "z14144_w025/prepared-9823d021e9f6e8728b6f90b2190045602e366924ffe1d70bf8a58f4eaf4f8765/raw",
+      "source_volume": "20250821151825-9.362um-1.2m-113keV-masked",
+      "maps": 3,
+      "distinct_input_recipes": 3,
+      "physical_area_cm2": null,
+      "physical_sheet_identity": "NOT_ESTABLISHED",
+      "source_valid": {
+        "gross_map_pixels": 1993458,
+        "union_chart_pixels": 841081,
+        "repeated_chart_pixels": 1152377
+      },
+      "output_valid": {
+        "gross_map_pixels": 1993458,
+        "union_chart_pixels": 841081,
+        "repeated_chart_pixels": 1152377
+      },
+      "context_valid": {
+        "gross_map_pixels": 1257472,
+        "union_chart_pixels": 562176,
+        "repeated_chart_pixels": 695296
+      }
+    },
+    {
+      "scroll": "PHerc0800",
+      "chart_id": "20251028220955-auto_grown_20251028220955262",
+      "source_volume": "20250521135224-8.640um-1.2m-116keV-masked",
+      "maps": 5,
+      "distinct_input_recipes": 5,
+      "physical_area_cm2": null,
+      "physical_sheet_identity": "NOT_ESTABLISHED",
+      "source_valid": {
+        "gross_map_pixels": 1359872,
+        "union_chart_pixels": 493216,
+        "repeated_chart_pixels": 866656
+      },
+      "output_valid": {
+        "gross_map_pixels": 1359872,
+        "union_chart_pixels": 493216,
+        "repeated_chart_pixels": 866656
+      },
+      "context_valid": {
+        "gross_map_pixels": 774144,
+        "union_chart_pixels": 310176,
+        "repeated_chart_pixels": 463968
+      }
+    },
+    {
+      "scroll": "PHerc0841",
+      "chart_id": "841-expanded-layer-03-approved-r000001",
+      "source_volume": "public-author-prepared-donor",
+      "maps": 2,
+      "distinct_input_recipes": 2,
+      "physical_area_cm2": null,
+      "physical_sheet_identity": "NOT_ESTABLISHED",
+      "source_valid": {
+        "gross_map_pixels": 1048576,
+        "union_chart_pixels": 786432,
+        "repeated_chart_pixels": 262144
+      },
+      "output_valid": {
+        "gross_map_pixels": 1048576,
+        "union_chart_pixels": 786432,
+        "repeated_chart_pixels": 262144
+      },
+      "context_valid": {
+        "gross_map_pixels": 645120,
+        "union_chart_pixels": 497664,
+        "repeated_chart_pixels": 147456
+      }
+    }
+  ],
+  "aligned_robustness_comparisons": [
+    {
+      "a": "0800_C_left512_k08_to_k23_s96",
+      "b": "0800_C_left_context96_k08_to_k23_s96",
+      "overlap_pixels": 262144,
+      "input_overlap_bitwise_equal": true,
+      "source_support_overlap_bitwise_equal": true,
+      "common_strict_context_pixels": 147456,
+      "newly_strict_context_pixels": 36864,
+      "lost_strict_context_pixels": 0,
+      "probabilities_bitwise_equal_on_common_context": true,
+      "mean_absolute_difference_on_common_context": 0.0,
+      "changed_recipe_fields": [
+        "origin_yx"
+      ],
+      "controlled_single_factor_experiment": false,
+      "implication": "Context/tiling robustness only; no independent glyph replication or recall/cost gate"
+    },
+    {
+      "a": "0125_raw_same_band_reverse16_s96",
+      "b": "0125_raw_reverse_roi_s48",
+      "overlap_pixels": 311296,
+      "input_overlap_bitwise_equal": true,
+      "source_support_overlap_bitwise_equal": true,
+      "common_strict_context_pixels": 133120,
+      "newly_strict_context_pixels": 0,
+      "lost_strict_context_pixels": 169984,
+      "probabilities_bitwise_equal_on_common_context": false,
+      "mean_absolute_difference_on_common_context": 0.06606010347604752,
+      "changed_recipe_fields": [
+        "blend",
+        "origin_yx",
+        "phase_yx",
+        "stride"
+      ],
+      "controlled_single_factor_experiment": false,
+      "implication": "Context/tiling robustness only; no independent glyph replication or recall/cost gate"
+    },
+    {
+      "a": "0125_snapped_same_band_reverse16_s96",
+      "b": "0125_snapped_reverse_roi_s48",
+      "overlap_pixels": 311296,
+      "input_overlap_bitwise_equal": true,
+      "source_support_overlap_bitwise_equal": true,
+      "common_strict_context_pixels": 133120,
+      "newly_strict_context_pixels": 0,
+      "lost_strict_context_pixels": 169984,
+      "probabilities_bitwise_equal_on_common_context": false,
+      "mean_absolute_difference_on_common_context": 0.0576617605984211,
+      "changed_recipe_fields": [
+        "blend",
+        "origin_yx",
+        "phase_yx",
+        "runner_sha256",
+        "stride"
+      ],
+      "controlled_single_factor_experiment": false,
+      "implication": "Context/tiling robustness only; no independent glyph replication or recall/cost gate"
+    },
+    {
+      "a": "author841_positive_s96",
+      "b": "author841_mosaic_positive_s96",
+      "overlap_pixels": 262144,
+      "input_overlap_bitwise_equal": true,
+      "source_support_overlap_bitwise_equal": true,
+      "common_strict_context_pixels": 147456,
+      "newly_strict_context_pixels": 65536,
+      "lost_strict_context_pixels": 0,
+      "probabilities_bitwise_equal_on_common_context": false,
+      "mean_absolute_difference_on_common_context": 0.0500284880399704,
+      "changed_recipe_fields": [
+        "origin_yx",
+        "phase_yx",
+        "runner_sha256"
+      ],
+      "controlled_single_factor_experiment": false,
+      "implication": "Context/tiling robustness only; no independent glyph replication or recall/cost gate"
+    }
+  ],
+  "scientific_status": "NO_CONFIRMED_NEW_READING",
+  "production_promotion": false,
+  "remaining_gates": [
+    "matched semantic calibration",
+    "independent physical sheet/metric evidence",
+    "frozen native coarse/fine recall-and-cost benchmark",
+    "actual CPU/IO/human metering"
+  ],
+  "limitations": [
+    "Pixel unions only within the declared unchanged chart; raw and snapped charts kept separate",
+    "Known public PHerc0841 control is not an independent holdout",
+    "CPU map durations are elapsed intervals, not process CPU time or wall-time sum",
+    "Repeated declarations are not proof of computation saved",
+    "Imported results remain diagnostic; no queue completion or blank verdict"
+  ]
+}

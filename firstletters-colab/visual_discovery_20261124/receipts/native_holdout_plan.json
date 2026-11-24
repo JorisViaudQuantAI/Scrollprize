@@ -1,0 +1,104 @@
+{
+  "adaptive_source_motivated": true,
+  "source_revision": "4386f625e1646dd67b6ce27597be434877fb96d7",
+  "source_choice": "Latest renderer-path commit preceding the observed public chunk Last-Modified; not evidence of deployed build.",
+  "normal_recipe": "At nearest grid node lround((pixel+.5)*.05), normalize cross(P[row,col+1]-P[row,col-1],P[row+1,col]-P[row-1,col]); use negative sign.",
+  "holdout_selection": "Fixed +35/+35 pixel shifts of each initial patch; all remain in pre-existing center512; no new local CT values inspected.",
+  "holdout_anchors_global_yx": [
+    [
+      877,
+      1278
+    ],
+    [
+      1080,
+      1481
+    ],
+    [
+      1283,
+      1684
+    ]
+  ],
+  "patch_shape": [
+    9,
+    9
+  ],
+  "layers": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "recipes": [
+    {
+      "name": "historic_nearest_half_floor_f64",
+      "origin": 0.5,
+      "sign": -1,
+      "normal_method": "nearest_vertex",
+      "precision": "float64",
+      "quantizer": "floor"
+    },
+    {
+      "name": "historic_nearest_half_floor_f32",
+      "origin": 0.5,
+      "sign": -1,
+      "normal_method": "nearest_vertex",
+      "precision": "float32",
+      "quantizer": "floor"
+    },
+    {
+      "name": "historic_nearest_half_round",
+      "origin": 0.5,
+      "sign": -1,
+      "normal_method": "nearest_vertex",
+      "precision": "float64",
+      "quantizer": "rint"
+    },
+    {
+      "name": "origin0_nearest_floor",
+      "origin": 0.0,
+      "sign": -1,
+      "normal_method": "nearest_vertex",
+      "precision": "float64",
+      "quantizer": "floor"
+    },
+    {
+      "name": "opposite_sign_nearest_floor",
+      "origin": 0.5,
+      "sign": 1,
+      "normal_method": "nearest_vertex",
+      "precision": "float64",
+      "quantizer": "floor"
+    },
+    {
+      "name": "half_bilinear_patch_floor",
+      "origin": 0.5,
+      "sign": -1,
+      "normal_method": "bilinear_patch",
+      "precision": "float64",
+      "quantizer": "floor"
+    },
+    {
+      "name": "half_current_catmull_floor",
+      "origin": 0.5,
+      "sign": -1,
+      "normal_method": "catmull_patch",
+      "precision": "float64",
+      "quantizer": "floor"
+    }
+  ],
+  "new_model_forwards": 0,
+  "cap_received_body_bytes": 64000000,
+  "preexisting_received_body_bytes": 12858757
+}

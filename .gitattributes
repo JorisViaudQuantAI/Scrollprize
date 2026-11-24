@@ -1,0 +1,4 @@
+# Preserve the exact bytes covered by the public evidence manifest on checkout.
+firstletters-colab/visual_discovery_20261124/** -text
+# The original numerical CSV uses standard CSV CRLF records; retain its SHA256.
+firstletters-colab/visual_discovery_20261124/data/sample_values.csv whitespace=cr-at-eol
