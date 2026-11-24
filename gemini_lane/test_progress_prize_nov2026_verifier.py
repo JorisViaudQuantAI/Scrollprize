@@ -186,13 +186,13 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
 
     def test_04_rtx4060_ledger_sum_and_followup_consistency(self) -> None:
         led = self.summary["pillar3_fp_suppression_invariance_and_ledger"]["rtx4060_screen_ledger"]
-        self.assertEqual(led["total_unique_valid_ct_cm2"], 128.9026)
-        self.assertEqual(led["meshes_screened"], 27)
+        self.assertEqual(led["total_unique_valid_ct_cm2"], 144.4282)
+        self.assertEqual(led["meshes_screened"], 30)
         self.assertEqual(led["two_family_followups"], 7)
         self.assertEqual(led["candidates_found"], 0)
         self.assertEqual(led["hardware_or_oom_incidents"], 0)
-        self.assertAlmostEqual(sum(led["per_scroll_valid_ct_cm2"].values()), 128.9026, places=4)
-        self.assertEqual(sum(led["per_scroll_mesh_counts"].values()), 27)
+        self.assertAlmostEqual(sum(led["per_scroll_valid_ct_cm2"].values()), 144.4282, places=4)
+        self.assertEqual(sum(led["per_scroll_mesh_counts"].values()), 30)
 
     def test_05_validate_dossier_markdown_passes_on_committed_file(self) -> None:
         self.assertTrue(DOSSIER_MD_PATH.is_file())
@@ -219,7 +219,7 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
                     V.validate_dossier_markdown(bad_path, self.summary)
 
             # 2. Missing required numerical token
-            corrupted = clean_md.replace("128.9026", "99.9999")
+            corrupted = clean_md.replace("144.4282", "99.9999")
             bad_path.write_text(corrupted, encoding="utf-8")
             with self.assertRaises(ValueError):
                 V.validate_dossier_markdown(bad_path, self.summary)
@@ -253,7 +253,7 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
             self.assertTrue(brief["cpu_only"])
             self.assertFalse(brief["torch_imported"])
             self.assertTrue(brief["dossier_markdown_valid"])
-            self.assertEqual(brief["rtx4060_screened_cm2"], 128.9026)
+            self.assertEqual(brief["rtx4060_screened_cm2"], 144.4282)
             self.assertEqual(brief["receipts_verified"], 20)
             self.assertTrue(out_json.is_file())
             exported = json.loads(out_json.read_text(encoding="utf-8"))
