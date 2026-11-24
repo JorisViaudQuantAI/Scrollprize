@@ -39,8 +39,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 GEMINI_DIR = Path(__file__).resolve().parent
 STUDIO_T4_DIR = REPO_ROOT / "firstletters-colab" / "studio_t4"
 ONSHEET_DIR = REPO_ROOT / "firstletters-colab" / "onsheet_score"
+LINE_REVIEW_DIR = REPO_ROOT / "firstletters-colab" / "line_review"
 
-for _p in (str(GEMINI_DIR), str(STUDIO_T4_DIR), str(ONSHEET_DIR)):
+for _p in (str(GEMINI_DIR), str(STUDIO_T4_DIR), str(ONSHEET_DIR), str(LINE_REVIEW_DIR)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
@@ -489,6 +490,63 @@ def compute_fp_diagnostics(
     )
 
 
+def compute_line_first_summary(
+    st_res: dict[str, dict],
+    valid_ct: np.ndarray,
+    voxel_um: float,
+    *,
+    top_k: int = 4,
+) -> dict:
+    """Run CPU MIT ``line_review.rank_map`` across ``desc`` and ``asc`` Studio probability maps.
+
+    Explicitly records ``status='ABSTAIN'`` with ``top_score=None`` when no chain passes
+    the line-finder threshold (never conflating abstention with score ``0.0``).
+    """
+    try:
+        import review as line_review
+    except Exception as exc:
+        return {"available": False, "error": str(exc), "orders": {}}
+
+    spacing = [float(voxel_um), float(voxel_um)]
+    orders_out: dict[str, dict] = {}
+    for order in ("desc", "asc"):
+        if order not in st_res:
+            continue
+        r = st_res[order]
+        valid = np.asarray(valid_ct, dtype=bool) & np.asarray(r["valid"], dtype=bool)
+        prob = np.where(valid, np.clip(r["prob"], 0.0, 1.0), 0.0).astype(np.float32)
+        if not valid.any():
+            orders_out[order] = {
+                "status": "ABSTAIN",
+                "top_score": None,
+                "proposal_count": 0,
+                "seconds": 0.0,
+                "top_proposals": [],
+            }
+            continue
+        rep = line_review.rank_map(prob, valid, spacing, "probability")
+        props = rep.get("proposals", [])
+        orders_out[order] = {
+            "status": "RANKED" if props else "ABSTAIN",
+            "top_score": round(float(props[0]["score"]), 5) if props else None,
+            "proposal_count": int(len(props)),
+            "seconds": round(float(rep.get("seconds", 0.0)), 3),
+            "top_proposals": [
+                {
+                    "rank": idx,
+                    "score": round(float(p["score"]), 5),
+                    "slot_count": int(p["slot_count"]),
+                    "length_mm": round(float(p["length_mm"]), 2),
+                    "angle_deg": round(float(p["angle_deg"]), 1),
+                    "contrast": round(float(p["contrast"]), 4),
+                    "bbox_yxyx": [int(v) for v in p["bbox_yxyx"]],
+                }
+                for idx, p in enumerate(props[:top_k], start=1)
+            ],
+        }
+    return {"available": True, "schema": "line_first_s3_v1", "orders": orders_out}
+
+
 def find_top_hotspots(
     prob: np.ndarray,
     valid: np.ndarray,
@@ -602,9 +660,10 @@ def write_visuals(
         for row_i, hs in enumerate(hotspots):
             ry0 = row_i * (ch + 24)
             yy, xx = hs["y"], hs["x"]
+            order_tag = f" {hs['order']}" if "order" in hs else ""
             h_draw.text(
                 (4, ry0 + 2),
-                f"#{hs['rank']} (y={yy}, x={xx}, hot={hs['hot_frac_ge045']:.3f})",
+                f"#{hs['rank']}{order_tag} (y={yy}, x={xx}, hot={hs['hot_frac_ge045']:.3f})",
                 fill=240,
             )
             ct_patch = _to_u8_stretch(ct_mid[yy : yy + ch, xx : xx + cw], valid_ct[yy : yy + ch, xx : xx + cw])
@@ -828,11 +887,28 @@ def screen_one_mesh(
             if st_res is not None
             else None
         )
-        hotspots = (
-            find_top_hotspots(primary_map, primary_valid)
-            if primary_map is not None and primary_valid is not None
-            else []
+        line_rank = (
+            compute_line_first_summary(st_res, valid_ct, voxel_um)
+            if st_res is not None and int(valid_ct.sum()) >= 10000
+            else None
         )
+        if st_res is not None:
+            merged_hs: list[dict] = []
+            for order in ("desc", "asc"):
+                if order in st_res:
+                    for item in find_top_hotspots(st_res[order]["prob"], st_res[order]["valid"], top_k=2):
+                        merged_hs.append({**item, "order": order})
+            merged_hs.sort(
+                key=lambda h: (float(h["score"]), float(h["hot_frac_ge045"]), float(h["mean_prob"])),
+                reverse=True,
+            )
+            hotspots = [{**item, "rank": idx} for idx, item in enumerate(merged_hs[:4], start=1)]
+        else:
+            hotspots = (
+                find_top_hotspots(primary_map, primary_valid)
+                if primary_map is not None and primary_valid is not None
+                else []
+            )
         montage_file, hotspot_file = write_visuals(
             mesh_out_dir,
             f"{scroll}/{mesh_tag}",
@@ -864,6 +940,7 @@ def screen_one_mesh(
         "valid_ct_cm2": round(float(int(valid_ct.sum()) * ((voxel_um / 10000.0) ** 2)), 4),
         "detectors": detector_stats,
         "fp_diagnostics": fp_diagnostics,
+        "line_rank": line_rank,
         "top_hotspots": hotspots,
         "artifacts": {"montage": montage_file, "hotspots": hotspot_file},
         "total_seconds": round(time.perf_counter() - t_total, 2),

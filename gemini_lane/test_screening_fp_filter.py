@@ -446,6 +446,22 @@ class RealCTBenchmarkTests(unittest.TestCase):
                 reader.read_box((0, 0, 8), (8, 8, 16))
             self.assertEqual(reader.chunks_fetched, 1)
 
+    def test_multi_wrap_alternating_faces_not_suppressed_by_global_asymmetry(self):
+        # Left half carries linear strokes in desc; right half carries linear strokes in asc
+        valid = np.ones((240, 480), dtype=bool)
+        prob_desc = np.full((240, 480), 0.05, dtype=np.float32)
+        prob_asc = np.full((240, 480), 0.05, dtype=np.float32)
+        prob_desc[40:44, 30:190] = 0.92
+        prob_desc[90:94, 30:190] = 0.92
+        prob_asc[140:144, 270:430] = 0.92
+        prob_asc[190:194, 270:430] = 0.92
+        diag = F.score_probability_map_diagnostics(prob_asc, prob_desc, valid, voxel_um=9.362)
+        self.assertLess(diag["asymmetry_ratio"], 1.5)
+        self.assertLess(diag["bilateral_overlap_frac"], 0.05)
+        self.assertTrue(diag["regional_asymmetry"]["has_opposite_order_regions"])
+        self.assertFalse(diag["flags"]["low_asymmetry"])
+        self.assertTrue(diag["ink_like_candidate"])
+
 
 if __name__ == "__main__":
     unittest.main()

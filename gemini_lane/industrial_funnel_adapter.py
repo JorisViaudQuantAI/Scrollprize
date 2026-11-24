@@ -125,6 +125,7 @@ PIXEL_CENTER_FRAMES = frozenset(
 PARAMETERIZATION_METHODS = frozenset(
     {
         "flatboi",
+        "mit_arap_2d",
         "metric_flatten",
         "raw_fit_grid",
         "1d_arc_length_resample_t2",
@@ -132,7 +133,7 @@ PARAMETERIZATION_METHODS = frozenset(
         "rgt_stitched",
     }
 )
-METHODS_WITH_2D_FLATTENING = frozenset({"flatboi", "metric_flatten"})
+METHODS_WITH_2D_FLATTENING = frozenset({"flatboi", "mit_arap_2d", "metric_flatten"})
 
 # Exact signed slice lists on a 31-layer render (mesh_index=15, slice_step=1.0)
 STUDIO_DESC_SLICES_31: list[int] = list(range(23, 7, -1))  # [23..8]
@@ -228,9 +229,9 @@ def normalize_scroll_code(name: str) -> str:
 
 
 def validate_job_spec(spec: Mapping[str, Any]) -> dict[str, Any]:
-    """Validate an immutable job spec compatible with ``control_plane.validate_spec``."""
+    """Validate an immutable job spec compatible with ``control_plane.validate_spec`` (canonical + A02)."""
     required = {"scroll", "unit", "frame", "stage", "recipe", "inputs", "deps", "calibration"}
-    if not isinstance(spec, Mapping) or set(spec.keys()) != required:
+    if not isinstance(spec, Mapping) or set(spec.keys()) not in (required, required | {"order_policy"}):
         raise ValueError("Job spec schema mismatch")
     scroll = spec["scroll"]
     if not isinstance(scroll, str) or not SCROLL_RE.fullmatch(scroll):
@@ -244,6 +245,16 @@ def validate_job_spec(spec: Mapping[str, Any]) -> dict[str, Any]:
     if stage not in PREDECESSOR:
         raise ValueError(f"Invalid stage: {stage!r}")
     inputs = validate_hashes_map(spec["inputs"])
+    if "order_policy" in spec:
+        if (
+            spec["order_policy"] != "single_order_plus_audit"
+            or stage != "COARSE"
+            or "order_audit_plan" not in inputs
+            or "geometry" not in inputs
+        ):
+            raise ValueError("Invalid experimental order policy")
+    elif "order_audit_plan" in inputs:
+        raise ValueError("Audit input requires explicit experimental order_policy")
     deps = spec["deps"]
     if not isinstance(deps, list) or len(deps) != len(set(deps)):
         raise ValueError("Invalid dependencies list")
@@ -254,7 +265,7 @@ def validate_job_spec(spec: Mapping[str, Any]) -> dict[str, Any]:
         require_sha256(cal)
     elif cal is not None:
         raise ValueError("Unexpected calibration key for non-inference/non-control stage")
-    return {
+    out = {
         "scroll": scroll,
         "unit": unit,
         "frame": spec["frame"],
@@ -264,6 +275,9 @@ def validate_job_spec(spec: Mapping[str, Any]) -> dict[str, Any]:
         "deps": sorted(deps),
         "calibration": cal,
     }
+    if "order_policy" in spec:
+        out["order_policy"] = spec["order_policy"]
+    return out
 
 
 def job_key(spec: Mapping[str, Any]) -> str:
@@ -830,6 +844,7 @@ class CrossPlatformFileReceipts:
             if len(parts) != 3 or not parts[1].isdigit():
                 raise ValueError(f"Malformed attempt filename: {path.name}")
             rows.append(self.read(spec, int(parts[1])))
+        rows.sort(key=lambda item: int(item["receipt"]["attempt"]))
         good: list[dict[str, Any]] = []
         for item in rows:
             r = item["receipt"]
@@ -840,6 +855,10 @@ class CrossPlatformFileReceipts:
             good.append(item)
         if len(good) > 1:
             raise ValueError("Multiple complete attempts require explicit operator reconciliation")
+        if good:
+            complete_attempt = int(good[0]["receipt"]["attempt"])
+            if any(int(item["receipt"]["attempt"]) > complete_attempt for item in rows):
+                raise ValueError("Non-terminal COMPLETE attempt followed by conflicting attempt requires reconciliation")
         return {
             "attempts": len(rows),
             "completed": len(good) == 1,
@@ -894,6 +913,7 @@ def emit_r1_receipt_from_rtx4060_summary(
     det_map = summary.get("detectors") or {}
     det_specs: dict[str, dict[str, Any]] = {}
     orders_seen: set[str] = set()
+    family_orders: dict[str, set[str]] = defaultdict(set)
     for det_key in sorted(det_map.keys()):
         if det_key.startswith("studio_"):
             ord_ = det_key.split("_", 1)[1]
@@ -904,11 +924,19 @@ def emit_r1_receipt_from_rtx4060_summary(
         else:
             continue
         orders_seen.add(ord_)
+        family_orders[fam].add(ord_)
         det_specs[det_key] = {
             "family": fam,
             "order": ord_,
             "slice_indices": expected_slice_indices(fam, ord_, num_slices=num_slices),
         }
+
+    if order_mode == "paired_both_orders" and stage in INFERENCE_STAGES:
+        incomplete = {f: sorted(o) for f, o in family_orders.items() if o != {"asc", "desc"}}
+        if incomplete:
+            raise ValueError(
+                f"Mixed-family or incomplete detector pairing forbidden for paired_both_orders: {incomplete}"
+            )
 
     sampling_checked = validate_sampling_and_detector_contract(
         {
@@ -944,9 +972,13 @@ def emit_r1_receipt_from_rtx4060_summary(
         telemetry,
     )
 
-    # Store raw artifact payloads in CAS
+    # Validate finite .npy array payloads (rejecting NaN/Inf per native_evidence contract) and store in CAS
     outputs: dict[str, str] = {}
     for role, payload in artifact_payloads.items():
+        if payload.startswith(b"\x93NUMPY"):
+            arr = np.load(io.BytesIO(payload), allow_pickle=False)
+            if np.issubdtype(arr.dtype, np.floating) and not np.isfinite(arr).all():
+                raise ValueError(f"NONFINITE_SCORE: artifact {role!r} contains NaN or Inf values")
         outputs[role] = repo.store.put(payload)
 
     # Compute actual resource vector from summary timings and bytes
@@ -1017,7 +1049,8 @@ def emit_r1_receipt_from_rtx4060_summary(
     }
     if not overrun and stage in INFERENCE_STAGES:
         receipt["orders"] = sorted(orders_seen)
-        receipt["order_mode"] = order_mode
+        if order_mode != "paired_both_orders" or audit_policy is not None:
+            receipt["order_mode"] = order_mode
         if audit_policy is not None:
             receipt["audit_policy"] = dict(audit_policy)
 
@@ -1494,6 +1527,9 @@ def evaluate_normal_correspondence_dedup(
     same_cell_64 = np.array([tuple(c) in cells_b for c in a_vcells], dtype=bool)
     cell_jaccard = len(cells_a & cells_b) / max(1, len(cells_a | cells_b))
 
+    # Keep every usable original vertex in correspondence search so boundary
+    # vertices without outgoing quads self-match 100% (ChatGPT G4 fix).
+    dense_b = np.concatenate((dense_b, pts_b), axis=0)
     tree_dense_b = cKDTree(dense_b)
     d_dense, idx_dense = tree_dense_b.query(pts_a, k=1)
     diff = dense_b[idx_dense] - pts_a

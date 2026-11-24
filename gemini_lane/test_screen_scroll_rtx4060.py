@@ -204,7 +204,32 @@ class TestScreenScrollSafety(unittest.TestCase):
             self.assertTrue((mesh_out / "summary.json").is_file())
             on_disk = json.loads((mesh_out / "summary.json").read_text(encoding="utf-8"))
             self.assertEqual(on_disk["fp_diagnostics"], fp)
+            self.assertIn("line_rank", on_disk)
+            self.assertTrue(on_disk["line_rank"]["available"])
             self.assertEqual(list(work_root.iterdir()), [])
+
+    def test_dual_order_hotspots_and_line_rank_abstain_on_blank(self) -> None:
+        valid = np.ones((220, 640), dtype=bool)
+        desc = np.full((220, 640), 0.05, dtype=np.float32)
+        asc = np.full((220, 640), 0.05, dtype=np.float32)
+        # Opposite-order peaks on left (desc) and right (asc)
+        desc[20:140, 20:180] = 0.85
+        asc[20:140, 420:580] = 0.90
+        merged_hs = []
+        for o, arr in (("desc", desc), ("asc", asc)):
+            for hs in S.find_top_hotspots(arr, valid, win=128, top_k=2):
+                merged_hs.append({**hs, "order": o})
+        merged_hs.sort(key=lambda h: h["score"], reverse=True)
+        orders_present = {h["order"] for h in merged_hs[:4]}
+        self.assertEqual(orders_present, {"desc", "asc"})
+
+        blank = {o: {"prob": np.full((220, 640), 0.02, dtype=np.float32), "valid": valid} for o in ("desc", "asc")}
+        lr = S.compute_line_first_summary(blank, valid, 9.362)
+        self.assertTrue(lr["available"])
+        self.assertEqual(lr["orders"]["desc"]["status"], "ABSTAIN")
+        self.assertIsNone(lr["orders"]["desc"]["top_score"])
+        self.assertEqual(lr["orders"]["asc"]["status"], "ABSTAIN")
+        self.assertIsNone(lr["orders"]["asc"]["top_score"])
 
     def test_compute_fp_diagnostics_studio_only_flags_crack_halo(self) -> None:
         rng = np.random.default_rng(0)

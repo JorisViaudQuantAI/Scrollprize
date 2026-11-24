@@ -250,6 +250,56 @@ class CrossPlatformFileReceiptsTests(unittest.TestCase):
         self.repo.publish(spec_deep, 1, self._make_receipt(spec_deep, outputs=both_out, orders=["asc", "desc"]))
         self.assertTrue(self.repo.resume(spec_deep)["completed"])
 
+    def test_resume_rejects_failed_after_complete_and_a02_spec_supported(self) -> None:
+        # Conflicting FAILED attempt after a COMPLETE attempt must fail resume
+        spec_conf = _spec("COARSE", scroll="PHerc0826", calibration=self.cal)
+        both_out = {
+            "asc_map": self.repo.store.put(b"asc-map"),
+            "asc_support": self.repo.store.put(b"asc-sup"),
+            "desc_map": self.repo.store.put(b"desc-map"),
+            "desc_support": self.repo.store.put(b"desc-sup"),
+            "metadata": self.repo.store.put(b'{"ok":true}'),
+        }
+        self.repo.publish(spec_conf, 1, self._make_receipt(spec_conf, attempt=1, outputs=both_out, orders=["asc", "desc"]))
+        self.repo.publish(
+            spec_conf,
+            2,
+            self._make_receipt(spec_conf, attempt=2, outcome="FAILED", failure="SESSION_LOST"),
+        )
+        with self.assertRaisesRegex(ValueError, "Non-terminal COMPLETE"):
+            self.repo.resume(spec_conf)
+
+        # A02 order_policy='single_order_plus_audit' spec schema validation
+        plan_sha = self.repo.store.put(b'{"schema":"funnel.order_audit.v1"}')
+        geom_sha = self.repo.store.put(b"geom")
+        a02_spec = IFA.validate_job_spec(
+            {
+                "scroll": "PHerc0826",
+                "unit": "u_a02",
+                "frame": IFA.digest_obj("f0"),
+                "stage": "COARSE",
+                "recipe": IFA.digest_obj("r0"),
+                "inputs": {"geometry": geom_sha, "order_audit_plan": plan_sha},
+                "deps": [],
+                "calibration": self.cal,
+                "order_policy": "single_order_plus_audit",
+            }
+        )
+        self.assertEqual(a02_spec["order_policy"], "single_order_plus_audit")
+        with self.assertRaises(ValueError):
+            IFA.validate_job_spec(
+                {
+                    "scroll": "PHerc0826",
+                    "unit": "u_bad",
+                    "frame": IFA.digest_obj("f0"),
+                    "stage": "COARSE",
+                    "recipe": IFA.digest_obj("r0"),
+                    "inputs": {"geometry": geom_sha, "order_audit_plan": plan_sha},
+                    "deps": [],
+                    "calibration": self.cal,
+                }
+            )
+
 
 class DomainContractsAndBridgeTests(unittest.TestCase):
     def test_2d_shear_quarantine_and_t2_vs_flatboi_distinction(self) -> None:
@@ -448,6 +498,7 @@ class DomainContractsAndBridgeTests(unittest.TestCase):
             )
             self.assertEqual(emitted["outcome"], "COMPLETE")
             self.assertFalse(emitted["shear_quarantined"])
+            self.assertNotIn("order_mode", emitted["receipt"])  # Strict file_receipts.validate parity
             env = repo.read(emitted["spec"], 1)
             meta_doc = repo.store.read_json(emitted["metadata_sha256"])
             pub = IFA.sanitize_receipt_for_public_aggregate(env, meta_doc)
@@ -456,6 +507,102 @@ class DomainContractsAndBridgeTests(unittest.TestCase):
             self.assertNotIn("uv_crop", serialized)
             self.assertNotIn("top_hotspots", serialized)
             IFA.assert_public_export_clean(pub)
+
+            # Accept mit_arap_2d as valid 2D flattening method
+            arap_geom = IFA.validate_geometry_contract(
+                {
+                    "parameterization_method": "mit_arap_2d",
+                    "shear_abs_p95_deg": 7.371,
+                    "pct_area_gt_20deg": 0.151,
+                    "area_inflation_true_over_nominal": 0.9893,
+                }
+            )
+            self.assertTrue(arap_geom["is_2d_flattened"])
+            self.assertFalse(arap_geom["shear_quarantined"])
+
+            # Reject mixed-family pairing (studio_desc + ahn_s0_asc)
+            bad_summary = dict(summary)
+            bad_summary["detectors"] = {
+                "studio_desc": summary["detectors"]["studio_desc"],
+                "ahn_s0_asc": summary["detectors"]["studio_asc"],
+            }
+            with self.assertRaisesRegex(ValueError, "Mixed-family"):
+                IFA.emit_r1_receipt_from_rtx4060_summary(
+                    repo,
+                    summary=bad_summary,
+                    stage="COARSE",
+                    unit_private_id="MIXED_BAD_UNIT",
+                    frame_hash=IFA.digest_obj("frame-0211"),
+                    recipe_hash=IFA.digest_obj("studio-s96-snap2"),
+                    calibration_key=cal_key,
+                    deps=[],
+                    inputs={"geom": src_in},
+                    artifact_payloads={
+                        "asc_map": b"a",
+                        "desc_map": b"d",
+                        "asc_support": b"as",
+                        "desc_support": b"ds",
+                    },
+                    geometry_audit={
+                        "parameterization_method": "mit_arap_2d",
+                        "shear_abs_p95_deg": 7.371,
+                        "pct_area_gt_20deg": 0.151,
+                        "area_inflation_true_over_nominal": 0.9893,
+                    },
+                    telemetry={
+                        "gpu_name": "RTX 4060 Laptop 8 GiB",
+                        "peak_allocated_mib": 1905,
+                        "peak_reserved_mib": 2108,
+                        "vram_cap_fraction": 0.50,
+                        "max_temp_c": 74,
+                        "post_run_temp_c": 57,
+                        "batch_pause_ms": 300,
+                        "hardware_or_oom_incidents": 0,
+                        "worker_stopped": True,
+                    },
+                    grant=_res(cpu=200_000, gpu=200_000, io=700_000_000),
+                )
+
+            # Reject .npy artifact with NaN score
+            import io as _io
+            nan_buf = _io.BytesIO()
+            np.save(nan_buf, np.array([[0.1, np.nan]], dtype=np.float32), allow_pickle=False)
+            with self.assertRaisesRegex(ValueError, "NONFINITE_SCORE"):
+                IFA.emit_r1_receipt_from_rtx4060_summary(
+                    repo,
+                    summary=summary,
+                    stage="COARSE",
+                    unit_private_id="NAN_BAD_UNIT",
+                    frame_hash=IFA.digest_obj("frame-0211"),
+                    recipe_hash=IFA.digest_obj("studio-s96-snap2"),
+                    calibration_key=cal_key,
+                    deps=[],
+                    inputs={"geom": src_in},
+                    artifact_payloads={
+                        "asc_map": nan_buf.getvalue(),
+                        "desc_map": b"d",
+                        "asc_support": b"as",
+                        "desc_support": b"ds",
+                    },
+                    geometry_audit={
+                        "parameterization_method": "mit_arap_2d",
+                        "shear_abs_p95_deg": 7.371,
+                        "pct_area_gt_20deg": 0.151,
+                        "area_inflation_true_over_nominal": 0.9893,
+                    },
+                    telemetry={
+                        "gpu_name": "RTX 4060 Laptop 8 GiB",
+                        "peak_allocated_mib": 1905,
+                        "peak_reserved_mib": 2108,
+                        "vram_cap_fraction": 0.50,
+                        "max_temp_c": 74,
+                        "post_run_temp_c": 57,
+                        "batch_pause_ms": 300,
+                        "hardware_or_oom_incidents": 0,
+                        "worker_stopped": True,
+                    },
+                    grant=_res(cpu=200_000, gpu=200_000, io=700_000_000),
+                )
 
     def test_privacy_guard_catches_banned_keys_paths_and_tokens(self) -> None:
         self.assertTrue(IFA.find_privacy_violations({"uv_crop": [1, 2, 3, 4]}))
@@ -618,6 +765,23 @@ class NormalCorrespondenceDedupAndS0Tests(unittest.TestCase):
             self.assertEqual(data["s0_19scroll_inventory"]["summary"]["eligible_scrolls"], 19)
             self.assertEqual(data["windows_compatibility_audit"]["patched_replay"]["passed_count"], 48)
             self.assertEqual(data["windows_compatibility_audit"]["patched_replay"]["tests_run"], 48)
+        self.assertEqual(LG.find_leaks("cross-agent interop check", user="agent"), [])
+
+    def test_g4_boundary_vertices_achieve_100pct_self_correspondence(self) -> None:
+        # Irregular valid mask leaving right/bottom boundary vertices without outgoing valid quads
+        vy, vx = np.meshgrid(np.arange(12, dtype=np.float32), np.arange(12, dtype=np.float32), indexing="ij")
+        x = vx * 15.0
+        y = vy * 15.0
+        z = np.full_like(x, 100.0)
+        x[3:6, 6:12] = -1.0
+        y[3:6, 6:12] = -1.0
+        z[3:6, 6:12] = -1.0
+        self_rep = IFA.evaluate_normal_correspondence_dedup(
+            (x, y, z, x >= 0),
+            (x, y, z, x >= 0),
+        )
+        self.assertEqual(self_rep["normal_correspondence_frac"], 1.0)
+        self.assertEqual(self_rep["euclid_le_threshold_frac"], 1.0)
 
 
 if __name__ == "__main__":

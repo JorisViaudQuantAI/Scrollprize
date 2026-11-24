@@ -284,6 +284,59 @@ def _two_family_agreement(
     }
 
 
+def _regional_face_dominance(
+    hits_asc: np.ndarray,
+    hits_desc: np.ndarray,
+    active: np.ndarray,
+    *,
+    tile_px: int = 512,
+) -> dict:
+    """Measure local depth-order dominance across half-maps and ``tile_px`` regions.
+
+    Prevents global asymmetry heuristics from suppressing multi-wrap windings where
+    separate halves carry crisp single-sided text on opposite depth orders.
+    """
+    h, w = active.shape
+    regions: list[tuple[slice, slice]] = []
+    if w >= 2:
+        mid_w = w // 2
+        regions.extend([(slice(0, h), slice(0, mid_w)), (slice(0, h), slice(mid_w, w))])
+    if h >= 2:
+        mid_h = h // 2
+        regions.extend([(slice(0, mid_h), slice(0, w)), (slice(mid_h, h), slice(0, w))])
+    step = max(int(tile_px), 64)
+    for y0 in range(0, h, step):
+        for x0 in range(0, w, step):
+            regions.append((slice(y0, min(h, y0 + step)), slice(x0, min(w, x0 + step))))
+
+    max_asym = 1.0
+    max_dom_hits = 0
+    has_asc_region = False
+    has_desc_region = False
+    for sy, sx in regions:
+        if int(active[sy, sx].sum()) < 256:
+            continue
+        c_asc = int(hits_asc[sy, sx].sum())
+        c_desc = int(hits_desc[sy, sx].sum())
+        dom_c = max(c_asc, c_desc)
+        opp_c = min(c_asc, c_desc)
+        ratio = dom_c / max(opp_c, 1)
+        if dom_c > 0 and (ratio > max_asym or (ratio == max_asym and dom_c > max_dom_hits)):
+            max_asym = ratio
+            max_dom_hits = dom_c
+        if c_asc >= 100 and c_asc >= 3 * max(c_desc, 1):
+            has_asc_region = True
+        if c_desc >= 100 and c_desc >= 3 * max(c_asc, 1):
+            has_desc_region = True
+
+    return {
+        "tile_px": int(tile_px),
+        "max_regional_asymmetry": round(float(max_asym), 4),
+        "max_regional_dom_hits": int(max_dom_hits),
+        "has_opposite_order_regions": bool(has_asc_region and has_desc_region),
+    }
+
+
 def score_probability_map_diagnostics(
     prob_asc: np.ndarray,
     prob_desc: np.ndarray,
@@ -302,9 +355,10 @@ def score_probability_map_diagnostics(
 
     Returns a JSON-safe dict with per-face clean-papyrus vs crack-halo hit shares,
     the dominant face and ``dominant / opposite`` asymmetry of ``> hi`` hits, bilateral
-    overlap (``asc > hi & desc > hi`` over their union and over active area), dominant
-    face component strokeness, optional Studio / A-hn two-family agreement, and boolean
-    ``flags`` plus an ``ink_like_candidate`` verdict. ``active`` = valid minus crack halo.
+    overlap (``asc > hi & desc > hi`` over their union and over active area), regional
+    alternating-order dominance, dominant face component strokeness, optional Studio / A-hn
+    two-family agreement, and boolean ``flags`` plus an ``ink_like_candidate`` verdict.
+    ``active`` = valid minus crack halo.
     """
     valid = np.asarray(valid_mask, dtype=bool)
     maps = {"asc": np.asarray(prob_asc, dtype=np.float32), "desc": np.asarray(prob_desc, dtype=np.float32)}
@@ -331,12 +385,18 @@ def score_probability_map_diagnostics(
     faces = {f: _face_hit_shares(maps[f], active, halo, th) for f in FACES}
     asymmetry = counts[dom] / max(counts[opp], 1)
     bilateral = int(both.sum()) / max(int(either.sum()), 1)
+    regional = _regional_face_dominance(hits["asc"], hits["desc"], active)
     no_hits = counts[dom] == 0
+    regional_rescue = (
+        bilateral < 0.05
+        and regional["max_regional_asymmetry"] >= th.min_asymmetry
+        and regional["max_regional_dom_hits"] >= 500
+    )
     flags = {
         "no_hits": no_hits,
         "crack_halo_dominated": faces[dom]["halo_share_gt07"] > th.max_halo_share,
         "bilateral_mottle": bilateral >= th.max_bilateral_overlap,
-        "low_asymmetry": asymmetry < th.min_asymmetry,
+        "low_asymmetry": (asymmetry < th.min_asymmetry) and not regional_rescue,
         "low_strokeness": stroke["weighted_mean"] is not None and stroke["weighted_mean"] < th.min_strokeness,
         "two_family_disagree": two_family is not None
         and (two_family["iou"] < th.min_two_family_iou or not two_family["face_agreement"]),
@@ -351,6 +411,7 @@ def score_probability_map_diagnostics(
         "asymmetry_ratio": round(float(asymmetry), 4),
         "bilateral_overlap_frac": round(float(bilateral), 6),
         "bilateral_overlap_area_frac": round(int(both.sum()) / max(int(active.sum()), 1), 6),
+        "regional_asymmetry": regional,
         "strokeness": stroke,
         "two_family": two_family,
         "thresholds": asdict(th),
