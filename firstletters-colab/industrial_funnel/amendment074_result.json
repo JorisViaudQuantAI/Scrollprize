@@ -1,0 +1,245 @@
+{
+  "schema": "funnel.amendment074.v1",
+  "tests_run": 66,
+  "failures": [],
+  "errors": [],
+  "skipped": 0,
+  "tests_pass": true,
+  "source_sha256": {
+    "AMENDMENT-002.md": "391cf538e040a56ef7e855b1e0f5a3efda0d6caa86ac0682a629f6a43da06240",
+    "order_audit.py": "48d7483e13eae1e23ce958602a86fa3e99fb5bb1d412fef747a19d6f2ba4baaf",
+    "control_plane.py": "607499171b4153dbdf6a11e0f6fe4d600b14930f6e47b2f9226843941a450776",
+    "file_receipts.py": "d1bf5f0307f13bd6d4a83805d86ff3575f302333e7d9b7aacdf49f25d8ac57b5",
+    "survey.py": "fb887e2a3497f67b51bdf4cc45a02a9e1a1fa5fb4532e45a5640c5d26cef2167",
+    "test_order_audit.py": "3e676e8206eea5ad2c9d069ba70c8aae78d57ada66219eb8dba2ccc09fc49cfc",
+    "test_control_plane.py": "4692a841ad305a98660703bdfd84583a60717787d18e90851b6f2aca78a044f2",
+    "test_file_receipts.py": "6e25d572d2da3a6aad195f7216b452d413b69566cbe1f601ce90b5754548bc35",
+    "verify074.py": "2077c95565a16e05e58f073a0fa076a7af4a19f0d8e98f82561094200e81931b"
+  },
+  "python": "3.11.18",
+  "analysis": {
+    "source_git_blob": "610e115ac1c6775aebc92e435b0c53264ca97aad",
+    "source_sha256": "9884e1ae4bed4b1e443f44d17f1cffb2556e6765e1251d9f50eb3b29e6ec4ff6",
+    "cases": [
+      {
+        "scroll": "PHerc0211",
+        "recipe": "snap0",
+        "measured_s96_seconds": {
+          "asc": 29.29,
+          "desc": 25.02
+        },
+        "observed_share_gt07": {
+          "asc": 0.047685,
+          "desc": 0.298374
+        },
+        "larger_share_order": "desc",
+        "measured_paired_inference_seconds": 54.31,
+        "measured_render_seconds": 49.38,
+        "counterfactuals": [
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 33.043,
+            "inference_reduction_fraction": 0.39158534339900575,
+            "render_plus_inference_reduction_fraction": 0.2051017455878098
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 38.35975,
+            "inference_reduction_fraction": 0.2936890075492543,
+            "render_plus_inference_reduction_fraction": 0.15382630919085738
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 43.6765,
+            "inference_reduction_fraction": 0.19579267169950298,
+            "render_plus_inference_reduction_fraction": 0.10255087279390485
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 29.4135,
+            "inference_reduction_fraction": 0.45841465660099434,
+            "render_plus_inference_reduction_fraction": 0.24010512103385095
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 35.637625,
+            "inference_reduction_fraction": 0.34381099245074576,
+            "render_plus_inference_reduction_fraction": 0.18007884077538805
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 41.86175,
+            "inference_reduction_fraction": 0.22920732830049717,
+            "render_plus_inference_reduction_fraction": 0.12005256051692548
+          }
+        ]
+      },
+      {
+        "scroll": "PHerc0211",
+        "recipe": "snap2",
+        "measured_s96_seconds": {
+          "asc": 24.9,
+          "desc": 24.98
+        },
+        "observed_share_gt07": {
+          "asc": 0.041783,
+          "desc": 0.286342
+        },
+        "larger_share_order": "desc",
+        "measured_paired_inference_seconds": 49.879999999999995,
+        "measured_render_seconds": 50.07,
+        "counterfactuals": [
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 28.647,
+            "inference_reduction_fraction": 0.4256816359262229,
+            "render_plus_inference_reduction_fraction": 0.21243621810905444
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 33.95525,
+            "inference_reduction_fraction": 0.3192612269446672,
+            "render_plus_inference_reduction_fraction": 0.15932716358179078
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 39.26349999999999,
+            "inference_reduction_fraction": 0.2128408179631115,
+            "render_plus_inference_reduction_fraction": 0.10621810905452733
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 28.715,
+            "inference_reduction_fraction": 0.424318364073777,
+            "render_plus_inference_reduction_fraction": 0.21175587793896944
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 34.00625,
+            "inference_reduction_fraction": 0.31823877305533266,
+            "render_plus_inference_reduction_fraction": 0.15881690845422702
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 39.2975,
+            "inference_reduction_fraction": 0.21215918203688844,
+            "render_plus_inference_reduction_fraction": 0.10587793896948461
+          }
+        ]
+      },
+      {
+        "scroll": "PHerc0306B",
+        "recipe": "T17",
+        "measured_s96_seconds": {
+          "asc": 16.7,
+          "desc": 21.09
+        },
+        "observed_share_gt07": {
+          "asc": 0.155478,
+          "desc": 0.041536
+        },
+        "larger_share_order": "asc",
+        "measured_paired_inference_seconds": 37.79,
+        "measured_render_seconds": null,
+        "counterfactuals": [
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 19.8635,
+            "inference_reduction_fraction": 0.47437152685895745,
+            "render_plus_inference_reduction_fraction": null
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 24.345125,
+            "inference_reduction_fraction": 0.3557786451442181,
+            "render_plus_inference_reduction_fraction": null
+          },
+          {
+            "rule_order": "asc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 28.826749999999997,
+            "inference_reduction_fraction": 0.23718576342947872,
+            "render_plus_inference_reduction_fraction": null
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0,
+            "paired_fraction": 0.15,
+            "expected_inference_seconds": 23.595,
+            "inference_reduction_fraction": 0.37562847314104264,
+            "render_plus_inference_reduction_fraction": null
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.25,
+            "paired_fraction": 0.3625,
+            "expected_inference_seconds": 27.14375,
+            "inference_reduction_fraction": 0.28172135485578187,
+            "render_plus_inference_reduction_fraction": null
+          },
+          {
+            "rule_order": "desc",
+            "unknown_normal_fraction": 0.5,
+            "paired_fraction": 0.575,
+            "expected_inference_seconds": 30.6925,
+            "inference_reduction_fraction": 0.18781423657052132,
+            "render_plus_inference_reduction_fraction": null
+          }
+        ]
+      }
+    ],
+    "statistical_illustration": {
+      "N": 120,
+      "n": 18,
+      "one_sided_alpha": 0.05,
+      "probability_audit_misses_all": {
+        "1": 0.85,
+        "2": 0.7214285714285714,
+        "5": 0.43704761048419727,
+        "10": 0.1835202483346613
+      },
+      "zero_event_upper_count": 17,
+      "zero_event_upper_fraction": 0.14166666666666666,
+      "minimum_n_to_exclude_at_least_one_miss": 115,
+      "minimum_n_to_exclude_at_least_six_misses": 47,
+      "scope": "Hypothetical fixed cohort, uniform audit without replacement; no observed miss counts."
+    },
+    "synthetic_plan": {
+      "population": 42,
+      "paired_units": 8,
+      "singleton_stratum_pair_rate": 1
+    },
+    "scope": "Counterfactual timing arithmetic on three recorded public positive configurations. No new GPU run, rule prediction, measured detection recall, or full pipeline savings. Timing excludes unspecified acquisition/control/review overhead."
+  },
+  "pass": true,
+  "wall_seconds": 0.8689162259999996
+}
