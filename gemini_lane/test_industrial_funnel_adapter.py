@@ -8,8 +8,11 @@ and leak_guard privacy hygiene. Zero torch/CUDA imports, zero network calls.
 """
 from __future__ import annotations
 
+import ast
 import json
+import os
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -575,8 +578,36 @@ class NormalCorrespondenceDedupAndS0Tests(unittest.TestCase):
             IFA.assert_public_export_clean(joined)
 
     def test_committed_adapter_and_validation_json_have_zero_leaks_and_zero_torch(self) -> None:
-        self.assertNotIn("torch", sys.modules)
-        adapter_txt = (GEMINI_DIR / "industrial_funnel_adapter.py").read_text(encoding="utf-8")
+        adapter_path = GEMINI_DIR / "industrial_funnel_adapter.py"
+        adapter_txt = adapter_path.read_text(encoding="utf-8")
+        gpu_modules = ("torch", "cupy", "jax", "tensorflow", "numba.cuda", "pycuda")
+        tree = ast.parse(adapter_txt)
+        for node in ast.walk(tree):
+            mods = (
+                [a.name for a in node.names]
+                if isinstance(node, ast.Import)
+                else ([node.module] if isinstance(node, ast.ImportFrom) and node.module else [])
+            )
+            for mod in mods:
+                self.assertFalse(
+                    any(mod == g or mod.startswith(g + ".") for g in gpu_modules),
+                    f"industrial_funnel_adapter.py imports forbidden GPU module {mod!r}",
+                )
+        proc = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                "import sys; sys.path.insert(0, sys.argv[1]); import industrial_funnel_adapter; "
+                f"print([m for m in {gpu_modules!r} if m in sys.modules])",
+                str(GEMINI_DIR),
+            ],
+            capture_output=True,
+            text=True,
+            env={"CUDA_VISIBLE_DEVICES": "-1", **os.environ},
+            timeout=60,
+            check=True,
+        )
+        self.assertEqual(proc.stdout.strip().splitlines()[-1], "[]")
         self.assertEqual(LG.find_leaks(adapter_txt), [])
         val_path = GEMINI_DIR / "evidence" / "industrial_funnel_validation.json"
         if val_path.is_file():

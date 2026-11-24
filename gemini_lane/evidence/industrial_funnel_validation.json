@@ -657,7 +657,7 @@
         "PHerc0846B",
         "PHerc1545"
       ],
-      "total_rtx4060_screened_cm2": 75.9988,
+      "total_rtx4060_screened_cm2": 90.9026,
       "next_stage_counts": {
         "S0_GEOMETRY_FIRST_REPAIR": 2,
         "S1_CPU_GROWPATCH_WINDOWS": 8,
@@ -718,10 +718,10 @@
           "triaged_valid_ct_cm2": 41.7207
         },
         "rtx4060_ledger_aggregate": {
-          "meshes_screened": 6,
-          "valid_ct_cm2": 22.6572,
+          "meshes_screened": 10,
+          "valid_ct_cm2": 37.561,
           "two_family_followups": 2,
-          "coarse_seconds": 7144.06
+          "coarse_seconds": 10790.05
         },
         "recommended_next_stage": "S2_COARSE_SCREEN_EXISTING_CHARTS"
       },
@@ -1764,6 +1764,24 @@
         "leverage_verdict": "LOW_ROI_FOR_NEW_INFRASTRUCTURE_HIGH_ROI_FOR_LIGHTWEIGHT_ADAPTER_AND_DEDUP_EVIDENCE",
         "rationale": "With 6 days until Nov 30, deploying a multi-host SQLite coordinator or waiting on R2 120-map statistical benchmarks yields ZERO Nov 30 Progress Prize value and diverts GPU/engineering time from finalizing/submitting the already-verified 18-receipt FP16 + source-support + Exp T1-T17 dossier. Conversely, our lightweight cross-platform R1 FileReceipts adapter, Windows compatibility patches, S0 19-scroll joined table, and the PHerc. 0211 snap2 winding-collapse dedup measurement take <1 CPU day, risk zero GPU downtime, and directly strengthen engineering rigor for both tracks."
       }
+    },
+    "rtx4060_measured_ledger_tier1b_batch2_pause350ms": {
+      "source": "gemini_lane/evidence/firstletters_rtx4060_screen_ledger.json",
+      "flags": "--vram-fraction 0.50 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 320",
+      "observed_temp_c_range": [
+        57,
+        67
+      ],
+      "hardware_or_oom_incidents": 0,
+      "coarse_meshes": 4,
+      "coarse_valid_ct_cm2": 14.9038,
+      "coarse_total_seconds": 3645.99,
+      "coarse_e2e_s_per_cm2": 244.63,
+      "speedup_vs_batch1_pct": 23.0,
+      "combined_ledger_meshes": 19,
+      "combined_ledger_valid_ct_cm2": 90.9026,
+      "combined_ledger_coarse_total_seconds": 27781.33,
+      "combined_ledger_coarse_e2e_s_per_cm2": 305.62
     }
   },
   "component_scorecard": [
