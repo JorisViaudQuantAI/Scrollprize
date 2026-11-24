@@ -1,0 +1,1574 @@
+{
+  "schema": "grid_quality_audit/v1",
+  "experiment": "Exp T15-GridQuality-Audit",
+  "generated_utc_date": "2026-11-24",
+  "method": "grid_quality formulas of methods_ledger/code/grid_quality.py (claude-023 ledger S8) re-implemented with NumPy/SciPy/tifffile; tifxyz read into RAM from public URLs; aggregates only",
+  "cpu_only": true,
+  "cuda_visible_devices": "-1",
+  "torch_imported": false,
+  "parameters": {
+    "roughness_window_cells": 9,
+    "roughness_min_neighbourhood_valid": 0.6,
+    "shear_spans_cells": [
+      1,
+      8
+    ],
+    "stretch_nominal": "1 / meta.scale per axis (20 vx for scale 0.05); stretch_u along columns, v along rows",
+    "roughness_note": "claude-023 'roughness' = angle to the 9x9 mean normal",
+    "validity": "finite and z > 0 (Claude), plus finite x, y; quad needs corners (r,c), (r,c+1), (r+1,c)"
+  },
+  "http": {
+    "budget_bytes": 62914560,
+    "http_bytes": 19646463,
+    "http_mib": 18.736,
+    "requests": 556,
+    "status_counts": {
+      "200": 556
+    },
+    "persistent_downloads_on_disk": false
+  },
+  "wall_seconds": 143.9,
+  "sets": [
+    {
+      "set_id": "pherc0211_winner_mesh",
+      "source": "vesuvius-challenge-open-data S3: PHerc0211 segments 20261028201525-crop1711-lines123-v9 (public)",
+      "meshes_requested": 1,
+      "meshes_attempted": 1,
+      "meshes_ok": 1,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 310287,
+      "pooled": {
+        "meshes": 1,
+        "cells": 21994,
+        "shear_1cell": {
+          "cells": 21994,
+          "signed_p05_deg": -1.186,
+          "signed_p95_deg": 1.263,
+          "abs_median_deg": 0.344,
+          "abs_p95_deg": 1.756,
+          "pct_cells_gt_10deg": 0.145,
+          "pct_cells_gt_20deg": 0.064,
+          "pct_area_gt_10deg": 0.107,
+          "pct_area_gt_20deg": 0.044
+        },
+        "shear_8cell": {
+          "cells": 19206,
+          "signed_p05_deg": -1.733,
+          "signed_p95_deg": 1.592,
+          "abs_median_deg": 0.465,
+          "abs_p95_deg": 2.889,
+          "pct_cells_gt_10deg": 0.843,
+          "pct_cells_gt_20deg": 0.005,
+          "pct_area_gt_10deg": 0.485,
+          "pct_area_gt_20deg": 0.001
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.9787,
+          "p50": 1.002,
+          "p95": 1.0196,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.127
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9917,
+          "p50": 1.004,
+          "p95": 1.0136,
+          "pct_gt_1p5x": 0.005,
+          "pct_off_by_gt_1p5x_either_way": 0.341
+        },
+        "area_inflation_true_over_nominal": 0.9999,
+        "roughness": {
+          "cells": 21384,
+          "window_cells": 9,
+          "median_deg": 5.239,
+          "p95_deg": 17.927,
+          "pct_flip_dot_lt_0": 0.0,
+          "pct_gt_20deg": 3.69,
+          "pct_gt_45deg": 0.112
+        }
+      },
+      "per_mesh": [
+        {
+          "mesh_id": "PHerc0211_winner_v9",
+          "cells": 21994,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.186,
+            1.263
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -1.733,
+            1.592
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9787,
+            1.002,
+            1.0196
+          ],
+          "area_inflation_true_over_nominal": 0.9999,
+          "roughness_median_p95_deg": [
+            5.239,
+            17.927
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        }
+      ]
+    },
+    {
+      "set_id": "pherc0125_eligible_meshes_screened_negative",
+      "source": "pscamillo/vesuvius-eligible-meshes @66000516 (public); tags = ledger NEGATIVE verdicts",
+      "meshes_requested": 6,
+      "meshes_attempted": 6,
+      "meshes_ok": 6,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 1187645,
+      "pooled": {
+        "meshes": 6,
+        "cells": 64643,
+        "shear_1cell": {
+          "cells": 64643,
+          "signed_p05_deg": -3.657,
+          "signed_p95_deg": 3.508,
+          "abs_median_deg": 0.841,
+          "abs_p95_deg": 5.339,
+          "pct_cells_gt_10deg": 1.446,
+          "pct_cells_gt_20deg": 0.201,
+          "pct_area_gt_10deg": 1.516,
+          "pct_area_gt_20deg": 0.198
+        },
+        "shear_8cell": {
+          "cells": 51394,
+          "signed_p05_deg": -3.177,
+          "signed_p95_deg": 2.834,
+          "abs_median_deg": 0.784,
+          "abs_p95_deg": 4.495,
+          "pct_cells_gt_10deg": 1.247,
+          "pct_cells_gt_20deg": 0.198,
+          "pct_area_gt_10deg": 0.899,
+          "pct_area_gt_20deg": 0.124
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.9842,
+          "p50": 1.0219,
+          "p95": 1.1733,
+          "pct_gt_1p5x": 0.131,
+          "pct_off_by_gt_1p5x_either_way": 0.255
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9711,
+          "p50": 0.9992,
+          "p95": 1.029,
+          "pct_gt_1p5x": 0.003,
+          "pct_off_by_gt_1p5x_either_way": 0.005
+        },
+        "area_inflation_true_over_nominal": 1.0408,
+        "roughness": {
+          "cells": 61117,
+          "window_cells": 9,
+          "median_deg": 7.098,
+          "p95_deg": 22.212,
+          "pct_flip_dot_lt_0": 0.018,
+          "pct_gt_20deg": 6.762,
+          "pct_gt_45deg": 0.517
+        }
+      },
+      "per_mesh": [
+        {
+          "mesh_id": "z10544_w035",
+          "cells": 11336,
+          "shear_1cell_signed_p05_p95_deg": [
+            -4.085,
+            3.176
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -2.653,
+            2.046
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9875,
+            1.0287,
+            1.1565
+          ],
+          "area_inflation_true_over_nominal": 1.0407,
+          "roughness_median_p95_deg": [
+            6.066,
+            18.388
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        },
+        {
+          "mesh_id": "z14144_w035",
+          "cells": 11445,
+          "shear_1cell_signed_p05_p95_deg": [
+            -4.14,
+            3.02
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -3.907,
+            3.084
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9848,
+            1.0158,
+            1.145
+          ],
+          "area_inflation_true_over_nominal": 1.0333,
+          "roughness_median_p95_deg": [
+            8.119,
+            23.326
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        },
+        {
+          "mesh_id": "z15936_w030",
+          "cells": 10180,
+          "shear_1cell_signed_p05_p95_deg": [
+            -4.269,
+            4.042
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -4.028,
+            3.8
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9743,
+            1.0212,
+            1.1368
+          ],
+          "area_inflation_true_over_nominal": 1.0314,
+          "roughness_median_p95_deg": [
+            9.203,
+            27.499
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        },
+        {
+          "mesh_id": "z6944_w030",
+          "cells": 9120,
+          "shear_1cell_signed_p05_p95_deg": [
+            -2.675,
+            2.722
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -2.162,
+            1.522
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9881,
+            1.0181,
+            1.2406
+          ],
+          "area_inflation_true_over_nominal": 1.0485,
+          "roughness_median_p95_deg": [
+            5.561,
+            14.653
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        },
+        {
+          "mesh_id": "z8736_w035",
+          "cells": 11161,
+          "shear_1cell_signed_p05_p95_deg": [
+            -2.755,
+            3.642
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -2.277,
+            2.657
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9855,
+            1.0242,
+            1.2116
+          ],
+          "area_inflation_true_over_nominal": 1.0479,
+          "roughness_median_p95_deg": [
+            7.093,
+            20.313
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        },
+        {
+          "mesh_id": "z9936_w035",
+          "cells": 11401,
+          "shear_1cell_signed_p05_p95_deg": [
+            -3.752,
+            4.094
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -3.225,
+            3.125
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9839,
+            1.0281,
+            1.1783
+          ],
+          "area_inflation_true_over_nominal": 1.0435,
+          "roughness_median_p95_deg": [
+            7.404,
+            23.134
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": false
+        }
+      ]
+    },
+    {
+      "set_id": "pherc0191_hf_spiral_fits",
+      "source": "rodriguescarson/eligible-scroll-spiral-fits @63c641ba, run slice-11600-12400 (w90), raw fit grids",
+      "meshes_requested": 33,
+      "meshes_attempted": 33,
+      "meshes_ok": 33,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 4702280,
+      "pooled": {
+        "meshes": 33,
+        "cells": 279736,
+        "shear_1cell": {
+          "cells": 279736,
+          "signed_p05_deg": -43.934,
+          "signed_p95_deg": 44.306,
+          "abs_median_deg": 20.416,
+          "abs_p95_deg": 49.358,
+          "pct_cells_gt_10deg": 73.425,
+          "pct_cells_gt_20deg": 50.867,
+          "pct_area_gt_10deg": 75.54,
+          "pct_area_gt_20deg": 53.829
+        },
+        "shear_8cell": {
+          "cells": 223063,
+          "signed_p05_deg": -42.111,
+          "signed_p95_deg": 41.033,
+          "abs_median_deg": 23.237,
+          "abs_p95_deg": 45.243,
+          "pct_cells_gt_10deg": 79.721,
+          "pct_cells_gt_20deg": 57.634,
+          "pct_area_gt_10deg": 80.094,
+          "pct_area_gt_20deg": 58.959
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.7456,
+          "p50": 1.1801,
+          "p95": 1.9834,
+          "pct_gt_1p5x": 21.662,
+          "pct_off_by_gt_1p5x_either_way": 23.866
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9809,
+          "p50": 1.2705,
+          "p95": 2.0459,
+          "pct_gt_1p5x": 25.848,
+          "pct_off_by_gt_1p5x_either_way": 25.852
+        },
+        "area_inflation_true_over_nominal": 1.4999,
+        "roughness": {
+          "cells": 266622,
+          "window_cells": 9,
+          "median_deg": 17.787,
+          "p95_deg": 52.521,
+          "pct_flip_dot_lt_0": 0.2352,
+          "pct_gt_20deg": 43.78,
+          "pct_gt_45deg": 8.538
+        }
+      },
+      "pooled_subsets": {
+        "inner_w000_w019": {
+          "meshes": 7,
+          "cells": 13144,
+          "shear_1cell": {
+            "cells": 13144,
+            "signed_p05_deg": -45.407,
+            "signed_p95_deg": 41.871,
+            "abs_median_deg": 18.435,
+            "abs_p95_deg": 50.1,
+            "pct_cells_gt_10deg": 69.545,
+            "pct_cells_gt_20deg": 46.843,
+            "pct_area_gt_10deg": 72.269,
+            "pct_area_gt_20deg": 50.471
+          },
+          "shear_8cell": {
+            "cells": 9392,
+            "signed_p05_deg": -43.294,
+            "signed_p95_deg": 38.443,
+            "abs_median_deg": 22.306,
+            "abs_p95_deg": 46.161,
+            "pct_cells_gt_10deg": 76.118,
+            "pct_cells_gt_20deg": 54.695,
+            "pct_area_gt_10deg": 77.058,
+            "pct_area_gt_20deg": 55.849
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.5532,
+            "p50": 0.9148,
+            "p95": 1.6299,
+            "pct_gt_1p5x": 6.885,
+            "pct_off_by_gt_1p5x_either_way": 19.857
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9377,
+            "p50": 1.2345,
+            "p95": 2.228,
+            "pct_gt_1p5x": 26.735,
+            "pct_off_by_gt_1p5x_either_way": 26.78
+          },
+          "area_inflation_true_over_nominal": 1.1849,
+          "roughness": {
+            "cells": 12544,
+            "window_cells": 9,
+            "median_deg": 21.708,
+            "p95_deg": 72.786,
+            "pct_flip_dot_lt_0": 1.8495,
+            "pct_gt_20deg": 54.281,
+            "pct_gt_45deg": 17.889
+          }
+        },
+        "outer_w020_w089": {
+          "meshes": 26,
+          "cells": 266592,
+          "shear_1cell": {
+            "cells": 266592,
+            "signed_p05_deg": -43.871,
+            "signed_p95_deg": 44.424,
+            "abs_median_deg": 20.508,
+            "abs_p95_deg": 49.334,
+            "pct_cells_gt_10deg": 73.617,
+            "pct_cells_gt_20deg": 51.065,
+            "pct_area_gt_10deg": 75.666,
+            "pct_area_gt_20deg": 53.958
+          },
+          "shear_8cell": {
+            "cells": 213671,
+            "signed_p05_deg": -42.069,
+            "signed_p95_deg": 41.112,
+            "abs_median_deg": 23.278,
+            "abs_p95_deg": 45.212,
+            "pct_cells_gt_10deg": 79.879,
+            "pct_cells_gt_20deg": 57.763,
+            "pct_area_gt_10deg": 80.185,
+            "pct_area_gt_20deg": 59.052
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.7646,
+            "p50": 1.1927,
+            "p95": 1.991,
+            "pct_gt_1p5x": 22.391,
+            "pct_off_by_gt_1p5x_either_way": 24.063
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9838,
+            "p50": 1.2717,
+            "p95": 2.038,
+            "pct_gt_1p5x": 25.804,
+            "pct_off_by_gt_1p5x_either_way": 25.806
+          },
+          "area_inflation_true_over_nominal": 1.5154,
+          "roughness": {
+            "cells": 254078,
+            "window_cells": 9,
+            "median_deg": 17.615,
+            "p95_deg": 51.433,
+            "pct_flip_dot_lt_0": 0.1555,
+            "pct_gt_20deg": 43.262,
+            "pct_gt_45deg": 8.077
+          }
+        }
+      },
+      "per_mesh": [
+        {
+          "mesh_id": "w020",
+          "cells": 4092,
+          "shear_1cell_signed_p05_p95_deg": [
+            -43.597,
+            42.284
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -40.072,
+            37.418
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.7806,
+            1.1182,
+            1.8859
+          ],
+          "area_inflation_true_over_nominal": 1.4561,
+          "roughness_median_p95_deg": [
+            20.219,
+            59.576
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w030",
+          "cells": 6029,
+          "shear_1cell_signed_p05_p95_deg": [
+            -40.258,
+            42.474
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -37.298,
+            38.461
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.7212,
+            1.1751,
+            1.9702
+          ],
+          "area_inflation_true_over_nominal": 1.5046,
+          "roughness_median_p95_deg": [
+            17.55,
+            51.193
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w040",
+          "cells": 7970,
+          "shear_1cell_signed_p05_p95_deg": [
+            -41.155,
+            41.068
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -36.919,
+            38.842
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.6996,
+            1.1643,
+            1.891
+          ],
+          "area_inflation_true_over_nominal": 1.4711,
+          "roughness_median_p95_deg": [
+            17.368,
+            51.624
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w050",
+          "cells": 9848,
+          "shear_1cell_signed_p05_p95_deg": [
+            -44.213,
+            43.32
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -42.962,
+            39.81
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.7291,
+            1.2174,
+            2.0824
+          ],
+          "area_inflation_true_over_nominal": 1.572,
+          "roughness_median_p95_deg": [
+            18.716,
+            52.34
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        }
+      ]
+    },
+    {
+      "set_id": "pherc0826_hf_spiral_fits_slice-6528-7328",
+      "source": "rodriguescarson/eligible-scroll-spiral-fits @63c641ba, band slice-6528-7328, raw fit grids",
+      "meshes_requested": 33,
+      "meshes_attempted": 33,
+      "meshes_ok": 33,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 4498698,
+      "pooled": {
+        "meshes": 33,
+        "cells": 262270,
+        "shear_1cell": {
+          "cells": 262270,
+          "signed_p05_deg": -45.311,
+          "signed_p95_deg": 57.467,
+          "abs_median_deg": 28.783,
+          "abs_p95_deg": 58.963,
+          "pct_cells_gt_10deg": 82.717,
+          "pct_cells_gt_20deg": 65.722,
+          "pct_area_gt_10deg": 85.43,
+          "pct_area_gt_20deg": 70.802
+        },
+        "shear_8cell": {
+          "cells": 207054,
+          "signed_p05_deg": -43.464,
+          "signed_p95_deg": 53.297,
+          "abs_median_deg": 30.988,
+          "abs_p95_deg": 54.951,
+          "pct_cells_gt_10deg": 87.933,
+          "pct_cells_gt_20deg": 72.906,
+          "pct_area_gt_10deg": 88.322,
+          "pct_area_gt_20deg": 74.191
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.6363,
+          "p50": 1.1666,
+          "p95": 3.1092,
+          "pct_gt_1p5x": 31.341,
+          "pct_off_by_gt_1p5x_either_way": 38.121
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9982,
+          "p50": 1.4336,
+          "p95": 2.593,
+          "pct_gt_1p5x": 43.756,
+          "pct_off_by_gt_1p5x_either_way": 43.774
+        },
+        "area_inflation_true_over_nominal": 1.9571,
+        "roughness": {
+          "cells": 249842,
+          "window_cells": 9,
+          "median_deg": 16.391,
+          "p95_deg": 58.576,
+          "pct_flip_dot_lt_0": 1.0359,
+          "pct_gt_20deg": 40.263,
+          "pct_gt_45deg": 9.803
+        }
+      },
+      "pooled_subsets": {
+        "inner_w000_w019": {
+          "meshes": 7,
+          "cells": 12626,
+          "shear_1cell": {
+            "cells": 12626,
+            "signed_p05_deg": -40.927,
+            "signed_p95_deg": 37.708,
+            "abs_median_deg": 19.454,
+            "abs_p95_deg": 44.2,
+            "pct_cells_gt_10deg": 73.151,
+            "pct_cells_gt_20deg": 48.669,
+            "pct_area_gt_10deg": 72.959,
+            "pct_area_gt_20deg": 47.743
+          },
+          "shear_8cell": {
+            "cells": 8916,
+            "signed_p05_deg": -42.067,
+            "signed_p95_deg": 43.644,
+            "abs_median_deg": 28.094,
+            "abs_p95_deg": 45.772,
+            "pct_cells_gt_10deg": 88.784,
+            "pct_cells_gt_20deg": 71.927,
+            "pct_area_gt_10deg": 87.995,
+            "pct_area_gt_20deg": 69.537
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.5831,
+            "p50": 0.8597,
+            "p95": 1.2426,
+            "pct_gt_1p5x": 1.521,
+            "pct_off_by_gt_1p5x_either_way": 13.441
+          },
+          "stretch_along_v_rows": {
+            "p05": 1.0189,
+            "p50": 1.4302,
+            "p95": 1.8848,
+            "pct_gt_1p5x": 38.555,
+            "pct_off_by_gt_1p5x_either_way": 38.563
+          },
+          "area_inflation_true_over_nominal": 1.1314,
+          "roughness": {
+            "cells": 12062,
+            "window_cells": 9,
+            "median_deg": 26.882,
+            "p95_deg": 75.07,
+            "pct_flip_dot_lt_0": 1.5918,
+            "pct_gt_20deg": 62.834,
+            "pct_gt_45deg": 24.366
+          }
+        },
+        "outer_w020_w089": {
+          "meshes": 26,
+          "cells": 249644,
+          "shear_1cell": {
+            "cells": 249644,
+            "signed_p05_deg": -45.52,
+            "signed_p95_deg": 57.867,
+            "abs_median_deg": 29.352,
+            "abs_p95_deg": 59.278,
+            "pct_cells_gt_10deg": 83.201,
+            "pct_cells_gt_20deg": 66.584,
+            "pct_area_gt_10deg": 85.787,
+            "pct_area_gt_20deg": 71.462
+          },
+          "shear_8cell": {
+            "cells": 198138,
+            "signed_p05_deg": -43.593,
+            "signed_p95_deg": 53.566,
+            "abs_median_deg": 31.134,
+            "abs_p95_deg": 55.242,
+            "pct_cells_gt_10deg": 87.894,
+            "pct_cells_gt_20deg": 72.95,
+            "pct_area_gt_10deg": 88.329,
+            "pct_area_gt_20deg": 74.294
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.6401,
+            "p50": 1.197,
+            "p95": 3.1582,
+            "pct_gt_1p5x": 32.849,
+            "pct_off_by_gt_1p5x_either_way": 39.37
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9972,
+            "p50": 1.4339,
+            "p95": 2.622,
+            "pct_gt_1p5x": 44.019,
+            "pct_off_by_gt_1p5x_either_way": 44.038
+          },
+          "area_inflation_true_over_nominal": 1.9989,
+          "roughness": {
+            "cells": 237780,
+            "window_cells": 9,
+            "median_deg": 16.042,
+            "p95_deg": 56.893,
+            "pct_flip_dot_lt_0": 1.0077,
+            "pct_gt_20deg": 39.118,
+            "pct_gt_45deg": 9.064
+          }
+        }
+      }
+    },
+    {
+      "set_id": "pherc0826_hf_spiral_fits_slice-8928-9728",
+      "source": "rodriguescarson/eligible-scroll-spiral-fits @63c641ba, band slice-8928-9728, raw fit grids",
+      "meshes_requested": 33,
+      "meshes_attempted": 33,
+      "meshes_ok": 33,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 4489264,
+      "pooled": {
+        "meshes": 33,
+        "cells": 259672,
+        "shear_1cell": {
+          "cells": 259672,
+          "signed_p05_deg": -63.236,
+          "signed_p95_deg": 65.058,
+          "abs_median_deg": 28.344,
+          "abs_p95_deg": 70.096,
+          "pct_cells_gt_10deg": 79.026,
+          "pct_cells_gt_20deg": 61.975,
+          "pct_area_gt_10deg": 82.684,
+          "pct_area_gt_20deg": 67.107
+        },
+        "shear_8cell": {
+          "cells": 204945,
+          "signed_p05_deg": -62.369,
+          "signed_p95_deg": 60.679,
+          "abs_median_deg": 29.095,
+          "abs_p95_deg": 67.328,
+          "pct_cells_gt_10deg": 81.132,
+          "pct_cells_gt_20deg": 64.099,
+          "pct_area_gt_10deg": 83.176,
+          "pct_area_gt_20deg": 66.855
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.5746,
+          "p50": 1.2645,
+          "p95": 2.7452,
+          "pct_gt_1p5x": 34.933,
+          "pct_off_by_gt_1p5x_either_way": 44.084
+        },
+        "stretch_along_v_rows": {
+          "p05": 1.0269,
+          "p50": 1.6998,
+          "p95": 3.9493,
+          "pct_gt_1p5x": 59.807,
+          "pct_off_by_gt_1p5x_either_way": 59.817
+        },
+        "area_inflation_true_over_nominal": 2.1753,
+        "roughness": {
+          "cells": 247256,
+          "window_cells": 9,
+          "median_deg": 16.512,
+          "p95_deg": 67.055,
+          "pct_flip_dot_lt_0": 1.9991,
+          "pct_gt_20deg": 40.431,
+          "pct_gt_45deg": 11.34
+        }
+      },
+      "pooled_subsets": {
+        "inner_w000_w019": {
+          "meshes": 7,
+          "cells": 12659,
+          "shear_1cell": {
+            "cells": 12659,
+            "signed_p05_deg": -41.978,
+            "signed_p95_deg": 37.529,
+            "abs_median_deg": 14.526,
+            "abs_p95_deg": 48.07,
+            "pct_cells_gt_10deg": 62.793,
+            "pct_cells_gt_20deg": 37.278,
+            "pct_area_gt_10deg": 66.318,
+            "pct_area_gt_20deg": 39.012
+          },
+          "shear_8cell": {
+            "cells": 8983,
+            "signed_p05_deg": -32.478,
+            "signed_p95_deg": 31.819,
+            "abs_median_deg": 13.752,
+            "abs_p95_deg": 39.106,
+            "pct_cells_gt_10deg": 62.307,
+            "pct_cells_gt_20deg": 30.803,
+            "pct_area_gt_10deg": 63.314,
+            "pct_area_gt_20deg": 29.188
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.4292,
+            "p50": 0.6863,
+            "p95": 1.1379,
+            "pct_gt_1p5x": 0.901,
+            "pct_off_by_gt_1p5x_either_way": 46.497
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9858,
+            "p50": 2.183,
+            "p95": 3.2379,
+            "pct_gt_1p5x": 62.319,
+            "pct_off_by_gt_1p5x_either_way": 62.319
+          },
+          "area_inflation_true_over_nominal": 1.3327,
+          "roughness": {
+            "cells": 12084,
+            "window_cells": 9,
+            "median_deg": 10.92,
+            "p95_deg": 55.938,
+            "pct_flip_dot_lt_0": 2.2923,
+            "pct_gt_20deg": 24.379,
+            "pct_gt_45deg": 6.711
+          }
+        },
+        "outer_w020_w089": {
+          "meshes": 26,
+          "cells": 247013,
+          "shear_1cell": {
+            "cells": 247013,
+            "signed_p05_deg": -63.815,
+            "signed_p95_deg": 65.489,
+            "abs_median_deg": 29.418,
+            "abs_p95_deg": 70.402,
+            "pct_cells_gt_10deg": 79.858,
+            "pct_cells_gt_20deg": 63.241,
+            "pct_area_gt_10deg": 83.188,
+            "pct_area_gt_20deg": 67.972
+          },
+          "shear_8cell": {
+            "cells": 195962,
+            "signed_p05_deg": -62.947,
+            "signed_p95_deg": 61.118,
+            "abs_median_deg": 30.218,
+            "abs_p95_deg": 67.566,
+            "pct_cells_gt_10deg": 81.994,
+            "pct_cells_gt_20deg": 65.625,
+            "pct_area_gt_10deg": 83.708,
+            "pct_area_gt_20deg": 67.864
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.6062,
+            "p50": 1.2976,
+            "p95": 2.7826,
+            "pct_gt_1p5x": 36.677,
+            "pct_off_by_gt_1p5x_either_way": 43.96
+          },
+          "stretch_along_v_rows": {
+            "p05": 1.0312,
+            "p50": 1.6895,
+            "p95": 3.9912,
+            "pct_gt_1p5x": 59.678,
+            "pct_off_by_gt_1p5x_either_way": 59.688
+          },
+          "area_inflation_true_over_nominal": 2.2185,
+          "roughness": {
+            "cells": 235172,
+            "window_cells": 9,
+            "median_deg": 16.817,
+            "p95_deg": 67.365,
+            "pct_flip_dot_lt_0": 1.9841,
+            "pct_gt_20deg": 41.255,
+            "pct_gt_45deg": 11.578
+          }
+        }
+      },
+      "per_mesh": [
+        {
+          "mesh_id": "w020",
+          "cells": 3858,
+          "shear_1cell_signed_p05_p95_deg": [
+            -48.119,
+            46.979
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -43.364,
+            37.047
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.3897,
+            0.6614,
+            1.1852
+          ],
+          "area_inflation_true_over_nominal": 1.242,
+          "roughness_median_p95_deg": [
+            12.75,
+            78.152
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w030",
+          "cells": 5615,
+          "shear_1cell_signed_p05_p95_deg": [
+            -64.197,
+            63.39
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -58.586,
+            63.053
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.6162,
+            1.1659,
+            2.8771
+          ],
+          "area_inflation_true_over_nominal": 2.3352,
+          "roughness_median_p95_deg": [
+            18.236,
+            74.264
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w040",
+          "cells": 7379,
+          "shear_1cell_signed_p05_p95_deg": [
+            -57.232,
+            61.994
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -54.297,
+            56.936
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.6605,
+            1.3132,
+            2.6266
+          ],
+          "area_inflation_true_over_nominal": 2.1646,
+          "roughness_median_p95_deg": [
+            15.9,
+            66.358
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        },
+        {
+          "mesh_id": "w050",
+          "cells": 9135,
+          "shear_1cell_signed_p05_p95_deg": [
+            -62.057,
+            65.107
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -60.462,
+            57.236
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.6383,
+            1.3442,
+            2.6611
+          ],
+          "area_inflation_true_over_nominal": 2.2222,
+          "roughness_median_p95_deg": [
+            17.685,
+            63.637
+          ],
+          "nominal_step_vx": [
+            20.0,
+            20.0
+          ],
+          "read_by_gemini_g1": true
+        }
+      ]
+    },
+    {
+      "set_id": "pherc0826_hf_spiral_fits_slice-9328-10128",
+      "source": "rodriguescarson/eligible-scroll-spiral-fits @63c641ba, band slice-9328-10128, raw fit grids",
+      "meshes_requested": 33,
+      "meshes_attempted": 33,
+      "meshes_ok": 33,
+      "meshes_failed": 0,
+      "meshes_skipped_budget": 0,
+      "bytes_this_set": 4458289,
+      "pooled": {
+        "meshes": 33,
+        "cells": 261049,
+        "shear_1cell": {
+          "cells": 261049,
+          "signed_p05_deg": -46.045,
+          "signed_p95_deg": 37.97,
+          "abs_median_deg": 16.325,
+          "abs_p95_deg": 50.364,
+          "pct_cells_gt_10deg": 66.147,
+          "pct_cells_gt_20deg": 42.035,
+          "pct_area_gt_10deg": 75.31,
+          "pct_area_gt_20deg": 54.791
+        },
+        "shear_8cell": {
+          "cells": 206254,
+          "signed_p05_deg": -42.204,
+          "signed_p95_deg": 31.738,
+          "abs_median_deg": 15.348,
+          "abs_p95_deg": 44.035,
+          "pct_cells_gt_10deg": 64.742,
+          "pct_cells_gt_20deg": 39.258,
+          "pct_area_gt_10deg": 73.805,
+          "pct_area_gt_20deg": 51.232
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.5953,
+          "p50": 1.1632,
+          "p95": 3.2498,
+          "pct_gt_1p5x": 32.61,
+          "pct_off_by_gt_1p5x_either_way": 41.517
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9739,
+          "p50": 1.2583,
+          "p95": 2.4244,
+          "pct_gt_1p5x": 27.381,
+          "pct_off_by_gt_1p5x_either_way": 27.444
+        },
+        "area_inflation_true_over_nominal": 1.9405,
+        "roughness": {
+          "cells": 248778,
+          "window_cells": 9,
+          "median_deg": 14.203,
+          "p95_deg": 50.842,
+          "pct_flip_dot_lt_0": 0.6086,
+          "pct_gt_20deg": 33.246,
+          "pct_gt_45deg": 6.85
+        }
+      },
+      "pooled_subsets": {
+        "inner_w000_w019": {
+          "meshes": 7,
+          "cells": 12781,
+          "shear_1cell": {
+            "cells": 12781,
+            "signed_p05_deg": -24.353,
+            "signed_p95_deg": 19.778,
+            "abs_median_deg": 7.019,
+            "abs_p95_deg": 29.542,
+            "pct_cells_gt_10deg": 36.539,
+            "pct_cells_gt_20deg": 12.558,
+            "pct_area_gt_10deg": 37.077,
+            "pct_area_gt_20deg": 12.68
+          },
+          "shear_8cell": {
+            "cells": 9029,
+            "signed_p05_deg": -16.112,
+            "signed_p95_deg": 16.39,
+            "abs_median_deg": 5.011,
+            "abs_p95_deg": 19.909,
+            "pct_cells_gt_10deg": 25.894,
+            "pct_cells_gt_20deg": 4.906,
+            "pct_area_gt_10deg": 25.463,
+            "pct_area_gt_20deg": 3.211
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.5907,
+            "p50": 0.9062,
+            "p95": 1.3627,
+            "pct_gt_1p5x": 2.386,
+            "pct_off_by_gt_1p5x_either_way": 11.767
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9271,
+            "p50": 1.1587,
+            "p95": 1.5067,
+            "pct_gt_1p5x": 5.133,
+            "pct_off_by_gt_1p5x_either_way": 5.25
+          },
+          "area_inflation_true_over_nominal": 1.0563,
+          "roughness": {
+            "cells": 12231,
+            "window_cells": 9,
+            "median_deg": 13.778,
+            "p95_deg": 48.966,
+            "pct_flip_dot_lt_0": 0.8339,
+            "pct_gt_20deg": 31.927,
+            "pct_gt_45deg": 6.197
+          }
+        },
+        "outer_w020_w089": {
+          "meshes": 26,
+          "cells": 248268,
+          "shear_1cell": {
+            "cells": 248268,
+            "signed_p05_deg": -46.534,
+            "signed_p95_deg": 38.471,
+            "abs_median_deg": 17.05,
+            "abs_p95_deg": 50.79,
+            "pct_cells_gt_10deg": 67.671,
+            "pct_cells_gt_20deg": 43.552,
+            "pct_area_gt_10deg": 76.357,
+            "pct_area_gt_20deg": 55.944
+          },
+          "shear_8cell": {
+            "cells": 197225,
+            "signed_p05_deg": -42.615,
+            "signed_p95_deg": 32.059,
+            "abs_median_deg": 16.066,
+            "abs_p95_deg": 44.386,
+            "pct_cells_gt_10deg": 66.52,
+            "pct_cells_gt_20deg": 40.831,
+            "pct_area_gt_10deg": 74.958,
+            "pct_area_gt_20deg": 52.378
+          },
+          "stretch_along_u_columns": {
+            "p05": 0.5954,
+            "p50": 1.1929,
+            "p95": 3.297,
+            "pct_gt_1p5x": 34.165,
+            "pct_off_by_gt_1p5x_either_way": 43.049
+          },
+          "stretch_along_v_rows": {
+            "p05": 0.9778,
+            "p50": 1.2676,
+            "p95": 2.4562,
+            "pct_gt_1p5x": 28.526,
+            "pct_off_by_gt_1p5x_either_way": 28.587
+          },
+          "area_inflation_true_over_nominal": 1.986,
+          "roughness": {
+            "cells": 236547,
+            "window_cells": 9,
+            "median_deg": 14.226,
+            "p95_deg": 50.929,
+            "pct_flip_dot_lt_0": 0.5969,
+            "pct_gt_20deg": 33.314,
+            "pct_gt_45deg": 6.884
+          }
+        }
+      }
+    },
+    {
+      "set_id": "exp_t11_rgt_stitched_synthetic",
+      "source": "seismic_rgt_stitched_grower.py on a synthetic 48x160x160 five-wrap folded slab, in RAM; no real scroll data, no coordinates",
+      "grid_note": "Cartesian lateral lattice, 1 vertex per voxel (nominal step 1 vx), height along the normal axis; roughness window is 9 voxels here against 9 cells = 180 vx on a 20 vx spiral-fit grid",
+      "sheets": 5,
+      "pooled_after_snap": {
+        "meshes": 5,
+        "cells": 125988,
+        "shear_1cell": {
+          "cells": 125988,
+          "signed_p05_deg": -1.546,
+          "signed_p95_deg": 1.025,
+          "abs_median_deg": 0.125,
+          "abs_p95_deg": 2.113,
+          "pct_cells_gt_10deg": 0.013,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.016,
+          "pct_area_gt_20deg": 0.0
+        },
+        "shear_8cell": {
+          "cells": 114818,
+          "signed_p05_deg": -0.258,
+          "signed_p95_deg": 0.241,
+          "abs_median_deg": 0.069,
+          "abs_p95_deg": 0.32,
+          "pct_cells_gt_10deg": 0.0,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.0,
+          "pct_area_gt_20deg": 0.0
+        },
+        "stretch_along_u_columns": {
+          "p05": 0.9904,
+          "p50": 1.0006,
+          "p95": 1.0238,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "stretch_along_v_rows": {
+          "p05": 0.9907,
+          "p50": 1.0011,
+          "p95": 1.0262,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "area_inflation_true_over_nominal": 1.0065,
+        "roughness": {
+          "cells": 125958,
+          "window_cells": 9,
+          "median_deg": 0.922,
+          "p95_deg": 12.38,
+          "pct_flip_dot_lt_0": 0.0,
+          "pct_gt_20deg": 0.633,
+          "pct_gt_45deg": 0.0
+        }
+      },
+      "pooled_before_snap": {
+        "meshes": 5,
+        "cells": 125988,
+        "shear_1cell": {
+          "cells": 125988,
+          "signed_p05_deg": -0.258,
+          "signed_p95_deg": 0.21,
+          "abs_median_deg": 0.062,
+          "abs_p95_deg": 0.311,
+          "pct_cells_gt_10deg": 0.0,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.0,
+          "pct_area_gt_20deg": 0.0
+        },
+        "shear_8cell": {
+          "cells": 114818,
+          "signed_p05_deg": -0.167,
+          "signed_p95_deg": 0.164,
+          "abs_median_deg": 0.049,
+          "abs_p95_deg": 0.223,
+          "pct_cells_gt_10deg": 0.0,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.0,
+          "pct_area_gt_20deg": 0.0
+        },
+        "stretch_along_u_columns": {
+          "p05": 1.0,
+          "p50": 1.0005,
+          "p95": 1.0043,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "stretch_along_v_rows": {
+          "p05": 1.0,
+          "p50": 1.0009,
+          "p95": 1.0061,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "area_inflation_true_over_nominal": 1.0029,
+        "roughness": {
+          "cells": 125958,
+          "window_cells": 9,
+          "median_deg": 1.41,
+          "p95_deg": 3.306,
+          "pct_flip_dot_lt_0": 0.0,
+          "pct_gt_20deg": 0.0,
+          "pct_gt_45deg": 0.0
+        }
+      },
+      "synthetic_truth_surfaces_reference": {
+        "meshes": 5,
+        "cells": 126405,
+        "shear_1cell": {
+          "cells": 126405,
+          "signed_p05_deg": -0.173,
+          "signed_p95_deg": 0.179,
+          "abs_median_deg": 0.051,
+          "abs_p95_deg": 0.25,
+          "pct_cells_gt_10deg": 0.0,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.0,
+          "pct_area_gt_20deg": 0.0
+        },
+        "shear_8cell": {
+          "cells": 115520,
+          "signed_p05_deg": -0.165,
+          "signed_p95_deg": 0.163,
+          "abs_median_deg": 0.048,
+          "abs_p95_deg": 0.222,
+          "pct_cells_gt_10deg": 0.0,
+          "pct_cells_gt_20deg": 0.0,
+          "pct_area_gt_10deg": 0.0,
+          "pct_area_gt_20deg": 0.0
+        },
+        "stretch_along_u_columns": {
+          "p05": 1.0,
+          "p50": 1.0005,
+          "p95": 1.0032,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "stretch_along_v_rows": {
+          "p05": 1.0,
+          "p50": 1.0008,
+          "p95": 1.0051,
+          "pct_gt_1p5x": 0.0,
+          "pct_off_by_gt_1p5x_either_way": 0.0
+        },
+        "area_inflation_true_over_nominal": 1.0024,
+        "roughness": {
+          "cells": 126405,
+          "window_cells": 9,
+          "median_deg": 0.023,
+          "p95_deg": 0.047,
+          "pct_flip_dot_lt_0": 0.0,
+          "pct_gt_20deg": 0.0,
+          "pct_gt_45deg": 0.0
+        }
+      },
+      "per_sheet": [
+        {
+          "mesh_id": "rgt_sheet_00_after_snap",
+          "cells": 25281,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.339,
+            0.946
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -0.29,
+            0.271
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9915,
+            1.0012,
+            1.0207
+          ],
+          "area_inflation_true_over_nominal": 1.0059,
+          "roughness_median_p95_deg": [
+            1.002,
+            10.817
+          ]
+        },
+        {
+          "mesh_id": "rgt_sheet_01_after_snap",
+          "cells": 24864,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.727,
+            1.074
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -0.233,
+            0.211
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9898,
+            1.0005,
+            1.0282
+          ],
+          "area_inflation_true_over_nominal": 1.0068,
+          "roughness_median_p95_deg": [
+            0.872,
+            13.476
+          ]
+        },
+        {
+          "mesh_id": "rgt_sheet_02_after_snap",
+          "cells": 25281,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.87,
+            1.163
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -0.227,
+            0.234
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9882,
+            1.0004,
+            1.0293
+          ],
+          "area_inflation_true_over_nominal": 1.0071,
+          "roughness_median_p95_deg": [
+            0.905,
+            14.02
+          ]
+        },
+        {
+          "mesh_id": "rgt_sheet_03_after_snap",
+          "cells": 25281,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.684,
+            1.002
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -0.228,
+            0.207
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9902,
+            1.0005,
+            1.0276
+          ],
+          "area_inflation_true_over_nominal": 1.0069,
+          "roughness_median_p95_deg": [
+            0.846,
+            13.716
+          ]
+        },
+        {
+          "mesh_id": "rgt_sheet_04_after_snap",
+          "cells": 25281,
+          "shear_1cell_signed_p05_p95_deg": [
+            -1.306,
+            0.987
+          ],
+          "shear_8cell_signed_p05_p95_deg": [
+            -0.286,
+            0.266
+          ],
+          "stretch_u_p05_p50_p95": [
+            0.9917,
+            1.0011,
+            1.02
+          ],
+          "area_inflation_true_over_nominal": 1.0058,
+          "roughness_median_p95_deg": [
+            0.99,
+            10.718
+          ]
+        }
+      ],
+      "seam_phase_rmse_rad": 0.02355,
+      "crossing_fraction_rgt": 0.0,
+      "runtime_seconds": 22.98
+    }
+  ],
+  "claude_reference_numbers_claude_023": {
+    "pherc0211_winner_shear_p05_p95_deg": [
+      -1.7,
+      1.8
+    ],
+    "pherc0175a_snapped_shear_p05_p95_deg": [
+      -31,
+      29
+    ],
+    "pherc1203_shear_p05_p95_deg": [
+      -28,
+      28
+    ],
+    "note": "Claude's figures use an 8-cell span; compare with shear_8cell"
+  },
+  "code_verified_answers": {
+    "q_which_tifxyz_grid_coordinate_convention_does_stream_snap_render_use": {
+      "answer": "Vertex-aligned grid-index convention: output pixel p samples the grid at index p * scale (= p / 20 for scale 0.05), with zero-based vertex indices and no half-pixel offset; the pixel-centre convention (p + 0.5) / 20 is NOT used.",
+      "offset_between_conventions": "0.5 output px = 0.025 grid cells = 0.5 voxel at the nominal 20 vx step (0.5 x local stretch in true voxels on a stretched fit grid)",
+      "render_surface_stack_contains_plus_0p5": false,
+      "sampling_lines": [
+        "gv_1d = (np.arange(ty, ty + th, dtype=np.float64)) * sy",
+        "gu_1d = (np.arange(tx, tx + tw, dtype=np.float64)) * sx"
+      ],
+      "output_size_rule": "round((n_grid - 1) / scale) + 1 pixels per axis (vertex 0 and vertex n-1 land on pixels)",
+      "numerical_probe_stub_reader": {
+        "output_pixels_along_columns": 141,
+        "matches_grid_index_equals_pixel_times_scale": true,
+        "matches_grid_index_equals_pixel_plus_half_times_scale": false
+      },
+      "source": "gemini_lane/stream_snap_render.py::render_surface_stack"
+    },
+    "q_per_surface_flattening_vs_raw_fit_grid_vs_spiral_winding_resample": {
+      "answer": "No gemini_lane screen used per-surface flattening or spiral_winding_resample. Every screen (screen_scroll_rtx4060.py) read the raw fit grid at meta scale (default 0.05), optionally m7-snapped, then render_surface_stack; spiral_winding_resample.py is a diagnostic imported only by the Exp T14 dossier verifier.",
+      "screen_scroll_rtx4060_reads_meta_scale_default_0p05": true,
+      "screen_scroll_rtx4060_snaps_then_renders": true,
+      "snap_keeps_grid_topology": "snap_tifxyz_to_m7 moves vertices along local normals only; no re-gridding (spacing along u/v changes only through the displacement)",
+      "modules_importing_spiral_winding_resample": [
+        "progress_prize_nov2026_verifier"
+      ],
+      "modules_calling_render_surface_stack": [
+        "benchmark_fp_filter_real_ct",
+        "grow_m7_patch",
+        "screen_scroll_rtx4060",
+        "seismic_rgt_stitched_grower",
+        "seismic_rgt_unwrapper"
+      ],
+      "modules_mentioning_flatten_spiral_checkpoint": [],
+      "modules_mentioning_flatboi": [
+        "pherc0139_transverse_physics",
+        "transverse_wavelet_oct_physics"
+      ],
+      "flatboi_note": "the two 'flatboi' mentions are the name of a public PHerc0139 segment (..._zmid_flatboi) read by the transverse-physics controls, not a flattening applied to a spiral fit"
+    },
+    "q_which_pherc0826_pherc0191_fits_did_g1_read_and_on_which_grid": {
+      "answer": "CPU on-sheet triage only (no ink detector) on raw fit grids, m7 2x snap, 5 slices: PHerc0826 band slice-8928-9728 windings w020/w030/w040/w050 (public HF @63c641ba); PHerc0191 run slice-11600-12400 windings w020/w030/w040/w050. Ink detectors (Studio + A-hn, RTX 4060) ran only on PHerc0191 w030 and w050 (both NEGATIVE). The other two PHerc0826 bands and all other windings were not read by Gemini. Grid: raw fit grid at meta scale 0.05 (nominal 20 vx), unflattened and un-resampled, so the claude-023 shear / stretch applies to what G1 read.",
+      "pherc0826_cpu_triage_mesh_ids": [
+        "w020",
+        "w030",
+        "w040",
+        "w050"
+      ],
+      "pherc0191_cpu_triage_mesh_ids": [
+        "w020",
+        "w030",
+        "w040",
+        "w050"
+      ],
+      "pherc0191_ink_detector_reads": [
+        {
+          "mesh_id": "w030",
+          "verdict": "NEGATIVE"
+        },
+        {
+          "mesh_id": "w050",
+          "verdict": "NEGATIVE"
+        }
+      ],
+      "pherc0826_ink_detector_reads": [],
+      "pherc0826_triage_no_ink_detector_run": true,
+      "source": "evidence/pherc0826_1203t2_onsheet_triage.json, evidence/pherc0125_0191_onsheet_triage.json, evidence/firstletters_rtx4060_screen_ledger.json"
+    }
+  },
+  "caveats": [
+    "Grid quality is a parameterisation diagnostic, not an on-sheet or ink certificate.",
+    "HF windings are single fitted windings (w000-w089) sampled at a stride; pooled figures are cell-pooled.",
+    "The PHerc0826 / PHerc0191 fits are author-flagged unvalidated geometry (CC BY-NC 4.0).",
+    "RGT sheets come from a synthetic slab; no unread scroll geometry was touched."
+  ]
+}
