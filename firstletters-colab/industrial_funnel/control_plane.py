@@ -190,9 +190,12 @@ class Coordinator:
             if sorted(stages)!=sorted(required):raise ValueError("Stage dependency contract mismatch")
             if s["stage"] in INFERENCE and not any(p["stage"]=="CONTROL" and p["calibration"]==s["calibration"] for p in parents):
                 raise ValueError("Control recipe/domain mismatch")
-            c.execute("INSERT INTO jobs(id,spec,lane,priority,grant,state,created) VALUES(?,?,?,?,?,'PENDING',?)",
-                      (j,canonical(s),lane,priority,canonical(g),now))
-            self.event(c,now,j,"ENQUEUED")
+            admissible=within(g,self.policy["caps"][lane])
+            state="PENDING" if admissible else "BLOCKED"
+            reason=None if admissible else "GRANT_EXCEEDS_LANE_CAP"
+            c.execute("INSERT INTO jobs(id,spec,lane,priority,grant,state,reason,created) VALUES(?,?,?,?,?,?,?,?)",
+                      (j,canonical(s),lane,priority,canonical(g),state,reason,now))
+            self.event(c,now,j,"ENQUEUED",{"state":state,"reason":reason})
         return j
     def balances(self,c):
         spent={k:zeros() for k in LANES};reserved={k:zeros() for k in LANES}
@@ -303,6 +306,10 @@ class Coordinator:
                             if control["valid_until"]<=now:reason="CONTROL_STALE_OR_INVALID"
                 if s["stage"]=="REVIEW" and r.get("review_status") not in REVIEW:
                     raise ValueError("Missing scoped review outcome")
+                try:
+                    for h in s["inputs"].values():self.store.verify(h)
+                except ValueError:
+                    reason="INPUT_MISSING_OR_CORRUPT"
                 status="FAILED" if reason else "SUCCEEDED";state="BLOCKED" if reason else "SUCCEEDED"
             c.execute("UPDATE attempts SET status=?,actual=?,receipt=?,receipt_hash=? WHERE token=?",
                       (status,canonical(r["actual"]),canonical(r),rh,token))
@@ -325,10 +332,17 @@ class Coordinator:
     def summary(self):
         """Operational aggregate only; no private unit/worker/hash/receipt exports."""
         with self.tx() as c:
-            out={}
-            for j in c.execute("SELECT spec,state FROM jobs"):
+            out={};reasons={};spent,reserved=self.balances(c)
+            for j in c.execute("SELECT spec,state,reason,lane,grant FROM jobs"):
                 s=json.loads(j["spec"]);scroll=s["scroll"]
                 key=(scroll,s["stage"],j["state"]);out[key]=out.get(key,0)+1
-            spent,reserved=self.balances(c)
+                if j["state"]=="BLOCKED":
+                    k=j["reason"] or "UNCLASSIFIED_BLOCK";reasons[k]=reasons.get(k,0)+1
+                elif j["state"]=="PENDING":
+                    if not within(add(add(spent[j["lane"]],reserved[j["lane"]]),json.loads(j["grant"])),self.policy["caps"][j["lane"]]):
+                        k="PENDING_RESOURCE_CAP";reasons[k]=reasons.get(k,0)+1
+                    elif any(c.execute("SELECT state FROM jobs WHERE id=?",(d,)).fetchone()[0]!="SUCCEEDED" for d in s["deps"]):
+                        k="PENDING_DEPENDENCY";reasons[k]=reasons.get(k,0)+1
             return {"counts":[{"scroll":k[0],"stage":k[1],"state":k[2],"n":v} for k,v in sorted(out.items())],
-                    "resources":{"spent":spent,"reserved":reserved},"halted":c.execute("SELECT v FROM config WHERE k='halted'").fetchone()[0]=="true"}
+                    "operational_reasons":reasons,"resources":{"spent":spent,"reserved":reserved},
+                    "halted":c.execute("SELECT v FROM config WHERE k='halted'").fetchone()[0]=="true"}
