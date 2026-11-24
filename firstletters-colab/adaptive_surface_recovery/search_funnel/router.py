@@ -86,7 +86,7 @@ def polygon_scores(ts,props):
             y,x,Y,X=t["box"]
             box=np.array([[x,y],[X,y],[X,Y],[x,Y]],np.float32)
             area,_=cv2.intersectConvexConvex(poly,box,handleNested=True)
-            q=math.sqrt(max(0.,min(1.,float(area)/((Y-y)*(X-x))))/math.sqrt(1+i))
+            q=math.sqrt(max(0.,min(1.,float(area)/((Y-y)*(X-x)))))/math.sqrt(1+i)
             s[t["id"]]=max(s[t["id"]],q)
     return s
 def stroke_score(score,valid,spacing,stroke):
