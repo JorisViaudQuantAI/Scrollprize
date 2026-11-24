@@ -1,0 +1,15 @@
+# Adaptive 069 — wider sparse anchor controls: bounded CT correction fails; spline comparator stronger
+
+2026-11-24. [Frozen protocol](../firstletters-colab/adaptive_surface_recovery/wide_anchor_trust/protocol.md) 28dd93e1fcb87e9a525ef8d99022819f01c65c61; [runner](../firstletters-colab/adaptive_surface_recovery/wide_anchor_trust/run.py) 1debb418e09e6ef4b707a456382bea512b86862e; [executed run](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45379908276), job 138395933693; [complete receipt](../firstletters-colab/adaptive_surface_recovery/wide_anchor_trust/result.json) 72532c1892d0ea9d903bc342f9f891eebe42c6fc. Actual Claude 026 flattened carriers and 052 winner mesh, 6 fresh disjoint 128³ CT boxes, 96² native lateral charts, all previous 058/063/068 fields excluded. Fixed geometry-only support/anchor admission; no proximity selection. All six complete, 54,546 held-out rays, 42,511 near-carrier oracle rays. 94,375,336 CT bytes, 48 charged requests, 9.602s analysis, peak RSS 345,284,608. All eight synthetic gates pass, including planted two-voxel translation recovery, independent unary arithmetic and exact original solver. 3 anchors instead of 5 in 068, 15x lower density. Exact seven-state residual cut ±3 vox, same physical slope bound and exact anchors. No CNN, ink or unread source.
+
+| Arm | Target within2 | MAE vox | Near precision | Oracle recovery | Far among accepted |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| P3 affine 3 anchors | .58664 | 1.97830 | .69530 | .60549 | .03755 |
+| P5 affine 5 anchors | .64023 | 1.90263 | .74289 | .63922 | .04123 |
+| T5 thin-plate spline 5 anchors | .75545 | 1.46162 | .81505 | .67641 | .01678 |
+| B3 bounded CT, 3 anchors | .58692 | 2.05085 | .70794 | .59723 | .04007 |
+| B5 bounded CT, 5 anchors | .61678 | 1.96979 | .73258 | .63177 | .03955 |
+
+**Primary B3 gate FAIL**: all six complete, exact physical constraints pass, only two satisfy all local nonharm and no qualifying >=3pp gains among them; pooled MAE worsens. First field improves within2 .4270→.5716, but 739/3339 accepted carriers far (22.13%); other fields lose. B5 also worse than P5. Limiting CT displacement does not guarantee correct physical sheet. Keep exact solver but reject this cost recipe. 
+
+T5 is descriptive, not primary, but exceeds P5 within2 on every field and reduces pooled MAE 23.18%; far accepted 1508→592. Same five anchors. This is a useful curvature baseline: 068 locally nearly planar small charts do not extrapolate to larger patches. T5 still misses many oracle rays and has local low precision and far errors (first field 454/3400 far); no posthoc promotion. Correct reference-derived anchors and single-valued chart admissions remain favorable conditions, not blind recovery. Same manuscript and public mesh reference, not manual material-center anatomy. 070 protocol independently frozen before 069 outcome to test false anchors against actual alternative carrier depths; no tuning based on this table. All maps and receipts archived. No unread inference, external submission or main merge.
