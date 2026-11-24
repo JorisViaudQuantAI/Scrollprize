@@ -25,12 +25,11 @@ for _p in (str(HERE), str(GEMINI_LANE)):
         sys.path.insert(0, _p)
 
 import prepare_hecate_parity_crops as prep  # noqa: E402
+import leak_guard  # noqa: E402  (shared public-repo privacy guard)
 import stream_snap_render as ssr  # noqa: E402
 import verify_upstream_gpu_burst as burst  # noqa: E402
 
-FORBIDDEN_LOCAL_PATH = re.compile(
-    r"\b[A-Za-z]:\\|/(?:Users|home)/[^/\s]+|App[D]ata|\.t3[\\/]worktrees"
-)
+FORBIDDEN_LOCAL_PATH = leak_guard.LOCAL_PATH   # always rejected, for every account name including "root"
 
 
 def _write_local_zarr_v2(
@@ -200,9 +199,9 @@ class LocalZarrCroppingTests(OfflineBase):
         self.assertNotIn(str(self.tmp), receipt_text)
         self.assertNotIn(str(out_dir), receipt_text)
         self.assertIsNone(FORBIDDEN_LOCAL_PATH.search(receipt_text))
-        user = Path.home().name
-        if len(user) >= 4:
-            self.assertNotIn(user.lower(), receipt_text.lower())
+        self.assertEqual(leak_guard.find_user_leaks(receipt_text, Path.home().name), [])
+        # Same check under a generic "root" account: the word alone is fine, identifying contexts are not.
+        self.assertEqual(leak_guard.find_user_leaks(receipt_text, "root"), [])
 
         # Verify direct compatibility with verify_upstream_gpu_burst.py CLI + dry-run.
         burst_args = burst.build_parser().parse_args([
@@ -400,6 +399,26 @@ class RemoteZRangeTests(OfflineBase):
         self.assertFalse((out_tight / prep.CROP_9P6_NAME).exists())
         self.assertFalse((out_tight / prep.CROP_2P4_NAME).exists())
         del chunk_raw
+
+
+class LeakGuardRootAccountTests(unittest.TestCase):
+    """The public-repo guard must work on a machine whose account is "root" (an ordinary word in this kit)."""
+
+    def test_kit_sources_and_dry_run_receipt_pass_for_root_account(self):
+        texts = [p.read_text(encoding="utf-8") for p in sorted(HERE.glob("*.py")) + sorted(HERE.glob("*.md"))]
+        self.assertTrue(any("hecate_root" in t or "repo_root" in t or "root" in t for t in texts))
+        for text in texts:
+            self.assertIsNone(FORBIDDEN_LOCAL_PATH.search(text))
+            self.assertEqual(leak_guard.find_user_leaks(text, "root"), [])
+
+    def test_root_account_still_rejects_paths_and_credentials(self):
+        bad = ["/" + "root" + "/secret", "C:" + chr(92) + "Users" + chr(92) + "alice" + chr(92) + "x",
+               "/" + "home/alice/x", "/" + "Users/alice/x"]
+        for text in bad:
+            with self.subTest(text=text):
+                self.assertIsNotNone(FORBIDDEN_LOCAL_PATH.search(text))
+        self.assertTrue(leak_guard.find_user_leaks("scp x root" + "@box:/srv", "root"))
+        self.assertEqual(leak_guard.find_user_leaks("repo_root and hecate_root", "root"), [])
 
 
 if __name__ == "__main__":

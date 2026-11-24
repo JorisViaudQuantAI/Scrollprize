@@ -37,6 +37,10 @@ except ImportError:  # pragma: no cover - torch is optional for the structural t
     torch = None
 
 HERE = Path(__file__).resolve().parent
+if str(HERE.parent) not in sys.path:
+    sys.path.insert(0, str(HERE.parent))
+import leak_guard  # noqa: E402  (shared public-repo privacy guard)
+
 STUDIO = HERE / "0001-studio-upstream-fp16.patch"
 HECATE = HERE / "0002-hecate-upstream-fp16.patch"
 HECATE_PR3 = HERE / "0002b-hecate-upstream-fp16-after-pr3.patch"
@@ -46,7 +50,7 @@ STUDIO_INFERENCE = "studio-multiscroll-cpt-20261023/hf/inference.py"
 HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@")
 TOKEN = re.compile(r"hf_[A-Za-z0-9]{30,}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_\w{20,}|sk-[A-Za-z0-9_-]{20,}"
                    r"|AKIA[0-9A-Z]{16}|xox[abpr]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY")
-LOCAL_PATH = re.compile(r"\b[A-Za-z]:\\|/(?:Users|home)/[^/\s]+|App[D]ata|\.t3[\\/]worktrees")
+LOCAL_PATH = leak_guard.LOCAL_PATH   # always rejected, for every account name including "root"
 needs_torch = unittest.skipIf(torch is None, "torch is not installed")
 
 
@@ -247,15 +251,39 @@ class DraftGuardRailTests(unittest.TestCase):
                                      f"PHerc0841 w00 is a Studio training donor; no AUC claim on it: {line!r}")
                     self.assertNotRegex(line, r"0\.91[56]|0\.924")
 
-    def test_no_local_paths_user_names_or_tokens(self):
-        user = Path.home().name
+    def check_kit_privacy(self, user: str):
         for path in self.kit_files():
             text = path.read_text(encoding="utf-8")
-            with self.subTest(file=path.name):
+            with self.subTest(file=path.name, user=user):
                 self.assertIsNone(LOCAL_PATH.search(text))
                 self.assertIsNone(TOKEN.search(text))
-                if len(user) >= 4:
-                    self.assertNotIn(user.lower(), text.lower())
+                self.assertEqual(leak_guard.find_user_leaks(text, user), [])
+
+    def test_no_local_paths_user_names_or_tokens(self):
+        self.check_kit_privacy(Path.home().name)
+
+    def test_kit_passes_leak_guard_for_generic_root_account(self):
+        # The English word "root" (repo_root, hecate_root) must not trip the guard when the account is "root".
+        self.check_kit_privacy("root")
+
+    def test_root_account_still_rejects_paths_and_identifying_contexts(self):
+        secret = "/" + "root" + "/secret"                       # built here so this file holds no literal path
+        win = "C:" + chr(92) + "Users" + chr(92) + "alice" + chr(92) + "data"
+        for text in (secret, f"cp x {secret}", win, "/" + "home/alice/x", "/" + "Users/alice/x", "App" + "Data",
+                     ".t3/" + "worktrees/x"):
+            with self.subTest(text=text):
+                self.assertIsNotNone(LOCAL_PATH.search(text))
+        for text in ("ssh root" + "@host", "user=" + "root", "~" + "root/x"):
+            with self.subTest(text=text):
+                self.assertTrue(leak_guard.find_user_leaks(text, "root"))
+        for text in ("repo_root = Path('.')", "hecate_root", "the root of the problem", "root_dir", "https://h.io/root-cause"):
+            with self.subTest(text=text):
+                self.assertIsNone(LOCAL_PATH.search(text))
+                self.assertEqual(leak_guard.find_user_leaks(text, "root"), [])
+
+    def test_distinctive_user_name_is_still_a_bare_substring_leak(self):
+        self.assertTrue(leak_guard.find_user_leaks("written by Alice", "alice"))
+        self.assertEqual(leak_guard.find_user_leaks("written by someone", "alice"), [])
 
 
 def git(*args, cwd=None, data=None) -> subprocess.CompletedProcess:
