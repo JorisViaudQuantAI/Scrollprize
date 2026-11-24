@@ -197,8 +197,8 @@ def run(a):
         report["metrics"]={};report["gates"]={}
         for name,v in arrays.items():
             m={a:pooled(v[a],v["truth"],d) for a in ("B","C")}
-            for a in ("B","C"):
-                m[a]["blank_flagged_at_05"]=float(np.mean([(s>=.5).mean() for s,k in zip(v[a],v["kind"]) if k=="blank"]))
+            for arm in ("B","C"):
+                m[arm]["blank_flagged_at_05"]=float(np.mean([(s>=.5).mean() for s,k in zip(v[arm],v["kind"]) if k=="blank"]))
             delta=[r["arms"]["C"]["trace_AP"]-r["arms"]["B"]["trace_AP"] for r in report["rows"] if r["specimen"]==name and r["kind"]=="mixed"]
             B,C=m["B"],m["C"];m["mixed_tile_AP_deltas"]=delta
             report["metrics"][name]=m
