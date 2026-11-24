@@ -1,0 +1,43 @@
+name: Adaptive 071 budgeted search funnel
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-adaptive-search-funnel.yml
+permissions:
+  contents: read
+jobs:
+  public-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin CPU dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4 scipy==1.12.0 Pillow==11.3.0 opencv-python-headless==4.10.0.84
+      - name: Retrieve exact cross-agent inputs
+        run: |
+          mkdir -p /tmp/funnel-sources/firstletters-colab/{line_controls,line_review,line_evaluation} /tmp/funnel-sources/gemini_lane/evidence
+          git fetch --no-tags --depth=1 origin a9d6c3a055cfa9dad9dfde19f452ca13fad0b34a
+          for p in firstletters-colab/line_controls/prepare.py firstletters-colab/line_controls/protocol.json firstletters-colab/line_controls/amendment-001.json firstletters-colab/line_review/review.py firstletters-colab/line_evaluation/protocol.v2.json; do
+            git show FETCH_HEAD:"$p" > "/tmp/funnel-sources/$p"
+            test "$(git hash-object "/tmp/funnel-sources/$p")" = "$(git rev-parse FETCH_HEAD:"$p")"
+          done
+          git fetch --no-tags --depth=1 origin 74c55996176970025a41992bce22bdf893289910
+          for p in gemini_lane/screening_fp_filter.py gemini_lane/evidence/coverage_matrix.json; do
+            git show FETCH_HEAD:"$p" > "/tmp/funnel-sources/$p"
+            test "$(git hash-object "/tmp/funnel-sources/$p")" = "$(git rev-parse FETCH_HEAD:"$p")"
+          done
+          test "$(git hash-object /tmp/funnel-sources/gemini_lane/evidence/coverage_matrix.json)" = a4b94bb278d3b414be794b6e76ba51edb83fb984
+      - name: Run all-scroll router and public budget experiment
+        run: python firstletters-colab/adaptive_surface_recovery/search_funnel/run.py --sources /tmp/funnel-sources --cache /tmp/funnel-controls --output /tmp/funnel-071.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: adaptive-071-funnel-receipt
+          path: /tmp/funnel-071.json
+          retention-days: 30
