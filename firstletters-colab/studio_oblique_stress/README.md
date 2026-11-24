@@ -1,5 +1,10 @@
 # Studio oblique sampling stress — Q33
 
+**Executed results:** [RESULTS.md](RESULTS.md) reports all 221 CPU forwards,
+the native reconstruction and independent audits. Nine of twelve tilted
+conditions lose more than 10 points of recall. The x +5 degree pooled AP gain
+does not translate to a comparable improvement on mixed cores.
+
 This module tests how the released Studio ink detector responds when the **actual 3D sampling geometry** of a known labeled surface is tilted. It uses a public PHerc0841 author holdout, the original native CT acquisition, and a fixed checkpoint. Predictions are mapped back to the same physical surface points before comparison.
 
 The experiment extends the preceding XY scale stress test to a different error: rotation of the complete curved sampling patch in 3D. It does not establish an improvement, a usable tilt correction, or a new reading. This README describes the protocol, the geometry-only preflight amendment below, and reproduction interfaces; it makes no detector-result claim.
@@ -149,4 +154,23 @@ Preparation should record source hashes, selected-core label counts, geometry an
 - Patches and pixels are spatially dependent. Do not treat them as independent scrolls or construct an independent-pixel significance claim.
 - A favorable angle on this panel would not authorize selecting angles on unread candidates. Any such use requires a separate prospective validation.
 
-See [research.md](research.md) for the primary sampling references and the distinction between whole-patch rotation and normal-ray perturbation. The executable protocol and numerical receipts determine what was actually run; this document does not supply a detector outcome.
+See [research.md](research.md) for the primary sampling references and the distinction between whole-patch rotation and normal-ray perturbation. [RESULTS.md](RESULTS.md) records the completed experiment; the executable protocol and numerical receipts specify the exact run.
+
+## Replay the published scores without CT or weights
+
+The small archive contains aligned probabilities and original/masked labels.
+The independent checker imports neither the producer nor its metric helper:
+
+```bash
+python firstletters-colab/studio_oblique_stress/audit_results.py \
+  --output firstletters-colab/studio_oblique_stress/evidence \
+  --protocol firstletters-colab/studio_oblique_stress/evidence/protocol.json \
+  --historical firstletters-colab/studio_scale_stress/evidence/scored_arrays.npz \
+  --report /tmp/q33-archive-review.json
+```
+
+Use a fresh report filename. This mode verifies selection, masks, labels,
+historical identity, metrics and gates. To additionally verify the full local
+prediction readback and prepared-source identity, supply `--prepared`,
+`--source-cache` and `--checkpoint` with the paths used for the complete run.
+The published full audit and portable audit are both in `evidence/`.

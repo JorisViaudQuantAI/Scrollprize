@@ -1,0 +1,1796 @@
+{
+  "protocol_sha256": "d56864f88ba32302344c1858f9a53cf4c1f203b64a7b28fab980105535793a80",
+  "code_hashes": {
+    "firstletters-colab/studio_oblique_stress/run.py": "e3581fdd450f920908903b493e877a30716cec68471db58fac07c6e8a206a656",
+    "firstletters-colab/studio_oblique_stress/native.py": "4e22d845b466e4de68d55e6e5382a8f87537cf1cfd306d5ae5e047d2792e5e6e",
+    "firstletters-colab/studio_oblique_stress/assets.py": "24f13feb5993abe83421eaaf65637cbe88a95fd32a6818960ee9a26e4e2c0874",
+    "firstletters-colab/studio_oblique_stress/geometry.py": "225960e8cc55d14335c50e67449933bcc2008f36187e3d5a075a59c3545b61dd",
+    "firstletters-colab/studio_oblique_stress/test_geometry.py": "063f23115dacc498623e3105fd2d6aaec34feefbcbccb4f023ea1dcacc8a5027",
+    "firstletters-colab/studio_control/run_public_control.py": "ccf05aa940a6cd0469247699df2bedfd75151ca42bafaa7890bb8cbf9a401536",
+    "gemini_lane/stream_snap_render.py": "d93e6e3c01aa52811bec574b00bcf361d0fdaabd8a8cf8e1fdfbf02897e2f397"
+  },
+  "source_commit": "bf66f753176792a966bca17822629fb8821f20c8",
+  "checkpoint_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "wall_seconds": 542.7830818920002,
+  "summed_forward_seconds": 1069.4751099389998,
+  "forwards": [
+    {
+      "arm": "identity",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 5.136720722000064,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 5.2639240649998555,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 5.202390093999838,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 5.131380519000004,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.226340939000011,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.264920043999837,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 5.315940048999892,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 5.3420163180001055,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.8890314949999265,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.889361833000066,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.818993196000065,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.898585567000055,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 4.182368800000177,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.298921414000006,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.253480264000018,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "identity",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 4.42635023999992,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "identity",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 4.318076355999892,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.336521461000075,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.430300903999978,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.496126724000078,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 5.023697445999915,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.5682507330000135,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.679216193000002,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.899342122000007,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.932679085000018,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.483222526999953,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.212642361999997,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.769804002000001,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 0,
+      "author_index": 250,
+      "seconds": 4.9841479340000205,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.800744662999932,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.8956364810001105,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.51334087500004,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.366688821000025,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.651044363999972,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.44569731699994,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.742069869000034,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.814745813999934,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.689632471000095,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.880092540000078,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.492218773000104,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 1,
+      "author_index": 288,
+      "seconds": 4.59901650200004,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.903739123999912,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.729174695999973,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.0159752009999465,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.371640246999959,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.701933238000038,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.651875660000087,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 5.337935289999905,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.894914663000009,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.42050088499991,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.477560045000018,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.518035341000086,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 2,
+      "author_index": 326,
+      "seconds": 4.752678156999991,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.205255067000053,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.145103654999957,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.9727511170001435,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.977671504,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.473798489000046,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.485208920000105,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.703483425000059,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.673930910000081,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.862522506999994,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 5.2841661509999085,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 4.9110001439999,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 3,
+      "author_index": 357,
+      "seconds": 5.441085568999824,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.4334837979999975,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.976094509999939,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.627192895999997,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.406942345000061,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.178681551000182,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.547369350000054,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 4.804342499000086,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.030583939999815,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.526546177,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.12978724300001,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.1916673109999465,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 4,
+      "author_index": 358,
+      "seconds": 5.577457850999963,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 4.920005106999952,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.168280105000122,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.6316783350000605,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.834922326999958,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.996030561999987,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.864777369999956,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.1471012169999995,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.536446283000032,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.341335443000162,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.498363425999969,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 5.470318351999822,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 5,
+      "author_index": 359,
+      "seconds": 4.954087820000041,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.839834351000036,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 5.313219617999948,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 5.321347289999949,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 5.522587563999878,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.9089383279999765,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.755634358000179,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.995067333999941,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.8181693269998505,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.338663793000023,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.785648077000133,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.622234079000009,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 6,
+      "author_index": 360,
+      "seconds": 4.218302855000047,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 3.8079837159998533,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.2709242910000285,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.427538163000008,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.3488387749998765,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.303557098000056,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.654731161999962,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.792098201000044,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.696403603999897,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.33751505400005,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 3.735494360000075,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.263532814999962,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 7,
+      "author_index": 361,
+      "seconds": 4.325623201000099,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.30486242500001,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.860849434000102,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.421017997000035,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.42701441600002,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.326735891999988,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 3.9518035219998637,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 3.929479750000155,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.400048280999954,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.599115777999941,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.528999674000033,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.603750425000044,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 8,
+      "author_index": 362,
+      "seconds": 4.168379254999991,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.1792697939999925,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 3.7827852190000613,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.02515435600003,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.339032890999988,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 3.912851821000004,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.487121159000026,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.421357593999801,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.065353520999906,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.314808774000085,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.659029333000035,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.676886878000005,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 9,
+      "author_index": 395,
+      "seconds": 4.547024893999833,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.198156797000138,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.2497618970000985,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.274047651000046,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.681225346000019,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 4.879376374000003,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.272638754000127,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.36351060800007,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.364499303000002,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.085720538000032,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.3851228320002065,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.02615608799988,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 10,
+      "author_index": 399,
+      "seconds": 5.4221970860000965,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.9152111089999835,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.559803259999853,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.975073878999865,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.9950625449998824,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.932141910999917,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.421868011000015,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.2393318659999295,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 5.055562247000125,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.849950872999898,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 5.129181122000091,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 4.995396133000213,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 11,
+      "author_index": 430,
+      "seconds": 5.037736464000091,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.863786936999986,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.745722530999956,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.9083824330000425,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.858042705000116,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.63468571899989,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.768197994000275,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.878735518999747,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.983670569999958,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 4.98477032799974,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 5.203780347999782,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 5.435743094000372,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 12,
+      "author_index": 432,
+      "seconds": 5.324359788000038,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.370255871000154,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.310607157999584,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.279991842999607,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.043802272999983,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.285624502000246,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 4.044237382000119,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 4.484576006000225,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.137291964999804,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.136911462000171,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.562379448000229,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.494816433999858,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 13,
+      "author_index": 469,
+      "seconds": 5.467222625999966,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 5.427507956000227,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 5.504956588999903,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 5.301889559999836,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.509949202000371,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.226627563999955,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.228625787000055,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.901585811000132,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.454951191999953,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.697443748000296,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.040323606000129,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.315661307000028,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 14,
+      "author_index": 471,
+      "seconds": 4.310264253999776,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 4.287028970999927,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 5.170754442000089,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 4.983120190000136,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 4.74920442299981,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 4.64496683499965,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 6.491003247999743,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 6.146917782999935,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 5.971648427000218,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 6.236059869000201,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 5.6164308209999945,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 5.849728273999972,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 15,
+      "author_index": 472,
+      "seconds": 5.421368182000151,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_minus20",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.434301827999661,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus5",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.561076146999767,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_minus10",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.6951287000001685,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus5",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.454275120999682,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "x_plus10",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.549804019000021,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "x_plus20",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 4.877560124999945,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus20",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.115445858999919,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_minus10",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.041856220000227,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_minus5",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.057770051999796,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus5",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.435268575999999,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    },
+    {
+      "arm": "y_plus10",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 5.418568018999849,
+      "peak_rss_kib": 1981756,
+      "pid": 27
+    },
+    {
+      "arm": "y_plus20",
+      "patch": 16,
+      "author_index": 509,
+      "seconds": 4.221971383999971,
+      "peak_rss_kib": 1981656,
+      "pid": 24
+    }
+  ],
+  "full_probabilities_sha256": "1f2201463cab617d9b5a0d2286b448f390368f19e1afed0f22dd86e6929cb434",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "torch": "2.13.0+cpu",
+  "runtime": {
+    "workers": 2,
+    "threads_per_worker": 4,
+    "interop_threads": 1
+  }
+}
