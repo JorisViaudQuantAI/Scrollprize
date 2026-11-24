@@ -31,6 +31,11 @@ jobs:
         run: python -m pip install numpy==2.3.5 pillow==11.3.0
       - name: Synthetic and adversarial checks
         run: python -m unittest discover -s firstletters-colab/industrial_funnel/b4_0211 -p 'test_*.py' -v
+      - name: Recheck existing industrial-native compatibility tests
+        run: |
+          mkdir -p /tmp/b4-0211
+          python firstletters-colab/industrial_funnel/verify_native.py --output /tmp/b4-0211/native_tests.json
+          python -c "import json; x=json.load(open('/tmp/b4-0211/native_tests.json')); assert x['passed'] and x['tests_run'] >= 168"
       - name: Replay rank population and frozen s48 review
         run: |
           mkdir -p /tmp/b4-0211
