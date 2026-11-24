@@ -70,6 +70,23 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
         self.assertFalse(gm7["persistent_ct_on_disk"])
         self.assertFalse(gm7["gate_passed"])
 
+        t11 = p1["exp_t11_seismic_rgt_stitched"]
+        self.assertEqual(t11["http_bytes"], 34512551)
+        self.assertFalse(t11["persistent_ct_on_disk"])
+        self.assertEqual(t11["total_sheet_count_rgt"], 34)
+        self.assertAlmostEqual(t11["total_usable_cm2_rgt_across_scrolls"], 0.215204, places=6)
+        self.assertAlmostEqual(t11["max_seam_phase_rmse_rad"], 0.102162, places=6)
+        self.assertAlmostEqual(t11["pherc1545_area_gain"], 29.00924, places=5)
+
+        t15 = p1["exp_t15_grid_quality_audit"]
+        self.assertEqual(t15["http_bytes"], 19646463)
+        self.assertFalse(t15["persistent_downloads_on_disk"])
+        self.assertEqual(t15["pherc0211_shear_8cell_abs_p95_deg"], 2.889)
+        self.assertEqual(t15["pherc0125_screened_pct_area_gt_20deg"], 0.124)
+        self.assertEqual(t15["pherc0125_screened_area_inflation"], 1.0408)
+        self.assertEqual(t15["pherc0191_hf_pct_area_gt_20deg"], 58.959)
+        self.assertEqual(t15["exp_t11_rgt_synthetic_shear_p95_deg"], 0.32)
+
     def test_02_pillar2_fp16_patches_and_streaming_invariants(self) -> None:
         patches = self.summary["artifacts"]["patches"]
         self.assertEqual(patches["studio_fp16"]["base_commit"], "bf66f753176792a966bca17822629fb8821f20c8")
@@ -129,6 +146,31 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
         self.assertEqual(nogo["exp_t5_pherc0306b_verdict"], "CLOSED NO-GO")
         self.assertEqual(nogo["exp_t7_overall_verdict"], "CLOSED NO-GO")
         self.assertEqual(nogo["exp_t7_pherc0841_2p403um_wst_slope_drop_vs_pm8"], -0.04112)
+        self.assertEqual(nogo["exp_t12_overall_verdict"], "CLOSED NO-GO")
+        self.assertEqual(nogo["exp_t12_bridge_post_alignment_iou"], 0.57853)
+        self.assertEqual(nogo["exp_t12_fold_b_human_2p4um_auc"], 0.53408)
+
+        t13 = p3["exp_t13_tiled_q34_ranker"]
+        self.assertEqual(t13["upgraded_positive_pass_count"], 5)
+        self.assertEqual(t13["upgraded_negative_pass_count"], 0)
+        self.assertEqual(t13["pherc0343_argus_area_matched_retention_max"], 0.967727)
+
+        t16 = p3["exp_t16_gpu_shear_and_0211"]
+        self.assertEqual(t16["min_15deg_interior_ret_ge_07"], 0.939702)
+        self.assertEqual(t16["min_30deg_interior_ret_ge_07"], 0.906106)
+        self.assertTrue(t16["pherc0211_winner_letters_recovered"])
+        self.assertFalse(t16["pherc0211_legacy_passes_q34_bar"])
+
+        t17 = p3["exp_t17_gpu_0211_and_0306b_matrix"]
+        self.assertTrue(t17["stride96_snap2_screening_gate_pass"])
+        self.assertEqual(t17["stride96_snap2_ret_ge_07_vs_canon"], 0.869617)
+        self.assertEqual(t17["snap2_on_sheet_after_snap"], 0.9953125)
+        self.assertEqual(t17["snap2_studio_s48_dom_over_opp_ratio"], 8.5508)
+        self.assertTrue(t17["snap2_studio_s48_top_tile_passes_q34_bar"])
+        self.assertFalse(t17["snap2_studio_s48_global_upgraded_passes_q34_bar"])
+        self.assertTrue(t17["pherc0306b_same_face_direction_between_families"])
+        self.assertEqual(t17["pherc0306b_ahn_dom_over_opp_ratio"], 2.8031)
+        self.assertEqual(len(self.summary["artifacts"]["receipts"]), 18)
 
     def test_04_rtx4060_ledger_sum_and_followup_consistency(self) -> None:
         led = self.summary["pillar3_fp_suppression_invariance_and_ledger"]["rtx4060_screen_ledger"]
@@ -200,6 +242,7 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
             self.assertFalse(brief["torch_imported"])
             self.assertTrue(brief["dossier_markdown_valid"])
             self.assertEqual(brief["rtx4060_screened_cm2"], 75.9988)
+            self.assertEqual(brief["receipts_verified"], 18)
             self.assertTrue(out_json.is_file())
             exported = json.loads(out_json.read_text(encoding="utf-8"))
             self.assertEqual(exported["schema"], V.SCHEMA_VERSION)

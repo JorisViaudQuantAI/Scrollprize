@@ -314,29 +314,41 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
     # 2. Load and hash all committed evidence JSON receipts
     receipt_names = (
         "seismic_rgt_crushed_preflight.json",
+        "seismic_rgt_stitched_patches.json",
         "virgin_scroll_patch_preflight.json",
+        "grid_quality_audit.json",
         "studio_rtx4060_parity.json",
         "pherc0306b_positive_gate_rtx4060.json",
         "firstletters_rtx4060_screen_ledger.json",
         "gpu_orientation_and_nyul_control.json",
         "q31_cloud_masked_tfce_rescue.json",
         "tfce_q34_calibration.json",
+        "tiled_q34_cloud_masked_calibration.json",
+        "gpu_shear_and_0211_control.json",
+        "gpu_0211_and_0306b_calibration_matrix.json",
         "q22_radiometric_shift_audit.json",
         "transverse_cross_scroll_replication.json",
         "transverse_wavelet_oct_ablation.json",
         "pherc0139_transverse_physics_ablation.json",
+        "villa1739_cross_resolution_bridge.json",
     )
+    public_control_uv_crop_receipts = {
+        "pherc0306b_positive_gate_rtx4060.json",
+        "gpu_orientation_and_nyul_control.json",
+        "gpu_shear_and_0211_control.json",
+        "gpu_0211_and_0306b_calibration_matrix.json",
+    }
     receipt_digests: dict[str, dict[str, Any]] = {}
     receipts: dict[str, dict[str, Any]] = {}
     for name in receipt_names:
         p = ev_dir / name
         raw_text = p.read_text(encoding="utf-8")
-        # Ledger must pass full forbidden substring check including uv_crop;
-        # control receipts on public PHerc0306B contain uv_crop for the public control crop.
-        if name == "firstletters_rtx4060_screen_ledger.json":
-            validate_privacy_text(raw_text, source_label=name)
-        else:
+        # Public-control receipts on PHerc0306B / PHerc0211 contain uv_crop for published control crops only;
+        # all other receipts and ledgers must pass the full forbidden-substring check including uv_crop.
+        if name in public_control_uv_crop_receipts:
             validate_privacy_text(raw_text.replace('"uv_crop"', '"public_control_crop"'), source_label=name)
+        else:
+            validate_privacy_text(raw_text, source_label=name)
         receipts[name] = json.loads(raw_text)
         lf_bytes = lf_normalized_bytes(p)
         receipt_digests[name] = {
@@ -404,6 +416,69 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
         or virgin["gates"]["passed"] is not False
     ):
         raise ValueError("virgin_scroll_patch_preflight.json metrics mismatch")
+
+    rgt11 = receipts["seismic_rgt_stitched_patches.json"]
+    if (
+        rgt11["schema"] != "seismic_rgt_stitched_patches/v1"
+        or not rgt11["cpu_only"]
+        or rgt11["torch_imported"]
+        or rgt11["http"]["http_bytes"] != 34512551
+        or rgt11["http"]["persistent_ct_on_disk"] is not False
+    ):
+        raise ValueError("seismic_rgt_stitched_patches.json header/HTTP mismatch")
+    rgt11_sum = rgt11["summary"]
+    rgt11_boxes = {b["scroll"]: b["metrics"] for b in rgt11["boxes"]}
+    if (
+        rgt11_sum["total_sheet_count_rgt"] != 34
+        or rgt11_sum["total_usable_cm2_rgt_across_scrolls"] != 0.215204
+        or rgt11_sum["max_crossing_fraction_rgt"] != 0.0
+        or rgt11_sum["max_seam_phase_rmse_rad"] != 0.102162
+        or rgt11_boxes["PHerc0306B"]["area_gain_ratio_vs_baseline"] != 9.643477
+        or rgt11_boxes["PHerc1545"]["area_gain_ratio_vs_baseline"] != 29.00924
+        or rgt11_boxes["PHerc0846A"]["area_gain_ratio_vs_baseline"] != 11.793379
+        or rgt11_boxes["PHerc1545"]["mean_on_sheet_after_snap_rgt"] != 0.896531
+        or rgt11_boxes["PHerc0846A"]["mean_on_sheet_after_snap_rgt"] != 0.960576
+    ):
+        raise ValueError("Exp T11-RGT-Scale metrics mismatch")
+
+    grid = receipts["grid_quality_audit.json"]
+    if (
+        grid["schema"] != "grid_quality_audit/v1"
+        or not grid["cpu_only"]
+        or grid["torch_imported"]
+        or grid["http"]["http_bytes"] != 19646463
+        or grid["http"]["requests"] != 556
+        or grid["http"]["persistent_downloads_on_disk"] is not False
+    ):
+        raise ValueError("grid_quality_audit.json header/HTTP mismatch")
+    grid_sets = {s["set_id"]: s for s in grid["sets"]}
+    g_0211 = grid_sets["pherc0211_winner_mesh"]["pooled"]
+    g_0125 = grid_sets["pherc0125_eligible_meshes_screened_negative"]["pooled"]
+    g_0191 = grid_sets["pherc0191_hf_spiral_fits"]["pooled"]
+    g_0826_bands = [
+        grid_sets[k]["pooled"]
+        for k in (
+            "pherc0826_hf_spiral_fits_slice-6528-7328",
+            "pherc0826_hf_spiral_fits_slice-8928-9728",
+            "pherc0826_hf_spiral_fits_slice-9328-10128",
+        )
+    ]
+    g_t11 = grid_sets["exp_t11_rgt_stitched_synthetic"]
+    if (
+        g_0211["shear_8cell"]["abs_p95_deg"] != 2.889
+        or g_0211["area_inflation_true_over_nominal"] != 0.9999
+        or g_0125["shear_8cell"]["pct_area_gt_20deg"] != 0.124
+        or g_0125["area_inflation_true_over_nominal"] != 1.0408
+        or g_0191["shear_8cell"]["pct_area_gt_20deg"] != 58.959
+        or g_0191["area_inflation_true_over_nominal"] != 1.4999
+        or min(b["shear_8cell"]["pct_area_gt_20deg"] for b in g_0826_bands) != 51.232
+        or max(b["shear_8cell"]["pct_area_gt_20deg"] for b in g_0826_bands) != 74.191
+        or min(b["area_inflation_true_over_nominal"] for b in g_0826_bands) != 1.9405
+        or max(b["area_inflation_true_over_nominal"] for b in g_0826_bands) != 2.1753
+        or g_t11["pooled_after_snap"]["shear_8cell"]["abs_p95_deg"] != 0.32
+        or g_t11["crossing_fraction_rgt"] != 0.0
+    ):
+        raise ValueError("Exp T15-GridQuality-Audit metrics mismatch")
 
     # 4. Pillar 2 Verification: FP16 Consumer-GPU Inference & Zero-Disk Streaming
     parity = receipts["studio_rtx4060_parity.json"]
@@ -596,10 +671,75 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
     ):
         raise ValueError("firstletters_rtx4060_screen_ledger.json sum or count mismatch")
 
-    # 6. Honest Falsification Ledger (Exp T3, Exp T5, Exp T7)
+    t13 = receipts["tiled_q34_cloud_masked_calibration.json"]
+    t13_sv = t13["summary_verdict"]
+    t13_regs = {r["regime_id"]: r for r in t13["regime_benchmarks"]}
+    if (
+        t13["http_budget"]["used_bytes"] != 26505150
+        or not t13["http_budget"]["within_cap"]
+        or t13_sv["upgraded_positive_pass_count"] != 5
+        or t13_sv["upgraded_negative_pass_count"] != 0
+        or t13_sv["legacy_positive_pass_count"] != 2
+        or not t13_sv["bottleneck_a_multiline_rescue_verified"]
+        or not t13_sv["bottleneck_b_rim_speck_rescue_verified"]
+    ):
+        raise ValueError("Exp T13 tiled Q34 calibration receipt mismatch")
+
+    t16 = receipts["gpu_shear_and_0211_control.json"]
+    ArmA_fs = t16["arm_a_shear_stress"]["findings_summary"]
+    ArmB_vs = t16["arm_b_pherc0211_winner"]["validation_summary"]
+    if (
+        t16["hardware_safety"]["persistent_ct_on_disk"] is not False
+        or t16["hardware_safety"]["post_run_temp_c"] != 60
+        or ArmA_fs["min_15deg_interior_ret_ge_07"] != 0.939702
+        or ArmA_fs["min_30deg_interior_ret_ge_07"] != 0.906106
+        or ArmA_fs["min_overall_interior_pearson_r"] != 0.94453
+        or t16["arm_b_pherc0211_winner"]["valid_ct_cm2"] != 0.6421
+        or ArmB_vs["dom_over_opp_gt_07_ratio"] != 7.535
+        or ArmB_vs["winner_letters_recovered"] is not True
+        or ArmB_vs["passes_q34_bar"] is not False
+    ):
+        raise ValueError("Exp T16-GPU shear / PHerc0211 control receipt mismatch")
+
+    t17 = receipts["gpu_0211_and_0306b_calibration_matrix.json"]
+    arm1 = t17["arm1_pherc0211_matrix"]
+    a1_vs = arm1["verdict_summary"]
+    arm1_snap2 = arm1["snap_modes"]["snap2"]
+    arm2 = t17["arm2_pherc0306b_layer_card"]
+    if (
+        t17["hardware_safety"]["persistent_ct_on_disk"] is not False
+        or t17["hardware_safety"]["post_run_temp_c"] != 57
+        or a1_vs["stride96_snap2_screening_gate_pass"] is not True
+        or a1_vs["stride96_snap2_ret_ge_07_vs_canon"] != 0.869617
+        or arm1_snap2["geometry_snap_metrics"]["on_sheet_after_snap"] != 0.9953125
+        or arm1_snap2["studio_s48"]["dom_over_opp_gt_07_ratio"] != 8.5508
+        or arm1_snap2["studio_s48"]["upgraded_exp_t13_q34"]["top_tile_passes_q34_bar"] is not True
+        or arm1_snap2["studio_s48"]["upgraded_exp_t13_q34"]["global_upgraded_passes_q34_bar"] is not False
+        or arm1_snap2["studio_s96"]["dom_over_opp_gt_07_ratio"] != 6.8531
+        or arm2["reading_order_alignment"]["same_face_direction_between_families"] is not True
+        or arm2["reading_order_alignment"]["studio_dominant_face"] != "asc"
+        or arm2["reading_order_alignment"]["ahn_dominant_face"] != "asc"
+        or arm2["ahn_s0"]["dom_over_opp_gt_07_ratio"] != 2.8031
+    ):
+        raise ValueError("Exp T17-GPU calibration matrix receipt mismatch")
+
+    # 6. Honest Falsification Ledger (Exp T3, Exp T5, Exp T7, Exp T12)
     t3 = receipts["pherc0139_transverse_physics_ablation.json"]
     t5 = receipts["transverse_wavelet_oct_ablation.json"]
     t7 = receipts["transverse_cross_scroll_replication.json"]
+    t12 = receipts["villa1739_cross_resolution_bridge.json"]
+    t12_reg = t12["pherc0841_cross_resolution_bridge"]["registration_2p4um_to_9p366um"]
+    t12_foldb = t12["pherc0841_cross_resolution_bridge"]["fold_b_held_out_evaluation"]["models"]["human_2p4um_bridged"]
+    if (
+        t12["verdict"]["overall"] != "CLOSED NO-GO"
+        or t12["http_byte_budget"]["global_bytes"] != 71492788
+        or not t12["http_byte_budget"]["within_limits"]
+        or t12_reg["pre_alignment_iou"] != 0.56633
+        or t12_reg["post_alignment_iou"] != 0.57853
+        or t12_foldb["human_2p4um_coregistered"]["on_sheet_auc"] != 0.53408
+        or t12_foldb["argus_v3_reference"]["on_sheet_auc"] != 0.58201
+    ):
+        raise ValueError("Exp T12-Villa1739 bridge/falsification receipt mismatch")
     if (
         t3["verdict"]["overall"] != "CLOSED NO-GO"
         or t3["verdict"]["part_a_transverse"] != "CLOSED NO-GO"
@@ -733,6 +873,34 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
                 "budget_bytes": virgin["stream"]["budget_bytes"],
                 "persistent_ct_on_disk": virgin["stream"]["persistent_ct_on_disk"],
                 "gate_passed": virgin["gates"]["passed"],
+            },
+            "exp_t11_seismic_rgt_stitched": {
+                "http_bytes": rgt11["http"]["http_bytes"],
+                "persistent_ct_on_disk": rgt11["http"]["persistent_ct_on_disk"],
+                "total_sheet_count_rgt": rgt11_sum["total_sheet_count_rgt"],
+                "total_usable_cm2_rgt_across_scrolls": rgt11_sum["total_usable_cm2_rgt_across_scrolls"],
+                "max_crossing_fraction_rgt": rgt11_sum["max_crossing_fraction_rgt"],
+                "max_seam_phase_rmse_rad": rgt11_sum["max_seam_phase_rmse_rad"],
+                "pherc0306b_area_gain": rgt11_boxes["PHerc0306B"]["area_gain_ratio_vs_baseline"],
+                "pherc1545_area_gain": rgt11_boxes["PHerc1545"]["area_gain_ratio_vs_baseline"],
+                "pherc0846a_area_gain": rgt11_boxes["PHerc0846A"]["area_gain_ratio_vs_baseline"],
+                "pherc1545_on_sheet_after_snap": rgt11_boxes["PHerc1545"]["mean_on_sheet_after_snap_rgt"],
+                "pherc0846a_on_sheet_after_snap": rgt11_boxes["PHerc0846A"]["mean_on_sheet_after_snap_rgt"],
+            },
+            "exp_t15_grid_quality_audit": {
+                "http_bytes": grid["http"]["http_bytes"],
+                "requests": grid["http"]["requests"],
+                "persistent_downloads_on_disk": grid["http"]["persistent_downloads_on_disk"],
+                "pherc0211_shear_8cell_abs_p95_deg": g_0211["shear_8cell"]["abs_p95_deg"],
+                "pherc0211_area_inflation": g_0211["area_inflation_true_over_nominal"],
+                "pherc0125_screened_pct_area_gt_20deg": g_0125["shear_8cell"]["pct_area_gt_20deg"],
+                "pherc0125_screened_area_inflation": g_0125["area_inflation_true_over_nominal"],
+                "pherc0191_hf_pct_area_gt_20deg": g_0191["shear_8cell"]["pct_area_gt_20deg"],
+                "pherc0191_hf_area_inflation": g_0191["area_inflation_true_over_nominal"],
+                "pherc0826_hf_pct_area_gt_20deg_range": [51.232, 74.191],
+                "pherc0826_hf_area_inflation_range": [1.9405, 2.1753],
+                "exp_t11_rgt_synthetic_shear_p95_deg": g_t11["pooled_after_snap"]["shear_8cell"]["abs_p95_deg"],
+                "exp_t11_rgt_synthetic_crossing_fraction": g_t11["crossing_fraction_rgt"],
             },
         },
         "pillar2_fp16_and_streaming": {
@@ -895,6 +1063,57 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
                 "per_scroll_valid_ct_cm2": per_scroll_cm2,
                 "per_scroll_mesh_counts": per_scroll_counts,
             },
+            "exp_t13_tiled_q34_ranker": {
+                "http_used_bytes": t13["http_budget"]["used_bytes"],
+                "upgraded_positive_pass_count": t13_sv["upgraded_positive_pass_count"],
+                "upgraded_negative_pass_count": t13_sv["upgraded_negative_pass_count"],
+                "legacy_positive_pass_count": t13_sv["legacy_positive_pass_count"],
+                "pherc0343_argus_area_matched_retention_max": t13_regs[
+                    "3_pherc0343_w047_w048_argus_v3_text_strip_512x2048"
+                ]["upgraded_exp_t13_q34"]["area_matched_retention_max"],
+                "pherc0343_reader_area_matched_retention_max": t13_regs[
+                    "4_pherc0343_w047_w048_reader_v3_text_strip_512x2048"
+                ]["upgraded_exp_t13_q34"]["area_matched_retention_max"],
+                "pherc0841_argus_area_matched_retention_max": t13_regs[
+                    "5_pherc0841_w00_argus_v3_text_strip_512x2048"
+                ]["upgraded_exp_t13_q34"]["area_matched_retention_max"],
+                "bottleneck_a_multiline_rescue_verified": t13_sv["bottleneck_a_multiline_rescue_verified"],
+                "bottleneck_b_rim_speck_rescue_verified": t13_sv["bottleneck_b_rim_speck_rescue_verified"],
+            },
+            "exp_t16_gpu_shear_and_0211": {
+                "post_run_temp_c": t16["hardware_safety"]["post_run_temp_c"],
+                "min_15deg_interior_ret_ge_07": ArmA_fs["min_15deg_interior_ret_ge_07"],
+                "min_30deg_interior_ret_ge_07": ArmA_fs["min_30deg_interior_ret_ge_07"],
+                "min_overall_interior_pearson_r": ArmA_fs["min_overall_interior_pearson_r"],
+                "pherc0211_valid_ct_cm2": t16["arm_b_pherc0211_winner"]["valid_ct_cm2"],
+                "pherc0211_dom_over_opp_gt07_ratio": ArmB_vs["dom_over_opp_gt_07_ratio"],
+                "pherc0211_winner_letters_recovered": ArmB_vs["winner_letters_recovered"],
+                "pherc0211_legacy_passes_q34_bar": ArmB_vs["passes_q34_bar"],
+            },
+            "exp_t17_gpu_0211_and_0306b_matrix": {
+                "post_run_temp_c": t17["hardware_safety"]["post_run_temp_c"],
+                "stride96_snap2_screening_gate_pass": a1_vs["stride96_snap2_screening_gate_pass"],
+                "stride96_snap2_ret_ge_07_vs_canon": a1_vs["stride96_snap2_ret_ge_07_vs_canon"],
+                "snap2_on_sheet_after_snap": arm1_snap2["geometry_snap_metrics"]["on_sheet_after_snap"],
+                "snap2_studio_s48_dom_over_opp_ratio": arm1_snap2["studio_s48"]["dom_over_opp_gt_07_ratio"],
+                "snap2_studio_s96_dom_over_opp_ratio": arm1_snap2["studio_s96"]["dom_over_opp_gt_07_ratio"],
+                "snap2_ahn_s0_dom_over_opp_ratio": arm1_snap2["ahn_s0"]["dom_over_opp_gt_07_ratio"],
+                "snap2_studio_s48_top_tile_passes_q34_bar": arm1_snap2["studio_s48"]["upgraded_exp_t13_q34"][
+                    "top_tile_passes_q34_bar"
+                ],
+                "snap2_studio_s48_global_upgraded_passes_q34_bar": arm1_snap2["studio_s48"]["upgraded_exp_t13_q34"][
+                    "global_upgraded_passes_q34_bar"
+                ],
+                "snap2_studio_s48_diff_tfce_asymmetry_ratio": arm1_snap2["studio_s48"]["upgraded_exp_t13_q34"][
+                    "diff_tfce_asymmetry_ratio"
+                ],
+                "pherc0306b_same_face_direction_between_families": arm2["reading_order_alignment"][
+                    "same_face_direction_between_families"
+                ],
+                "pherc0306b_studio_dominant_face": arm2["reading_order_alignment"]["studio_dominant_face"],
+                "pherc0306b_ahn_dominant_face": arm2["reading_order_alignment"]["ahn_dominant_face"],
+                "pherc0306b_ahn_dom_over_opp_ratio": arm2["ahn_s0"]["dom_over_opp_gt_07_ratio"],
+            },
             "closed_nogo_zero_shot_2d_1d_filters": {
                 "exp_t3_pherc0139_overall": t3["verdict"]["overall"],
                 "exp_t3_2p4um_raw_ct_surface_auc": t3["part_a_2p4um"]["features"]["raw_ct_surface"]["roc_auc"],
@@ -924,6 +1143,12 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
                 "exp_t7_pherc0343_8p64um_best_fixed_auc": t7_343_8p6["summary"][
                     "best_gated_transverse_fixed_polarity"
                 ]["on_sheet_auc_fixed"],
+                "exp_t12_overall_verdict": t12["verdict"]["overall"],
+                "exp_t12_global_bytes": t12["http_byte_budget"]["global_bytes"],
+                "exp_t12_bridge_pre_alignment_iou": t12_reg["pre_alignment_iou"],
+                "exp_t12_bridge_post_alignment_iou": t12_reg["post_alignment_iou"],
+                "exp_t12_fold_b_human_2p4um_auc": t12_foldb["human_2p4um_coregistered"]["on_sheet_auc"],
+                "exp_t12_fold_b_argus_v3_auc": t12_foldb["argus_v3_reference"]["on_sheet_auc"],
             },
         },
     }
@@ -956,6 +1181,15 @@ def required_dossier_tokens(summary: dict[str, Any]) -> tuple[str, ...]:
         str(p1["grow_m7_patch_pherc0846a_preflight"]["on_sheet_raw"]),
         str(p1["grow_m7_patch_pherc0846a_preflight"]["on_sheet_after_snap"]),
         str(p1["grow_m7_patch_pherc0846a_preflight"]["valid_ct_cm2"]),
+        str(p1["exp_t11_seismic_rgt_stitched"]["total_sheet_count_rgt"]),
+        str(p1["exp_t11_seismic_rgt_stitched"]["total_usable_cm2_rgt_across_scrolls"]),
+        str(p1["exp_t11_seismic_rgt_stitched"]["max_seam_phase_rmse_rad"]),
+        str(p1["exp_t11_seismic_rgt_stitched"]["pherc1545_area_gain"]),
+        str(p1["exp_t15_grid_quality_audit"]["pherc0211_shear_8cell_abs_p95_deg"]),
+        str(p1["exp_t15_grid_quality_audit"]["pherc0125_screened_pct_area_gt_20deg"]),
+        str(p1["exp_t15_grid_quality_audit"]["pherc0125_screened_area_inflation"]),
+        str(p1["exp_t15_grid_quality_audit"]["pherc0191_hf_pct_area_gt_20deg"]),
+        str(p1["exp_t15_grid_quality_audit"]["exp_t11_rgt_synthetic_shear_p95_deg"]),
         # Pillar 2
         str(p2["pherc0306b_positive_gate_rtx4060"]["peak_allocated_mib"]),
         str(p2["pherc0306b_positive_gate_rtx4060"]["valid_ct_cm2"]),
@@ -1001,6 +1235,24 @@ def required_dossier_tokens(summary: dict[str, Any]) -> tuple[str, ...]:
         str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t7_pherc0841_2p403um_wst_slope_drop_vs_pm8"]),
         str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t5_pherc0306b_best_auc"]),
         str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t3_9p362um_pag1000_normal_scattering_auc"]),
+        str(p3["exp_t13_tiled_q34_ranker"]["pherc0343_argus_area_matched_retention_max"]),
+        str(p3["exp_t13_tiled_q34_ranker"]["pherc0343_reader_area_matched_retention_max"]),
+        str(p3["exp_t13_tiled_q34_ranker"]["pherc0841_argus_area_matched_retention_max"]),
+        str(p3["exp_t16_gpu_shear_and_0211"]["min_15deg_interior_ret_ge_07"]),
+        str(p3["exp_t16_gpu_shear_and_0211"]["min_30deg_interior_ret_ge_07"]),
+        str(p3["exp_t16_gpu_shear_and_0211"]["min_overall_interior_pearson_r"]),
+        str(p3["exp_t16_gpu_shear_and_0211"]["pherc0211_valid_ct_cm2"]),
+        str(p3["exp_t16_gpu_shear_and_0211"]["pherc0211_dom_over_opp_gt07_ratio"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["stride96_snap2_ret_ge_07_vs_canon"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["snap2_on_sheet_after_snap"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["snap2_studio_s48_dom_over_opp_ratio"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["snap2_studio_s96_dom_over_opp_ratio"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["snap2_studio_s48_diff_tfce_asymmetry_ratio"]),
+        str(p3["exp_t17_gpu_0211_and_0306b_matrix"]["pherc0306b_ahn_dom_over_opp_ratio"]),
+        str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t12_bridge_pre_alignment_iou"]),
+        str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t12_bridge_post_alignment_iou"]),
+        str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t12_fold_b_human_2p4um_auc"]),
+        str(p3["closed_nogo_zero_shot_2d_1d_filters"]["exp_t12_fold_b_argus_v3_auc"]),
         "CLOSED NO-GO",
     )
 

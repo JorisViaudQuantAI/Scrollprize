@@ -73,6 +73,30 @@ Receipt: `gemini_lane/evidence/virgin_scroll_patch_preflight.json` (`schema = vi
 - **Sub-Voxel `m7` Snapping & Source Support:** 2-pass `m7` snapping at level `0` (`9.612 um`) raised `on_sheet_raw = 0.996237` to **`on_sheet_after_snap = 0.999059`** (`median_disp_vx = 0.294932`, `p90_disp_vx = 0.605321`, `m7_source_available_fraction_after_snap = 1.0`).
 - **Zero-Disk Budgeted Streaming & Gate Diagnostic:** Rendered `15` slices (`[1521, 1521]` px, `valid_ct_px = 283197`, `valid_ct_cm2 = 0.261647`) within **`59609945` total bytes** (`<= 100000000` budget, `88` requests, `persistent_ct_on_disk = false`). Because tight wrap contacts fragmented the single-sheet patch below the `256 px` `onsheet_score` tile footprint (`tiles = 0`, `valid_ct_cm2 < 1.0`, `gates.passed = false`), this preflight directly motivated the `Exp T9-Unwrap` multi-sheet RGT unwrapper above.
 
+### 1.4 `Exp T11-RGT-Scale`: 2x2 Stitched Multi-Sheet RGT Unwrapper (`PHerc0306B`, `PHerc1545`, `PHerc0846A`)
+
+Receipt: `gemini_lane/evidence/seismic_rgt_stitched_patches.json` (`schema = seismic_rgt_stitched_patches/v1`, `cpu_only = true`, `torch_imported = false`, `http_bytes = 34512551` / `32.914 MiB <= 125829120` cap across `46` requests, `persistent_ct_on_disk = false`).
+
+- Scales multi-sheet RGT unwrapping across `2x2` overlapping lateral tiles (`[64, 192, 192]`) with global phase synchronization and seamless stitching, recovering **`34` non-crossing wraps** (`0.215204 cm^2` total usable CT area, **`max_crossing_fraction_rgt = 0.0`**, **`max_seam_phase_rmse_rad = 0.102162`**):
+  - `PHerc0306B` (`8.64 um`): `11` sheets (`0.060535 cm^2`, **`9.643477x`** baseline area gain, `seam_phase_rmse_rad = 0.102162`; note `snap_passes = 0` because no `m7` Zarr was supplied on this public control).
+  - `PHerc1545` (`9.362 um`): `11` sheets (`0.060539 cm^2`, **`29.00924x`** baseline area gain, `mean_on_sheet_after_snap_rgt = 0.896531`).
+  - `PHerc0846A` (`9.612 um`): `12` sheets (`0.09413 cm^2`, **`11.793379x`** baseline area gain, `mean_on_sheet_after_snap_rgt = 0.960576`).
+- **Honest Caveat:** In all three larger `2x2` boxes, the conjugate-gradient solver reached its `1000`-iteration cap before formal convergence (`cg_converged = false`), with strict monotonicity enforced via projection (`monotonic_projection_fraction <= 0.000826`).
+
+### 1.5 `Exp T15-GridQuality-Audit`: Winner vs. Eligible Screening Meshes vs. HF Spiral Fits & Coordinate Convention
+
+Receipt: `gemini_lane/evidence/grid_quality_audit.json` (`schema = grid_quality_audit/v1`, `cpu_only = true`, `torch_imported = false`, `19646463` bytes / `18.736 MiB <= 62914560`, `556` HTTP `200` requests, `persistent_downloads_on_disk = false`) and `gemini_lane/leak_guard.py` (OS-username CI fix across `progress_prize_fp16` tests without altering `.patch` files).
+
+| Surface Cohort (Claude `023` `8`-Cell Shear & Area Inflation) | Meshes | `shear_8cell` `abs_p95_deg` | Area `> 20°` (`%`) | True / Nominal Area Inflation | Provenance / Audit Verdict |
+| --- | ---: | ---: | ---: | ---: | --- |
+| **`PHerc0211` Winner Mesh** (`crop1711-lines123-v9`) | `1` | **`2.889°`** | `0.001%` | **`0.9999x`** | Published winner-mesh baseline |
+| **`PHerc0125` Screened Negative (`pscamillo`)** | `6` | `4.495°` | **`0.124%`** | **`1.0408x`** | Clean winner-grade geometry (`0` flattening needed) |
+| **`PHerc0191` HF Spiral Fits (`w030`/`w050` cohort)** | `33` | `45.243°` | **`58.959%`** | `1.4999x` | Heavily sheared unflattened fit grids |
+| **`PHerc0826` HF Spiral Fits (3 bands)** | `99` | `44.035°–67.328°` | `51.232%–74.191%` | `1.9405x–2.1753x` | Needs `Exp T2` resampling before `stride=48` screening (`0` ink runs by Gemini) |
+| **`Exp T11` Synthetic 5-Wrap RGT Lattice** | `5` | **`0.32°`** | `0.0%` | `1.0065x` | `crossing_fraction_rgt = 0.0` (caveat: `1 vx` lattice vs `20 vx` spiral fits) |
+
+- **Code-Verified Coordinate & Grid Provenance:** `stream_snap_render.py::render_surface_stack` samples at vertex-aligned `p * scale` (`p / 20` for `scale=0.05`, zero `+0.5` offset, `0.5` output-px difference vs `(p + 0.5) / 20`); no prior `gemini_lane` screen applied per-surface flattening (`PHerc0826` had CPU on-sheet triage only).
+
 ---
 
 ## Pillar 2: FP16 Consumer-GPU Inference & Zero-Disk Source-Support Streaming
@@ -177,6 +201,17 @@ Receipt: `gemini_lane/evidence/firstletters_rtx4060_screen_ledger.json` (`15` un
 | **`PHerc0191`** (`9.362 um`) | `2` | **`5.5685 cm^2`** | `0` | `w030` (`2.1151`), `w050` (`3.4534`) | **`NEGATIVE`** — Heavily delaminated papyrus with sparse crack-edge specks only. |
 | **Total** | **`15`** | **`75.9988 cm^2`** | **`6`** | `15` public mesh segments across `3` eligible scrolls | **`0` candidates** (`100%` sanitized negative ledger) |
 
+### 3.5 `Exp T13`, `Exp T16-GPU` & `Exp T17-GPU`: Multi-Line `Q34` Calibration, Grid-Shear Tolerance & `PHerc. 0211` / `PHerc. 0306B` Validation
+
+Receipts: `gemini_lane/evidence/tiled_q34_cloud_masked_calibration.json` (`26505150` B / `25.2773 MiB <= 40 MiB`), `gemini_lane/evidence/gpu_shear_and_0211_control.json` (`post_run_temp_c = 60`, `persistent_ct_on_disk = false`), and `gemini_lane/evidence/gpu_0211_and_0306b_calibration_matrix.json` (`post_run_temp_c = 57`, `persistent_ct_on_disk = false`).
+
+- **`Exp T13` (`Q31 + Q34` Area-Matched & Rim-Eroded Ranker, `tiled_q34_cloud_masked_calibration.json`):** Fixes multi-line super-cluster denominator collapse (`PHerc0343 argus-v3` `area_matched_retention_max = 0.967727`, `reader-v3 = 0.936248`, `PHerc0841 argus-v3 = 0.733878`) and opposite-face rim-speck collapse, lifting pass rate from `2/5` (legacy `Exp T6`) to **`5/5` positive regimes and `0/2` negative regimes** (plus blank-margin, step-stair seam-blob, bilateral `2–4 mm` cloud, and dot-row subcontrols rejected).
+- **`Exp T16-GPU` Arm A — Real `Studio fp16` Grid Shear Stress on `PHerc0306B` `w074` (`0°, ±15°, ±30°`):** Over `464256` 32 px rim-eroded interior pixels (`8.64 um`, `stride = 48`), **`±15°` retains `>= 0.939702`** of canonical `> 0.7` hits (`IoU@0.7 = 0.880728–0.892256`, `r = 0.98076–0.981776`), and **`±30°` retains `>= 0.906106`** (`min_overall_interior_pearson_r = 0.94453`, `IoU@0.5 = 0.733546–0.755497`). This complements `chatgpt-adaptive-049`'s CPU `A-hn` shear run (`-0.286614` middle-third AP drop at `-30°`).
+- **`Exp T16-GPU` Arm B & `Exp T17-GPU` (`PHerc0211` Winner Matrix & `PHerc0306B` Layer-Order Card):**
+  - On the `0.6421 cm^2` `PHerc0211` 3-row winner crop (`9.362 um`), `Studio fp16` recovers all 3 letter rows with `dom_over_opp_gt_07_ratio = 7.535` (`snap0 s48`, `desc frac_gt_07 = 0.296817` vs `asc 0.039392`). Applying `2x m7-L0` snap raises `on_sheet_after_snap` from `0.829688` to **`0.9953125`** and lifts `studio_s48` asymmetry to **`8.5508x`** (`r = 0.967597`, `ret@0.7 = 0.920321`); screening at **`snap2 + studio_s96`** passes the calibration gate (`stride96_snap2_screening_gate_pass = true`, **`6.8531x`** asymmetry, **`0.869617`** `> 0.7` hit retention vs canonical `snap0 s48`, `r = 0.946589`, `fp_diagnostics = true`). `A-hn hn4_s0` independently recovers the same 3 letter rows on both `snap0` (`4.62x`) and `snap2` (`4.0028x`).
+  - On `PHerc0306B` `w074` (`0.4228 cm^2`), `Studio` (`s48`: `4.334x`, `s96`: `3.7432x`, `ret@0.7 = 0.912254`) and `A-hn hn4_s0` (`asc 0.150174` vs `desc 0.053574`, **`2.8031x`**) align in the **exact same `asc` depth order** (`same_face_direction_between_families = true`), accompanied by a 31-layer CT correlation profile card.
+  - **Honest Non-Gating Q34 Caveat (`Q5` Confirmation):** Whereas `Exp T13` fixes multi-line area retention (`0.694452–0.743516` on `PHerc0211`, `0.931572` on `PHerc0306B`) and passes `top_tile_passes_q34_bar = true` on `PHerc0211 snap2 s48` (`0.420546`), real two-order neural inference produces faint opposite-order bleed-through (`diff_tfce_asymmetry_ratio = 2.63642` on `PHerc0211 snap2 s48` vs `Exp T13`'s `>= 4.5` blank-margin calibration threshold), causing both legacy `Exp T6` (`passes_q34_bar = false`) and global `Exp T13` (`global_upgraded_passes_q34_bar = false`) to zero global scores. `Q34` is therefore retained strictly as a **non-gating ranking diagnostic** paired with `screening_fp_filter` (`6/6` true on `PHerc0211`) and visual montage inspection.
+
 ---
 
 ## Honest Falsification Ledger (`CLOSED NO-GO` Zero-Shot 2D/1D Hand-Crafted Filters)
@@ -188,6 +223,7 @@ Aligned with `collab/chatgpt-031.md`, every zero-shot 2D spatial filter (Wavelet
 | **`Exp T3`** (`pherc0139_transverse_physics_ablation.json`) | `PHerc0139` `2.399 um` surface volume + `9.362 um` `pag0` / `pag50` / `pag1000` (`99517051` B / `94.9069 MiB`) | `ROC-AUC >= 0.70` and `>= +0.10` above 16-shift toroidal null | At `2.399 um`, baseline `raw_ct_surface` scored **`0.71484`** (`+0.10197` vs null), whereas MSII peaked at `0.53578` (`msii_convexity_140um`) and StructN2V fiber-subtracted residual peaked at `0.63733`. At `9.362 um`, low-`δ/β` `pag50`/`pag0` failed to beat `pag1000:normal_scattering_variance` (**`0.70945`**, `+0.10609` vs null). | **`CLOSED NO-GO`** |
 | **`Exp T5`** (`transverse_wavelet_oct_ablation.json`) | `PHerc0306B` `8.64 um` (`w074` Line 1) + `PHerc0139` `2.399 um` (`95715011` B / `91.2809 MiB`) | `PHerc0306B` `AUC >= 0.70` & `+0.10` vs null; `PHerc0139` `AUC >= 0.765` | On `PHerc0306B` `8.64 um`, all 21 transverse features failed (`best = wst_s1_isotropic` at **`0.69062`** `< 0.70`). On `PHerc0139` `2.399 um`, `wst_s1_scale_slope` (`0.79674`) and `oct_hilbert_env_peak` (`0.77962`) passed the on-sheet gate, triggering the `Exp T7` adversarial off-sheet kill-test. | `PHerc0306B`: **`CLOSED NO-GO`** (`PHerc0139` forwarded to `Exp T7`) |
 | **`Exp T7`** (`transverse_cross_scroll_replication.json`) | Held-out `PHerc0841` `2.403 um` (human ink labels), `PHerc0841` `9.366 um`, & `PHerc0343` `8.64 um` (`68226076` B / `65.0655 MiB`) | Locked `Exp T5` polarity: `on_sheet >= 0.70`, `delta_null >= +0.10`, AND off-sheet drop `>= +0.08` at `±8` slices & volume boundaries | **`0` features passed** on any volume. On `PHerc0841` `2.403 um`, `wst_s1_scale_slope` reached **`0.71413`** on-sheet (`delta_null = 0.10859`) but scored **`0.75526` off-sheet at `±8` slices (`±19.224 um`)** (`drop_vs_pm8_fixed = -0.04112`), while `wst_s1_isotropic` (`0.18837`), `pc_min_moment_corners_pooled` (`0.2152`), and `rank_fusion_t5_triplet` (`0.25614`) flipped polarity. At `8–9 um`, best fixed-polarity AUCs were `0.5113` (`PHerc0841` `9.366 um`) and `0.60025` (`PHerc0343` `8.64 um`). | **`CLOSED NO-GO`** (across all 3 volumes) |
+| **`Exp T12-Villa1739`** (`villa1739_cross_resolution_bridge.json`) | `PHerc0841 w00` (`2.403 um -> 9.366 um` human-label bridge) + 42D linear Ridge Fold-B & zero-shot transfer on `PHerc0343` & `PHerc0306B` (`71492788` B / `68.1808 MiB`) | Bridge IoU alignment; Fold-B & cross-scroll locked-`+` AUC `>= 0.70`, `delta_null >= +0.10`, `±8`-slice drop `>= +0.08` | Separable block-area integration aligned `2.403 um` human ink labels onto `9.366 um` (`shift = (0, -9) px`, IoU `0.56633` -> **`0.57853`**; reusable detector validation bridge), **but 42D linear Ridge failed `8/8` checks** (Fold-B `human_2p4um_bridged` AUC **`0.53408`** vs human labels, **`0.58201`** vs `argus-v3`; cross-scroll `0.44233–0.60738`). | **`CLOSED NO-GO`** (42D Ridge linear transfer) |
 
 ---
 
@@ -214,6 +250,12 @@ Every file below is committed in the repository and verified offline by `gemini_
 | `transverse_cross_scroll_replication.json` | `61544` | `d68573fc4e38` | Falsification: `Exp T7` cross-scroll replication & `±8`-slice off-sheet kill-test |
 | `transverse_wavelet_oct_ablation.json` | `38208` | `56b3cfaea0df` | Falsification: `Exp T5` Wavelet Scattering / Phase Congruency / OCT 31D ablation |
 | `pherc0139_transverse_physics_ablation.json` | `36352` | `6aa5c24c9859` | Falsification: `Exp T3` `PHerc0139` `2.399 um` MSII / StructN2V & `pag0`/`50`/`1000` |
+| `seismic_rgt_stitched_patches.json` | `9459` | `efda74f6bbea` | Pillar 1: `Exp T11-RGT-Scale` `2x2` stitched multi-sheet RGT (`34` wraps, `0.215204 cm^2`) |
+| `grid_quality_audit.json` | `47408` | `39dd7dbba7bf` | Pillar 1: `Exp T15-GridQuality-Audit` winner vs screened negatives vs HF spiral fits + `p * scale` provenance |
+| `tiled_q34_cloud_masked_calibration.json` | `24386` | `f01ece47f7db` | Pillar 3: `Exp T13` (`Q31 + Q34`) `5/5` positive / `0/2` negative area-matched calibration |
+| `gpu_shear_and_0211_control.json` | `22748` | `f60f9b7a66fa` | Pillar 3: `Exp T16-GPU` `PHerc0306B` `±15°/±30°` shear stress & `PHerc0211` `s48` (`7.535x`) |
+| `gpu_0211_and_0306b_calibration_matrix.json` | `79238` | `9884e1ae4bed` | Pillar 3: `Exp T17-GPU` `PHerc0211` `snap{0,2}x{s48,s96}+A-hn` matrix & `PHerc0306B` `A-hn` layer card |
+| `villa1739_cross_resolution_bridge.json` | `26727` | `c99d1f3b913f` | Falsification / Bridge: `Exp T12-Villa1739` `2.4->9.366 um` IoU bridge + `CLOSED NO-GO` 42D Ridge |
 
 ---
 
