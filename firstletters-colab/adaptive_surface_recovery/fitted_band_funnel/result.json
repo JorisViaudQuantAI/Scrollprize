@@ -1,0 +1,1552 @@
+{
+  "schema": "adaptive.fitted_band_funnel.v1",
+  "source_commit": "1770a7b9f223a016167fda440f1867848373119d",
+  "protocol_sha256": "609be545155a5cf9d8bb25fe62c5d8620fe24c0d94fcd0902037a1f31669ed82",
+  "script_sha256": "8d997b0c06cf65600438dbe38edda15f8b70977f2d37faadaf6c1e102edf164c",
+  "complete": true,
+  "synthetic": {
+    "gates": {
+      "crop_exact": true,
+      "stable_ties": true,
+      "portfolio_unique": true,
+      "empty_mask": true,
+      "partial_identification": true,
+      "hypergeom": true,
+      "local_order_reversal_fixture": true
+    },
+    "pass": true
+  },
+  "source_bytes": 27872161,
+  "source_files": 439,
+  "source_manifest_sha256": "6500caec0514a241f35e7c99a5bc16235c5c135666101b2bdc154cbaf45872e9",
+  "gemini_blob": "91bff462143d059793b98c88a40d9bf513fd7eda",
+  "population": {
+    "windings": 60,
+    "windows": 149,
+    "reviewed": 40,
+    "unreviewed": 109,
+    "reported_hit_windows": 3,
+    "known_positive_windows": 2,
+    "unconfirmed_flag_windows": 1,
+    "reported_chart_area_cm2": 293.3689999999998,
+    "recomputed_downscaled_parallel_area_cm2": 297.31577500000003,
+    "area_relative_error_q50_q95": [
+      0.013653483992467212,
+      0.01953823206225104
+    ],
+    "empty_support_windows": 0,
+    "mask_resize_count": 0,
+    "all_desc_maps": 60,
+    "actual_asc_maps": 12,
+    "declared_random_asc": 9,
+    "declared_random_asc_present": 9,
+    "extra_asc_maps": 3,
+    "missing_declared_asc_maps": 0,
+    "reported_deep_selection_matches_files": true,
+    "rng2110_rank_order_replay_matches": true
+  },
+  "budget_curves": {
+    "7": {
+      "L": {
+        "slots": 7,
+        "reported_chart_cm2": 14.553000000000003,
+        "reviewed": 7,
+        "unreviewed": 0,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 4,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.42857142857142855,
+        "all_population_reported_hit_recall_bounds": [
+          0.026785714285714284,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.018018018018018018,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "H": {
+        "slots": 7,
+        "reported_chart_cm2": 14.881,
+        "reviewed": 4,
+        "unreviewed": 3,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 1,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0.3333333333333333,
+        "reviewed_hit_share_conditional": 0.25,
+        "all_population_reported_hit_recall_bounds": [
+          0.009174311926605505,
+          0.6666666666666666
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009174311926605505,
+          0.8
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "G": {
+        "slots": 7,
+        "reported_chart_cm2": 15.175999999999998,
+        "reviewed": 5,
+        "unreviewed": 2,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.4,
+        "all_population_reported_hit_recall_bounds": [
+          0.01818181818181818,
+          0.8
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009174311926605505,
+          0.8
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "R": {
+        "slots": 7,
+        "reported_chart_cm2": 15.224,
+        "reviewed": 3,
+        "unreviewed": 4,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.5714285714285714
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.6666666666666666
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "P95": {
+        "slots": 7,
+        "reported_chart_cm2": 15.145999999999999,
+        "reviewed": 2,
+        "unreviewed": 5,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 2,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.625
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.7142857142857143
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "S": {
+        "slots": 7,
+        "reported_chart_cm2": 15.554000000000002,
+        "reviewed": 2,
+        "unreviewed": 5,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 2,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.625
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.7142857142857143
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "U": {
+        "slots": 7,
+        "reported_chart_cm2": 13.461,
+        "reviewed": 1,
+        "unreviewed": 6,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 1,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.6666666666666666
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.75
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "F": {
+        "slots": 7,
+        "reported_chart_cm2": 14.742,
+        "reviewed": 4,
+        "unreviewed": 3,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 1,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0.3333333333333333,
+        "reviewed_hit_share_conditional": 0.25,
+        "all_population_reported_hit_recall_bounds": [
+          0.009174311926605505,
+          0.6666666666666666
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009174311926605505,
+          0.8
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "D": {
+        "slots": 7,
+        "reported_chart_cm2": 14.471000000000002,
+        "reviewed": 6,
+        "unreviewed": 1,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 4,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.3333333333333333,
+        "all_population_reported_hit_recall_bounds": [
+          0.018018018018018018,
+          0.75
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.00909090909090909,
+          0.75
+        ],
+        "counterfactual_deep_GPU_seconds": 770,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 6571
+      },
+      "random128": {
+        "mean_confirmed": 0.109375,
+        "mean_reported_hits": 0.1953125,
+        "all_known_probability_empirical": 0,
+        "all_reported_hits_probability_empirical": 0
+      }
+    },
+    "15": {
+      "L": {
+        "slots": 15,
+        "reported_chart_cm2": 31.362,
+        "reviewed": 15,
+        "unreviewed": 0,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 12,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.2,
+        "all_population_reported_hit_recall_bounds": [
+          0.026785714285714284,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.018018018018018018,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "H": {
+        "slots": 15,
+        "reported_chart_cm2": 29.756999999999998,
+        "reviewed": 7,
+        "unreviewed": 8,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 5,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.2857142857142857,
+        "all_population_reported_hit_recall_bounds": [
+          0.019230769230769232,
+          0.9090909090909091
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009708737864077669,
+          0.9090909090909091
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "G": {
+        "slots": 15,
+        "reported_chart_cm2": 30.981,
+        "reviewed": 8,
+        "unreviewed": 7,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 6,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.25,
+        "all_population_reported_hit_recall_bounds": [
+          0.01904761904761905,
+          0.9
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009615384615384616,
+          0.9
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "R": {
+        "slots": 15,
+        "reported_chart_cm2": 32.346000000000004,
+        "reviewed": 6,
+        "unreviewed": 9,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 1,
+        "reviewed_nonhit": 5,
+        "reviewed_hit_retention": 0.3333333333333333,
+        "reviewed_hit_share_conditional": 0.16666666666666666,
+        "all_population_reported_hit_recall_bounds": [
+          0.009708737864077669,
+          0.8333333333333334
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009708737864077669,
+          0.9090909090909091
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "P95": {
+        "slots": 15,
+        "reported_chart_cm2": 30.264000000000003,
+        "reviewed": 5,
+        "unreviewed": 10,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.4,
+        "all_population_reported_hit_recall_bounds": [
+          0.0196078431372549,
+          0.9230769230769231
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009900990099009901,
+          0.9230769230769231
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "S": {
+        "slots": 15,
+        "reported_chart_cm2": 31.929999999999996,
+        "reviewed": 4,
+        "unreviewed": 11,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 4,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.7857142857142857
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.8461538461538461
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "U": {
+        "slots": 15,
+        "reported_chart_cm2": 29.177000000000003,
+        "reviewed": 1,
+        "unreviewed": 14,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 1,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.8235294117647058
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.875
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "F": {
+        "slots": 15,
+        "reported_chart_cm2": 31.517,
+        "reviewed": 7,
+        "unreviewed": 8,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 1,
+        "reviewed_nonhit": 6,
+        "reviewed_hit_retention": 0.3333333333333333,
+        "reviewed_hit_share_conditional": 0.14285714285714285,
+        "all_population_reported_hit_recall_bounds": [
+          0.009615384615384616,
+          0.8181818181818182
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.009615384615384616,
+          0.9
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "D": {
+        "slots": 15,
+        "reported_chart_cm2": 30.907,
+        "reviewed": 13,
+        "unreviewed": 2,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 10,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.23076923076923078,
+        "all_population_reported_hit_recall_bounds": [
+          0.02727272727272727,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.01834862385321101,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 1650,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 7451
+      },
+      "random128": {
+        "mean_confirmed": 0.234375,
+        "mean_reported_hits": 0.359375,
+        "all_known_probability_empirical": 0.015625,
+        "all_reported_hits_probability_empirical": 0
+      }
+    },
+    "25": {
+      "L": {
+        "slots": 25,
+        "reported_chart_cm2": 52.221999999999994,
+        "reviewed": 25,
+        "unreviewed": 0,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 22,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.12,
+        "all_population_reported_hit_recall_bounds": [
+          0.026785714285714284,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.018018018018018018,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "H": {
+        "slots": 25,
+        "reported_chart_cm2": 49.73900000000001,
+        "reviewed": 11,
+        "unreviewed": 14,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 8,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.2727272727272727,
+        "all_population_reported_hit_recall_bounds": [
+          0.030612244897959183,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.020618556701030927,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "G": {
+        "slots": 25,
+        "reported_chart_cm2": 52.26,
+        "reviewed": 11,
+        "unreviewed": 14,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 9,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.18181818181818182,
+        "all_population_reported_hit_recall_bounds": [
+          0.02040816326530612,
+          0.9411764705882353
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.010309278350515464,
+          0.9411764705882353
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "R": {
+        "slots": 25,
+        "reported_chart_cm2": 52.569,
+        "reviewed": 12,
+        "unreviewed": 13,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 10,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.16666666666666666,
+        "all_population_reported_hit_recall_bounds": [
+          0.020202020202020204,
+          0.9375
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.01020408163265306,
+          0.9375
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "P95": {
+        "slots": 25,
+        "reported_chart_cm2": 49.66600000000001,
+        "reviewed": 8,
+        "unreviewed": 17,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 5,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.375,
+        "all_population_reported_hit_recall_bounds": [
+          0.031578947368421054,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02127659574468085,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "S": {
+        "slots": 25,
+        "reported_chart_cm2": 50.667000000000016,
+        "reviewed": 7,
+        "unreviewed": 18,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 1,
+        "reviewed_nonhit": 6,
+        "reviewed_hit_retention": 0.3333333333333333,
+        "reviewed_hit_share_conditional": 0.14285714285714285,
+        "all_population_reported_hit_recall_bounds": [
+          0.010638297872340425,
+          0.9047619047619048
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.9047619047619048
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "U": {
+        "slots": 25,
+        "reported_chart_cm2": 49.07599999999999,
+        "reviewed": 3,
+        "unreviewed": 22,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 3,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.88
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.9166666666666666
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "F": {
+        "slots": 25,
+        "reported_chart_cm2": 52.154,
+        "reviewed": 11,
+        "unreviewed": 14,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 8,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.2727272727272727,
+        "all_population_reported_hit_recall_bounds": [
+          0.030612244897959183,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.020618556701030927,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "D": {
+        "slots": 25,
+        "reported_chart_cm2": 51.782999999999994,
+        "reviewed": 20,
+        "unreviewed": 5,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 17,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.15,
+        "all_population_reported_hit_recall_bounds": [
+          0.028037383177570093,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.018867924528301886,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 2750,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 8551
+      },
+      "random128": {
+        "mean_confirmed": 0.3359375,
+        "mean_reported_hits": 0.53125,
+        "all_known_probability_empirical": 0.0390625,
+        "all_reported_hits_probability_empirical": 0.015625
+      }
+    },
+    "40": {
+      "L": {
+        "slots": 40,
+        "reported_chart_cm2": 80.736,
+        "reviewed": 28,
+        "unreviewed": 12,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 25,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.10714285714285714,
+        "all_population_reported_hit_recall_bounds": [
+          0.03,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.020202020202020204,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "H": {
+        "slots": 40,
+        "reported_chart_cm2": 80.017,
+        "reviewed": 18,
+        "unreviewed": 22,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 15,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.16666666666666666,
+        "all_population_reported_hit_recall_bounds": [
+          0.03333333333333333,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02247191011235955,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "G": {
+        "slots": 40,
+        "reported_chart_cm2": 83.21899999999998,
+        "reviewed": 16,
+        "unreviewed": 24,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 13,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.1875,
+        "all_population_reported_hit_recall_bounds": [
+          0.03409090909090909,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.022988505747126436,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "R": {
+        "slots": 40,
+        "reported_chart_cm2": 84.472,
+        "reviewed": 14,
+        "unreviewed": 26,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 11,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.21428571428571427,
+        "all_population_reported_hit_recall_bounds": [
+          0.03488372093023256,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.023529411764705882,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "P95": {
+        "slots": 40,
+        "reported_chart_cm2": 78.23399999999998,
+        "reviewed": 15,
+        "unreviewed": 25,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 12,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.2,
+        "all_population_reported_hit_recall_bounds": [
+          0.034482758620689655,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.023255813953488372,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "S": {
+        "slots": 40,
+        "reported_chart_cm2": 79.659,
+        "reviewed": 12,
+        "unreviewed": 28,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 9,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.25,
+        "all_population_reported_hit_recall_bounds": [
+          0.03571428571428571,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.024096385542168676,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "U": {
+        "slots": 40,
+        "reported_chart_cm2": 77.798,
+        "reviewed": 5,
+        "unreviewed": 35,
+        "confirmed_known": 0,
+        "unconfirmed_flag_retained": false,
+        "reported_hits": 0,
+        "reviewed_nonhit": 5,
+        "reviewed_hit_retention": 0,
+        "reviewed_hit_share_conditional": 0,
+        "all_population_reported_hit_recall_bounds": [
+          0,
+          0.9210526315789473
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0,
+          0.9459459459459459
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "F": {
+        "slots": 40,
+        "reported_chart_cm2": 80.43999999999998,
+        "reviewed": 15,
+        "unreviewed": 25,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 12,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.2,
+        "all_population_reported_hit_recall_bounds": [
+          0.034482758620689655,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.023255813953488372,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "D": {
+        "slots": 40,
+        "reported_chart_cm2": 82.39999999999999,
+        "reviewed": 29,
+        "unreviewed": 11,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 26,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.10344827586206896,
+        "all_population_reported_hit_recall_bounds": [
+          0.0297029702970297,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 4400,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 10201
+      },
+      "random128": {
+        "mean_confirmed": 0.5625,
+        "mean_reported_hits": 0.875,
+        "all_known_probability_empirical": 0.09375,
+        "all_reported_hits_probability_empirical": 0.03125
+      }
+    },
+    "60": {
+      "L": {
+        "slots": 60,
+        "reported_chart_cm2": 121.45700000000001,
+        "reviewed": 30,
+        "unreviewed": 30,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 27,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.1,
+        "all_population_reported_hit_recall_bounds": [
+          0.036585365853658534,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.024691358024691357,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "H": {
+        "slots": 60,
+        "reported_chart_cm2": 118.77100000000003,
+        "reviewed": 23,
+        "unreviewed": 37,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 20,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.13043478260869565,
+        "all_population_reported_hit_recall_bounds": [
+          0.04,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02702702702702703,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "G": {
+        "slots": 60,
+        "reported_chart_cm2": 124.763,
+        "reviewed": 23,
+        "unreviewed": 37,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 20,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.13043478260869565,
+        "all_population_reported_hit_recall_bounds": [
+          0.04,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02702702702702703,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "R": {
+        "slots": 60,
+        "reported_chart_cm2": 125.80700000000002,
+        "reviewed": 19,
+        "unreviewed": 41,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 16,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.15789473684210525,
+        "all_population_reported_hit_recall_bounds": [
+          0.04225352112676056,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.02857142857142857,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "P95": {
+        "slots": 60,
+        "reported_chart_cm2": 119.75000000000001,
+        "reviewed": 21,
+        "unreviewed": 39,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 18,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.14285714285714285,
+        "all_population_reported_hit_recall_bounds": [
+          0.0410958904109589,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.027777777777777776,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "S": {
+        "slots": 60,
+        "reported_chart_cm2": 118.14600000000002,
+        "reviewed": 18,
+        "unreviewed": 42,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 15,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.16666666666666666,
+        "all_population_reported_hit_recall_bounds": [
+          0.04285714285714286,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.028985507246376812,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "U": {
+        "slots": 60,
+        "reported_chart_cm2": 116.54799999999996,
+        "reviewed": 14,
+        "unreviewed": 46,
+        "confirmed_known": 1,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 2,
+        "reviewed_nonhit": 12,
+        "reviewed_hit_retention": 0.6666666666666666,
+        "reviewed_hit_share_conditional": 0.14285714285714285,
+        "all_population_reported_hit_recall_bounds": [
+          0.030303030303030304,
+          0.9795918367346939
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.015384615384615385,
+          0.9795918367346939
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "F": {
+        "slots": 60,
+        "reported_chart_cm2": 119.55199999999999,
+        "reviewed": 22,
+        "unreviewed": 38,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 19,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.13636363636363635,
+        "all_population_reported_hit_recall_bounds": [
+          0.04054054054054054,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.0273972602739726,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "D": {
+        "slots": 60,
+        "reported_chart_cm2": 122.136,
+        "reviewed": 31,
+        "unreviewed": 29,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 28,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.0967741935483871,
+        "all_population_reported_hit_recall_bounds": [
+          0.03614457831325301,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.024390243902439025,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 6600,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 12401
+      },
+      "random128": {
+        "mean_confirmed": 0.8203125,
+        "mean_reported_hits": 1.2578125,
+        "all_known_probability_empirical": 0.171875,
+        "all_reported_hits_probability_empirical": 0.0625
+      }
+    },
+    "100": {
+      "L": {
+        "slots": 100,
+        "reported_chart_cm2": 200.17699999999996,
+        "reviewed": 34,
+        "unreviewed": 66,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 31,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.08823529411764706,
+        "all_population_reported_hit_recall_bounds": [
+          0.06521739130434782,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.044444444444444446,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "H": {
+        "slots": 100,
+        "reported_chart_cm2": 198.72799999999995,
+        "reviewed": 33,
+        "unreviewed": 67,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 30,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.09090909090909091,
+        "all_population_reported_hit_recall_bounds": [
+          0.06666666666666667,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.045454545454545456,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "G": {
+        "slots": 100,
+        "reported_chart_cm2": 203.47699999999998,
+        "reviewed": 35,
+        "unreviewed": 65,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 32,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.08571428571428572,
+        "all_population_reported_hit_recall_bounds": [
+          0.06382978723404255,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.043478260869565216,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "R": {
+        "slots": 100,
+        "reported_chart_cm2": 205.11399999999995,
+        "reviewed": 28,
+        "unreviewed": 72,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 25,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.10714285714285714,
+        "all_population_reported_hit_recall_bounds": [
+          0.075,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.05128205128205128,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "P95": {
+        "slots": 100,
+        "reported_chart_cm2": 198.159,
+        "reviewed": 32,
+        "unreviewed": 68,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 29,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.09375,
+        "all_population_reported_hit_recall_bounds": [
+          0.06818181818181818,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.046511627906976744,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "S": {
+        "slots": 100,
+        "reported_chart_cm2": 196.33499999999995,
+        "reviewed": 25,
+        "unreviewed": 75,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 22,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.12,
+        "all_population_reported_hit_recall_bounds": [
+          0.08108108108108109,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.05555555555555555,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "U": {
+        "slots": 100,
+        "reported_chart_cm2": 196.28299999999996,
+        "reviewed": 28,
+        "unreviewed": 72,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 25,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.10714285714285714,
+        "all_population_reported_hit_recall_bounds": [
+          0.075,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.05128205128205128,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "F": {
+        "slots": 100,
+        "reported_chart_cm2": 198.68799999999996,
+        "reviewed": 35,
+        "unreviewed": 65,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 32,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.08571428571428572,
+        "all_population_reported_hit_recall_bounds": [
+          0.06382978723404255,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.043478260869565216,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "D": {
+        "slots": 100,
+        "reported_chart_cm2": 201.061,
+        "reviewed": 34,
+        "unreviewed": 66,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 31,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.08823529411764706,
+        "all_population_reported_hit_recall_bounds": [
+          0.06521739130434782,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          0.044444444444444446,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 11000,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 16801
+      },
+      "random128": {
+        "mean_confirmed": 1.375,
+        "mean_reported_hits": 2.0078125,
+        "all_known_probability_empirical": 0.4609375,
+        "all_reported_hits_probability_empirical": 0.3125
+      }
+    },
+    "149": {
+      "L": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "H": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "G": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "R": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "P95": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "S": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "U": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "F": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "D": {
+        "slots": 149,
+        "reported_chart_cm2": 293.3689999999998,
+        "reviewed": 40,
+        "unreviewed": 109,
+        "confirmed_known": 2,
+        "unconfirmed_flag_retained": true,
+        "reported_hits": 3,
+        "reviewed_nonhit": 37,
+        "reviewed_hit_retention": 1,
+        "reviewed_hit_share_conditional": 0.075,
+        "all_population_reported_hit_recall_bounds": [
+          1,
+          1
+        ],
+        "all_population_confirmed_recall_bounds": [
+          1,
+          1
+        ],
+        "counterfactual_deep_GPU_seconds": 16390,
+        "counterfactual_coarse_plus_deep_GPU_seconds": 22191
+      },
+      "random128": {
+        "mean_confirmed": 2,
+        "mean_reported_hits": 3,
+        "all_known_probability_empirical": 1,
+        "all_reported_hits_probability_empirical": 1
+      }
+    }
+  },
+  "primary_gate": {
+    "both_known_retained": true,
+    "no_worse_than_line": true,
+    "unconfirmed_flag_retained_descriptive": true,
+    "scientific_promotion": false
+  },
+  "survey": {
+    "stratum_N": 124,
+    "sample_n": 15,
+    "reviewed_hits": 0,
+    "unreviewed": 109,
+    "exact_upper95_reported_lower_stratum_hits": 21,
+    "upper95_fraction_lower_stratum": 0.1693548387096774,
+    "whole_band_upper95_reported_hit_windows": 24,
+    "whole_band_deterministic_reported_hit_range": [
+      3,
+      112
+    ],
+    "probability_zero_if_true_misses": {
+      "1": 0.8790322580645161,
+      "3": 0.6769356773419665,
+      "5": 0.5188907774666727,
+      "10": 0.26127472621973735
+    },
+    "min_n_to_exclude_misses_zero_events": {
+      "1": 118,
+      "5": 55,
+      "10": 31
+    },
+    "scope": "Conditional on reported SRS without replacement and fixed reviewer-hit definition; no independent randomization proof, no latent ink inference."
+  },
+  "paired_order": {
+    "paired_charts": 12,
+    "paired_windows": 26,
+    "global_preference": {
+      "asc": 9,
+      "desc": 3,
+      "tie": 0
+    },
+    "global_strong": 8,
+    "strong_local_windows": 17,
+    "strong_local_opposite_global": 3,
+    "charts_both_strong_local_orders": 3,
+    "P95_top25_replaced_by_max_order_partial": 9,
+    "scope": "Score preference only, different signed slabs; missing opposite maps unknown, not validated orientation."
+  },
+  "cost": {
+    "reported_GPU_coarse_seconds": 5801,
+    "reported_GPU_deep40_seconds": 4400,
+    "counterfactual_all149_deep_only_seconds": 16390,
+    "counterfactual_all149_coarse_plus_deep_seconds": 22191,
+    "actual_GPU_coarse_plus40_deep_seconds": 10201,
+    "estimated_deep_reduction_fraction": 0.7315436241610738,
+    "estimated_vs_deep_only_GPU_reduction_fraction": 0.3776082977425259,
+    "reported_windowing_CPU_seconds": 1112,
+    "scope": "Equal110s/window approximation; historical coarse and deep sum not total end-to-end cost. No measured exhaustive run."
+  },
+  "analysis_seconds": 1.610111317000019,
+  "wall_seconds": 1.6104868230000022,
+  "peak_rss_bytes": 81801216
+}
