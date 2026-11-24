@@ -104,19 +104,36 @@ def audit_summary(plan, adjudications, alpha=.05):
     from control_plane import digest
     from survey import summarize
     p=validate_plan(plan)
-    strata={}
+    strata={};unknown=set();known=set()
     for k,v in p["strata"].items():
-        strata[k]={"N":v["N"],"n":v["n"],"inclusion_probability":v["probability"],
-                   "sample":[str(i) for i in v["paired_indices"]]}
+        sample=[str(i) for i in v["paired_indices"]]
+        if json.loads(k)[2]=="unknown":
+            unknown.update(sample);continue
+        known.update(sample)
+        strata[k]={"N":v["N"],"n":v["n"],"inclusion_probability":v["probability"],"sample":sample}
+    if set(adjudications)-known-unknown:raise ValueError("Adjudication outside paired cohort")
+    allowed={"MISSED_DETECTABLE_TEXT":"DETECTABLE_POSITIVE","NO_ADDITIONAL_DETECTABLE_TEXT":"NO_QUALIFYING_READING","UNRESOLVED":"UNRESOLVED"}
+    if any(adjudications[i] not in allowed for i in known&set(adjudications)):
+        raise ValueError("Invalid known-order adjudication")
+    if any(adjudications[i] not in ("NO_SINGLE_ORDER_EXPOSURE","UNRESOLVED") for i in unknown&set(adjudications)):
+        raise ValueError("Unknown normal has no single-order counterfactual")
+    unknown_reviewed=sum(adjudications.get(i)=="NO_SINGLE_ORDER_EXPOSURE" for i in unknown)
+    unknown_complete=unknown_reviewed==len(unknown)
     d={"schema":"funnel.survey.v1","population_hash":p["population_hash"],"seed":p["seed"],
        "strata":strata,"budget_feasible":True}
     d["draw_hash"]=digest(d)
-    allowed={"MISSED_DETECTABLE_TEXT":"DETECTABLE_POSITIVE","NO_ADDITIONAL_DETECTABLE_TEXT":"NO_QUALIFYING_READING","UNRESOLVED":"UNRESOLVED"}
-    if any(v not in allowed for v in adjudications.values()):raise ValueError("Invalid audit adjudication")
-    q=summarize(d,{k:allowed[v] for k,v in adjudications.items()},alpha)
-    # Unknown-order charts are paired by design: no counterfactual single order.
-    # Their audit label records absence of single-order exposure, not no text.
-    q["scope"]="Only extra detectable-text misses under assigned normal rule in frozen cohort; unknown-order units are paired, no single-order exposure. Not latent ink or population recall."
+    if strata:
+        q=summarize(d,{i:allowed[adjudications[i]] for i in known&set(adjudications)},alpha)
+    else:
+        q={"complete":True,"population_units":0,"sample_units":0,"reviewed_units":0,"strata":{},
+           "HT_detectable_total":None,"design_variance":None,"simultaneous_zero_event_upper_count":None,"alpha":alpha}
+    q["complete"]=q["complete"] and unknown_complete
+    if not q["complete"]:
+        q["simultaneous_zero_event_upper_count"]=None
+        q["HT_detectable_total"]=None;q["design_variance"]=None
+        for r in q["strata"].values():r.pop("zero_event_upper_count",None)
+    q["unknown_order_paired_units"]=len(unknown);q["unknown_order_pair_adjudicated"]=unknown_reviewed
+    q["scope"]="Only extra detectable-text misses under assigned normal rule in frozen known-order cohort. Unknown-order units paired by design. Adjudications are externally supplied, not independently authenticated by this helper. Not latent ink or population recall."
     q["experiment_only"]=True
     q["promotion_allowed"]=False
     q["paired_investigation_required"]=any(v=="MISSED_DETECTABLE_TEXT" for v in adjudications.values()) or not q["complete"]
