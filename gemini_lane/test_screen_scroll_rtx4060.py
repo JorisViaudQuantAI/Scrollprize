@@ -395,10 +395,10 @@ class TestScreenScrollSafety(unittest.TestCase):
         data = json.loads(raw_text)
         total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
         self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
-        self.assertEqual(total_cm2, 90.9026)
+        self.assertEqual(total_cm2, 106.9343)
         self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
-        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 6)
-        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 19)
+        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 7)
+        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 23)
         self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
 
 

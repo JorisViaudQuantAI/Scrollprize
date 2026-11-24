@@ -4,10 +4,17 @@
     "gpu": "RTX 4060 Laptop 8 GiB",
     "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
     "tier1b_flags": "--vram-fraction 0.50 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 320",
+    "s0top_flags": "--vram-fraction 0.65 --studio-batch 4 --batch-pause-ms 250 --max-gpu-temp-c 74 --cache-mb 512",
+    "tightened_guardrail_flags": "--vram-fraction 0.55 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 72 --cache-mb 2048",
     "observed_temp_c_range": [
       57,
-      67
+      80
     ],
+    "tightened_guardrail_steady_temp_c_range": [
+      57,
+      72
+    ],
+    "thermal_guardrail_note": "One transient 76-80 C excursion occurred during z15344_w035 A-hn follow-up between legacy 4-chunk polling intervals before active cooldown returned to 64-67 C; tightened b_idx % 2 and per-chunk polling holds steady 57-72 C with 0 hardware/OOM incidents.",
     "hardware_or_oom_incidents": 0
   },
   "positive_control": {
@@ -30,9 +37,9 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 90.9026,
-    "meshes_screened": 19,
-    "two_family_followups": 6,
+    "total_unique_valid_ct_cm2": 106.9343,
+    "meshes_screened": 23,
+    "two_family_followups": 7,
     "candidates_found": 0
   },
   "meshes": [
@@ -994,6 +1001,233 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Tier-1B zero-overlap winding; quiet bilateral response (asymmetry 1.3713x, strokeness 1.1862); visual montage review confirms diffuse papyrus texture and rim specks with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z16544_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.0344,
+      "on_sheet_after_snap": 0.9407,
+      "f_parallel": 0.9097,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 666.23,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.79088,
+          "p995": 0.84625,
+          "max": 0.93022,
+          "frac_gt_05": 0.042501,
+          "frac_gt_07": 0.020657
+        },
+        "studio_asc": {
+          "p99": 0.82106,
+          "p995": 0.8553,
+          "max": 0.92452,
+          "frac_gt_05": 0.070525,
+          "frac_gt_07": 0.026801
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.3038,
+        "bilateral_overlap_frac": 0.024233,
+        "strokeness_weighted_mean": 1.8383,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; symmetric bilateral diffuse clouds (asymmetry 1.3038x); visual review confirms amorphous bilateral clouds with zero separated letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.2505,
+      "on_sheet_after_snap": 0.98,
+      "f_parallel": 0.9579,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1037.97,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.694,
+          "p995": 0.79821,
+          "max": 0.92644,
+          "frac_gt_05": 0.026617,
+          "frac_gt_07": 0.009633
+        },
+        "studio_asc": {
+          "p99": 0.86369,
+          "p995": 0.88624,
+          "max": 0.93326,
+          "frac_gt_05": 0.106716,
+          "frac_gt_07": 0.050797
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 5.2383,
+        "bilateral_overlap_frac": 0.0147,
+        "strokeness_weighted_mean": 3.4789,
+        "ink_like_candidate": true
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 1.1069,
+        "on_sheet_after_snap": 0.9881,
+        "f_parallel": 0.9623,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1735.9,
+        "peak_allocated_mib_studio": 2514,
+        "peak_allocated_mib_ahn": 1716,
+        "studio_desc": {
+          "p99": 0.73986,
+          "p995": 0.80397,
+          "max": 0.89811,
+          "frac_gt_05": 0.045045,
+          "frac_gt_07": 0.013959
+        },
+        "studio_asc": {
+          "p99": 0.89309,
+          "p995": 0.90188,
+          "max": 0.92632,
+          "frac_gt_05": 0.277103,
+          "frac_gt_07": 0.15557
+        },
+        "ahn_s0_asc": {
+          "p99": 0.84843,
+          "p995": 0.85629,
+          "max": 0.88133,
+          "frac_gt_05": 0.204496,
+          "frac_gt_07": 0.090182
+        },
+        "ahn_s0_desc": {
+          "p99": 0.73215,
+          "p995": 0.78671,
+          "max": 0.86933,
+          "frac_gt_05": 0.059805,
+          "frac_gt_07": 0.013621
+        },
+        "two_family_iou": 0.393596,
+        "adversarial_depth_and_orientation_check": {
+          "variants_tested": 9,
+          "depth_shifts_vx": [
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "spatial_modes": [
+            "orig",
+            "flip_lr",
+            "flip_ud",
+            "rot180"
+          ],
+          "max_q34_score": 0.0,
+          "passes_q34_bar_count": 0,
+          "dz_m6_s96_asc_frac_gt_07": 0.339584,
+          "dz_0_s96_asc_frac_gt_07": 0.147461,
+          "dz_p6_s96_asc_frac_gt_07": 0.038308,
+          "post_run_temp_c": 60,
+          "total_seconds": 5945.15,
+          "verdict": "ARTIFACT_OR_WIDE_BLOB_CONFIRMED"
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; coarse and 2-family Studio s48 + A-hn ROI agreed on wide ~2.5 mm asc clouds (iou=0.3936), but 9-variant adversarial depth/orientation + Q34 check proved monotonic off-sheet growth into neighboring split papyrus layer (dz=-6 asc frac_gt_07=0.3396 vs dz=0 0.1475 vs dz=+6 0.0383) and 0/9 passing Q34 (max q34_score=0.0); zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.8392,
+      "on_sheet_after_snap": 0.9797,
+      "f_parallel": 0.9075,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2659.4,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.80771,
+          "p995": 0.86123,
+          "max": 0.93888,
+          "frac_gt_05": 0.046006,
+          "frac_gt_07": 0.020975
+        },
+        "studio_asc": {
+          "p99": 0.83672,
+          "p995": 0.8791,
+          "max": 0.93282,
+          "frac_gt_05": 0.039493,
+          "frac_gt_07": 0.021326
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.0223,
+        "bilateral_overlap_frac": 0.04267,
+        "strokeness_weighted_mean": 4.052,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; balanced bilateral response (asymmetry 1.0223x); visual review confirms seam/crack-aligned clouds with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.9076,
+      "on_sheet_after_snap": 0.9549,
+      "f_parallel": 0.9496,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 629.36,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.79443,
+          "p995": 0.85037,
+          "max": 0.9398,
+          "frac_gt_05": 0.057015,
+          "frac_gt_07": 0.022914
+        },
+        "studio_asc": {
+          "p99": 0.70781,
+          "p995": 0.79333,
+          "max": 0.93774,
+          "frac_gt_05": 0.032753,
+          "frac_gt_07": 0.01047
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 2.1904,
+        "bilateral_overlap_frac": 0.043723,
+        "strokeness_weighted_mean": 1.5331,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; low asymmetry (2.1904x) and patchy seam/delamination blobs on visual review with zero connected letter strokes."
     }
   ]
 }
