@@ -1,0 +1,136 @@
+{
+  "schema": "studio.oblique.geometry_assets.v1",
+  "dataset_id": "841-expanded-layer-03-approved-r000001",
+  "hf_revision": "ad919d288ede1c4daf92725288bb6fe29c558591",
+  "verified_utc": "2026-11-24T08:23:48.390942+00:00",
+  "asset_module_sha256": "24f13feb5993abe83421eaaf65637cbe88a95fd32a6818960ee9a26e4e2c0874",
+  "sources": {
+    "selection": {
+      "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/ad919d288ede1c4daf92725288bb6fe29c558591/donor-studio-resunet-scratch-20260926/prepared/841-expanded-layer-03-approved-r000001/selection.json",
+      "bytes": 17271,
+      "sha256": "1d52f2feb76c53b408612ff5b0b3c5cca6a7a8ffeba27e60c79047a77b9fe83b",
+      "cache_hit": true
+    },
+    "render": {
+      "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/ad919d288ede1c4daf92725288bb6fe29c558591/donor-studio-resunet-scratch-20260926/prepared/841-expanded-layer-03-approved-r000001/render.json",
+      "bytes": 1433,
+      "sha256": "bc2bdfc1280ea8fb837815454c10d5f2125b4c2f45d0ee313bf85a4ac330329e",
+      "cache_hit": true
+    },
+    "file_index": {
+      "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/ad919d288ede1c4daf92725288bb6fe29c558591/backup/file-index.json",
+      "bytes": 12431639,
+      "sha256": "e81e3d6971e3bd4a52f8872e7d931c8112c503ded0b3ca1fda25e01c22bca40b",
+      "cache_hit": true
+    }
+  },
+  "archive_range": {
+    "url": "https://huggingface.co/datasets/paranke/vesuvius-814-841-9b-studio-training-data/resolve/ad919d288ede1c4daf92725288bb6fe29c558591/backup/remote-artifacts.tar.gz",
+    "archive_bytes": 1376603369,
+    "archive_expected_sha256": "7e1098556ed3229f2dc0d99565039c19a299790af0bb51b2ab1c5c8cf5e63dd2",
+    "whole_archive_hash_verified": false,
+    "range_start": 0,
+    "range_end": 8388607,
+    "range_bytes": 8388608,
+    "range_sha256": "b5d6f3cd285e5e168fccddc546659a2db6ef7d1be1f8c8fe53954bf36e454c69",
+    "needed": false,
+    "network_requests": 0,
+    "downloaded_bytes": 0
+  },
+  "geometry_files": {
+    "meta.json": {
+      "bytes": 4636,
+      "sha256": "656832c5361c4bebb690f5317bc5f8cb75248225301a7885d85612806e29dfc5"
+    },
+    "x.tif": {
+      "bytes": 69904,
+      "sha256": "7ca2e15f6fba2e462e255c263d8ae53e2d3bcbc6e03ddac72d86d06f833a7f57"
+    },
+    "y.tif": {
+      "bytes": 69904,
+      "sha256": "50d693df00e09cd111005ae58f2a5c63fb767ecce771f771fd6e8df33bb792da"
+    },
+    "z.tif": {
+      "bytes": 69904,
+      "sha256": "bb4c33ebfc52cdf76730fc54e92644a7bb6243be44b6689de5035cc5814ef5b6"
+    },
+    "transform.json": {
+      "bytes": 1352,
+      "sha256": "700d59da195761ca5877d7a1aed6804ae7e1b14a29dc0c2d9f6b86580c87719e"
+    }
+  },
+  "transform_file_usage": "Receipt only; recipe.matrix already maps stored mesh coordinates to native L0.",
+  "recipe": {
+    "kind": "native_low_resolution_mesh_derived_affine",
+    "volume_id": "20250821151531",
+    "source_volume": "20260319124803",
+    "url": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHerc0841/volumes/20250821151531-9.366um-1.2m-113keV-masked.zarr/0/",
+    "level": 0,
+    "xy_pitch_um": 9.36,
+    "z_pitch_um": 9.366,
+    "matrix": [
+      [
+        1.0254361365022744,
+        0.0035657098422584277,
+        0.0004988027718623516,
+        -81.50512802792237
+      ],
+      [
+        -0.0028396559131153793,
+        1.0257641060055425,
+        -0.0006003501869395713,
+        -61.145824039353144
+      ],
+      [
+        -2.9385715359188414e-05,
+        0.0006015680556569281,
+        1.025831056140028,
+        12788.96485394228
+      ]
+    ],
+    "normal_sign": 1,
+    "offsets_um": [
+      -74.928,
+      -65.562,
+      -56.196,
+      -46.83,
+      -37.464,
+      -28.098,
+      -18.732,
+      -9.366,
+      0.0,
+      9.366,
+      18.732,
+      28.098,
+      37.464,
+      46.83,
+      56.196,
+      65.562
+    ],
+    "pixel_centers": "(index+0.5)*original_label_pitch; unchanged labeled UV",
+    "limitation": "841 affine recovered from corresponding published meshes; heldout geometric p95 < 0.5 native voxel",
+    "dataset_id": "841-expanded-layer-03-approved-r000001",
+    "shape": [
+      2773,
+      2609
+    ],
+    "mesh_geometry_um": 9.612,
+    "mesh_geometry_shape": [
+      3781,
+      7618,
+      7618
+    ],
+    "mesh_scale_yx": [
+      0.05,
+      0.05
+    ],
+    "runtime_reverse": false,
+    "offset_yx": [
+      0,
+      0
+    ],
+    "normal_basis": "cross_drow_dcol_in_hr_xyz"
+  },
+  "network_requests": 0,
+  "downloaded_bytes": 0
+}
