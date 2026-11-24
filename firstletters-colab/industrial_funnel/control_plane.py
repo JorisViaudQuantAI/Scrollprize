@@ -214,6 +214,9 @@ class Coordinator:
         s=json.loads(row["spec"]);inputs=set(s["inputs"].values())
         for dep in s["deps"]:
             p=c.execute("SELECT state,spec FROM jobs WHERE id=?",(dep,)).fetchone()
+            if p["state"]=="BLOCKED":
+                c.execute("UPDATE jobs SET state='BLOCKED',reason='UPSTREAM_BLOCKED' WHERE id=?",(row["id"],))
+                self.event(c,now,row["id"],"BLOCKED",{"reason":"UPSTREAM_BLOCKED"});return False
             if p["state"]!="SUCCEEDED":return False
             a=c.execute("SELECT receipt FROM attempts WHERE job=? AND status='SUCCEEDED'",(dep,)).fetchone()
             if not a:raise RuntimeError("Parent state without receipt")
@@ -221,8 +224,9 @@ class Coordinator:
             if not set(receipt["outputs"].values())<=inputs:
                 c.execute("UPDATE jobs SET state='BLOCKED',reason='LINEAGE_HASH_MISMATCH' WHERE id=?",(row["id"],))
                 self.event(c,now,row["id"],"BLOCKED",{"reason":"LINEAGE_HASH_MISMATCH"});return False
-            if ps["stage"]=="CONTROL" and (receipt.get("control_pass") is not True or receipt.get("calibration")!=s["calibration"]):
-                return False
+            if ps["stage"]=="CONTROL" and (receipt.get("control_pass") is not True or receipt.get("calibration")!=s["calibration"] or receipt["valid_until"]<=now):
+                c.execute("UPDATE jobs SET state='BLOCKED',reason='CONTROL_STALE_OR_INVALID' WHERE id=?",(row["id"],))
+                self.event(c,now,row["id"],"BLOCKED",{"reason":"CONTROL_STALE_OR_INVALID"});return False
         try:
             for h in inputs:self.store.verify(h)
         except ValueError:
@@ -286,10 +290,17 @@ class Coordinator:
                 if s["stage"]=="CONTROL":
                     if r.get("calibration")!=s["calibration"] or type(r.get("control_pass"))!=bool:
                         raise ValueError("Control receipt key/verdict mismatch")
+                    if type(r.get("valid_until"))!=int or r["valid_until"]<=now:
+                        raise ValueError("Control needs a future validity limit")
                     if not r["control_pass"]:reason="BAD_CONTROL"
                 if s["stage"] in INFERENCE:
-                    if not {"asc_map","desc_map","support_mask"}<=set(outputs) or r.get("orders")!=["asc","desc"]:
+                    if not {"asc_map","desc_map","asc_support","desc_support","metadata"}<=set(outputs) or r.get("orders")!=["asc","desc"]:
                         raise ValueError("Incomplete paired inference evidence")
+                    for dep in s["deps"]:
+                        ps=json.loads(c.execute("SELECT spec FROM jobs WHERE id=?",(dep,)).fetchone()[0])
+                        if ps["stage"]=="CONTROL":
+                            control=json.loads(c.execute("SELECT receipt FROM attempts WHERE job=? AND status='SUCCEEDED'",(dep,)).fetchone()[0])
+                            if control["valid_until"]<=now:reason="CONTROL_STALE_OR_INVALID"
                 if s["stage"]=="REVIEW" and r.get("review_status") not in REVIEW:
                     raise ValueError("Missing scoped review outcome")
                 status="FAILED" if reason else "SUCCEEDED";state="BLOCKED" if reason else "SUCCEEDED"
@@ -298,6 +309,19 @@ class Coordinator:
             c.execute("UPDATE jobs SET state=?,reason=? WHERE id=?",(state,reason,j["id"]))
             self.event(c,now,j["id"],status,{"reason":reason})
             return status
+    def reconcile_lost(self,job,token,worker_stopped,now=None):
+        """Explicit local operator acknowledgement; spent reservation is NOT refunded."""
+        if worker_stopped is not True:raise ValueError("Confirm worker has stopped")
+        now=self.clock(now)
+        with self.tx() as c:
+            a=c.execute("SELECT * FROM attempts WHERE job=? AND token=?",(job,token)).fetchone()
+            j=c.execute("SELECT state,reason,attempts FROM jobs WHERE id=?",(job,)).fetchone()
+            if not a or not j or a["status"]!="LOST" or j["state"]!="BLOCKED" or j["reason"]!="LEASE_EXPIRED_RECONCILE":
+                raise ValueError("No unreconciled expired lease")
+            state="PENDING" if j["attempts"]<self.policy["max_attempts"] else "BLOCKED"
+            c.execute("UPDATE jobs SET state=?,reason=? WHERE id=?",(state,None if state=="PENDING" else "RETRY_LIMIT",job))
+            self.event(c,now,job,"LOST_RECONCILED",{"state":state,"reservation_refunded":False})
+            return state
     def summary(self):
         """Operational aggregate only; no private unit/worker/hash/receipt exports."""
         with self.tx() as c:
