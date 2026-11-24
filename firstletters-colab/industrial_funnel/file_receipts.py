@@ -80,7 +80,7 @@ class FileReceipts:
         validate(spec,attempt,obj["receipt"],self.store)
         return obj
     def resume(self,spec,now=None):
-        """List immutable attempts. Never silently pick competing successful results."""
+        """Local byte availability ONLY; use file_admission.inspect_batch for lineage/grants."""
         import time
         now=int(time.time()) if now is None else int(now)
         j=job_key(spec);rows=[]
@@ -96,5 +96,5 @@ class FileReceipts:
             good.append(q)
         if len(good)>1:raise ValueError("Multiple complete attempts need explicit operator reconciliation")
         return {"attempts":len(rows),"completed":len(good)==1,"receipt":good[0] if good else None,
-                "experiment_only":is_experiment(spec),"eligible_for_standard_chain":len(good)==1 and not is_experiment(spec),
+                "experiment_only":is_experiment(spec),"eligible_for_standard_chain":False,"admission_check_required":True,
                 "next_attempt":max([q["receipt"]["attempt"] for q in rows],default=0)+1}
