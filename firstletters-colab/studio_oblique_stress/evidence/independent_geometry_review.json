@@ -1,0 +1,234 @@
+{
+  "status": "review_complete",
+  "author_index": 357,
+  "protocol_sha256": "d56864f88ba32302344c1858f9a53cf4c1f203b64a7b28fab980105535793a80",
+  "mapping_sha256": "57d3979ce00383c0afe023abc22a13cd988a5e5f3b7d1b699edfa8e334f9ddcd",
+  "original_states_sha256": "5fa9d4b88624dfb10001bf299ca88b1a75142269336c51fdbce1adba271ed949",
+  "source_metadata_sha256": "1d52f2feb76c53b408612ff5b0b3c5cca6a7a8ffeba27e60c79047a77b9fe83b",
+  "author_surface_helper_sha256": "613991db8fc436d03dc9ff51ef37eb2da7d473b6603e84a9c2e2861db817352d",
+  "mesh_sha256": {
+    "meta.json": "656832c5361c4bebb690f5317bc5f8cb75248225301a7885d85612806e29dfc5",
+    "x.tif": "7ca2e15f6fba2e462e255c263d8ae53e2d3bcbc6e03ddac72d86d06f833a7f57",
+    "y.tif": "50d693df00e09cd111005ae58f2a5c63fb767ecce771f771fd6e8df33bb792da",
+    "z.tif": "bb4c33ebfc52cdf76730fc54e92644a7bb6243be44b6689de5035cc5814ef5b6"
+  },
+  "reviewer_sha256": "871163e14c76eb806a3ba13e512cad2a50e0754fc325f6cd515ea58abaad346f",
+  "numpy_version": "2.3.5",
+  "scipy_version": "1.17.0",
+  "common_excluded_known": 88,
+  "global_excluded_ink": 199,
+  "global_excluded_background": 341,
+  "global_rejection_categories": {
+    "invalid_target_geometry": 0,
+    "invalid_solved_geometry": 0,
+    "invalid_jacobian": 0,
+    "outside_model_margin": 0,
+    "outside_depth_band": 0,
+    "residual_failures": 865
+  },
+  "per_arm": [
+    {
+      "arm": "x_minus20",
+      "rejected": 26,
+      "analytical_residual_above_001": 26,
+      "analytical_residual_max": 0.2677201808603235,
+      "physical_residual_range": [
+        0.02164675910172384,
+        0.2672954748906809
+      ],
+      "within_001_chart_px_of_seam": 23,
+      "maximum_seam_distance_chart_px": 0.013028996930211943,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.39056645669074985,
+        "best_analytical_residual": 0.2606814347621488,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "x_minus10",
+      "rejected": 1,
+      "analytical_residual_above_001": 1,
+      "analytical_residual_max": 0.024286310127489906,
+      "physical_residual_range": [
+        0.024417598532992517,
+        0.024417598532992517
+      ],
+      "within_001_chart_px_of_seam": 1,
+      "maximum_seam_distance_chart_px": 0.001368594530261519,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.023257014877597813,
+        "best_analytical_residual": 0.022947515805174006,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "x_minus5",
+      "rejected": 7,
+      "analytical_residual_above_001": 7,
+      "analytical_residual_max": 0.032285380364599776,
+      "physical_residual_range": [
+        0.01362150919425793,
+        0.03215046293275568
+      ],
+      "within_001_chart_px_of_seam": 7,
+      "maximum_seam_distance_chart_px": 0.0013468550484718048,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.031875475000757235,
+        "best_analytical_residual": 0.030944272882116545,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "x_plus10",
+      "rejected": 23,
+      "analytical_residual_above_001": 23,
+      "analytical_residual_max": 0.06385713458679212,
+      "physical_residual_range": [
+        0.013199760624710967,
+        0.06385695384516735
+      ],
+      "within_001_chart_px_of_seam": 23,
+      "maximum_seam_distance_chart_px": 0.0034228966995711444,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.0626777775412097,
+        "best_analytical_residual": 0.06304181576966393,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_minus20",
+      "rejected": 10,
+      "analytical_residual_above_001": 10,
+      "analytical_residual_max": 0.17339994685878402,
+      "physical_residual_range": [
+        0.018017059098220586,
+        0.17357252263510822
+      ],
+      "within_001_chart_px_of_seam": 10,
+      "maximum_seam_distance_chart_px": 0.005331493600732091,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.1708337883313368,
+        "best_analytical_residual": 0.17097150769017716,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_minus10",
+      "rejected": 4,
+      "analytical_residual_above_001": 4,
+      "analytical_residual_max": 0.028593276022292835,
+      "physical_residual_range": [
+        0.016090992476568814,
+        0.028579563117835032
+      ],
+      "within_001_chart_px_of_seam": 4,
+      "maximum_seam_distance_chart_px": 0.0007206029207121279,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.027503509799256372,
+        "best_analytical_residual": 0.027872751053236805,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_minus5",
+      "rejected": 5,
+      "analytical_residual_above_001": 5,
+      "analytical_residual_max": 0.026778300457450246,
+      "physical_residual_range": [
+        0.012556242704240139,
+        0.02655366062221144
+      ],
+      "within_001_chart_px_of_seam": 5,
+      "maximum_seam_distance_chart_px": 0.0006362924943154815,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.02562381199329222,
+        "best_analytical_residual": 0.02629517712435589,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_plus5",
+      "rejected": 13,
+      "analytical_residual_above_001": 12,
+      "analytical_residual_max": 0.09999779531445588,
+      "physical_residual_range": [
+        0.011784331306138533,
+        0.09956319924392272
+      ],
+      "within_001_chart_px_of_seam": 13,
+      "maximum_seam_distance_chart_px": 0.005435423113814644,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.11671828132741909,
+        "best_analytical_residual": 0.09349362281250799,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_plus10",
+      "rejected": 18,
+      "analytical_residual_above_001": 18,
+      "analytical_residual_max": 0.22615439440132362,
+      "physical_residual_range": [
+        0.032199574829185305,
+        0.22686658710381546
+      ],
+      "within_001_chart_px_of_seam": 17,
+      "maximum_seam_distance_chart_px": 0.012926525558196561,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.21872401109641113,
+        "best_analytical_residual": 0.21864637527771297,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    },
+    {
+      "arm": "y_plus20",
+      "rejected": 25,
+      "analytical_residual_above_001": 25,
+      "analytical_residual_max": 0.4105903214337437,
+      "physical_residual_range": [
+        0.015291046312750476,
+        0.411664839396675
+      ],
+      "within_001_chart_px_of_seam": 20,
+      "maximum_seam_distance_chart_px": 0.024577410793792335,
+      "author_residual_parity_max": 0.0,
+      "worst_point_neighbor_cell_probe": {
+        "cells_tested": 9,
+        "accepted_root_found": false,
+        "best_author_fp32_residual": 0.38548399289001567,
+        "best_analytical_residual": 0.3858702874696276,
+        "limitation": "Local least-squares probes only; absence of a found root is not a global nonexistence proof."
+      }
+    }
+  ],
+  "production_arrays_changed": false,
+  "model_forwards": 0,
+  "conclusion": "Rejections match the independent source evaluator and cluster at cell seams; none of ten deterministic worst-point local probes found an acceptable root. Retain abstentions; no global nonexistence or injectivity proof."
+}
