@@ -1,0 +1,51 @@
+name: RFC amendment 075 file admission and native regression
+on:
+  push:
+    branches: [chatgpt/industrial-search-funnel-rfc]
+    paths:
+      - .github/workflows/chatgpt-industrial-funnel-self-review.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce original A02 gaps in an isolated directory
+        run: |
+          D=firstletters-colab/industrial_funnel
+          mkdir /tmp/old074
+          git fetch --no-tags --depth=1 origin 9e66591b309eeb41561c173eb52932527370977b
+          for f in control_plane.py file_receipts.py order_audit.py survey.py; do
+            git show FETCH_HEAD:"$D/$f" > "/tmp/old074/$f"
+            test "$(git hash-object "/tmp/old074/$f")" = "$(git rev-parse "FETCH_HEAD:$D/$f")"
+          done
+          cp "$D/probe074.py" /tmp/old074/
+          python /tmp/old074/probe074.py /tmp/old074-probe.json
+      - name: Overlay pinned PR7 native tests without changing other branches
+        run: |
+          D=firstletters-colab/industrial_funnel
+          mkdir /tmp/a03-combined
+          cp "$D/"*.py /tmp/a03-combined/
+          git fetch --no-tags --depth=1 origin 9ac322fd2f2cb9cfcb82f22904105ea08d64d3a4
+          for f in native_evidence.py adapt_visual_campaign.py test_native_evidence.py test_adapt_visual_campaign.py; do
+            git show FETCH_HEAD:"$D/$f" > "/tmp/a03-combined/$f"
+            test "$(git hash-object "/tmp/a03-combined/$f")" = "$(git rev-parse "FETCH_HEAD:$D/$f")"
+          done
+          python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Run file admission and native compatibility regressions
+        run: python /tmp/a03-combined/verify075.py --old-probe /tmp/old074-probe.json --output /tmp/amendment075-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: amendment075-synthetic-verification
+          path: |
+            /tmp/old074-probe.json
+            /tmp/amendment075-result.json
+          retention-days: 30

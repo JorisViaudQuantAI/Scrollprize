@@ -186,6 +186,7 @@ def evidence_bound_audit(files,manifest,pin,plan_hash,adjudication_hashes,now,re
         for k in ("HT_detectable_total","design_variance","simultaneous_zero_event_upper_count"):q[k]=None
         for r in q["strata"].values():
             r.pop("zero_event_upper_count",None);r["HT_detectable_total"]=None;r["design_variance"]=None
+    q["evidence_verified"]=q["evidence_complete"]
     q["promotion_allowed"]=False
     q["evidence_scope"]="Verified byte/lineage/grant binding in one pinned batch; reviewer labels and scientific semantics not independently authenticated."
     return q
