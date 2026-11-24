@@ -1,0 +1,675 @@
+{
+  "schema_version": "tiled_q34_cloud_masked_calibration_v1",
+  "experiment": "Exp T13-TileQ34-Ranker (Q31 + Q34): Area-Matched Stroke-Bounded TFCE & Rim-Eroded Cloud-Masked Opposite-Face Ranker",
+  "device": "cpu_only_numpy_scipy_pil",
+  "http_budget": {
+    "cap_bytes": 41943040,
+    "cap_mib": 40.0,
+    "used_bytes": 26505150,
+    "used_mib": 25.2773,
+    "within_cap": true
+  },
+  "parameters": {
+    "default_voxel_um": 8.64,
+    "tile_size_px": 512,
+    "tile_stride_px": 256,
+    "rim_erosion_mm": 0.35,
+    "bilateral_cloud_threshold": 0.45,
+    "max_stroke_width_mm": 0.9,
+    "max_component_area_mm2": 12.0,
+    "tfce_H": 2.0,
+    "tfce_E": 0.5,
+    "tfce_n_steps": 32
+  },
+  "sources": [
+    {
+      "source_id": "pherc0306b_w074_json",
+      "scroll": "PHerc0306B",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/PHerc0306B_20250521133212_w074own_touchup_V5Rc.json",
+      "bytes": 6546,
+      "mib": 0.0062,
+      "sha256": "fbc38f29f228a42de8daf47d16e7260e9f2d9295981f35030e4fb7c222c30045"
+    },
+    {
+      "source_id": "pherc0306b_w074_png",
+      "scroll": "PHerc0306B",
+      "url": "https://raw.githubusercontent.com/SirProdigle/pherc0306b-first-letters/feabff6c54f95bd8e52a90e0a7a76881ee67d4cc/submission/PHerc0306B_20250521133212_w074own_touchup_V5Rc.png",
+      "bytes": 8487612,
+      "mib": 8.0944,
+      "sha256": "48df135d02b2c5babde055b122e17bd828a11de50f2878c00bbc8ce5357087df"
+    },
+    {
+      "source_id": "pherc0343_argus_v3",
+      "scroll": "PHerc0343",
+      "model": "argus-v3",
+      "voxel_um": 8.64,
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0343/segments/20261007213123-concat_w047-w048_R5B2_z9500-11000/ink-detection/PHerc0343-20261007213123-8.64um-1.2m-116keV-volume-20250521140437-20261117205746-argus-v3-tile384-stride192.tif",
+      "bytes": 5572656,
+      "mib": 5.3145,
+      "sha256": "3b2083962999f5f33829bd28f7459ac08c5c6dab054da703cc50814f9d3fdd40",
+      "shape_hw": [
+        2660,
+        6780
+      ],
+      "valid_frac": 0.844652
+    },
+    {
+      "source_id": "pherc0343_reader_v3",
+      "scroll": "PHerc0343",
+      "model": "reader-v3",
+      "voxel_um": 8.64,
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0343/segments/20261007213123-concat_w047-w048_R5B2_z9500-11000/ink-detection/PHerc0343-20261007213123-8.64um-1.2m-116keV-volume-20250521140437-20261019111505-reader-v3-tile384-stride192.tif",
+      "bytes": 4992860,
+      "mib": 4.7616,
+      "sha256": "5d218a4f84f5c33bfb39e5775f88eb8893cc333c2d0c1336ffc598f1c02e4657",
+      "shape_hw": [
+        2660,
+        6780
+      ],
+      "valid_frac": 0.844652
+    },
+    {
+      "source_id": "pherc0841_argus_v3",
+      "scroll": "PHerc0841",
+      "model": "argus-v3",
+      "voxel_um": 9.366,
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0841/segments/20260220213127-w00/ink-detection/PHerc0841-20260220213127-9.366um-1.2m-113keV-volume-20250821151531-20261117205746-argus-v3-tile384-stride192.tif",
+      "bytes": 7445476,
+      "mib": 7.1006,
+      "sha256": "71ef45029fae1a73e116dc71698c5579686d99b3827dbea9ce410e04f5144153",
+      "shape_hw": [
+        4220,
+        4760
+      ],
+      "valid_frac": 0.909991
+    }
+  ],
+  "pherc0306b_display_inversion": {
+    "image_shape_hw": [
+      4417,
+      7385
+    ],
+    "map_px": 28134195,
+    "valid_sheet_px": 27380023,
+    "valid_sheet_frac_of_map": 0.973194,
+    "resid_tol": 4.0,
+    "page_rgb": [
+      243.0,
+      236.0,
+      222.0
+    ],
+    "ink_rgb": [
+      22.0,
+      20.0,
+      18.0
+    ],
+    "claim_box_inversion_check": {
+      "valid_frac_in_box": 0.994596,
+      "measured_half_tone_share": 0.086998,
+      "meta_half_tone_share": 0.0858,
+      "measured_p99_tone": 0.940713,
+      "meta_p99_tone": 0.9384
+    }
+  },
+  "summary_verdict": {
+    "n_regimes": 7,
+    "n_positive_regimes": 5,
+    "n_negative_regimes": 2,
+    "legacy_positive_pass_count": 2,
+    "upgraded_positive_pass_count": 5,
+    "upgraded_negative_pass_count": 0,
+    "all_positive_regimes_pass_upgraded": true,
+    "all_negative_controls_rejected_upgraded": true,
+    "bottleneck_a_multiline_rescue_verified": true,
+    "bottleneck_b_rim_speck_rescue_verified": true
+  },
+  "regime_benchmarks": [
+    {
+      "regime_id": "1_pherc0306b_w074_full_line1",
+      "category": "positive_single_line",
+      "expected_passes_q34_bar": true,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        480,
+        4378
+      ],
+      "valid_cm2": 1.568717,
+      "notes": "PHerc. 0306B w074 full Line 1 claim crop vs on-sheet blank margin null.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 50.971577,
+        "sb_dom_max": 38.633526,
+        "sb_opp_max": 3.49226,
+        "max_tfce_ratio": 11.062615,
+        "p995_tfce_ratio": 39.059412,
+        "diff_tfce_p99": 28.094172,
+        "sb_retention_max": 0.757943,
+        "sb_retention_p995": 0.738925,
+        "width_median_hi_mm": 0.3456,
+        "narrow_stroke_frac_hi": 0.786627,
+        "wide_blob_frac_hi": 0.0,
+        "max_b1": 8,
+        "stroke_consistency_score": 0.600866,
+        "q34_score": 0.587144,
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "passes_q34_bar": true,
+        "regime_label": "single_face_looped_stroke_pass",
+        "elapsed_seconds": 16.497
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 37.554241,
+        "sb_dom_max": 41.172451,
+        "sb_cm_dom_max": 41.172451,
+        "sb_cm_opp_max": 2.975575,
+        "area_matched_retention_max": 1.0,
+        "area_matched_retention_p995": 1.0,
+        "cloud_masked_max_tfce_ratio": 13.836806,
+        "cloud_masked_p995_tfce_ratio": 86.629802,
+        "diff_tfce_p99": 30.052675,
+        "diff_tfce_p995": 32.066196,
+        "diff_tfce_asymmetry_ratio": 128.264786,
+        "top_tile_q34_score": 0.668377,
+        "top_tile_passes_q34_bar": true,
+        "global_upgraded_passes_q34_bar": true,
+        "upgraded_q34_score": 0.62136,
+        "upgraded_regime_label": "single_face_looped_stroke_pass",
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 2101440,
+          "eroded_valid_px": 1719200,
+          "eroded_rim_px": 382240,
+          "dom_rim_blob_suppressed_px": 4519,
+          "opp_rim_blob_suppressed_px": 2978
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.101761,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.31098,
+          "top_tile_hot_share": 0.491094
+        },
+        "elapsed_seconds": 19.873
+      },
+      "bottleneck_b_rim_speck_diagnostic": {
+        "legacy_passes_q34_bar": false,
+        "legacy_max_tfce_ratio": 1.652962,
+        "upgraded_passes_q34_bar": true,
+        "upgraded_cloud_masked_p995_tfce_ratio": 86.629802,
+        "upgraded_diff_tfce_asymmetry_ratio": 128.264786,
+        "opp_rim_blob_suppressed_px": 4828
+      }
+    },
+    {
+      "regime_id": "2_pherc0306b_w074_10mm_subcrop",
+      "category": "positive_short_word_subcrop",
+      "expected_passes_q34_bar": true,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        480,
+        1157
+      ],
+      "valid_cm2": 0.414574,
+      "notes": "PHerc. 0306B w074 10.0 mm short-word Line 1 sub-crop.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 41.075161,
+        "sb_dom_max": 32.627556,
+        "sb_opp_max": 2.13961,
+        "max_tfce_ratio": 15.2493,
+        "p995_tfce_ratio": 58.013613,
+        "diff_tfce_p99": 25.246347,
+        "sb_retention_max": 0.794338,
+        "sb_retention_p995": 0.792002,
+        "width_median_hi_mm": 0.38016,
+        "narrow_stroke_frac_hi": 0.859543,
+        "wide_blob_frac_hi": 0.0,
+        "max_b1": 2,
+        "stroke_consistency_score": 0.625625,
+        "q34_score": 0.480391,
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "passes_q34_bar": true,
+        "regime_label": "single_face_looped_stroke_pass",
+        "elapsed_seconds": 3.608
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 36.11507,
+        "sb_dom_max": 31.261362,
+        "sb_cm_dom_max": 31.261362,
+        "sb_cm_opp_max": 0.645472,
+        "area_matched_retention_max": 0.865604,
+        "area_matched_retention_p995": 0.863691,
+        "cloud_masked_max_tfce_ratio": 48.431801,
+        "cloud_masked_p995_tfce_ratio": 92.333798,
+        "diff_tfce_p99": 25.541706,
+        "diff_tfce_p995": 26.462051,
+        "diff_tfce_asymmetry_ratio": 105.848206,
+        "top_tile_q34_score": 0.400785,
+        "top_tile_passes_q34_bar": true,
+        "global_upgraded_passes_q34_bar": true,
+        "upgraded_q34_score": 0.414843,
+        "upgraded_regime_label": "single_face_looped_stroke_pass",
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 555360,
+          "eroded_valid_px": 430800,
+          "eroded_rim_px": 124560,
+          "dom_rim_blob_suppressed_px": 0,
+          "opp_rim_blob_suppressed_px": 1185
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.254429,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.188671,
+          "top_tile_hot_share": 0.226287
+        },
+        "elapsed_seconds": 5.654
+      }
+    },
+    {
+      "regime_id": "3_pherc0343_w047_w048_argus_v3_text_strip_512x2048",
+      "category": "positive_dense_multiline_text_strip",
+      "expected_passes_q34_bar": true,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        512,
+        2048
+      ],
+      "valid_cm2": 0.782758,
+      "notes": "Bottleneck A rescue on PHerc0343 argus-v3 512x2048 dense multi-line text strip.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 97.137642,
+        "sb_dom_max": 27.693872,
+        "sb_opp_max": 3.729173,
+        "max_tfce_ratio": 7.426278,
+        "p995_tfce_ratio": 8.696682,
+        "diff_tfce_p99": 11.16333,
+        "sb_retention_max": 0.285099,
+        "sb_retention_p995": 0.21734,
+        "width_median_hi_mm": 0.566035,
+        "narrow_stroke_frac_hi": 0.517235,
+        "wide_blob_frac_hi": 0.04318,
+        "max_b1": 10,
+        "stroke_consistency_score": 0.349196,
+        "q34_score": 0.029564,
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": false,
+        "passes_stroke_morphology": false,
+        "passes_q34_bar": false,
+        "regime_label": "bilateral_or_wide_cloud_rejected",
+        "elapsed_seconds": 11.128
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 33.689178,
+        "sb_dom_max": 32.601936,
+        "sb_cm_dom_max": 32.601936,
+        "sb_cm_opp_max": 3.89796,
+        "area_matched_retention_max": 0.967727,
+        "area_matched_retention_p995": 0.965277,
+        "cloud_masked_max_tfce_ratio": 8.363846,
+        "cloud_masked_p995_tfce_ratio": 11.475512,
+        "diff_tfce_p99": 16.681664,
+        "diff_tfce_p995": 19.520945,
+        "diff_tfce_asymmetry_ratio": 63.143966,
+        "top_tile_q34_score": 0.614739,
+        "top_tile_passes_q34_bar": true,
+        "global_upgraded_passes_q34_bar": true,
+        "upgraded_q34_score": 0.567571,
+        "upgraded_regime_label": "single_face_looped_stroke_pass",
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 1048576,
+          "eroded_valid_px": 850176,
+          "eroded_rim_px": 198400,
+          "dom_rim_blob_suppressed_px": 3592,
+          "opp_rim_blob_suppressed_px": 3613
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.186052,
+          "masked_cloud_frac": 0.001328,
+          "top_tile_mean_excess_diff": 0.304681,
+          "top_tile_hot_share": 0.459333
+        },
+        "elapsed_seconds": 13.708
+      }
+    },
+    {
+      "regime_id": "4_pherc0343_w047_w048_reader_v3_text_strip_512x2048",
+      "category": "positive_dense_multiline_text_strip",
+      "expected_passes_q34_bar": true,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        512,
+        2048
+      ],
+      "valid_cm2": 0.782758,
+      "notes": "Bottleneck A rescue on PHerc0343 reader-v3 512x2048 dense multi-line text strip.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 46.515533,
+        "sb_dom_max": 17.404779,
+        "sb_opp_max": 1.412557,
+        "max_tfce_ratio": 12.321474,
+        "p995_tfce_ratio": 15.980432,
+        "diff_tfce_p99": 5.744805,
+        "sb_retention_max": 0.374171,
+        "sb_retention_p995": 0.350935,
+        "width_median_hi_mm": 0.279167,
+        "narrow_stroke_frac_hi": 0.680131,
+        "wide_blob_frac_hi": 0.0,
+        "max_b1": 9,
+        "stroke_consistency_score": 0.45486,
+        "q34_score": 0.056478,
+        "passes_tfce_asymmetry": false,
+        "passes_width_retention": false,
+        "passes_stroke_morphology": true,
+        "passes_q34_bar": false,
+        "regime_label": "bilateral_or_wide_cloud_rejected",
+        "elapsed_seconds": 8.199
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 22.848873,
+        "sb_dom_max": 21.392206,
+        "sb_cm_dom_max": 21.392206,
+        "sb_cm_opp_max": 1.302164,
+        "area_matched_retention_max": 0.936248,
+        "area_matched_retention_p995": 0.839659,
+        "cloud_masked_max_tfce_ratio": 16.428194,
+        "cloud_masked_p995_tfce_ratio": 18.693526,
+        "diff_tfce_p99": 6.715632,
+        "diff_tfce_p995": 7.353681,
+        "diff_tfce_asymmetry_ratio": 29.414724,
+        "top_tile_q34_score": 0.317749,
+        "top_tile_passes_q34_bar": true,
+        "global_upgraded_passes_q34_bar": true,
+        "upgraded_q34_score": 0.312963,
+        "upgraded_regime_label": "single_face_looped_stroke_pass",
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 1048576,
+          "eroded_valid_px": 850176,
+          "eroded_rim_px": 198400,
+          "dom_rim_blob_suppressed_px": 0,
+          "opp_rim_blob_suppressed_px": 15001
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.087212,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.137647,
+          "top_tile_hot_share": 0.339743
+        },
+        "elapsed_seconds": 9.152
+      }
+    },
+    {
+      "regime_id": "5_pherc0841_w00_argus_v3_text_strip_512x2048",
+      "category": "positive_dense_multiline_text_strip",
+      "expected_passes_q34_bar": true,
+      "voxel_um": 9.366,
+      "shape_hw": [
+        512,
+        2048
+      ],
+      "valid_cm2": 0.919831,
+      "notes": "Bottleneck A rescue on PHerc0841 argus-v3 512x2048 dense multi-line text strip.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 89.762947,
+        "sb_dom_max": 22.98448,
+        "sb_opp_max": 1.961017,
+        "max_tfce_ratio": 11.720691,
+        "p995_tfce_ratio": 13.184169,
+        "diff_tfce_p99": 11.920619,
+        "sb_retention_max": 0.256058,
+        "sb_retention_p995": 0.228686,
+        "width_median_hi_mm": 0.477574,
+        "narrow_stroke_frac_hi": 0.556478,
+        "wide_blob_frac_hi": 0.010526,
+        "max_b1": 10,
+        "stroke_consistency_score": 0.331915,
+        "q34_score": 0.005327,
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": false,
+        "passes_stroke_morphology": false,
+        "passes_q34_bar": false,
+        "regime_label": "bilateral_or_wide_cloud_rejected",
+        "elapsed_seconds": 10.075
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 41.502182,
+        "sb_dom_max": 30.457552,
+        "sb_cm_dom_max": 30.457552,
+        "sb_cm_opp_max": 2.002473,
+        "area_matched_retention_max": 0.733878,
+        "area_matched_retention_p995": 0.728342,
+        "cloud_masked_max_tfce_ratio": 15.20997,
+        "cloud_masked_p995_tfce_ratio": 17.902385,
+        "diff_tfce_p99": 14.763501,
+        "diff_tfce_p995": 16.024469,
+        "diff_tfce_asymmetry_ratio": 64.097878,
+        "top_tile_q34_score": 0.485111,
+        "top_tile_passes_q34_bar": true,
+        "global_upgraded_passes_q34_bar": true,
+        "upgraded_q34_score": 0.492664,
+        "upgraded_regime_label": "single_face_looped_stroke_pass",
+        "passes_tfce_asymmetry": true,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": true,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 1048576,
+          "eroded_valid_px": 864612,
+          "eroded_rim_px": 183964,
+          "dom_rim_blob_suppressed_px": 4973,
+          "opp_rim_blob_suppressed_px": 4494
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.191866,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.287184,
+          "top_tile_hot_share": 0.418896
+        },
+        "elapsed_seconds": 12.622
+      }
+    },
+    {
+      "regime_id": "6_real_blank_papyrus_margins_pherc0306b_0343_0841",
+      "category": "negative_control_a_real_blank_margin",
+      "expected_passes_q34_bar": false,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        480,
+        4378
+      ],
+      "valid_cm2": 1.568717,
+      "notes": "Negative Control A: Real blank papyrus margins across PHerc. 0306B, PHerc. 0343, and PHerc. 0841.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 5.184484,
+        "sb_dom_max": 5.158187,
+        "sb_opp_max": 3.49226,
+        "max_tfce_ratio": 1.477034,
+        "p995_tfce_ratio": 1.355871,
+        "diff_tfce_p99": 0.412226,
+        "sb_retention_max": 0.994928,
+        "sb_retention_p995": 0.998567,
+        "width_median_hi_mm": 0.096907,
+        "narrow_stroke_frac_hi": 0.142857,
+        "wide_blob_frac_hi": 0.0,
+        "max_b1": 0,
+        "stroke_consistency_score": 0.052052,
+        "q34_score": 0.0,
+        "passes_tfce_asymmetry": false,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": false,
+        "passes_q34_bar": false,
+        "regime_label": "blank_or_weak_null_rejected",
+        "elapsed_seconds": 9.117
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 5.170673,
+        "sb_dom_max": 5.154951,
+        "sb_cm_dom_max": 5.154951,
+        "sb_cm_opp_max": 2.975575,
+        "area_matched_retention_max": 0.996959,
+        "area_matched_retention_p995": 0.982141,
+        "cloud_masked_max_tfce_ratio": 1.732422,
+        "cloud_masked_p995_tfce_ratio": 3.306339,
+        "diff_tfce_p99": 0.546659,
+        "diff_tfce_p995": 1.268139,
+        "diff_tfce_asymmetry_ratio": 4.676916,
+        "top_tile_q34_score": 0.0,
+        "top_tile_passes_q34_bar": false,
+        "global_upgraded_passes_q34_bar": false,
+        "upgraded_q34_score": 0.0,
+        "upgraded_regime_label": "blank_or_weak_null_rejected",
+        "passes_tfce_asymmetry": false,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": false,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 2101440,
+          "eroded_valid_px": 1719200,
+          "eroded_rim_px": 382240,
+          "dom_rim_blob_suppressed_px": 0,
+          "opp_rim_blob_suppressed_px": 2978
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.02,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.054788,
+          "top_tile_hot_share": 0.332358
+        },
+        "elapsed_seconds": 8.286
+      },
+      "all_blank_margin_subcontrols": [
+        {
+          "subcontrol_id": "pherc0306b_w074_blank_margin",
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0
+        },
+        {
+          "subcontrol_id": "6_pherc0343_argus_v3_blank_margin",
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0
+        },
+        {
+          "subcontrol_id": "6_pherc0343_reader_v3_blank_margin",
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0
+        },
+        {
+          "subcontrol_id": "6_pherc0841_argus_v3_blank_margin",
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0
+        }
+      ]
+    },
+    {
+      "regime_id": "7_synthetic_mesh_rim_seam_blob_and_bilateral_cloud_controls",
+      "category": "negative_control_b_synthetic_seam_and_cloud_controls",
+      "expected_passes_q34_bar": false,
+      "voxel_um": 8.64,
+      "shape_hw": [
+        512,
+        1024
+      ],
+      "valid_cm2": 0.35698,
+      "notes": "Negative Control B: 1.5-2.5 mm blobs along a step-stair valid-mask border, 2-4 mm bilateral mottle clouds, and single-face 0.6-1.2 mm isolated dot row.",
+      "legacy_exp_t6_q34": {
+        "raw_dom_max": 16.410137,
+        "sb_dom_max": 14.591258,
+        "sb_opp_max": 0.406162,
+        "max_tfce_ratio": 35.924757,
+        "p995_tfce_ratio": 33.885728,
+        "diff_tfce_p99": 7.181099,
+        "sb_retention_max": 0.889161,
+        "sb_retention_p995": 0.87934,
+        "width_median_hi_mm": 0.38016,
+        "narrow_stroke_frac_hi": 0.96748,
+        "wide_blob_frac_hi": 0.0,
+        "max_b1": 0,
+        "stroke_consistency_score": 0.202125,
+        "q34_score": 0.072574,
+        "passes_tfce_asymmetry": false,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": false,
+        "passes_q34_bar": false,
+        "regime_label": "blank_or_weak_null_rejected",
+        "elapsed_seconds": 1.733
+      },
+      "upgraded_exp_t13_q34": {
+        "area_capped_raw_dom_max": 0.523053,
+        "sb_dom_max": 0.771413,
+        "sb_cm_dom_max": 0.771413,
+        "sb_cm_opp_max": 0.40668,
+        "area_matched_retention_max": 1.0,
+        "area_matched_retention_p995": 1.0,
+        "cloud_masked_max_tfce_ratio": 1.896854,
+        "cloud_masked_p995_tfce_ratio": 1.90167,
+        "diff_tfce_p99": 0.035486,
+        "diff_tfce_p995": 0.039884,
+        "diff_tfce_asymmetry_ratio": 0.159537,
+        "top_tile_q34_score": 0.0,
+        "top_tile_passes_q34_bar": false,
+        "global_upgraded_passes_q34_bar": false,
+        "upgraded_q34_score": 0.0,
+        "upgraded_regime_label": "no_signal",
+        "passes_tfce_asymmetry": false,
+        "passes_width_retention": true,
+        "passes_stroke_morphology": false,
+        "rim_erosion_diagnostic": {
+          "rim_erosion_mm": 0.35,
+          "valid_in_px": 478208,
+          "eroded_valid_px": 362238,
+          "eroded_rim_px": 115970,
+          "dom_rim_blob_suppressed_px": 31397,
+          "opp_rim_blob_suppressed_px": 0
+        },
+        "pipeline_b_cloud_masked_mad": {
+          "effective_mad_sigma": 0.021925,
+          "masked_cloud_frac": 0.0,
+          "top_tile_mean_excess_diff": 0.005723,
+          "top_tile_hot_share": 0.063527
+        },
+        "elapsed_seconds": 1.41
+      },
+      "synthetic_subcontrols": {
+        "step_stair_mesh_rim_seam_blobs": {
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0,
+          "upgraded_regime_label": "no_signal",
+          "dom_rim_blob_suppressed_px": 31397
+        },
+        "bilateral_2_to_4mm_clouds": {
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.0,
+          "area_matched_retention_max": 0.16575,
+          "upgraded_regime_label": "bilateral_or_wide_cloud_rejected"
+        },
+        "single_face_dot_row": {
+          "legacy_passes_q34_bar": false,
+          "upgraded_passes_q34_bar": false,
+          "upgraded_q34_score": 0.00105,
+          "upgraded_regime_label": "single_face_dot_or_nonstroke_rejected"
+        }
+      }
+    }
+  ],
+  "total_elapsed_seconds": 201.297
+}
