@@ -22,8 +22,8 @@ def main():
     started = time.perf_counter()
     suite = unittest.defaultTestLoader.discover(str(root), pattern="test_*.py")
     result = unittest.TextTestRunner(verbosity=1).run(suite)
-    sources = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-               for p in sorted(root.glob("*.py"))}
+    sources = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+               for p in sorted(root.rglob("*.py"))}
     receipt = dict(schema="funnel.native_contract_tests.v1", tests_run=result.testsRun,
                    passed=result.wasSuccessful(), failures=[str(t) for t, _ in result.failures],
                    errors=[str(t) for t, _ in result.errors], skipped=[str(t) for t, _ in result.skipped],

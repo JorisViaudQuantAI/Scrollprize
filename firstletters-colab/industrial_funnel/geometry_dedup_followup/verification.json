@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "pairs_verified": 48,
+  "self_vertices": 164591,
+  "self_rejected_before_correction": 2935,
+  "state_totals_nonself": {
+    "fitted": {
+      "accepted": 1860,
+      "separation_gt3": 1486,
+      "separation_gt6": 59,
+      "source_near": 711,
+      "near_to_far": 1,
+      "near_to_unknown": 1,
+      "near_to_intermediate": 203,
+      "near_to_near": 506
+    },
+    "snap": {
+      "accepted": 32971,
+      "separation_gt3": 13778,
+      "separation_gt6": 157,
+      "source_near": 11580,
+      "near_to_far": 0,
+      "near_to_unknown": 161,
+      "near_to_intermediate": 970,
+      "near_to_near": 10449
+    },
+    "flat": {
+      "accepted": 4729,
+      "separation_gt3": 3163,
+      "separation_gt6": 63,
+      "source_near": 1297,
+      "near_to_far": 3,
+      "near_to_unknown": 4,
+      "near_to_intermediate": 412,
+      "near_to_near": 878
+    }
+  },
+  "new_model_forwards": 0,
+  "scientific_pruning_admission": "NOT_ESTABLISHED",
+  "scope": "Offline numeric consistency, not a new full geometry replay or ink validation"
+}

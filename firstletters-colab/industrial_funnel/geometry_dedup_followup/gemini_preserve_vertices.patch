@@ -1,0 +1,14 @@
+diff --git a/gemini_lane/industrial_funnel_adapter.py b/gemini_lane/industrial_funnel_adapter.py
+--- a/gemini_lane/industrial_funnel_adapter.py
++++ b/gemini_lane/industrial_funnel_adapter.py
+@@ -1494,6 +1494,10 @@ def evaluate_normal_correspondence_dedup(
+     same_cell_64 = np.array([tuple(c) in cells_b for c in a_vcells], dtype=bool)
+     cell_jaccard = len(cells_a & cells_b) / max(1, len(cells_a | cells_b))
+ 
++    # A boundary vertex may have a valid incoming quad but an invalid outgoing
++    # quad and be omitted by the bilinear grid's floor-cell mask. Keep every
++    # usable original vertex in the correspondence search, including boundaries.
++    dense_b = np.concatenate((dense_b, pts_b), axis=0)
+     tree_dense_b = cKDTree(dense_b)
+     d_dense, idx_dense = tree_dense_b.query(pts_a, k=1)
+     diff = dense_b[idx_dense] - pts_a
