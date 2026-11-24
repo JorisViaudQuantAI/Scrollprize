@@ -1,0 +1,297 @@
+{
+  "schema": "seismic_rgt_stitched_patches/v1",
+  "experiment": "Exp T11-RGT-Scale (Q46): 2x2 stitched overlapping 3D seismic RGT / Wheeler multi-sheet grower with 2-pass order-preserving m7 snap vs single-sheet baseline",
+  "method": "global structure-tensor dip + autocorrelation wrap spacing + 2x2 overlapping tile (64x112x112, 32 vx overlap) sparse dip-guided RGT (CG) + Huber/median-slope affine phase gauge alignment (a in [0.8, 1.25]) + raised-cosine overlap blend + strict monotonic projection + Wheeler multi-sheet extraction + 2-pass order-preserving m7 snap + in-RAM CT render (9 slices) + onsheet_score (tile=32, step=16); baseline = grow_m7_patch.extract_height_field",
+  "cpu_only": true,
+  "cuda_visible_devices": "-1",
+  "torch_imported": false,
+  "http": {
+    "budget_bytes": 125829120,
+    "http_bytes": 34512551,
+    "http_mib": 32.914,
+    "requests": 46,
+    "persistent_ct_on_disk": false
+  },
+  "summary": {
+    "scrolls_evaluated": [
+      "PHerc0306B",
+      "PHerc1545",
+      "PHerc0846A"
+    ],
+    "total_sheet_count_rgt": 34,
+    "total_usable_cm2_rgt_across_scrolls": 0.215204,
+    "max_crossing_fraction_rgt": 0.0,
+    "max_seam_phase_rmse_rad": 0.102162
+  },
+  "boxes": [
+    {
+      "role": "public_control",
+      "scroll": "PHerc0306B",
+      "ct_dataset": "20250521133212-8.640um-1.2m-116keV-masked.zarr",
+      "mesh_tag": "PHerc0306B_20250521133212_w074own_touchup_V5Rc",
+      "box_rule": "64x192x192 CT level-0 slab aligned to 1x2x2 Zarr chunks around the w074 median vertex",
+      "baseline_binary": "band-passed CT ridge threshold proxy (no m7)",
+      "metrics": {
+        "box_shape_zyx": [
+          64,
+          192,
+          192
+        ],
+        "voxel_um": 8.64,
+        "normal_axis": "y",
+        "tile_grid": [
+          2,
+          2
+        ],
+        "tile_lateral_vx": [
+          112,
+          112
+        ],
+        "overlap_lateral_vx": [
+          32,
+          32
+        ],
+        "seam_phase_rmse_rad": 0.102162,
+        "sheet_count_rgt": 11,
+        "sheet_count_single_baseline": 1,
+        "crossing_fraction_rgt": 0.0,
+        "usable_cm2_rgt_total": 0.060535,
+        "usable_cm2_best_sheet_rgt": 0.006644,
+        "usable_cm2_single_sheet_baseline": 0.006277,
+        "area_gain_ratio_vs_baseline": 9.643477,
+        "largest_connected_sheet_frac_rgt": 0.696208,
+        "median_f_parallel_rgt": 0.1429,
+        "max_f_parallel_rgt": 0.2632,
+        "per_sheet_f_parallel_rgt": [
+          0.2308,
+          0.1429,
+          0.1905,
+          0.0952,
+          0.0,
+          0.0,
+          0.2632,
+          0.0,
+          0.0,
+          0.1852,
+          0.2
+        ],
+        "baseline_f_parallel": 0.0,
+        "baseline_patch_columns": 9055,
+        "snap_passes": 0,
+        "mean_on_sheet_raw_rgt": null,
+        "mean_on_sheet_after_snap_rgt": null,
+        "per_sheet_on_sheet_after_snap_rgt": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "mean_wrap_spacing_vx": 15.329748,
+        "median_wrap_spacing_vx": 15.823983,
+        "planarity_median": 0.812413,
+        "wheeler_peak_contrast": 0.056423,
+        "wheeler_slice_variance_ratio": 0.985357,
+        "cartesian_slice_variance_ratio": 0.992887,
+        "cg_iterations": 1000,
+        "cg_converged": false,
+        "phase_normal_coherence": 0.972145,
+        "monotonic_projection_fraction": 0.000548,
+        "runtime_seconds": 42.88,
+        "ct_nonzero_fraction": 1.0,
+        "http_bytes": 9533323,
+        "http_mib": 9.091685
+      }
+    },
+    {
+      "role": "crushed_eligible_unread",
+      "scroll": "PHerc1545",
+      "ct_dataset": "20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "m7_dataset": "20250821151648-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "box_rule": "deterministic interior 64x192x192 m7 slab aligned to 1x2x2 Zarr chunks with the most m7 runs per column among density-ranked radial candidates on the overview mid-slab",
+      "probe_count": 10,
+      "baseline_binary": "m7 >= 128",
+      "metrics": {
+        "box_shape_zyx": [
+          64,
+          192,
+          192
+        ],
+        "voxel_um": 9.362,
+        "normal_axis": "x",
+        "tile_grid": [
+          2,
+          2
+        ],
+        "tile_lateral_vx": [
+          112,
+          112
+        ],
+        "overlap_lateral_vx": [
+          32,
+          32
+        ],
+        "seam_phase_rmse_rad": 0.083215,
+        "sheet_count_rgt": 11,
+        "sheet_count_single_baseline": 1,
+        "crossing_fraction_rgt": 0.0,
+        "usable_cm2_rgt_total": 0.060539,
+        "usable_cm2_best_sheet_rgt": 0.007644,
+        "usable_cm2_single_sheet_baseline": 0.002087,
+        "area_gain_ratio_vs_baseline": 29.00924,
+        "largest_connected_sheet_frac_rgt": 0.419108,
+        "median_f_parallel_rgt": 0.30665,
+        "max_f_parallel_rgt": 1.0,
+        "per_sheet_f_parallel_rgt": [
+          1.0,
+          0.0,
+          0.28,
+          0.0,
+          0.3333,
+          0.25,
+          0.5,
+          0.15,
+          1.0,
+          0.4,
+          null
+        ],
+        "baseline_f_parallel": 0.0,
+        "baseline_patch_columns": 2495,
+        "snap_passes": 2,
+        "mean_on_sheet_raw_rgt": 0.817453,
+        "mean_on_sheet_after_snap_rgt": 0.896531,
+        "per_sheet_on_sheet_after_snap_rgt": [
+          0.637331,
+          0.885024,
+          0.903704,
+          0.832566,
+          0.953246,
+          0.986738,
+          0.993296,
+          0.956074,
+          0.908554,
+          0.947213,
+          0.858091
+        ],
+        "mean_wrap_spacing_vx": 14.961342,
+        "median_wrap_spacing_vx": 15.060251,
+        "planarity_median": 0.776296,
+        "wheeler_peak_contrast": 0.037397,
+        "wheeler_slice_variance_ratio": 0.982225,
+        "cartesian_slice_variance_ratio": 0.984098,
+        "cg_iterations": 1000,
+        "cg_converged": false,
+        "phase_normal_coherence": 0.972925,
+        "monotonic_projection_fraction": 0.000826,
+        "runtime_seconds": 50.34,
+        "active_fraction_m7": 0.30017,
+        "ct_nonzero_fraction": 0.999694,
+        "http_bytes": 13129232,
+        "http_mib": 12.521011
+      }
+    },
+    {
+      "role": "crushed_eligible_unread",
+      "scroll": "PHerc0846A",
+      "ct_dataset": "20260319102732-2.403um-0.2m-77keV-masked.zarr",
+      "m7_dataset": "20260319102732-surface-20260413222639-surface-m7-L2-th0.2.zarr",
+      "box_rule": "deterministic interior 64x192x192 m7 slab aligned to 1x2x2 Zarr chunks with the most m7 runs per column among density-ranked radial candidates on the overview mid-slab",
+      "probe_count": 10,
+      "baseline_binary": "m7 >= 128",
+      "metrics": {
+        "box_shape_zyx": [
+          64,
+          192,
+          192
+        ],
+        "voxel_um": 9.612,
+        "normal_axis": "y",
+        "tile_grid": [
+          2,
+          2
+        ],
+        "tile_lateral_vx": [
+          112,
+          112
+        ],
+        "overlap_lateral_vx": [
+          32,
+          32
+        ],
+        "seam_phase_rmse_rad": 0.042542,
+        "sheet_count_rgt": 12,
+        "sheet_count_single_baseline": 1,
+        "crossing_fraction_rgt": 0.0,
+        "usable_cm2_rgt_total": 0.09413,
+        "usable_cm2_best_sheet_rgt": 0.009708,
+        "usable_cm2_single_sheet_baseline": 0.007982,
+        "area_gain_ratio_vs_baseline": 11.793379,
+        "largest_connected_sheet_frac_rgt": 0.84611,
+        "median_f_parallel_rgt": 0.26135,
+        "max_f_parallel_rgt": 0.6667,
+        "per_sheet_f_parallel_rgt": [
+          0.3333,
+          0.6667,
+          0.1429,
+          0.5,
+          0.2,
+          0.3571,
+          0.3333,
+          0.2381,
+          0.2727,
+          0.0,
+          0.1875,
+          0.25
+        ],
+        "baseline_f_parallel": 0.1333,
+        "baseline_patch_columns": 9504,
+        "snap_passes": 2,
+        "mean_on_sheet_raw_rgt": 0.915271,
+        "mean_on_sheet_after_snap_rgt": 0.960576,
+        "per_sheet_on_sheet_after_snap_rgt": [
+          0.996667,
+          0.854572,
+          0.941025,
+          0.885234,
+          0.959367,
+          0.994435,
+          0.994944,
+          0.997207,
+          0.992387,
+          0.9534,
+          0.967232,
+          0.990438
+        ],
+        "mean_wrap_spacing_vx": 13.801061,
+        "median_wrap_spacing_vx": 13.980038,
+        "planarity_median": 0.861,
+        "wheeler_peak_contrast": 0.036721,
+        "wheeler_slice_variance_ratio": 0.952104,
+        "cartesian_slice_variance_ratio": 0.931658,
+        "cg_iterations": 1000,
+        "cg_converged": false,
+        "phase_normal_coherence": 0.992504,
+        "monotonic_projection_fraction": 1e-05,
+        "runtime_seconds": 47.55,
+        "active_fraction_m7": 0.286428,
+        "ct_nonzero_fraction": 1.0,
+        "http_bytes": 11849996,
+        "http_mib": 11.301037
+      }
+    }
+  ],
+  "runtime_seconds": 140.8,
+  "caveats": [
+    "Each slab is 64x192x192 voxels (stitched from 2x2 overlapping 64x112x112 tiles with 32 vx overlap).",
+    "usable_cm2 counts rendered pixels with full in-box support on all 9 planes.",
+    "f_parallel is an upper bound on the on-sheet share; tiles without CT structure count as parallel.",
+    "crossing_fraction_rgt == 0 follows from strict phase monotonicity plus order-preserving m7 snap clamping.",
+    "No ink detector run; nothing here claims ink or text."
+  ]
+}
