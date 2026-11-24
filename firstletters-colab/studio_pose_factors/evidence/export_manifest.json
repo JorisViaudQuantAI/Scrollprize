@@ -1,0 +1,51 @@
+{
+  "protocol_sha256": "c502a6bad514c4bd8eb63656f93cdcd82d62b58b11250ea290c8cf7690b7ef5c",
+  "results_sha256": "51955f2c03f76efb4e89e1d20528bfe000a95f520497cc258c9bf26bceca59e5",
+  "scored_archive_sha256": "ba7e0f6a1032f8eb00cdb83d75b07613ce5c8cd496880943aaaf5652e3c372c2",
+  "exporter_sha256": "9e759234f0808b9f1ef22203bdc3f95a6bc08ef168fa7d5aa7a0ef26e36af5e3",
+  "primary_cell_rows": 128,
+  "primary_contrast_rows": 400,
+  "groups": [
+    "all",
+    "mixed",
+    "pure_ink",
+    "pure_background"
+  ],
+  "family_order": [
+    "identity",
+    "normal_only",
+    "anchor_only",
+    "rigid"
+  ],
+  "probability_threshold": 0.5,
+  "figure": "Within-block mixed-population contrasts only; separate paired identity and denominators for each block",
+  "undefined_metrics": "Blank cell-table fields; undefined single-class contrasts omitted",
+  "interpretation": "Descriptive factorial differences, not fractions of causal attribution. AP is nonadditive; block populations differ.",
+  "secondary": "Global intersection reported separately, without choosing a population after inspecting scores",
+  "products": {
+    "factorial_cells.csv": {
+      "bytes": 22568,
+      "sha256": "e3a79b68c2c26cd62f7dc576f78f5923db60e63fd01cfe2984b9383cd74507af"
+    },
+    "factorial_contrasts.csv": {
+      "bytes": 38966,
+      "sha256": "b32e6d245171d9441be4f2032e519c2beb4a356a1c007cedef504bb08269b0b3"
+    },
+    "secondary_global_cells.csv": {
+      "bytes": 23868,
+      "sha256": "a166f781b5471a67eca986982f890eaa6c3b48e12dc4517ef0283a942a9abdb8"
+    },
+    "secondary_global_contrasts.csv": {
+      "bytes": 42566,
+      "sha256": "dc4e6aeeb8b0dc6753ab738af74283f4468d2b744d2f642ffd6228c99307c3ef"
+    },
+    "factorial_paired_effects.png": {
+      "bytes": 277182,
+      "sha256": "f38ea7dfe567aefffaf13b6938deb870659363b56e8657ad747493d2d5403b84"
+    },
+    "factorial_paired_effects.svg": {
+      "bytes": 52482,
+      "sha256": "eae638360a16ec7f1b99b9645091276c61c1ab4e9a90c27cb1f3b1fb22fc36bf"
+    }
+  }
+}

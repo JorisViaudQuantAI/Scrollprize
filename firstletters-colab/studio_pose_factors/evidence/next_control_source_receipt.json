@@ -1,0 +1,303 @@
+{
+  "schema": "studio_pose_factors.next_control_source_receipt.v1",
+  "prepared_at_utc": "2026-11-24T09:49:31Z",
+  "observations_date_utc": "2026-11-24",
+  "observation_timestamps": "Individual request timestamps were not retained; only the observation date and the preparation timestamp are recorded.",
+  "scope": {
+    "kind": "read-only source and feasibility investigation",
+    "model_forwards": 0,
+    "native_ct_chunks_downloaded": 0,
+    "full_ppm_downloaded": false,
+    "full_surface_tiff_downloaded": false,
+    "full_optical_image_downloaded": false,
+    "remote_writes": false,
+    "full_asset_sha256_computed": false
+  },
+  "candidate": {
+    "id": "Frag4",
+    "sample": "PHercParis1Fr39",
+    "parent_manuscript": "PHercParis1",
+    "official_root": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/",
+    "status": "Candidate optical mechanistic control external to author841; excluded from gradient updates according to published ancestry and training manifests, but exposed during development and sharing the parent manuscript with trained Frag3. Not independent validation."
+  },
+  "assets": [
+    {
+      "role": "optical_ink_label",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/PHercParis1Fr39_54keV_inklabels.png",
+      "method": "GET",
+      "request_range": "bytes=0-1023",
+      "response_status": 206,
+      "response_content_range": "bytes 0-1023/98366",
+      "response_etag": "\"63fea07c-1803e\"",
+      "bytes_read": 1024,
+      "png_dimensions_wh": [
+        6064,
+        9791
+      ],
+      "full_sha256": null
+    },
+    {
+      "role": "surface_validity_mask",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/PHercParis1Fr39_54keV_mask.png",
+      "method": "GET",
+      "request_range": "bytes=0-1023",
+      "response_status": 206,
+      "response_content_range": "bytes 0-1023/54426",
+      "response_etag": "\"63ffcba4-d49a\"",
+      "bytes_read": 1024,
+      "png_dimensions_wh": [
+        6064,
+        9791
+      ],
+      "full_sha256": null
+    },
+    {
+      "role": "native_surface_xyz_and_normals",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/extras/PHercParis1Fr39_54keV.ppm",
+      "method": "GET",
+      "request_range": "bytes=0-1023",
+      "response_status": 206,
+      "response_content_range": "bytes 0-1023/2849886025",
+      "response_etag": "\"63fb9883-a9ddcf49\"",
+      "bytes_read": 1024,
+      "ppm_header": {
+        "width": 6064,
+        "height": 9791,
+        "dim": 6,
+        "ordered": true,
+        "type": "double",
+        "version": "1",
+        "header_bytes": 73
+      },
+      "interior_sample": {
+        "request_bytes": 48,
+        "request_offset_formula": "73 + ((9791//2)*6064 + 6064//2)*48",
+        "response_status": 206,
+        "response_content_range": null,
+        "response_content_range_note": "The native interior-read Content-Range was not retained in the printed tool result.",
+        "decoded_little_endian_float64_xyz_n": [
+          2916.9544122473912,
+          837.3187493389898,
+          4707.083782481068,
+          0.26747777674749995,
+          -0.8845475221166104,
+          -0.38214044546943654
+        ],
+        "interpretation": "Coordinates lie inside the published native CT dimensions; normal is oblique. This is not a render-level registration verification."
+      },
+      "full_sha256": null
+    },
+    {
+      "role": "flattened_surface_volume_mapping_do_not_use_as_native",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/extras/PHercParis1Fr39_54keV_surface_volume.ppm",
+      "ppm_header": {
+        "width": 6064,
+        "height": 9791,
+        "dim": 6,
+        "ordered": true,
+        "type": "double",
+        "version": "1.0",
+        "header_bytes": 75
+      },
+      "interior_sample": {
+        "method": "GET",
+        "request_range": "bytes=1424943051-1424943098",
+        "response_status": 206,
+        "response_content_range": "bytes 1424943051-1424943098/2849886027",
+        "bytes_read": 48,
+        "decoded_little_endian_float64_xyz_n": [
+          3032,
+          4895,
+          32,
+          0,
+          0,
+          1
+        ],
+        "interpretation": "An identity mapping into the already flattened stack, at depth 32 with +z direction."
+      },
+      "full_sha256": null
+    },
+    {
+      "role": "native_ct_array_metadata",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/volumes_zarr/54keV_3.24um_.zarr/0/.zarray",
+      "method": "GET",
+      "response_status": 200,
+      "parsed_metadata": {
+        "chunks": [
+          128,
+          128,
+          128
+        ],
+        "compressor": {
+          "blocksize": 0,
+          "clevel": 3,
+          "cname": "zstd",
+          "id": "blosc",
+          "shuffle": 0
+        },
+        "dimension_separator": "/",
+        "dtype": "<u2",
+        "fill_value": 0,
+        "filters": null,
+        "order": "C",
+        "shape": [
+          9231,
+          1968,
+          5808
+        ],
+        "zarr_format": 2
+      },
+      "full_sha256": null
+    },
+    {
+      "role": "native_ct_identity_and_pitch",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/volumes/20230215185642/meta.json",
+      "method": "GET",
+      "response_status": 200,
+      "parsed_metadata": {
+        "height": 1968,
+        "max": 65535,
+        "min": 0,
+        "name": "PHercParis1Fr39 54keV merged, cropped 5808x1968x9231+996+4584+500",
+        "slices": 9231,
+        "type": "vol",
+        "uuid": "20230215185642",
+        "voxelsize": 3.24,
+        "width": 5808
+      },
+      "voxel_pitch_unit": "micrometre",
+      "full_sha256": null
+    },
+    {
+      "role": "flattened_surface_dataset_descriptor",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/extras/PHercParis1Fr39_54keV_surface_volume.json",
+      "method": "GET",
+      "response_status": 200,
+      "parsed_metadata": {
+        "schema_version": "0.1",
+        "type": "region",
+        "volume": "../PHercParis1Fr39_54keV_surface_volume",
+        "ppm": "PHercParis1Fr39_54keV_surface_volume.ppm",
+        "mask": "../PHercParis1Fr39_54keV_mask.png",
+        "invert_normals": false,
+        "bounding_box": null,
+        "ink_label": "../PHercParis1Fr39_54keV_inklabels.png",
+        "rgb_label": "PHercParis1Fr39_54keV_faux_rgb.png",
+        "volcart_texture_label": "PHercParis1Fr39_54keV.png"
+      },
+      "full_sha256": null
+    },
+    {
+      "role": "optical_reference_directory",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/reference/",
+      "method": "GET",
+      "response_status": 200,
+      "infrared_asset_observed_in_listing": "PHerc%20Paris%201%20Cornici%202-FRR%2039-01392-1000nmS40-FStop%208-Lens%3D.tif",
+      "image_contents_downloaded": false
+    },
+    {
+      "role": "alignment_and_geometry_directory",
+      "url": "https://dl.ash2txt.org/fragments/Frag4/PHercParis1Fr39.volpkg/working/54keV_exposed_surface/extras/",
+      "method": "GET",
+      "response_status": 200,
+      "relevant_entries_observed": [
+        "PHercParis1Fr39_54keV_alignment.psd",
+        "PHercParis1Fr39_54keV_ir.png",
+        "PHercParis1Fr39_54keV.ppm",
+        "PHercParis1Fr39_54keV_surface_volume.ppm",
+        "PHercParis1Fr39_54keV_surface_volume.json"
+      ],
+      "psd_and_ir_contents_downloaded": false
+    }
+  ],
+  "ancestry": {
+    "repository": "priyankaranke/vesuvius-studio-multiscroll-cpt",
+    "examined_source_commit": "bf66f753176792a966bca17822629fb8821f20c8",
+    "final_checkpoint_filename": "studio-softloss-20261023-ema.safetensors",
+    "final_checkpoint_sha256_from_published_provenance": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+    "checkpoint_rehashed_during_this_task": false,
+    "stages": [
+      {
+        "stage": "Studio parent",
+        "initialization": "scratch",
+        "pretrained_checkpoint": null,
+        "declared_donors": [
+          "PHerc0814",
+          "PHerc0841",
+          "PHerc0009B"
+        ],
+        "source_paths": [
+          "donor-studio-resunet-scratch-20260926/config.json",
+          "README.md",
+          "reproduction.py"
+        ]
+      },
+      {
+        "stage": "multi-scroll CPT",
+        "initialization": "Studio epoch-9",
+        "parent_sha256_from_published_config": "ffffbf4fcb2f1eb91940a6899366cd0d22b2ea03987270d07dc2a205dbd91145",
+        "declared_data_history": [
+          {
+            "from_update": 0,
+            "rows": 69
+          },
+          {
+            "from_update": 2024,
+            "rows": 116
+          }
+        ],
+        "included_fragment_row_names": [
+          "fragment1-exposed",
+          "fragment2-exposed",
+          "fragment3-exposed",
+          "fragment5-exposed",
+          "fragment6-exposed"
+        ],
+        "excluded_fragment_row_name": "fragment4-exposed",
+        "stated_exclusion_reason": "depth-order check ambiguous",
+        "source_paths": [
+          "studio-multiscroll-cpt-20261023/config.json",
+          "studio-multiscroll-cpt-20261023/reference/config.json",
+          "studio-multiscroll-cpt-20261023/mixture.json",
+          "studio-multiscroll-cpt-20261023/reference/mixture.json",
+          "studio-multiscroll-cpt-20261023/README.md"
+        ]
+      },
+      {
+        "stage": "softloss",
+        "initialization": "CPT EMA",
+        "updates": 3000,
+        "mixture": "same CPT mixture loaded by code",
+        "source_paths": [
+          "studio-softloss-20261023/train_softloss.py",
+          "studio-softloss-20261023/README.md",
+          "reproduction.py"
+        ]
+      }
+    ],
+    "prior_development_exposure": {
+      "source_path": "studio-multiscroll-cpt-20261023/reference/orientation-expanded9.json",
+      "evaluated_row": "fragment4-exposed",
+      "observation": "The author compared forward and reversed depth order; this informed exclusion from CPT."
+    },
+    "common_parent": {
+      "trained_fragment": "Frag3 / PHercParis1Fr34",
+      "candidate_fragment": "Frag4 / PHercParis1Fr39",
+      "manuscript": "PHercParis1"
+    },
+    "source_blob_root": "https://github.com/priyankaranke/vesuvius-studio-multiscroll-cpt/blob/bf66f753176792a966bca17822629fb8821f20c8/"
+  },
+  "remaining_checks_before_model": [
+    "Native registration closure: identity render agreement, label frame, XYZ/ZYX, PPM parsing and normals.",
+    "Physical pitch and resampling: native 3.24 micrometres versus the chosen Studio input scale, depth step and context.",
+    "Native uint16 to prepared uint8 conversion, clipping and normalization.",
+    "Depth orientation and anchor convention resolved without selecting by detector performance; otherwise both conventions must be predeclared."
+  ],
+  "limitations": [
+    "HTTP status/range checks and metadata establish accessibility and basic consistency, not pixel-exact registration.",
+    "No full-source SHA-256 was measured; ETags are recorded only as server identifiers and are not treated as cryptographic hashes.",
+    "Optical source and alignment files were observed in directory listings but not visually examined.",
+    "Published exclusion from gradient updates does not make Frag4 an untouched development set or a held-out parent manuscript.",
+    "No new factor-experiment protocol, model output or performance result is created by this receipt."
+  ]
+}

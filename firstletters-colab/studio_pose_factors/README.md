@@ -4,8 +4,10 @@ This module separates two interventions that changed together in the preceding
 [native-CT tilt experiment](../studio_oblique_stress/RESULTS.md): moving the
 surface anchors and rotating the directions along which CT is sampled. It
 uses the same public PHerc0841 author annotation panel and fixed Studio
-checkpoint. This document describes the planned experiment and reproduction
-interface; it makes no new detector-result claim.
+checkpoint. The experiment is complete: **275 new CPU forwards**, with all
+eight four-cell blocks retained. The [results and interpretation](RESULTS.md)
+include mixed-core outcomes, conditional contrasts, full and portable audit
+receipts, and the limits of the mechanistic comparison.
 
 The design is informed by the observed Q33 failures. It is a mechanistic
 development study, not an independent validation, a search for the best angle,
@@ -43,7 +45,7 @@ claims that the modified directions are anatomically correct mesh normals.
 The rotation centre remains the reference surface point, rather than the
 midpoint of the asymmetric sixteen-plane input stack.
 
-Eight blocks are planned:
+Eight fixed blocks were executed:
 
 | Rotation axis | Signed angles |
 |---|---|
@@ -237,7 +239,7 @@ remain visible even when the new prediction phase is prospectively frozen.
 
 ## Reproduction interface
 
-The planned runner has `prepare`, `infer` and `summarize` commands. Each accepts
+The runner has `prepare`, `infer` and `summarize` commands. Each accepts
 the same seven mandatory path arguments. The parent evidence is resolved
 inside the repository; there are no `--parent-prepared` or `--parent-output`
 arguments.
@@ -258,6 +260,26 @@ Use the same arguments with `infer` after the protocol freeze, then with
 consult `run.py --help` for the final implemented options. Large CT objects,
 weights and prepared inputs remain outside git; source receipts, protocol,
 small score archives and analysis code are the portable deliverables.
+
+### Replay the checked-in results without weights or CT downloads
+
+```bash
+python firstletters-colab/studio_pose_factors/audit_results.py \
+  --output firstletters-colab/studio_pose_factors/evidence \
+  --protocol firstletters-colab/studio_pose_factors/evidence/protocol.json \
+  --parent-evidence firstletters-colab/studio_oblique_stress/evidence \
+  --expected-protocol-sha c502a6bad514c4bd8eb63656f93cdcd82d62b58b11250ea290c8cf7690b7ef5c \
+  --report /tmp/studio_pose_factors_replay.json
+```
+
+Choose a fresh `--report` filename; the auditor refuses to overwrite an
+existing review.
+
+This mode independently recalculates archive metrics and contrasts; it does
+not execute the detector or reacquire CT. See [RESULTS.md](RESULTS.md) for
+the separately completed full-array readback audit. The
+[optical-control feasibility note](next_control.md) documents a further
+public-data route and the checks still needed before any new model run.
 
 ## Interpretation limits
 
