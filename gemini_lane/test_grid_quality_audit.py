@@ -369,6 +369,7 @@ class CpuOnlyAndPrivacyTests(unittest.TestCase):
         self.assertEqual(g1["pherc0191_cpu_triage_mesh_ids"], list(GQA.G1_WINDINGS))
         self.assertEqual({m["mesh_id"] for m in g1["pherc0191_ink_detector_reads"]}, {"w030", "w050"})
         self.assertEqual(g1["pherc0826_ink_detector_reads"], [])
+        self.assertGreaterEqual(len(g1["pherc0826_arap_2d_ink_detector_reads"]), 4)
         self.assertTrue(g1["pherc0826_triage_no_ink_detector_run"])
 
 

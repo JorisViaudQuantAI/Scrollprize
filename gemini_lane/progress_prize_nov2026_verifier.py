@@ -298,8 +298,13 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
 
     source_support_doc = gl_dir / "SOURCE_SUPPORT_PATCH.md"
     stream_renderer_py = gl_dir / "stream_snap_render.py"
-    if not source_support_doc.is_file() or not stream_renderer_py.is_file():
-        raise FileNotFoundError("Missing SOURCE_SUPPORT_PATCH.md or stream_snap_render.py")
+    arap_flattener_py = gl_dir / "arap_flatten_tifxyz.py"
+    if not source_support_doc.is_file() or not stream_renderer_py.is_file() or not arap_flattener_py.is_file():
+        raise FileNotFoundError("Missing SOURCE_SUPPORT_PATCH.md, stream_snap_render.py, or arap_flatten_tifxyz.py")
+    arap_text = arap_flattener_py.read_text(encoding="utf-8")
+    for token in ("arap_flatten_grid", "flatten_tifxyz_to_dir", "mit_arap_2d"):
+        if token not in arap_text:
+            raise ValueError(f"arap_flatten_tifxyz.py missing expected symbol {token!r}")
     ssr_text = stream_renderer_py.read_text(encoding="utf-8")
     for token in (
         "return_support",
@@ -317,6 +322,8 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
         "seismic_rgt_stitched_patches.json",
         "virgin_scroll_patch_preflight.json",
         "grid_quality_audit.json",
+        "arap_vs_flatboi_0211_benchmark.json",
+        "pherc0826_arap_flatten_preflight.json",
         "studio_rtx4060_parity.json",
         "pherc0306b_positive_gate_rtx4060.json",
         "firstletters_rtx4060_screen_ledger.json",
@@ -479,6 +486,49 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
         or g_t11["crossing_fraction_rgt"] != 0.0
     ):
         raise ValueError("Exp T15-GridQuality-Audit metrics mismatch")
+
+    arap_bench = receipts["arap_vs_flatboi_0211_benchmark.json"]
+    arap_sum = arap_bench["summary"]
+    if (
+        not arap_bench["cpu_only"]
+        or arap_bench["torch_imported"]
+        or arap_bench["persistent_ct_on_disk"] is not False
+        or arap_sum["windings_evaluated"] != 6
+        or arap_sum["mit_arap_gate_passed"] != 6
+        or arap_sum["claude_flatboi_gate_passed"] != 6
+        or arap_sum["mit_arap_median_sh8_deg"] != 6.03
+        or arap_sum["claude_flatboi_median_sh8_deg"] != 6.796
+        or arap_sum["mit_arap_median_area_inflation"] != 0.9889
+        or arap_sum["claude_flatboi_median_area_inflation"] != 0.9812
+        or arap_sum["median_cpu_seconds_per_winding"] != 6.65
+    ):
+        raise ValueError("arap_vs_flatboi_0211_benchmark.json metrics mismatch")
+
+    pre0826 = receipts["pherc0826_arap_flatten_preflight.json"]
+    pre_sum = pre0826["summary"]
+    mc_0211 = pre0826["matched_positive_control_pherc0211_w033"]
+    gpu_0211 = mc_0211["rtx4060_studio_s48_control"]
+    if (
+        not pre0826["cpu_only"]
+        or pre0826["torch_imported"]
+        or pre0826["persistent_ct_on_disk"] is not False
+        or pre_sum["windings_attempted"] != 7
+        or pre_sum["shear_gate_passed"] != 7
+        or pre_sum["rtx4060_screen_ready_count"] != 7
+        or pre_sum["total_ready_valid_ct_cm2"] != 37.4939
+        or mc_0211["qa_after_arap"]["shear_8cell_abs_p95_deg"] != 7.371
+        or mc_0211["claude_flatboi_reference_qa"]["shear_8cell_abs_p95_deg"] != 8.674
+        or gpu_0211["valid_ct_cm2"] != 5.4443
+        or gpu_0211["f_parallel"] != 0.9871
+        or gpu_0211["studio_desc"]["p995"] != 0.92095
+        or gpu_0211["studio_asc"]["p995"] != 0.90905
+        or gpu_0211["bilateral_overlap_frac"] != 0.008473
+        or gpu_0211["asymmetry_ratio"] != 1.8441
+        or gpu_0211["peak_allocated_mib"] != 1905
+        or gpu_0211["post_run_temp_c"] != 60
+        or gpu_0211["verdict"] != "POSITIVE_GATE_PASS"
+    ):
+        raise ValueError("pherc0826_arap_flatten_preflight.json metrics mismatch")
 
     # 4. Pillar 2 Verification: FP16 Consumer-GPU Inference & Zero-Disk Streaming
     parity = receipts["studio_rtx4060_parity.json"]
@@ -658,16 +708,16 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
             raise ValueError(f"Expected NEGATIVE verdict for {s}/{m['mesh_id']}, got {m['verdict']}")
 
     if (
-        total_cm2 != 106.9343
-        or ledger["untouched_screening_summary"]["total_unique_valid_ct_cm2"] != 106.9343
-        or len(meshes) != 23
-        or ledger["untouched_screening_summary"]["meshes_screened"] != 23
+        total_cm2 != 128.9026
+        or ledger["untouched_screening_summary"]["total_unique_valid_ct_cm2"] != 128.9026
+        or len(meshes) != 27
+        or ledger["untouched_screening_summary"]["meshes_screened"] != 27
         or followup_rois != 7
         or ledger["untouched_screening_summary"]["two_family_followups"] != 7
         or ledger["untouched_screening_summary"]["candidates_found"] != 0
         or ledger["hardware_profile"]["hardware_or_oom_incidents"] != 0
-        or per_scroll_cm2 != {"PHerc0125": 53.5927, "PHerc1203": 47.7731, "PHerc0191": 5.5685}
-        or per_scroll_counts != {"PHerc0125": 14, "PHerc1203": 7, "PHerc0191": 2}
+        or per_scroll_cm2 != {"PHerc0125": 53.5927, "PHerc1203": 47.7731, "PHerc0191": 5.5685, "PHerc0826": 21.9683}
+        or per_scroll_counts != {"PHerc0125": 14, "PHerc1203": 7, "PHerc0191": 2, "PHerc0826": 4}
     ):
         raise ValueError("firstletters_rtx4060_screen_ledger.json sum or count mismatch")
 
@@ -814,6 +864,11 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
                 "bytes": len(lf_normalized_bytes(stream_renderer_py)),
                 "sha256": sha256_lf_file(stream_renderer_py),
             },
+            "arap_flatten_tifxyz_py": {
+                "name": arap_flattener_py.name,
+                "bytes": len(lf_normalized_bytes(arap_flattener_py)),
+                "sha256": sha256_lf_file(arap_flattener_py),
+            },
             "receipts": receipt_digests,
         },
         "pillar1_direct_unwrapping": {
@@ -901,6 +956,31 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
                 "pherc0826_hf_area_inflation_range": [1.9405, 2.1753],
                 "exp_t11_rgt_synthetic_shear_p95_deg": g_t11["pooled_after_snap"]["shear_8cell"]["abs_p95_deg"],
                 "exp_t11_rgt_synthetic_crossing_fraction": g_t11["crossing_fraction_rgt"],
+            },
+            "exp_t18_mit_arap_2d_flattening": {
+                "windings_evaluated_0211": arap_sum["windings_evaluated"],
+                "mit_arap_gate_passed_0211": arap_sum["mit_arap_gate_passed"],
+                "claude_flatboi_gate_passed_0211": arap_sum["claude_flatboi_gate_passed"],
+                "mit_arap_median_sh8_deg": arap_sum["mit_arap_median_sh8_deg"],
+                "claude_flatboi_median_sh8_deg": arap_sum["claude_flatboi_median_sh8_deg"],
+                "mit_arap_median_area_inflation": arap_sum["mit_arap_median_area_inflation"],
+                "claude_flatboi_median_area_inflation": arap_sum["claude_flatboi_median_area_inflation"],
+                "median_cpu_seconds_per_winding": arap_sum["median_cpu_seconds_per_winding"],
+                "pherc0826_windings_ready": pre_sum["rtx4060_screen_ready_count"],
+                "pherc0826_total_ready_valid_ct_cm2": pre_sum["total_ready_valid_ct_cm2"],
+                "pherc0211_w033_arap_shear_p95_deg": mc_0211["qa_after_arap"]["shear_8cell_abs_p95_deg"],
+                "pherc0211_w033_flatboi_shear_p95_deg": mc_0211["claude_flatboi_reference_qa"][
+                    "shear_8cell_abs_p95_deg"
+                ],
+                "pherc0211_w033_arap_valid_ct_cm2": gpu_0211["valid_ct_cm2"],
+                "pherc0211_w033_arap_f_parallel": gpu_0211["f_parallel"],
+                "pherc0211_w033_arap_studio_desc_p995": gpu_0211["studio_desc"]["p995"],
+                "pherc0211_w033_arap_studio_asc_p995": gpu_0211["studio_asc"]["p995"],
+                "pherc0211_w033_arap_bilateral_overlap_frac": gpu_0211["bilateral_overlap_frac"],
+                "pherc0211_w033_arap_asymmetry_ratio": gpu_0211["asymmetry_ratio"],
+                "pherc0211_w033_arap_peak_allocated_mib": gpu_0211["peak_allocated_mib"],
+                "pherc0211_w033_arap_post_run_temp_c": gpu_0211["post_run_temp_c"],
+                "pherc0211_w033_arap_verdict": gpu_0211["verdict"],
             },
         },
         "pillar2_fp16_and_streaming": {
@@ -1190,6 +1270,21 @@ def required_dossier_tokens(summary: dict[str, Any]) -> tuple[str, ...]:
         str(p1["exp_t15_grid_quality_audit"]["pherc0125_screened_area_inflation"]),
         str(p1["exp_t15_grid_quality_audit"]["pherc0191_hf_pct_area_gt_20deg"]),
         str(p1["exp_t15_grid_quality_audit"]["exp_t11_rgt_synthetic_shear_p95_deg"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["mit_arap_median_sh8_deg"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["claude_flatboi_median_sh8_deg"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["mit_arap_median_area_inflation"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["claude_flatboi_median_area_inflation"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["median_cpu_seconds_per_winding"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0826_total_ready_valid_ct_cm2"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_shear_p95_deg"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_flatboi_shear_p95_deg"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_valid_ct_cm2"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_f_parallel"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_studio_desc_p995"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_studio_asc_p995"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_bilateral_overlap_frac"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_asymmetry_ratio"]),
+        str(p1["exp_t18_mit_arap_2d_flattening"]["pherc0211_w033_arap_verdict"]),
         # Pillar 2
         str(p2["pherc0306b_positive_gate_rtx4060"]["peak_allocated_mib"]),
         str(p2["pherc0306b_positive_gate_rtx4060"]["valid_ct_cm2"]),
@@ -1213,6 +1308,7 @@ def required_dossier_tokens(summary: dict[str, Any]) -> tuple[str, ...]:
         str(p3["rtx4060_screen_ledger"]["per_scroll_valid_ct_cm2"]["PHerc1203"]),
         str(p3["rtx4060_screen_ledger"]["per_scroll_valid_ct_cm2"]["PHerc0125"]),
         str(p3["rtx4060_screen_ledger"]["per_scroll_valid_ct_cm2"]["PHerc0191"]),
+        str(p3["rtx4060_screen_ledger"]["per_scroll_valid_ct_cm2"]["PHerc0826"]),
         str(p3["exp_t10_gpu_orientation_and_nyul"]["orientation_iou_ge_07_range"][0]),
         str(p3["exp_t10_gpu_orientation_and_nyul"]["orientation_iou_ge_07_range"][1]),
         str(p3["exp_t10_gpu_orientation_and_nyul"]["orientation_pearson_r_range"][0]),

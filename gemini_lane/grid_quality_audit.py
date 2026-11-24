@@ -722,7 +722,16 @@ def code_verified_answers(repo_root: Path | None = None) -> dict[str, Any]:
     ids_0826 = sorted(t["mesh_id"] for t in t0826["targets"] if t["scroll"] == "PHerc0826")
     ids_0191 = sorted(s["mesh_id"] for sc in t0191["scrolls"] if sc["scroll"] == "PHerc0191" for s in sc["sheets"])
     det_0191 = sorted((m["mesh_id"], m.get("verdict")) for m in ledger["meshes"] if m["scroll"] == "PHerc0191")
-    det_0826 = sorted((m["mesh_id"], m.get("verdict")) for m in ledger["meshes"] if m["scroll"] == "PHerc0826")
+    det_0826_raw = sorted(
+        (m["mesh_id"], m.get("verdict"))
+        for m in ledger["meshes"]
+        if m["scroll"] == "PHerc0826" and not m.get("parameterization_method")
+    )
+    det_0826_arap = sorted(
+        (m["mesh_id"], m.get("verdict"))
+        for m in ledger["meshes"]
+        if m["scroll"] == "PHerc0826" and m.get("parameterization_method") == "mit_arap_2d"
+    )
 
     return {
         "q_which_tifxyz_grid_coordinate_convention_does_stream_snap_render_use": {
@@ -738,10 +747,10 @@ def code_verified_answers(repo_root: Path | None = None) -> dict[str, Any]:
             "source": "gemini_lane/stream_snap_render.py::render_surface_stack",
         },
         "q_per_surface_flattening_vs_raw_fit_grid_vs_spiral_winding_resample": {
-            "answer": "No gemini_lane screen used per-surface flattening or spiral_winding_resample. Every screen "
-                      "(screen_scroll_rtx4060.py) read the raw fit grid at meta scale (default 0.05), optionally "
-                      "m7-snapped, then render_surface_stack; spiral_winding_resample.py is a diagnostic imported "
-                      "only by the Exp T14 dossier verifier.",
+            "answer": "Raw-grid ledger runs (screen_scroll_rtx4060.py) read the raw fit grid at meta scale (default 0.05), "
+                      "optionally m7-snapped, then render_surface_stack; subsequent PHerc0826 HF runs pre-flatten "
+                      "explicitly via arap_flatten_tifxyz.py (parameterization_method='mit_arap_2d'); "
+                      "spiral_winding_resample.py is checked directly by progress_prize_nov2026_verifier.",
             "screen_scroll_rtx4060_reads_meta_scale_default_0p05": reads_meta_scale,
             "screen_scroll_rtx4060_snaps_then_renders": snap_then_render,
             "snap_keeps_grid_topology": "snap_tifxyz_to_m7 moves vertices along local normals only; no re-gridding "
@@ -756,14 +765,14 @@ def code_verified_answers(repo_root: Path | None = None) -> dict[str, Any]:
         "q_which_pherc0826_pherc0191_fits_did_g1_read_and_on_which_grid": {
             "answer": "CPU on-sheet triage only (no ink detector) on raw fit grids, m7 2x snap, 5 slices: PHerc0826 "
                       "band slice-8928-9728 windings w020/w030/w040/w050 (public HF @63c641ba); PHerc0191 run "
-                      "slice-11600-12400 windings w020/w030/w040/w050. Ink detectors (Studio + A-hn, RTX 4060) ran "
-                      "only on PHerc0191 w030 and w050 (both NEGATIVE). The other two PHerc0826 bands and all other "
-                      "windings were not read by Gemini. Grid: raw fit grid at meta scale 0.05 (nominal 20 vx), "
-                      "unflattened and un-resampled, so the claude-023 shear / stretch applies to what G1 read.",
+                      "slice-11600-12400 windings w020/w030/w040/w050. Raw unflattened ink detectors (Studio + A-hn, "
+                      "RTX 4060) ran only on PHerc0191 w030 and w050 (both NEGATIVE) and zero raw PHerc0826 grids; "
+                      "subsequent PHerc0826 ink screens ran on 2D MIT ARAP flattened grids (arap_flatten_tifxyz.py).",
             "pherc0826_cpu_triage_mesh_ids": ids_0826,
             "pherc0191_cpu_triage_mesh_ids": ids_0191,
             "pherc0191_ink_detector_reads": [{"mesh_id": m, "verdict": v} for m, v in det_0191],
-            "pherc0826_ink_detector_reads": [{"mesh_id": m, "verdict": v} for m, v in det_0826],
+            "pherc0826_ink_detector_reads": [{"mesh_id": m, "verdict": v} for m, v in det_0826_raw],
+            "pherc0826_arap_2d_ink_detector_reads": [{"mesh_id": m, "verdict": v} for m, v in det_0826_arap],
             "pherc0826_triage_no_ink_detector_run": bool(t0826.get("renderer_semantics", {}).get("no_ink_detector_run")),
             "source": "evidence/pherc0826_1203t2_onsheet_triage.json, evidence/pherc0125_0191_onsheet_triage.json, "
                       "evidence/firstletters_rtx4060_screen_ledger.json",
