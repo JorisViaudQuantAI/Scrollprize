@@ -1,0 +1,21 @@
+# Adaptive 071 — budgeted search funnel: executable routing core; hard early-stop gate FAIL
+
+2026-11-24. User requests an all-scroll funnel rather than exhaustive cm². [Frozen protocol](../firstletters-colab/adaptive_surface_recovery/search_funnel/protocol.md) f18ddb5012a15fdd5ab2cef3917d1d80f1ff67e9; [router](../firstletters-colab/adaptive_surface_recovery/search_funnel/router.py) d8c267d317f0e20df0357b027d7f6c2989e43832; [runner](../firstletters-colab/adaptive_surface_recovery/search_funnel/run.py) 5b14172f2e20ae93f4f8af48138540a28297c9fb; [actual run](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45383943326), job 138409869473; [complete receipt](../firstletters-colab/adaptive_surface_recovery/search_funnel/result.json) 9a79ccb63541bbcd20d38dc4f1b51ab2a788c113. [Operator integration and manifest](../firstletters-colab/adaptive_surface_recovery/search_funnel/README.md). Uses pinned Claude line-control extractor/ranker and Gemini morphology and inventory. All 10 synthetic routing/support/partition/dedup tests pass, all five actual map cases complete with exact source/score/mask hashes, 180,256,263 bytes, 20.578s wall, peak RSS 892,489,728 bytes. No new CNN/GPU inference, unread data, submission or recurring job.
+
+Inventory: all 19 eligible scrolls represented by pinned Gemini Nov22 coverage snapshot; 9 have at least one carrier source listed (public atlas, public fit run, or official segment), 10 no such source recorded. The latter is a source-registration/geometry-generation queue, not a claim that Claude has no private/existing fits or that the scroll was never screened. Router checks declared manifest prerequisites, does not verify anatomy or execute GPU commands. Exact duplicate only; preserve unknown support, distinct physical carriers and repair queue. No blank terminal state. Private native map exporter/operator adapter and actual cost accounting still needed to run end-to-end.
+
+## Real rank comparison
+
+Nonoverlapping 10mm tile slots with equal padded slot budget within each case. All unlabelled pixels unknown. F cycles mass, line, strokeness and exploration rankings; H mass alone, L single-line, S stroke, R random. Selection uses no target labels. Source 306B is released high-quality model product, 343 is display signal, not coarse s96. Matched 306B support and shuffle are not independent physical controls. At 100% all supported targets covered exactly. No per-tile text recognition or calibrated probabilities.
+
+| F budget (requested) | 306B full worst supported row centerline | 343 supported letter boxes >=50% covered |
+|---|---:|---:|
+| 25% (6/24 and 4/14 slots) | .869922 | 8/18 |
+| 50% (12/24 and 7/14) | 1.000000 | 15/18 |
+| 75% (18/24 and 11/14) | 1.000000 | 18/18 |
+| 100% | 1.000000 | 18/18 |
+
+At 50%, F 306B full retains both row centerlines with 53.307% of supported area selected; 343 F 15/18 boxes with 80.724% supported area selected. H at 50% gives 306B 1.0 and 343 16/18; L 1.0 and 18/18; S 1.0 and 15/18. The 32 random baselines average .51758 worst row and 8.4375 boxes respectively at 50%. These are spatial coverage, not letters read; edge tiles have different observed area but same padded slot cost. 343 supported areas reflect display mask, not CT. F fails frozen >=16/18 343 requirement, no hard 50% stopping rule. No posthoc replacement by L. Blank and depth-shuffle maps produce zero line proposals; quotas still select tiles, not blankness/FPR tests. All rankings and misses retained.
+
+## Handoff
+Reuse existing Claude flatboi/Studio s96 both orders + line ranking; Gemini native support, actual same-configuration control, FP morphology as diagnostic; Codex fixed landmark and adjacent-sheet controls. Do not permanently discard low rank or geometry failures. Distinguish stage-specific measured costs (acquisition/geometry/coarse/fine/human), expand prioritized 10mm tiles to 20mm review windows (not tested here), reserve exploration. The actual priority is blinded validation on independent real s96/s48 pairs with exact coverage, cost and target survival; not increasing speculative threshold sweeps on these exposed maps. No claim all 19 scrolls have been scanned by this router or that 50% total GPU time is saved.
