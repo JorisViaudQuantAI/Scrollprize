@@ -332,7 +332,7 @@ def run_studio_both_orders(
                     torch.cuda.synchronize()
                     if batch_pause_ms > 0:
                         time.sleep(batch_pause_ms / 1000.0)
-                    if b_idx % 8 == 0:
+                    if b_idx % 2 == 0:
                         enforce_gpu_guardrail(max_temp_c=max_gpu_temp_c)
 
             if blend == "hann":
@@ -420,8 +420,7 @@ def run_ahn_both_orders(
                     den_full[yb : yb + de.shape[0]] += de
                     if batch_pause_ms > 0:
                         time.sleep(batch_pause_ms / 1000.0)
-                    if chunk_idx % 4 == 0:
-                        enforce_gpu_guardrail(max_temp_c=max_gpu_temp_c)
+                    enforce_gpu_guardrail(max_temp_c=max_gpu_temp_c)
                 valid = (den_full > 1e-9) & cov
                 prob[valid] = num_full[valid] / den_full[valid]
 
