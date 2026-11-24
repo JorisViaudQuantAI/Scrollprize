@@ -1,0 +1,2250 @@
+{
+  "schema": "adaptive.claude_carrier_atlas.v1",
+  "protocol_sha256": "0cc6e4c56bff3e8eadd335f50579a56578b4737fac45df9f9db5de6a7f9c3e0e",
+  "script_sha256": "1130ba0bb36a6b877dd6e4f410c12367b247c6633ecea014c0750b9ce2676962",
+  "pinned_claude_commit": "ab5b297de8cf696e098852ccb9b3be766317acb2",
+  "states": {
+    "fitted": {
+      "windings": {
+        "w033": {
+          "files": {
+            "x.tif": {
+              "git_blob": "d5c055fb55eab5f92b3de6e1208042d8357ccfa1",
+              "sha256": "05d10bcf6f802b2c0f67d2694c810d595544fe93551f36b1b8d840f9e79b4bf4",
+              "bytes": 57646
+            },
+            "y.tif": {
+              "git_blob": "39c8368c4e434db710347f0d76759d407d18659c",
+              "sha256": "eb5b7768537114f1d70787d4b465d0c731edac82fcf9904dffd41df155f1c33e",
+              "bytes": 57646
+            },
+            "z.tif": {
+              "git_blob": "007dbd6b7b78e1abb13f5dbce40efe7f8a7b3a90",
+              "sha256": "62a74c4364223d6c06d797a751d53d4cdf5213f1c9fe6a14ea48314b33d5a1e8",
+              "bytes": 57646
+            },
+            "meta.json": {
+              "git_blob": "4e233dcd49d7584688b7b95ecb8673ca2b014340",
+              "sha256": "ec95e1dcce634a93498e97cd952fc09a73c0f65afea77969b04e846ad5b9e79d",
+              "bytes": 445
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "fbe224c6db792038ae4894532ad8c4d2bfb85177",
+              "sha256": "fbd7bea0e44dded82ca03fdbf71758ac8a49ec88655e5a987ec82eb50a4dbf4f",
+              "bytes": 57640
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              158
+            ],
+            "valid_nodes": 11740,
+            "used_nodes": 11735,
+            "faces": 22956,
+            "degenerate_faces": 0,
+            "area_vox2": 6389097.245533252,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "1ac348b6d5c094c75f0e199b97aa126456e110165bfe218cb273dcc370a8b719"
+          },
+          "source_bytes": 231023,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 3136,
+                "area_fraction": 0.13304829475482016
+              },
+              "ambiguous": {
+                "vertices": 82,
+                "area_fraction": 0.0034544809879744807
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 433,
+                "area_fraction": 0.018348220908945306
+              },
+              "near_le3": {
+                "vertices": 5815,
+                "area_fraction": 0.2626161439495184
+              },
+              "intermediate": {
+                "vertices": 1780,
+                "area_fraction": 0.07945775768890101
+              },
+              "far_ge6": {
+                "vertices": 11172,
+                "area_fraction": 0.5030751017098407
+              }
+            },
+            "valid_hit_vertices": 18767,
+            "valid_hit_area_fraction": 0.8451490033482602,
+            "signed_depth_q05_q50_q95": [
+              -21.789535256605966,
+              -10.337728961758899,
+              0.574022089390299
+            ],
+            "abs_depth_median": 10.33850650126869
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2643,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1271,
+                "area_fraction": 0.12494701715194123
+              },
+              "ambiguous": {
+                "vertices": 4613,
+                "area_fraction": 0.3216788771426294
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 56,
+                "area_fraction": 0.005831691150718122
+              },
+              "near_le3": {
+                "vertices": 1289,
+                "area_fraction": 0.11548964997217948
+              },
+              "intermediate": {
+                "vertices": 595,
+                "area_fraction": 0.04782309883338617
+              },
+              "far_ge6": {
+                "vertices": 3911,
+                "area_fraction": 0.3842296657491456
+              }
+            },
+            "valid_hit_vertices": 5795,
+            "valid_hit_area_fraction": 0.5475424145547113,
+            "signed_depth_q05_q50_q95": [
+              -20.98917461246592,
+              -10.070583302951734,
+              0.40429175974773346
+            ],
+            "abs_depth_median": 10.094046974389066
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 11735,
+            "legacy_le3": 3706,
+            "legacy_le3_exact_near": 996,
+            "legacy_le3_exact_intermediate_or_far": 0,
+            "legacy_le3_unknown": 2710,
+            "legacy_gt3_exact_near": 293
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              158
+            ],
+            "dtype": "uint8",
+            "sha256": "722b3d45101bd581ccb8b8300f9279ebebc0a32e389c68aab46e7fac00aa7488",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w034": {
+          "files": {
+            "x.tif": {
+              "git_blob": "73196ab4a7c3f060549726303784665f81116e43",
+              "sha256": "d8503e27da8f5a5bf4fa6e23dce8c115f31f75726c8191a2014ffec9b8b3718f",
+              "bytes": 59466
+            },
+            "y.tif": {
+              "git_blob": "5387c5e2d6d1b66c36884c2dfb5ef55975421d16",
+              "sha256": "6fb40ac43b2c4f6a8bbd1a652fa511a048601e55c5586455d886f28b59f0cc6f",
+              "bytes": 59466
+            },
+            "z.tif": {
+              "git_blob": "e3203dbfdc18aeb2e18406d68317e4bfe20f2045",
+              "sha256": "cd6555d9fa02f55f130bd47202d703f4d19667551db584f2931d017a6b3c7b4a",
+              "bytes": 59466
+            },
+            "meta.json": {
+              "git_blob": "56835a96b6800d523c69c0b2740ab24d5ef80704",
+              "sha256": "33a7a88fd0da5149107047b2c21b676fd8a0362de64cd266171d9fff7cf9b3c3",
+              "bytes": 445
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "940baef9889c850108e723cb67e510c87d27545c",
+              "sha256": "66b475d1610d868b74ce6881e61bcb4aec358cddf369ed53fbae6cf7e017359c",
+              "bytes": 59460
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              163
+            ],
+            "valid_nodes": 12085,
+            "used_nodes": 12083,
+            "faces": 23636,
+            "degenerate_faces": 0,
+            "area_vox2": 6612462.676443761,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "7c09521f1e4801dd2668ab108db7d6fca8a0651f5b23e11667ad63cb54121daf"
+          },
+          "source_bytes": 238303,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1203,
+                "area_fraction": 0.04475504879452965
+              },
+              "ambiguous": {
+                "vertices": 37,
+                "area_fraction": 0.0015909179034286779
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 427,
+                "area_fraction": 0.018049291944213817
+              },
+              "near_le3": {
+                "vertices": 1875,
+                "area_fraction": 0.0839978881654588
+              },
+              "intermediate": {
+                "vertices": 3258,
+                "area_fraction": 0.14593673149098504
+              },
+              "far_ge6": {
+                "vertices": 15618,
+                "area_fraction": 0.705670121701384
+              }
+            },
+            "valid_hit_vertices": 20751,
+            "valid_hit_area_fraction": 0.9356047413578279,
+            "signed_depth_q05_q50_q95": [
+              -14.312817679847004,
+              -4.641746941680667,
+              11.54013834832276
+            ],
+            "abs_depth_median": 8.248885663316457
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2750,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 941,
+                "area_fraction": 0.0981934289725779
+              },
+              "ambiguous": {
+                "vertices": 5825,
+                "area_fraction": 0.380807622728943
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 73,
+                "area_fraction": 0.006867879609561523
+              },
+              "near_le3": {
+                "vertices": 932,
+                "area_fraction": 0.0961871523462991
+              },
+              "intermediate": {
+                "vertices": 1203,
+                "area_fraction": 0.10609210902141426
+              },
+              "far_ge6": {
+                "vertices": 3109,
+                "area_fraction": 0.31185180732120427
+              }
+            },
+            "valid_hit_vertices": 5244,
+            "valid_hit_area_fraction": 0.5141310686889177,
+            "signed_depth_q05_q50_q95": [
+              -16.48147066246549,
+              -5.1380950660231495,
+              10.310908304945753
+            ],
+            "abs_depth_median": 6.981940226789805
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12083,
+            "legacy_le3": 842,
+            "legacy_le3_exact_near": 642,
+            "legacy_le3_exact_intermediate_or_far": 1,
+            "legacy_le3_unknown": 199,
+            "legacy_gt3_exact_near": 290
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              163
+            ],
+            "dtype": "uint8",
+            "sha256": "8b5bb6a8ffa6006d04981c32cd3e7f9835eec02e1a604f385cf1a5d34d2cb48b",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w035": {
+          "files": {
+            "x.tif": {
+              "git_blob": "280c6f8703805695d46f9b9e1cfe5c398640637d",
+              "sha256": "f57a5442600d8085d32dcd1cb6c32ac9763a3248794aeae940a5021601af84a9",
+              "bytes": 60922
+            },
+            "y.tif": {
+              "git_blob": "dbf6ba90ee3adc1214bc92370933e8211785e001",
+              "sha256": "e74820c3b0fa89bfde9197fa008494978030e22ee79f552076e3148ba0ff5d3e",
+              "bytes": 60922
+            },
+            "z.tif": {
+              "git_blob": "311709d4bb274acaac4fb913a9f6559a4f0321ea",
+              "sha256": "3d077922e6885e96bd58b2d8da0adc58315da8091174700412f69c957230ddf0",
+              "bytes": 60922
+            },
+            "meta.json": {
+              "git_blob": "cdbae47b9ad2d31275f3b7a1212fa445f0f7b5c2",
+              "sha256": "f463e4dc4421db449974cc072cce2e67185574fa0997618455506e5d0e34e502",
+              "bytes": 451
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "d5e8135ed1917eb4cfb833be2962f914e5986e31",
+              "sha256": "bfb1b065d64636a8f8b548d5cf618aad9ab49f984416f491068024147b085ce2",
+              "bytes": 60916
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              167
+            ],
+            "valid_nodes": 12365,
+            "used_nodes": 12360,
+            "faces": 24182,
+            "degenerate_faces": 0,
+            "area_vox2": 6718029.3590406915,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "45893d2a963cf627588e7438509dc4d89e6524973fc6a1703ba699c1bf0d754a"
+          },
+          "source_bytes": 244133,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1968,
+                "area_fraction": 0.07849327562407117
+              },
+              "ambiguous": {
+                "vertices": 1,
+                "area_fraction": 0.000038455308143411487
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 310,
+                "area_fraction": 0.012905008233419005
+              },
+              "near_le3": {
+                "vertices": 8710,
+                "area_fraction": 0.3930146923938034
+              },
+              "intermediate": {
+                "vertices": 2709,
+                "area_fraction": 0.12199250039181145
+              },
+              "far_ge6": {
+                "vertices": 8720,
+                "area_fraction": 0.3935560680487515
+              }
+            },
+            "valid_hit_vertices": 20139,
+            "valid_hit_area_fraction": 0.9085632608343664,
+            "signed_depth_q05_q50_q95": [
+              -6.14566347058455,
+              0.8451957863436166,
+              20.13204953141135
+            ],
+            "abs_depth_median": 4.031607938206914
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2837,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1203,
+                "area_fraction": 0.12783053015177434
+              },
+              "ambiguous": {
+                "vertices": 5419,
+                "area_fraction": 0.3457548408433386
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 72,
+                "area_fraction": 0.006423101794114153
+              },
+              "near_le3": {
+                "vertices": 2834,
+                "area_fraction": 0.23797907717402655
+              },
+              "intermediate": {
+                "vertices": 1082,
+                "area_fraction": 0.10794015095632314
+              },
+              "far_ge6": {
+                "vertices": 1750,
+                "area_fraction": 0.1740722990804232
+              }
+            },
+            "valid_hit_vertices": 5666,
+            "valid_hit_area_fraction": 0.5199915272107728,
+            "signed_depth_q05_q50_q95": [
+              -10.005678131396413,
+              -0.1635063321357606,
+              18.564530020969592
+            ],
+            "abs_depth_median": 2.9980417643213806
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12360,
+            "legacy_le3": 5451,
+            "legacy_le3_exact_near": 2112,
+            "legacy_le3_exact_intermediate_or_far": 5,
+            "legacy_le3_unknown": 3334,
+            "legacy_gt3_exact_near": 722
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              167
+            ],
+            "dtype": "uint8",
+            "sha256": "2a06faddf98bf0d755c73451f924824b22d559fe304498dbdb8aa1bd12066565",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w036": {
+          "files": {
+            "x.tif": {
+              "git_blob": "048a14047200e269d8884e123ff7741ac4859677",
+              "sha256": "6bf02c6edf1ee8f4b7c0d17a4845687529b324d362352359dc6aea399ae12c0c",
+              "bytes": 62742
+            },
+            "y.tif": {
+              "git_blob": "fc1c019eeb91ae08fb7739048882a673851aeeb6",
+              "sha256": "1ac8017843d2ab3b45dacb9d9337da3000a2d2a0d1e726b6d5cea7468e56668e",
+              "bytes": 62742
+            },
+            "z.tif": {
+              "git_blob": "b949e70ce3f21bd429091d069ba9b1df441efb59",
+              "sha256": "a27bc4f78b22207c3674ae75aceca63fcca99df704057f3f1b7de49cdfdd8821",
+              "bytes": 62742
+            },
+            "meta.json": {
+              "git_blob": "9ba1ac64ef908bd2235be095f5ad95f1780844aa",
+              "sha256": "7ad92843fdaf4377d15f19767bbc5b392c43f184ca303be1cc6a5229e0203a32",
+              "bytes": 449
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "b2ac8517d8b4b3186405656d4e3ec6b6caed6537",
+              "sha256": "1069627486455c5f459daed4eb7dee20374a139d43ea7e4d4340a34282050d2c",
+              "bytes": 62736
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              172
+            ],
+            "valid_nodes": 12737,
+            "used_nodes": 12731,
+            "faces": 24914,
+            "degenerate_faces": 0,
+            "area_vox2": 6923189.145692799,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "9e4401d2d3bbc2d7a9906e18d1b50c07cb49bb9c799e9e7ae708b1a9b811f60d"
+          },
+          "source_bytes": 251411,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 5336,
+                "area_fraction": 0.2312781720148972
+              },
+              "ambiguous": {
+                "vertices": 0,
+                "area_fraction": 0
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 234,
+                "area_fraction": 0.010045663819576958
+              },
+              "near_le3": {
+                "vertices": 2244,
+                "area_fraction": 0.10194689961816271
+              },
+              "intermediate": {
+                "vertices": 4418,
+                "area_fraction": 0.200252524795901
+              },
+              "far_ge6": {
+                "vertices": 10186,
+                "area_fraction": 0.45647673975146213
+              }
+            },
+            "valid_hit_vertices": 16848,
+            "valid_hit_area_fraction": 0.758676164165526,
+            "signed_depth_q05_q50_q95": [
+              -1.2048875115298683,
+              6.925608792985006,
+              22.53271649502292
+            ],
+            "abs_depth_median": 7.028659271464267
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2921,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 2028,
+                "area_fraction": 0.20868342248334734
+              },
+              "ambiguous": {
+                "vertices": 2951,
+                "area_fraction": 0.19584437187834391
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 70,
+                "area_fraction": 0.006055789693690684
+              },
+              "near_le3": {
+                "vertices": 1129,
+                "area_fraction": 0.11292555112921523
+              },
+              "intermediate": {
+                "vertices": 1917,
+                "area_fraction": 0.14989761867817716
+              },
+              "far_ge6": {
+                "vertices": 4636,
+                "area_fraction": 0.32659324613722585
+              }
+            },
+            "valid_hit_vertices": 7682,
+            "valid_hit_area_fraction": 0.5894164159446182,
+            "signed_depth_q05_q50_q95": [
+              -2.2465065548183754,
+              6.784732944685606,
+              17.761072326831094
+            ],
+            "abs_depth_median": 6.900112999060404
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12731,
+            "legacy_le3": 1019,
+            "legacy_le3_exact_near": 748,
+            "legacy_le3_exact_intermediate_or_far": 0,
+            "legacy_le3_unknown": 271,
+            "legacy_gt3_exact_near": 381
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              172
+            ],
+            "dtype": "uint8",
+            "sha256": "a9ab7225f7aaeb17e98be8ce6a3415a9ceadcd757fce615f8013c0ed200bbe8c",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        }
+      },
+      "common": {
+        "per_winding": [
+          {
+            "winding": "w033",
+            "near_area_fraction": 0.2626161439495184,
+            "chosen_area_fraction": 0.2534256167923582,
+            "chosen_vertices": 5601,
+            "components": 71,
+            "largest_component_vertices": 5145
+          },
+          {
+            "winding": "w034",
+            "near_area_fraction": 0.0839978881654588,
+            "chosen_area_fraction": 0.04703509907806865,
+            "chosen_vertices": 1050,
+            "components": 153,
+            "largest_component_vertices": 494
+          },
+          {
+            "winding": "w035",
+            "near_area_fraction": 0.3930146923938034,
+            "chosen_area_fraction": 0.30775129378712135,
+            "chosen_vertices": 6832,
+            "components": 176,
+            "largest_component_vertices": 4657
+          },
+          {
+            "winding": "w036",
+            "near_area_fraction": 0.10194689961816271,
+            "chosen_area_fraction": 0.056041378032222845,
+            "chosen_vertices": 1237,
+            "components": 185,
+            "largest_component_vertices": 121
+          }
+        ],
+        "winner_used_vertices": 22418,
+        "near_union_area_fraction": 0.7752772251932281,
+        "largest_single_area_fraction": 0.3930146923938034,
+        "absolute_union_gain": 0.3822625327994247,
+        "multiple_near_area_fraction": 0.06270547603064415,
+        "unique_margin_area_fraction": 0.6642533876897709,
+        "near_but_margin_unknown_area_fraction": 0.11102383750345712,
+        "no_near_area_fraction": 0.2247227748067719,
+        "all_four_have_valid_unique_hit_area_fraction": 0.6486749471051795,
+        "seam_edges": 554,
+        "seam_signed_depth_difference_q50_q95_max": [
+          1.9758877612374568,
+          4.778271780320245,
+          5.952415130990861
+        ],
+        "chosen_map": {
+          "shape": [
+            86,
+            300
+          ],
+          "dtype": "uint8",
+          "sha256": "a385f45877618e7c5ba3072396a31ee6776f3764da76adb6bdd1e90822fc7861",
+          "encoding": "zlib+base64; C-order",
+          "data": "eNrtXImS27gObB7//80vFgmgcVCS8za12apRpRzP2NZYLRyNBkjg5/g5fo6f4+f4J46Brs/ndYzx37yQz/FnT78x+jxswPZvf0HY1/EfwuprtD6fGK9M6jr3AkqgwvycANcJejjQ/naownX/uqj59LFkkRXiv34zFaP95Hr8vHXbU8Tqc3ze3v5GqBAtSy6GY8xlDOuf2pV8bNiRzr7hgT7CzOsDTbarfQD65N82JGdUy7I2IJ9nfNXTANxPu8fHHezX280Yns855E4UVkVYLZyOUBGIHU+A/g7kw4EVr3IF340eLN5+rvTzAn10rvC8nHfMBcqwt2ygxg5WHqtoUowXAlZoPV62PRGza/Hg9xuy/YtQ/HBgZ/PPJdeZSQ1HTGwRgKmhWzH5AM+RPBwXPi+w2pda2AT7asYqINaWL7QaF/K0j80/oSTRGvv7dm/ifP0KyHQsQICDvGHScTLxng84BzT/Wfeur3/XK+18YCMo6Ms1NEpM+68rBNutJntGBdz2oOtef8677nWEasBfteU3lwHmvkEzocU/8Y25xerzuK4a8gWv32Bjoni27ZRYaUHvtiItd3+uYCFYSUr//E5Dy45Ds7Cq5aH2hZxrN/mvz4DUpGjtfW2ykc0A5sQYB7NirBYm20g65D7ql2s+HjX54dczfxos114f3le7i4kFikbpX+BsLDYxLLFSIr3NE4PsKEaezZPq0DgJSTYsg25HidIFwaHmYzVdbKd3uVh7aBaDFKtmBrXP9XESeUbk22U1jURIydzeyrlx2eGcFukv7Nc5fjkC1m+vpH8kq0TR2fsMOAiRz6YF74JCShtFg4vY6zvRvF01iPPxORZUlyvXbEdC2JWzKIcnrLa9rWBm4U2yXley0T/WKjHJBXWi+3P6GC+WS8i5OuGGXDk32mh1yjgxEQKCTg71zfz2kNpWneqDe3BCDDY7SPiCK30MNGGXw/uXOqz42GCSUaTE0SuzOif/vvzwAqa3KxUSM2iJwSa4zDmz2XC59kgaEoaQeDXaNpgFluFSRLthtoWpVR+BaGRs4JGy2zWrSci/EI8Sf2BKgVQn+e+s/1kZNgaTyeirB9a1sGrQE5B/iddOZ2CuINIHiflmWrsyOAerGLOEqWts2nGpMWdQpNyPfZujgFbSJfEVEUYg9Dx5odXBM4s0w0rn6e1jRsIVIjzCO5hfidBwUwnuaG14QD1ucyxJf3eHRDYpQBNYkLJtLKcZw5Vz5zKH616LTmAVCsCBjM8MS6av05SHzmwUlf9tbxJragITKJifzJEceIPWizxofIE5Fd6UhKjEFY3XYhKRwhMxWNoXu2YB1v610xlQBvWGU3a7ieS5LGRXPsbq57qZPpzs0/RfVuuEioCY+8ITUjGQ8jcLTHeV4wocFBAYJbUiorfvDrB+iBunGvev3nukvg4iSkEDtcC1LReiTIkdo7TAlVhvxZgoObVIrBrwBitfC8DokPIlY+JPrgdnRCXYN4ir4e4Ca9fgQ9LKJxmbH2q0o3i1ZBlP2Xeac5Vps//P/me6Vs08/J32AOBNmArU1At2uYVRIL3+TmeqpfUMFYTM7p1diQwUrrsS0R4TXx3AsLyRKLeVLmB5uCLsFQulzKeiJ0s+JwPj7OnL5SFkw4kNA1lowJO2Sdpx+/agpIvh6WhwrVPcApkK7BmdRkuaAaXmwckps03M2OAYkhetmp6ktuGuwPGiMWf/L3FqIsZyuJrHsHMO/LtatqzpsTLV15cEwxhXFP/YqoZEf2xWv8unrirZDWeAy/oq8f3W4bCirl0QX3DGSZIcu2ySKqLIBaoBuDkDLtnlYVgwnZdOMKjnzFIDnlMZ3pOqEiyEJlMVTcYNARvhBJkwiMDM+srnfYsYzK35rDS4nGoTcbsjy47UnLqo+1wV/j90M/Gyu17F+O6IksS5fFa7WoGRfbwLAPryJ/Fbaya2bvolU295ZyFLZPRNwMZ7sHAG60usui9sDtKWSxiFBWM4XUu77hKKYp6EaWWSCCk/vcAG7ZaFwol7Z7s6m8YDSXgqg24aaubz2LWkiejwhE3pFgbFMuai30af34nur2j1QzYs1VI7Qb/OIhFIaVeQ95c+ujQckMYIp27pLMgILvjnsWqsyYAM3EvJz1ihKrtVcZ8r4ti7SWfWd2+eLjoDfNsrqqNu/Ar9a8r0e7QBXhJFUO/e2FUFZxSHO9FQugM8Y2U1DUxJnjMJMtp3fkMYSAd+6MkHUpZe2fnmvoY51H0+ZCGEscGSs+YtThBgxhFHkbhXr5oXiVnDmjNPWG0F64gVssr+xBmOzRrvYxhFjVjxWMLq44Rd3dDXfzj0RlxZ4On8lNpZmSieVBUdHMqkwJgqXvtgSNKouw91zgvsP8CoHdBYDLoP+O4sRii541wD+yCeK1/YtF/wNNQ9iQfDGqxIkjKKQOEzVrO2TgILZffMzRqFW6NfATwlqu2gzrH9NsvxcFouFbMrPoF1XfDQ0hShSrnjXU5KODCsRVitA2SjxGcJm9ULrjn3mBOMNMShq6SRvovqalw42hgHjBQ7MA7jDvDy3uN0Vjov58g7uXWLDUHhWv4XoaKRxVrafKQO1hC7xco0zTTu+iT23avtZWWAlx9XMYt6RZ/ILvKbU4/Baa+obCofjfELdJaTE5osNxD5aH3fc/BCpSerLlmLFOMU51xmcJrXilYQWbfVENAoTCudkh55BOu5enaTsyAN+ba2DiAgCTiE1XhrVziJ9ZQpiFrhOMcofVNSROE6fomCPSVDViXV1HVapcTKBaC0duLkSCMuBHCjFMWQBDdZ3enmugO9iE7OzDpP1zJBQCv8VsbVXmAFnkaw8bkw9ig+ukeOEZNmIeDwaLqbSCAK5cMiT3kMjxWLpzbFe3Nl0nymIXZHHpC7indQSdd8Tm1LuPk0pCBz2SDzx1x2cy3Dt0M7pyOkEoAG5KxAppkstrcxQmP0KB6javEVvVIeFjmNYWnPSwd9wL0chPxtjKeI1H6szZNM37byF01/jKko3Hw3+/rQlRNf6QlqYDT/AT+3/EgZVvcSr9QWnffLagTmzHNtHbQEwPXYEZ04qvsqy0RzHO+weqHM+BO8qJZCwBgPeXyMkUY0AtmuSFaYWO+HN2cWuzpe8T50nTs/Di42uLn1WqT5SgJEzkTBe6qMvmcNuF19kHZcGWfD/J3182BXfCNsxolON6e1N8+Xeeqd1sO0r9obx6us2zYDoeOlLlPnQxp9o9KOBoq5kkIfl97iSQhb/OLqlF8f4xUOvZow1leN2qQOdDCjPIFWeQkQJ/kGyglSP/qhQ7M84cU598Jq+AkIB9UeoymT2guXgs2w+48jsC7csQYXrlOsjZLJ9o4XnR++VJkjDh0s1oTgNXvPdGVVza8f229iVYyDgLCitSe1D36BlQ2FIMzRVNHHEadhU81O7Umr7lw5H2xUWmIvzOokZ/lBP123E/qDaGesdDmpR2oOj6Eb3UalLx+aYkytkGboXWTShkXkePTG3p6wwmOfj4fX4ASJmmSB6pqkBRQ1r7eFNyO3xervOWNL1iRoYPhFQFW3etCc3lft0Nai/6FKj/et56sKqwYbU+3/NMVwGHO0yW1aC2B3ZIejccUi28Cix8IbNicTocKjYQkMtv6tpdh+VxTKyOmIZQvK3IbHjjTSghPW8HW4cSnAUtbt6RheseMnWemVQV2L79vMbuVbmJ2lovCoX0lnatRzVyixOoWogrdbNB4+sRlCGDSKWYRGb6NjB6wvZvPKhiCtS4Xz0H4Ca12gl4nWt57KuW/W3zwNKstqY01gq73HagGILMQyOQUt03peTyIEiRRxOwKrovsK7L0fFtjbYhqYxc8hoymTufkN93SX7LHq8EvhsNvxctXy57GkMzFx1FPga1nqnSJwMy0E2NIlplLevIqyPOxPMW2MZVckWvWN9O3D8MaxhWVY6XLVvdfQtFlT82hMJqADVVF/kawvRjh0cRca0UyfC3lbgWY+GEX8PKCXh2VT/gNxzDDFd14OoEu759yai2v2VG1vH+R1CrDjpoeFMNKoKnJYT9Hg1oKROH+g7Sj1kDhchZwREfEdZ0GGr9eGQc3uyPTiTjVbXCOBbfeaAz06znNE7ThiRaBxDVRyjnPYLrZESdx0xinjtEpOAeDRfQn5A3EHK7fyjJfHaiSDYHVcsNTqPWBsiMOWEDrAtD1xIg0C0kStVa3RvNL2rgyp68ddwiRWNHhvk17sm3KEiscZuF+hdlWvM3ILunMhDBz9Nq0YiOK829MDZ2aZ9x0Q59iDMLyE0IoVpI+GcF0VhpUKBM4Wp5AS1zuEzT3SWsq0DLVz/yt8MM31VUuXtU7RPS5GXHo7wEt83TqcNFfDq+CCGg3Edqpff4EVr3rN2qOmXMl9wFEMvXZv4HWavjggRSS1ZmiUUzsxc7hxIzdMdNEjGpZVD2QceEVhoiGuttGZBbdQcIerah6GN2s6C8MRKzD56mAhK5zB7e1RSu5wkhPKpauDg551uFy8sTUjgYfHMcywfCQsl1+/TljJrl+vRhlDcz7tenGWRXUTmdCoKgS7ghRMVDNZtMNCuSHTpKp4cr0wePusXj3tpV0BvNvO89KtVq2Ro+2bbntec04nbiLKeCh4RT0a8ri3YRSlbBMB3TPNNpoL/aAuzfm8vJbJ1Elud7uAsZUhU/mb/qDOKNCscXbLNDbkwZovYAoLKcT1/CYCdUuIpv8R9y9k6tGOik3WRX0WQHbVJPVJ3Oa5sHJpjadPM647/ec3U3Q2KFukubEWBxVtU9YKcapmqOaPx9luqy10umDqGNr0ZGnCbwBCm8q987rfP/b6FOR9AE2cSyI6jR0v3QDF23oYvw1za0w/Ot09qUds+h5udpbWSRKv+qMYvTiqBc5RNV625lDRva78jjP2xq53onfv4YoVQs9ddqjT+L7ZuScE/z5eXiaIolVPUnEaWaMNXtHu9xON9WAa1sNpndtfA9cpJLdda4ee6WnTpvcZ/E4nxn90L/A/tHlv3kXg5yjBCp24nyMf/wPReoF6"
+        }
+      }
+    },
+    "snap": {
+      "windings": {
+        "w033": {
+          "files": {
+            "x.tif": {
+              "git_blob": "68cd2456eb4e03cb59b300c68e441504d54177b5",
+              "sha256": "8775e045dc494b2f6409ec68d4a0c9274354d44e024ce38e850bafb673d90b50",
+              "bytes": 57784
+            },
+            "y.tif": {
+              "git_blob": "32a4487ed3d677e238ecd75440402dab5a5789de",
+              "sha256": "b7f2120db4d315c708b2028947583986baf15c477a63e4518bb52e3c8a2233ad",
+              "bytes": 57784
+            },
+            "z.tif": {
+              "git_blob": "a21a62daa5fcfb292a332406b862fb6de721538a",
+              "sha256": "c6c6ad9399148d22b0fc98037974c22eb583cb345ffbc378f0f230a3dd9f75f1",
+              "bytes": 57784
+            },
+            "meta.json": {
+              "git_blob": "980bd4c53715234a674aacf5dbdb4b6177c17ab4",
+              "sha256": "8426c5a7910ce29a85db8a655e3641e9a1806527b25e2c6331bdb33ef28811bc",
+              "bytes": 704
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "aba044bbdc55995ae138cadda05a89a4149c7499",
+              "sha256": "9bc3dad44feb1df05470a8706fd4f94ebfcf051149383905298020a5d69d7d0c",
+              "bytes": 57640
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              158
+            ],
+            "valid_nodes": 11740,
+            "used_nodes": 11735,
+            "faces": 22956,
+            "degenerate_faces": 0,
+            "area_vox2": 6390843.521260733,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "97cfb852649b55ca6828378c3e118c5ac67646492455b00d65b62826ce6d1c21"
+          },
+          "source_bytes": 231696,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 3209,
+                "area_fraction": 0.13649558612352644
+              },
+              "ambiguous": {
+                "vertices": 75,
+                "area_fraction": 0.003144036363817626
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 399,
+                "area_fraction": 0.016863436113542407
+              },
+              "near_le3": {
+                "vertices": 6808,
+                "area_fraction": 0.307499384658147
+              },
+              "intermediate": {
+                "vertices": 972,
+                "area_fraction": 0.042690922786688165
+              },
+              "far_ge6": {
+                "vertices": 10955,
+                "area_fraction": 0.4933066339542783
+              }
+            },
+            "valid_hit_vertices": 18735,
+            "valid_hit_area_fraction": 0.8434969413991137,
+            "signed_depth_q05_q50_q95": [
+              -21.953594702948845,
+              -11.477826607611062,
+              0.7792471487422581
+            ],
+            "abs_depth_median": 11.477826607611062
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2643,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1419,
+                "area_fraction": 0.14244246208223713
+              },
+              "ambiguous": {
+                "vertices": 4837,
+                "area_fraction": 0.3339122086265504
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 55,
+                "area_fraction": 0.00553776670542292
+              },
+              "near_le3": {
+                "vertices": 1402,
+                "area_fraction": 0.1233260281699152
+              },
+              "intermediate": {
+                "vertices": 387,
+                "area_fraction": 0.035971631889060274
+              },
+              "far_ge6": {
+                "vertices": 3635,
+                "area_fraction": 0.35880990252681416
+              }
+            },
+            "valid_hit_vertices": 5424,
+            "valid_hit_area_fraction": 0.5181075625857896,
+            "signed_depth_q05_q50_q95": [
+              -21.785775108224396,
+              -11.543917838849577,
+              0.6780451572380422
+            ],
+            "abs_depth_median": 11.564248894809692
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 11735,
+            "legacy_le3": 4673,
+            "legacy_le3_exact_near": 1110,
+            "legacy_le3_exact_intermediate_or_far": 0,
+            "legacy_le3_unknown": 3563,
+            "legacy_gt3_exact_near": 292
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              158
+            ],
+            "dtype": "uint8",
+            "sha256": "79ae96d0bbec9951229fc37f47193b34c6bd521c0a27bb49ecfa07ab6f97c5ab",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w034": {
+          "files": {
+            "x.tif": {
+              "git_blob": "95e7acef230de82f44189d28ee8192a1157e3cc2",
+              "sha256": "738ced1592ef7dfad0c8c8702ee948229da28ee0707acf2b5616243dcdcc31a0",
+              "bytes": 59604
+            },
+            "y.tif": {
+              "git_blob": "45a4d4b8c91f32cc0d8ad7e2e102ede59fe60cf9",
+              "sha256": "cb685d334a89b8d19ea9a0a2927fe1546a92447a8ef6079964985199e1a7d1c8",
+              "bytes": 59604
+            },
+            "z.tif": {
+              "git_blob": "687a47d5b0cb10eabbd2b86cc5d6276a3eabbcd2",
+              "sha256": "204e19db63e867df24daba55a1d829e6381018a506e4a52d040c39ff5f2b484d",
+              "bytes": 59604
+            },
+            "meta.json": {
+              "git_blob": "849f8cf36cc1846f79458f844d13aaaadaf262fd",
+              "sha256": "fa36f423594a34c965facf3731f994332341c43a3f8d82f16e4471a12c900b84",
+              "bytes": 705
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "8f99b999d2474e90654a8db5d89ca9696e45bfa6",
+              "sha256": "a3a05dbafdeacebd8d4b2a087b33aa21013373b39e9bf6170f11dddd21bfb2b4",
+              "bytes": 59460
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              163
+            ],
+            "valid_nodes": 12085,
+            "used_nodes": 12083,
+            "faces": 23636,
+            "degenerate_faces": 0,
+            "area_vox2": 6679977.54839116,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "72434ea9ae30716291cbb75aa9f9a1603bb0df39ae1e71b5a8629e9d30b74aa1"
+          },
+          "source_bytes": 238977,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1452,
+                "area_fraction": 0.05593167924621736
+              },
+              "ambiguous": {
+                "vertices": 33,
+                "area_fraction": 0.0014110279383445184
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 557,
+                "area_fraction": 0.023922999277281157
+              },
+              "near_le3": {
+                "vertices": 7575,
+                "area_fraction": 0.34149064578079985
+              },
+              "intermediate": {
+                "vertices": 3589,
+                "area_fraction": 0.16205417771464845
+              },
+              "far_ge6": {
+                "vertices": 9212,
+                "area_fraction": 0.4151894700427087
+              }
+            },
+            "valid_hit_vertices": 20376,
+            "valid_hit_area_fraction": 0.9187342935381569,
+            "signed_depth_q05_q50_q95": [
+              -14.563781138680273,
+              -0.45622629407956217,
+              18.226156854818342
+            ],
+            "abs_depth_median": 4.948011901759994
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2750,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 946,
+                "area_fraction": 0.09947718147139185
+              },
+              "ambiguous": {
+                "vertices": 5519,
+                "area_fraction": 0.362820513813259
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 88,
+                "area_fraction": 0.007872883236730438
+              },
+              "near_le3": {
+                "vertices": 2753,
+                "area_fraction": 0.24967667836888252
+              },
+              "intermediate": {
+                "vertices": 1121,
+                "area_fraction": 0.11258981673087055
+              },
+              "far_ge6": {
+                "vertices": 1656,
+                "area_fraction": 0.16756292637886563
+              }
+            },
+            "valid_hit_vertices": 5530,
+            "valid_hit_area_fraction": 0.5298294214786187,
+            "signed_depth_q05_q50_q95": [
+              -12.448613814716754,
+              -0.5999770150489971,
+              15.5557592460145
+            ],
+            "abs_depth_median": 3.0250485207152775
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12083,
+            "legacy_le3": 4498,
+            "legacy_le3_exact_near": 2121,
+            "legacy_le3_exact_intermediate_or_far": 1,
+            "legacy_le3_unknown": 2376,
+            "legacy_gt3_exact_near": 632
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              163
+            ],
+            "dtype": "uint8",
+            "sha256": "d5ddb444e20f68d53b5bb7b2ebd19de34d4a718045e45655688464629165bae3",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w035": {
+          "files": {
+            "x.tif": {
+              "git_blob": "c524a43b9786774b7fc116f1fb3bab1c53486a5c",
+              "sha256": "380cedb332134acaae39e13d0537d38c9f411a48bb6574d73a3d3a0c66affb94",
+              "bytes": 61060
+            },
+            "y.tif": {
+              "git_blob": "bd30a89b3825c91c600c9110fd920c1545a6938f",
+              "sha256": "124fa4ba8f451249e94519c1530ed9adc9b7675d10f46ace8e91927cc296f868",
+              "bytes": 61060
+            },
+            "z.tif": {
+              "git_blob": "787f7fa1d965c232d37d0ca825719274a96d213f",
+              "sha256": "91f982a13d769edec973c7fca3ade64f452d99a55b1b04fe8755ad5081ce7a7e",
+              "bytes": 61060
+            },
+            "meta.json": {
+              "git_blob": "006048d288a21bc0f5a5ac8a821dac125c21a0b6",
+              "sha256": "c7c66801b31285c6cb41d774b05dc61039e3871af7c5d18ec3a30f27fad28920",
+              "bytes": 711
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "87014ce86e8448ed990f5d1cc55b8558e6d0edd7",
+              "sha256": "066179425f4b01571dca13f285567168f84cee77942d82aed01548a1ad7b2159",
+              "bytes": 60916
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              167
+            ],
+            "valid_nodes": 12365,
+            "used_nodes": 12360,
+            "faces": 24182,
+            "degenerate_faces": 0,
+            "area_vox2": 6723440.602588849,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "0b24bf2c42140abd9cca3a9be9607d3e94267c34880e37fa6372c86a1f683292"
+          },
+          "source_bytes": 244807,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1838,
+                "area_fraction": 0.07263476169975754
+              },
+              "ambiguous": {
+                "vertices": 2,
+                "area_fraction": 0.00007720243240306048
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 268,
+                "area_fraction": 0.01102335773396033
+              },
+              "near_le3": {
+                "vertices": 9028,
+                "area_fraction": 0.40694199867773867
+              },
+              "intermediate": {
+                "vertices": 2491,
+                "area_fraction": 0.11229000149180052
+              },
+              "far_ge6": {
+                "vertices": 8791,
+                "area_fraction": 0.3970326779643399
+              }
+            },
+            "valid_hit_vertices": 20310,
+            "valid_hit_area_fraction": 0.916264678133879,
+            "signed_depth_q05_q50_q95": [
+              -5.800839155912926,
+              0.8195127463295377,
+              19.89420562041988
+            ],
+            "abs_depth_median": 3.869423532046466
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2837,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1158,
+                "area_fraction": 0.12456761913618172
+              },
+              "ambiguous": {
+                "vertices": 5481,
+                "area_fraction": 0.3483888241058086
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 68,
+                "area_fraction": 0.0065859774704716085
+              },
+              "near_le3": {
+                "vertices": 2868,
+                "area_fraction": 0.24593697676558204
+              },
+              "intermediate": {
+                "vertices": 1000,
+                "area_fraction": 0.09862233996125327
+              },
+              "far_ge6": {
+                "vertices": 1785,
+                "area_fraction": 0.1758982625607028
+              }
+            },
+            "valid_hit_vertices": 5653,
+            "valid_hit_area_fraction": 0.520457579287538,
+            "signed_depth_q05_q50_q95": [
+              -9.971256632346842,
+              -0.05997529330484557,
+              18.541920205162523
+            ],
+            "abs_depth_median": 2.9510235457669762
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12360,
+            "legacy_le3": 5626,
+            "legacy_le3_exact_near": 2178,
+            "legacy_le3_exact_intermediate_or_far": 5,
+            "legacy_le3_unknown": 3443,
+            "legacy_gt3_exact_near": 690
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              167
+            ],
+            "dtype": "uint8",
+            "sha256": "da766bb875b7a5dc44637e16894820b67467e5a078a323c67a67d17444911189",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w036": {
+          "files": {
+            "x.tif": {
+              "git_blob": "df2a408e20e8f63db5200cdfe1e9c4f7c8404657",
+              "sha256": "2d82ba098ce52858c2341b2a67609b498f2cdc299fea9575c96b2b4e0f937999",
+              "bytes": 62880
+            },
+            "y.tif": {
+              "git_blob": "64f1500cdb8ef14ca4413bfdb8301868fb1c3702",
+              "sha256": "74e75855d47b2e1b91582cb0bc36fc1a33376f5d94c907f7a26b4ee44898eeba",
+              "bytes": 62880
+            },
+            "z.tif": {
+              "git_blob": "21e4173a46c332116dd70af135e829cec692bafb",
+              "sha256": "15e731bb7c5eb2fd368570b4ea1557bc8bac18df161464b53bb866690f9e2164",
+              "bytes": 62880
+            },
+            "meta.json": {
+              "git_blob": "9189cd927c4f7bd8c26933dafac875b8a3245dd3",
+              "sha256": "b19ae58b0ef48dd2816417f8edfdf391a50533bd649e73be140673cebee04127",
+              "bytes": 703
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "31d488326166103793a0d1f37cea5ace6535998c",
+              "sha256": "5c6ea2cef971e9959ac84d996b1663a73b5687497e311f4b2d678bc560bfdf7b",
+              "bytes": 62736
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              91,
+              172
+            ],
+            "valid_nodes": 12737,
+            "used_nodes": 12731,
+            "faces": 24914,
+            "degenerate_faces": 0,
+            "area_vox2": 6963201.942364975,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "eafde6da23df7c6a226f0dd7e756be732635f912cabacdabdd6404ef38bb3352"
+          },
+          "source_bytes": 252079,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 5899,
+                "area_fraction": 0.2563639837837299
+              },
+              "ambiguous": {
+                "vertices": 7,
+                "area_fraction": 0.00031766351990859435
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 320,
+                "area_fraction": 0.013536129558402237
+              },
+              "near_le3": {
+                "vertices": 5360,
+                "area_fraction": 0.2434378845064645
+              },
+              "intermediate": {
+                "vertices": 2114,
+                "area_fraction": 0.09594792648992229
+              },
+              "far_ge6": {
+                "vertices": 8718,
+                "area_fraction": 0.39039641214157245
+              }
+            },
+            "valid_hit_vertices": 16192,
+            "valid_hit_area_fraction": 0.7297822231379593,
+            "signed_depth_q05_q50_q95": [
+              -6.023848290768854,
+              5.399017044668025,
+              21.556852332822714
+            ],
+            "abs_depth_median": 7.301255981850023
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 2921,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 2309,
+                "area_fraction": 0.2268989266810384
+              },
+              "ambiguous": {
+                "vertices": 2544,
+                "area_fraction": 0.17625949772604416
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 112,
+                "area_fraction": 0.008129922890625222
+              },
+              "near_le3": {
+                "vertices": 2285,
+                "area_fraction": 0.20011621220179288
+              },
+              "intermediate": {
+                "vertices": 1055,
+                "area_fraction": 0.09640914429652504
+              },
+              "far_ge6": {
+                "vertices": 4426,
+                "area_fraction": 0.29218629620397435
+              }
+            },
+            "valid_hit_vertices": 7766,
+            "valid_hit_area_fraction": 0.5887116527022923,
+            "signed_depth_q05_q50_q95": [
+              -7.642625689406604,
+              6.012833010511338,
+              18.866956946538753
+            ],
+            "abs_depth_median": 8.257690513219273
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 12731,
+            "legacy_le3": 2958,
+            "legacy_le3_exact_near": 1715,
+            "legacy_le3_exact_intermediate_or_far": 4,
+            "legacy_le3_unknown": 1239,
+            "legacy_gt3_exact_near": 570
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              91,
+              172
+            ],
+            "dtype": "uint8",
+            "sha256": "0b728d6735bc64093f5c1f34ac9b93e264f2d76fbdb66e92c3250ef4813dcd6f",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        }
+      },
+      "common": {
+        "per_winding": [
+          {
+            "winding": "w033",
+            "near_area_fraction": 0.307499384658147,
+            "chosen_area_fraction": 0.25730768804361204,
+            "chosen_vertices": 5695,
+            "components": 52,
+            "largest_component_vertices": 5480
+          },
+          {
+            "winding": "w034",
+            "near_area_fraction": 0.34149064578079985,
+            "chosen_area_fraction": 0.03473392581951233,
+            "chosen_vertices": 773,
+            "components": 190,
+            "largest_component_vertices": 420
+          },
+          {
+            "winding": "w035",
+            "near_area_fraction": 0.40694199867773867,
+            "chosen_area_fraction": 0.06989655032904384,
+            "chosen_vertices": 1574,
+            "components": 236,
+            "largest_component_vertices": 189
+          },
+          {
+            "winding": "w036",
+            "near_area_fraction": 0.2434378845064645,
+            "chosen_area_fraction": 0.015454922781530336,
+            "chosen_vertices": 344,
+            "components": 174,
+            "largest_component_vertices": 9
+          }
+        ],
+        "winner_used_vertices": 22418,
+        "near_union_area_fraction": 0.7857611300010114,
+        "largest_single_area_fraction": 0.40694199867773867,
+        "absolute_union_gain": 0.3788191313232728,
+        "multiple_near_area_fraction": 0.3779274797088709,
+        "unique_margin_area_fraction": 0.37739308697369855,
+        "near_but_margin_unknown_area_fraction": 0.40836804302731294,
+        "no_near_area_fraction": 0.21423886999898858,
+        "all_four_have_valid_unique_hit_area_fraction": 0.6171695822563664,
+        "seam_edges": 213,
+        "seam_signed_depth_difference_q50_q95_max": [
+          1.236744041742872,
+          3.9398273734398592,
+          5.140800769198409
+        ],
+        "chosen_map": {
+          "shape": [
+            86,
+            300
+          ],
+          "dtype": "uint8",
+          "sha256": "f491c305129339bd6c81a4f3080b3bec6a17734b1dab0974f2e321495dac9ac7",
+          "encoding": "zlib+base64; C-order",
+          "data": "eNrtXImW5DYIRMD/f3Pa1gUIScjtyW5exsnOTLfdh8tQKgrJAL/b7/a7/W6/2w9v+J/6tnRtP/4hwD5Sn//u7RetDNNnY+bhQ8su1Bukvx0rsGDRW9lzoTQilT8vB5TF6to+O1P6ewOL5PmBfHyfasWTG5YnecPmQX58QYPoYaW2P4aKiiCSWF2cwvcR+bIbLPiGj8oeDjLSKjNvltpjZbIy3f+3sPuxGCRSIVT+KhjQlSw3VDlBZJhde6Zxkt9L5RnD6mgsP3DcAC1UCAYsvF964ZNm29cgNaQkWPVHvtLUEwwn0RAbBXjgJo8OPazAOW998pjhchBqryixqEIy7SjoEyesQJJg5R3u6aC4OFhRysTFDlMf0kD99h5WY4CISEExqDRcnKjKCGt49NUvFyuTUs6lCyvwsKKGVYuxKnbAlTuF0B6R+ewAxIHdwYuqz68rObFglRRW/W8diddvVNGY7AXD+7SpySYCmmKlRj/KVFuD3FL79R346chn2YrLBw0JOGKVU+v+Va5hkl+pp8EYi+XPejCqsPqceX67kn5FOJGPlVUKRe6UgVBrpDxuieQj+Fa9kmF3ECECLb1KWF0cjzmiJlLlHi8LruCkbn6AepBrA1xBBGBCWANWF9DXEwxGape/PnvP+Wp3tMEqLTZUJJ1s2DssX9K3ZywaxipUVDjrE18lxBxud4aoem4icLhDeQF1VLvx+umkIgtnUGVR9UGrcpYc3caxE5zxAcDXYW1wu1KRiTVWSKs6hlqEDeeHJc/lLoYzDYqTqJppdklaqQcTyjRLS6wUCS51Q42SGk4y7bwysD6BQ1RQR4e+HwZDUEGLKiGesMpRcKNooiPqYSslQ4VtOkvpwWB72kKlEPjcwwfotBfc49BGhpqwypxVNFZRUS5YE4m2DqzrK92DmJLrjZFWWFH/wVP5fRhGjn0VzMA6wl1Y3ePhJKR8qoMRJK+WuMn94ml092qwmtgkUSkObPOlbhchWxwZWEKlMdGjHkzwAicnV8aK1A4el5N9QU1XENRGsL8eKliPR8htWOmT3wqLeRJWoUGDh1DPWVpR5FkOrCJJ7btHTYvFVAUcgXW/HTpYKf8AsTwhJFI6xErp0mTOTjCNjivwwCiaXKv1EXePnb5ORlkMikTpkYRCGhXKUnEFMaxswaMleZGSvYqeQSVCjgTtt50/2jToWOl6XUju1EvADh/MlFTamVpJJ5EBh2CBlfURsrbk7ndNwcJXsdKWiSlPhHopz+LM3VszXi+MWr4JNVm0p9WcXop1rDpa11MvBRa7rQ8BkC6eW/YUjDo9i6QaEm0GFriKgchSODi8M2DF1U5nkGT/Ui+MF3HVAsuJK+0WJGEjTPl7kns1w1PqFQuMfQdoxh44YSRGJdrg+R2X8zSRrSmzOusZHe2watmXOje7xvbEaspyofov9Q9XfxXZFegcxsHETnoWKwxIKJgNdvPDa1y5sTNpjJLjEPC059PFEAbOHs6xGuPqUGua2hgdtJXh/BWx+KXRUGqHIicdYYUiqBAcdyViIJidzV2ft8LenZFAzaZAjVdnYYbicfFzzurCPRRNkBYqVLvs8HbXcIdVrXHQS7Rvrk0ZJVrZjJ5kOk7CuaNVddmLyroRFDq+3z4H+TDfZY8e0htgrUuf96By6smNn/B11otGDjxDJTRIisAKM/YBVM6r2f2TAnZCmWDD7rvFoYJvY8/FCh+GlWNZtYe51cUKn3dieo+VluvPMXvWP2mmTbOnwLFvFHT8vWdsv0DXVxGselX4Y1gJtlZpQ0Zo1G4hOlhxcblEafWeL7NPQdGRH8V4tI+zx2rK1IPSL/18z7jJ9TSddwNDenQfViBthh0uK+G/onOi/m/pnKueofakqdWOrxtY2CZR+DrJMdsDMbSvo9fjmzNA+uKACEabVWrIl+KKJbFDcLhbTVsIQbXHyosrObHIC7ZeDdIXvZqQLwoQlUhwYjlAWlaETs9Ltr1GyzjSbydTEPNrVFWrZ9jHB3gulo+JsAWnWHlCstsFZCSibEMbp6J1r/i7/OJQJbRqOLdZG2q0c0tjiJoR5VwZaPBEtbUi5hYP8z5odLXy8/huTGXOo2tGQv4GixPDNvGjREuz4Qff6gyr60voVKOh9Sw5hylaGeHLI2D9DrjrvUixoDLLSc8qUwE3b5i7NWy68dRMZDo8Cx9AfmP4I/s5u5ax6uz0CUYgp0qqSUMOl4s2xSfrWw+1NgVNCjnTQGnvnqy96YnA3bsyVXosJhJtlVKyWt6JVKczhLZzcDCZjJZxlTuEQazi8culDthgFfH2IC1I32s52hrtfG0Dqx79RN1vuOrc9NfeMSwbW+DNId2UNw56RCusFmdg9rCeLeO8dlU4h4GyzeYBgxPjfZWzDh1uQt/u5SVWi5PjB8PC7O3kwYsOBKRNv88MiZLC5ARcidViavHgyUxRJPaDJW7DxOUEy/laDzuBvh9jm28jVpLayZhQbnbwYDX4cyQzBBRJwkMb9mHvtHtZrn7XV20UEQuXfMlXrv8wzP2gpyFEwZ1POsyTF8OY2vopWHVfiB0cyV1YOmlV0FH+ReOO9nM9Qt6K0O26xjdzTGvikt/KW9K9bV35M7TOsYoGH4oVWOc9BwGzuyhCVNvqgmy+Fa2xIicfzRonsHL0JU807aCaP+OOgz20h0WaPSFRrOjR6yImaNFaAAxYvdA3HbFCwyrpEXElgLnpmVz2wja2OaiRa78EgFpw+wto6RkI8EB85tVM4e5fOYicSVb3Kq+4x9CWHtppyoiP0o4CBHcoqZwJVQNWaUoVxT4kb3EE3YLvOCxGsB5yFO35KsFhFdPW58jJtyO1J/crp5l/PGH1fT3tQvVlWeOnxCO5oMLKpyuxiFWgVI4JzBimWGIYYidjIr+6pWkpCPOAAnXLBmnMKLWenARs+oqW1ks77wh76ZjiHyB37CcKEK1rpO5sd0rxhjh3oWAEK+43y4mcc1+YeeRB6QqbY1jNPAYtm5yBX6wpFE/eC51ALOHxwZrd0ITt10OXukS/orTDDhqC+FibJgAIGFDukY5t0256YUgeVY3j1XtnfRWaPPjSS3jC7eAtRZqWjQDDQnAdSjDWOA8Hb45UcPSvcftibWlsjkOjgmSXOD+ZihyYveFMT8Mx5/gNz29YhxVb47afNDRxkg9t7i1WtsXOBsFy5ZjddVERR1CsCZSxoda7B/12OMMqBBbFB6nK8etDud1NpNxLTAYdaobFGbMDKKggHTp/c1t0srJw46SBuKMcRbktkKk80fZqbQ0uMtK6KjCU0ttyGlbGVhQr7cbom33QGqnzud4wLEOJcpV3Tt3UXAiFBGMrNZCEi2FLTTyb3EENDqTUE4WOU9YX08oG9ZhgsSp30i6DwRtVqt/VVzS4w3sf6n2QJpCxNQNkkSfv7qjvYzXcBkQUh2YhifrIhWbwWsU01HdvegVvyCwtK23+OEveVjSGldnbHbWm/U2ys7RJTCpWPQlzw9U/j5e85YSyXQyxiYmA3o0N653sEFfsSUDy/h8kGF7dHeYOJYa/bFOr55Ot8vQ9rMbA69QXG1rEHcLkPWGg24B/HUB/aiOS92myK5F+gTJgRQXn/3j7B2YONBw="
+        }
+      }
+    },
+    "flat": {
+      "windings": {
+        "w033": {
+          "files": {
+            "x.tif": {
+              "git_blob": "719f30f97435de91f760bfd279a0fa62bf206f14",
+              "sha256": "c2c0e0f5f7a8d0c7b80e17347e31c424868f0a4074c24ca732a555bb9626d87d",
+              "bytes": 80402
+            },
+            "y.tif": {
+              "git_blob": "02a23c3c11a72a58f6832e118fd9a1bbe25294e7",
+              "sha256": "70afb8b84afa7a2883aed742ac7d1d2b2f904f6f862fa599d38531d361296fd3",
+              "bytes": 80402
+            },
+            "z.tif": {
+              "git_blob": "d4b29ba4e509f729181534c765ea463602860646",
+              "sha256": "6df4ff6bc697b280aec8bf83e12b80f571c18f5253e237cbacd25c60084cf871",
+              "bytes": 80402
+            },
+            "meta.json": {
+              "git_blob": "a08be5c73c2196e53648a7d24c969d72ede17e7c",
+              "sha256": "b1e0dd68eb68d0549aa8ba7eacf2df0f35d6e2724bf8f7c4bcc5c0806dbe543a",
+              "bytes": 423
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "ab89e76b2b95eecc712a06cccd6701beb8873379",
+              "sha256": "7f3f9786e8679f26f302e4f3ac0c6512f132e713bc1351917377e6739fba50db",
+              "bytes": 80384
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              88,
+              228
+            ],
+            "valid_nodes": 16074,
+            "used_nodes": 16051,
+            "faces": 31404,
+            "degenerate_faces": 0,
+            "area_vox2": 6151598.216681299,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "4d4909422456cb6c5a163e31f7357f7cf84e009b84bece56ca9faf513360cf73"
+          },
+          "source_bytes": 322013,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 3378,
+                "area_fraction": 0.14353313565959253
+              },
+              "ambiguous": {
+                "vertices": 57,
+                "area_fraction": 0.0023089900896008718
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 200,
+                "area_fraction": 0.008069826446096828
+              },
+              "near_le3": {
+                "vertices": 5785,
+                "area_fraction": 0.26128875120892
+              },
+              "intermediate": {
+                "vertices": 1783,
+                "area_fraction": 0.07968726957621299
+              },
+              "far_ge6": {
+                "vertices": 11215,
+                "area_fraction": 0.5051120270195768
+              }
+            },
+            "valid_hit_vertices": 18783,
+            "valid_hit_area_fraction": 0.8460880478047098,
+            "signed_depth_q05_q50_q95": [
+              -21.846609828728837,
+              -10.434208754063365,
+              0.4916967395497721
+            ],
+            "abs_depth_median": 10.437159608962844
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 4013,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1784,
+                "area_fraction": 0.10255015980563473
+              },
+              "ambiguous": {
+                "vertices": 5218,
+                "area_fraction": 0.33232928267971423
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 95,
+                "area_fraction": 0.0053303293392016745
+              },
+              "near_le3": {
+                "vertices": 1920,
+                "area_fraction": 0.11979329127727527
+              },
+              "intermediate": {
+                "vertices": 754,
+                "area_fraction": 0.04794851401368551
+              },
+              "far_ge6": {
+                "vertices": 6280,
+                "area_fraction": 0.39204842288448866
+              }
+            },
+            "valid_hit_vertices": 8954,
+            "valid_hit_area_fraction": 0.5597902281754494,
+            "signed_depth_q05_q50_q95": [
+              -21.607453938349682,
+              -10.616791861183607,
+              0.44254745088593733
+            ],
+            "abs_depth_median": 10.625498814266987
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 16051,
+            "legacy_le3": 4666,
+            "legacy_le3_exact_near": 1502,
+            "legacy_le3_exact_intermediate_or_far": 2,
+            "legacy_le3_unknown": 3162,
+            "legacy_gt3_exact_near": 418
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              88,
+              228
+            ],
+            "dtype": "uint8",
+            "sha256": "348855288c14c3bc31324db3912aac7bf47d3ff95850c80753993814ec5cd63a",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w034": {
+          "files": {
+            "x.tif": {
+              "git_blob": "774c2812981b8db80ce357ea7a6cc47dce9ab092",
+              "sha256": "2a606373eaa45f22e76b12d902caf6de845185a0e982bc47cb9325cf26e2b50d",
+              "bytes": 82866
+            },
+            "y.tif": {
+              "git_blob": "2ec831f80f63a42bcbeb1ea1041048fc77b6404b",
+              "sha256": "176f838c994f3d54564ba136bd8717d9680acbf88f63edd6ce8a11b87439fd72",
+              "bytes": 82866
+            },
+            "z.tif": {
+              "git_blob": "21ee813099636d7f8528a025921696dda2552c77",
+              "sha256": "16b79acbb05a4dc4393c23bf2c5b9bb28d5b4b43d9d68c90d067ae98d6599169",
+              "bytes": 82866
+            },
+            "meta.json": {
+              "git_blob": "f3ca8c3fdbc262b407baed1d8b9e9ab903f13c46",
+              "sha256": "bd53acca2eff6b3ef919f4c7ea8cfa2a9d73264cfd1c6bf51663cdcaa7d63301",
+              "bytes": 423
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "30c3e2b3fb21811904d8de163627baaefd3585aa",
+              "sha256": "cc1d941437702254c923446f180f5788dd4e8bab2d1a739dd213093f1168b9b1",
+              "bytes": 82848
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              88,
+              235
+            ],
+            "valid_nodes": 16625,
+            "used_nodes": 16607,
+            "faces": 32492,
+            "degenerate_faces": 0,
+            "area_vox2": 6387563.55149435,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "a090cf05be29bb9ab0a0028dafbdd3882bca68baea7c50afcb65ad2eb2b481e6"
+          },
+          "source_bytes": 331869,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1418,
+                "area_fraction": 0.05348459881704087
+              },
+              "ambiguous": {
+                "vertices": 9,
+                "area_fraction": 0.0003857102233771237
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 205,
+                "area_fraction": 0.008111168669800153
+              },
+              "near_le3": {
+                "vertices": 1806,
+                "area_fraction": 0.08091939694617384
+              },
+              "intermediate": {
+                "vertices": 3186,
+                "area_fraction": 0.1430770755835173
+              },
+              "far_ge6": {
+                "vertices": 15794,
+                "area_fraction": 0.7140220497600908
+              }
+            },
+            "valid_hit_vertices": 20786,
+            "valid_hit_area_fraction": 0.9380185222897818,
+            "signed_depth_q05_q50_q95": [
+              -14.308352089882804,
+              -4.775358457458335,
+              11.38430736564229
+            ],
+            "abs_depth_median": 8.259947090062177
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 4073,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 1528,
+                "area_fraction": 0.08338170303716858
+              },
+              "ambiguous": {
+                "vertices": 6309,
+                "area_fraction": 0.38784523004029575
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 127,
+                "area_fraction": 0.007039149341515648
+              },
+              "near_le3": {
+                "vertices": 1652,
+                "area_fraction": 0.09828632966352482
+              },
+              "intermediate": {
+                "vertices": 1853,
+                "area_fraction": 0.1126582982468636
+              },
+              "far_ge6": {
+                "vertices": 5138,
+                "area_fraction": 0.31078928967063163
+              }
+            },
+            "valid_hit_vertices": 8643,
+            "valid_hit_area_fraction": 0.5217339175810201,
+            "signed_depth_q05_q50_q95": [
+              -15.844857071319167,
+              -4.913566699987359,
+              10.404383310073358
+            ],
+            "abs_depth_median": 7.163801168934307
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 16607,
+            "legacy_le3": 1347,
+            "legacy_le3_exact_near": 1157,
+            "legacy_le3_exact_intermediate_or_far": 0,
+            "legacy_le3_unknown": 190,
+            "legacy_gt3_exact_near": 495
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              88,
+              235
+            ],
+            "dtype": "uint8",
+            "sha256": "57a5874d255efcbe28de901e3a0e01489f495d16ec9918e6928b4dd39b80db98",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        },
+        "w035": {
+          "files": {
+            "x.tif": {
+              "git_blob": "8d29f57936ade200d0bf3d41dacabdbb219524aa",
+              "sha256": "e7ca24a98816666c88c378e5e26f8e46598e96db38bc93cb698dce216094af59",
+              "bytes": 84362
+            },
+            "y.tif": {
+              "git_blob": "d56f64f4f65ae06579a01bd9b83b927f674da1e7",
+              "sha256": "6d5858b3aef22c3d03de8a2d9c782d4d16d2c25bf8d7138f7bd70e29cb9d4ced",
+              "bytes": 84362
+            },
+            "z.tif": {
+              "git_blob": "09ad2b699da21b8e02df24c536bca0c85c961c18",
+              "sha256": "2e6848551e8fa463a5c2fb0ed853ecf1ac9c2e15004b1d255d172ec4b5a4222f",
+              "bytes": 84362
+            },
+            "meta.json": {
+              "git_blob": "db3ca26cc70383b985b58ede995ac0ebdcfa3788",
+              "sha256": "6d59b247a2e3eaf42fb350e1ee472b6d2b64115f72f32c0034f81fb37d7c37ef",
+              "bytes": 423
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "4783d88a43ede9b09f78699395539f847ec88d14",
+              "sha256": "ea14bf03d4ef5b0e4211eebcef0c03260dc1510d77ae3e33c47cebbcac21db64",
+              "bytes": 84344
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              87,
+              242
+            ],
+            "valid_nodes": 16869,
+            "used_nodes": 16852,
+            "faces": 32972,
+            "degenerate_faces": 0,
+            "area_vox2": 6493407.285166692,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "54fe8f7a84938232a27d19e2ccdf39e8c1a63792f6e5b1005a5ea08c5fd4e0e9"
+          },
+          "source_bytes": 337853,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 2200,
+                "area_fraction": 0.0882229741362696
+              },
+              "ambiguous": {
+                "vertices": 0,
+                "area_fraction": 0
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 168,
+                "area_fraction": 0.006739273290329133
+              },
+              "near_le3": {
+                "vertices": 8763,
+                "area_fraction": 0.39528292326206205
+              },
+              "intermediate": {
+                "vertices": 2623,
+                "area_fraction": 0.11850300118347487
+              },
+              "far_ge6": {
+                "vertices": 8664,
+                "area_fraction": 0.39125182812786435
+              }
+            },
+            "valid_hit_vertices": 20050,
+            "valid_hit_area_fraction": 0.9050377525734014,
+            "signed_depth_q05_q50_q95": [
+              -6.2940254637143225,
+              0.7911947022564112,
+              20.10046183636404
+            ],
+            "abs_depth_median": 3.951829984408763
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 4202,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 2095,
+                "area_fraction": 0.11587600452803294
+              },
+              "ambiguous": {
+                "vertices": 5891,
+                "area_fraction": 0.35677563327708905
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 98,
+                "area_fraction": 0.005477680328261916
+              },
+              "near_le3": {
+                "vertices": 4092,
+                "area_fraction": 0.24557338342425036
+              },
+              "intermediate": {
+                "vertices": 1703,
+                "area_fraction": 0.1019289247089806
+              },
+              "far_ge6": {
+                "vertices": 2973,
+                "area_fraction": 0.1743683737333851
+              }
+            },
+            "valid_hit_vertices": 8768,
+            "valid_hit_area_fraction": 0.521870681866616,
+            "signed_depth_q05_q50_q95": [
+              -9.572785845183212,
+              -0.1042570721693957,
+              19.084465796980947
+            ],
+            "abs_depth_median": 3.3497211146218473
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 16852,
+            "legacy_le3": 6901,
+            "legacy_le3_exact_near": 3103,
+            "legacy_le3_exact_intermediate_or_far": 0,
+            "legacy_le3_unknown": 3798,
+            "legacy_gt3_exact_near": 989
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              87,
+              242
+            ],
+            "dtype": "uint8",
+            "sha256": "e0a3f843e332fc8a0cebf9f4830177df38f6fa5159097c12b285a2134d813f4c",
+            "encoding": "zlib+base64; C-order",
+            "data": "eNrlnIl2rLgORcHo+P8/uQsPGoxHKJJ0t9d7fSuVpMK2ZOlINmzb/3wA2Dbvj/0c5xtEDz9x5/HHUH0YwOd/IHLhEh2d43xjn0NTfIq0On4d1WfiMFy6rIAcvlG/6gmyyfE7xMG+lo+J49gRrL6/N37BxpYY0a21/YH3od9F9+WAELuTDsrhw4vzvS8hi/fsdpbpRYP7K/Kx63WcmBMwAjKmrDx2Bv1n8y+plbO94upXYn/IBSGEamivpjQqfAUtnT+MDvD5uc7xTH9ixh4/3zmn/fz87nmlq1g3iBGSk17IYQ5IDY0o5uFvQ9aKj/BkTPxhc5A/7WT42tjS/+Nq31K2aJHcIgbbmA2hidm9QdHZwe8nYOSljxwCz3VzKODmKGahuMrdt1dIl3jrELt06bjkbIr2zl9QzG2e0jtIv4fMW1icwt9AHzhBtiaiUAn+K8RHumyIa0sSQ6KsDZjgzk4RHCR8fXzWKcbEw8FzWV0Iw9iVL98ZYmHOP6Mw68D5W0ViE1N/5vTIges5ddMJpmTXeX2uyE7JMICdmD6w/cHoy3n+DnFE98IYE2/FMtU2zusR2dIE9DntitfAqUyRhPWI2I+Jp5GZ2KugCxOiPepm9KVVoV+nj/BfIcb3iCUEpnwsa1nAU/DCwOIgecVzJjZ27lWvnl7JRuJeArXPzMT/SpQ/CrvzN8MLaNXy8XL3e8Q2RRmpiJoZg3zk5JtTEJAkCPTMpKSkTPyDxH6RmO17hS7ngXxOtXbNx1nQqYnSsvFEP0A8l5OV0kdFf8ympmjt/Ms5HjAxvgRMfWK/5tXZmAUx2x1zSSor8iSvv0pMXyA+hBjtRItsxLH4UiYOXn4kdfMd4M/nkCP9acvEos6PhmomM2Jg8tXpgdKp/AtDYtS9te7T+RqadeYScS1msX9SKgL5K1ygUz6XVkL4JxFjdX22mT9zhO8Qw1NFVcq1C3JqFCSZ4g2jGBiamIb+OgUOXsxZ0Pg9ccR/VogzQ2X9Fo6aYhLNDORkP0dMy0o7EGcZu+/j7CSRy+cyHqbTlazJYRx+DtUQT9hYcU+6u2evHvbATd4RWW3bF9FfubFjAzRBJMgVkh3gfMG191wsbrxHHQUy0fWvESvga0Ov8PdQVVykt/Z4VuGJGHPEju5orgVivZBFF+ciADXrnS2NzyDQVXJZKxuv9vSKyjTV6B5Y+gkZitiTrhXNVZswjA8xTrc+wSuJ2Kbud4lVacbWmxddh7VkbXHmxZ3cmrzKWInVX8yM9woJKUaVx05UT0KcKh9CJRvlbiz3LaWVLbry7OiS7h2x0+E9Yk7Fk9UTe7UTDUV6I6a0M6RHkP4DZVOtMyEi8x3iBc0ViVP0FQFSyC2Vj8s13UlN5T7GEQXsXyG+tEBUZcSlsspLYPls4zMXw6SmJi7vSPxzNu67dUFsGgJqL6msl6OJyzQMWcESz7JX/5SNP39p2PmxxSKMtuQABNlzyntT1yWeu3/IoU959e3klCLDAvHIyGV5DNXRxCXD2jJZZzLobReCJOlnxGS3mnrE+0x7D4ZY1BZnpyZwLXmXu4pKgDwjRo94eo8xGdlpG+smcykWO8i192Tvmbe07ufceBnPibeizDrOpqwtoKaA0f7Omduf2TgwB2+bt7FfIy6QaakU1ttWOdR9iZi+QXxekd13J046Jn4tgmvvkP48zXZjXyTeTOAKZ31SxNG2msetL2hpr9wm9r3Q5deQvQVOcmM1dvVmwbOCpXELoJ6GYu5fsHE3eNllrI6x2IJ3jhtdYsxm3w78WIEMg5dJTllgXYkJFwdH05PN+17OIs7siyPNzEh2tI28d4kPHaqvPszCSy9ptImtXNPECwaD0VrL0jr3B1rZqTwSCq/70ReRbU6rtdqYleON6wKExno6qW5dDUkLq0VsIrW1GSzypP4AR3pDfCxn41iPDPudgdj52pnXKrGzxKEWWFeZlheqMfCIuGnga3RD7TTfaBUHr0bdWbGgO2QPQ597WSd2fWAyr+ge8QGPCau2FZht8T4n7igURRy+rhAP7tThddwSlSr29nOzbhU98eoZTUZZfGKWeKsQewyVJcaOrTsFKTndPbjW+c3T3+KLyjnkMfHhcaNaalTG+kPcQ+JubkovFO68jY+pPVKs1E3cvb1RK2bSuUNglWPXz4jrXo7WV/bHj1ubTmvd3qwsxqXEbmV1NzxjQnPhCo3T0daB+fdnVeY+Vz3p9T4MSGMPr+45zxyJqKzQVeLZenGeuAcLvhfkOi3HLWIH89k3iMfI/maQzgV1w9mxPyC+vRET90z7yPmml2GAxmwnM3Uz7xLjMXFr81yIKwc6evi1+riYNiRidzNyPbRxH7l+InHWseMOzGXL+SkxzciQJrFvnYOJewYWeLFIzM0wb49bI4fqO8QKmIat3xvE6oYdTPVs5Rx1c1nLrcs3y+MRMXHP4C6xHDOlOeKyHIY95xTecnEP706sHpzyinPaBu4THwF6wZnL809mCvTNBC4cMXEvZCe5vegOcQ7XqKjo1b0ne0w3EK9XToRhg5udepE4m3jn0KVvlygbe+gIssrpXC4W122M3j7ERKAeEHtDLOddwPcAjM4L2LZecYv2neq4vW9TKZxa+bjt1VJ7lHe0mRvO+UEKNRUSibmlD3226datTpiLd744wTZcxputK1GeFC/ugMoTYScm6w/PpwxgtfytFsi0ic3JTHsyr0V8qHNsuEpnlI/NMLtRJMQftKP6ZKDXjjZdifch8Yl86EZuqbjCA46ujziS2dj0M5COo/tQh0XHXia253A7bn19gs+LzyRZagsMk9R18e6Ddbz94kOWBhbOj+tYJQ7MR5vmtx8oRYMCKpzjnt493jnd/r1nhNUDg30ISUyGZxZoaVFfvwfzX0FcwrNep3hcP0tteQJDEDj/CeCMncmxFfvR8lwd2Yr4W09+++4wNI00898iXhr/ADz/3j0="
+          }
+        },
+        "w036": {
+          "files": {
+            "x.tif": {
+              "git_blob": "02ed78fe40b6355f19e3e7b6473ff0da3ab5c7e8",
+              "sha256": "7642bc682383db9d8f231509db5598df6293ff614482d861d2234e98d1ea69c4",
+              "bytes": 88434
+            },
+            "y.tif": {
+              "git_blob": "a87280cd4b4f54a9ef5cbe883ef5bd51482880bc",
+              "sha256": "8314f33fc85e280f0eb6e3d0cea66cfc293610cbb23334a624ad0d4c4b2ff548",
+              "bytes": 88434
+            },
+            "z.tif": {
+              "git_blob": "e29c0fd31891012096aadfb8d181aa241e8fd63b",
+              "sha256": "ca2850a073df66da1037759d75352f5f32a25cbe189718feecdc0d1a2aed0075",
+              "bytes": 88434
+            },
+            "meta.json": {
+              "git_blob": "f0d86bfec0515025d88ecec8bc7a2e6add16e167",
+              "sha256": "cebb01d035abd639b5667267442a90b1ee4fe3e7f4c0cc3a0f147f2cc12e7516",
+              "bytes": 424
+            },
+            "nearest_dist_to_winner_vox.npy": {
+              "git_blob": "58aa08e922ac84bc25f56fe77cae8e1a13353ce5",
+              "sha256": "5c8f30e6bd3d1f37fa537e90155ff5e43a0795946c2c71fdb6a2383813085b8c",
+              "bytes": 88416
+            }
+          },
+          "mesh": {
+            "shape_yx": [
+              89,
+              248
+            ],
+            "valid_nodes": 17268,
+            "used_nodes": 17262,
+            "faces": 33782,
+            "degenerate_faces": 0,
+            "area_vox2": 6693855.848997967,
+            "normal_invalid_used": 0,
+            "coordinate_sha256": "13ff840ec7ba00895a6e4d4c28c913d4350cf686eacb30804befd683f0d8c168"
+          },
+          "source_bytes": 354142,
+          "winner_to_fit": {
+            "codes": {
+              "invalid": {
+                "vertices": 3382,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 5522,
+                "area_fraction": 0.23882460980012302
+              },
+              "ambiguous": {
+                "vertices": 0,
+                "area_fraction": 0
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 119,
+                "area_fraction": 0.004836876942747405
+              },
+              "near_le3": {
+                "vertices": 2194,
+                "area_fraction": 0.09974138981817844
+              },
+              "intermediate": {
+                "vertices": 4562,
+                "area_fraction": 0.20708224254955354
+              },
+              "far_ge6": {
+                "vertices": 10021,
+                "area_fraction": 0.44951488088939756
+              }
+            },
+            "valid_hit_vertices": 16777,
+            "valid_hit_area_fraction": 0.7563385132571295,
+            "signed_depth_q05_q50_q95": [
+              -1.1647478493290535,
+              6.886657046320353,
+              22.54824995654785
+            ],
+            "abs_depth_median": 6.980428113473261
+          },
+          "fit_to_winner": {
+            "codes": {
+              "invalid": {
+                "vertices": 4810,
+                "area_fraction": 0
+              },
+              "no_hit": {
+                "vertices": 3617,
+                "area_fraction": 0.20047595080554845
+              },
+              "ambiguous": {
+                "vertices": 3417,
+                "area_fraction": 0.20185116552382504
+              },
+              "oblique_or_invalid_normal": {
+                "vertices": 107,
+                "area_fraction": 0.006196671562795455
+              },
+              "near_le3": {
+                "vertices": 1916,
+                "area_fraction": 0.11361634106432943
+              },
+              "intermediate": {
+                "vertices": 2644,
+                "area_fraction": 0.1557876725022754
+              },
+              "far_ge6": {
+                "vertices": 5561,
+                "area_fraction": 0.32207219854122643
+              }
+            },
+            "valid_hit_vertices": 10121,
+            "valid_hit_area_fraction": 0.5914762121078313,
+            "signed_depth_q05_q50_q95": [
+              -2.9339396474230686,
+              6.3199813799877065,
+              18.17949907882342
+            ],
+            "abs_depth_median": 6.478631117351911
+          },
+          "legacy_comparison": {
+            "used_legacy_finite": 17262,
+            "legacy_le3": 1469,
+            "legacy_le3_exact_near": 1264,
+            "legacy_le3_exact_intermediate_or_far": 1,
+            "legacy_le3_unknown": 204,
+            "legacy_gt3_exact_near": 652
+          },
+          "reciprocal_code_map": {
+            "shape": [
+              89,
+              248
+            ],
+            "dtype": "uint8",
+            "sha256": "c3f8fedd1bc6ecea5b9e8e7982b2c5b489b2057fea64f9d5cf6dd0d0a6fd39cc",
+            "encoding": "zlib+base64; C-order",
+            "data": "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"
+          }
+        }
+      },
+      "common": {
+        "per_winding": [
+          {
+            "winding": "w033",
+            "near_area_fraction": 0.26128875120892,
+            "chosen_area_fraction": 0.25270583910470035,
+            "chosen_vertices": 5583,
+            "components": 38,
+            "largest_component_vertices": 5396
+          },
+          {
+            "winding": "w034",
+            "near_area_fraction": 0.08091939694617384,
+            "chosen_area_fraction": 0.04412336431631554,
+            "chosen_vertices": 983,
+            "components": 117,
+            "largest_component_vertices": 481
+          },
+          {
+            "winding": "w035",
+            "near_area_fraction": 0.39528292326206205,
+            "chosen_area_fraction": 0.3110527461751167,
+            "chosen_vertices": 6908,
+            "components": 133,
+            "largest_component_vertices": 4762
+          },
+          {
+            "winding": "w036",
+            "near_area_fraction": 0.09974138981817844,
+            "chosen_area_fraction": 0.05720632103240691,
+            "chosen_vertices": 1262,
+            "components": 150,
+            "largest_component_vertices": 271
+          }
+        ],
+        "winner_used_vertices": 22418,
+        "near_union_area_fraction": 0.7755722768363902,
+        "largest_single_area_fraction": 0.39528292326206205,
+        "absolute_union_gain": 0.38028935357432814,
+        "multiple_near_area_fraction": 0.05918759451212609,
+        "unique_margin_area_fraction": 0.6650882706285394,
+        "near_but_margin_unknown_area_fraction": 0.11048400620785073,
+        "no_near_area_fraction": 0.22442772316360984,
+        "all_four_have_valid_unique_hit_area_fraction": 0.6577099922819126,
+        "seam_edges": 441,
+        "seam_signed_depth_difference_q50_q95_max": [
+          1.8549932352202214,
+          4.7590395790145985,
+          5.892081468793373
+        ],
+        "chosen_map": {
+          "shape": [
+            86,
+            300
+          ],
+          "dtype": "uint8",
+          "sha256": "d10d34cb14964cdae3532535eb02134e6f412632deda6d152dc0ab227feb46e9",
+          "encoding": "zlib+base64; C-order",
+          "data": "eNrtXIl2E0kMrD7+/5s3nm7d6sMGFnhk3i4kxnYyZR2lktTA9/V9fV/f1/f1s67Wxt+9f/2P9pffxS979+cH9AekPgFr9ENrrX8VVM/1AcA3r2nPUztdD1DPf/TiKtfru78BKgtWP3nJ83z3sgzx1l4AEUjj705YD3yquYDydf25UM07N1Apz2ygm6W7nWAxxq2liE+sBKRu36Mm18DqhdaD2O/ETd+hu0m6Lbxc5vVAVchRUKbbNC81l/lH+gS6eiGZbN1iJdfPuO1P3qeZ+OTvcjrIA9zrU5+v6cONoPHgb9Fm9B4vsj5NfyukIGGKscIaq00IM2Z3wvcdrCi+LM2hjQhMlqfzU5NgzpbTlUMNJE341rZkHpyxvY6P4mhXA5G1rRAuJV4QdMo5WE8f6NNWdigRmqAPWn8QE7XH8CY0gkHXUa4rwOx3LnGMTyCFCt48xhd1+q0YWllfFOvoHeer+JbGHT//KjZEH6+FL2LVKDEJNmxXlMofw7P33B0GQqG6wao7LFUe3GE1EHkeIErx+OvXzZfhVs6uUHRiIKz5ZuYDXdvFdCNxFx3AkzhFj3DweHwk2jx6hEaB1hc2Jpjyt+PHHrB63Sa54Yhp8BysuIhUJobqfebnrWMfuVKFROqJg463ScgSv+XIVuffDMbMW5QpMWNUemkHTZxSEZINVvb+i+RN++EpvxrfSc5T5vmYonhyFqkhdMckc2xy/ORSE6iv/yoTr9fPamIYWEA1sqmCJ5jZ693HOwe4FhmthAQIZzgMUIJVcc9N4zXnazL6NMSjKTrUiYiSDUoWfVl2o7LOxK7gY2JG862eLxi58UEiIaRJxDbpvpIDVgsWPa3srwUz5DQvWJ2ux18pL7ApFskclRzseaaPRkNAUOFIfDtJia0GpNbZDSqZPV9XRxoSfMNb8JON1UDyHRp9lBdY+Wz5MM5i6kPJdUm0m3YMKWjoEWtzxDSC//mbRsosZ/zaYOX5Q4m6iklrZB70S4cn7EiEsHNOdA02DikCqyKTfkXvNltCmZYic0zpkvJGe2CBCd7idT44ObMix1V25b2PKr5hE7rm6M4lkeVErhiZoqHDkMyEkAfS6Z7iHXEX1yGsstgyZRhKUXnwGKVMveQDTxfQXiYAHcJ3hW/3Gk1TPwAsr/S+YgwJwUIG1vNHZdqUVII60JA1iVvqwJ86Xgk1EHGOjF0q38QBoxZhhMKKaAQkp2ZYSdXTswIxh1DsKjUJJgHbiHRMfjruZWGa6/xDyYwMKqGuUicpe2oMia54SG1QHxYSVCeZmCX0mi4QVhKwZpgu71weKizSmQtBB1Na19Xkm1EDNQwTFCZfRSlVDOi5/TXPGJIcb6sYpla3JmXTpFUXFjTrijEYWzTvUOAqpcQs2aBI+iIa/HB0LdSIkKOxgsUKqq7b6TFrHpVGPvdJs+65KZYPiFnBrhG/2pkpZV79rRRDvdsmzgjtzWKVKqJ1rfG9e0G9XwjNyliuWaiW9vS3M1xxvF/HPEc6wXWTKoSYjGzrG+RSXfkMK5bmqLUU/EKYQloJwRAyepKBSuI0iRYOK0ubum9wNEVDJVSRKKLl46XSbtznE4ua9VGtWpLJWyuLoM+GQuKbit3BJSESYtO+NorAoBoTb5/CBZhLcMAfGrImDZtIU4SBfn6xQ9sUdVsAzhcqrNImVmsElmrNNEuzZtmjTJEygvyC/Sk3WmM9v2qKdRGxfwSql7YaOqLtzevQwprmijrBki7FeNWcT/h6ju/JaP1svlwgIuFC2VU5001ce91SkXkbINwzMLGr120aGYKaPfTPj21IG8ta4KNtt0fgftRb6uWgns1qS6ew41RX+tX+qldCg5UtXOHJaaCa1litEoriewiLI8Oqb0B1tJwzgluq2HAgCVw9Hlx0ShtrbDFCuXLAyCMmsW+xofouVh9Fd+zd8MLoUllVR3qyn6oIbgB9EKo2GtUi8jVLKTpxVOhu5NtQfQbWsjehaRXOWGFTew9aQJ1HiJiv9fqBwQj2qoljpWbdoJB2H36+Cx6xWrRpTsQdeZUH25PHDO1oESuwo6maRve58l4q6hVhcNAgKJ+3lofqsbplClZaRwhjyq7kvrSGWoXX6YEQp4lK39sqhIYz7Ai57jEvWhGiod7EqwDVWqWxkgRMgywCJpXNAGvNzjyFbWlHzISvO6yo7wf50pgaay5Xql/ECnYEyOt37faWReyb2twmM0DRVyXJWtVKbK4pH8SFQcTRBVhjon7FHVjNcWokmTCNX1veYfX1NelH89Wim4zj5rzC6oowiMCA2A4LjderZqruEquu3UUlvWUWg2ZDxDvDUHd0hWpvbjAK3WqtrrDCqjl6IzPIaM0aLKvTZdWvl9avqbvwjnzGZtn7V/RjUi6J8W1R3uykvNhrRZoxsX0LP9loetAxoqgm/E3fnrUDnOqB9VAFzPjgF1asKdXoWSsbQt7T0rmQc+amIpRxYses9/3Ai4m/ppTJd2laU+NZFqs6eNI6BwJJqrNAqj91r6bgrDWYJoUC7cjr4WRz552VsLKZ9lruCarRC7xaDnwh9HHMw9ZttVkdphuUvsm2zkptGrgNz/C7E0GUWGxNNMMNWhIAtfBqTW3MydD/x1pXOFZsrXJLmjj9BVZTzmWs5kCZx4pi9JOLzHzxKhtWODIuPiWSrGuMqKe5kVW2dJ5KvREG4th16p+nNo8ZNmCBQNmVpuIE1RAFHH1fTr1x60sVL4thAM2gzCBSnB44WJWu/eJwUTq1p0f78oqQljnQe6aqwFJqibhIOjq9d2R2xVN/dmBvxv5uV1UkzUB3b3y2rnY870ZPULNXiAkTx8GZWavxr3wUGWbfszcz3r/Dio1RN7C0Ia3qTZZloK2xjclomqX+vDODwB/qVUnYfK9qo2A6WQWwc2wLwulH1uuyBZ101ew0YNNYYddP2GosVw+5JzQfXN3vjYwHjS4M2oFViEJjB4LaMOasOCdHhOrXw2oacyJEk3bgXtODZunvTYIsBzfy2k/XK5YmbrUu0zAVpjAI/ZyPe8la7amLzRCXmQKoU40OUy9v6p9huiEdtfGviT1Qi07PymREFQKnAa0GPUDEBtcUM3lhheY2L81Pf1Y7TDv/TaUdZjMpHzFaVdBoh/l1Txws03qnmwg9lG04hWIkXohw0sxjWF/flA+xgl6XUEmRihum+wsfnPeRGUd3WOkZ63Y59yAIGLpgh0TcOEk6omP2qz6b58hGjOCG0taiPLSvIWIVtCqb8i6dUCnCbvDB73OqzR54cxanrOXD2ZdkIuvaB/l3D9wIDYEEUB0k5wE0vFECJ9vhZjNaOHwcSLEiZC0nqBaJ0QxkrWI7tq1n2lM+j6MxC7+fDvFS6Cgm1dSWrGSi6pk3HqULE4j1Ig0usCqwQ+9GxUGyIOCwqmi949zjWq1PbNoXQPXhuvNam6wVoXIDTqOjCmY32lDuPXChX5mShve9KrZYNT0tHKMPWiRR991EzCEXWL7B2/C8wsgTV0loNMFfBayPGs2+ljZY1Y2CwfKRsyuwo0E5HD6Z0KIBoSqLdqI/zK6qWutyZbI6KkV/WvWNyU9H7sMxAqXY4xzKotRUjV+xc14XQrJm49sHiOwg2BWNisrcLO0Fzuoashwo6+hY19UPVh/OfsLTUQTPTLFKdnDnyhEvQne3ExhimOqYYYUVA0EXd92dg2cNaMvq5uTRG1iF0yjs8K1u35Bd7cxqYTJqtiUN7sgHPnyDEAqrp/5jrFoqqgedomvuMoce710Qsm1SPGWwS/NlO9kdhtqTdG8gWnVRV0zbowE/i1bV1nYi28saNBRWuFEGDsedqPMqCvzyzmdYtUWTkCujteSumHi1WyHQc7PxGKuEzvLiU6PV9rzBbM9eyJZLhKwvwtVaEKN77VgwUBMw3PQ6b/ORSBXWvJpm4NWRS0mU5hkZ7xes2sAq25ov2DRyIoUIjVjXHovDW1T6ZfUw/BKJm2ehnW4ShC270KN8q+05OB1hJR1qdx+hHVt6EPhARrcCVlW9JAQuuFCURufO295dM2mZy6CH0bvVEdJbZxHL5oNk0teEMBp3myednFZKV2sAm8VwDa8WZ0SLwGqwCjIURGsOvdsml7AygoFVPXWQh9tCN+1Rr9cr4Y/Cvjq8CQoq5Ps3OKqbsOvjyQpP0VzCzTMs1//Mr95jY7XZ7UNZq+wmrcnBDLRxfsBK7Y/4YxiIXYVZoorb3LjUjZ/aZt/1kpXwZUpcqPJecAgn0i0PjoxYQY7iU1iFLwWrsMQND8ZqzqEYBu/A2mM1qw/DpsK0DBY7vriTrJJD2hAWSdQyUuMS0tr4+Od0vdYwpvWsrVdGw3EqocfjGs+ya2Wapqc13ZRSfXpKKduO7C7VFpqCtKuUYHWzrLt4mjnlYmGdgtV0wr6YzF7My/TFeZe/6BhTsj3OU0aEs8ez1uXBAWltGJgX8p1gFSzm2ktTQqkcAeIPBs1Oift1WK3OaFxgoA9pWh/nWMx5WUbyc4Pxqg57FmJEKqEzsJpSvy3h+SMuVyD7iF90GFfz28VJDKTFKKwo/iX1F63IAma9qDcb1rE76es3wuWOIApHo2WTMYhBrJpjDJdG3uOCuKkFfyx6/z/mlYdkrUukevJHwTPXXfzix79+ua7gNyDf1w9e/wH5lIIq"
+        }
+      }
+    }
+  },
+  "pass": true,
+  "codebook": {
+    "invalid": 0,
+    "no_hit": 1,
+    "ambiguous": 2,
+    "oblique_or_invalid_normal": 3,
+    "near_le3": 4,
+    "intermediate": 5,
+    "far_ge6": 6
+  },
+  "geometry_bytes": 3588593,
+  "synthetic": {
+    "gates": {
+      "shared_diagonal": true,
+      "normal_reversal": true,
+      "shared_vertex": true,
+      "distinct_coincident_ambiguous": true,
+      "two_layers_ambiguous": true,
+      "no_lateral_support": true,
+      "oblique_rejected": true,
+      "broadphase_exhaustive": true
+    },
+    "pass": true
+  },
+  "winner": {
+    "mesh": {
+      "shape_yx": [
+        86,
+        300
+      ],
+      "valid_nodes": 22420,
+      "used_nodes": 22418,
+      "faces": 43914,
+      "degenerate_faces": 0,
+      "area_vox2": 8783339.515740676,
+      "normal_invalid_used": 0,
+      "coordinate_sha256": "2062d2c06f1fe0d19c94e902fbad26cbee10778cbc1fee3397ebecc53065fa74"
+    },
+    "files": {
+      "x.tif": {
+        "sha256": "f0e5b5ddffa853112e730f43b02693cff69f7abbef12b16068786735fd774a6d",
+        "bytes": 103334,
+        "source": "PHerc0211/segments/20261028201525-crop1711-lines123-v9/mesh/20261028201525-on-20250821151803-9.362um.tifxyz/x.tif"
+      },
+      "y.tif": {
+        "sha256": "258708247c94bec01c4563e66e14f9689421e6ce1ee51f6d50c566267a188d4e",
+        "bytes": 103334,
+        "source": "PHerc0211/segments/20261028201525-crop1711-lines123-v9/mesh/20261028201525-on-20250821151803-9.362um.tifxyz/y.tif"
+      },
+      "z.tif": {
+        "sha256": "f8dc5b4c3a7e54bc27945d002bc3f7a617ee6be76ff960bde1653da2550b42ca",
+        "bytes": 103334,
+        "source": "PHerc0211/segments/20261028201525-crop1711-lines123-v9/mesh/20261028201525-on-20250821151803-9.362um.tifxyz/z.tif"
+      },
+      "meta.json": {
+        "sha256": "226a79efac5de59e45f21eba9488d70d98ca58881c05a6e64a6f7a104468ac20",
+        "bytes": 285,
+        "source": "PHerc0211/segments/20261028201525-crop1711-lines123-v9/mesh/20261028201525-on-20250821151803-9.362um.tifxyz/meta.json"
+      }
+    }
+  },
+  "fitted_snap_index_transitions": {
+    "w033": {
+      "common_used": 11735,
+      "counts_0to6": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1256,
+          0,
+          0,
+          0,
+          0,
+          15
+        ],
+        [
+          0,
+          0,
+          4564,
+          1,
+          38,
+          5,
+          5
+        ],
+        [
+          0,
+          4,
+          3,
+          45,
+          1,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          81,
+          0,
+          1163,
+          39,
+          6
+        ],
+        [
+          0,
+          0,
+          93,
+          3,
+          194,
+          205,
+          100
+        ],
+        [
+          0,
+          159,
+          96,
+          6,
+          6,
+          138,
+          3506
+        ]
+      ],
+      "near_to_far": 6,
+      "far_to_near": 6,
+      "near_to_unknown": 81
+    },
+    "w034": {
+      "common_used": 12083,
+      "counts_0to6": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          898,
+          3,
+          0,
+          0,
+          1,
+          39
+        ],
+        [
+          0,
+          1,
+          5509,
+          13,
+          178,
+          90,
+          34
+        ],
+        [
+          0,
+          2,
+          4,
+          60,
+          1,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          586,
+          281,
+          63
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          996,
+          100,
+          104
+        ],
+        [
+          0,
+          45,
+          1,
+          12,
+          992,
+          649,
+          1410
+        ]
+      ],
+      "near_to_far": 63,
+      "far_to_near": 992,
+      "near_to_unknown": 2
+    },
+    "w035": {
+      "common_used": 12360,
+      "counts_0to6": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1143,
+          0,
+          1,
+          0,
+          0,
+          59
+        ],
+        [
+          0,
+          0,
+          5386,
+          1,
+          25,
+          3,
+          4
+        ],
+        [
+          0,
+          2,
+          1,
+          58,
+          1,
+          1,
+          9
+        ],
+        [
+          0,
+          0,
+          72,
+          2,
+          2577,
+          175,
+          8
+        ],
+        [
+          0,
+          0,
+          15,
+          0,
+          239,
+          726,
+          102
+        ],
+        [
+          0,
+          13,
+          7,
+          6,
+          26,
+          95,
+          1603
+        ]
+      ],
+      "near_to_far": 8,
+      "far_to_near": 26,
+      "near_to_unknown": 74
+    },
+    "w036": {
+      "common_used": 12731,
+      "counts_0to6": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2009,
+          0,
+          6,
+          0,
+          0,
+          13
+        ],
+        [
+          0,
+          1,
+          2011,
+          3,
+          2,
+          24,
+          910
+        ],
+        [
+          0,
+          7,
+          3,
+          54,
+          1,
+          1,
+          4
+        ],
+        [
+          0,
+          0,
+          23,
+          5,
+          410,
+          432,
+          259
+        ],
+        [
+          0,
+          0,
+          115,
+          3,
+          1111,
+          121,
+          567
+        ],
+        [
+          0,
+          292,
+          392,
+          41,
+          761,
+          477,
+          2673
+        ]
+      ],
+      "near_to_far": 259,
+      "far_to_near": 761,
+      "near_to_unknown": 28
+    }
+  },
+  "gates": {
+    "complete": true,
+    "flat_union_gain": true,
+    "flat_union_area": true
+  },
+  "maps_artifact_sha256": "14a3d2f7e9da09029c11f1839300e3364b2d8decee5b62f791dd173425c64f91",
+  "wall_seconds": 97.75200296,
+  "peak_rss_bytes": 136228864
+}
