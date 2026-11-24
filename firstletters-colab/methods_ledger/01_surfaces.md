@@ -423,6 +423,20 @@ Decision taken: the atlas was inked unsnapped at two depth shifts; the spiral fi
 - Two tests on known ink now exist (`studio_scale_stress/RESULTS.md`, `collab/chatgpt-adaptive-046.md`). Studio on PHerc. 0841: 2× compression costs 6 AP points along one image axis and 14 along the other, with recall at 0.5 falling from 0.68 to 0.58 and 0.42. A-hn on PHerc. 0306B: 2× enlargement along the line drops recall at 0.5 from 0.33 to 0.07; 0.6× raised it, with more flags on untraced papyrus.
 - Reading: on about a quarter of the PHerc. 0175A surface the detectors worked at a scale where they lose a substantial part of known ink. That screen is a weak negative on that quarter, independent of the on-sheet question.
 
+**Added 2026-11-24 (shear and roughness of the fit grid against a winning surface).** `code/grid_quality.py`, same 20-voxel grid scale for all sets. Shear = angle between the two grid axes minus 90°, signed, measured over 8 cells (about 1.5 mm). Roughness = angle between a cell's normal and the mean normal of its 9 × 9 neighbourhood.
+
+| mesh set | shear, 5th / 95th percentile | roughness, median / 95th | cells rougher than 20° |
+|---|---|---|---|
+| PHerc. 0211 winner mesh (public) | −1.6° / +1.7° | 5° / 18–20° | 4 % |
+| our PHerc. 0175A windings, snapped (120) | about −29° / +28° | 11° / 33° | 18 % |
+| our PHerc. 1203 windings, snapped (120) | about −34° / +26° | 13° / 43° | 25 % |
+| our PHerc. 1203 windings, unsnapped (120) | same | 13° / 43° | 23 % |
+
+- The shear figures for our sets come from three windings; the roughness figures from all 120. The median shear is near 0: it is local shear of both signs at letter scale, not a global tilt.
+- Snapped and unsnapped fits are alike, so this comes from the fit grid, not from the snap.
+- A render that maps the fit grid to a rectangle shows letters slanted by up to about 30° in either direction, on top of the stretch above. The common-map resampling does not remove shear. The winning surface has neither defect.
+- Reading: the PHerc. 0175A and PHerc. 1203 screens of fitted windings tested surfaces well below winning quality in their flattening, whatever their on-sheet fraction. A per-surface flattening (villa `flatten_spiral_checkpoint.py`, flatboi) is required before such a screen says much. No detector test of shear tolerance exists yet.
+
 **Where the code is.** `code/isometric_resample.py`.
 
 ---
