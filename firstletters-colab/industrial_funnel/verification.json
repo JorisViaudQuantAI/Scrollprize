@@ -1,0 +1,19 @@
+{
+  "schema": "industrial_funnel.reference_ci.v1",
+  "scope": "synthetic transaction, integrity, budget and survey contracts; no production workers or scientific screening",
+  "sources": {
+    "RFC-001.md": "b70a0977fea14885684976b17489902b905c55eab43b94974047ff83f81c4124",
+    "control_plane.py": "ed1a5919e71989b8b0b435611d401068accda05493536cca439d37f1036d1654",
+    "survey.py": "fb887e2a3497f67b51bdf4cc45a02a9e1a1fa5fb4532e45a5640c5d26cef2167",
+    "test_control_plane.py": "4692a841ad305a98660703bdfd84583a60717787d18e90851b6f2aca78a044f2",
+    "verify.py": "16d3c90099e7725e38ce7b8b8d585c3e67cfba9c3ee6e3e154aff39b63390f4d"
+  },
+  "python": "3.11.18",
+  "sqlite": "3.46.1",
+  "tests_run": 37,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "passed": true,
+  "wall_seconds": 0.756996418
+}
