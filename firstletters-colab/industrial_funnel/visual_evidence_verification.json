@@ -1,0 +1,105 @@
+{
+  "status": "verified_saved_evidence",
+  "new_model_forwards": 0,
+  "manifest": {
+    "verified_files": 53,
+    "total_bytes_including_manifest": 9137736
+  },
+  "historical_campaign": {
+    "maps": 13,
+    "windows": 1078,
+    "sentinels": 13,
+    "forwards": 1091
+  },
+  "0800_context": {
+    "pixels": 72960,
+    "unchanged_previously_valid": 57600,
+    "newly_valid": 15360,
+    "new_context_complete": true,
+    "newly_valid_mean_abs_probability_change": 0.04261592365898347,
+    "newly_valid_max_abs_probability_change": 0.18088603019714355,
+    "scope": "Fixed candidate crop only; full-frame 416-column identity remains receipt evidence"
+  },
+  "0125_seams": {
+    "raw": {
+      "s96": {
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540,
+        "at_original_grid_mean_abs_uint8_step": 34.03672790527344,
+        "elsewhere_mean_abs_uint8_step": 0.937167763710022
+      },
+      "s48": {
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540,
+        "at_original_grid_mean_abs_uint8_step": 1.0785454511642456,
+        "elsewhere_mean_abs_uint8_step": 1.1455999612808228
+      }
+    },
+    "snapped": {
+      "s96": {
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540,
+        "at_original_grid_mean_abs_uint8_step": 33.818180084228516,
+        "elsewhere_mean_abs_uint8_step": 0.9335078001022339
+      },
+      "s48": {
+        "grid_pair_count": 2750,
+        "other_pair_count": 244540,
+        "at_original_grid_mean_abs_uint8_step": 1.0116363763809204,
+        "elsewhere_mean_abs_uint8_step": 1.1249120235443115
+      }
+    },
+    "interpretation": "Recropping, phase, stride and blending changed together; no isolated Hann effect or glyph claim"
+  },
+  "native_replay": {
+    "samples": 7776,
+    "exact": 7744,
+    "nonexact": 32,
+    "max_abs_uint8_error": 1,
+    "holdout": {
+      "historic_nearest_half_floor_f64": {
+        "mae_uint8": 0.0038580246913580245,
+        "fraction_exact": 0.996141975308642
+      },
+      "historic_nearest_half_floor_f32": {
+        "mae_uint8": 0.00257201646090535,
+        "fraction_exact": 0.9974279835390947
+      },
+      "historic_nearest_half_round": {
+        "mae_uint8": 0.4886831275720165,
+        "fraction_exact": 0.5113168724279835
+      },
+      "origin0_nearest_floor": {
+        "mae_uint8": 3.544753086419753,
+        "fraction_exact": 0.09696502057613168
+      },
+      "opposite_sign_nearest_floor": {
+        "mae_uint8": 27.76440329218107,
+        "fraction_exact": 0.07098765432098765
+      },
+      "half_bilinear_patch_floor": {
+        "mae_uint8": 0.7507716049382716,
+        "fraction_exact": 0.5234053497942387
+      },
+      "half_current_catmull_floor": {
+        "mae_uint8": 0.8374485596707819,
+        "fraction_exact": 0.4583333333333333
+      }
+    },
+    "scope": "Saved interpolated samples; no fresh CT download or geometry replay"
+  },
+  "0841_known_control": {
+    "known_ink_pixels": 67113,
+    "known_background_pixels": 111310,
+    "unknown_excluded": 608009,
+    "auc": 0.8332126671345994,
+    "average_precision": 0.7881544126077249,
+    "scope": "Known public control only; not independent generalization or discovery"
+  },
+  "new_validated_letters": 0,
+  "verification_environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "verifier_sha256": "7f4821ee3390f07f076f0a5cc894e6044d329855d09a6a91287362867ebd1f92"
+}

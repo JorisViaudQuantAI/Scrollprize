@@ -1,0 +1,1077 @@
+{
+  "created_utc": "2026-11-24T11:32:36.745206+00:00",
+  "selection": {
+    "created_utc": "2026-11-24T11:31:03.041790+00:00",
+    "experiment": "Exploratory real-context extension after model output and independent visual review.",
+    "rationale_reported_by_root": "The previously examined left contour reaches reflected model context; acquire real context without changing the s96 phase.",
+    "input_global_y0_y1_x0_x1": [
+      650,
+      1162,
+      804,
+      1412
+    ],
+    "existing_block_global_y0_y1_x0_x1": [
+      650,
+      1162,
+      900,
+      1412
+    ],
+    "additional_context_global_y0_y1_x0_x1": [
+      650,
+      1162,
+      804,
+      900
+    ],
+    "inspection_box_global_y0_y1_x0_x1": [
+      826,
+      1066,
+      932,
+      1236
+    ],
+    "depth_order": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "network_received_body_budget_bytes": 8000000,
+    "fixed_choice": "Root prescribed the entire window and inspection box. No adaptive resizing, model-based selection or letter claim by this preparer."
+  },
+  "selection_sha256": "897cbb94b5d925e870d36244479ba8cd845382b1643e43a7ba6cc6c9cf2fdf94",
+  "source_metadata": {
+    ".zattrs": {
+      "received": {
+        "key": ".zattrs",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/.zattrs",
+        "range": null,
+        "status": 200,
+        "content_range": null,
+        "etag": "\"23756f41c69ad3658b96dd3fdc106bf4\"",
+        "received_body_bytes": 3464,
+        "received_sha256": "c9f9d8c78488d4bc807366b7e0c621a7d9ac1ac1236fabdb4456d00a499b04e9",
+        "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/zattrs.json"
+      },
+      "json": {
+        "canvas_size": [
+          2100,
+          2100
+        ],
+        "chunk_size": [
+          31,
+          128,
+          128
+        ],
+        "multiscales": [
+          {
+            "axes": [
+              {
+                "name": "z",
+                "type": "space",
+                "unit": "micrometer"
+              },
+              {
+                "name": "y",
+                "type": "space",
+                "unit": "micrometer"
+              },
+              {
+                "name": "x",
+                "type": "space",
+                "unit": "micrometer"
+              }
+            ],
+            "datasets": [
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      8.64,
+                      8.64
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "0"
+              },
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      17.28,
+                      17.28
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "1"
+              },
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      34.56,
+                      34.56
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "2"
+              },
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      69.12,
+                      69.12
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "3"
+              },
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      138.24,
+                      138.24
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "4"
+              },
+              {
+                "coordinateTransformations": [
+                  {
+                    "scale": [
+                      8.64,
+                      276.48,
+                      276.48
+                    ],
+                    "type": "scale"
+                  },
+                  {
+                    "translation": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "type": "translation"
+                  }
+                ],
+                "path": "5"
+              }
+            ],
+            "metadata": {
+              "downsampling_method": "mean"
+            },
+            "name": "render",
+            "version": "0.4"
+          }
+        ],
+        "note_axes_order": "ZYX (slice, row, col)",
+        "num_slices": 31,
+        "slice_step": 1.0,
+        "source_group": 0,
+        "source_zarr": "/volumes/esrf/20250506/SCROLLS_HEL_4.320um_1.0m_116keV_binmean_2_PHerc0800_TA_B_0001_masked.zarr/"
+      }
+    },
+    "0/.zarray": {
+      "received": {
+        "key": "0/.zarray",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/.zarray",
+        "range": null,
+        "status": 200,
+        "content_range": null,
+        "etag": "\"6539cef695950022fd4a5096983938fd\"",
+        "received_body_bytes": 204,
+        "received_sha256": "dee750ebe5a952e9c83246836193d2586d0706fde981e30f80f1151fea11acfa",
+        "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_.zarray.json"
+      },
+      "json": {
+        "zarr_format": 2,
+        "shape": [
+          31,
+          2100,
+          2100
+        ],
+        "chunks": [
+          31,
+          128,
+          128
+        ],
+        "dtype": "|u1",
+        "compressor": null,
+        "fill_value": 0,
+        "order": "C",
+        "filters": null,
+        "dimension_separator": "/"
+      }
+    }
+  },
+  "source_objects": [
+    {
+      "key": ".zattrs",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/.zattrs",
+      "range": null,
+      "status": 200,
+      "content_range": null,
+      "etag": "\"23756f41c69ad3658b96dd3fdc106bf4\"",
+      "received_body_bytes": 3464,
+      "received_sha256": "c9f9d8c78488d4bc807366b7e0c621a7d9ac1ac1236fabdb4456d00a499b04e9",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/zattrs.json"
+    },
+    {
+      "key": "0/.zarray",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/.zarray",
+      "range": null,
+      "status": 200,
+      "content_range": null,
+      "etag": "\"6539cef695950022fd4a5096983938fd\"",
+      "received_body_bytes": 204,
+      "received_sha256": "dee750ebe5a952e9c83246836193d2586d0706fde981e30f80f1151fea11acfa",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_.zarray.json"
+    },
+    {
+      "key": "0/0/5/6",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/5/6",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"eccb34acabde82b18d95b3fbe8e50a75\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "acd359456f777bca241678da8e9d0d14cf46996c3252b457cf27ea3982f8fd98",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_5_6.range.bin"
+    },
+    {
+      "key": "0/0/5/7",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/5/7",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"2ca6bc98611e32f76dd5965ac1aa8e4a\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "4ccf64d19bcdb2b261367f3ca5fe148c2dd0ef3bc817d1b18c81c9a87af7b6ff",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_5_7.range.bin"
+    },
+    {
+      "key": "0/0/6/6",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/6/6",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"7bff0500fa86daa6eaa5f62de307b088\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "1f808ac891935892582864beb9835638dc5a3a76ca0e80c74b68d81698ff571f",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_6_6.range.bin"
+    },
+    {
+      "key": "0/0/6/7",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/6/7",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"e540bad95b560639ad4623fa49c990f1\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "66105702ee173284aed76089eaed730cff7e3fd7ff405b4b286f374d702407fd",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_6_7.range.bin"
+    },
+    {
+      "key": "0/0/7/6",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/7/6",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"9397d70c465d1c6615a340db2d2e0a7a\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "890c6a5564f6228eb1bd7e088da964c3f350ad62bb97130d317fba503f0fca4b",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_7_6.range.bin"
+    },
+    {
+      "key": "0/0/7/7",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/7/7",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"8d54040e995afb121bf1d98c3263c799\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "9347ea803b7a0b35b5f6c76229e662e0b6dc08c53ddef9a23f88c01a37a5de4a",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_7_7.range.bin"
+    },
+    {
+      "key": "0/0/8/6",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/8/6",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"1aa0cce16d271dfec742784d1af0c77f\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "8a52cc62490ba8bb4cfd3dc87e9f01c1a3fe1dd6eaf403abb621e6fa68c825d7",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_8_6.range.bin"
+    },
+    {
+      "key": "0/0/8/7",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/8/7",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"21fb4bf71ed208bdf2075f2db3b53dec\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "86e6115f57af834f9d90db3a16497c2caf3c26f3b6aa3ac99d284768c60877ff",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_8_7.range.bin"
+    },
+    {
+      "key": "0/0/9/6",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/9/6",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"9c5aea2619db20f87ca10ea184206354\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "5c429e1604fc965e28fb1168a85530b886d2bac771ffe348d0f17d0cd02a574b",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_9_6.range.bin"
+    },
+    {
+      "key": "0/0/9/7",
+      "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr/0/0/9/7",
+      "range": "bytes=131072-393215",
+      "status": 206,
+      "content_range": "bytes 131072-393215/507904",
+      "etag": "\"62c19f342017b6d66b47d3a0c5d96849\"",
+      "received_body_bytes": 262144,
+      "received_sha256": "c89f3c1b343b99773641a5c013e40bb9cd3c27749dba58b92a4ecb4bc58338f3",
+      "cache_path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/received_objects/0_0_9_7.range.bin"
+    }
+  ],
+  "new_chunk_copies": [
+    {
+      "key": "0/0/5/6",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        650,
+        768,
+        804,
+        896
+      ]
+    },
+    {
+      "key": "0/0/5/7",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        650,
+        768,
+        896,
+        900
+      ]
+    },
+    {
+      "key": "0/0/6/6",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        768,
+        896,
+        804,
+        896
+      ]
+    },
+    {
+      "key": "0/0/6/7",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        768,
+        896,
+        896,
+        900
+      ]
+    },
+    {
+      "key": "0/0/7/6",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        896,
+        1024,
+        804,
+        896
+      ]
+    },
+    {
+      "key": "0/0/7/7",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        896,
+        1024,
+        896,
+        900
+      ]
+    },
+    {
+      "key": "0/0/8/6",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        1024,
+        1152,
+        804,
+        896
+      ]
+    },
+    {
+      "key": "0/0/8/7",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        1024,
+        1152,
+        896,
+        900
+      ]
+    },
+    {
+      "key": "0/0/9/6",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        1152,
+        1162,
+        804,
+        896
+      ]
+    },
+    {
+      "key": "0/0/9/7",
+      "missing_source": false,
+      "copied_global_y0_y1_x0_x1": [
+        1152,
+        1162,
+        896,
+        900
+      ]
+    }
+  ],
+  "received_body_bytes": 2625108,
+  "budget_bytes": 8000000,
+  "budget_met": true,
+  "initial_cached_received_body_bytes": 2625108,
+  "new_received_body_bytes_this_assembly": 0,
+  "assembly_note": "Initial assembly stopped on a local function-name error after acquisition. Final assembly reuses SHA-verified response caches without redownloading.",
+  "source_chunk_payload_note": "HTTP ranges read16 planes from the10 chunks intersecting the additional96px band. Chunk-aligned transport contains incidental neighboring pixels; only x804:900 is copied from network bytes.",
+  "old_input": {
+    "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left512/left512_k08_to_k23_uint8.npy",
+    "sha256": "918a32d21c319b1484fe55e874f205ffe2fe27ba051341beba02102dd164b3d9"
+  },
+  "old_mask": {
+    "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left512/left512_mask_k08_to_k23_bool.npy",
+    "sha256": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac"
+  },
+  "old_receipt_sha256": "54e3309bedd69c5903cc3866c84a2e8052ee1a0cec2f23d7c5c3aa3edc55c54a",
+  "existing_block_bitwise_identical": true,
+  "source_support_complete": true,
+  "new_context_support_fraction": 1.0,
+  "missing_chunk_count": 0,
+  "mask_semantics": "False means missing acquired source, stored as zero placeholder. True means a source chunk supplied that pixel; stored zero values are not classified as missing.",
+  "outputs": {
+    "input": {
+      "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/left_context96_k08_to_k23_uint8.npy",
+      "sha256": "85ccb77bbf73129460f25f06859c483144e029e76c58d88c29f9a50ef2f24942",
+      "shape": [
+        16,
+        512,
+        608
+      ],
+      "dtype": "uint8",
+      "bytes": 4980864
+    },
+    "source_support": {
+      "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/left_context96_k08_to_k23_source_bool.npy",
+      "sha256": "15a0df93e67efc3528dbb0ff1548761e0757c8853010ab5791c8cbea3d90779d",
+      "shape": [
+        16,
+        512,
+        608
+      ],
+      "dtype": "bool",
+      "bytes": 4980864
+    },
+    "source_support_xy": {
+      "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/source_support_xy.npy",
+      "sha256": "a77da3835a71e3fa7c4241000f41e09f2b217e815c2e02543b5eae4ec41f9a88",
+      "shape": [
+        512,
+        608
+      ],
+      "dtype": "bool",
+      "bytes": 311424
+    },
+    "context_support_s96": {
+      "path": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_left_context96/context_support_s96.npy",
+      "sha256": "5abddf15f586ff6cb0e005f70af28425b14e00a3cc815bd0b7258ed67d0cf9d3",
+      "shape": [
+        512,
+        608
+      ],
+      "dtype": "bool",
+      "bytes": 311424
+    }
+  },
+  "window_starts_y": [
+    0,
+    96,
+    192,
+    288,
+    384,
+    480
+  ],
+  "window_starts_x": [
+    0,
+    96,
+    192,
+    288,
+    384,
+    480,
+    576
+  ],
+  "windows": [
+    {
+      "output_start_yx": [
+        0,
+        0
+      ],
+      "global_output_start_yx": [
+        650,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        96
+      ],
+      "global_output_start_yx": [
+        650,
+        900
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        192
+      ],
+      "global_output_start_yx": [
+        650,
+        996
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        288
+      ],
+      "global_output_start_yx": [
+        650,
+        1092
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        384
+      ],
+      "global_output_start_yx": [
+        650,
+        1188
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        480
+      ],
+      "global_output_start_yx": [
+        650,
+        1284
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        0,
+        576
+      ],
+      "global_output_start_yx": [
+        650,
+        1380
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        96,
+        0
+      ],
+      "global_output_start_yx": [
+        746,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        96,
+        96
+      ],
+      "global_output_start_yx": [
+        746,
+        900
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        96,
+        192
+      ],
+      "global_output_start_yx": [
+        746,
+        996
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        96,
+        288
+      ],
+      "global_output_start_yx": [
+        746,
+        1092
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        96,
+        384
+      ],
+      "global_output_start_yx": [
+        746,
+        1188
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        96,
+        480
+      ],
+      "global_output_start_yx": [
+        746,
+        1284
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        96,
+        576
+      ],
+      "global_output_start_yx": [
+        746,
+        1380
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        192,
+        0
+      ],
+      "global_output_start_yx": [
+        842,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        192,
+        96
+      ],
+      "global_output_start_yx": [
+        842,
+        900
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        192,
+        192
+      ],
+      "global_output_start_yx": [
+        842,
+        996
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        192,
+        288
+      ],
+      "global_output_start_yx": [
+        842,
+        1092
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        192,
+        384
+      ],
+      "global_output_start_yx": [
+        842,
+        1188
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        192,
+        480
+      ],
+      "global_output_start_yx": [
+        842,
+        1284
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        192,
+        576
+      ],
+      "global_output_start_yx": [
+        842,
+        1380
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        288,
+        0
+      ],
+      "global_output_start_yx": [
+        938,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        288,
+        96
+      ],
+      "global_output_start_yx": [
+        938,
+        900
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        288,
+        192
+      ],
+      "global_output_start_yx": [
+        938,
+        996
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        288,
+        288
+      ],
+      "global_output_start_yx": [
+        938,
+        1092
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        288,
+        384
+      ],
+      "global_output_start_yx": [
+        938,
+        1188
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        288,
+        480
+      ],
+      "global_output_start_yx": [
+        938,
+        1284
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        288,
+        576
+      ],
+      "global_output_start_yx": [
+        938,
+        1380
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        384,
+        0
+      ],
+      "global_output_start_yx": [
+        1034,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        384,
+        96
+      ],
+      "global_output_start_yx": [
+        1034,
+        900
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        384,
+        192
+      ],
+      "global_output_start_yx": [
+        1034,
+        996
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        384,
+        288
+      ],
+      "global_output_start_yx": [
+        1034,
+        1092
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        384,
+        384
+      ],
+      "global_output_start_yx": [
+        1034,
+        1188
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        384,
+        480
+      ],
+      "global_output_start_yx": [
+        1034,
+        1284
+      ],
+      "complete_context": true
+    },
+    {
+      "output_start_yx": [
+        384,
+        576
+      ],
+      "global_output_start_yx": [
+        1034,
+        1380
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        0
+      ],
+      "global_output_start_yx": [
+        1130,
+        804
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        96
+      ],
+      "global_output_start_yx": [
+        1130,
+        900
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        192
+      ],
+      "global_output_start_yx": [
+        1130,
+        996
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        288
+      ],
+      "global_output_start_yx": [
+        1130,
+        1092
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        384
+      ],
+      "global_output_start_yx": [
+        1130,
+        1188
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        480
+      ],
+      "global_output_start_yx": [
+        1130,
+        1284
+      ],
+      "complete_context": false
+    },
+    {
+      "output_start_yx": [
+        480,
+        576
+      ],
+      "global_output_start_yx": [
+        1130,
+        1380
+      ],
+      "complete_context": false
+    }
+  ],
+  "s96_phase_unchanged": true,
+  "phase_global_modulo96_yx": [
+    74,
+    36
+  ],
+  "inspection_box_local_y0_y1_x0_x1": [
+    176,
+    416,
+    128,
+    432
+  ],
+  "inspection_box_pixels": 72960,
+  "inspection_box_complete_context": true,
+  "inspection_box_bad_context_pixels": 0,
+  "comparison_mapping": "New[y,x+96] and old[y,x] refer to identical source pixels; global=(y+650,x_new+804). Compare new prediction[:,96:608] to the old512-square prediction without resampling.",
+  "pipeline_sha256": "348260f45e882dc3574b334d3c76aae42b2655d9b37354d26a0c57b24bda6d28",
+  "wrapper_sha256": "a6e094ec549c5822b5b6dd5c4784a1c9713bac66d834d7eab59c453216531d26",
+  "preparation_script_sha256": "3b78390e3dc921f565f02afbb1cc7132fd878c48d75203fde62944699ce74e07",
+  "job_file": "artifact://campaign/jobs_0800_C_left_context96_s96.json",
+  "job_sha256": "296ec5200af04561976ff1d606f3553f2e409fcc7cd8efe37cc9c4d8cd21a50c",
+  "new_model_forwards": 0,
+  "planned_model_windows": 42,
+  "planned_sentinel_windows": 1,
+  "unchanged_model_and_normalization": "Same existing wrapper and checkpoint; prepared input uint8 values and depth order unchanged. No model loaded.",
+  "no_window_adaptation": true
+}

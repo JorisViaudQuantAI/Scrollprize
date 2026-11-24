@@ -1,0 +1,73 @@
+{
+  "job": {
+    "name": "author841_mosaic_positive_s96",
+    "input": "artifact://campaign/positive-control/author841_mosaic/author841_mosaic_uint8.npy",
+    "source_support": "artifact://campaign/positive-control/author841_mosaic/author841_mosaic_source_bool.npy",
+    "output_prefix": "artifact://campaign/inference/author841_mosaic_positive_s96",
+    "stride": 96,
+    "depth_order": "unchanged author prepared16 order; no mesh-centre or normal-sign claim",
+    "source_note": "Known public PHerc0841 author donor control 841-expanded-layer-03-approved-r000001. Direct 768x1024 mosaic from six hash-verified prepared tiles, no interpolation. Includes all published known-label pixels; unknown label0 remains unknown. Not an unread-scroll discovery or independent validation."
+  },
+  "weights_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "model_source": {
+    "model_py_sha256": "efbb390b6208c480fa8e8681137690b7df897c3e406956b9e804fa66645316d7",
+    "checkout_head": "bf66f753176792a966bca17822629fb8821f20c8",
+    "pinned_commit": "bf66f753176792a966bca17822629fb8821f20c8"
+  },
+  "pipeline_sha256": "348260f45e882dc3574b334d3c76aae42b2655d9b37354d26a0c57b24bda6d28",
+  "runner_sha256": "a6e094ec549c5822b5b6dd5c4784a1c9713bac66d834d7eab59c453216531d26",
+  "input_sha256": "55a06eed3d0c4a5cc6d31b92db1cf82a74a48f34461b1ffcdad22e8b2c371a58",
+  "input_shape": [
+    16,
+    768,
+    1024
+  ],
+  "source_support_sha256": "e9341d893f0e8e6604b33a19515a3654f74557ed647097e04e19add7faa3314d",
+  "source_note": "Known public PHerc0841 author donor control 841-expanded-layer-03-approved-r000001. Direct 768x1024 mosaic from six hash-verified prepared tiles, no interpolation. Includes all published known-label pixels; unknown label0 remains unknown. Not an unread-scroll discovery or independent validation.",
+  "normalization": "uint8 -> FP32 clip[0,200]/255 exactly once",
+  "depth_order": "unchanged author prepared16 order; no mesh-centre or normal-sign claim",
+  "stride": 96,
+  "blend": "none",
+  "sentinel_author_index": 326,
+  "sentinel_bitwise_equal": true,
+  "new_model_forwards_including_sentinel": 89,
+  "statistics": {
+    "windows": 88,
+    "seconds": 455.07,
+    "mpix": 0.786,
+    "mpix_data": 0.786,
+    "s_per_mpix_data": 578.65,
+    "ms_per_window": 5171.3
+  },
+  "source_valid_fraction": 1.0,
+  "context_valid_fraction": 0.6328125,
+  "context_policy": "Every contributing128-square model input must have complete16-plane source support and no reflected exterior context",
+  "interpretation": "Exploratory visual screen; model probabilities are not confirmed letters",
+  "torch": "2.13.0+cpu",
+  "threads": 4,
+  "pid": 7,
+  "extra_masks": {
+    "source_valid": {
+      "file": "artifact://campaign/inference/author841_mosaic_positive_s96.source_valid.npy",
+      "sha256": "06cefbe7b60d61a170c2cd8ef60a91a9e8017e6147b17d09e2c4b5600426ff37"
+    },
+    "context_valid": {
+      "file": "artifact://campaign/inference/author841_mosaic_positive_s96.context_valid.npy",
+      "sha256": "97305d3ca16d99480adb3f0dda4cb2e05ae0a2142aaee4e9b93ef1055322ed2b"
+    }
+  },
+  "outputs": {
+    "prob": {
+      "file": "author841_mosaic_positive_s96.prob.npy",
+      "sha256": "b4b34228778eb22d25518cc8f7305bf6efca428963462ec20a07586cebf1c81a"
+    },
+    "valid": {
+      "file": "author841_mosaic_positive_s96.valid.npy",
+      "sha256": "06cefbe7b60d61a170c2cd8ef60a91a9e8017e6147b17d09e2c4b5600426ff37"
+    },
+    "preview": {
+      "file": "author841_mosaic_positive_s96.preview.png",
+      "sha256": "5ac1e0d6ac447066df7960f7f093d7dcc278b26b163ddf2f244c3d10a40c2c4b"
+    }
+  }
+}

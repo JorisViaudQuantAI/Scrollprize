@@ -1,0 +1,107 @@
+{
+  "job": {
+    "name": "0800_C_center512_k23_to_k08_s96",
+    "input": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/center512_k23_to_k08_uint8.npy",
+    "source_support": "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/center512_mask_k23_to_k08_bool.npy",
+    "output_prefix": "artifact://campaign/inference/0800_C_center512_k23_to_k08_s96",
+    "stride": 96,
+    "depth_order": [
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8
+    ],
+    "source_note": "Official uint8 surface volume, no spatial resampling, fixed crop chosen from prior visual ROI and complete source support; frame identity still under numerical investigation."
+  },
+  "weights_sha256": "96b326286e38de99047f7cab36170c53749a18d5f43e5fde0c7c20f2980b0e90",
+  "model_source": {
+    "model_py_sha256": "efbb390b6208c480fa8e8681137690b7df897c3e406956b9e804fa66645316d7",
+    "checkout_head": "bf66f753176792a966bca17822629fb8821f20c8",
+    "pinned_commit": "bf66f753176792a966bca17822629fb8821f20c8"
+  },
+  "pipeline_sha256": "348260f45e882dc3574b334d3c76aae42b2655d9b37354d26a0c57b24bda6d28",
+  "runner_sha256": "a6e094ec549c5822b5b6dd5c4784a1c9713bac66d834d7eab59c453216531d26",
+  "input_sha256": "164925900081f949bb3b97b8c10a88d593edf8a7351b588c080a2ba65da01e1b",
+  "input_shape": [
+    16,
+    512,
+    512
+  ],
+  "source_support_sha256": "f7f63056329260ae4678747249346587aa6bbb405a7456cd29a85a81d682d9ac",
+  "source_note": "Official uint8 surface volume, no spatial resampling, fixed crop chosen from prior visual ROI and complete source support; frame identity still under numerical investigation.",
+  "normalization": "uint8 -> FP32 clip[0,200]/255 exactly once",
+  "depth_order": [
+    23,
+    22,
+    21,
+    20,
+    19,
+    18,
+    17,
+    16,
+    15,
+    14,
+    13,
+    12,
+    11,
+    10,
+    9,
+    8
+  ],
+  "stride": 96,
+  "blend": "none",
+  "sentinel_author_index": 326,
+  "sentinel_bitwise_equal": true,
+  "new_model_forwards_including_sentinel": 37,
+  "statistics": {
+    "windows": 36,
+    "seconds": 188.29,
+    "mpix": 0.262,
+    "mpix_data": 0.262,
+    "s_per_mpix_data": 718.26,
+    "ms_per_window": 5230.2
+  },
+  "source_valid_fraction": 1.0,
+  "context_valid_fraction": 0.5625,
+  "context_policy": "Every contributing128-square model input must have complete16-plane source support and no reflected exterior context",
+  "interpretation": "Exploratory visual screen; model probabilities are not confirmed letters",
+  "torch": "2.13.0+cpu",
+  "threads": 4,
+  "pid": 35,
+  "extra_masks": {
+    "source_valid": {
+      "file": "artifact://campaign/inference/0800_C_center512_k23_to_k08_s96.source_valid.npy",
+      "sha256": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed"
+    },
+    "context_valid": {
+      "file": "artifact://campaign/inference/0800_C_center512_k23_to_k08_s96.context_valid.npy",
+      "sha256": "62445e4bef69a98a0e1d2b831af4b210fe239317bd2086a9c1d9f30f32fae088"
+    }
+  },
+  "outputs": {
+    "prob": {
+      "file": "0800_C_center512_k23_to_k08_s96.prob.npy",
+      "sha256": "0f75a964cc9ccbb4343dd001f482485ce9b0daa8857925b1dbaf5e682ad803e8"
+    },
+    "valid": {
+      "file": "0800_C_center512_k23_to_k08_s96.valid.npy",
+      "sha256": "0acd32b99c7188ffb30eacfc6f0f0eae72734665c91e0c57c01f389ab059aaed"
+    },
+    "preview": {
+      "file": "0800_C_center512_k23_to_k08_s96.preview.png",
+      "sha256": "b12ae645165a4f1fa2c3ef344c0e4ea51afbaefdfd07285c38fa49cb5729dd41"
+    }
+  }
+}

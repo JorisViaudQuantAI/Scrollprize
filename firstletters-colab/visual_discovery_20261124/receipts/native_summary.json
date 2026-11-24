@@ -1,0 +1,32 @@
+{
+  "status": "complete",
+  "scope": "Small numeric native CT to public surface replay, no ink inference or image registration",
+  "new_model_forwards": 0,
+  "received_response_body_bytes": 17053061,
+  "cap_response_body_bytes": 64000000,
+  "native_chunk_count": 7,
+  "preexisting_input_hashes_unchanged": {
+    "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/ct_k08_to_k23_uint8.npy": true,
+    "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/source_mask_k08_to_k23.npy": true,
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/x.tif": true,
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/y.tif": true,
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/z.tif": true
+  },
+  "artifacts_sha256": {
+    "report.md": "6e42f9ed24cf077d99406d2ae5d8084814b1daeeee72ed1560a7552dfb198e79",
+    "replay.py": "68eb39814b8777d5c4d28d8b0c2d9b57351bf53c41f206d88f46eefb8b73ff2c",
+    "replay_normals_cache_only.py": "d698a24e263f023546421fd5d651639f686bb1551d329483725ba7884bbb4653",
+    "replay_historic_holdout.py": "c63798b64620c5c4836be5a0e7d0672860880e91ff5719276823fb725901e268",
+    "finish_artifacts.py": "d5b34c2f56cd38387b86c2dfd5645c9c31602e171636e50ba8485fdbb1530e3f",
+    "replay_results.json": "cf4ed26ec36b7edef6bd20d3dfc94e288dc3600de50587d698a9bd58be425501",
+    "adaptive_normal_results.json": "0f0c6cc2d2efd613f8a11c1427b2f31ad3bd097cb697d788be206d7813be5566",
+    "historic_holdout_results.json": "9d1b74065deac87f4a53218f8f1e55b9e8757e78ae56a741c2b2e68ea97111f3",
+    "frozen_plan.json": "f9038ee9926052b69e0c8458efcd8b900dd084b0664086412f9538cc9ba091d5",
+    "historic_holdout_plan.json": "873b056f5cac1691ebc1b4c6c431831f55b3c2960ecd8c9672f469c9ac9c23be",
+    "numeric_profile_evidence.png": "bca4e23442831b84a978194a079494a75653c16a85a535fa338542852ee6b49d",
+    "sample_values.csv": "14e79b7dcf67013bdd8eb566cb8575ab23c4ef7c768b77eeebd1a520164417d4",
+    "all_source_receipts.json": "2b2257b4a040df7ea40ef9a06249de962e35ccc7d5cfbe1a505937519a341654",
+    "historic_holdout_profiles.npz": "242e913169a7cf49d6afcf9792be15b1ffdff4cd9531acde51f84d7cad63a5fb"
+  },
+  "conclusion": "Half-pixel XY and negative nearest-vertex central normal strongly supported at six checked zones; exact renderer hash and global mesh identity unproven; no text claim."
+}

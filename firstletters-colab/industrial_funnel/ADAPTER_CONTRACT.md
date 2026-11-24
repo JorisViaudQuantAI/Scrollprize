@@ -1,5 +1,11 @@
 # Proposed producer / worker contract v1 (review blocking interface)
 
+## Implemented native evidence subset (24 November 2026)
+
+[native_evidence.py](native_evidence.py) now validates actual local Studio NPY inputs, float maps and three distinct support masks, including independently recomputed window/context semantics and exact input-depth reversal. [NATIVE_INTEGRATION.md](NATIVE_INTEGRATION.md) documents the API and the completed thirteen-map historical import. Its `valid` field means byte/array/support consistency only; `scientific_admission` remains `NOT_ESTABLISHED` and `production_complete` remains false. It neither dispatches a worker nor bypasses the geometry, matched-control, full accounting and completion requirements below. Native physical signed depth, anatomical support, semantic sensitivity and unmeasured resource usage remain explicit unknowns. Existing reference file/coordinator receipts are unchanged.
+
+For this campaign the owner explicitly requested publication of the recent results, including unconfirmed candidate evidence; the compact package follows that request. This does not silently change the default handling of future candidate data.
+
 The RFC control-plane verifies artifact bytes, lineage, calibration key and resource grants. This document specifies the additional semantic validator and typed manifests the actual Claude/Gemini/Codex adapters must implement together. No field is an anatomical proof merely because it is present. Missing required fields block admission, never become a negative result. All chart-level artifacts/IDs are private.
 
 ## Immutable identity

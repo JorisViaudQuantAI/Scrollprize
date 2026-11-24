@@ -1,0 +1,56 @@
+{
+  "scope": "All and only publicly annotated pixels; model known-control diagnostic",
+  "shape": [
+    768,
+    1024
+  ],
+  "label_semantics": {
+    "0": "unknown",
+    "1": "background",
+    "2": "ink"
+  },
+  "source_files": [
+    {
+      "source_relative_path": "inference/author841_mosaic_positive_s96.prob.npy",
+      "sha256": "b4b34228778eb22d25518cc8f7305bf6efca428963462ec20a07586cebf1c81a"
+    },
+    {
+      "source_relative_path": "inference/author841_mosaic_positive_s96.context_valid.npy",
+      "sha256": "97305d3ca16d99480adb3f0dda4cb2e05ae0a2142aaee4e9b93ef1055322ed2b"
+    },
+    {
+      "source_relative_path": "positive-control/author841_mosaic/author841_mosaic_labels.npy",
+      "sha256": "63f663afdcee59cdb518eca97f24c783274b92f1313be2799c0c8a6773e551d1"
+    }
+  ],
+  "arrays": {
+    "known_flat_index": {
+      "shape": [
+        178423
+      ],
+      "dtype": "int32",
+      "raw_c_order_sha256": "d2136f6a4966c637454eddf1ad298c8c56b2f1e66b2cf23116364923de6e3918"
+    },
+    "known_label": {
+      "shape": [
+        178423
+      ],
+      "dtype": "uint8",
+      "raw_c_order_sha256": "fbdb6e727e48a14f54e7b0945376b024f845793eee221fa4d726746924648ed7"
+    },
+    "known_probability": {
+      "shape": [
+        178423
+      ],
+      "dtype": "float32",
+      "raw_c_order_sha256": "0405361a36ad118b4e361995caf3513a3a8489b4d4dbda7337b8c0942e2589bc"
+    },
+    "known_context_valid": {
+      "shape": [
+        178423
+      ],
+      "dtype": "bool",
+      "raw_c_order_sha256": "42d4dcb438061857c1d4fe9005602aa040b6403810b178dba9aba7708733cbb7"
+    }
+  }
+}
