@@ -314,6 +314,9 @@ its existing setting independently of this chain test. See
 
 **Where the code is.** `code/sense_chain.py`.
 
+
+**Added 2026-11-24 (wrong-sense control, `collab/claude-024.md`).** PHerc. 0175A refitted in the wrong sense (clockwise), same band, inputs and seeds, to step 14,030: vertex on an m7 sheet 0.265 against 0.203 for its shift control; the right sense had 0.269 against 0.201 at step 13,738. The on-sheet gate does not discriminate the winding sense. The gates of the PHerc. 1203 and PHerc. 0846A fits therefore show local sheet-following only and are no evidence for the sense used. The fitter's losses differ (`track_radius` 191–192 against 171–174; total loss 306–309 against 277–281), on one scroll and one pair of runs.
+
 ---
 
 <a id="s6"></a>
