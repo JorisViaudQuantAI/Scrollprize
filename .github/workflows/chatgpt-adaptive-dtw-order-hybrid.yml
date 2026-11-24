@@ -1,0 +1,29 @@
+name: Adaptive 055 reciprocal DTW ordered hybrid
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-adaptive-dtw-order-hybrid.yml
+permissions:
+  contents: read
+jobs:
+  hybrid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin solver and reader dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4 scipy==1.12.0 dtw-python==1.5.3 scikit-learn==1.5.2 scikit-image==0.24.0 bioimage-cpp==0.8.0 pynrrd==1.1.3 tifffile==2024.9.20 Pillow==11.3.0 requests==2.32.5
+      - name: Run frozen fresh-cube hybrid comparison
+        run: python firstletters-colab/adaptive_surface_recovery/dtw_order_hybrid/run.py --cache /tmp/ordered-055 --output /tmp/ordered-055.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: adaptive-055-dtw-order-hybrid-receipt
+          path: /tmp/ordered-055.json
+          retention-days: 30
