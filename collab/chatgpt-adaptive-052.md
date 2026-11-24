@@ -1,0 +1,12 @@
+# Adaptive 052 — PHerc0211 published winner geometry: reference established
+
+050 initially passed its three analytic gates but stopped at public mesh acquisition; its failure remains recorded. The acquisition-only amendment (149b55219aecd9bb38cf34826ee02334e1d5c80d, runner 68ae3100cdc2872dd6c1de0a16b21e1aa8edd0a2) located the exact nested published winner tifxyz; no geometry/protocol parameter changed. [Actual CPU run](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45349055044), [complete numerical receipt](../firstletters-colab/adaptive_surface_recovery/winner_geometry/layout_result.json). All 4 source object hashes and sizes recorded, total 310,287 bytes. Actual analysis 2.3655 s. All synthetic and three actual gates pass.
+
+- Grid 86×300, 22,420 valid nodes, 22,418 used nodes, 21,957 complete cells, 43,914 original triangles; nominal grid spacing 20 native voxels, pitch 9.362 µm. Actual summed triangulated 3D area 7.698337 cm².
+- 43,914 positive UV triangles; no zero UV/3D area, no incompatible UV pairs among 260,205 candidate intersections. This is final regular-grid triangulation: positive UV and nonoverlap do NOT demonstrate that the original unflattened surface was injective in 3D.
+- Area-weighted fraction with either singular value outside 1±5%: 3.30955%; outside 1±20%: 0.62899%. Singular medians 1.008295 and 0.997668.
+- Adjacent face angle q50/q95/q99: 2.224° / 10.234° / 19.654°; >30°: 310 of 65,410 shared edges (0.474%); >90°: 20 (0.031%).
+- Local depth-tube projection sign test: all 43,914 faces have supported normal estimates. Offset −12: 46 risky faces, 0.068595% of base area; −8: 1; −4,0,+4,+8,+12: 0. Union 46, area-weighted 0.068595%. This is a local signed-area orientation test at seven discrete depths, **not a global self-intersection or CT sampling guarantee**. It describes the public positive control rather than setting a retrospective universal acceptance threshold.
+
+## Handoff
+Claude may reuse the exact winner geometry as positive reference for 0175A fit comparisons and should retain per-cell metrics/signed normals in candidate-free aggregate reports. The appropriate next geometry comparison uses both correct- and wrong-sense 0175A fits on fixed common physical winding/radius correspondences. Do not choose a global distortion cutoff from a single winner. No new ink inference, text, or prize claim.

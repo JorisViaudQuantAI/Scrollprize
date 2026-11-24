@@ -1,0 +1,671 @@
+{
+  "schema": "adaptive.optical_scale_transfer.log_recovery.v1",
+  "run_id": 45348524582,
+  "job_id": 138288908309,
+  "executed_runner_commit": "f66e0467c80812b5b309253c126ae8c1e0db6b72",
+  "workflow_conclusion": "failure",
+  "report_error": "AttributeError: 'str' object has no attribute 'output'; report argument shadowed by arm-loop variable after inference.",
+  "complete_inference": true,
+  "forwards": 24,
+  "selection": [
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        1856,
+        1696
+      ],
+      "rows": [
+        35045,
+        35046,
+        35047
+      ],
+      "ink_pixels": 512,
+      "background_pixels": 512
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        416,
+        736
+      ],
+      "rows": [
+        33130,
+        33118,
+        33131
+      ],
+      "ink_pixels": 133,
+      "background_pixels": 891
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        2144,
+        128
+      ],
+      "rows": [
+        35533,
+        35537,
+        35534
+      ],
+      "ink_pixels": 475,
+      "background_pixels": 549
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        2944,
+        1344
+      ],
+      "rows": [
+        36450,
+        36454,
+        36451
+      ],
+      "ink_pixels": 328,
+      "background_pixels": 696
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "blank",
+      "yx": [
+        864,
+        1856
+      ],
+      "rows": [
+        33638,
+        33642,
+        33646
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "blank",
+      "yx": [
+        1408,
+        800
+      ],
+      "rows": [
+        34211,
+        34212,
+        34213
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        2720,
+        1952
+      ],
+      "rows": [
+        41089,
+        41090,
+        41091
+      ],
+      "ink_pixels": 511,
+      "background_pixels": 513
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        352,
+        544
+      ],
+      "rows": [
+        36678,
+        36682,
+        36679
+      ],
+      "ink_pixels": 286,
+      "background_pixels": 738
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        3648,
+        96
+      ],
+      "rows": [
+        42950,
+        42954,
+        42951
+      ],
+      "ink_pixels": 316,
+      "background_pixels": 708
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        2016,
+        512
+      ],
+      "rows": [
+        39522,
+        39519,
+        39523
+      ],
+      "ink_pixels": 715,
+      "background_pixels": 309
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "blank",
+      "yx": [
+        896,
+        2304
+      ],
+      "rows": [
+        37814,
+        37818,
+        37822
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "blank",
+      "yx": [
+        3744,
+        1312
+      ],
+      "rows": [
+        43156,
+        43157,
+        43158
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024
+    }
+  ],
+  "rows": [
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        1856,
+        1696
+      ],
+      "rows": [
+        35045,
+        35046,
+        35047
+      ],
+      "ink_pixels": 512,
+      "background_pixels": 512,
+      "arms": {
+        "B": {
+          "trace_AP": 0.7941327142424477,
+          "trace_AUC": 0.815826416015625,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 512,
+          "distant_untraced_pixels": 512,
+          "input_sha256": "337383ed4be5187e1e5281d2fc2f528afbf9424cd152b385fe8a0698c92daa6b",
+          "score_sha256": "5f626da2e69f4d6543de53b1eeb64ba79619212b9ede0985504bdda532706348",
+          "forward_seconds": 5.2721652070000005
+        },
+        "C": {
+          "trace_AP": 0.6384760893869912,
+          "trace_AUC": 0.5744132995605469,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 512,
+          "distant_untraced_pixels": 512,
+          "input_sha256": "6dc93f1807c1550e33ba9a12c072bac627f1b51a9549805c4e44b7372c9784a1",
+          "score_sha256": "eb793fb66a2d6099bf5627d51009e22ecdb1286dbbb5ab9ebf2e0304a916ab98",
+          "forward_seconds": 5.3662871559999985
+        }
+      }
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        416,
+        736
+      ],
+      "rows": [
+        33130,
+        33118,
+        33131
+      ],
+      "ink_pixels": 133,
+      "background_pixels": 891,
+      "arms": {
+        "B": {
+          "trace_AP": 0.45274388177507585,
+          "trace_AUC": 0.7883682269647182,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 133,
+          "distant_untraced_pixels": 891,
+          "input_sha256": "df5e6936f6973e04b22449a7f229172bb9c64053d2b8ba55cf4a30665c17d6a1",
+          "score_sha256": "ec419c839572526348974cf9f5bffdaaeb8d595e821eb2d73f0173a3892b816c",
+          "forward_seconds": 5.513311503000011
+        },
+        "C": {
+          "trace_AP": 0.23866837007914926,
+          "trace_AUC": 0.7707399812662971,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 133,
+          "distant_untraced_pixels": 891,
+          "input_sha256": "c0c62816999a57813bf5765863297354232c1a335d571a5fe2636c89d93a19fe",
+          "score_sha256": "8f33c9ff202441d58de87e659a91aa823398ff156356853760d40e2203262acf",
+          "forward_seconds": 5.467914268000001
+        }
+      }
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        2144,
+        128
+      ],
+      "rows": [
+        35533,
+        35537,
+        35534
+      ],
+      "ink_pixels": 475,
+      "background_pixels": 549,
+      "arms": {
+        "B": {
+          "trace_AP": 0.5637290562084969,
+          "trace_AUC": 0.7095158661681527,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 475,
+          "distant_untraced_pixels": 549,
+          "input_sha256": "ccbe981e43e5fae6bc719d027c9758239c2bed35eb3538218825ac21b071f39c",
+          "score_sha256": "db20457d8ef570bda52e3cd48e25ef927195c595a586b7ffa507987911bf35b6",
+          "forward_seconds": 5.484752525000005
+        },
+        "C": {
+          "trace_AP": 0.4956484825253533,
+          "trace_AUC": 0.5873109002013229,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 475,
+          "distant_untraced_pixels": 549,
+          "input_sha256": "bdec4cbab04969f458c1ea188f4151950e0e362d8b7a8fbc7599dbf8fe3099ca",
+          "score_sha256": "a36228beffb78d6ca755c5cae9418a4fbc5d1c34335bb657a86376a29960d8c6",
+          "forward_seconds": 5.507905044000012
+        }
+      }
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "mixed",
+      "yx": [
+        2944,
+        1344
+      ],
+      "rows": [
+        36450,
+        36454,
+        36451
+      ],
+      "ink_pixels": 328,
+      "background_pixels": 696,
+      "arms": {
+        "B": {
+          "trace_AP": 0.7718447356113174,
+          "trace_AUC": 0.9085322049341182,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 328,
+          "distant_untraced_pixels": 696,
+          "input_sha256": "04b25c3f50a761b970f3e7ebc7a63cef7c46b91cc41d8cd160abbe16aebd80bd",
+          "score_sha256": "d3170c59c3fc8900bf173bf9880f1ea52945dcceda3cd3f527fc94b923197b31",
+          "forward_seconds": 5.506074221999995
+        },
+        "C": {
+          "trace_AP": 0.4357128316672505,
+          "trace_AUC": 0.7473060344827586,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 328,
+          "distant_untraced_pixels": 696,
+          "input_sha256": "4bc21a3c8963542a2d3f840fff159613390def6606e1372290e0c54814902f18",
+          "score_sha256": "c0aa588339a443f3ffd15fa4d3f3a50157a37464dc1fc6aebecf2359188aa7b3",
+          "forward_seconds": 5.592261852000007
+        }
+      }
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "blank",
+      "yx": [
+        864,
+        1856
+      ],
+      "rows": [
+        33638,
+        33642,
+        33646
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024,
+      "arms": {
+        "B": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "62f73a036e2b29b6eae5f0ac4836d3e31e257bf1a8dab64f802462179c7851f8",
+          "score_sha256": "c55e2371054698e9e863e8389ba9e0db4031ec030e0ca5e75b51de8386b212a9",
+          "forward_seconds": 5.706309880999996
+        },
+        "C": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "a9a0c653bffb116a782742ef2e49ceefc3881e34c0ab494dfd3cb0f4b324d995",
+          "score_sha256": "a786daa8e3afa0ca0cf577c50147cbd253dd6ef4081c1eda6d89db89c056073a",
+          "forward_seconds": 5.662121220000003
+        }
+      }
+    },
+    {
+      "specimen": "Frag3",
+      "kind": "blank",
+      "yx": [
+        1408,
+        800
+      ],
+      "rows": [
+        34211,
+        34212,
+        34213
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024,
+      "arms": {
+        "B": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "27343cfd9c68ae3f77e78eab686733fa152f4cb56b910722f7c3466c086d0fdb",
+          "score_sha256": "2133f386f86b721b529fda846dc7006e832fadf2dea7dbbd14cb6a55633a533f",
+          "forward_seconds": 5.798923852999991
+        },
+        "C": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "c741b185cf7a586be7662a3d951b34fbf6dcc13ba8c960a766edae03488d096e",
+          "score_sha256": "922056596b678d3457ef1355ef46c779e704a6cd1eb3c0b2395730d77a85f262",
+          "forward_seconds": 5.557581116000009
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        2720,
+        1952
+      ],
+      "rows": [
+        41089,
+        41090,
+        41091
+      ],
+      "ink_pixels": 511,
+      "background_pixels": 513,
+      "arms": {
+        "B": {
+          "trace_AP": 0.8293003034613022,
+          "trace_AUC": 0.8547681990364039,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 511,
+          "distant_untraced_pixels": 513,
+          "input_sha256": "20edbb727cc1a7ccca2870dab5dd78d012d2fdfe62f544385fdeffd1b262fd20",
+          "score_sha256": "917df6fa770ef82ae3d29b9950cccf8e4bc08ac569abe9a1f26a743b578d8321",
+          "forward_seconds": 5.5676634010000186
+        },
+        "C": {
+          "trace_AP": 0.5526939696207176,
+          "trace_AUC": 0.5993026706797435,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 511,
+          "distant_untraced_pixels": 513,
+          "input_sha256": "23d79c3ad79de4d2fdd79c5ad983b1f2e577dcf0d5e50beea1ad4b96486af264",
+          "score_sha256": "31f496f860fcc2e699eccdc68783738dd97bcaca30f1a56cb77a275299672242",
+          "forward_seconds": 5.653872062000005
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        352,
+        544
+      ],
+      "rows": [
+        36678,
+        36682,
+        36679
+      ],
+      "ink_pixels": 286,
+      "background_pixels": 738,
+      "arms": {
+        "B": {
+          "trace_AP": 0.18793965619539763,
+          "trace_AUC": 0.27298311444652906,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 286,
+          "distant_untraced_pixels": 738,
+          "input_sha256": "9935bc02cff585ae931b72aba66d36294c349c1673db1a87eac6aa96508408d2",
+          "score_sha256": "ffa87414c712613dca4c4cf184610dbebd95c091c4988985afcd7f61384bfe5e",
+          "forward_seconds": 5.402508022000006
+        },
+        "C": {
+          "trace_AP": 0.16641261094444482,
+          "trace_AUC": 0.13907129455909942,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 286,
+          "distant_untraced_pixels": 738,
+          "input_sha256": "fdd318a222bde83c730d9141c5ffa18053386294db24cfe7ed8c880bc7a89a32",
+          "score_sha256": "09110cc984c529e25a053b4266d5e7fefbab23a8b04d64ac83b401c6d1fcdef4",
+          "forward_seconds": 5.487853279999996
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        3648,
+        96
+      ],
+      "rows": [
+        42950,
+        42954,
+        42951
+      ],
+      "ink_pixels": 316,
+      "background_pixels": 708,
+      "arms": {
+        "B": {
+          "trace_AP": 0.18980088156975997,
+          "trace_AUC": 0.1416362726167489,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 316,
+          "distant_untraced_pixels": 708,
+          "input_sha256": "fca72055b3dc29ca20781595095357cd9a04a7aeae469f085a3fd3ac9b51c0ef",
+          "score_sha256": "454187834898e9907f30ad1e1b05c5996ab787b41870f0d7101a072f6faa0d04",
+          "forward_seconds": 5.60224347800002
+        },
+        "C": {
+          "trace_AP": 0.19276603166068842,
+          "trace_AUC": 0.1603196738897232,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 316,
+          "distant_untraced_pixels": 708,
+          "input_sha256": "a7e3f62796c5956264715b4b03dc1f768aa4a3d6167de863017e060209814bc0",
+          "score_sha256": "ed5f8358ad87b261c933fcf302916f415c3dd44cc802d3f3c477da36df116826",
+          "forward_seconds": 5.743441249999989
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "mixed",
+      "yx": [
+        2016,
+        512
+      ],
+      "rows": [
+        39522,
+        39519,
+        39523
+      ],
+      "ink_pixels": 715,
+      "background_pixels": 309,
+      "arms": {
+        "B": {
+          "trace_AP": 0.9247331084738086,
+          "trace_AUC": 0.8031366691560867,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 715,
+          "distant_untraced_pixels": 309,
+          "input_sha256": "ef970de1e70fa9ebe3814fca5196b14bdbc5e02e7209b761d20d4fa1756cedcc",
+          "score_sha256": "1d52660ae0e432dfddf95c81a1714041ced8a03e3c35350544d57516231ba5b7",
+          "forward_seconds": 5.662349232999986
+        },
+        "C": {
+          "trace_AP": 0.8617164279074346,
+          "trace_AUC": 0.6838300857718334,
+          "trace_recall_at_05": 0,
+          "distant_untraced_flagged_at_05": 0,
+          "trace_pixels": 715,
+          "distant_untraced_pixels": 309,
+          "input_sha256": "a2a518e67d8f13174eb3887677f56716c328c16909dd2b1096823a218982b529",
+          "score_sha256": "70249568dc5c7837b1b2aa901a48e8fdf69a50e43ffae67a6516c21e55488d71",
+          "forward_seconds": 5.648790743000006
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "blank",
+      "yx": [
+        896,
+        2304
+      ],
+      "rows": [
+        37814,
+        37818,
+        37822
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024,
+      "arms": {
+        "B": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "2b54193d98a5701529dc89cd8a3e5759e210a932959e09bd697c1ec0e82fe8c8",
+          "score_sha256": "fd6e7f0e484495f7f6c92263b89c75ae65b93be0c9c26c5f73a0e93f047b6e0a",
+          "forward_seconds": 5.600377404
+        },
+        "C": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "7b410f68025dcb8055cd6c20a4d3066482b574f2d41059f4faf3f6caadec3c7e",
+          "score_sha256": "d3d66da64068b05aeb7193da578da7df057a2729f8269dc8c1bfa516adba5ba7",
+          "forward_seconds": 5.685870584000014
+        }
+      }
+    },
+    {
+      "specimen": "Frag4",
+      "kind": "blank",
+      "yx": [
+        3744,
+        1312
+      ],
+      "rows": [
+        43156,
+        43157,
+        43158
+      ],
+      "ink_pixels": 0,
+      "background_pixels": 1024,
+      "arms": {
+        "B": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "f76a7c36661c74e8332ca51e2aeb421cb4dd7ba5f35c4975384e7230ce3a2d60",
+          "score_sha256": "f1decfb763f719552d3aa653050c18ec1775ad951ba6d8fd2eeedac13fe78a12",
+          "forward_seconds": 5.442505334000003
+        },
+        "C": {
+          "blank_flagged_at_05": 0,
+          "input_sha256": "149926d1dda5817b445f471a5c55fbb2215376b64f498508bcdbc07ef32b1ecf",
+          "score_sha256": "bd2a55560e7430adc698ea7f55a51864db210988ed43bc87b04290a690f5bef9",
+          "forward_seconds": 5.4909960429999956
+        }
+      }
+    }
+  ],
+  "summary": {
+    "Frag3": {
+      "mixed_tiles": 4,
+      "mean_tile_AP": {
+        "B": 0.6456125969593345,
+        "C": 0.45212644341468605
+      },
+      "mean_tile_AUC": {
+        "B": 0.8055606785206536,
+        "C": 0.6699425538777313
+      },
+      "AP_deltas": [
+        -0.1556566248554565,
+        -0.2140755116959266,
+        -0.06808057368314357,
+        -0.3361319039440669
+      ],
+      "tiles_AP_decrease": 4,
+      "mixed_tile_nonharm_count": 1,
+      "mixed_tile_nonharm_gate": false,
+      "all_tile_recall_at_05_zero": true,
+      "all_background_and_blank_flags_at_05_zero": true
+    },
+    "Frag4": {
+      "mixed_tiles": 4,
+      "mean_tile_AP": {
+        "B": 0.5329434874250671,
+        "C": 0.44339726003332136
+      },
+      "mean_tile_AUC": {
+        "B": 0.5181310638139421,
+        "C": 0.39563093122509985
+      },
+      "AP_deltas": [
+        -0.27660633384058464,
+        -0.02152704525095281,
+        0.002965150090928459,
+        -0.063016680566374
+      ],
+      "tiles_AP_decrease": 3,
+      "mixed_tile_nonharm_count": 3,
+      "mixed_tile_nonharm_gate": true,
+      "all_tile_recall_at_05_zero": true,
+      "all_background_and_blank_flags_at_05_zero": true
+    }
+  },
+  "pass": false,
+  "decision": "Predeclared mixed-tile nonharm criterion fails in Frag3; no promotion. Pooled AP and matched-FPR recall unavailable because final report was not saved. Tile means are post-run descriptive statistics, not the pooled metrics. No rerun needed for rejection.",
+  "limitations": "Optical labels independent of 306B trace, inherited checkpoint exposure to fragments possible; no unseen closed-scroll claim."
+}

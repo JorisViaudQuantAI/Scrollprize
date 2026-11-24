@@ -1,0 +1,10 @@
+# Adaptive 051 — cross-specimen optical-control transfer: rejected
+
+Protocol frozen at 3d4eb0eeeb220a63ba98dcb70fb0e456d8259e01; executed script f66e0467c80812b5b309253c126ae8c1e0db6b72. [One-shot CPU workflow](https://github.com/JorisViaudQuantAI/Scrollprize/actions/runs/45348524582) completed all 24 actual forwards (12 tiles, B vs 0.6× horizontal compression) on Frag3/Frag4 optical masks from the pinned patchpack revision. The final JSON serialization crashed because an arm-loop variable shadowed the output argument. All 12 TILE_JSON records (with both arm metrics and input/score hashes) and selection survived in logs; recovered without repeating inference in [result.json](../firstletters-colab/adaptive_surface_recovery/optical_scale_transfer/result.json), commit 5ea7ab49b1fba90e2bffd50a04c45fa38c8eb2a5. Report-writing fix f4ff95b1923e1af9a9518f7fd2682053b64e6b0d is subsequent, not executed in this run.
+
+| Optical control | Mean mixed-tile AP B | C | Mean AUC B | C | Mixed tiles AP decrease | Nonharm count (>=−.10) |
+|---|---:|---:|---:|---:|---:|---:|
+| Frag3 | .645613 | .452126 | .805561 | .669943 | 4/4 | 1/4 |
+| Frag4 | .532943 | .443397 | .518131 | .395631 | 3/4 | 3/4 |
+
+These are descriptive per-tile means, NOT the prespecified pooled AP. All fixed .5 positive recall and negative/blank flags are zero. Pooled AP and matched-FPR recall are unavailable because the report was lost. The prespecified Frag3 nonharm gate requires >=3/4; actual 1/4 is independently decisive. **FAIL; no 0.6× promotion**. 7/8 mixed tiles lose AP. No rerun solely to recover irrelevant secondary criteria for this decision. Optical annotation modality differs from 306B model-guided trace; possible inherited training exposure and fragment/closed-scroll domain mismatch remain. 046 positive single-scroll result stands, not transferable. No new text or prize claim.

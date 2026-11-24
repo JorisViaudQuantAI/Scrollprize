@@ -1,0 +1,78 @@
+{
+  "schema": "adaptive.dtw_component_transfer.v1",
+  "script_sha256": "acbc39608fcc15fa376304b88438c3050c9f0a51d7627df87036c1f50cecbb06",
+  "protocol_sha256": "46c2fdba0b735cf192eb5963cec2e5a2367b1bd5ca004cdc53150d0d1b1ed5c5",
+  "cross058_sha256": "9b9a3eee05ce90569a41c53d234d0d7d83f2f325bd5ff46c1765e9980a4dd41d",
+  "prior058_sha256": "0a8b4435c06f42c9b17b462a3f1a5aa868f59f9374ba40a2e9c7ce9e5ea99765",
+  "cases": [],
+  "pass": false,
+  "synthetic": {
+    "gates": {
+      "two_components": true,
+      "all_combined_ambiguous": true,
+      "separate_exact_depths": false,
+      "correct_vs_swapped": true,
+      "solver": true
+    },
+    "solver057": {
+      "gates": {
+        "inherited_055": true,
+        "exact_bruteforce_and_transpose": true,
+        "ordered_blocks_crossing": true,
+        "two_axis_shift": true
+      },
+      "oracle_cases": [
+        {
+          "axes": [
+            1,
+            2
+          ],
+          "oracle": 51,
+          "cut": 51,
+          "transposed": 51,
+          "pass": true
+        },
+        {
+          "axes": [
+            2
+          ],
+          "oracle": 47,
+          "cut": 47,
+          "transposed": null,
+          "pass": true
+        },
+        {
+          "axes": [
+            1,
+            2
+          ],
+          "oracle": 44,
+          "cut": 44,
+          "transposed": 44,
+          "pass": true
+        },
+        {
+          "axes": [
+            2
+          ],
+          "oracle": 37,
+          "cut": 37,
+          "transposed": null,
+          "pass": true
+        }
+      ],
+      "DTW_shift_max_error": 0,
+      "roundtrip_max": 0,
+      "pass": true
+    },
+    "pass": false
+  },
+  "failure": "ValueError: Frozen synthetic gate failed",
+  "CT_budget": {
+    "bytes": 0,
+    "requests": 0,
+    "cap": 125829120
+  },
+  "wall_seconds": 0.1539800239999991,
+  "peak_rss_bytes": 149377024
+}

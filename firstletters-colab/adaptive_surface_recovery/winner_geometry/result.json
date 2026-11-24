@@ -1,0 +1,276 @@
+{
+  "schema": "adaptive.winner_geometry.v1",
+  "script_sha256": "54620c85000be9987fbc46704b03656beca0f570ee5d5a8256fae180a0fd0fdf",
+  "synthetic": {
+    "gates": {
+      "planar": true,
+      "cylinder": true,
+      "physical_degenerate": true
+    },
+    "planar": {
+      "faces": 48,
+      "supported_faces": 48,
+      "physical_degenerate_faces": 0,
+      "invalid_normal_vertices": 0,
+      "depths": [
+        {
+          "offset_vox": -12,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": -8,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": -4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 0,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 8,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 12,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        }
+      ],
+      "union_risky_faces": 0,
+      "union_risky_source_area_fraction": 0
+    },
+    "cylinder": {
+      "faces": 48,
+      "supported_faces": 48,
+      "physical_degenerate_faces": 0,
+      "invalid_normal_vertices": 0,
+      "depths": [
+        {
+          "offset_vox": -12,
+          "risky_faces": 48,
+          "risky_source_area_fraction": 1,
+          "area_ratio_q05_q50_q95": [
+            0.49999999999999317,
+            0.5000000000000009,
+            0.5000000000000042
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": -8,
+          "risky_faces": 48,
+          "risky_source_area_fraction": 1,
+          "area_ratio_q05_q50_q95": [
+            0,
+            4.4427430100423724e-15,
+            6.282987418940215e-15
+          ],
+          "near_zero_projected": 48
+        },
+        {
+          "offset_vox": -4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            0.49999999999999617,
+            0.5,
+            0.5000000000000028
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 0,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1.4999999999999947,
+            1.5,
+            1.5000000000000078
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 8,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            2,
+            2,
+            2
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 12,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            2.4999999999999916,
+            2.5,
+            2.50000000000001
+          ],
+          "near_zero_projected": 0
+        }
+      ],
+      "union_risky_faces": 48,
+      "union_risky_source_area_fraction": 1
+    },
+    "degenerate": {
+      "faces": 48,
+      "supported_faces": 47,
+      "physical_degenerate_faces": 1,
+      "invalid_normal_vertices": 0,
+      "depths": [
+        {
+          "offset_vox": -12,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": -8,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": -4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 0,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 4,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 8,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        },
+        {
+          "offset_vox": 12,
+          "risky_faces": 0,
+          "risky_source_area_fraction": 0,
+          "area_ratio_q05_q50_q95": [
+            1,
+            1,
+            1
+          ],
+          "near_zero_projected": 0
+        }
+      ],
+      "union_risky_faces": 0,
+      "union_risky_source_area_fraction": 0
+    },
+    "pass": true
+  },
+  "pass": false,
+  "failure": "ValueError: Missing winner mesh objects",
+  "wall_seconds": 0.3058527639999937
+}
