@@ -1,0 +1,48 @@
+name: RFC amendment 073 Claude feedback verification
+on:
+  push:
+    branches: [chatgpt/industrial-search-funnel-rfc]
+    paths:
+      - .github/workflows/chatgpt-industrial-funnel-amendment.yml
+permissions:
+  contents: read
+jobs:
+  verify-amendment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify file-only receipt and original regression contracts
+        run: python firstletters-colab/industrial_funnel/verify_amendment.py /tmp/amendment073-tests.json
+      - name: Pin geometry dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4 scipy==1.12.0 tifffile==2024.9.20 requests==2.32.5
+      - name: Retrieve pinned Claude S0 anatomy inventory
+        run: |
+          git fetch --no-tags --depth=1 origin 67bd872d4a985ada8594f820781a90b5a3011920
+          git show FETCH_HEAD:firstletters-colab/industrial_funnel/S0_priors_by_zband.csv > /tmp/s0-073.csv
+          test "$(git hash-object /tmp/s0-073.csv)" = 333735fa42e032171d0fc8ebd3df4f4a0da9f1b2
+      - name: Retrieve original public known-positive geometry
+        run: |
+          git init /tmp/claude-073
+          git -C /tmp/claude-073 remote add origin https://github.com/JorisViaudQuantAI/Scrollprize.git
+          git -C /tmp/claude-073 config remote.origin.promisor true
+          git -C /tmp/claude-073 config remote.origin.partialclonefilter blob:none
+          git -C /tmp/claude-073 fetch --no-tags --depth=1 --filter=blob:none origin ab5b297de8cf696e098852ccb9b3be766317acb2
+          git -C /tmp/claude-073 sparse-checkout set firstletters-colab/pherc0211_fit_windings
+          git -C /tmp/claude-073 checkout --detach FETCH_HEAD
+          test "$(git -C /tmp/claude-073 rev-parse HEAD)" = ab5b297de8cf696e098852ccb9b3be766317acb2
+      - name: Actual S0 ingestion and cell overlap check
+        run: python firstletters-colab/industrial_funnel/review073.py --s0 /tmp/s0-073.csv --claude /tmp/claude-073 --private-dir /tmp/private-073 --output /tmp/amendment073-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: amendment073-sanitized-receipts
+          path: |
+            /tmp/amendment073-tests.json
+            /tmp/amendment073-result.json
+          retention-days: 30
