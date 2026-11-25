@@ -37,8 +37,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 184.2065,
-    "meshes_screened": 38,
+    "total_unique_valid_ct_cm2": 192.7475,
+    "meshes_screened": 40,
     "two_family_followups": 8,
     "candidates_found": 0
   },
@@ -1989,6 +1989,102 @@
       },
       "verdict": "NEGATIVE",
       "note": "2D MIT ARAP flattened HF winding in disjoint z=6528-7328 band; 2-family Studio s48 + A-hn ROI agreed spatially on asc (iou=0.4654, studio_covered_by_ahn=0.6334) over broad ~3.75 mm cotton clouds (line_rank asc=ABSTAIN), and 9-variant adversarial depth/orientation + Q34 check confirmed 0/9 passing Q34 (max_q34_score=0.046812, width 0.600-0.634 mm at dz=0) with off-sheet peak at dz=-3/-6 (0.2717/0.2669 vs dz=0 0.2016 vs dz=+6 0.0718); zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w020",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.3596,
+      "on_sheet_after_snap": 0.4807,
+      "f_parallel": 0.7188,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 400.03,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.37487,
+          "p995": 0.55817,
+          "max": 0.88977,
+          "frac_gt_05": 0.006454,
+          "frac_gt_07": 0.001244
+        },
+        "studio_asc": {
+          "p99": 0.27043,
+          "p995": 0.31347,
+          "max": 0.48293,
+          "frac_gt_05": 0.0,
+          "frac_gt_07": 0.0
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1929.0,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 1929.0,
+        "strokeness_weighted_mean": 1.5615,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": -0.26758,
+        "asc_top_score": null
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened inner-core winding in disjoint z=6528-7328 band; crushed crumbles and large central void (on_sheet 0.4807, f_parallel 0.7188) with a single isolated square rim artifact and zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w060",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.1814,
+      "on_sheet_after_snap": 0.9185,
+      "f_parallel": 0.8901,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2892.0,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.86615,
+          "p995": 0.89184,
+          "max": 0.94235,
+          "frac_gt_05": 0.07421,
+          "frac_gt_07": 0.038798
+        },
+        "studio_asc": {
+          "p99": 0.65043,
+          "p995": 0.74146,
+          "max": 0.92406,
+          "frac_gt_05": 0.023093,
+          "frac_gt_07": 0.007237
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 5.3526,
+        "bilateral_overlap_frac": 0.044996,
+        "max_regional_asymmetry": 10563.0,
+        "strokeness_weighted_mean": 2.2706,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.8577,
+        "asc_top_score": 3.1304
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened outer winding in disjoint z=6528-7328 band; scattered 100-250 px diffuse desc clouds over wormy delamination boundary loops and pits (plus asc spots on a bright calcified inclusion and fissure); zero connected Greek strokes."
     }
   ]
 }
