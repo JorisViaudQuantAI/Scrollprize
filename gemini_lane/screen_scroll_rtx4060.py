@@ -538,7 +538,7 @@ def compute_line_first_summary(
                     "slot_count": int(p["slot_count"]),
                     "length_mm": round(float(p["length_mm"]), 2),
                     "angle_deg": round(float(p["angle_deg"]), 1),
-                    "contrast": round(float(p["contrast"]), 4),
+                    "contrast": round(float(p["contrast"]), 4) if p.get("contrast") is not None else None,
                     "bbox_yxyx": [int(v) for v in p["bbox_yxyx"]],
                 }
                 for idx, p in enumerate(props[:top_k], start=1)
@@ -856,6 +856,10 @@ def screen_one_mesh(
             best_st_ord = max(("desc", "asc"), key=lambda o: detector_stats[f"studio_{o}"]["p995"])
             primary_map = st_res[best_st_ord]["prob"]
             primary_valid = st_res[best_st_ord]["valid"]
+            print(
+                f"STUDIO_DONE {scroll}/{mesh_tag} desc={detector_stats['studio_desc']['seconds']}s asc={detector_stats['studio_asc']['seconds']}s",
+                flush=True,
+            )
 
         if "ahn" in detectors and int(valid_ct.sum()) >= 10000:
             ahn_res = run_ahn_both_orders(
@@ -881,6 +885,10 @@ def screen_one_mesh(
                 best_ah_ord = max(("asc", "desc"), key=lambda o: detector_stats[f"ahn_s0_{o}"]["p995"])
                 primary_map = ahn_res[best_ah_ord]["prob"]
                 primary_valid = ahn_res[best_ah_ord]["valid"]
+            print(
+                f"AHN_DONE {scroll}/{mesh_tag} asc={detector_stats['ahn_s0_asc']['seconds']}s desc={detector_stats['ahn_s0_desc']['seconds']}s",
+                flush=True,
+            )
 
         fp_diagnostics = (
             compute_fp_diagnostics(stack_lhw[mesh_idx], valid_ct, st_res, ahn_res, voxel_um)

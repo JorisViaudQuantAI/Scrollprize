@@ -231,6 +231,23 @@ class TestScreenScrollSafety(unittest.TestCase):
         self.assertEqual(lr["orders"]["asc"]["status"], "ABSTAIN")
         self.assertIsNone(lr["orders"]["asc"]["top_score"])
 
+    def test_line_rank_handles_none_contrast_on_crop_edge(self) -> None:
+        valid = np.ones((420, 1400), dtype=bool)
+        prob = np.full((420, 1400), 0.02, dtype=np.float32)
+        for x0 in (100, 320, 540, 760, 980):
+            prob[40:115, x0 : x0 + 75] = 0.85
+        maps = {
+            "desc": {"prob": prob, "valid": valid},
+            "asc": {"prob": np.full((420, 1400), 0.02, dtype=np.float32), "valid": valid},
+        }
+        lr = S.compute_line_first_summary(maps, valid, 9.362)
+        self.assertTrue(lr["available"])
+        self.assertEqual(lr["orders"]["desc"]["status"], "RANKED")
+        self.assertGreaterEqual(len(lr["orders"]["desc"]["top_proposals"]), 1)
+        self.assertTrue(any(p["contrast"] is None for p in lr["orders"]["desc"]["top_proposals"]))
+        self.assertEqual(lr["orders"]["asc"]["status"], "ABSTAIN")
+        json.dumps(lr)
+
     def test_compute_fp_diagnostics_studio_only_flags_crack_halo(self) -> None:
         rng = np.random.default_rng(0)
         ct = (0.6 + 0.02 * rng.standard_normal((200, 200))).astype(np.float32)
@@ -413,6 +430,8 @@ class TestScreenScrollSafety(unittest.TestCase):
             "r120-164",
             "r10-56",
             "c178-255",
+            "r58-96",
+            "c256-310",
         )
         for forbidden in forbidden_substrings:
             self.assertNotIn(forbidden, raw_text)
@@ -420,10 +439,10 @@ class TestScreenScrollSafety(unittest.TestCase):
         data = json.loads(raw_text)
         total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
         self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
-        self.assertEqual(total_cm2, 162.5247)
+        self.assertEqual(total_cm2, 184.2065)
         self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
-        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 7)
-        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 34)
+        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 8)
+        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 38)
         self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
 
 
