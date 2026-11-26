@@ -8,7 +8,7 @@ permissions:
 jobs:
   native:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
@@ -22,6 +22,15 @@ jobs:
           python-version: '3.13'
       - name: Install CPU-only render dependencies
         run: python -m pip install numpy==2.3.5 scipy==1.17.0 tifffile imagecodecs pillow requests numcodecs
+      - name: Exact offline regression before native CT reads
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/p13"
+          PYTHONPATH="$PWD/gemini_lane" python -m unittest discover -s gemini_lane -p test_stream_snap_render.py -q
+          PYTHONPATH="$PWD/gemini_lane" python -m unittest discover -s gemini_lane -p test_cloud_rv3_screen.py -q
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/stencil_regression.py "$RUNNER_TEMP/p13/offline_stencil.json"
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/snap_reuse_test.py "$RUNNER_TEMP/p13/offline_reuse.json"
       - name: Acquire public mesh only, never run upstream unlicensed code
         shell: bash
         run: |
