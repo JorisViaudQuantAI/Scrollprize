@@ -29,8 +29,10 @@ def sha(path):
 
 def outside_repo(path):
     p = Path(path).resolve()
-    repo = Path(__file__).resolve().parent.parent
-    if p == repo or repo in p.parents or any((q / '.git').exists() for q in (p, *p.parents)):
+    module = Path(__file__).resolve().parent
+    repo = module.parent if module.name == 'gemini_lane' and (module.parent/'collab').is_dir() else None
+    if ((repo is not None and (p == repo or repo in p.parents))
+            or any((q / '.git').exists() for q in (p, *p.parents))):
         raise ValueError('private output must be outside a Git checkout')
     return p
 
@@ -67,7 +69,8 @@ def stage_arrays(dest, stack, valid, provenance):
 def load_stage(src):
     src = outside_repo(src)
     rec = json.loads((src/'manifest.json').read_text())
-    if rec.get('schema') != SCHEMA or set(rec.get('sha256', {})) != {'stack.npy','valid.npy'}:
+    if (rec.get('schema') != SCHEMA or set(rec.get('sha256', {})) != {'stack.npy','valid.npy'}
+            or not isinstance(rec.get('provenance'),dict) or not rec['provenance']):
         raise ValueError('bad stage schema')
     for n, expected in rec['sha256'].items():
         if sha(src/n) != expected:
@@ -91,9 +94,9 @@ def stage_meshes(mesh_dirs, ct_url, m7_url, dest, *, workers=16, ct_mb=2048, m7_
             x,y,z,_,meta=ssr.read_tifxyz(mesh)
             before=(m7.bytes_fetched,ct.bytes_fetched,m7.cache_hits,ct.cache_hits)
             a,b,c,geometry=ssr.snap_tifxyz_to_m7(x,y,z,m7,passes=2)
-            stack,valid=ssr.render_surface_stack(a,b,c,ct,num_slices=17,slice_step=1.,flip_normals=False,scale=meta.get('scale',[.05,.05]),tile_size=256)
+            stack,valid=ssr.render_surface_stack(a,b,c,ct,num_slices=17,slice_step=1.,flip_normals=False,scale=meta.get('scale',[.05,.05]),tile_size=256,strict_uint8=True)
             after=(m7.bytes_fetched,ct.bytes_fetched,m7.cache_hits,ct.cache_hits)
-            rec=dict(mesh_sha256={n:sha(mesh/n) for n in ('x.tif','y.tif','z.tif','meta.json') if (mesh/n).is_file()},ct_source=str(ct_url),m7_source=str(m7_url),ct_shape=list(ct.shape),m7_shape=list(m7.shape),geometry=geometry,scale=meta.get('scale',[.05,.05]),passes=2,render_seconds=time.perf_counter()-t,delta_counters=[int(b-a) for a,b in zip(before,after)])
+            rec=dict(mesh_sha256={n:sha(mesh/n) for n in ('x.tif','y.tif','z.tif','meta.json','mask.tif') if (mesh/n).is_file()},ct_source=str(ct_url),m7_source=str(m7_url),ct_shape=list(ct.shape),m7_shape=list(m7.shape),geometry=geometry,scale=meta.get('scale',[.05,.05]),passes=2,render_seconds=time.perf_counter()-t,delta_counters=[int(b-a) for a,b in zip(before,after)])
             stage_arrays(dest/f'{i:04d}',stack,valid,rec)
 
 
