@@ -765,6 +765,8 @@ def snap_tifxyz_to_m7(
     search_radius: float = 12.0,
     step: float = 1.0,
     threshold: float = 51.0,
+    *,
+    reuse_center_samples: bool = False,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[str, Any]]:
     """Snap valid tifxyz vertices onto the m7 surface prediction along local unit normals.
 
@@ -807,6 +809,14 @@ def snap_tifxyz_to_m7(
 
     n_raw, n_raw_ok = compute_grid_normals(cx, cy, cz, valid=valid)
     raw_vals, raw_support = m7_reader.sample_trilinear(p_raw[valid], return_support=True)
+    # Source volume must be immutable during this call. Accepted positions
+    # already have their exact rounded-coordinate samples from shifted_vals.
+    # Reusing these values eliminates center and final reads, not ray searches.
+    current_values = np.zeros(valid.shape, dtype=np.float32) if reuse_center_samples else None
+    current_support = np.zeros(valid.shape, dtype=bool) if reuse_center_samples else None
+    if reuse_center_samples:
+        current_values[valid] = raw_vals
+        current_support[valid] = raw_support
     on_sheet_raw = float(np.mean(raw_support & (raw_vals >= threshold)))
 
     n_steps = int(np.floor(float(search_radius) / float(step)))
@@ -820,8 +830,13 @@ def snap_tifxyz_to_m7(
         )
         # Missing or out-of-bounds center data cannot justify a correction. In
         # particular, never clip an unsupported mesh into an m7 array's bounds.
-        center_support = np.zeros(valid.shape, dtype=bool)
-        _, center_support[valid] = m7_reader.sample_trilinear(p_cur[valid], return_support=True)
+        if reuse_center_samples:
+            # Invariant: original supported centers never become unsupported;
+            # corrections are accepted only when shifted_support is true.
+            center_support = current_support
+        else:
+            center_support = np.zeros(valid.shape, dtype=bool)
+            _, center_support[valid] = m7_reader.sample_trilinear(p_cur[valid], return_support=True)
         active = valid & normal_ok & center_support
         if not active.any():
             break
@@ -851,6 +866,8 @@ def snap_tifxyz_to_m7(
             & (shifted_vals >= threshold)
         )
         p_cur[active] = np.where(accepted[:, None], shifted, pts_act)
+        if reuse_center_samples:
+            current_values[active] = np.where(accepted, shifted_vals, current_values[active])
 
     # Enforce 3-channel sentinel consistency for invalid vertices.
     snapped_x = np.where(valid, p_cur[..., 0], -1.0).astype(np.float32)
@@ -858,7 +875,12 @@ def snap_tifxyz_to_m7(
     snapped_z = np.where(valid, p_cur[..., 2], -1.0).astype(np.float32)
 
     p_final = np.stack([snapped_x, snapped_y, snapped_z], axis=-1).astype(np.float64)
-    after_vals, after_support = m7_reader.sample_trilinear(p_final[valid], return_support=True)
+    if reuse_center_samples:
+        # All values were sampled at the same rounded float32 coordinates
+        # already stored in p_cur, or at an unchanged original mesh vertex.
+        after_vals, after_support = current_values[valid], current_support[valid]
+    else:
+        after_vals, after_support = m7_reader.sample_trilinear(p_final[valid], return_support=True)
     on_sheet_after_snap = float(np.mean(after_support & (after_vals >= threshold)))
 
     disp_grid = np.zeros(valid.shape, dtype=np.float64)

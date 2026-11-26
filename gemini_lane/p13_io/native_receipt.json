@@ -1,0 +1,364 @@
+{
+  "schema": "p13.verified_github_receipt.v1",
+  "source": "P13_NATIVE_ROW/ARM/DONE from GitHub Actions job logs",
+  "github_run_id": 45892230045,
+  "github_job_id": 140157414930,
+  "artifact_id": 15151508988,
+  "artifact_result_json_sha256": "75c6620b2996439b19587520d1c034e6d15bdd46ee75fc1bfee54eb9e8927f8b",
+  "bitwise_checks": 42,
+  "source_responses": 96,
+  "peak_rss_kib": 639908,
+  "arms": [
+    {
+      "method": "legacy",
+      "bytes": 387973359,
+      "unique_requested": 95
+    },
+    {
+      "method": "stencil",
+      "bytes": 188743919,
+      "unique_requested": 70
+    }
+  ],
+  "aggregate": {
+    "legacy": {
+      "seconds": 9.62545320000001,
+      "body_bytes": 387973120,
+      "chunks_decoded": 185,
+      "requested_chunk_refs": 288,
+      "received": 189
+    },
+    "stencil": {
+      "seconds": 3.2093374020000027,
+      "body_bytes": 188743680,
+      "chunks_decoded": 90,
+      "requested_chunk_refs": 192,
+      "received": 92
+    }
+  },
+  "payload_reduction_percent": 51.35135135135135,
+  "single_run_speedup": 2.99920263728008,
+  "rows": [
+    {
+      "method": "legacy",
+      "phase": "first",
+      "context": 0,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 1.6080701340000019,
+      "body_bytes": 56623104,
+      "decoded": 27,
+      "cache_hits": 18,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 45,
+      "received_body_bytes": 56623104,
+      "responses": 27,
+      "hashes": [
+        "f5488d29488fea919d6b7ec1e194a19ea6ff7af2c6f1eed099e6b2470ebc3d10",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ]
+    },
+    {
+      "method": "legacy",
+      "phase": "first",
+      "context": 1,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 1.8070876140000038,
+      "body_bytes": 65011712,
+      "decoded": 31,
+      "cache_hits": 15,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 46,
+      "received_body_bytes": 65011712,
+      "responses": 31,
+      "hashes": [
+        "3bd47580c329a9d24f3e13e0aef9e79997114499941a4103f325f55465228834",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ]
+    },
+    {
+      "method": "legacy",
+      "phase": "first",
+      "context": 2,
+      "kind": "rays",
+      "values": 600,
+      "supported": 550,
+      "seconds": 2.296764754999998,
+      "body_bytes": 73400320,
+      "decoded": 35,
+      "cache_hits": 16,
+      "get_chunks_calls": 32,
+      "requested_chunk_refs": 53,
+      "received_body_bytes": 73400320,
+      "responses": 37,
+      "hashes": [
+        "50d6925364b68d035c8451160168a2a56666ee65ff67176190ad3081b861c091",
+        "a7d1a30ed168a0e8af248096ff73cffa42d18a9bf964e0d398e1ee05d1d3a846"
+      ]
+    },
+    {
+      "method": "legacy",
+      "phase": "repeat",
+      "context": 0,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 1.3690223400000008,
+      "body_bytes": 56623104,
+      "decoded": 27,
+      "cache_hits": 18,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 45,
+      "received_body_bytes": 56623104,
+      "responses": 27,
+      "hashes": [
+        "f5488d29488fea919d6b7ec1e194a19ea6ff7af2c6f1eed099e6b2470ebc3d10",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ]
+    },
+    {
+      "method": "legacy",
+      "phase": "repeat",
+      "context": 1,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 1.419280024999999,
+      "body_bytes": 62914560,
+      "decoded": 30,
+      "cache_hits": 16,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 46,
+      "received_body_bytes": 62914560,
+      "responses": 30,
+      "hashes": [
+        "3bd47580c329a9d24f3e13e0aef9e79997114499941a4103f325f55465228834",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ]
+    },
+    {
+      "method": "legacy",
+      "phase": "repeat",
+      "context": 2,
+      "kind": "rays",
+      "values": 600,
+      "supported": 550,
+      "seconds": 1.125228332000006,
+      "body_bytes": 73400320,
+      "decoded": 35,
+      "cache_hits": 16,
+      "get_chunks_calls": 32,
+      "requested_chunk_refs": 53,
+      "received_body_bytes": 73400320,
+      "responses": 37,
+      "hashes": [
+        "50d6925364b68d035c8451160168a2a56666ee65ff67176190ad3081b861c091",
+        "a7d1a30ed168a0e8af248096ff73cffa42d18a9bf964e0d398e1ee05d1d3a846"
+      ]
+    },
+    {
+      "method": "stencil",
+      "phase": "first",
+      "context": 0,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 0.7701798510000089,
+      "body_bytes": 31457280,
+      "decoded": 15,
+      "cache_hits": 13,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 28,
+      "received_body_bytes": 31457280,
+      "responses": 15,
+      "hashes": [
+        "f5488d29488fea919d6b7ec1e194a19ea6ff7af2c6f1eed099e6b2470ebc3d10",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ],
+      "sampler_stats": {
+        "direct": 2,
+        "sparse": 2,
+        "fallback": 0,
+        "groups": 21,
+        "prefetch_batches": 4,
+        "planned_chunk_references": 28
+      }
+    },
+    {
+      "method": "stencil",
+      "phase": "first",
+      "context": 1,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 0.7581056970000049,
+      "body_bytes": 46137344,
+      "decoded": 22,
+      "cache_hits": 13,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 35,
+      "received_body_bytes": 46137344,
+      "responses": 22,
+      "hashes": [
+        "3bd47580c329a9d24f3e13e0aef9e79997114499941a4103f325f55465228834",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ],
+      "sampler_stats": {
+        "direct": 4,
+        "sparse": 4,
+        "fallback": 0,
+        "groups": 46,
+        "prefetch_batches": 8,
+        "planned_chunk_references": 63
+      }
+    },
+    {
+      "method": "stencil",
+      "phase": "first",
+      "context": 2,
+      "kind": "rays",
+      "values": 600,
+      "supported": 550,
+      "seconds": 0.32624490699998887,
+      "body_bytes": 65011712,
+      "decoded": 31,
+      "cache_hits": 0,
+      "get_chunks_calls": 2,
+      "requested_chunk_refs": 33,
+      "received_body_bytes": 65011712,
+      "responses": 33,
+      "hashes": [
+        "50d6925364b68d035c8451160168a2a56666ee65ff67176190ad3081b861c091",
+        "a7d1a30ed168a0e8af248096ff73cffa42d18a9bf964e0d398e1ee05d1d3a846"
+      ],
+      "sampler_stats": {
+        "direct": 4,
+        "sparse": 5,
+        "fallback": 0,
+        "groups": 78,
+        "prefetch_batches": 10,
+        "planned_chunk_references": 96
+      }
+    },
+    {
+      "method": "stencil",
+      "phase": "repeat",
+      "context": 0,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 0.597060055,
+      "body_bytes": 12582912,
+      "decoded": 6,
+      "cache_hits": 22,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 28,
+      "received_body_bytes": 12582912,
+      "responses": 6,
+      "hashes": [
+        "f5488d29488fea919d6b7ec1e194a19ea6ff7af2c6f1eed099e6b2470ebc3d10",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ],
+      "sampler_stats": {
+        "direct": 6,
+        "sparse": 7,
+        "fallback": 0,
+        "groups": 99,
+        "prefetch_batches": 14,
+        "planned_chunk_references": 124
+      }
+    },
+    {
+      "method": "stencil",
+      "phase": "repeat",
+      "context": 1,
+      "kind": "render",
+      "values": 1540217,
+      "supported": 90000,
+      "seconds": 0.6528393020000038,
+      "body_bytes": 20971520,
+      "decoded": 10,
+      "cache_hits": 25,
+      "get_chunks_calls": 4,
+      "requested_chunk_refs": 35,
+      "received_body_bytes": 20971520,
+      "responses": 10,
+      "hashes": [
+        "3bd47580c329a9d24f3e13e0aef9e79997114499941a4103f325f55465228834",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "ca25c47e757a2af27c1d957d04d9318897288df21ff6bf174a28027631559f11",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4",
+        "22f5bd4edc3512fad236f1025236cf043db0db0a3329ff45381cbca9493a63e4"
+      ],
+      "sampler_stats": {
+        "direct": 8,
+        "sparse": 9,
+        "fallback": 0,
+        "groups": 124,
+        "prefetch_batches": 18,
+        "planned_chunk_references": 159
+      }
+    },
+    {
+      "method": "stencil",
+      "phase": "repeat",
+      "context": 2,
+      "kind": "rays",
+      "values": 600,
+      "supported": 550,
+      "seconds": 0.10490758999999628,
+      "body_bytes": 12582912,
+      "decoded": 6,
+      "cache_hits": 27,
+      "get_chunks_calls": 2,
+      "requested_chunk_refs": 33,
+      "received_body_bytes": 12582912,
+      "responses": 6,
+      "hashes": [
+        "50d6925364b68d035c8451160168a2a56666ee65ff67176190ad3081b861c091",
+        "a7d1a30ed168a0e8af248096ff73cffa42d18a9bf964e0d398e1ee05d1d3a846"
+      ],
+      "sampler_stats": {
+        "direct": 8,
+        "sparse": 10,
+        "fallback": 0,
+        "groups": 156,
+        "prefetch_batches": 20,
+        "planned_chunk_references": 192
+      }
+    }
+  ],
+  "limitations": "One ordered public 0846B source-CT-only benchmark; CPU network cache/order not controlled, no full-scroll or L4 timing; no candidate detection; post-response 512MiB/arm budget not strict wire cap."
+}

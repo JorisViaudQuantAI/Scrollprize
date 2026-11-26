@@ -1,0 +1,51 @@
+name: P13 public native CT stencil benchmark
+on:
+  push:
+    branches: [chatgpt/gemini-p13-zarr-io]
+    paths: ['.github/workflows/chatgpt-p13-native-ct.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install CPU-only render dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 tifffile imagecodecs pillow requests numcodecs
+      - name: Exact offline regression before native CT reads
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/p13"
+          PYTHONPATH="$PWD/gemini_lane" python -m unittest discover -s gemini_lane -p test_stream_snap_render.py -q
+          PYTHONPATH="$PWD/gemini_lane" python -m unittest discover -s gemini_lane -p test_cloud_rv3_screen.py -q
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/stencil_regression.py "$RUNNER_TEMP/p13/offline_stencil.json"
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/snap_reuse_test.py "$RUNNER_TEMP/p13/offline_reuse.json"
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/test_stage_modes.py "$RUNNER_TEMP/p13/stage_modes.json"
+      - name: Acquire public mesh only, never run upstream unlicensed code
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/mesh"
+          root=https://raw.githubusercontent.com/brkzak/Pherc0846B_submission/daabe53b90654f9aa46e1512bf4bef251fd3975b/input/PHerc0846B-s20mm-b03-g08-t2-01-grow20261020153902-grow20261021205750
+          for f in x.tif y.tif z.tif meta.json; do curl -fLsS --retry 3 "$root/$f" -o "$RUNNER_TEMP/mesh/$f"; done
+      - name: Exact native CPU comparison
+        run: |
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/native_bench.py "$RUNNER_TEMP/mesh" "$RUNNER_TEMP/p13/native"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p13-native-ct-receipt
+          path: ${{ runner.temp }}/p13/
+          retention-days: 14
+          if-no-files-found: warn
