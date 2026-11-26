@@ -52,7 +52,10 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('mesh',type=Path);p.add_argument('output',type=Path);a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=False)
     for n,h in PINS.items():assert blob(a.mesh/n)==h,n
-    x,y,z,valid,meta=read_tifxyz(a.mesh);assert x.shape==(316,316) and meta['scale']==[.05,.05]
+    x,y,z,valid,meta=read_tifxyz(a.mesh)
+    if x.ndim!=2 or y.shape!=x.shape or z.shape!=x.shape or min(x.shape)<16 or not np.allclose(meta.get('scale',[]),[.05,.05],rtol=1e-7,atol=0):
+        raise ValueError('unexpected pinned mesh geometry or physical scale')
+    print('P13_PREFLIGHT',json.dumps(dict(shape=list(x.shape),scale=meta['scale'],valid_count=int(valid.sum()))),flush=True)
     contexts,rays=choose(x,y,z,valid);source_hashes={};rows=[];reference={};checks=0
     for name,cls in [('legacy',RemoteZarrV2),('stencil',StencilReader)]:
         opts=dict(cache_mb=128,workers=8,timeout=45,max_retries=3)
