@@ -1,0 +1,68 @@
+name: B30 public Reader radiometric transfer
+on:
+  push:
+    branches: [chatgpt/b26-five-priorities]
+    paths: ['.github/workflows/chatgpt-b30-radiometric.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  public-radiometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: b26-panel-841
+          run-id: 45863091634
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/panels/841
+      - uses: actions/download-artifact@v4
+        with:
+          name: b26-panel-1447
+          run-id: 45863091634
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/panels/1447
+      - uses: actions/download-artifact@v4
+        with:
+          name: b26-pred-841
+          run-id: 45863091634
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/panels/pred
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0 torchvision==0.23.0
+          python -m pip install numpy==2.3.5 scipy==1.15.3 zarr==3.1.3 numcodecs==0.16.3 tifffile==2025.6.11 imagecodecs pillow pynrrd requests pyyaml fsspec s3fs cachetools edt aiohttp nest-asyncio timm==1.0.20 einops huggingface_hub dynamic-network-architectures fvcore batchgenerators scikit-image scikit-learn tqdm psutil
+      - name: Acquire pinned Villa and Reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$RUNNER_TEMP/villa"
+          git -C "$RUNNER_TEMP/villa" remote add origin https://github.com/ScrollPrize/villa.git
+          git -C "$RUNNER_TEMP/villa" fetch --depth=1 origin b29f310957c7b29e7d332f9876e0e487819cfaa3
+          git -C "$RUNNER_TEMP/villa" checkout --detach FETCH_HEAD
+          PYTHONPATH="$PWD/evidence" python -c 'from pathlib import Path; from fetch_fixture import fetch; import os; fetch("https://huggingface.co/domenicor046/reader-v3/resolve/aee1d64bced4eb35546348f3d276b9e2a0b99c46/reader-v3.pth","ea405417450abd8ace1b8ff79ebce3adb646c5e48ab95da46844d77efe984d8a",Path(os.environ["RUNNER_TEMP"])/"reader-v3.pth")'
+      - name: Run frozen radiometric panel
+        run: |
+          export PYTHONPATH="$RUNNER_TEMP/villa/vesuvius/src:$PWD/evidence"
+          python firstletters-colab/reader_cpu_optimization/b26_five_priorities/radiometric.py "$RUNNER_TEMP/panels" "$RUNNER_TEMP/reader-v3.pth" "$RUNNER_TEMP/b30"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: b30-public-radiometric-results
+          path: ${{ runner.temp }}/b30/
+          retention-days: 14
+          if-no-files-found: warn
