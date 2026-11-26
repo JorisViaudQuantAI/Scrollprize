@@ -31,6 +31,7 @@ jobs:
           PYTHONPATH="$PWD/gemini_lane" python -m unittest discover -s gemini_lane -p test_cloud_rv3_screen.py -q
           PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/stencil_regression.py "$RUNNER_TEMP/p13/offline_stencil.json"
           PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/snap_reuse_test.py "$RUNNER_TEMP/p13/offline_reuse.json"
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/test_stage_modes.py "$RUNNER_TEMP/p13/stage_modes.json"
       - name: Acquire public mesh only, never run upstream unlicensed code
         shell: bash
         run: |
@@ -40,7 +41,7 @@ jobs:
           for f in x.tif y.tif z.tif meta.json; do curl -fLsS --retry 3 "$root/$f" -o "$RUNNER_TEMP/mesh/$f"; done
       - name: Exact native CPU comparison
         run: |
-          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/native_bench.py "$RUNNER_TEMP/mesh" "$RUNNER_TEMP/p13"
+          PYTHONPATH="$PWD/gemini_lane" python gemini_lane/p13_io/native_bench.py "$RUNNER_TEMP/mesh" "$RUNNER_TEMP/p13/native"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
