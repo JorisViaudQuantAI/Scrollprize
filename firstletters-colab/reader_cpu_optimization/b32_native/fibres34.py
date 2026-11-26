@@ -45,11 +45,13 @@ def train(p,fam,method):
             for _ in range(2):
                 err=np.abs(signed(f,target));factor=np.clip((err/3.)**2,1.,25.);f=fit(target,fam,method,factor)
     return f,side
+
 def tangent(a,at):
     k=np.argmin(np.linalg.norm(a[:,:3]-at,axis=1));s=a[k,4];lo,hi=s-40,s+40
     if lo<a[0,4] or hi>a[-1,4] or np.linalg.norm(a[k,:3]-at)>100:return None
     v=np.array([np.interp(hi,a[:,4],a[:,i])-np.interp(lo,a[:,4],a[:,i]) for i in range(3)]);r=np.linalg.norm(v)
     return v/r if r>1e-8 else None
+
 def cross_eval(paths,cross,held):
     pts=[];norms=[]
     for r in cross:
