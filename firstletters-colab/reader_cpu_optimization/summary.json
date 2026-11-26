@@ -1,0 +1,168 @@
+{
+  "scope": "Local CPU; no Reader v3 checkpoint, new Reader forward, native mesh modification, or new reading.",
+  "b15": {
+    "source_ct_sha256": "0c2950497da0dc362ba572c2fb1c08f88e3accb51c1e741d0a85633fb46dde33",
+    "real_patches": 168,
+    "real_bitwise_checks": 336,
+    "synthetic_checks": 1556,
+    "degenerate_fallbacks": 18,
+    "timings": 1008,
+    "wall_seconds": 59.239236516,
+    "median_ms": {
+      "normalization": {
+        "baseline": 77.510446,
+        "uint8": 11.0886485,
+        "guarded": 13.227682
+      },
+      "construction_plus_normalization": {
+        "baseline": 79.945684,
+        "uint8": 12.2571635,
+        "guarded": 14.519488
+      }
+    },
+    "full_results_sha256": "3292b274cb78dbca5d03f09c747779c3079f969e0ddcfb664e9b58aaff06a705"
+  },
+  "b16": {
+    "attempted_folds": 181,
+    "admitted_folds": 169,
+    "method_arm_fold_evaluations": 2185,
+    "tests": 5,
+    "scale_mixed": {
+      "ink": 2875,
+      "bg": 2525,
+      "identity_raw": {
+        "tp": 1293,
+        "fp": 505
+      },
+      "identity_line": {
+        "tp": 1290,
+        "fp": 489
+      },
+      "x_half_raw": {
+        "tp": 1282,
+        "fp": 966
+      },
+      "x_double_raw": {
+        "tp": 524,
+        "fp": 3
+      },
+      "y_half_raw": {
+        "tp": 1202,
+        "fp": 246
+      },
+      "y_double_raw": {
+        "tp": 981,
+        "fp": 346
+      }
+    },
+    "pose_mixed_mean_delta_pp": {
+      "line": {
+        "recall": -0.027563618183241708,
+        "fpr": -0.11432304653245548
+      }
+    },
+    "primary_gate": "FAIL",
+    "full_results_sha256": "44b756cb8eb4bd955aa12a05fb5fa72764257466ef2a9d6e658c267c9d628af6"
+  },
+  "b17": {
+    "tests": 4,
+    "rows": 2100,
+    "wall_seconds": 9.595,
+    "interior": 363888,
+    "informative": 318319,
+    "noisy_ramp": {
+      "ssd_1": {
+        "accepted": 318319,
+        "exact": 219808
+      },
+      "ssd_5": {
+        "accepted": 318319,
+        "exact": 255605
+      },
+      "ssd_15": {
+        "accepted": 318319,
+        "exact": 285591
+      },
+      "corr_margin01_1": {
+        "accepted": 259575,
+        "exact": 259518
+      },
+      "corr_margin01_5": {
+        "accepted": 269741,
+        "exact": 269592
+      },
+      "corr_margin01_15": {
+        "accepted": 242319,
+        "exact": 242095
+      }
+    },
+    "decoy_accepted": {
+      "corr_margin01_1": 91255,
+      "corr_margin01_5": 21663,
+      "corr_margin01_15": 290
+    },
+    "full_results_sha256": "488e0ddd1c39b3855339560758aadd9c50d534d9904ea2d1bc3a3eb91f063af5"
+  },
+  "reader_public_audit": {
+    "source": "DomRusso2/reader-v3",
+    "train_config_blob": "06cef73792a00e474cc1a54c9772fd9424db1bdc",
+    "auc_v3_blob": "bf92dd095d8a4e451d4e22fa3de7f75a589ec2b0",
+    "auc_v2_blob": "ea046ded2e28411a59c40a5264166179fad3bebf",
+    "fa_blob": "8c677184c49b5a3e6a5cdee65d76adbd4e12619f",
+    "training_group_counts": {
+      "1667": 6,
+      "0139": 34,
+      "Paris4": 8,
+      "0814": 9,
+      "0009B": 14,
+      "0500P2": 18,
+      "0343P": 6,
+      "0172": 4
+    },
+    "regions": [
+      [
+        "0841_ag1",
+        0.8258,
+        0.8581,
+        32.3,
+        19.9
+      ],
+      [
+        "0841_ag2",
+        0.8372,
+        0.8145,
+        22.7,
+        40.2
+      ],
+      [
+        "0841_w00",
+        0.8805,
+        0.8192,
+        18.8,
+        34
+      ],
+      [
+        "1447_w058",
+        0.8495,
+        0.8388,
+        26.3,
+        30
+      ],
+      [
+        "1447_w060",
+        0.765,
+        0.7575,
+        51.9,
+        52.7
+      ]
+    ],
+    "region_columns": [
+      "region",
+      "auc_v3",
+      "auc_v2",
+      "FA80_v3_pct",
+      "FA80_v2_pct"
+    ],
+    "scope": "Published author's metrics only; 0841/1447 absent from config, not independent reproduction. 0139/0009B training groups; do not count as parent held-out."
+  }
+}
