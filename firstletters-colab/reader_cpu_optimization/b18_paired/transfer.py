@@ -68,7 +68,7 @@ def run(d):
     tic=time.perf_counter();tests=test();rows=[];summary=[];abstain=[]
     for family,s,orig,valid,co,ids,names,guard in load(d):
         known=(orig>0).sum((1,2));ink=(orig==2).sum((1,2));mixed=np.flatnonzero((known>=512)&(10*ink>=known)&(10*ink<=9*known));assert len(mixed)==11
-        states=np.where(valid,orig,0);dist=np.abs(co[:,None]-co[None]).max(2)
+        states=np.where(valid,orig,0);dist=np.abs(co[:,None]-co[None,:]).max(2)
         for t in range(1,len(s)):
             group=[]
             for i in mixed:
