@@ -1,0 +1,88 @@
+{
+  "run_id": 45881101857,
+  "job_id": 140120352663,
+  "artifact_id": 15147775071,
+  "tested_stage_blob": "d0d4fbe7e8ea7c9fc3f1c72b3b68397654820f6f",
+  "final_stage_blob": "93bd0e0e45357777fda468b699183effe17edf0d",
+  "result": {
+    "schema": "p12.burst_ab.v1",
+    "checks": 8,
+    "model_load_counts": [
+      4,
+      1
+    ],
+    "receipts": [
+      {
+        "mode": "reload",
+        "wall_seconds": 10.30675360299999,
+        "loads": 4,
+        "rows": [
+          {
+            "context": 0,
+            "direction": "forward",
+            "valid": 142592,
+            "seconds": 2.106082346000008,
+            "loads": 2
+          },
+          {
+            "context": 0,
+            "direction": "reverse",
+            "valid": 142592,
+            "seconds": 1.9480121579999974,
+            "loads": 2
+          },
+          {
+            "context": 1,
+            "direction": "forward",
+            "valid": 142592,
+            "seconds": 1.9490282320000034,
+            "loads": 4
+          },
+          {
+            "context": 1,
+            "direction": "reverse",
+            "valid": 142592,
+            "seconds": 1.9678611750000101,
+            "loads": 4
+          }
+        ]
+      },
+      {
+        "mode": "reuse",
+        "wall_seconds": 8.197904960999978,
+        "loads": 1,
+        "rows": [
+          {
+            "context": 0,
+            "direction": "forward",
+            "valid": 142592,
+            "seconds": 1.9553049030000125,
+            "loads": 1
+          },
+          {
+            "context": 0,
+            "direction": "reverse",
+            "valid": 142592,
+            "seconds": 1.9636255129999824,
+            "loads": 1
+          },
+          {
+            "context": 1,
+            "direction": "forward",
+            "valid": 142592,
+            "seconds": 1.9902155099999845,
+            "loads": 1
+          },
+          {
+            "context": 1,
+            "direction": "reverse",
+            "valid": 142592,
+            "seconds": 1.9864807429999871,
+            "loads": 1
+          }
+        ]
+      }
+    ],
+    "scope": "Public previously exposed 0841 inputs; CPU parity; one ordered timing pair, no L4 claim."
+  }
+}
