@@ -1,0 +1,229 @@
+{
+  "adjacent_regression_suite": {
+    "errors": 0,
+    "failures": 0,
+    "modules": [
+      "test_producer_interop",
+      "test_file_receipts",
+      "test_order_audit",
+      "test_native_evidence",
+      "test_control_plane"
+    ],
+    "run": 113
+  },
+  "archived_before_patch": {
+    "gemini_backend": {
+      "dispatch_authorized": false,
+      "halted": false,
+      "states": {
+        "COARSE": {
+          "reason": null,
+          "state": "COMPLETE"
+        },
+        "CONTROL": {
+          "reason": null,
+          "state": "COMPLETE"
+        },
+        "GEOMETRY": {
+          "reason": null,
+          "state": "COMPLETE"
+        },
+        "RANK": {
+          "reason": null,
+          "state": "READY_FOR_OPERATOR"
+        },
+        "REGISTER": {
+          "reason": null,
+          "state": "COMPLETE"
+        }
+      }
+    },
+    "shared_a03_git_commit": "52f90c8713d28d98be64262499deb67f10d062a6",
+    "shared_a03_source_sha256": "c1cd9eaae83d59158d52974d74f5484607210a988f47a17a291b49053abb3163",
+    "shared_backend": {
+      "dispatch_authorized": false,
+      "halted": true,
+      "states": {
+        "COARSE": {
+          "reason": "RECEIPT_OR_SPEC_INVALID",
+          "state": "BLOCKED"
+        },
+        "CONTROL": {
+          "reason": null,
+          "state": "COMPLETE"
+        },
+        "GEOMETRY": {
+          "reason": null,
+          "state": "COMPLETE"
+        },
+        "RANK": {
+          "reason": "PARENT_NOT_ADMITTED",
+          "state": "BLOCKED"
+        },
+        "REGISTER": {
+          "reason": null,
+          "state": "COMPLETE"
+        }
+      }
+    },
+    "synthetic_only": true
+  },
+  "cases": {
+    "frozen_spec_schema": {
+      "producer": {
+        "accepted": false,
+        "detail": "Job spec schema mismatch",
+        "error": "ValueError"
+      },
+      "shared": {
+        "accepted": true
+      }
+    },
+    "mixed_model_family_pair": {
+      "detectors": [
+        "studio_desc",
+        "ahn_s0_asc"
+      ],
+      "orders": [
+        "asc",
+        "desc"
+      ],
+      "producer_outcome": "COMPLETE",
+      "same_model_family_pair": false
+    },
+    "native_arrays_vs_metadata": {
+      "exclusion_flags_inserted_by_bridge": {
+        "missing_chunk_fill_excluded": true,
+        "padded_pixels_excluded_from_area": true
+      },
+      "fixture": "Synthetic 288x288 float32 NPY with one supported NaN; correct SHA256",
+      "flag_is_scientific_authorization": false,
+      "native_errors": [
+        "NONFINITE_SCORE"
+      ],
+      "native_valid": false,
+      "producer_negative_claim_flag": true,
+      "producer_outcome": "COMPLETE",
+      "shared_inspection": {
+        "compatible_with_shared_receipts": false,
+        "dispatch_authorized": false,
+        "external_identity_supplied": false,
+        "issues": [
+          {
+            "code": "SHARED_RECEIPT_REJECTED",
+            "detail": "Receipt schema/job/attempt mismatch"
+          }
+        ],
+        "missing_evidence": [
+          "PINNED_BATCH_ADMISSION_NOT_CHECKED",
+          "NATIVE_ARRAY_SEMANTICS_NOT_CHECKED",
+          "SCIENTIFIC_ADMISSION_NOT_ESTABLISHED"
+        ],
+        "producer_declarations": {
+          "order_mode": "paired_both_orders",
+          "orders": [
+            "asc",
+            "desc"
+          ]
+        },
+        "production_complete": false,
+        "schema": "funnel.producer_interop_inspection.v1",
+        "scientific_admission": "NOT_ESTABLISHED",
+        "scope": "Shared receipt compatibility only; producer metadata is declarative.",
+        "status": "INCOMPATIBLE_WITH_SHARED_RECEIPTS"
+      },
+      "source_support_pixels_declared": 82944
+    },
+    "paired_receipt_schema": {
+      "extended_producer": {
+        "accepted": true
+      },
+      "extended_shared": {
+        "accepted": false,
+        "detail": "Receipt schema/job/attempt mismatch",
+        "error": "ValueError"
+      },
+      "legacy_shared": {
+        "accepted": true
+      }
+    },
+    "resume_is_not_admission": {
+      "a03_halted": true,
+      "a03_state": "BLOCKED",
+      "producer_resume_completed": true
+    },
+    "shared_admission_backend_independence": {
+      "coarse_state": "BLOCKED",
+      "costs_complete": false,
+      "dispatch_authorized": false,
+      "producer_reader_accepts_single_order_as_legacy_spec": true,
+      "rank_state": "BLOCKED",
+      "shared_a03_halted": true
+    },
+    "unfrozen_audit_declaration": {
+      "accepted_units": 20,
+      "declared_rate": 0.15,
+      "frozen_plan_present": false,
+      "paired_units": 0
+    }
+  },
+  "dispatch_authorized": false,
+  "latest_head_compatibility": {
+    "adapter_and_leak_guard_byte_identical_to": "da94312727c7e95f7f7fdc2d7481d502265434c5",
+    "changed_files": [
+      "collab/gemini-010.md",
+      "gemini_lane/arap_flatten_tifxyz.py",
+      "gemini_lane/evidence/pherc0826_arap_flatten_preflight.json",
+      "gemini_lane/screen_scroll_rtx4060.py",
+      "gemini_lane/test_arap_flatten_tifxyz.py"
+    ],
+    "commit": "e310d6e188b42d196662bc75ffec61f36335ae24",
+    "geometry_contract_probe": {
+      "call": "validate_geometry_contract(geometry_contract_probe.inputs)",
+      "inputs": {
+        "area_inflation_true_over_nominal": 0.9893,
+        "parameterization_method": "mit_arap_2d",
+        "pct_area_gt_20deg": 0.151,
+        "shear_abs_p95_deg": 7.371
+      },
+      "output": {
+        "accepted": false,
+        "exception": "ValueError",
+        "message": "Unknown parameterization_method: 'mit_arap_2d'"
+      },
+      "scope": "Metadata-contract compatibility only; this does not evaluate ARAP image quality, ink sensitivity or scientific admission."
+    },
+    "new_flattener_parameterization_method": "mit_arap_2d",
+    "new_native_coarse_or_fine_array_files": [],
+    "public_artifact_scope": "Five changed files: coordination note, CPU flattener, its tests, aggregate preflight JSON, GPU thermal polling edits. No new native coarse/fine probability arrays or file receipts in this commit.",
+    "scientific_admission": "NOT_ESTABLISHED",
+    "source_sha256": {
+      "industrial_funnel_adapter.py": "7a43443989eaaa08d0c9bf1f8f9b98fac95bf768fbaa48ccebd3772589c57bec",
+      "leak_guard.py": "01b8142e63be80be1462913f9c397f08083685b0b63f03a41df3362dba48193c"
+    }
+  },
+  "new_model_forwards": 0,
+  "offline_regression_tests": {
+    "errors": 0,
+    "failures": 0,
+    "run": 12
+  },
+  "producer_commit": "da94312727c7e95f7f7fdc2d7481d502265434c5",
+  "producer_dependency_sha256": "01b8142e63be80be1462913f9c397f08083685b0b63f03a41df3362dba48193c",
+  "producer_source_sha256": "7a43443989eaaa08d0c9bf1f8f9b98fac95bf768fbaa48ccebd3772589c57bec",
+  "production_complete": false,
+  "schema": "funnel.producer_interop_replay.v1",
+  "scientific_admission": "NOT_ESTABLISHED",
+  "scope": "Executable interoperability contradictions on synthetic data; no finding about real papyrus quality or text.",
+  "shared_admission_source_sha256": "275c9368d4957d5569972dea9fe738744cdd30b39c771b8d27982fb13fc04b07",
+  "synthetic_only": true,
+  "upstream_test_replay": {
+    "environment": "Linux; public validation JSON included",
+    "failure_test": "test_committed_adapter_and_validation_json_have_zero_leaks_and_zero_torch",
+    "failures": 1,
+    "passed": 13,
+    "reason": "Generic account agent matches ordinary cross-agent wording in a public JSON guardrail; no identifying path was found.",
+    "run": 14,
+    "scope": "A context-dependent privacy-guard false positive; not evidence of a real data leak."
+  }
+}

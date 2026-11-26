@@ -1,0 +1,29 @@
+{
+  "mapping": "registered_new = new[:,96:608]; old ROI xyxy32,176,336,416; new ROI128,176,432,416",
+  "method": "Exact native-pixel crop montage; no contrast adjustment, resizing, or drawn letter. Probability differences measured without new inference.",
+  "image": "artifact://campaign/blind-review/pherc0800_C_context96_views/fixed_loop_old_new_native.png",
+  "image_sha256": "60104463740f1fa11479138f05cbed01eb9ba9705947da66d48b60372aa65249",
+  "metrics": {
+    "fixed_roi": {
+      "pixels": 72960,
+      "bitwise_equal_values": false,
+      "mean_abs_probability_change": 0.008971773401891257,
+      "max_abs_probability_change": 0.18088603019714355,
+      "new_context_complete": true
+    },
+    "previously_valid_in_roi": {
+      "pixels": 57600,
+      "bitwise_equal_values": true,
+      "mean_abs_probability_change": 0.0,
+      "max_abs_probability_change": 0.0,
+      "new_context_complete": true
+    },
+    "newly_valid_in_roi": {
+      "pixels": 15360,
+      "bitwise_equal_values": false,
+      "mean_abs_probability_change": 0.04261592365898347,
+      "max_abs_probability_change": 0.18088603019714355,
+      "new_context_complete": true
+    }
+  }
+}

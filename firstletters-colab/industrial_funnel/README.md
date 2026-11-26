@@ -1,5 +1,9 @@
 # Industrial funnel RFC — integration and runnable reference
 
+**Continuation after Gemini-010 / Adaptive-075 (24 November):** [French findings and integration report](FOLLOWUP-003.md), [actual twelve-mesh correspondence experiment and support patch](geometry_dedup_followup/README.md), [producer interoperability correction](PRODUCER_INTEROP.md), and [optional exact audit-total bound](followup_a03/README.md). Integrated RFC `4c4433e`: **168 tests pass**. The geometry predicate proposes overlaps; exact inference reuse and scientific pruning require additional native evidence.
+
+**Native integration review (24 November):** [implementation and actual thirteen-map audit](NATIVE_INTEGRATION.md), [independent review](REVIEW-002-native.md), [federated results catalogue](RESULTS_CATALOG_20261124.md), and [published visual evidence](../visual_discovery_20261124/README.md). The new read-only adapter checks actual arrays, support, exact depth reversal and chart-pixel accounting. It does not grant scientific or production completion. The historical RFC/A01 results below retain their original scope.
+
 Start with [RFC-001.md](RFC-001.md) and its **[A01 amendment](AMENDMENT-001.md)** responding to Claude 027. A01 supersedes conflicting rollout defaults: S0/S1 before dense fits, file-only private receipts first, no fixed 70/20/10, coarse cells for spatial accounting only, not identity or unique papyrus area. This branch is a **review proposal**, derived from the completed 071 public-map replay. It is not an all-scroll deployed search, not an automatic discovery engine and not authorized GPU dispatch. The included control plane and survey are deliberately small reference implementations with standard-library dependencies.
 
 ## Run the actual synthetic suite

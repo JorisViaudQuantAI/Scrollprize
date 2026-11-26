@@ -1,0 +1,100 @@
+{
+  "schema": "pherc0800_C_numeric_replay_v1",
+  "selection": "Three fixed geometric locations inside the already-frozen center512. No detector or CT intensity used to choose locations.",
+  "anchors_global_yx": [
+    [
+      842,
+      1243
+    ],
+    [
+      1045,
+      1446
+    ],
+    [
+      1248,
+      1649
+    ]
+  ],
+  "patch_offsets": [
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "layers": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "reference_zero_candidate": 15,
+  "normal_definition": "unit(cross(dP/dcolumn,dP/drow))",
+  "candidate_origins": [
+    {
+      "name": "origin_y+0_x+0",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "origin_y+0.5_x+0.5",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "origin_y+0.5_x+0",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "origin_y+0_x+0.5",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "origin_y-0.5_x-0.5",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "origin_y-9.5_x-9.5",
+      "formula": "grid=(pixel+offset)*0.05"
+    },
+    {
+      "name": "align_corners_105_to2100",
+      "formula": "grid=pixel*104/2099"
+    }
+  ],
+  "candidate_geometry": [
+    "bilinear_patch_normal",
+    "catmull_rom_patch_normal",
+    "catmull_rom_vertex_normal"
+  ],
+  "signs": [
+    1,
+    -1
+  ],
+  "native_voxel_offset": 0,
+  "no_estimated_affine_or_intensity_transform": true,
+  "new_model_forwards": 0,
+  "budget_body_bytes": 64000000,
+  "local_inputs": {
+    "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/ct_k08_to_k23_uint8.npy": "3d6c104f1c32c7606c5660b02a4959cc661420d60dbcd08c0b701e8ccc320f15",
+    "artifact://campaign/pherc0800-official/ct_rois/C/studio_input_16/source_mask_k08_to_k23.npy": "b0ca19584f74c25e718188741f3c64d52a43acf5d4e0d85e96b9bf48089485c3",
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/x.tif": "2685a43e360ba15c271efedd8b65029cf00ac587a25f28a3da65336f0ef2c611",
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/y.tif": "a53177c7bb88e1c3797a1a320946f4fb862876893bcfe9368dab91c65ac7834a",
+    "artifact://campaign/pherc0800-official/mesh-metadata/C_mesh/z.tif": "22b985ad06c4809ef0e107c8afa24b4ce14e19b035191e15bc48325ee22073e5"
+  },
+  "current_upstream_is_candidate_not_historical_proof": "e5707e413e61fc3e67af6b98ea5bd713fe0110d1"
+}

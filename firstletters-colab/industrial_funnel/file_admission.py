@@ -8,6 +8,26 @@ import json
 from control_plane import (validate_spec,digest,require_sha,vector,add,zeros,within,
                            PREDECESSOR,INFERENCE,SCROLL)
 from order_audit import is_experiment,assignment
+from file_receipts import validate as validate_receipt
+
+def validate_file_envelope(spec,attempt,envelope,store):
+    """Recheck shared identity/receipt rules independently of a producer reader.
+
+    A storage backend may implement an older or more permissive receipt schema.
+    Its successful read is not evidence of compatibility with the shared policy.
+    The store must implement the existing verify(SHA256) byte-integrity contract.
+    """
+    s=validate_spec(spec)
+    if not isinstance(envelope,dict) or set(envelope)!={"schema","spec","receipt","sha256"}:
+        raise ValueError("Envelope schema mismatch")
+    if envelope["schema"]!="funnel.file_receipt.v1" or envelope["spec"]!=s:
+        raise ValueError("Envelope spec or schema mismatch")
+    if not isinstance(envelope["receipt"],dict):
+        raise ValueError("Expected receipt object")
+    if digest({k:v for k,v in envelope.items() if k!="sha256"})!=envelope["sha256"]:
+        raise ValueError("Envelope hash mismatch")
+    validate_receipt(s,attempt,envelope["receipt"],store)
+    return envelope
 
 def freeze_batch(epoch,eligible,cap,entries):
     if not isinstance(epoch,str) or not epoch or not isinstance(eligible,list) or not eligible:
@@ -89,7 +109,7 @@ def inspect_batch(files,manifest,pin,now,revoked=()):
             r["attempts"]=len(numbers);r["next_attempt"]=len(numbers)+1
             rows=[]
             for n in numbers:
-                q=files.read(s,n);rr=q["receipt"]
+                q=validate_file_envelope(s,n,files.read(s,n),files.store);rr=q["receipt"]
                 spent=add(spent,rr["actual"])
                 if rr["grant"]!=e["grants"][n-1]:raise ValueError("Grant differs from authorized manifest")
                 if not within(rr["actual"],e["grants"][n-1]):over=True

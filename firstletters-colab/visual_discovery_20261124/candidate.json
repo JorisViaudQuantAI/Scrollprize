@@ -1,0 +1,49 @@
+{
+  "id": "PHerc0800_C_loop_01",
+  "status": "unconfirmed_morphological_hypothesis",
+  "novel_text_claim": false,
+  "source_note": "Shape already visible in existing public maps; new local validation only",
+  "segment": "20251028220955-auto_grown_20251028220955262",
+  "global_image_xyxy": [
+    932,
+    826,
+    1236,
+    1066
+  ],
+  "surface_depth_indices": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "final_model_job": "0800_C_left_context96_k08_to_k23_s96",
+  "independent_reading": "Weak O-like silhouette, not a robust glyph; no sequence",
+  "root_reading": "Connected upright/traverses and loop-like openings; no assigned character",
+  "context_test": "Left closure persists with real96pixel context; fixed box now100percent strict context; only15360pixels newly admissible",
+  "remaining_alternatives": [
+    "Material boundaries/fiber organization across depth",
+    "Local surface may sample different thickness/relief; same-sheet anatomy unproven",
+    "s96tile seams still limit topology"
+  ],
+  "evidence": [
+    "metrics/0800_context.json",
+    "metrics/0800_depth_review.json",
+    "reviews/pherc0800_C_context96_round2_comparison_frozen.md",
+    "figures/0800_context.png",
+    "data/candidate_probability_crops.npz"
+  ],
+  "next_discriminant": "Anatomical same-sheet check and continuous rendering with surrounding line context, retaining the current frozen hypothesis",
+  "ground_truth_eligible": false
+}
