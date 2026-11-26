@@ -1,0 +1,13 @@
+{
+  "source": "B21 prediction archive from run 45858826467 artifact 15137042105",
+  "sha256": "baf48b9301c9697c0dd8f4efbb7ffde9c2f891305f08d39194323eb860bd2d81",
+  "ink": 64506,
+  "background": 233239,
+  "thresholds": {
+    "center": 0.27041327953338623,
+    "median3": 0.2706716060638428,
+    "contrast": -0.005725502967834473,
+    "product": 0.19658267498016357
+  },
+  "definition": "largest score retaining ceil(.8*N) known positives, pooled W058 and W060; float32 score arithmetic; all ties retained; no 0841 scores inspected"
+}
