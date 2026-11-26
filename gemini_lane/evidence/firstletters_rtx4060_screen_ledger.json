@@ -37,8 +37,8 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 217.8261,
-    "meshes_screened": 45,
+    "total_unique_valid_ct_cm2": 235.4441,
+    "meshes_screened": 49,
     "two_family_followups": 8,
     "candidates_found": 0
   },
@@ -2319,6 +2319,190 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "S0-Top Tier-2B flat pscamillo winding; classic bilateral papyrus-mottle cloud cluster co-located across desc and asc (bilateral_overlap 0.0584, ink_like_candidate=false) with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.6137,
+      "on_sheet_after_snap": 0.9854,
+      "f_parallel": 0.9286,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1732.94,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.70164,
+          "p995": 0.77957,
+          "max": 0.93721,
+          "frac_gt_05": 0.031692,
+          "frac_gt_07": 0.010109
+        },
+        "studio_asc": {
+          "p99": 0.79596,
+          "p995": 0.84046,
+          "max": 0.92419,
+          "frac_gt_05": 0.045092,
+          "frac_gt_07": 0.019972
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.9786,
+        "bilateral_overlap_frac": 0.021889,
+        "max_regional_asymmetry": 13762.0,
+        "strokeness_weighted_mean": 2.1197,
+        "ink_like_candidate": true
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.90635,
+        "asc_top_score": 3.26106
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat pscamillo winding; sparse crack-edge tile clouds and low asymmetry (1.9786x) with zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w065",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.3861,
+      "on_sheet_after_snap": 0.957,
+      "f_parallel": 0.9383,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2510.74,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.85996,
+          "p995": 0.88935,
+          "max": 0.94966,
+          "frac_gt_05": 0.069592,
+          "frac_gt_07": 0.036037
+        },
+        "studio_asc": {
+          "p99": 0.82699,
+          "p995": 0.86301,
+          "max": 0.93499,
+          "frac_gt_05": 0.07746,
+          "frac_gt_07": 0.033979
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.0517,
+        "bilateral_overlap_frac": 0.060216,
+        "max_regional_asymmetry": 13001.0,
+        "strokeness_weighted_mean": 1.9164,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.99365,
+        "asc_top_score": 4.15433
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat pscamillo winding; bilateral papyrus-mottle cotton clouds across desc and asc (asymmetry 1.0517x, bilateral_overlap 0.0602) with zero connected strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.9805,
+      "on_sheet_after_snap": 0.9169,
+      "f_parallel": 0.9257,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 885.94,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.75671,
+          "p995": 0.81047,
+          "max": 0.90557,
+          "frac_gt_05": 0.045343,
+          "frac_gt_07": 0.015619
+        },
+        "studio_asc": {
+          "p99": 0.76191,
+          "p995": 0.81202,
+          "max": 0.91115,
+          "frac_gt_05": 0.043848,
+          "frac_gt_07": 0.017601
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.1306,
+        "bilateral_overlap_frac": 0.007449,
+        "max_regional_asymmetry": 13994.0,
+        "strokeness_weighted_mean": 1.8251,
+        "ink_like_candidate": true
+      },
+      "line_rank_summary": {
+        "desc_top_score": 1.9277,
+        "asc_top_score": 3.62451
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C pscamillo inner winding; diffuse speckle and delamination-edge blobs (asymmetry 1.1306x, p90_disp 9.76 vx) with zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w015",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.6377,
+      "on_sheet_after_snap": 0.9715,
+      "f_parallel": 1.0,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 432.21,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.5464,
+          "p995": 0.60982,
+          "max": 0.82109,
+          "frac_gt_05": 0.014789,
+          "frac_gt_07": 0.001576
+        },
+        "studio_asc": {
+          "p99": 0.54791,
+          "p995": 0.64053,
+          "max": 0.78838,
+          "frac_gt_05": 0.013701,
+          "frac_gt_07": 0.002249
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.4268,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 1720.0,
+        "strokeness_weighted_mean": 0.9714,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.5625,
+        "asc_top_score": 1.43713
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat inner pscamillo winding; quiet blank strip (studio_desc/asc p995 0.6098/0.6405, frac_gt_07 <= 0.0023, strokeness 0.9714, zero hits)."
     }
   ]
 }

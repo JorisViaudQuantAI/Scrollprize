@@ -708,16 +708,16 @@ def build_consolidated_dossier_summary(repo_root: Path | None = None) -> dict[st
             raise ValueError(f"Expected NEGATIVE verdict for {s}/{m['mesh_id']}, got {m['verdict']}")
 
     if (
-        total_cm2 != 217.8261
-        or ledger["untouched_screening_summary"]["total_unique_valid_ct_cm2"] != 217.8261
-        or len(meshes) != 45
-        or ledger["untouched_screening_summary"]["meshes_screened"] != 45
+        total_cm2 != 235.4441
+        or ledger["untouched_screening_summary"]["total_unique_valid_ct_cm2"] != 235.4441
+        or len(meshes) != 49
+        or ledger["untouched_screening_summary"]["meshes_screened"] != 49
         or followup_rois != 8
         or ledger["untouched_screening_summary"]["two_family_followups"] != 8
         or ledger["untouched_screening_summary"]["candidates_found"] != 0
         or ledger["hardware_profile"]["hardware_or_oom_incidents"] != 0
-        or per_scroll_cm2 != {"PHerc0125": 78.6713, "PHerc1203": 47.7731, "PHerc0191": 5.5685, "PHerc0826": 85.8132}
-        or per_scroll_counts != {"PHerc0125": 19, "PHerc1203": 7, "PHerc0191": 2, "PHerc0826": 17}
+        or per_scroll_cm2 != {"PHerc0125": 96.2893, "PHerc1203": 47.7731, "PHerc0191": 5.5685, "PHerc0826": 85.8132}
+        or per_scroll_counts != {"PHerc0125": 23, "PHerc1203": 7, "PHerc0191": 2, "PHerc0826": 17}
     ):
         raise ValueError("firstletters_rtx4060_screen_ledger.json sum or count mismatch")
 

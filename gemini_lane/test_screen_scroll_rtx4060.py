@@ -439,11 +439,69 @@ class TestScreenScrollSafety(unittest.TestCase):
         data = json.loads(raw_text)
         total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
         self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
-        self.assertEqual(total_cm2, 217.8261)
+        self.assertEqual(total_cm2, 235.4441)
         self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
         self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 8)
-        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 45)
+        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 49)
         self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
+
+    def test_cross_order_hotspot_dedup_and_line_rank_rescue(self) -> None:
+        h, w = 2200, 2400
+        valid = np.ones((h, w), dtype=bool)
+        desc = np.full((h, w), 0.05, dtype=np.float32)
+        asc = np.full((h, w), 0.05, dtype=np.float32)
+        # Same-location strong density peak across both orders + secondary peaks in upper half
+        desc[64:576, 64:576] = 0.90
+        asc[64:576, 64:576] = 0.85
+        asc[64:576, 768:1280] = 0.72
+        desc[64:576, 1536:2048] = 0.68
+        asc[600:1112, 64:576] = 0.66
+        st_res = {
+            "desc": {"prob": desc, "valid": valid},
+            "asc": {"prob": asc, "valid": valid},
+        }
+        deduped = S._dedupe_density_hotspots(st_res, win=512, top_k=4)
+        coords = [(d["y"], d["x"]) for d in deduped]
+        self.assertEqual(len(coords), len(set(coords)))
+
+        # Uncovered line_rank proposal: #1 is real bright chain at lower right; #2 is dim contrast artifact
+        desc[1600:1760, 1700:2020] = 0.88
+        line_rank = {
+            "available": True,
+            "orders": {
+                "desc": {
+                    "top_proposals": [
+                        {"rank": 1, "score": 3.8, "bbox_yxyx": [1500, 1550, 2050, 2150]},
+                    ]
+                },
+                "asc": {
+                    "top_proposals": [
+                        {"rank": 1, "score": 4.1, "bbox_yxyx": [1500, 200, 2050, 800]},  # low signal (<0.65)
+                    ]
+                },
+            },
+        }
+        rescued = S.select_line_rank_hotspots(st_res, line_rank, deduped, crop_px=512)
+        self.assertEqual(len(rescued), 1)
+        self.assertEqual(rescued[0]["source"], "line_rank")
+        self.assertEqual(rescued[0]["order"], "desc")
+        self.assertGreaterEqual(rescued[0]["peak_prob"], 0.65)
+
+        combined = [{**hs, "rank": i} for i, hs in enumerate(deduped + rescued, start=1)]
+        with tempfile.TemporaryDirectory(prefix="scrollprize-lr-vis-") as tmp:
+            out_dir = Path(tmp)
+            ct = np.full((h, w), 110, dtype=np.uint8)
+            _, hname = S.write_visuals(
+                out_dir,
+                "TEST/lr",
+                ct,
+                valid,
+                [("Studio fp16 desc", desc, valid), ("Studio fp16 asc", asc, valid)],
+                combined,
+                9.362,
+            )
+            self.assertIsNotNone(hname)
+            self.assertTrue((out_dir / hname).is_file())
 
 
 if __name__ == "__main__":

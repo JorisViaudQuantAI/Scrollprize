@@ -788,6 +788,11 @@ def snap_tifxyz_to_m7(
             "median_disp_vx": 0.0,
             "p90_disp_vx": 0.0,
             "center_vs_outer_disp_diff": 0.0,
+            "signed_disp_p10_vx": 0.0,
+            "signed_disp_p50_vx": 0.0,
+            "signed_disp_p90_vx": 0.0,
+            "adjacent_signed_step_ge_6vx_frac": 0.0,
+            "adjacent_sign_flip_ge_6vx_frac": 0.0,
             "passes": int(passes),
             "search_radius": float(search_radius),
             "step": float(step),
@@ -795,6 +800,7 @@ def snap_tifxyz_to_m7(
         }
         return cx, cy, cz, metrics
 
+    n_raw, n_raw_ok = compute_grid_normals(cx, cy, cz, valid=valid)
     raw_vals, raw_support = m7_reader.sample_trilinear(p_raw[valid], return_support=True)
     on_sheet_raw = float(np.mean(raw_support & (raw_vals >= threshold)))
 
@@ -855,6 +861,40 @@ def snap_tifxyz_to_m7(
     disp_grid[valid] = np.linalg.norm(p_final[valid] - p_raw[valid], axis=-1)
     valid_disps = disp_grid[valid]
 
+    sig_mask = valid & n_raw_ok
+    d_signed = np.zeros(valid.shape, dtype=np.float64)
+    if sig_mask.any():
+        d_signed[sig_mask] = np.sum(
+            (p_final[sig_mask] - p_raw[sig_mask]) * n_raw[sig_mask].astype(np.float64), axis=-1
+        )
+        p10_s, p50_s, p90_s = (float(v) for v in np.percentile(d_signed[sig_mask], [10.0, 50.0, 90.0]))
+    else:
+        p10_s = p50_s = p90_s = 0.0
+
+    diffs_parts: list[np.ndarray] = []
+    flips_parts: list[np.ndarray] = []
+    if valid.shape[1] >= 2:
+        edges_u = sig_mask[:, :-1] & sig_mask[:, 1:]
+        if edges_u.any():
+            du_a = d_signed[:, :-1][edges_u]
+            du_b = d_signed[:, 1:][edges_u]
+            diffs_parts.append(np.abs(du_b - du_a))
+            flips_parts.append((du_a * du_b) < 0.0)
+    if valid.shape[0] >= 2:
+        edges_v = sig_mask[:-1, :] & sig_mask[1:, :]
+        if edges_v.any():
+            dv_a = d_signed[:-1, :][edges_v]
+            dv_b = d_signed[1:, :][edges_v]
+            diffs_parts.append(np.abs(dv_b - dv_a))
+            flips_parts.append((dv_a * dv_b) < 0.0)
+    if diffs_parts:
+        all_diffs = np.concatenate(diffs_parts)
+        all_flips = np.concatenate(flips_parts)
+        step_ge6_frac = float(np.mean(all_diffs >= 6.0))
+        flip_ge6_frac = float(np.mean(all_flips & (all_diffs >= 6.0)))
+    else:
+        step_ge6_frac = flip_ge6_frac = 0.0
+
     metrics = {
         "valid_vertex_fraction": valid_fraction,
         "valid_vertex_count": n_valid,
@@ -866,6 +906,11 @@ def snap_tifxyz_to_m7(
         "median_disp_vx": float(np.median(valid_disps)),
         "p90_disp_vx": float(np.percentile(valid_disps, 90)),
         "center_vs_outer_disp_diff": _compute_center_vs_outer_disp_diff(disp_grid, valid),
+        "signed_disp_p10_vx": p10_s,
+        "signed_disp_p50_vx": p50_s,
+        "signed_disp_p90_vx": p90_s,
+        "adjacent_signed_step_ge_6vx_frac": step_ge6_frac,
+        "adjacent_sign_flip_ge_6vx_frac": flip_ge6_frac,
         "passes": int(passes),
         "search_radius": float(search_radius),
         "step": float(step),
