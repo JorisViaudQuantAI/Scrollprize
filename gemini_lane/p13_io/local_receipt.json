@@ -1,0 +1,123 @@
+{
+  "schema": "p13.local_cpu_receipt.v1",
+  "source_branch": "chatgpt/gemini-p12-cpu-handoff",
+  "original_gemini_commit": "6ca521cfff25ad83f56192cb47797dce72d57c83",
+  "freeze_untouched": "acea30d4cfed6ef9ba255a0894ba5bd4c6a3bec0",
+  "source_ct_tiles_sha256": "0c2950497da0dc362ba572c2fb1c08f88e3accb51c1e741d0a85633fb46dde33",
+  "full_local_results": {
+    "sampler_results_sha256": "fbb29d51135da11782d34096f9d7560c310b3a15a630cc29d48ea1e3bf238bab",
+    "offline_stencil_sha256": "a06fb0613a81c6966258ddf1fcbbb6eea770274d318b28d3016515c0f6fa53c3",
+    "offline_reuse_sha256": "9679367764af95e3f49af5cb92bbaa9ab62b8e6fb69f8e351cdb734d669f7d3b",
+    "offline_stage_sha256": "e6e382fe63059734f1d6a6c88a7bc83f9711ecf289136cc74e781befee71c6af"
+  },
+  "stencil_cpu": {
+    "cases": 120,
+    "bitwise_value_and_support_checks": 623280,
+    "fallback_calls": 84,
+    "bench_columns": [
+      "fixture",
+      "legacy_chunks",
+      "stencil_chunks",
+      "legacy_wall_seconds",
+      "stencil_wall_seconds",
+      "legacy_body_bytes",
+      "stencil_body_bytes"
+    ],
+    "benchmarks": [
+      [
+        "dense",
+        36,
+        22,
+        0.041,
+        0.0194,
+        532996,
+        350184
+      ],
+      [
+        "oblique_rays",
+        320,
+        229,
+        0.6454,
+        0.2975,
+        13239317,
+        9172684
+      ],
+      [
+        "diagonal",
+        68,
+        28,
+        0.0335,
+        0.0104,
+        2823010,
+        1214751
+      ],
+      [
+        "sparse_cells",
+        49,
+        49,
+        0.0359,
+        0.0144,
+        2327760,
+        2327760
+      ],
+      [
+        "integer_boundaries",
+        512,
+        343,
+        0.1415,
+        0.0862,
+        22749164,
+        16897466
+      ]
+    ],
+    "synthetic_snap_render_checks": 9,
+    "synthetic_render_values": 337977,
+    "notes": "Single local warm-cache order; synthetic Zarr generated from real 0841 CT texture. No native S3 timing."
+  },
+  "small_stencil_regression": {
+    "cases": 18,
+    "compared_values": 182376,
+    "fallback_calls": 18,
+    "source_script_blob": "715dfe82b87d9666ce9e3fe2daaf660833e424f4"
+  },
+  "center_reuse": {
+    "scenarios": 7,
+    "pass_variants": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "bitwise_coords_and_metrics_checks": 109396,
+    "baseline_calls": 182,
+    "reused_calls": 112,
+    "local_baseline_wall_s": 1.655348036999726,
+    "local_reused_wall_s": 1.5359565630000134,
+    "default_enabled": false,
+    "requires_immutable_m7_source": true,
+    "script_blob": "1b11400ea2c2a2c858b31111796ffa335983c44d"
+  },
+  "stage_cpu": {
+    "scenarios": 2,
+    "outputs_per_arm_values": 30600,
+    "bitwise_array_and_metric_checks": 64876,
+    "arms": [
+      "legacy",
+      "stencil",
+      "stencil+reuse"
+    ],
+    "one_ordered_trial_wall_seconds": [
+      0.13815880099991773,
+      0.08833556099989437,
+      0.07813556499991137
+    ],
+    "notes": "Small synthetic M7 and CT generated fixtures; order/cache confounds single-trial wall timing; should not be used as remote throughput estimator.",
+    "script_blob": "ae416941d0dfa9d0526f0ebc5421bd1cc46c9444"
+  },
+  "source_blobs": {
+    "gemini_lane/stencil_reader.py": "ee7c2514eac346cdd54e04611fc7a23233e4eda8",
+    "gemini_lane/stream_snap_render.py": "be0ee83084cf6933a247c884f3e52be2f073928a",
+    "gemini_lane/staged_rv3.py": "f884c1da2c4ac090d9ac8a2f6953f68873859b0e"
+  },
+  "scope": "Public source only; no unread papyrus coordinates, private images, GPU use or production merge."
+}
