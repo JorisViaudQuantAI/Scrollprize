@@ -1,0 +1,28 @@
+name: ChatGPT Gemini P12 pinned source fixture
+on:
+  push:
+    branches: [chatgpt/gemini-p12-cpu-handoff]
+    paths: ['.github/workflows/chatgpt-gemini-p12-source.yml']
+permissions:
+  contents: read
+jobs:
+  source-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 6ca521cfff25ad83f56192cb47797dce72d57c83
+          persist-credentials: false
+      - name: Copy only pinned public source and synthetic test code
+        run: |
+          mkdir -p "$RUNNER_TEMP/p12/gemini_lane/evidence" "$RUNNER_TEMP/p12/collab"
+          cp gemini_lane/{stream_snap_render.py,test_stream_snap_render.py,cloud_rv3_screen.py,test_cloud_rv3_screen.py,leak_guard.py} "$RUNNER_TEMP/p12/gemini_lane/"
+          cp gemini_lane/evidence/colab_l4_rv3_batch_c1_receipt.json "$RUNNER_TEMP/p12/gemini_lane/evidence/"
+          cp collab/gemini-021.md "$RUNNER_TEMP/p12/collab/"
+          git ls-tree -r HEAD gemini_lane collab/gemini-021.md > "$RUNNER_TEMP/p12/tree.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p12-public-source-fixture
+          path: ${{ runner.temp }}/p12/
+          retention-days: 7
