@@ -50,7 +50,6 @@ def tangent(a,at):
     if lo<a[0,4] or hi>a[-1,4] or np.linalg.norm(a[k,:3]-at)>100:return None
     v=np.array([np.interp(hi,a[:,4],a[:,i])-np.interp(lo,a[:,4],a[:,i]) for i in range(3)]);r=np.linalg.norm(v)
     return v/r if r>1e-8 else None
-
 def cross_eval(paths,cross,held):
     pts=[];norms=[]
     for r in cross:
