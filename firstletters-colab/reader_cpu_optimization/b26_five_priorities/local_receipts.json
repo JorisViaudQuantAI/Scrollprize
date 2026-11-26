@@ -1,0 +1,193 @@
+{
+  "scope": "Executed local CPU only; actual native public reader panels and separate simulated shifts/strokes, no new unread candidates. All TSV metrics rounded from complete local JSON.",
+  "local": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "torch": "2.10.0+cpu",
+    "sklearn": "1.8.0",
+    "geometry": {
+      "seconds": 23.63454821599953,
+      "checks": 6,
+      "rows": 420,
+      "seam_delta_pp": 7.916946747329898,
+      "ramp_exact_precision": 0.9991249945312158,
+      "decoy_delta_pp": {
+        "xy": 0,
+        "tile": 0.0015707513532022908
+      },
+      "pass": true,
+      "normal_max_p95_clean": 0.69940535745053,
+      "normal_max_p95_noisy": 1.6658786516563973
+    },
+    "student": {
+      "seconds": 16.08292355699996,
+      "fits": 6,
+      "steps": 480,
+      "rows": 32,
+      "quantization_failures": 0,
+      "all_gates": false,
+      "median_quant_mae": null,
+      "mean_quant_mae": 0.0017629868852964137,
+      "max_quant_error": 0.08442191779613495,
+      "baseline_columns": [
+        "target",
+        "threshold",
+        "ink",
+        "bg",
+        "tp",
+        "fp",
+        "AP"
+      ],
+      "baseline": [
+        [
+          "w060",
+          0.26669350266456604,
+          35228,
+          98848,
+          33129,
+          66163,
+          0.5477361161235532
+        ],
+        [
+          "w058",
+          0.3266703486442566,
+          29278,
+          134391,
+          14671,
+          24986,
+          0.37256693690146603
+        ],
+        [
+          "0841_asc",
+          0.2965097725391388,
+          15054,
+          28721,
+          14347,
+          20291,
+          0.7908485839235287
+        ],
+        [
+          "0841_desc",
+          0.2965097725391388,
+          15054,
+          28721,
+          12258,
+          25864,
+          0.47639769566869683
+        ]
+      ]
+    },
+    "topology": {
+      "seconds": 0.5253954899999371,
+      "checks": 3,
+      "synthetic_rows": 144,
+      "stroke_recall_by_width": {
+        "center": [
+          1,
+          1,
+          1
+        ],
+        "median3": [
+          1,
+          1,
+          1
+        ],
+        "median_filter": [
+          0,
+          0.8022388059701493,
+          0.9835390946502057
+        ],
+        "local_mean_product": [
+          0,
+          0.5746268656716418,
+          0.8765432098765432
+        ],
+        "erosion": [
+          0,
+          0,
+          0.18518518518518517
+        ],
+        "line_average": [
+          1,
+          1,
+          1
+        ]
+      },
+      "all_gap_fp": 0,
+      "only_median3_pass": true
+    },
+    "donor": {
+      "seconds": 2.78891130699958,
+      "checks": 2,
+      "nearest": "w058",
+      "distance_0841_w058": [
+        3.1352297049462425,
+        0.02682548652559814
+      ],
+      "distance_0841_w060": [
+        4.359103865613088,
+        0.07982268313517665
+      ],
+      "thresholds": {
+        "w058": 0.2621695101261139,
+        "w060": 0.27519088983535767,
+        "pooled1447": 0.27041327953338623
+      },
+      "asc_fpr": [
+        0.9924793704954563,
+        0.9184916959715888,
+        0.95484140524355
+      ],
+      "desc_fpr": [
+        0.9868737160962362,
+        0.9673409700219352,
+        0.973085895337906
+      ]
+    },
+    "fibre": {
+      "seconds": 1.4650297279995357,
+      "checks": 3,
+      "coherence_auc": [
+        0.5232978816773732,
+        0.45274080571577324,
+        0.5388704085553604
+      ],
+      "center_product_deltas_pp": [
+        [
+          12.251519912562337,
+          13.166060227247362
+        ],
+        [
+          -16.80481435221982,
+          -8.030511492392368
+        ],
+        [
+          -1.9263982994552897,
+          -14.557292573378366
+        ],
+        [
+          5.267702936096718,
+          -2.8063089725288037
+        ]
+      ],
+      "cross_parent_gate": true,
+      "same_parent_gate": false,
+      "no_universal_promotion": true
+    }
+  },
+  "sha256": {
+    "geometry27_json": "7a200eb408e439cea448704bedb7733ff23e429d441daf5140c0f605e6cb68b2",
+    "topology29_json": "85468b3edea62456bf5dcbf9bd4f4e7ac3eefd7a0203f4dad57bd769de5464c0",
+    "student28_json": "1221aebdccf7260089ae967c04523fdb6e540097fb6eba21a12df4e2a5c0e27a",
+    "student_weights_json": "1fee2b280f059c1c3aaf91723a11da4a10f934ae8a3bacd9af67d28c4c6483fe",
+    "donor30_json": "8bdbc5ddae3138769f0cfc5ccd5075d2f9e0661357250592c5afbcbfc448b2e0",
+    "fibre31_json": "92f3d4c6634859154bec8d6fb76ab25949bdf2b31f07ffcff017c667bd4d08f2",
+    "panel841": "926a284be12043aff107107c97b04a0af472e4e37c27a5277131891bad7d6357",
+    "panel1447": "0f529972da360305aaad80d3400f209230427aa4ad9ad45b8df0f5807e4c9fb4",
+    "pred841": "2fb79c53bc83c4d008a9bcffaad7fd788691140e24c7012440b61553ffb8c691",
+    "b30_pred": "a115dbd99b0ec957c9087fa5b84b500c85c237620613f721476abcbba1ad436c",
+    "b30_results": "496406d9b7568e342d56cf6a7994f8fa734ef7cc69307f18cdff7420379c897f",
+    "b26_results": "18e149231d7b7614ecafda20091fdcc8510570a31bd43d6612bfeaa8cee46221"
+  }
+}
