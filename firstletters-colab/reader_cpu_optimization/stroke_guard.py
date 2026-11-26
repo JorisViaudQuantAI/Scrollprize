@@ -78,7 +78,7 @@ def main():
         ids=z['author_indices'];origin=z['states'];assert np.array_equal(origin,np.stack([labels[y:y+32,x:x+32] for y,x in coords[ids]+48]));assert z['probabilities'].shape==(6,53,32,32)
         jobs.append(run_job('scale',z['probabilities'][:5],origin,origin,np.ones_like(origin,bool),coords[ids],ids,z['condition_names'][:5].tolist(),272))
     with np.load(d/'pose_factors.npz',allow_pickle=False) as z:
-        ids=z['author_indices'];origin=z['original_states'];assert np.array_equal(origin,np.stack([labels[y:y+32,x:x+32] for y,x in coords[ids]]));assert z['probabilities'].shape==(8,4,17,32,32)
+        ids=z['author_indices'];origin=z['original_states'];assert np.array_equal(origin,np.stack([labels[y:y+32,x:x+32] for y,x in coords[ids]+48]));assert z['probabilities'].shape==(8,4,17,32,32)
         for i,block in enumerate(z['block_names'].tolist()):
             valid=z['common_masks'][i];assert np.array_equal(z['states'][i],np.where(valid,origin,0))
             jobs.append(run_job(block,z['probabilities'][i,[0,3]],z['states'][i],origin,valid,coords[ids],ids,['identity','rigid'],192))
