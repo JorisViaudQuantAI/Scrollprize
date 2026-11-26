@@ -53,7 +53,7 @@ def prepare(args):
             for j in range(0,384,64):
                 xyz,normal,valid=surf.points(np.arange(y+j,y+j+64),np.arange(x,x+384),9.36)
                 if not valid.all():raise ValueError('invalid full-context geometry at strip '+str(j))
-                offsets=np.arange(-10,11,dtype=np.float32)
+                offsets=np.asarray(np.arange(-10,11,dtype=np.float64)*float(surf.ct_um),dtype=np.float32)/surf.ct_um
                 coords=xyz[None]+normal[None]*offsets[:,None,None,None]
                 raw[:,j:j+64]=np.rint(volume.sample_exact(coords)).clip(0,255).astype(np.uint8)
             # Source-author prepared samples must agree on every covered pixel.
