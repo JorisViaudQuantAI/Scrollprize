@@ -56,7 +56,7 @@ def make_features(l,tiles,ct):
     ry,rx=yy-lo[0],xx-lo[1]
     assert np.all(minimum_filter((support==1).astype(np.uint8),size=9,mode='constant',cval=0)[ry,rx])
     q=volume.astype(np.float32)/255.;raw=q[ry,rx];profile=np.column_stack([raw,np.diff(raw,axis=1)])
-    parts=[profile];
+    parts=[profile]
     for k in (3,9):
         mean=uniform_filter(q,size=(k,k,1));second=uniform_filter(q*q,size=(k,k,1));sd=np.sqrt(np.maximum(second-mean*mean,0.))
         parts.extend([mean[ry,rx],sd[ry,rx]])
