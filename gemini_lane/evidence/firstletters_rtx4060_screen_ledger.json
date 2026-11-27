@@ -4,10 +4,17 @@
     "gpu": "RTX 4060 Laptop 8 GiB",
     "flags": "--vram-fraction 0.35 --studio-batch 1 --ahn-batch 1 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 256",
     "tier1b_flags": "--vram-fraction 0.50 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 74 --cache-mb 320",
+    "s0top_flags": "--vram-fraction 0.65 --studio-batch 4 --batch-pause-ms 250 --max-gpu-temp-c 74 --cache-mb 512",
+    "tightened_guardrail_flags": "--vram-fraction 0.55 --studio-batch 2 --batch-pause-ms 350 --max-gpu-temp-c 72 --cache-mb 2048",
     "observed_temp_c_range": [
       57,
-      67
+      80
     ],
+    "tightened_guardrail_steady_temp_c_range": [
+      57,
+      72
+    ],
+    "thermal_guardrail_note": "One transient 76-80 C excursion occurred during z15344_w035 A-hn follow-up between legacy 4-chunk polling intervals before active cooldown returned to 64-67 C; tightened b_idx % 2 and per-chunk polling holds steady 57-72 C with 0 hardware/OOM incidents.",
     "hardware_or_oom_incidents": 0
   },
   "positive_control": {
@@ -30,9 +37,9 @@
     "receipt": "gemini_lane/evidence/pherc0306b_positive_gate_rtx4060.json"
   },
   "untouched_screening_summary": {
-    "total_unique_valid_ct_cm2": 90.9026,
-    "meshes_screened": 19,
-    "two_family_followups": 6,
+    "total_unique_valid_ct_cm2": 235.4441,
+    "meshes_screened": 49,
+    "two_family_followups": 8,
     "candidates_found": 0
   },
   "meshes": [
@@ -994,6 +1001,1508 @@
       "two_family_followup": null,
       "verdict": "NEGATIVE",
       "note": "Tier-1B zero-overlap winding; quiet bilateral response (asymmetry 1.3713x, strokeness 1.1862); visual montage review confirms diffuse papyrus texture and rim specks with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z16544_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.0344,
+      "on_sheet_after_snap": 0.9407,
+      "f_parallel": 0.9097,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 666.23,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.79088,
+          "p995": 0.84625,
+          "max": 0.93022,
+          "frac_gt_05": 0.042501,
+          "frac_gt_07": 0.020657
+        },
+        "studio_asc": {
+          "p99": 0.82106,
+          "p995": 0.8553,
+          "max": 0.92452,
+          "frac_gt_05": 0.070525,
+          "frac_gt_07": 0.026801
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.3038,
+        "bilateral_overlap_frac": 0.024233,
+        "strokeness_weighted_mean": 1.8383,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; symmetric bilateral diffuse clouds (asymmetry 1.3038x); visual review confirms amorphous bilateral clouds with zero separated letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.2505,
+      "on_sheet_after_snap": 0.98,
+      "f_parallel": 0.9579,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1037.97,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.694,
+          "p995": 0.79821,
+          "max": 0.92644,
+          "frac_gt_05": 0.026617,
+          "frac_gt_07": 0.009633
+        },
+        "studio_asc": {
+          "p99": 0.86369,
+          "p995": 0.88624,
+          "max": 0.93326,
+          "frac_gt_05": 0.106716,
+          "frac_gt_07": 0.050797
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 5.2383,
+        "bilateral_overlap_frac": 0.0147,
+        "strokeness_weighted_mean": 3.4789,
+        "ink_like_candidate": true
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 1.1069,
+        "on_sheet_after_snap": 0.9881,
+        "f_parallel": 0.9623,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1735.9,
+        "peak_allocated_mib_studio": 2514,
+        "peak_allocated_mib_ahn": 1716,
+        "studio_desc": {
+          "p99": 0.73986,
+          "p995": 0.80397,
+          "max": 0.89811,
+          "frac_gt_05": 0.045045,
+          "frac_gt_07": 0.013959
+        },
+        "studio_asc": {
+          "p99": 0.89309,
+          "p995": 0.90188,
+          "max": 0.92632,
+          "frac_gt_05": 0.277103,
+          "frac_gt_07": 0.15557
+        },
+        "ahn_s0_asc": {
+          "p99": 0.84843,
+          "p995": 0.85629,
+          "max": 0.88133,
+          "frac_gt_05": 0.204496,
+          "frac_gt_07": 0.090182
+        },
+        "ahn_s0_desc": {
+          "p99": 0.73215,
+          "p995": 0.78671,
+          "max": 0.86933,
+          "frac_gt_05": 0.059805,
+          "frac_gt_07": 0.013621
+        },
+        "two_family_iou": 0.393596,
+        "adversarial_depth_and_orientation_check": {
+          "variants_tested": 9,
+          "depth_shifts_vx": [
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "spatial_modes": [
+            "orig",
+            "flip_lr",
+            "flip_ud",
+            "rot180"
+          ],
+          "max_q34_score": 0.0,
+          "passes_q34_bar_count": 0,
+          "dz_m6_s96_asc_frac_gt_07": 0.339584,
+          "dz_0_s96_asc_frac_gt_07": 0.147461,
+          "dz_p6_s96_asc_frac_gt_07": 0.038308,
+          "post_run_temp_c": 60,
+          "total_seconds": 5945.15,
+          "verdict": "ARTIFACT_OR_WIDE_BLOB_CONFIRMED"
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; coarse and 2-family Studio s48 + A-hn ROI agreed on wide ~2.5 mm asc clouds (iou=0.3936), but 9-variant adversarial depth/orientation + Q34 check proved monotonic off-sheet growth into neighboring split papyrus layer (dz=-6 asc frac_gt_07=0.3396 vs dz=0 0.1475 vs dz=+6 0.0383) and 0/9 passing Q34 (max q34_score=0.0); zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.8392,
+      "on_sheet_after_snap": 0.9797,
+      "f_parallel": 0.9075,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2659.4,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.80771,
+          "p995": 0.86123,
+          "max": 0.93888,
+          "frac_gt_05": 0.046006,
+          "frac_gt_07": 0.020975
+        },
+        "studio_asc": {
+          "p99": 0.83672,
+          "p995": 0.8791,
+          "max": 0.93282,
+          "frac_gt_05": 0.039493,
+          "frac_gt_07": 0.021326
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.0223,
+        "bilateral_overlap_frac": 0.04267,
+        "strokeness_weighted_mean": 4.052,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; balanced bilateral response (asymmetry 1.0223x); visual review confirms seam/crack-aligned clouds with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.9076,
+      "on_sheet_after_snap": 0.9549,
+      "f_parallel": 0.9496,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 629.36,
+        "peak_allocated_mib": 2514,
+        "studio_desc": {
+          "p99": 0.79443,
+          "p995": 0.85037,
+          "max": 0.9398,
+          "frac_gt_05": 0.057015,
+          "frac_gt_07": 0.022914
+        },
+        "studio_asc": {
+          "p99": 0.70781,
+          "p995": 0.79333,
+          "max": 0.93774,
+          "frac_gt_05": 0.032753,
+          "frac_gt_07": 0.01047
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 2.1904,
+        "bilateral_overlap_frac": 0.043723,
+        "strokeness_weighted_mean": 1.5331,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2 winding; low asymmetry (2.1904x) and patchy seam/delamination blobs on visual review with zero connected letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w030",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.5714,
+      "on_sheet_after_snap": 0.9226,
+      "f_parallel": 0.9237,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 902.61,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.6498,
+          "p995": 0.70899,
+          "max": 0.91823,
+          "frac_gt_05": 0.022353,
+          "frac_gt_07": 0.005683
+        },
+        "studio_asc": {
+          "p99": 0.6287,
+          "p995": 0.70617,
+          "max": 0.87638,
+          "frac_gt_05": 0.023329,
+          "frac_gt_07": 0.005403
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.0722,
+        "bilateral_overlap_frac": 0.0,
+        "strokeness_weighted_mean": 0.7825,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; balanced weak speckles (asymmetry 1.0722x, strokeness 0.7825) and zero connected letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w050",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.4196,
+      "on_sheet_after_snap": 0.9371,
+      "f_parallel": 0.9184,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2327.97,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.6934,
+          "p995": 0.77571,
+          "max": 0.92881,
+          "frac_gt_05": 0.024919,
+          "frac_gt_07": 0.009611
+        },
+        "studio_asc": {
+          "p99": 0.6257,
+          "p995": 0.7064,
+          "max": 0.93705,
+          "frac_gt_05": 0.023495,
+          "frac_gt_07": 0.005293
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.8142,
+        "bilateral_overlap_frac": 0.000905,
+        "strokeness_weighted_mean": 1.0062,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; isolated patchy crack/seam blobs (asymmetry 1.8142x, strokeness 1.0062) and zero letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w060",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.7026,
+      "on_sheet_after_snap": 0.9292,
+      "f_parallel": 0.9161,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2883.25,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.80712,
+          "p995": 0.86993,
+          "max": 0.94302,
+          "frac_gt_05": 0.04496,
+          "frac_gt_07": 0.019578
+        },
+        "studio_asc": {
+          "p99": 0.75474,
+          "p995": 0.8235,
+          "max": 0.91957,
+          "frac_gt_05": 0.032297,
+          "frac_gt_07": 0.013824
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.4379,
+        "bilateral_overlap_frac": 0.013327,
+        "strokeness_weighted_mean": 1.9766,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; fissure/delamination clouds on both faces (asymmetry 1.4379x) and zero connected letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-8928-9728_w040",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.2747,
+      "on_sheet_after_snap": 0.8967,
+      "f_parallel": 0.9081,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1908.34,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.67651,
+          "p995": 0.74491,
+          "max": 0.91225,
+          "frac_gt_05": 0.028961,
+          "frac_gt_07": 0.008368
+        },
+        "studio_asc": {
+          "p99": 0.75403,
+          "p995": 0.81092,
+          "max": 0.90852,
+          "frac_gt_05": 0.038466,
+          "frac_gt_07": 0.015177
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.813,
+        "bilateral_overlap_frac": 0.000722,
+        "strokeness_weighted_mean": 2.2494,
+        "ink_like_candidate": false
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; blocky crack/mottle blobs across fissure regions (asymmetry 1.813x) and zero connected Greek strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w040",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.6668,
+      "on_sheet_after_snap": 0.887,
+      "f_parallel": 0.8945,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1695.55,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.71021,
+          "p995": 0.80162,
+          "max": 0.93544,
+          "frac_gt_05": 0.030039,
+          "frac_gt_07": 0.010709
+        },
+        "studio_asc": {
+          "p99": 0.72893,
+          "p995": 0.80314,
+          "max": 0.93185,
+          "frac_gt_05": 0.036654,
+          "frac_gt_07": 0.012814
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.2035,
+        "bilateral_overlap_frac": 0.009266,
+        "max_regional_asymmetry": 9258.0,
+        "strokeness_weighted_mean": 1.53,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.02344,
+        "asc_top_score": 3.53378
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; borderline 1.5300 strokeness + regional rescue set ink_like_candidate=true, but full-res visual review confirms diffuse 100-150 px fissure/delamination-ring clouds with zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-8928-9728_w030",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.2226,
+      "on_sheet_after_snap": 0.8637,
+      "f_parallel": 0.8927,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1443.0,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.3568,
+          "p995": 0.44162,
+          "max": 0.89588,
+          "frac_gt_05": 0.003378,
+          "frac_gt_07": 0.000322
+        },
+        "studio_asc": {
+          "p99": 0.42042,
+          "p995": 0.50156,
+          "max": 0.8194,
+          "frac_gt_05": 0.005081,
+          "frac_gt_07": 0.000436
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.3564,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 2101.0,
+        "strokeness_weighted_mean": 0.5768,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.83904,
+        "asc_top_score": 4.09297
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; near-blank background noise (p995 0.44-0.50, strokeness 0.5768); note line_review rank_map still scores 4.093 due to per-map z-scoring without probability-amplitude gating."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-8928-9728_w050",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.6362,
+      "on_sheet_after_snap": 0.9254,
+      "f_parallel": 0.8611,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2583.93,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.62705,
+          "p995": 0.74527,
+          "max": 0.93182,
+          "frac_gt_05": 0.018982,
+          "frac_gt_07": 0.006854
+        },
+        "studio_asc": {
+          "p99": 0.47512,
+          "p995": 0.56403,
+          "max": 0.85449,
+          "frac_gt_05": 0.008366,
+          "frac_gt_07": 0.001332
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 5.0547,
+        "bilateral_overlap_frac": 0.002675,
+        "max_regional_asymmetry": 18825.0,
+        "strokeness_weighted_mean": 1.386,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.82363,
+        "asc_top_score": 3.51009
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; diffuse triangular fissure clouds on cavities (strokeness 1.386) and zero letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w025",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.7147,
+      "on_sheet_after_snap": 0.8514,
+      "f_parallel": 0.939,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 577.18,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.45441,
+          "p995": 0.62502,
+          "max": 0.91799,
+          "frac_gt_05": 0.008319,
+          "frac_gt_07": 0.003198
+        },
+        "studio_asc": {
+          "p99": 0.44841,
+          "p995": 0.49433,
+          "max": 0.75316,
+          "frac_gt_05": 0.004611,
+          "frac_gt_07": 0.000241
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 12.6123,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 5163.0,
+        "strokeness_weighted_mean": 0.3259,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.37828,
+        "asc_top_score": 2.40559
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; isolated void-border cloud (strokeness 0.3259) with zero letter strokes on visual review."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w035",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.6653,
+      "on_sheet_after_snap": 0.8685,
+      "f_parallel": 0.9086,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1263.63,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.61977,
+          "p995": 0.6875,
+          "max": 0.86706,
+          "frac_gt_05": 0.02535,
+          "frac_gt_07": 0.004085
+        },
+        "studio_asc": {
+          "p99": 0.81661,
+          "p995": 0.85543,
+          "max": 0.93848,
+          "frac_gt_05": 0.080743,
+          "frac_gt_07": 0.029591
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 7.2427,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 26947.0,
+        "strokeness_weighted_mean": 1.4012,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 1.9467,
+        "asc_top_score": 2.19727
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; diffuse asc clouds over diagonal dark fissures (line_rank 2.197, strokeness 1.4012) and zero pen strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w045",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.7655,
+      "on_sheet_after_snap": 0.93,
+      "f_parallel": 0.9679,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2040.52,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.65492,
+          "p995": 0.75057,
+          "max": 0.93567,
+          "frac_gt_05": 0.021799,
+          "frac_gt_07": 0.007368
+        },
+        "studio_asc": {
+          "p99": 0.7551,
+          "p995": 0.80888,
+          "max": 0.93168,
+          "frac_gt_05": 0.043802,
+          "frac_gt_07": 0.015595
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 2.1042,
+        "bilateral_overlap_frac": 0.012815,
+        "max_regional_asymmetry": 23008.0,
+        "strokeness_weighted_mean": 3.2868,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.54991,
+        "asc_top_score": 3.02607
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; regional rescue + fissure seam ribbon (strokeness 3.2868) flagged ink_like_candidate=true, but full-res visual review confirms 100-250 px diffuse blobs on zigzag CT cracks and delamination swirls with zero connected strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w055",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.951,
+      "on_sheet_after_snap": 0.898,
+      "f_parallel": 0.9208,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2642.42,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.77298,
+          "p995": 0.84093,
+          "max": 0.94195,
+          "frac_gt_05": 0.030869,
+          "frac_gt_07": 0.015859
+        },
+        "studio_asc": {
+          "p99": 0.65062,
+          "p995": 0.74512,
+          "max": 0.9224,
+          "frac_gt_05": 0.021464,
+          "frac_gt_07": 0.007323
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 2.1538,
+        "bilateral_overlap_frac": 0.002046,
+        "max_regional_asymmetry": 17308.0,
+        "strokeness_weighted_mean": 1.5134,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.8938,
+        "asc_top_score": 3.13383
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; borderline 1.5134 strokeness + regional rescue set ink_like_candidate=true, but full-res visual review shows blurry blobs tracking diagonal CT cavities and horizontal crack edge with zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-9328-10128_w065",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 8.1441,
+      "on_sheet_after_snap": 0.9346,
+      "f_parallel": 0.9197,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 3159.54,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.74181,
+          "p995": 0.81562,
+          "max": 0.94478,
+          "frac_gt_05": 0.028616,
+          "frac_gt_07": 0.013115
+        },
+        "studio_asc": {
+          "p99": 0.73838,
+          "p995": 0.84325,
+          "max": 0.92839,
+          "frac_gt_05": 0.021131,
+          "frac_gt_07": 0.011356
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.168,
+        "bilateral_overlap_frac": 0.010606,
+        "max_regional_asymmetry": 26657.0,
+        "strokeness_weighted_mean": 1.236,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.78214,
+        "asc_top_score": 3.01499
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in S0 #1 sharp band; isolated patches over tangled delamination rings and voids (strokeness 1.236) with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w030",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.9245,
+      "on_sheet_after_snap": 0.9166,
+      "f_parallel": 0.9139,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1037.42,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.45131,
+          "p995": 0.62543,
+          "max": 0.89135,
+          "frac_gt_05": 0.008622,
+          "frac_gt_07": 0.003146
+        },
+        "studio_asc": {
+          "p99": 0.8494,
+          "p995": 0.86692,
+          "max": 0.92303,
+          "frac_gt_05": 0.121594,
+          "frac_gt_07": 0.053699
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 17.0086,
+        "bilateral_overlap_frac": 0.011325,
+        "max_regional_asymmetry": 52742.0,
+        "strokeness_weighted_mean": 2.5946,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.95751,
+        "asc_top_score": 2.57729
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in disjoint z=6528-7328 band; broad ~150 px diffuse asc cotton-cloud blotches matching sibling w055 off-sheet split-layer FP with zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w040",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 3.9983,
+      "on_sheet_after_snap": 0.9001,
+      "f_parallel": 0.9474,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1470.92,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.42375,
+          "p995": 0.56807,
+          "max": 0.85019,
+          "frac_gt_05": 0.007022,
+          "frac_gt_07": 0.001436
+        },
+        "studio_asc": {
+          "p99": 0.82902,
+          "p995": 0.85489,
+          "max": 0.91954,
+          "frac_gt_05": 0.084279,
+          "frac_gt_07": 0.033505
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 23.9149,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 23868.0,
+        "strokeness_weighted_mean": 1.7001,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.86423,
+        "asc_top_score": 3.4428
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in disjoint z=6528-7328 band; diffuse unilateral asc blobs over delamination swirls and cavity holes with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w055",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 6.6149,
+      "on_sheet_after_snap": 0.8947,
+      "f_parallel": 0.8832,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2575.89,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.83692,
+          "p995": 0.87062,
+          "max": 0.93858,
+          "frac_gt_05": 0.047438,
+          "frac_gt_07": 0.024944
+        },
+        "studio_asc": {
+          "p99": 0.87883,
+          "p995": 0.89645,
+          "max": 0.94055,
+          "frac_gt_05": 0.129663,
+          "frac_gt_07": 0.065762
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 2.6404,
+        "bilateral_overlap_frac": 0.033855,
+        "max_regional_asymmetry": 55077.0,
+        "strokeness_weighted_mean": 4.0156,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 4.75979,
+        "asc_top_score": 4.20129
+      },
+      "two_family_followup": {
+        "roi_valid_ct_cm2": 0.6891,
+        "on_sheet_after_snap": 0.9074,
+        "f_parallel": 0.9286,
+        "studio_stride": 48,
+        "studio_window": "hann",
+        "ahn_model": "hn4_s0",
+        "total_seconds": 1672.76,
+        "peak_allocated_mib_studio": 1905,
+        "peak_allocated_mib_ahn": 1019,
+        "post_run_temp_c": 58,
+        "studio_desc": {
+          "p99": 0.84398,
+          "p995": 0.87322,
+          "max": 0.90293,
+          "frac_gt_05": 0.058275,
+          "frac_gt_07": 0.03154
+        },
+        "studio_asc": {
+          "p99": 0.90891,
+          "p995": 0.91359,
+          "max": 0.92924,
+          "frac_gt_05": 0.326322,
+          "frac_gt_07": 0.209758
+        },
+        "ahn_s0_asc": {
+          "p99": 0.86351,
+          "p995": 0.86783,
+          "max": 0.89327,
+          "frac_gt_05": 0.275529,
+          "frac_gt_07": 0.170984
+        },
+        "ahn_s0_desc": {
+          "p99": 0.82367,
+          "p995": 0.843,
+          "max": 0.87584,
+          "frac_gt_05": 0.074739,
+          "frac_gt_07": 0.031872
+        },
+        "two_family_iou": 0.465391,
+        "studio_covered_by_ahn": 0.633435,
+        "line_rank_asc_status": "ABSTAIN",
+        "line_rank_desc_top_score": 2.50101,
+        "adversarial_depth_and_orientation_check": {
+          "variants_tested": 9,
+          "depth_shifts_vx": [
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "spatial_modes": [
+            "orig",
+            "flip_lr",
+            "flip_ud",
+            "rot180"
+          ],
+          "max_q34_score": 0.046812,
+          "passes_q34_bar_count": 0,
+          "dz_m6_s96_asc_frac_gt_07": 0.266922,
+          "dz_m3_s96_asc_frac_gt_07": 0.271662,
+          "dz_0_s96_asc_frac_gt_07": 0.201559,
+          "dz_p3_s96_asc_frac_gt_07": 0.129001,
+          "dz_p6_s96_asc_frac_gt_07": 0.071759,
+          "min_orientation_pearson_r": 0.971977,
+          "post_run_temp_c": 59,
+          "total_seconds": 2267.33,
+          "verdict": "ARTIFACT_OR_WIDE_BLOB_CONFIRMED"
+        }
+      },
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened HF winding in disjoint z=6528-7328 band; 2-family Studio s48 + A-hn ROI agreed spatially on asc (iou=0.4654, studio_covered_by_ahn=0.6334) over broad ~3.75 mm cotton clouds (line_rank asc=ABSTAIN), and 9-variant adversarial depth/orientation + Q34 check confirmed 0/9 passing Q34 (max_q34_score=0.046812, width 0.600-0.634 mm at dz=0) with off-sheet peak at dz=-3/-6 (0.2717/0.2669 vs dz=0 0.2016 vs dz=+6 0.0718); zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w020",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.3596,
+      "on_sheet_after_snap": 0.4807,
+      "f_parallel": 0.7188,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 400.03,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.37487,
+          "p995": 0.55817,
+          "max": 0.88977,
+          "frac_gt_05": 0.006454,
+          "frac_gt_07": 0.001244
+        },
+        "studio_asc": {
+          "p99": 0.27043,
+          "p995": 0.31347,
+          "max": 0.48293,
+          "frac_gt_05": 0.0,
+          "frac_gt_07": 0.0
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1929.0,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 1929.0,
+        "strokeness_weighted_mean": 1.5615,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": -0.26758,
+        "asc_top_score": null
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened inner-core winding in disjoint z=6528-7328 band; crushed crumbles and large central void (on_sheet 0.4807, f_parallel 0.7188) with a single isolated square rim artifact and zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0826",
+      "mesh_id": "PHerc0826_slice-6528-7328_w060",
+      "parameterization_method": "mit_arap_2d",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.1814,
+      "on_sheet_after_snap": 0.9185,
+      "f_parallel": 0.8901,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2892.0,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.86615,
+          "p995": 0.89184,
+          "max": 0.94235,
+          "frac_gt_05": 0.07421,
+          "frac_gt_07": 0.038798
+        },
+        "studio_asc": {
+          "p99": 0.65043,
+          "p995": 0.74146,
+          "max": 0.92406,
+          "frac_gt_05": 0.023093,
+          "frac_gt_07": 0.007237
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 5.3526,
+        "bilateral_overlap_frac": 0.044996,
+        "max_regional_asymmetry": 10563.0,
+        "strokeness_weighted_mean": 2.2706,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.8577,
+        "asc_top_score": 3.1304
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "2D MIT ARAP flattened outer winding in disjoint z=6528-7328 band; scattered 100-250 px diffuse desc clouds over wormy delamination boundary loops and pits (plus asc spots on a bright calcified inclusion and fissure); zero connected Greek strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.7525,
+      "on_sheet_after_snap": 0.9526,
+      "f_parallel": 0.9353,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 804.71,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.86094,
+          "p995": 0.89248,
+          "max": 0.94051,
+          "frac_gt_05": 0.054754,
+          "frac_gt_07": 0.027184
+        },
+        "studio_asc": {
+          "p99": 0.74353,
+          "p995": 0.80501,
+          "max": 0.90907,
+          "frac_gt_05": 0.039989,
+          "frac_gt_07": 0.014209
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.9123,
+        "bilateral_overlap_frac": 0.028186,
+        "max_regional_asymmetry": 16689.0,
+        "strokeness_weighted_mean": 2.1602,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 4.27299,
+        "asc_top_score": 1.4548
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2B flat pscamillo winding; desc and asc blocky tile clouds co-locate over cracked horizontal delamination strips with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w065",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.1145,
+      "on_sheet_after_snap": 0.9704,
+      "f_parallel": 0.8785,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2789.1,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.81779,
+          "p995": 0.87342,
+          "max": 0.93935,
+          "frac_gt_05": 0.046403,
+          "frac_gt_07": 0.022222
+        },
+        "studio_asc": {
+          "p99": 0.62332,
+          "p995": 0.72777,
+          "max": 0.93492,
+          "frac_gt_05": 0.019049,
+          "frac_gt_07": 0.006275
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 3.513,
+        "bilateral_overlap_frac": 0.008919,
+        "max_regional_asymmetry": 29829.0,
+        "strokeness_weighted_mean": 1.8858,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 4.57203,
+        "asc_top_score": 2.92101
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2B flat pscamillo winding; diffuse desc blobs over swirled delamination cavities and a wide ~200 px border crescent cloud plus sparse crack-edge tile blocks; zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w035",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 4.1233,
+      "on_sheet_after_snap": 0.9681,
+      "f_parallel": 0.9417,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1351.5,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.84016,
+          "p995": 0.89197,
+          "max": 0.94063,
+          "frac_gt_05": 0.041923,
+          "frac_gt_07": 0.020594
+        },
+        "studio_asc": {
+          "p99": 0.83154,
+          "p995": 0.85989,
+          "max": 0.92115,
+          "frac_gt_05": 0.076081,
+          "frac_gt_07": 0.030292
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.4599,
+        "bilateral_overlap_frac": 0.018204,
+        "max_regional_asymmetry": 32005.0,
+        "strokeness_weighted_mean": 2.6603,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.94175,
+        "asc_top_score": 2.25098
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2B flat pscamillo winding; diffuse bilateral blobs over torn mesh rims and horizontal crack mottling with zero connected strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15936_w045",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.2881,
+      "on_sheet_after_snap": 0.9782,
+      "f_parallel": 0.9425,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1804.23,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.82279,
+          "p995": 0.87049,
+          "max": 0.94295,
+          "frac_gt_05": 0.052906,
+          "frac_gt_07": 0.023328
+        },
+        "studio_asc": {
+          "p99": 0.85204,
+          "p995": 0.88349,
+          "max": 0.9452,
+          "frac_gt_05": 0.068003,
+          "frac_gt_07": 0.030029
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.2693,
+        "bilateral_overlap_frac": 0.025003,
+        "max_regional_asymmetry": 11578.0,
+        "strokeness_weighted_mean": 2.3967,
+        "ink_like_candidate": true,
+        "visual_override": "NEGATIVE"
+      },
+      "line_rank_summary": {
+        "desc_top_score": 4.13041,
+        "asc_top_score": 3.09133
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2B flat pscamillo winding; bilateral tile-cloud scatter over heavily pitted speckle-rich delaminated fibers with zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.8002,
+      "on_sheet_after_snap": 0.9834,
+      "f_parallel": 0.9223,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2073.16,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.8432,
+          "p995": 0.88775,
+          "max": 0.94691,
+          "frac_gt_05": 0.053849,
+          "frac_gt_07": 0.026454
+        },
+        "studio_asc": {
+          "p99": 0.77922,
+          "p995": 0.83604,
+          "max": 0.93471,
+          "frac_gt_05": 0.047096,
+          "frac_gt_07": 0.017553
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.5073,
+        "bilateral_overlap_frac": 0.05838,
+        "max_regional_asymmetry": 16247.0,
+        "strokeness_weighted_mean": 1.717,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.27511,
+        "asc_top_score": 3.07632
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2B flat pscamillo winding; classic bilateral papyrus-mottle cloud cluster co-located across desc and asc (bilateral_overlap 0.0584, ink_like_candidate=false) with zero letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14736_w050",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 5.6137,
+      "on_sheet_after_snap": 0.9854,
+      "f_parallel": 0.9286,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 1732.94,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.70164,
+          "p995": 0.77957,
+          "max": 0.93721,
+          "frac_gt_05": 0.031692,
+          "frac_gt_07": 0.010109
+        },
+        "studio_asc": {
+          "p99": 0.79596,
+          "p995": 0.84046,
+          "max": 0.92419,
+          "frac_gt_05": 0.045092,
+          "frac_gt_07": 0.019972
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.9786,
+        "bilateral_overlap_frac": 0.021889,
+        "max_regional_asymmetry": 13762.0,
+        "strokeness_weighted_mean": 2.1197,
+        "ink_like_candidate": true
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.90635,
+        "asc_top_score": 3.26106
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat pscamillo winding; sparse crack-edge tile clouds and low asymmetry (1.9786x) with zero Greek letter strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w065",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 7.3861,
+      "on_sheet_after_snap": 0.957,
+      "f_parallel": 0.9383,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 2510.74,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.85996,
+          "p995": 0.88935,
+          "max": 0.94966,
+          "frac_gt_05": 0.069592,
+          "frac_gt_07": 0.036037
+        },
+        "studio_asc": {
+          "p99": 0.82699,
+          "p995": 0.86301,
+          "max": 0.93499,
+          "frac_gt_05": 0.07746,
+          "frac_gt_07": 0.033979
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "desc",
+        "asymmetry_ratio": 1.0517,
+        "bilateral_overlap_frac": 0.060216,
+        "max_regional_asymmetry": 13001.0,
+        "strokeness_weighted_mean": 1.9164,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 3.99365,
+        "asc_top_score": 4.15433
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat pscamillo winding; bilateral papyrus-mottle cotton clouds across desc and asc (asymmetry 1.0517x, bilateral_overlap 0.0602) with zero connected strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z15344_w025",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 2.9805,
+      "on_sheet_after_snap": 0.9169,
+      "f_parallel": 0.9257,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 885.94,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.75671,
+          "p995": 0.81047,
+          "max": 0.90557,
+          "frac_gt_05": 0.045343,
+          "frac_gt_07": 0.015619
+        },
+        "studio_asc": {
+          "p99": 0.76191,
+          "p995": 0.81202,
+          "max": 0.91115,
+          "frac_gt_05": 0.043848,
+          "frac_gt_07": 0.017601
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.1306,
+        "bilateral_overlap_frac": 0.007449,
+        "max_regional_asymmetry": 13994.0,
+        "strokeness_weighted_mean": 1.8251,
+        "ink_like_candidate": true
+      },
+      "line_rank_summary": {
+        "desc_top_score": 1.9277,
+        "asc_top_score": 3.62451
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C pscamillo inner winding; diffuse speckle and delamination-edge blobs (asymmetry 1.1306x, p90_disp 9.76 vx) with zero Greek strokes."
+    },
+    {
+      "scroll": "PHerc0125",
+      "mesh_id": "z14144_w015",
+      "voxel_um": 9.362,
+      "valid_ct_cm2": 1.6377,
+      "on_sheet_after_snap": 0.9715,
+      "f_parallel": 1.0,
+      "coarse_pass": {
+        "detectors": [
+          "studio_desc",
+          "studio_asc"
+        ],
+        "studio_stride": 96,
+        "total_seconds": 432.21,
+        "peak_allocated_mib": 1905,
+        "studio_desc": {
+          "p99": 0.5464,
+          "p995": 0.60982,
+          "max": 0.82109,
+          "frac_gt_05": 0.014789,
+          "frac_gt_07": 0.001576
+        },
+        "studio_asc": {
+          "p99": 0.54791,
+          "p995": 0.64053,
+          "max": 0.78838,
+          "frac_gt_05": 0.013701,
+          "frac_gt_07": 0.002249
+        }
+      },
+      "fp_diagnostics_summary": {
+        "dominant_face": "asc",
+        "asymmetry_ratio": 1.4268,
+        "bilateral_overlap_frac": 0.0,
+        "max_regional_asymmetry": 1720.0,
+        "strokeness_weighted_mean": 0.9714,
+        "ink_like_candidate": false
+      },
+      "line_rank_summary": {
+        "desc_top_score": 2.5625,
+        "asc_top_score": 1.43713
+      },
+      "two_family_followup": null,
+      "verdict": "NEGATIVE",
+      "note": "S0-Top Tier-2C flat inner pscamillo winding; quiet blank strip (studio_desc/asc p995 0.6098/0.6405, frac_gt_07 <= 0.0023, strokeness 0.9714, zero hits)."
     }
   ]
 }

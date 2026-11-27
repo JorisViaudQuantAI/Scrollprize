@@ -491,6 +491,37 @@ class TestStreamSnapRender(unittest.TestCase):
         self.assertFalse(bool(mask_fwd[:, :3].any()))
         self.assertTrue(bool(mask_fwd[:, 5:].all()))
 
+    def test_7_signed_snap_step_detects_sheet_switch_vs_smooth_snap(self) -> None:
+        # Smooth planar sheet at z = 22.0, mesh initialized at z = 20.0 -> uniform +2 vx shift.
+        h, w = 16, 16
+        uu, vv = np.meshgrid(
+            np.arange(10, 10 + w, dtype=np.float32),
+            np.arange(10, 10 + h, dtype=np.float32),
+            indexing="xy",
+        )
+        zz = np.full((h, w), 20.0, dtype=np.float32)
+
+        m7_smooth = np.zeros((40, 40, 40), dtype=np.uint8)
+        m7_smooth[22, :, :] = 255
+        with tempfile.TemporaryDirectory() as tmp:
+            zdir = _write_local_zarr_v2(Path(tmp) / "m7_s.zarr", m7_smooth, chunks=(16, 16, 16))
+            with ssr.RemoteZarrV2(zdir, level="0", cache_mb=8, workers=1) as reader:
+                _, _, _, m_smooth = ssr.snap_tifxyz_to_m7(uu, vv, zz, reader, passes=2, search_radius=12, step=1.0, threshold=51)
+        self.assertEqual(m_smooth["adjacent_signed_step_ge_6vx_frac"], 0.0)
+        self.assertEqual(m_smooth["adjacent_sign_flip_ge_6vx_frac"], 0.0)
+        self.assertAlmostEqual(m_smooth["signed_disp_p50_vx"], 2.0, delta=0.1)
+
+        # Split-sheet m7: left half (x < 18) sits at z = 27 (+7 vx), right half (x >= 18) sits at z = 13 (-7 vx).
+        m7_split = np.zeros((40, 40, 40), dtype=np.uint8)
+        m7_split[27, :, :18] = 255
+        m7_split[13, :, 18:] = 255
+        with tempfile.TemporaryDirectory() as tmp:
+            zdir = _write_local_zarr_v2(Path(tmp) / "m7_jump.zarr", m7_split, chunks=(16, 16, 16))
+            with ssr.RemoteZarrV2(zdir, level="0", cache_mb=8, workers=1) as reader:
+                _, _, _, m_jump = ssr.snap_tifxyz_to_m7(uu, vv, zz, reader, passes=2, search_radius=12, step=1.0, threshold=51)
+        self.assertGreater(m_jump["adjacent_signed_step_ge_6vx_frac"], 0.0)
+        self.assertGreater(m_jump["adjacent_sign_flip_ge_6vx_frac"], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

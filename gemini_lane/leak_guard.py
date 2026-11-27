@@ -17,7 +17,7 @@ import re
 from pathlib import Path
 
 GENERIC_ACCOUNT_NAMES = frozenset(
-    {"root", "user", "admin", "administrator", "runner", "ubuntu", "default", "owner"}
+    {"root", "user", "admin", "administrator", "runner", "ubuntu", "default", "owner", "agent"}
 )
 
 # Built by concatenation so that this file (and tests that import it) never contain a literal local path.

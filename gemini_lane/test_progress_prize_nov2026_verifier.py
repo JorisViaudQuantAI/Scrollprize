@@ -87,6 +87,18 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
         self.assertEqual(t15["pherc0191_hf_pct_area_gt_20deg"], 58.959)
         self.assertEqual(t15["exp_t11_rgt_synthetic_shear_p95_deg"], 0.32)
 
+        t18 = p1["exp_t18_mit_arap_2d_flattening"]
+        self.assertEqual(t18["windings_evaluated_0211"], 6)
+        self.assertEqual(t18["mit_arap_gate_passed_0211"], 6)
+        self.assertEqual(t18["claude_flatboi_gate_passed_0211"], 6)
+        self.assertEqual(t18["mit_arap_median_sh8_deg"], 6.03)
+        self.assertEqual(t18["claude_flatboi_median_sh8_deg"], 6.796)
+        self.assertEqual(t18["mit_arap_median_area_inflation"], 0.9889)
+        self.assertEqual(t18["pherc0826_windings_ready"], 7)
+        self.assertEqual(t18["pherc0826_total_ready_valid_ct_cm2"], 37.4939)
+        self.assertEqual(t18["pherc0211_w033_arap_valid_ct_cm2"], 5.4443)
+        self.assertEqual(t18["pherc0211_w033_arap_verdict"], "POSITIVE_GATE_PASS")
+
     def test_02_pillar2_fp16_patches_and_streaming_invariants(self) -> None:
         patches = self.summary["artifacts"]["patches"]
         self.assertEqual(patches["studio_fp16"]["base_commit"], "bf66f753176792a966bca17822629fb8821f20c8")
@@ -170,17 +182,17 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
         self.assertFalse(t17["snap2_studio_s48_global_upgraded_passes_q34_bar"])
         self.assertTrue(t17["pherc0306b_same_face_direction_between_families"])
         self.assertEqual(t17["pherc0306b_ahn_dom_over_opp_ratio"], 2.8031)
-        self.assertEqual(len(self.summary["artifacts"]["receipts"]), 18)
+        self.assertEqual(len(self.summary["artifacts"]["receipts"]), 20)
 
     def test_04_rtx4060_ledger_sum_and_followup_consistency(self) -> None:
         led = self.summary["pillar3_fp_suppression_invariance_and_ledger"]["rtx4060_screen_ledger"]
-        self.assertEqual(led["total_unique_valid_ct_cm2"], 90.9026)
-        self.assertEqual(led["meshes_screened"], 19)
-        self.assertEqual(led["two_family_followups"], 6)
+        self.assertEqual(led["total_unique_valid_ct_cm2"], 235.4441)
+        self.assertEqual(led["meshes_screened"], 49)
+        self.assertEqual(led["two_family_followups"], 8)
         self.assertEqual(led["candidates_found"], 0)
         self.assertEqual(led["hardware_or_oom_incidents"], 0)
-        self.assertAlmostEqual(sum(led["per_scroll_valid_ct_cm2"].values()), 90.9026, places=4)
-        self.assertEqual(sum(led["per_scroll_mesh_counts"].values()), 19)
+        self.assertAlmostEqual(sum(led["per_scroll_valid_ct_cm2"].values()), 235.4441, places=4)
+        self.assertEqual(sum(led["per_scroll_mesh_counts"].values()), 49)
 
     def test_05_validate_dossier_markdown_passes_on_committed_file(self) -> None:
         self.assertTrue(DOSSIER_MD_PATH.is_file())
@@ -207,7 +219,7 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
                     V.validate_dossier_markdown(bad_path, self.summary)
 
             # 2. Missing required numerical token
-            corrupted = clean_md.replace("90.9026", "99.9999")
+            corrupted = clean_md.replace("235.4441", "99.9999")
             bad_path.write_text(corrupted, encoding="utf-8")
             with self.assertRaises(ValueError):
                 V.validate_dossier_markdown(bad_path, self.summary)
@@ -241,8 +253,8 @@ class TestProgressPrizeNov2026Verifier(unittest.TestCase):
             self.assertTrue(brief["cpu_only"])
             self.assertFalse(brief["torch_imported"])
             self.assertTrue(brief["dossier_markdown_valid"])
-            self.assertEqual(brief["rtx4060_screened_cm2"], 90.9026)
-            self.assertEqual(brief["receipts_verified"], 18)
+            self.assertEqual(brief["rtx4060_screened_cm2"], 235.4441)
+            self.assertEqual(brief["receipts_verified"], 20)
             self.assertTrue(out_json.is_file())
             exported = json.loads(out_json.read_text(encoding="utf-8"))
             self.assertEqual(exported["schema"], V.SCHEMA_VERSION)

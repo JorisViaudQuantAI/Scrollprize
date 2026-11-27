@@ -204,7 +204,49 @@ class TestScreenScrollSafety(unittest.TestCase):
             self.assertTrue((mesh_out / "summary.json").is_file())
             on_disk = json.loads((mesh_out / "summary.json").read_text(encoding="utf-8"))
             self.assertEqual(on_disk["fp_diagnostics"], fp)
+            self.assertIn("line_rank", on_disk)
+            self.assertTrue(on_disk["line_rank"]["available"])
             self.assertEqual(list(work_root.iterdir()), [])
+
+    def test_dual_order_hotspots_and_line_rank_abstain_on_blank(self) -> None:
+        valid = np.ones((220, 640), dtype=bool)
+        desc = np.full((220, 640), 0.05, dtype=np.float32)
+        asc = np.full((220, 640), 0.05, dtype=np.float32)
+        # Opposite-order peaks on left (desc) and right (asc)
+        desc[20:140, 20:180] = 0.85
+        asc[20:140, 420:580] = 0.90
+        merged_hs = []
+        for o, arr in (("desc", desc), ("asc", asc)):
+            for hs in S.find_top_hotspots(arr, valid, win=128, top_k=2):
+                merged_hs.append({**hs, "order": o})
+        merged_hs.sort(key=lambda h: h["score"], reverse=True)
+        orders_present = {h["order"] for h in merged_hs[:4]}
+        self.assertEqual(orders_present, {"desc", "asc"})
+
+        blank = {o: {"prob": np.full((220, 640), 0.02, dtype=np.float32), "valid": valid} for o in ("desc", "asc")}
+        lr = S.compute_line_first_summary(blank, valid, 9.362)
+        self.assertTrue(lr["available"])
+        self.assertEqual(lr["orders"]["desc"]["status"], "ABSTAIN")
+        self.assertIsNone(lr["orders"]["desc"]["top_score"])
+        self.assertEqual(lr["orders"]["asc"]["status"], "ABSTAIN")
+        self.assertIsNone(lr["orders"]["asc"]["top_score"])
+
+    def test_line_rank_handles_none_contrast_on_crop_edge(self) -> None:
+        valid = np.ones((420, 1400), dtype=bool)
+        prob = np.full((420, 1400), 0.02, dtype=np.float32)
+        for x0 in (100, 320, 540, 760, 980):
+            prob[40:115, x0 : x0 + 75] = 0.85
+        maps = {
+            "desc": {"prob": prob, "valid": valid},
+            "asc": {"prob": np.full((420, 1400), 0.02, dtype=np.float32), "valid": valid},
+        }
+        lr = S.compute_line_first_summary(maps, valid, 9.362)
+        self.assertTrue(lr["available"])
+        self.assertEqual(lr["orders"]["desc"]["status"], "RANKED")
+        self.assertGreaterEqual(len(lr["orders"]["desc"]["top_proposals"]), 1)
+        self.assertTrue(any(p["contrast"] is None for p in lr["orders"]["desc"]["top_proposals"]))
+        self.assertEqual(lr["orders"]["asc"]["status"], "ABSTAIN")
+        json.dumps(lr)
 
     def test_compute_fp_diagnostics_studio_only_flags_crack_halo(self) -> None:
         rng = np.random.default_rng(0)
@@ -388,6 +430,8 @@ class TestScreenScrollSafety(unittest.TestCase):
             "r120-164",
             "r10-56",
             "c178-255",
+            "r58-96",
+            "c256-310",
         )
         for forbidden in forbidden_substrings:
             self.assertNotIn(forbidden, raw_text)
@@ -395,11 +439,69 @@ class TestScreenScrollSafety(unittest.TestCase):
         data = json.loads(raw_text)
         total_cm2 = round(sum(m["valid_ct_cm2"] for m in data["meshes"]), 4)
         self.assertEqual(total_cm2, data["untouched_screening_summary"]["total_unique_valid_ct_cm2"])
-        self.assertEqual(total_cm2, 90.9026)
+        self.assertEqual(total_cm2, 235.4441)
         self.assertEqual(data["untouched_screening_summary"]["candidates_found"], 0)
-        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 6)
-        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 19)
+        self.assertEqual(data["untouched_screening_summary"]["two_family_followups"], 8)
+        self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], 49)
         self.assertEqual(data["untouched_screening_summary"]["meshes_screened"], len(data["meshes"]))
+
+    def test_cross_order_hotspot_dedup_and_line_rank_rescue(self) -> None:
+        h, w = 2200, 2400
+        valid = np.ones((h, w), dtype=bool)
+        desc = np.full((h, w), 0.05, dtype=np.float32)
+        asc = np.full((h, w), 0.05, dtype=np.float32)
+        # Same-location strong density peak across both orders + secondary peaks in upper half
+        desc[64:576, 64:576] = 0.90
+        asc[64:576, 64:576] = 0.85
+        asc[64:576, 768:1280] = 0.72
+        desc[64:576, 1536:2048] = 0.68
+        asc[600:1112, 64:576] = 0.66
+        st_res = {
+            "desc": {"prob": desc, "valid": valid},
+            "asc": {"prob": asc, "valid": valid},
+        }
+        deduped = S._dedupe_density_hotspots(st_res, win=512, top_k=4)
+        coords = [(d["y"], d["x"]) for d in deduped]
+        self.assertEqual(len(coords), len(set(coords)))
+
+        # Uncovered line_rank proposal: #1 is real bright chain at lower right; #2 is dim contrast artifact
+        desc[1600:1760, 1700:2020] = 0.88
+        line_rank = {
+            "available": True,
+            "orders": {
+                "desc": {
+                    "top_proposals": [
+                        {"rank": 1, "score": 3.8, "bbox_yxyx": [1500, 1550, 2050, 2150]},
+                    ]
+                },
+                "asc": {
+                    "top_proposals": [
+                        {"rank": 1, "score": 4.1, "bbox_yxyx": [1500, 200, 2050, 800]},  # low signal (<0.65)
+                    ]
+                },
+            },
+        }
+        rescued = S.select_line_rank_hotspots(st_res, line_rank, deduped, crop_px=512)
+        self.assertEqual(len(rescued), 1)
+        self.assertEqual(rescued[0]["source"], "line_rank")
+        self.assertEqual(rescued[0]["order"], "desc")
+        self.assertGreaterEqual(rescued[0]["peak_prob"], 0.65)
+
+        combined = [{**hs, "rank": i} for i, hs in enumerate(deduped + rescued, start=1)]
+        with tempfile.TemporaryDirectory(prefix="scrollprize-lr-vis-") as tmp:
+            out_dir = Path(tmp)
+            ct = np.full((h, w), 110, dtype=np.uint8)
+            _, hname = S.write_visuals(
+                out_dir,
+                "TEST/lr",
+                ct,
+                valid,
+                [("Studio fp16 desc", desc, valid), ("Studio fp16 asc", asc, valid)],
+                combined,
+                9.362,
+            )
+            self.assertIsNotNone(hname)
+            self.assertTrue((out_dir / hname).is_file())
 
 
 if __name__ == "__main__":

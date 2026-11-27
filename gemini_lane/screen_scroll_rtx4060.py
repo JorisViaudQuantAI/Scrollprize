@@ -39,8 +39,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 GEMINI_DIR = Path(__file__).resolve().parent
 STUDIO_T4_DIR = REPO_ROOT / "firstletters-colab" / "studio_t4"
 ONSHEET_DIR = REPO_ROOT / "firstletters-colab" / "onsheet_score"
+LINE_REVIEW_DIR = REPO_ROOT / "firstletters-colab" / "line_review"
 
-for _p in (str(GEMINI_DIR), str(STUDIO_T4_DIR), str(ONSHEET_DIR)):
+for _p in (str(GEMINI_DIR), str(STUDIO_T4_DIR), str(ONSHEET_DIR), str(LINE_REVIEW_DIR)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
@@ -489,6 +490,63 @@ def compute_fp_diagnostics(
     )
 
 
+def compute_line_first_summary(
+    st_res: dict[str, dict],
+    valid_ct: np.ndarray,
+    voxel_um: float,
+    *,
+    top_k: int = 4,
+) -> dict:
+    """Run CPU MIT ``line_review.rank_map`` across ``desc`` and ``asc`` Studio probability maps.
+
+    Explicitly records ``status='ABSTAIN'`` with ``top_score=None`` when no chain passes
+    the line-finder threshold (never conflating abstention with score ``0.0``).
+    """
+    try:
+        import review as line_review
+    except Exception as exc:
+        return {"available": False, "error": str(exc), "orders": {}}
+
+    spacing = [float(voxel_um), float(voxel_um)]
+    orders_out: dict[str, dict] = {}
+    for order in ("desc", "asc"):
+        if order not in st_res:
+            continue
+        r = st_res[order]
+        valid = np.asarray(valid_ct, dtype=bool) & np.asarray(r["valid"], dtype=bool)
+        prob = np.where(valid, np.clip(r["prob"], 0.0, 1.0), 0.0).astype(np.float32)
+        if not valid.any():
+            orders_out[order] = {
+                "status": "ABSTAIN",
+                "top_score": None,
+                "proposal_count": 0,
+                "seconds": 0.0,
+                "top_proposals": [],
+            }
+            continue
+        rep = line_review.rank_map(prob, valid, spacing, "probability")
+        props = rep.get("proposals", [])
+        orders_out[order] = {
+            "status": "RANKED" if props else "ABSTAIN",
+            "top_score": round(float(props[0]["score"]), 5) if props else None,
+            "proposal_count": int(len(props)),
+            "seconds": round(float(rep.get("seconds", 0.0)), 3),
+            "top_proposals": [
+                {
+                    "rank": idx,
+                    "score": round(float(p["score"]), 5),
+                    "slot_count": int(p["slot_count"]),
+                    "length_mm": round(float(p["length_mm"]), 2),
+                    "angle_deg": round(float(p["angle_deg"]), 1),
+                    "contrast": round(float(p["contrast"]), 4) if p.get("contrast") is not None else None,
+                    "bbox_yxyx": [int(v) for v in p["bbox_yxyx"]],
+                }
+                for idx, p in enumerate(props[:top_k], start=1)
+            ],
+        }
+    return {"available": True, "schema": "line_first_s3_v1", "orders": orders_out}
+
+
 def find_top_hotspots(
     prob: np.ndarray,
     valid: np.ndarray,
@@ -539,6 +597,202 @@ def find_top_hotspots(
         if len(picked) >= top_k:
             break
     return picked
+
+
+def _bbox_iou_yxyx(box_a: tuple[int, int, int, int], box_b: tuple[int, int, int, int]) -> float:
+    iy0 = max(box_a[0], box_b[0])
+    ix0 = max(box_a[1], box_b[1])
+    iy1 = min(box_a[2], box_b[2])
+    ix1 = min(box_a[3], box_b[3])
+    if iy1 <= iy0 or ix1 <= ix0:
+        return 0.0
+    inter = float((iy1 - iy0) * (ix1 - ix0))
+    area_a = float(max(0, box_a[2] - box_a[0]) * max(0, box_a[3] - box_a[1]))
+    area_b = float(max(0, box_b[2] - box_b[0]) * max(0, box_b[3] - box_b[1]))
+    union = area_a + area_b - inter
+    return inter / union if union > 0.0 else 0.0
+
+
+def _dedupe_density_hotspots(
+    st_res: dict[str, dict],
+    *,
+    win: int = 512,
+    top_k: int = 4,
+) -> list[dict]:
+    """Merge ``find_top_hotspots`` across ``desc``/``asc`` with spatial deduplication."""
+    merged: list[dict] = []
+    present_orders = [o for o in ("desc", "asc") if o in st_res]
+    for order in present_orders:
+        for item in find_top_hotspots(st_res[order]["prob"], st_res[order]["valid"], win=win, top_k=top_k):
+            merged.append({**item, "order": order, "source": "density"})
+    merged.sort(
+        key=lambda h: (float(h["score"]), float(h["hot_frac_ge045"]), float(h["mean_prob"])),
+        reverse=True,
+    )
+
+    picked: list[dict] = []
+    for cand in merged:
+        cy, cx, ch, cw = cand["y"], cand["x"], cand["h"], cand["w"]
+        if any(abs(cy - p["y"]) < ch * 0.65 and abs(cx - p["x"]) < cw * 0.65 for p in picked):
+            continue
+        if len(picked) == top_k - 1 and len(present_orders) == 2:
+            seen_orders = {p["order"] for p in picked}
+            missing = next((o for o in present_orders if o not in seen_orders), None)
+            if missing is not None and cand["order"] != missing:
+                alt = next(
+                    (
+                        c
+                        for c in merged
+                        if c["order"] == missing
+                        and not any(abs(c["y"] - p["y"]) < c["h"] * 0.65 and abs(c["x"] - p["x"]) < c["w"] * 0.65 for p in picked)
+                    ),
+                    None,
+                )
+                if alt is not None:
+                    picked.append(alt)
+                    break
+        picked.append(cand)
+        if len(picked) >= top_k:
+            break
+    return picked
+
+
+def select_line_rank_hotspots(
+    st_res: dict[str, dict],
+    line_rank: dict | None,
+    existing_hotspots: list[dict],
+    *,
+    crop_px: int = 512,
+    min_score: float = 2.5,
+    max_iou: float = 0.1,
+    min_peak_prob: float = 0.65,
+    min_hot_frac: float = 0.05,
+    max_crops: int = 2,
+) -> list[dict]:
+    """Select uncovered ``line_rank`` peak sub-crops so chains outside density hotspots are rendered."""
+    if not line_rank or not line_rank.get("available"):
+        return []
+
+    proposals: list[tuple[float, str, dict]] = []
+    orders = line_rank.get("orders", {})
+    for order in ("desc", "asc"):
+        if order not in st_res:
+            continue
+        for prop in orders.get(order, {}).get("top_proposals", []):
+            proposals.append((float(prop.get("score", 0.0)), order, prop))
+    proposals.sort(key=lambda item: item[0], reverse=True)
+
+    taken_boxes: list[tuple[int, int, int, int]] = [
+        (int(h["y"]), int(h["x"]), int(h["y"] + h["h"]), int(h["x"] + h["w"]))
+        for h in existing_hotspots
+    ]
+    integrals: dict[str, tuple[np.ndarray, np.ndarray, np.ndarray]] = {}
+    selected: list[dict] = []
+
+    for lr_score, order, prop in proposals:
+        if lr_score < min_score:
+            continue
+        prob = st_res[order]["prob"]
+        valid = np.asarray(st_res[order]["valid"], dtype=bool)
+        h_img, w_img = prob.shape
+        ch, cw = min(crop_px, h_img), min(crop_px, w_img)
+        if ch <= 0 or cw <= 0:
+            continue
+
+        ry0, rx0, ry1, rx1 = (int(v) for v in prop["bbox_yxyx"])
+        ry0 = max(0, min(h_img, ry0))
+        rx0 = max(0, min(w_img, rx0))
+        ry1 = max(0, min(h_img, ry1))
+        rx1 = max(0, min(w_img, rx1))
+        if ry1 <= ry0 or rx1 <= rx0:
+            continue
+
+        prop_box = (ry0, rx0, ry1, rx1)
+
+        if order not in integrals:
+            hot_arr = ((prob >= 0.45) & valid).astype(np.int64)
+            p_arr = np.where(valid, prob, 0.0).astype(np.float64)
+            integrals[order] = (
+                np.pad(valid.astype(np.int64).cumsum(0).cumsum(1), ((1, 0), (1, 0))),
+                np.pad(hot_arr.cumsum(0).cumsum(1), ((1, 0), (1, 0))),
+                np.pad(p_arr.cumsum(0).cumsum(1), ((1, 0), (1, 0))),
+            )
+        int_val, int_hot, int_sum = integrals[order]
+
+        if ry1 - ry0 <= ch:
+            ys = [max(0, min(h_img - ch, (ry0 + ry1 - ch) // 2))]
+        else:
+            y_end = max(0, min(h_img - ch, ry1 - ch))
+            ys = list(range(max(0, min(y_end, ry0)), y_end + 1, 64))
+            if not ys or ys[-1] != y_end:
+                ys.append(y_end)
+        if rx1 - rx0 <= cw:
+            xs = [max(0, min(w_img - cw, (rx0 + rx1 - cw) // 2))]
+        else:
+            x_end = max(0, min(w_img - cw, rx1 - cw))
+            xs = list(range(max(0, min(x_end, rx0)), x_end + 1, 64))
+            if not xs or xs[-1] != x_end:
+                xs.append(x_end)
+
+        best = None
+        fallback = None
+        for cy in ys:
+            for cx in xs:
+                crop_box = (cy, cx, cy + ch, cx + cw)
+                if any(
+                    _bbox_iou_yxyx(crop_box, tb) >= max_iou
+                    or (abs(cy - tb[0]) < ch * 0.65 and abs(cx - tb[1]) < cw * 0.65)
+                    for tb in taken_boxes
+                ):
+                    continue
+                v_cnt = int(int_val[cy + ch, cx + cw] - int_val[cy, cx + cw] - int_val[cy + ch, cx] + int_val[cy, cx])
+                if v_cnt <= 0:
+                    continue
+                hs_cnt = int(int_hot[cy + ch, cx + cw] - int_hot[cy, cx + cw] - int_hot[cy + ch, cx] + int_hot[cy, cx])
+                ps_sum = float(int_sum[cy + ch, cx + cw] - int_sum[cy, cx + cw] - int_sum[cy + ch, cx] + int_sum[cy, cx])
+                sc = (hs_cnt / v_cnt) * 0.7 + (ps_sum / v_cnt) * 0.3
+                cand_tuple = (sc, v_cnt, cy, cx)
+                if fallback is None or cand_tuple > fallback:
+                    fallback = cand_tuple
+                if v_cnt >= 0.25 * ch * cw and (best is None or cand_tuple > best):
+                    best = cand_tuple
+        chosen = best or fallback
+        if chosen is None:
+            continue
+        _, _, cy, cx = chosen
+        crop_box = (cy, cx, cy + ch, cx + cw)
+
+        p_crop = prob[cy : cy + ch, cx : cx + cw]
+        v_crop = valid[cy : cy + ch, cx : cx + cw]
+        if not v_crop.any():
+            continue
+        peak_prob = float(p_crop[v_crop].max())
+        hot_frac = float(((p_crop >= 0.45) & v_crop).mean())
+        mean_prob = float(p_crop[v_crop].mean())
+        if peak_prob < min_peak_prob or hot_frac < min_hot_frac:
+            continue
+
+        selected.append(
+            {
+                "y": int(cy),
+                "x": int(cx),
+                "h": int(ch),
+                "w": int(cw),
+                "score": round(float(hot_frac * 0.7 + mean_prob * 0.3), 5),
+                "hot_frac_ge045": round(hot_frac, 5),
+                "mean_prob": round(mean_prob, 5),
+                "peak_prob": round(peak_prob, 5),
+                "order": order,
+                "source": "line_rank",
+                "lr_rank": int(prop.get("rank", 0)),
+                "lr_score": round(float(lr_score), 5),
+                "lr_bbox_yxyx": [ry0, rx0, ry1, rx1],
+            }
+        )
+        taken_boxes.append(crop_box)
+        if len(selected) >= max_crops:
+            break
+    return selected
 
 
 def _to_u8_stretch(arr: np.ndarray, valid: np.ndarray) -> np.ndarray:
@@ -602,9 +856,18 @@ def write_visuals(
         for row_i, hs in enumerate(hotspots):
             ry0 = row_i * (ch + 24)
             yy, xx = hs["y"], hs["x"]
+            if hs.get("source") == "line_rank":
+                row_label = (
+                    f"#{hs['rank']} LR-{hs.get('order', '')}#{hs.get('lr_rank', '?')} "
+                    f"s={float(hs.get('lr_score', 0.0)):.2f} "
+                    f"(y={yy}, x={xx}, hot={hs['hot_frac_ge045']:.3f})"
+                )
+            else:
+                order_tag = f" {hs['order']}" if "order" in hs else ""
+                row_label = f"#{hs['rank']}{order_tag} (y={yy}, x={xx}, hot={hs['hot_frac_ge045']:.3f})"
             h_draw.text(
                 (4, ry0 + 2),
-                f"#{hs['rank']} (y={yy}, x={xx}, hot={hs['hot_frac_ge045']:.3f})",
+                row_label,
                 fill=240,
             )
             ct_patch = _to_u8_stretch(ct_mid[yy : yy + ch, xx : xx + cw], valid_ct[yy : yy + ch, xx : xx + cw])
@@ -718,6 +981,7 @@ def screen_one_mesh(
     staged: dict[str, Path],
     work_root: Path,
     out_private_dir: Path,
+    save_prob_u8: bool = False,
 ) -> dict:
     """Screen one mesh end-to-end with zero persistent CT retention."""
     import onsheet_score
@@ -749,6 +1013,7 @@ def screen_one_mesh(
         m7_bytes, m7_chunks = rendered["m7_bytes"], rendered["m7_chunks"]
         ct_bytes, ct_chunks = rendered["ct_bytes"], rendered["ct_chunks"]
 
+        t_on = time.perf_counter()
         mesh_idx = (num_slices - 1) // 2
         try:
             coherence = onsheet_score.score_stack(stack_lhw, mid=mesh_idx, dk=2)
@@ -766,6 +1031,7 @@ def screen_one_mesh(
                 "mean_best_shifted_r": fb["mean_best_shifted_r"],
                 "backend": "stream_snap_render_fallback",
             }
+        onsheet_sec = round(time.perf_counter() - t_on, 2)
 
         detector_stats: dict[str, dict] = {}
         panels: list[tuple[str, np.ndarray, np.ndarray]] = []
@@ -797,6 +1063,10 @@ def screen_one_mesh(
             best_st_ord = max(("desc", "asc"), key=lambda o: detector_stats[f"studio_{o}"]["p995"])
             primary_map = st_res[best_st_ord]["prob"]
             primary_valid = st_res[best_st_ord]["valid"]
+            print(
+                f"STUDIO_DONE {scroll}/{mesh_tag} desc={detector_stats['studio_desc']['seconds']}s asc={detector_stats['studio_asc']['seconds']}s",
+                flush=True,
+            )
 
         if "ahn" in detectors and int(valid_ct.sum()) >= 10000:
             ahn_res = run_ahn_both_orders(
@@ -822,17 +1092,42 @@ def screen_one_mesh(
                 best_ah_ord = max(("asc", "desc"), key=lambda o: detector_stats[f"ahn_s0_{o}"]["p995"])
                 primary_map = ahn_res[best_ah_ord]["prob"]
                 primary_valid = ahn_res[best_ah_ord]["valid"]
+            print(
+                f"AHN_DONE {scroll}/{mesh_tag} asc={detector_stats['ahn_s0_asc']['seconds']}s desc={detector_stats['ahn_s0_desc']['seconds']}s",
+                flush=True,
+            )
 
+        t_fp = time.perf_counter()
         fp_diagnostics = (
             compute_fp_diagnostics(stack_lhw[mesh_idx], valid_ct, st_res, ahn_res, voxel_um)
             if st_res is not None
             else None
         )
-        hotspots = (
-            find_top_hotspots(primary_map, primary_valid)
-            if primary_map is not None and primary_valid is not None
-            else []
+        fp_diag_sec = round(time.perf_counter() - t_fp, 2)
+
+        t_lr = time.perf_counter()
+        line_rank = (
+            compute_line_first_summary(st_res, valid_ct, voxel_um)
+            if st_res is not None and int(valid_ct.sum()) >= 10000
+            else None
         )
+        line_rank_sec = round(time.perf_counter() - t_lr, 2)
+
+        if st_res is not None:
+            density_hs = _dedupe_density_hotspots(st_res, win=512, top_k=4)
+            lr_hs = select_line_rank_hotspots(st_res, line_rank, density_hs)
+            hotspots = [
+                {**item, "rank": idx}
+                for idx, item in enumerate(density_hs + lr_hs, start=1)
+            ]
+        else:
+            hotspots = (
+                find_top_hotspots(primary_map, primary_valid)
+                if primary_map is not None and primary_valid is not None
+                else []
+            )
+
+        t_vis = time.perf_counter()
         montage_file, hotspot_file = write_visuals(
             mesh_out_dir,
             f"{scroll}/{mesh_tag}",
@@ -842,9 +1137,30 @@ def screen_one_mesh(
             hotspots,
             voxel_um,
         )
+        prob_u8_artifacts = None
+        if save_prob_u8 and st_res is not None:
+            ensure_outside_git_repo(mesh_out_dir)
+            prob_u8_artifacts = {}
+            for order in ("desc", "asc"):
+                if order in st_res:
+                    p_arr = np.asarray(st_res[order]["prob"], dtype=np.float32)
+                    v_arr = valid_ct & np.asarray(st_res[order]["valid"], dtype=bool)
+                    u8_arr = np.where(v_arr, np.clip(np.round(p_arr * 255.0), 0, 255), 0).astype(np.uint8)
+                    fname = f"studio_{order}_u8.png"
+                    Image.fromarray(u8_arr, mode="L").save(mesh_out_dir / fname, format="PNG")
+                    prob_u8_artifacts[f"studio_{order}_u8"] = fname
+            Image.fromarray((valid_ct.astype(np.uint8) * 255), mode="L").save(
+                mesh_out_dir / "valid_ct_mask.png", format="PNG"
+            )
+            prob_u8_artifacts["valid_ct_mask"] = "valid_ct_mask.png"
+        visuals_sec = round(time.perf_counter() - t_vis, 2)
 
         del stack_lhw
         gc.collect()
+
+    artifacts_dict: dict[str, object] = {"montage": montage_file, "hotspots": hotspot_file}
+    if prob_u8_artifacts is not None:
+        artifacts_dict["prob_maps_u8"] = prob_u8_artifacts
 
     summary = {
         "scroll": scroll,
@@ -864,8 +1180,16 @@ def screen_one_mesh(
         "valid_ct_cm2": round(float(int(valid_ct.sum()) * ((voxel_um / 10000.0) ** 2)), 4),
         "detectors": detector_stats,
         "fp_diagnostics": fp_diagnostics,
+        "line_rank": line_rank,
         "top_hotspots": hotspots,
-        "artifacts": {"montage": montage_file, "hotspots": hotspot_file},
+        "artifacts": artifacts_dict,
+        "timing_breakdown": {
+            "render_seconds": render_sec,
+            "onsheet_seconds": onsheet_sec,
+            "fp_diagnostics_seconds": fp_diag_sec,
+            "line_rank_seconds": line_rank_sec,
+            "visuals_seconds": visuals_sec,
+        },
         "total_seconds": round(time.perf_counter() - t_total, 2),
     }
     (mesh_out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
@@ -908,6 +1232,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     ap.add_argument("--cache-mb", type=int, default=512)
     ap.add_argument("--out-private-dir", type=Path, required=True, help="Private output dir strictly outside repo")
+    ap.add_argument(
+        "--save-prob-u8",
+        action="store_true",
+        help="Persist compact uint8 prob maps and valid mask PNGs inside private output dir only",
+    )
     return ap
 
 
@@ -957,6 +1286,7 @@ def main() -> None:
                 staged=staged,
                 work_root=work,
                 out_private_dir=out_dir,
+                save_prob_u8=bool(args.save_prob_u8),
             )
             summaries.append(s)
 

@@ -116,6 +116,39 @@
         "pct_gt_20deg": 5.153,
         "pct_gt_45deg": 0.736
       }
+    },
+    "rtx4060_studio_s48_control": {
+      "scroll": "PHerc0211",
+      "mesh_id": "PHerc0211_w033_arap",
+      "voxel_um": 9.362,
+      "snap_passes": 0,
+      "studio_stride": 48,
+      "studio_window": "hann",
+      "valid_ct_cm2": 5.4443,
+      "f_parallel": 0.9871,
+      "onsheet_tiles": 310,
+      "studio_desc": {
+        "p99": 0.91273,
+        "p995": 0.92095,
+        "max": 0.94699,
+        "frac_gt_05": 0.199575,
+        "frac_gt_07": 0.124472
+      },
+      "studio_asc": {
+        "p99": 0.89564,
+        "p995": 0.90905,
+        "max": 0.94119,
+        "frac_gt_05": 0.114957,
+        "frac_gt_07": 0.067251
+      },
+      "bilateral_overlap_frac": 0.008473,
+      "asymmetry_ratio": 1.8441,
+      "peak_allocated_mib": 1905,
+      "peak_reserved_mib": 2108,
+      "post_run_temp_c": 60,
+      "total_seconds": 5699.76,
+      "verdict": "POSITIVE_GATE_PASS",
+      "multi_wrap_alternating_face_note": "Both half-panels show crisp multi-line Greek letter strokes on opposite face orders (left half desc, right half asc), yielding 0.85% bilateral overlap and 1.8441x global asymmetry; multi-wrap meshes must not be suppressed solely by global <3x asymmetry when bilateral overlap is near zero."
     }
   },
   "summary": {
