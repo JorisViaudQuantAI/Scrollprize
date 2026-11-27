@@ -1,0 +1,43 @@
+name: Adaptive 076 fitted-band funnel replay
+on:
+  push:
+    branches: [chatgpt/adaptive-surface-recovery]
+    paths:
+      - .github/workflows/chatgpt-adaptive-fitted-band-funnel.yml
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin CPU dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4 scipy==1.12.0 Pillow==11.3.0
+      - name: Retrieve exact Claude owner-released control maps
+        run: |
+          git init /tmp/claude-076
+          git -C /tmp/claude-076 remote add origin https://github.com/JorisViaudQuantAI/Scrollprize.git
+          git -C /tmp/claude-076 config remote.origin.promisor true
+          git -C /tmp/claude-076 config remote.origin.partialclonefilter blob:none
+          git -C /tmp/claude-076 fetch --no-tags --depth=1 --filter=blob:none origin 1770a7b9f223a016167fda440f1867848373119d
+          git -C /tmp/claude-076 sparse-checkout set firstletters-colab/results/pherc0211_calibration/maps_export211
+          git -C /tmp/claude-076 checkout --detach FETCH_HEAD
+      - name: Retrieve exact Gemini stroke diagnostic
+        run: |
+          git fetch --no-tags --depth=1 origin ddc788790a229021fa0f7d22eee2708cb2988bad
+          git show FETCH_HEAD:gemini_lane/screening_fp_filter.py > /tmp/gemini-stroke-076.py
+          test "$(git hash-object /tmp/gemini-stroke-076.py)" = 91bff462143d059793b98c88a40d9bf513fd7eda
+      - name: Replay frozen rank and survey comparison
+        run: python firstletters-colab/adaptive_surface_recovery/fitted_band_funnel/run.py --claude /tmp/claude-076 --gemini /tmp/gemini-stroke-076.py --output /tmp/fitted-band-076.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: adaptive-076-aggregate-receipt
+          path: /tmp/fitted-band-076.json
+          retention-days: 30
