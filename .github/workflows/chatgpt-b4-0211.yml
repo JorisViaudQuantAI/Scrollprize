@@ -1,0 +1,73 @@
+name: B4 public PHerc0211 rank and paired-order evidence
+
+on:
+  push:
+    branches:
+      - chatgpt/b4-0211-public-audit
+    paths:
+      - "firstletters-colab/industrial_funnel/b4_0211/**"
+      - ".github/workflows/chatgpt-b4-0211.yml"
+  pull_request:
+    paths:
+      - "firstletters-colab/industrial_funnel/b4_0211/**"
+      - ".github/workflows/chatgpt-b4-0211.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  b4-public-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned CPU numerical readers
+        run: python -m pip install numpy==2.3.5 pillow==11.3.0
+      - name: Synthetic and adversarial checks
+        run: python -m unittest discover -s firstletters-colab/industrial_funnel/b4_0211 -p 'test_*.py' -v
+      - name: Recheck existing industrial-native compatibility tests
+        run: |
+          mkdir -p /tmp/b4-0211
+          python firstletters-colab/industrial_funnel/verify_native.py --output /tmp/b4-0211/native_tests.json
+          python -c "import json; x=json.load(open('/tmp/b4-0211/native_tests.json')); assert x['passed'] and x['tests_run'] >= 168"
+      - name: Replay rank population and frozen s48 review
+        run: |
+          mkdir -p /tmp/b4-0211
+          python firstletters-colab/industrial_funnel/b4_0211/audit_0211.py \
+            --windows firstletters-colab/results/pherc0211_calibration/maps_export211/windows.json \
+            --sealed-key firstletters-colab/results/pherc0211_calibration/look/P1/KEY_sealed.json \
+            --output /tmp/b4-0211/finite_review.json
+      - name: Count common-support opposite-order activations on nine map pairs
+        run: |
+          python firstletters-colab/industrial_funnel/b4_0211/order_pair_0211.py \
+            --maps firstletters-colab/results/pherc0211_calibration/maps_export211 \
+            --output /tmp/b4-0211/regional_order.json
+      - name: Print measured summaries and scientific constraints
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open('/tmp/b4-0211/finite_review.json'))
+          b=json.load(open('/tmp/b4-0211/regional_order.json'))
+          assert a['audit']['max_additional_visual_flags_not_excluded_95pct']==21
+          assert a['no_line_score']['windows']==54
+          assert a['fine']['observed_visual_flags_random15']==0
+          assert b['scientific_admission']=='NOT_ESTABLISHED'
+          assert a['production_skip_allowed'] is False and b['production_skip_allowed'] is False
+          print('FINITE:',json.dumps({'area_partition_cm2':a['area_partition_cm2'],
+              'no_line_score':a['no_line_score'],'audit':a['audit']},sort_keys=True))
+          print('ORDER:',json.dumps([
+             {'winding':c['winding'],'disagreement':c['regional_order_disagreement'],
+              'whole':c['regions']['whole'],'left':c['regions']['left'],'right':c['regions']['right']}
+              for c in b['cases']],sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: b4-pherc0211-cpu-public-audit
+          path: /tmp/b4-0211/*.json
+          retention-days: 30
