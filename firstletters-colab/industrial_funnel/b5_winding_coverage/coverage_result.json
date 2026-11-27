@@ -1,0 +1,90 @@
+{
+  "tests_passed": 6,
+  "execution": "JavaScript runtime, original connector-pinned JSON blobs; no local git clone or GitHub CI",
+  "source_commit": "1770a7b9f223a016167fda440f1867848373119d",
+  "source_blobs": {
+    "windows": "d6a337f299fa5b893dbc84f6de23542adbbd83a6",
+    "sealed_key": "7aa64aa902924bff95bdec3f5cb9360154e8e0f5"
+  },
+  "result": {
+    "schema": "b5.winding_coverage.v1",
+    "all": {
+      "windows": 149,
+      "window_area_sum_cm2": 293.369,
+      "windings_touched": 60,
+      "windings_complete": 60,
+      "windings_untouched": 0,
+      "chart_x_union_px": 309819,
+      "chart_x_union_fraction": 1,
+      "no_line_score": 54
+    },
+    "top25": {
+      "windows": 25,
+      "window_area_sum_cm2": 52.222,
+      "windings_touched": 20,
+      "windings_complete": 4,
+      "windings_untouched": 40,
+      "chart_x_union_px": 52376,
+      "chart_x_union_fraction": 0.169054,
+      "no_line_score": 0
+    },
+    "sealed_review": {
+      "windows": 40,
+      "window_area_sum_cm2": 81.691,
+      "windings_touched": 30,
+      "windings_complete": 6,
+      "windings_untouched": 30,
+      "chart_x_union_px": 83989,
+      "chart_x_union_fraction": 0.271091,
+      "no_line_score": 6
+    },
+    "unreviewed": {
+      "windows": 109,
+      "window_area_sum_cm2": 211.678,
+      "windings_touched": 54,
+      "windings_complete": 30,
+      "windings_untouched": 6,
+      "chart_x_union_px": 225830,
+      "chart_x_union_fraction": 0.728909,
+      "no_line_score": 48
+    },
+    "no_line_score": {
+      "windows": 54,
+      "window_area_sum_cm2": 103.256,
+      "windings_touched": 32,
+      "windings_complete": 6,
+      "windings_untouched": 28,
+      "chart_x_union_px": 111313,
+      "chart_x_union_fraction": 0.359284,
+      "no_line_score": 54
+    },
+    "all_abstain_windings": 6,
+    "untouched_all_abstain_windings": 3,
+    "remaining_strata": {
+      "touched_scored": {
+        "windows": 23,
+        "area_cm2": 44.147
+      },
+      "untouched_scored": {
+        "windows": 38,
+        "area_cm2": 75.642
+      },
+      "untouched_abstain": {
+        "windows": 25,
+        "area_cm2": 46.487
+      },
+      "touched_abstain": {
+        "windows": 23,
+        "area_cm2": 45.402
+      }
+    },
+    "minimum_additional_reviews_for_chart_touch": 30,
+    "untouched_window_count": 63,
+    "untouched_area_cm2": 122.129,
+    "sum_window_width_px": 309819,
+    "limitations": [
+      "Window area sum is not unique physical surface area; chart x-interval union is one-dimensional, not valid-pixel coverage or anatomy.",
+      "A touched winding can still contain missed ink; no new review labels, no ink recall or deployment claim."
+    ]
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "execution": "JavaScript runtime on original connector-pinned public JSON; no new reviews or CI",
+  "source_commit": "1770a7b9f223a016167fda440f1867848373119d",
+  "source_blobs": {
+    "windows": "d6a337f299fa5b893dbc84f6de23542adbbd83a6",
+    "sealed_key": "7aa64aa902924bff95bdec3f5cb9360154e8e0f5"
+  },
+  "schema": "b6.stratified_zero_event_design.v1",
+  "remaining": 109,
+  "stratum_counts": {
+    "touched_scored": 23,
+    "touched_abstain": 23,
+    "untouched_scored": 38,
+    "untouched_abstain": 25
+  },
+  "oracle_cases_passed": 1316,
+  "plans": [
+    {
+      "budget": 30,
+      "target_missed": 3,
+      "allocation": {
+        "touched_scored": 6,
+        "touched_abstain": 6,
+        "untouched_scored": 11,
+        "untouched_abstain": 7
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 2,
+        "touched_abstain": 1,
+        "untouched_scored": 0,
+        "untouched_abstain": 0
+      },
+      "worst_p_zero": 0.39731912699776595,
+      "worst_p_zero_exact": "4624/11638",
+      "reject_if_zero_95pct": false,
+      "srs_p_zero": 0.3766850533977345,
+      "srs_reject_if_zero_95pct": false
+    },
+    {
+      "budget": 30,
+      "target_missed": 6,
+      "allocation": {
+        "touched_scored": 6,
+        "touched_abstain": 6,
+        "untouched_scored": 11,
+        "untouched_abstain": 7
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 3,
+        "touched_abstain": 2,
+        "untouched_scored": 0,
+        "untouched_abstain": 1
+      },
+      "worst_p_zero": 0.14860767347448908,
+      "worst_p_zero_exact": "19975680/134418900",
+      "reject_if_zero_95pct": false,
+      "srs_p_zero": 0.13726393973595655,
+      "srs_reject_if_zero_95pct": false
+    },
+    {
+      "budget": 30,
+      "target_missed": 12,
+      "allocation": {
+        "touched_scored": 6,
+        "touched_abstain": 6,
+        "untouched_scored": 11,
+        "untouched_abstain": 7
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 4,
+        "touched_abstain": 4,
+        "untouched_scored": 2,
+        "untouched_abstain": 2
+      },
+      "worst_p_zero": 0.018394955883582073,
+      "worst_p_zero_exact": "700865909452800/38100983437440000",
+      "reject_if_zero_95pct": true,
+      "srs_p_zero": 0.016342036192840123,
+      "srs_reject_if_zero_95pct": true
+    },
+    {
+      "budget": 45,
+      "target_missed": 3,
+      "allocation": {
+        "touched_scored": 9,
+        "touched_abstain": 10,
+        "untouched_scored": 16,
+        "untouched_abstain": 10
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 2,
+        "touched_abstain": 0,
+        "untouched_scored": 0,
+        "untouched_abstain": 1
+      },
+      "worst_p_zero": 0.2158102766798419,
+      "worst_p_zero_exact": "2730/12650",
+      "reject_if_zero_95pct": false,
+      "srs_p_zero": 0.19846237388893653,
+      "srs_reject_if_zero_95pct": false
+    },
+    {
+      "budget": 45,
+      "target_missed": 6,
+      "allocation": {
+        "touched_scored": 9,
+        "touched_abstain": 10,
+        "untouched_scored": 16,
+        "untouched_abstain": 10
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 3,
+        "touched_abstain": 0,
+        "untouched_scored": 1,
+        "untouched_abstain": 2
+      },
+      "worst_p_zero": 0.041647597254004576,
+      "worst_p_zero_exact": "10090080/242272800",
+      "reject_if_zero_95pct": true,
+      "srs_p_zero": 0.03702395208512765,
+      "srs_reject_if_zero_95pct": true
+    },
+    {
+      "budget": 45,
+      "target_missed": 12,
+      "allocation": {
+        "touched_scored": 9,
+        "touched_abstain": 10,
+        "untouched_scored": 16,
+        "untouched_abstain": 10
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 4,
+        "touched_abstain": 2,
+        "untouched_scored": 3,
+        "untouched_abstain": 3
+      },
+      "worst_p_zero": 0.001258598772581807,
+      "worst_p_zero_exact": "94537591948800/75113367348096000",
+      "reject_if_zero_95pct": true,
+      "srs_p_zero": 0.0010480594780677996,
+      "srs_reject_if_zero_95pct": true
+    },
+    {
+      "budget": 60,
+      "target_missed": 3,
+      "allocation": {
+        "touched_scored": 13,
+        "touched_abstain": 13,
+        "untouched_scored": 20,
+        "untouched_abstain": 14
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 0,
+        "touched_abstain": 0,
+        "untouched_scored": 3,
+        "untouched_abstain": 0
+      },
+      "worst_p_zero": 0.09672830725462304,
+      "worst_p_zero_exact": "4896/50616",
+      "reject_if_zero_95pct": false,
+      "srs_p_zero": 0.08776091533529586,
+      "srs_reject_if_zero_95pct": false
+    },
+    {
+      "budget": 60,
+      "target_missed": 6,
+      "allocation": {
+        "touched_scored": 13,
+        "touched_abstain": 13,
+        "untouched_scored": 20,
+        "untouched_abstain": 14
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 1,
+        "touched_abstain": 1,
+        "untouched_scored": 3,
+        "untouched_abstain": 1
+      },
+      "worst_p_zero": 0.008045454667681312,
+      "worst_p_zero_exact": "5385600/669396600",
+      "reject_if_zero_95pct": true,
+      "srs_p_zero": 0.0069055084739259335,
+      "srs_reject_if_zero_95pct": true
+    },
+    {
+      "budget": 60,
+      "target_missed": 12,
+      "allocation": {
+        "touched_scored": 13,
+        "touched_abstain": 13,
+        "untouched_scored": 20,
+        "untouched_abstain": 14
+      },
+      "worst_flag_allocation": {
+        "touched_scored": 2,
+        "touched_abstain": 2,
+        "untouched_scored": 6,
+        "untouched_abstain": 2
+      },
+      "worst_p_zero": 0.000039001449987240634,
+      "worst_p_zero_exact": "11909177280000/305352167262912000",
+      "reject_if_zero_95pct": true,
+      "srs_p_zero": 0.000029443227839771114,
+      "srs_reject_if_zero_95pct": true
+    }
+  ],
+  "minimum_additional_srs_reviews_for_zero_event_exclusion": {
+    "1": 104,
+    "3": 69,
+    "6": 42,
+    "12": 23
+  },
+  "assumptions": [
+    "Conditional on the fixed existing 40-window review; new labels must be blinded, consistently defined, and fixed before sampling.",
+    "Independent uniform samples without replacement within each frozen stratum; no replacement of difficult windows; no peeking/optional stopping.",
+    "At each target m, the worst-case p0 maximizes over all allocations of at least m flagged windows; monotonicity makes m sufficient. Reject only for exact p<0.05, if zero flags.",
+    "Counts are window-level visual flags, not ink recall, physical sites or independence across windings. A chart-touch constraint requires a separate design; do not apply these p-values to one-per-winding sampling.",
+    "No real additional review or GPU cost measured; design only."
+  ]
+}
