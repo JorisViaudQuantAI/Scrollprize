@@ -1,0 +1,33 @@
+name: B34 public 0846A fibre fixture
+on:
+  push:
+    branches: [chatgpt/b32-native-five-priorities]
+    paths: ['.github/workflows/chatgpt-b34-fibre-fixture.yml']
+permissions:
+  contents: read
+jobs:
+  public-fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Acquire pinned winner public fibre traces
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$RUNNER_TEMP/fiber-sheet"
+          git -C "$RUNNER_TEMP/fiber-sheet" remote add origin https://github.com/jeff-j-chen/fiber-sheet.git
+          git -C "$RUNNER_TEMP/fiber-sheet" -c protocol.version=2 fetch --depth=1 --filter=blob:none origin e1f05571b095c41dded6121a784b794ba308c510
+          git -C "$RUNNER_TEMP/fiber-sheet" sparse-checkout set data/grid1_final26
+          git -C "$RUNNER_TEMP/fiber-sheet" checkout --detach FETCH_HEAD
+          cd "$RUNNER_TEMP/fiber-sheet"
+          test "$(git rev-parse HEAD)" = e1f05571b095c41dded6121a784b794ba308c510
+          mkdir "$RUNNER_TEMP/b34"
+          cp data/grid1_final26/*.path.npy data/grid1_final26/layers.json data/grid1_final26/crossings.csv "$RUNNER_TEMP/b34/"
+          git ls-tree -r HEAD data/grid1_final26 > "$RUNNER_TEMP/b34/tree.txt"
+          printf 'Public PHerc0846A curated traces: jeff-j-chen/fiber-sheet, commit e1f05571b095c41dded6121a784b794ba308c510. Original credits and terms apply; geometry control only.\n' > "$RUNNER_TEMP/b34/NOTICE.txt"
+          ls "$RUNNER_TEMP/b34" | wc -l
+      - uses: actions/upload-artifact@v4
+        with:
+          name: b34-public-fibre-control
+          path: ${{ runner.temp }}/b34/
+          retention-days: 14
