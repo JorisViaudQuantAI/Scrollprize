@@ -83,20 +83,29 @@ def load_stage(src):
     return a,b,rec
 
 
-def stage_meshes(mesh_dirs, ct_url, m7_url, dest, *, workers=16, ct_mb=2048, m7_mb=1024):
+def stage_meshes(mesh_dirs, ct_url, m7_url, dest, *, workers=16, ct_mb=2048, m7_mb=1024, reader_mode="legacy", reuse_center_samples=False, prefetch_mb=64):
     """CPU-only shared reader staging. Inputs explicit local tifxyz directories."""
     import stream_snap_render as ssr
+    if reader_mode not in ('legacy','stencil'):
+        raise ValueError('unsupported reader mode')
+    if reader_mode == 'stencil':
+        from stencil_reader import StencilReader
+        reader_class = StencilReader
+        extra = dict(prefetch_mb=prefetch_mb)
+    else:
+        reader_class = ssr.RemoteZarrV2
+        extra = {}
     dest = outside_repo(dest)
     dest.mkdir(parents=True, exist_ok=False)
-    with ssr.RemoteZarrV2(m7_url,'0',cache_mb=m7_mb,workers=workers) as m7, ssr.RemoteZarrV2(ct_url,'0',cache_mb=ct_mb,workers=workers) as ct:
+    with reader_class(m7_url,'0',cache_mb=m7_mb,workers=workers,**extra) as m7, reader_class(ct_url,'0',cache_mb=ct_mb,workers=workers,**extra) as ct:
         for i,mesh in enumerate(mesh_dirs):
             t=time.perf_counter(); mesh=Path(mesh)
             x,y,z,_,meta=ssr.read_tifxyz(mesh)
             before=(m7.bytes_fetched,ct.bytes_fetched,m7.cache_hits,ct.cache_hits)
-            a,b,c,geometry=ssr.snap_tifxyz_to_m7(x,y,z,m7,passes=2)
+            a,b,c,geometry=ssr.snap_tifxyz_to_m7(x,y,z,m7,passes=2,reuse_center_samples=reuse_center_samples)
             stack,valid=ssr.render_surface_stack(a,b,c,ct,num_slices=17,slice_step=1.,flip_normals=False,scale=meta.get('scale',[.05,.05]),tile_size=256,strict_uint8=True)
             after=(m7.bytes_fetched,ct.bytes_fetched,m7.cache_hits,ct.cache_hits)
-            rec=dict(mesh_sha256={n:sha(mesh/n) for n in ('x.tif','y.tif','z.tif','meta.json','mask.tif') if (mesh/n).is_file()},ct_source=str(ct_url),m7_source=str(m7_url),ct_shape=list(ct.shape),m7_shape=list(m7.shape),geometry=geometry,scale=meta.get('scale',[.05,.05]),passes=2,render_seconds=time.perf_counter()-t,delta_counters=[int(b-a) for a,b in zip(before,after)])
+            rec=dict(mesh_sha256={n:sha(mesh/n) for n in ('x.tif','y.tif','z.tif','meta.json','mask.tif') if (mesh/n).is_file()},ct_source=str(ct_url),m7_source=str(m7_url),ct_shape=list(ct.shape),m7_shape=list(m7.shape),geometry=geometry,scale=meta.get('scale',[.05,.05]),passes=2,reader_mode=reader_mode,reuse_center_samples=bool(reuse_center_samples),prefetch_mb=prefetch_mb if reader_mode=='stencil' else None,m7_sampler_stats=dict(m7.sampler_stats) if reader_mode=='stencil' else None,ct_sampler_stats=dict(ct.sampler_stats) if reader_mode=='stencil' else None,render_seconds=time.perf_counter()-t,delta_counters=[int(b-a) for a,b in zip(before,after)])
             stage_arrays(dest/f'{i:04d}',stack,valid,rec)
 
 
@@ -184,10 +193,10 @@ class Burst:
 
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='cmd',required=True)
-    a=sub.add_parser('stage');a.add_argument('--mesh',type=Path,action='append',required=True);a.add_argument('--ct',required=True);a.add_argument('--m7',required=True);a.add_argument('--out',type=Path,required=True);a.add_argument('--workers',type=int,default=16);a.add_argument('--ct-mb',type=float,default=2048);a.add_argument('--m7-mb',type=float,default=1024)
+    a=sub.add_parser('stage');a.add_argument('--mesh',type=Path,action='append',required=True);a.add_argument('--ct',required=True);a.add_argument('--m7',required=True);a.add_argument('--out',type=Path,required=True);a.add_argument('--workers',type=int,default=16);a.add_argument('--ct-mb',type=float,default=2048);a.add_argument('--m7-mb',type=float,default=1024);a.add_argument('--reader-mode',choices=('legacy','stencil'),default='legacy');a.add_argument('--prefetch-mb',type=float,default=64);a.add_argument('--reuse-center-samples',action='store_true',default=False)
     b=sub.add_parser('burst');b.add_argument('--stage',type=Path,action='append',required=True);b.add_argument('--checkpoint',type=Path,required=True);b.add_argument('--out',type=Path,required=True)
     a=p.parse_args()
-    if a.cmd=='stage':stage_meshes(a.mesh,a.ct,a.m7,a.out,workers=a.workers,ct_mb=a.ct_mb,m7_mb=a.m7_mb);return
+    if a.cmd=='stage':stage_meshes(a.mesh,a.ct,a.m7,a.out,workers=a.workers,ct_mb=a.ct_mb,m7_mb=a.m7_mb,reader_mode=a.reader_mode,prefetch_mb=a.prefetch_mb,reuse_center_samples=a.reuse_center_samples);return
     dest=outside_repo(a.out);dest.mkdir(parents=True,exist_ok=False);runner=Burst(a.checkpoint)
     for i,source in enumerate(a.stage):
         stack,valid,rec=load_stage(source);work=dest/f'{i:04d}';r=runner.run(stack,valid,work)
