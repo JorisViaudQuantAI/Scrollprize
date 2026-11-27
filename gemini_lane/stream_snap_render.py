@@ -34,6 +34,11 @@ import numpy as np
 from scipy import ndimage as ndi
 
 try:
+    from .ridge_batch import pick_nearest_ridge_offsets
+except ImportError:  # direct script/Colab invocation
+    from ridge_batch import pick_nearest_ridge_offsets
+
+try:
     import requests as _requests
 except ImportError:  # pragma: no cover - requests is optional fallback
     _requests = None
@@ -831,10 +836,9 @@ def snap_tifxyz_to_m7(
             rays = pts_act[i0:i1, None, :] + offsets[None, :, None] * nrm_act[i0:i1, None, :]
             profiles, ray_support = m7_reader.sample_trilinear(rays, return_support=True)
             profiles = np.where(ray_support & np.isfinite(profiles), profiles, -np.inf)
-            for j in range(i1 - i0):
-                disps[i0 + j] = _pick_nearest_ridge_offset(
-                    profiles[j], offsets, float(threshold), float(step)
-                )
+            disps[i0:i1] = pick_nearest_ridge_offsets(
+                profiles, offsets, float(threshold), float(step), _pick_nearest_ridge_offset
+            )
 
         # Validate the coordinates that will actually be stored (float32), not
         # a higher-precision candidate whose later rounding can exceed the bound.

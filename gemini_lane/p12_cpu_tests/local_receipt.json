@@ -1,0 +1,301 @@
+{
+  "schema": "p12.cpu_handoff.v1",
+  "source_commit": "6ca521cfff25ad83f56192cb47797dce72d57c83",
+  "freeze": "acea30d4cfed6ef9ba255a0894ba5bd4c6a3bec0",
+  "source_fixture_run": 45880570553,
+  "source_artifact": 15146958175,
+  "source_blobs": {
+    "stream_snap_render": "80d3d27cfc15d4bdf489865d3668785ff65e5bfd",
+    "cloud_rv3_screen": "0b46ca24b150d367a1a9f8fb135670be8c66722b",
+    "receipt": "d58593ae614117050d984a0cbe5257601d94c51a"
+  },
+  "local_runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "original_suite": {
+    "cloud": 3,
+    "ssr": 7,
+    "passed": 10
+  },
+  "patched_suite": {
+    "cloud": 3,
+    "ssr": 7,
+    "passed": 10
+  },
+  "additional_unit_tests": {
+    "stage": 3,
+    "postscreen": 3
+  },
+  "ridge": {
+    "checks": 155143,
+    "columns": [
+      "group",
+      "profiles",
+      "median_scalar_seconds",
+      "median_batch_seconds",
+      "ratio"
+    ],
+    "rows": [
+      [
+        "continuous",
+        4096,
+        0.1948142689998349,
+        0.00912519199982853,
+        21.3490597242771
+      ],
+      [
+        "discrete",
+        4096,
+        0.20931957699986015,
+        0.16596236799978215,
+        1.2612472304572981
+      ],
+      [
+        "plateau",
+        4096,
+        0.05464298900005815,
+        0.05546533200003978,
+        0.9851737478109562
+      ],
+      [
+        "ct_texture_proxy",
+        28672,
+        0.47515237000015986,
+        0.05416602500008594,
+        8.772147670046047
+      ]
+    ],
+    "note": "Three repeated timing pairs; CT intensity profiles are numerical proxies, not M7 data."
+  },
+  "ssr": {
+    "checks": 60,
+    "columns": [
+      "scene",
+      "vertices",
+      "on_raw",
+      "on_1",
+      "on_2",
+      "step_1",
+      "step_2",
+      "scalar2_s",
+      "batch2_s",
+      "one_s",
+      "two_s",
+      "bytes_1",
+      "bytes_2",
+      "changed_vertices"
+    ],
+    "rows": [
+      [
+        "curved",
+        1296,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0.11277477500016175,
+        0.06817494300003091,
+        0.0373656110000411,
+        0.06817494300003091,
+        196608,
+        262144,
+        1296
+      ],
+      [
+        "single",
+        1600,
+        0.773125,
+        1,
+        1,
+        0,
+        0,
+        0.13127855299990188,
+        0.08432359500011444,
+        0.04466230500020174,
+        0.08432359500011444,
+        196608,
+        196608,
+        1600
+      ],
+      [
+        "dual",
+        1600,
+        0,
+        1,
+        1,
+        0.14583333333333334,
+        0.14551282051282052,
+        0.16199201000017638,
+        0.08196838899993963,
+        0.04428297599997677,
+        0.08196838899993963,
+        196608,
+        262144,
+        1599
+      ],
+      [
+        "dual_offset",
+        1600,
+        0.31,
+        1,
+        1,
+        0,
+        0,
+        0.1534228800001074,
+        0.07712306199982777,
+        0.04018438999992213,
+        0.07712306199982777,
+        131072,
+        196608,
+        1600
+      ],
+      [
+        "split",
+        1600,
+        0,
+        0.993125,
+        0.99375,
+        0.013141025641025641,
+        0.01282051282051282,
+        0.144185564000054,
+        0.08295672899976125,
+        0.043869315999927494,
+        0.08295672899976125,
+        196608,
+        196608,
+        1590
+      ],
+      [
+        "missing",
+        1271,
+        0,
+        0.957513768686074,
+        0.977970102281668,
+        0,
+        0,
+        0.10929059599993707,
+        0.06594640399998752,
+        0.03656979700008378,
+        0.06594640399998752,
+        192512,
+        258048,
+        1098
+      ]
+    ],
+    "cache": {
+      "fresh": {
+        "bytes": 331776,
+        "hits": 252,
+        "seconds": 0.09459074000005785
+      },
+      "shared": {
+        "bytes": 110592,
+        "hits": 306,
+        "seconds": 0.0849310010003137
+      }
+    },
+    "scope": "Synthetic local Zarr only; no anatomical claim."
+  },
+  "full_stage": {
+    "checks": 4,
+    "stage_rows": [
+      {
+        "values": 15300,
+        "valid": 900,
+        "counters": [
+          184320,
+          73728,
+          126,
+          0
+        ]
+      },
+      {
+        "values": 15300,
+        "valid": 900,
+        "counters": [
+          12288,
+          24576,
+          177,
+          18
+        ]
+      }
+    ],
+    "high_raw_case": {
+      "raw": 0.6242283950617284,
+      "one": 0.941358024691358,
+      "two": 0.9567901234567902,
+      "changed_vertices": 1132
+    }
+  },
+  "tail": {
+    "source_pins": {
+      "b21/predictions.npz": "baf48b9301c9697c0dd8f4efbb7ffde9c2f891305f08d39194323eb860bd2d81",
+      "pred841/predictions.npz": "2fb79c53bc83c4d008a9bcffaad7fd788691140e24c7012440b61553ffb8c691"
+    },
+    "columns": [
+      "group",
+      "positive_observations",
+      "low_tail_positive",
+      "low_tail_detected_at_half",
+      "known_ink_in_low_tail",
+      "tp_at_half_in_low_tail"
+    ],
+    "rows": [
+      [
+        "1447",
+        8,
+        6,
+        4,
+        57389,
+        8396
+      ],
+      [
+        "0841_ascending",
+        2,
+        1,
+        1,
+        4049,
+        755
+      ],
+      [
+        "0841_descending",
+        2,
+        2,
+        1,
+        15054,
+        5362
+      ]
+    ],
+    "scope": "Central192 exposed public crops only. 0841 directions paired; not independent crops or whole-mesh recall."
+  },
+  "cost": {
+    "area_cm2": 15.7842,
+    "sum_wall_seconds": 1845.88,
+    "sum_inference_call_seconds": 208.37,
+    "other_seconds": 1637.51,
+    "inference_call_fraction": 0.11288382776778555,
+    "seconds_cm2_per_direction": 6.600587929701854,
+    "idealized_wall_ratio_if_all_noncall_time_removed": 8.858664874982004,
+    "idealized_area_in_5min_both_directions": 22.725248356289292,
+    "seconds_20cm2_both": 264.0235171880741,
+    "seconds_50cm2_both": 660.0587929701853,
+    "scope": "Linear arithmetic from published receipt, not measured GPU utilization/billing or realized improvement."
+  },
+  "local_code_blobs": {
+    "ridge_batch.py": "3e40b12a83362fb6fec28efd6a8414ab5f30f075",
+    "stream_snap_render.py": "ee4c930c8879615c053a02a174e0690818865aad",
+    "staged_rv3.py": "93bd0e0e45357777fda468b699183effe17edf0d",
+    "postscreen.py": "40daa66e0fc298889261ae3087981bfb72adeb85",
+    "bench_ridge.py": "24e0e5c2438fb7d8e8162a01518ddcfac072b07f",
+    "bench_ssr.py": "70de84a7c9fe5f5cf240552c4ed701e1a91c22b1",
+    "test_full_stage.py": "42457590d88de97126d92685b098f13e45e7caf3",
+    "test_stage.py": "c764529faf53492cd9611a6a3e052066e5647b19",
+    "test_postscreen.py": "5688d33e2c98c209c3ad7337a4d72cf08b39d09b",
+    "audit_tail.py": "52324b198c0353d09c895c0ebd9fc1aaae807227",
+    "audit_receipt.py": "f58fa461a9afb5d1757b1d9d4a0643f923f7cbdd"
+  },
+  "scope": "No new unread targets, GPU dispatch, freeze change, or production deployment."
+}
