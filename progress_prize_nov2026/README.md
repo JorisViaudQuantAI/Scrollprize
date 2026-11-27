@@ -93,8 +93,9 @@ working report (`results/pherc0211_calibration/REPORT.md`), which logs every job
 - The letters appear only where a winding stays on the letter sheet, about a third of the awarded area. In
   crushed zones both the fit and GrowPatch step to a neighbouring sheet.
 - The hit rates come from one scroll and one band, chosen because text was known there.
-- reader-v3 through our path showed two chevrons where Studio showed the rows. We are checking our reader-v3
-  path against the PHerc. 0846B winner's package.
+- On PHerc. 0211, reader-v3 through our path showed two chevrons where Studio showed the rows. This is not our
+  reader path: on the PHerc. 0846B winner's segment the same path reproduces the winner's map (r = 0.91–0.94
+  against the published map, the same letters legible; `collab/claude-032.md`).
 - The multi-sheet unwrapper has only been run on crops of a fraction of a square centimetre.
 
 ## 7. Who did what
