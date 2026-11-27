@@ -1,0 +1,1088 @@
+{
+  "schema": "wave2b_wave4_sync_receipt/v1",
+  "date_utc": "2026-11-27",
+  "note": "Live Wave 2B checkpoint, 11-scroll zero-mesh audit, PHerc1218 outer-winding probe, Wave 4 prep receipt, and 4-family confirmation pin table. Frozen Nov 27 baseline (acea30d, 49 meshes, 235.4441 cm2) strictly untouched; 0 candidates claimed.",
+  "wave2b_status": {
+    "in_flight": true,
+    "note": "W2-0125-T2-01..03, W2-1203-S3strips, and W2-0191-11600 complete (all visual leads negative); W2-0175A-free67 59/67 complete with 1 outer winding currently undergoing 4-family confirmation.",
+    "batches": [
+      {
+        "batch_id": "W2-0125-T2-01",
+        "scroll": "PHerc0125",
+        "n_screened": 10,
+        "n_planned": 10,
+        "errors": 0,
+        "valid_cm2": 29.357,
+        "gpu_seconds": 385.68,
+        "max_p995": 0.73236,
+        "alerts": 4,
+        "priority_review_count": 5,
+        "visual_verdict": "negative_no_letters"
+      },
+      {
+        "batch_id": "W2-0125-T2-02",
+        "scroll": "PHerc0125",
+        "n_screened": 10,
+        "n_planned": 10,
+        "errors": 0,
+        "valid_cm2": 36.2148,
+        "gpu_seconds": 535.86,
+        "max_p995": 0.71119,
+        "alerts": 8,
+        "priority_review_count": 8,
+        "visual_verdict": "negative_no_letters"
+      },
+      {
+        "batch_id": "W2-0125-T2-03",
+        "scroll": "PHerc0125",
+        "n_screened": 8,
+        "n_planned": 8,
+        "errors": 0,
+        "valid_cm2": 28.5075,
+        "gpu_seconds": 387.0,
+        "max_p995": 0.75771,
+        "alerts": 6,
+        "priority_review_count": 6,
+        "visual_verdict": "negative_no_letters"
+      },
+      {
+        "batch_id": "W2-1203-S3strips",
+        "scroll": "PHerc1203",
+        "n_screened": 7,
+        "n_planned": 7,
+        "errors": 0,
+        "valid_cm2": 11.901,
+        "gpu_seconds": 162.68,
+        "max_p995": 0.75735,
+        "alerts": 3,
+        "priority_review_count": 3,
+        "visual_verdict": "negative_no_letters"
+      },
+      {
+        "batch_id": "W2-0191-11600",
+        "scroll": "PHerc0191",
+        "n_screened": 21,
+        "n_planned": 21,
+        "errors": 0,
+        "valid_cm2": 73.7829,
+        "gpu_seconds": 1077.59,
+        "max_p995": 0.70279,
+        "alerts": 6,
+        "priority_review_count": 6,
+        "visual_verdict": "negative_no_letters"
+      },
+      {
+        "batch_id": "W2-0175A-free67",
+        "scroll": "PHerc0175A",
+        "n_screened": 59,
+        "n_planned": 67,
+        "errors": 0,
+        "valid_cm2": 469.4311,
+        "gpu_seconds": 7017.66,
+        "max_p995": 0.77269,
+        "alerts": 54,
+        "priority_review_count": 54,
+        "visual_verdict": "in_progress_0_claimed_1_outer_pending_4family_confirm"
+      }
+    ],
+    "totals": {
+      "n_screened": 115,
+      "n_planned": 123,
+      "valid_cm2": 649.1943,
+      "gpu_seconds": 9566.47,
+      "alerts": 81,
+      "priority_review_count": 82,
+      "candidates_claimed": 0
+    }
+  },
+  "wave4_zero_mesh_audit_11_scrolls": [
+    {
+      "rank": 1,
+      "scroll": "PHerc0483A",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0483A/volumes/20250521140913-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        15898,
+        8849,
+        8849
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0483A/representations/predictions/surfaces/20250521140913-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": null,
+      "tracks_mode": "published",
+      "normals_mode": "synthetic (306B make_normals.py from m7 L1)",
+      "umb_mode": "auto (normal-line least squares on m7 L2, QC overlay required)",
+      "umbilicus_url": null,
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        12032,
+        13432
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 612.2,
+      "est_passing_cm2": 215.4,
+      "value_cm2": 155.1,
+      "roi_value_cm2_per_usd": 15.54,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 9.98
+    },
+    {
+      "rank": 2,
+      "scroll": "PHerc0813",
+      "voxel_um": 9.362,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0813/volumes/20250821151723-9.362um-1.2m-113keV-masked.zarr",
+      "ct_shape_L0": [
+        16993,
+        7947,
+        7947
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0813/representations/predictions/surfaces/20250821151723-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20250821151723-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0813/representations/predictions/lasagna/20250821151723-lasagna-20260419180421",
+        "groups": {
+          "PHerc0813_cos.ome.zarr": {
+            "1": [
+              8497,
+              3974,
+              3974
+            ],
+            "2": [
+              4249,
+              1987,
+              1987
+            ],
+            "3": [
+              2125,
+              994,
+              994
+            ],
+            "4": [
+              1063,
+              497,
+              497
+            ]
+          },
+          "PHerc0813_grad_mag.ome.zarr": {
+            "2": [
+              4249,
+              1987,
+              1987
+            ],
+            "3": [
+              2125,
+              994,
+              994
+            ],
+            "4": [
+              1063,
+              497,
+              497
+            ]
+          },
+          "PHerc0813_nx.ome.zarr": {
+            "2": [
+              4249,
+              1987,
+              1987
+            ],
+            "3": [
+              2125,
+              994,
+              994
+            ],
+            "4": [
+              1063,
+              497,
+              497
+            ]
+          },
+          "PHerc0813_ny.ome.zarr": {
+            "2": [
+              4249,
+              1987,
+              1987
+            ],
+            "3": [
+              2125,
+              994,
+              994
+            ],
+            "4": [
+              1063,
+              497,
+              497
+            ]
+          }
+        },
+        "files": [
+          "PHerc0813.lasagna.json"
+        ]
+      },
+      "tracks_mode": "published",
+      "normals_mode": "lasagna",
+      "umb_mode": "official",
+      "umbilicus_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0813/representations/umbilicus/20250821151723-umbilicus-20260924033203.json",
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        8832,
+        10232
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 519.9,
+      "est_passing_cm2": 288.5,
+      "value_cm2": 144.3,
+      "roi_value_cm2_per_usd": 14.86,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 9.71
+    },
+    {
+      "rank": 3,
+      "scroll": "PHerc0483B",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0483B/volumes/20251124083638-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        11880,
+        8343,
+        8343
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0483B/representations/predictions/surfaces/20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": null,
+      "tracks_mode": "published",
+      "normals_mode": "synthetic (306B make_normals.py from m7 L1)",
+      "umb_mode": "auto (normal-line least squares on m7 L2, QC overlay required)",
+      "umbilicus_url": null,
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        8832,
+        10232
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 740.9,
+      "est_passing_cm2": 259.9,
+      "value_cm2": 140.4,
+      "roi_value_cm2_per_usd": 13.91,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 10.09
+    },
+    {
+      "rank": 4,
+      "scroll": "PHerc0800",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/volumes/20250521135224-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        24298,
+        9867,
+        9867
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/representations/predictions/surfaces/20250521135224-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20250521135224-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/representations/predictions/lasagna/20250521135224-lasagna-20260419180421",
+        "groups": {
+          "PHerc0800_cos.ome.zarr": {
+            "1": [
+              12149,
+              4934,
+              4934
+            ],
+            "2": [
+              6075,
+              2467,
+              2467
+            ],
+            "3": [
+              3038,
+              1234,
+              1234
+            ],
+            "4": [
+              1519,
+              617,
+              617
+            ]
+          },
+          "PHerc0800_grad_mag.ome.zarr": {
+            "2": [
+              6075,
+              2467,
+              2467
+            ],
+            "3": [
+              3038,
+              1234,
+              1234
+            ],
+            "4": [
+              1519,
+              617,
+              617
+            ]
+          },
+          "PHerc0800_nx.ome.zarr": {
+            "2": [
+              6075,
+              2467,
+              2467
+            ],
+            "3": [
+              3038,
+              1234,
+              1234
+            ],
+            "4": [
+              1519,
+              617,
+              617
+            ]
+          },
+          "PHerc0800_ny.ome.zarr": {
+            "2": [
+              6075,
+              2467,
+              2467
+            ],
+            "3": [
+              3038,
+              1234,
+              1234
+            ],
+            "4": [
+              1519,
+              617,
+              617
+            ]
+          }
+        },
+        "files": [
+          "PHerc0800.lasagna.json"
+        ]
+      },
+      "tracks_mode": "published",
+      "normals_mode": "lasagna",
+      "umb_mode": "official",
+      "umbilicus_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0800/representations/umbilicus/20250521135224-umbilicus-20260924033751.json",
+      "existing_public_s3_segments": 6,
+      "best_band_z": [
+        16036,
+        17436
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 754.4,
+      "est_passing_cm2": 269.5,
+      "value_cm2": 134.7,
+      "roi_value_cm2_per_usd": 13.59,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 9.91
+    },
+    {
+      "rank": 5,
+      "scroll": "PHerc0358",
+      "voxel_um": 9.362,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/volumes/20250821151737-9.362um-1.2m-113keV-masked.zarr",
+      "ct_shape_L0": [
+        14744,
+        7783,
+        7783
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/representations/predictions/surfaces/20250821151737-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20250821151737-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/representations/predictions/lasagna/20250821151737-lasagna-20260419180421",
+        "groups": {
+          "PHerc0358_cos.ome.zarr": {
+            "1": [
+              7372,
+              3892,
+              3892
+            ],
+            "2": [
+              3686,
+              1946,
+              1946
+            ],
+            "3": [
+              1843,
+              973,
+              973
+            ],
+            "4": [
+              922,
+              487,
+              487
+            ]
+          },
+          "PHerc0358_grad_mag.ome.zarr": {
+            "2": [
+              3686,
+              1946,
+              1946
+            ],
+            "3": [
+              1843,
+              973,
+              973
+            ],
+            "4": [
+              922,
+              487,
+              487
+            ]
+          },
+          "PHerc0358_nx.ome.zarr": {
+            "2": [
+              3686,
+              1946,
+              1946
+            ],
+            "3": [
+              1843,
+              973,
+              973
+            ],
+            "4": [
+              922,
+              487,
+              487
+            ]
+          },
+          "PHerc0358_ny.ome.zarr": {
+            "2": [
+              3686,
+              1946,
+              1946
+            ],
+            "3": [
+              1843,
+              973,
+              973
+            ],
+            "4": [
+              922,
+              487,
+              487
+            ]
+          }
+        },
+        "files": [
+          "PHerc0358.lasagna.json"
+        ]
+      },
+      "tracks_mode": "published",
+      "normals_mode": "lasagna",
+      "umb_mode": "official",
+      "umbilicus_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0358/representations/umbilicus/20250821151737-umbilicus-20260922235631.json",
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        9344,
+        10744
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 605.3,
+      "est_passing_cm2": 150.6,
+      "value_cm2": 120.5,
+      "roi_value_cm2_per_usd": 12.31,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 9.79
+    },
+    {
+      "rank": 6,
+      "scroll": "PHerc0175B",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0175B/volumes/20250521125822-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        15897,
+        9613,
+        9613
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0175B/representations/predictions/surfaces/20250521125822-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": null,
+      "tracks_mode": "published",
+      "normals_mode": "synthetic (306B make_normals.py from m7 L1)",
+      "umb_mode": "auto (normal-line least squares on m7 L2, QC overlay required)",
+      "umbilicus_url": null,
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        12032,
+        13432
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 739.3,
+      "est_passing_cm2": 114.0,
+      "value_cm2": 82.1,
+      "roi_value_cm2_per_usd": 8.14,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 10.09
+    },
+    {
+      "rank": 7,
+      "scroll": "PHerc0490A",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0490A/volumes/20250521151210-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        11698,
+        9101,
+        9101
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0490A/representations/predictions/surfaces/20250521151210-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": null,
+      "tracks_mode": "published",
+      "normals_mode": "synthetic (306B make_normals.py from m7 L1)",
+      "umb_mode": "auto (normal-line least squares on m7 L2, QC overlay required)",
+      "umbilicus_url": null,
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        7296,
+        8696
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 881.8,
+      "est_passing_cm2": 131.4,
+      "value_cm2": 70.9,
+      "roi_value_cm2_per_usd": 6.94,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 10.21
+    },
+    {
+      "rank": 8,
+      "scroll": "PHerc0268",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        14833,
+        12145,
+        12145
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0268/representations/predictions/surfaces/20251110183117-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20251110183117-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0268/representations/predictions/lasagna/20251110183117-lasagna-20260419180421",
+        "groups": {
+          "PHerc0268_cos.ome.zarr": {
+            "1": [
+              7417,
+              6073,
+              6073
+            ],
+            "2": [
+              3709,
+              3037,
+              3037
+            ],
+            "3": [
+              1855,
+              1519,
+              1519
+            ],
+            "4": [
+              928,
+              760,
+              760
+            ]
+          },
+          "PHerc0268_grad_mag.ome.zarr": {
+            "2": [
+              3709,
+              3037,
+              3037
+            ],
+            "3": [
+              1855,
+              1519,
+              1519
+            ],
+            "4": [
+              928,
+              760,
+              760
+            ]
+          },
+          "PHerc0268_nx.ome.zarr": {
+            "2": [
+              3709,
+              3037,
+              3037
+            ],
+            "3": [
+              1855,
+              1519,
+              1519
+            ],
+            "4": [
+              928,
+              760,
+              760
+            ]
+          },
+          "PHerc0268_ny.ome.zarr": {
+            "2": [
+              3709,
+              3037,
+              3037
+            ],
+            "3": [
+              1855,
+              1519,
+              1519
+            ],
+            "4": [
+              928,
+              760,
+              760
+            ]
+          }
+        },
+        "files": [
+          "PHerc0268.lasagna.json"
+        ]
+      },
+      "tracks_mode": "published",
+      "normals_mode": "lasagna",
+      "umb_mode": "community (AlexeyDrobkovStrikesBack/herculaneum-umbilici)",
+      "umbilicus_url": "https://raw.githubusercontent.com/AlexeyDrobkovStrikesBack/herculaneum-umbilici/main/PHerc0268_umbilicus.json",
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        4564,
+        5964
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 1799.3,
+      "est_passing_cm2": 90.0,
+      "value_cm2": 76.9,
+      "roi_value_cm2_per_usd": 5.53,
+      "recommended_gpu": "H100",
+      "plan_total_usd_est": 13.91
+    },
+    {
+      "rank": 9,
+      "scroll": "PHerc1545",
+      "voxel_um": 9.362,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1545/volumes/20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "ct_shape_L0": [
+        20961,
+        7506,
+        7506
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1545/representations/predictions/surfaces/20250821151648-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20250821151648-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc1545/representations/predictions/lasagna/20250821151648-lasagna-20260419180421",
+        "groups": {
+          "PHerc1545_cos.ome.zarr": {
+            "1": [
+              10481,
+              3753,
+              3753
+            ],
+            "2": [
+              5241,
+              1877,
+              1877
+            ],
+            "3": [
+              2621,
+              939,
+              939
+            ],
+            "4": [
+              1311,
+              470,
+              470
+            ]
+          },
+          "PHerc1545_grad_mag.ome.zarr": {
+            "2": [
+              5241,
+              1877,
+              1877
+            ],
+            "3": [
+              2621,
+              939,
+              939
+            ],
+            "4": [
+              1311,
+              470,
+              470
+            ]
+          },
+          "PHerc1545_nx.ome.zarr": {
+            "2": [
+              5241,
+              1877,
+              1877
+            ],
+            "3": [
+              2621,
+              939,
+              939
+            ],
+            "4": [
+              1311,
+              470,
+              470
+            ]
+          },
+          "PHerc1545_ny.ome.zarr": {
+            "2": [
+              5241,
+              1877,
+              1877
+            ],
+            "3": [
+              2621,
+              939,
+              939
+            ],
+            "4": [
+              1311,
+              470,
+              470
+            ]
+          }
+        },
+        "files": [
+          "PHerc1545.lasagna.json"
+        ]
+      },
+      "tracks_mode": "own (pinned extract_surface_tracks.py, published parameters; validated by Claude on 0175A)",
+      "normals_mode": "lasagna",
+      "umb_mode": "community (AlexeyDrobkovStrikesBack/herculaneum-umbilici)",
+      "umbilicus_url": "https://raw.githubusercontent.com/AlexeyDrobkovStrikesBack/herculaneum-umbilici/main/PHerc1545_umbilicus.json",
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        15600,
+        17000
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 356.2,
+      "est_passing_cm2": 43.4,
+      "value_cm2": 35.2,
+      "roi_value_cm2_per_usd": 3.45,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 10.2
+    },
+    {
+      "rank": 10,
+      "scroll": "PHerc0490B",
+      "voxel_um": 8.64,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0490B/volumes/20250521151215-8.640um-1.2m-116keV-masked.zarr",
+      "ct_shape_L0": [
+        10648,
+        8343,
+        8343
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0490B/representations/predictions/surfaces/20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": null,
+      "tracks_mode": "published",
+      "normals_mode": "synthetic (306B make_normals.py from m7 L1)",
+      "umb_mode": "auto (normal-line least squares on m7 L2, QC overlay required)",
+      "umbilicus_url": null,
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        4564,
+        5964
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 779.3,
+      "est_passing_cm2": 39.0,
+      "value_cm2": 28.1,
+      "roi_value_cm2_per_usd": 2.78,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 10.12
+    },
+    {
+      "rank": 11,
+      "scroll": "PHerc0257",
+      "voxel_um": 9.362,
+      "ct_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0257/volumes/20250821151750-9.362um-1.2m-113keV-masked.zarr",
+      "ct_shape_L0": [
+        18872,
+        8388,
+        8388
+      ],
+      "m7_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0257/representations/predictions/surfaces/20250821151750-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+      "lasagna_id": {
+        "name": "20250821151750-lasagna-20260419180421",
+        "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0257/representations/predictions/lasagna/20250821151750-lasagna-20260419180421",
+        "groups": {
+          "PHerc0257_cos.ome.zarr": {
+            "1": [
+              9436,
+              4194,
+              4194
+            ],
+            "2": [
+              4718,
+              2097,
+              2097
+            ],
+            "3": [
+              2359,
+              1049,
+              1049
+            ],
+            "4": [
+              1180,
+              525,
+              525
+            ]
+          },
+          "PHerc0257_grad_mag.ome.zarr": {
+            "2": [
+              4718,
+              2097,
+              2097
+            ],
+            "3": [
+              2359,
+              1049,
+              1049
+            ],
+            "4": [
+              1180,
+              525,
+              525
+            ]
+          },
+          "PHerc0257_nx.ome.zarr": {
+            "2": [
+              4718,
+              2097,
+              2097
+            ],
+            "3": [
+              2359,
+              1049,
+              1049
+            ],
+            "4": [
+              1180,
+              525,
+              525
+            ]
+          },
+          "PHerc0257_ny.ome.zarr": {
+            "2": [
+              4718,
+              2097,
+              2097
+            ],
+            "3": [
+              2359,
+              1049,
+              1049
+            ],
+            "4": [
+              1180,
+              525,
+              525
+            ]
+          }
+        },
+        "files": [
+          "PHerc0257.lasagna.json"
+        ]
+      },
+      "tracks_mode": "published",
+      "normals_mode": "lasagna",
+      "umb_mode": "community (AlexeyDrobkovStrikesBack/herculaneum-umbilici)",
+      "umbilicus_url": "https://raw.githubusercontent.com/AlexeyDrobkovStrikesBack/herculaneum-umbilici/main/PHerc0257_umbilicus.json",
+      "existing_public_s3_segments": 0,
+      "best_band_z": [
+        5376,
+        6776
+      ],
+      "s0_quality": null,
+      "est_inside_cm2": 521.7,
+      "est_passing_cm2": 29.9,
+      "value_cm2": 22.7,
+      "roi_value_cm2_per_usd": 2.34,
+      "recommended_gpu": "L4",
+      "plan_total_usd_est": 9.71
+    }
+  ],
+  "pherc1218_extra_windows": {
+    "outer_batches": [
+      {
+        "batch_id": "W4-1218-outer-z7140",
+        "n_meshes": 30,
+        "est_valid_cm2": 265.117,
+        "arap_flatten": true
+      },
+      {
+        "batch_id": "W4-1218-outer-z20160",
+        "n_meshes": 20,
+        "est_valid_cm2": 210.441,
+        "arap_flatten": true
+      },
+      {
+        "batch_id": "W4-1218-outer-z4580",
+        "n_meshes": 14,
+        "est_valid_cm2": 117.914,
+        "arap_flatten": true
+      }
+    ],
+    "outer_totals": {
+      "n_meshes": 64,
+      "est_valid_cm2": 593.472,
+      "est_usd_expected": 11.76
+    },
+    "additional_pass_windows_count": 12,
+    "additional_pass_meshes": 492,
+    "additional_pass_est_cm2": 2004.9
+  },
+  "wave4_pherc0483a_prep": {
+    "run": "PHerc0483A_z12032-13432",
+    "status": "ok",
+    "modal_prep_cost_usd": 0.19,
+    "wall_seconds": 544.7,
+    "timings_s": {
+      "m7": 22.3,
+      "ct": 54.0,
+      "lasagna": 0.1,
+      "tracks_pub": 46.3,
+      "umb": 65.9,
+      "spec": 0.1,
+      "sense": 58.5,
+      "sdt": 135.0
+    },
+    "tar_parts": 9,
+    "tar_bytes": 37598259200,
+    "umb_mode": "auto",
+    "sense": {
+      "cw": 7,
+      "acw": 6,
+      "decision": "undecided",
+      "strength": 1.17,
+      "rule": ">= 2x and >= 20 pitch-band chains",
+      "levels": {
+        "sense_z12148_m-1.json": {
+          "z0": 12148,
+          "mirror": -1,
+          "full_turn": 0,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12148_m1.json": {
+          "z0": 12148,
+          "mirror": 1,
+          "full_turn": 2,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12381_m-1.json": {
+          "z0": 12381,
+          "mirror": -1,
+          "full_turn": 0,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12381_m1.json": {
+          "z0": 12381,
+          "mirror": 1,
+          "full_turn": 12,
+          "cw": 0,
+          "acw": 3
+        },
+        "sense_z12614_m-1.json": {
+          "z0": 12614,
+          "mirror": -1,
+          "full_turn": 1,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12614_m1.json": {
+          "z0": 12614,
+          "mirror": 1,
+          "full_turn": 0,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12847_m-1.json": {
+          "z0": 12847,
+          "mirror": -1,
+          "full_turn": 0,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z12847_m1.json": {
+          "z0": 12847,
+          "mirror": 1,
+          "full_turn": 12,
+          "cw": 2,
+          "acw": 0
+        },
+        "sense_z13080_m-1.json": {
+          "z0": 13080,
+          "mirror": -1,
+          "full_turn": 11,
+          "cw": 1,
+          "acw": 2
+        },
+        "sense_z13080_m1.json": {
+          "z0": 13080,
+          "mirror": 1,
+          "full_turn": 0,
+          "cw": 0,
+          "acw": 0
+        },
+        "sense_z13313_m-1.json": {
+          "z0": 13313,
+          "mirror": -1,
+          "full_turn": 6,
+          "cw": 3,
+          "acw": 0
+        },
+        "sense_z13313_m1.json": {
+          "z0": 13313,
+          "mirror": 1,
+          "full_turn": 6,
+          "cw": 1,
+          "acw": 1
+        }
+      }
+    },
+    "active_next_wave4_band": "PHerc0813_z8832-10232 (S0 q=0.710, official umbilicus + Lasagna + published tracks, running on Modal H100)"
+  },
+  "multi_family_confirmation_pins": {
+    "families": {
+      "rv3": {
+        "repo": "domenicor046/reader-v3",
+        "rev": "39f626e595304c35c6ef574ffc0b6cc1e0ed44cb",
+        "license": "MIT",
+        "runner": "villa infer.py (staged_rv3.Burst, overlap 0.5, Hann)",
+        "available": true
+      },
+      "studio": {
+        "repo": "priyankaranke/vesuvius-studio-multiscroll-cpt",
+        "rev": "bf66f753176792a966bca17822629fb8821f20c8",
+        "license": "code MIT (GitHub); weights CC BY-NC 4.0 (HF model card)",
+        "runner": "hf/inference.py predict() + gemini fp16 patch",
+        "available": true
+      },
+      "hecate": {
+        "repo": "scrollprize/hecate",
+        "rev": "9cb86e500e944b11a06a7020403cde5dffb5bcb2",
+        "license": "MIT",
+        "runner": "hecate.py predict() (central 16 planes of a 9.6 um render)",
+        "available": true
+      },
+      "ahn": {
+        "repo": "Prodigle/pherc0306b-ink-ahn",
+        "rev": "e57c4d541c239e06450a98c1cf2015d3de8d887e",
+        "license": "weights CC BY-NC 4.0, loader MIT",
+        "runner": "ink8um.predict_stack, mean of 3 seeds",
+        "available": true
+      }
+    },
+    "agreement_rule": {
+      "iou_min": 0.1,
+      "iou_null_z_min": 3.0,
+      "contrast_min": 1.2,
+      "top_frac": 0.02,
+      "n_null": 16,
+      "min_shift": 64
+    }
+  }
+}
