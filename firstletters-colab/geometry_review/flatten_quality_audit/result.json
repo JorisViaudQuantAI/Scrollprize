@@ -1,0 +1,159 @@
+{
+  "execution": "JavaScript runtime on original connector-pinned public source, not GitHub Actions",
+  "source_commit": "1770a7b9f223a016167fda440f1867848373119d",
+  "source_blobs": {
+    "tables/wl_259_gate_final__gridq_fitted_w010_069.json": "7a04049ad8aab9d56013db0cc2dd4409b835094b",
+    "tables/flat211f__gridq_flat.json": "1e715cc751cbe855ef4d8f4bef8d18ec9a1f57cb",
+    "maps_export211/windows.json": "d6a337f299fa5b893dbc84f6de23542adbbd83a6",
+    "look/P1/KEY_sealed.json": "7aa64aa902924bff95bdec3f5cb9360154e8e0f5"
+  },
+  "schema": "b8.flatten_quality_audit.v1",
+  "paired_charts": 60,
+  "tests_passed": 5,
+  "metrics": {
+    "shear_share": {
+      "raw_chart_macro": 0.443667,
+      "flat_chart_macro": 0.95615,
+      "mean_delta": 0.512483,
+      "increased": 60,
+      "decreased": 0,
+      "tied": 0,
+      "flat_min": 0.926,
+      "flat_max": 0.971
+    },
+    "shear_central_span": {
+      "raw_chart_macro": 50.878833,
+      "flat_chart_macro": 8.019333,
+      "mean_delta": -42.8595,
+      "increased": 0,
+      "decreased": 60,
+      "tied": 0,
+      "flat_min": 5.14,
+      "flat_max": 12.64
+    },
+    "stretch_turn_span": {
+      "raw_chart_macro": 2.3605,
+      "flat_chart_macro": 0.090333,
+      "mean_delta": -2.270167,
+      "increased": 0,
+      "decreased": 60,
+      "tied": 0,
+      "flat_min": 0.06,
+      "flat_max": 0.15
+    },
+    "stretch_z_span": {
+      "raw_chart_macro": 0.879167,
+      "flat_chart_macro": 0.061333,
+      "mean_delta": -0.817833,
+      "increased": 0,
+      "decreased": 60,
+      "tied": 0,
+      "flat_min": 0.03,
+      "flat_max": 0.09
+    },
+    "rough_gt20_share": {
+      "raw_chart_macro": 0.155567,
+      "flat_chart_macro": 0.07375,
+      "mean_delta": -0.081817,
+      "increased": 0,
+      "decreased": 60,
+      "tied": 0,
+      "flat_min": 0.04,
+      "flat_max": 0.121
+    },
+    "rough_p95": {
+      "raw_chart_macro": 32.401667,
+      "flat_chart_macro": 23.362833,
+      "mean_delta": -9.038833,
+      "increased": 0,
+      "decreased": 60,
+      "tied": 0,
+      "flat_min": 18.18,
+      "flat_max": 29.4
+    },
+    "cells": {
+      "raw_chart_macro": 13694.216667,
+      "flat_chart_macro": 19816.416667,
+      "mean_delta": 6122.2,
+      "increased": 60,
+      "decreased": 0,
+      "tied": 0,
+      "flat_min": 4157,
+      "flat_max": 37684
+    }
+  },
+  "cell_totals": {
+    "raw": 821653,
+    "flat": 1188985
+  },
+  "cell_count_ratio": 1.447065,
+  "hypothetical_flat_shear_gates": [
+    {
+      "threshold": 0.9,
+      "pass_charts": 60,
+      "excluded_charts": 0,
+      "excluded_windows": 0,
+      "excluded_summed_window_area_cm2": 0,
+      "excluded_reviewed_windows": 0,
+      "excluded_published_visual_flags": 0,
+      "excluded_unreviewed_windows": 0,
+      "excluded_abstention_windows": 0,
+      "kept_windows": 149
+    },
+    {
+      "threshold": 0.95,
+      "pass_charts": 48,
+      "excluded_charts": 12,
+      "excluded_windows": 17,
+      "excluded_summed_window_area_cm2": 33.134,
+      "excluded_reviewed_windows": 8,
+      "excluded_published_visual_flags": 2,
+      "excluded_unreviewed_windows": 9,
+      "excluded_abstention_windows": 1,
+      "kept_windows": 132
+    },
+    {
+      "threshold": 0.99,
+      "pass_charts": 0,
+      "excluded_charts": 60,
+      "excluded_windows": 149,
+      "excluded_summed_window_area_cm2": 293.369,
+      "excluded_reviewed_windows": 40,
+      "excluded_published_visual_flags": 3,
+      "excluded_unreviewed_windows": 109,
+      "excluded_abstention_windows": 54,
+      "kept_windows": 0
+    }
+  ],
+  "hypothetical_rounded_central_stretch_gate": {
+    "range": [
+      0.95,
+      1.05
+    ],
+    "pass_charts": 34,
+    "excluded_charts": 26,
+    "excluded_windows": 72,
+    "excluded_summed_window_area_cm2": 143.054,
+    "excluded_reviewed_windows": 18,
+    "excluded_published_visual_flags": 2,
+    "excluded_unreviewed_windows": 54,
+    "excluded_abstention_windows": 25,
+    "kept_windows": 77
+  },
+  "all_abstain_quality": {
+    "charts": 6,
+    "flat_shear_share_macro": 0.961833,
+    "flat_rough_gt20_share_macro": 0.084167
+  },
+  "some_score_quality": {
+    "charts": 54,
+    "flat_shear_share_macro": 0.955519,
+    "flat_rough_gt20_share_macro": 0.072593
+  },
+  "limitations": [
+    "Matched chart IDs, not matched vertices or cell masks; changed cell counts mean macro per-chart summaries are not a pooled physical area or pixel-level effect.",
+    "gridq cells counts one-step valid cells, not the exact shear or rough denominators; do not cell-weight those fractions as exact pooled shares.",
+    "Stretch percentiles rounded to 0.01; central range gate descriptive, not an exact fraction or joint confidence statement.",
+    "Published visual flags include weak/unverified and known-location observations, not independent ink truth. No validated exclusion threshold or new review."
+  ]
+}
