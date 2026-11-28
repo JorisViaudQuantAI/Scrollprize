@@ -1,0 +1,31 @@
+{
+  "schema": "scrollprize.transcription-review.v1",
+  "synthetic": true,
+  "sources": [
+    {"id": "synthetic-map", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "kind": "synthetic", "shape_yx": [24, 64], "site_id": "synthetic-site", "derived_from": [], "relation": "base"},
+    {"id": "synthetic-regrow", "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "kind": "synthetic", "shape_yx": [24, 64], "site_id": "synthetic-site", "derived_from": ["synthetic-map"], "relation": "regrown_same_site"}
+  ],
+  "lines": [
+    {"id": "line-1", "orientation": "identity", "segmentation_basis": "Synthetic exercise: exactly five character slots were defined before any lexicon lookup.", "units": [
+      {"index": 0, "length_min": 1, "length_max": 1},
+      {"index": 1, "length_min": 1, "length_max": 1},
+      {"index": 2, "length_min": 1, "length_max": 1},
+      {"index": 3, "length_min": 1, "length_max": 1},
+      {"index": 4, "length_min": 1, "length_max": 1}
+    ]},
+    {"id": "line-2", "orientation": "unknown", "segmentation_basis": "Synthetic damage interval: character count and orientation are unresolved.", "units": [
+      {"index": 0, "length_min": 0, "length_max": null}
+    ]}
+  ],
+  "observations": [
+    {"id": "o-1", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 0, "orientation": "identity", "bbox_yxyx": [1, 1, 8, 8], "status": "visual_hypothesis", "alternatives": ["Λ"], "allow_unknown": false, "strokes": "Synthetic two converging diagonals; no observed horizontal bar."},
+    {"id": "o-2", "reviewer_id": "r-2", "prior_verdict_seen": true, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 0, "orientation": "identity", "bbox_yxyx": [1, 1, 8, 8], "status": "visual_hypothesis", "alternatives": ["Α"], "allow_unknown": false, "strokes": "Synthetic alternative annotation with a disputed horizontal bar; retain disagreement."},
+    {"id": "o-3", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 1, "orientation": "identity", "bbox_yxyx": [1, 10, 8, 17], "status": "visual_hypothesis", "alternatives": ["Ο"], "allow_unknown": false, "strokes": "Synthetic closed oval."},
+    {"id": "o-4", "reviewer_id": "r-2", "prior_verdict_seen": true, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 1, "orientation": "identity", "bbox_yxyx": [1, 10, 8, 17], "status": "abstain", "alternatives": [], "allow_unknown": true, "strokes": "Synthetic blurred slot; no discriminating stroke retained by this reviewer."},
+    {"id": "o-5", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 2, "orientation": "identity", "bbox_yxyx": [1, 20, 8, 27], "status": "visual_hypothesis", "alternatives": ["Γ"], "allow_unknown": false, "strokes": "Synthetic vertical and upper horizontal strokes."},
+    {"id": "o-6", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-regrow", "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "line_id": "line-1", "unit_index": 3, "orientation": "identity", "bbox_yxyx": [2, 30, 9, 37], "status": "visual_hypothesis", "alternatives": ["Ο"], "allow_unknown": false, "strokes": "Synthetic closed oval in a related view; no independence claim."},
+    {"id": "o-7", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-1", "unit_index": 4, "orientation": "identity", "bbox_yxyx": [1, 40, 8, 47], "status": "visual_hypothesis", "alternatives": ["Ϲ"], "allow_unknown": false, "strokes": "Synthetic crescent, used only to exercise lunate sigma normalization."},
+    {"id": "o-8", "reviewer_id": "r-1", "prior_verdict_seen": false, "source_id": "synthetic-map", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "line_id": "line-2", "unit_index": 0, "orientation": "unknown", "bbox_yxyx": [12, 1, 23, 63], "status": "abstain", "alternatives": [], "allow_unknown": true, "strokes": "Synthetic damaged region; not a single-character wildcard."}
+  ],
+  "lexical_hypotheses": []
+}
